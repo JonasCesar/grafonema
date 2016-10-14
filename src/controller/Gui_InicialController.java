@@ -5,16 +5,31 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author jonas
  */
+
+
 public class Gui_InicialController implements Initializable {
+    @FXML
+    private Stage window;
+    @FXML
+    private Button iniciar;
 
     /**
      * Initializes the controller class.
@@ -22,6 +37,17 @@ public class Gui_InicialController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+        
+    }
+    @FXML
+    private void handleComecar(ActionEvent event) throws IOException {        
+        if (event.getSource() == iniciar) {
+            window = (Stage) ((Button) event.getSource()).getScene().getWindow();           
+            Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+            Scene scene = new Scene(cenaPrincipal, 900, 700);
+            window.setTitle("Grafonema");
+            window.setScene(scene);
+            window.show();           
+        }
+    }
 }
