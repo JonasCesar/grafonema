@@ -23,9 +23,8 @@ import javafx.stage.Stage;
  *
  * @author jonas
  */
-
-
 public class Gui_InicialController implements Initializable {
+
     @FXML
     private Stage window;
     @FXML
@@ -37,17 +36,18 @@ public class Gui_InicialController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+
     }
+
     @FXML
-    private void handleComecar(ActionEvent event) throws IOException {        
-        if (event.getSource() == iniciar) {
-            window = (Stage) ((Button) event.getSource()).getScene().getWindow();           
-            Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
-            Scene scene = new Scene(cenaPrincipal, 900, 700);
-            window.setTitle("Grafonema");
-            window.setScene(scene);
-            window.show();           
-        }
+    private void handleComecar(ActionEvent event) throws IOException {
+
+        window = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_avatares.fxml"));
+        Scene scene = new Scene(cenaPrincipal, 900, 700);
+        window.setTitle("Grafonema");
+        window.setScene(scene);
+        window.show();
+
     }
 }
