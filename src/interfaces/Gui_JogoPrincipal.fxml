@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.media.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.Gui_JogoPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_JogoPrincipalController">
    <children>
-      <Button layoutX="269.0" layoutY="188.0" mnemonicParsing="false" text="Teste" />
+      <Button layoutX="26.0" layoutY="25.0" mnemonicParsing="false" text="Avatar" />
+      <ProgressBar layoutX="100.0" layoutY="28.0" prefWidth="200.0" progress="0.66" />
+      <Label layoutX="40.0" layoutY="75.0" text="0 pts" />
+      <Label layoutX="432.0" layoutY="31.0" text="30s" />
+      <Button layoutX="161.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
+      <Button layoutX="282.0" layoutY="366.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
+      <Button layoutX="375.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
+      <Button layoutX="553.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
+      <Button layoutX="472.0" layoutY="366.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
+      <Button layoutX="748.0" layoutY="624.0" mnemonicParsing="false" text="Pular" />
    </children>
 </AnchorPane>

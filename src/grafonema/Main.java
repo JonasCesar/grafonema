@@ -6,14 +6,10 @@
 package grafonema;
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -28,8 +24,7 @@ public class Main extends Application {
     public void start(Stage janela) throws IOException {
         this.janela = janela;
         Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Inicial.fxml"));        
-        Scene scene = new Scene(cenaInicial, 900, 700);
-        
+        Scene scene = new Scene(cenaInicial, 900, 700);        
         janela.setTitle("Grafonema");
         janela.setScene(scene);
         janela.show();
