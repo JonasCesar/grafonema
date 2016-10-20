@@ -5,6 +5,7 @@
  */
 package controller;
 
+import model.Model_Inicial;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +30,8 @@ public class Gui_InicialController implements Initializable {
     private Stage window;
     @FXML
     private Button iniciar;
-
+    
+    private Model_Inicial modelInical = new Model_Inicial();
     /**
      * Initializes the controller class.
      */
@@ -41,13 +43,6 @@ public class Gui_InicialController implements Initializable {
 
     @FXML
     private void handleComecar(ActionEvent event) throws IOException {
-
-        window = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_avatares.fxml"));
-        Scene scene = new Scene(cenaPrincipal, 900, 700);
-        window.setTitle("Grafonema");
-        window.setScene(scene);
-        window.show();
-
+        modelInical.iniciar(event);        
     }
 }
