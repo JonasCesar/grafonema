@@ -5,14 +5,13 @@
  */
 package controller;
 
-import java.io.File;
+import model.JogoPrincipal;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -20,7 +19,18 @@ import javafx.scene.media.MediaView;
  * @author jonas
  */
 public class Gui_JogoPrincipalController implements Initializable {
+    @FXML
+    private Button btn_1;
+    @FXML
+    private Button btn_2;
+    @FXML
+    private Button btn_3;
+    @FXML
+    private Button btn_5;
+    @FXML
+    private Button btn_4;
 
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -30,5 +40,11 @@ public class Gui_JogoPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
           
     }    
+
+    @FXML
+    private void handlePular(ActionEvent event) {
+        JogoPrincipal jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5);
+        jogoPrincipal.gerarNovasOpcoes();        
+    }
     
 }

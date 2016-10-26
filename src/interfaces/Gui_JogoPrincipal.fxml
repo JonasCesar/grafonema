@@ -13,11 +13,11 @@
       <ProgressBar layoutX="100.0" layoutY="28.0" prefWidth="200.0" progress="0.66" />
       <Label layoutX="40.0" layoutY="75.0" text="0 pts" />
       <Label layoutX="432.0" layoutY="31.0" text="30s" />
-      <Button layoutX="161.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
-      <Button layoutX="282.0" layoutY="366.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
-      <Button layoutX="375.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
-      <Button layoutX="553.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
-      <Button layoutX="472.0" layoutY="366.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="Uma frase simples" />
-      <Button layoutX="748.0" layoutY="624.0" mnemonicParsing="false" text="Pular" />
+      <Button fx:id="btn_1" layoutX="161.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="A" />
+      <Button fx:id="btn_2" layoutX="253.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="B" />
+      <Button fx:id="btn_3" layoutX="340.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="C" />
+      <Button fx:id="btn_5" layoutX="511.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="E" />
+      <Button fx:id="btn_4" layoutX="426.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="D" />
+      <Button layoutX="748.0" layoutY="624.0" mnemonicParsing="false" onAction="#handlePular" text="Pular" />
    </children>
 </AnchorPane>

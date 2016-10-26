@@ -5,6 +5,7 @@
  */
 package controller;
 
+import model.Model_avatares;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +32,8 @@ public class Gui_avataresController implements Initializable {
 
     private String selecionado;
 
+    private Model_avatares modelAvatares = new Model_avatares();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -38,7 +41,8 @@ public class Gui_avataresController implements Initializable {
 
     @FXML
     private void avatarMeninoSelecionado(ActionEvent event) {
-        selecionado = "menino";
+        modelAvatares.setSelecionado("menino");
+
     }
 
     @FXML
@@ -48,20 +52,7 @@ public class Gui_avataresController implements Initializable {
 
     @FXML
     private void handleAvancar(ActionEvent event) throws IOException {
-        window = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        Parent cenaPrincipal;
-        if (selecionado.equals("menino")) {
-            System.out.println("Menino Selecionado");
-            cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
-        } else {
-            System.out.println("Menina selecionada");
-            cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
-        }
-
-        Scene scene = new Scene(cenaPrincipal, 900, 700);
-        window.setTitle("Grafonema");
-        window.setScene(scene);
-        window.show();
+        modelAvatares.getGuiJogoPrincipal(event);
     }
 
 }
