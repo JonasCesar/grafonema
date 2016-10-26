@@ -44,7 +44,7 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private void handlePular(ActionEvent event) {
         JogoPrincipal jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5);
-        jogoPrincipal.gerarNovasOpcoes();        
+        jogoPrincipal.gerarNovasOpcoes(0);        
     }
     
 }

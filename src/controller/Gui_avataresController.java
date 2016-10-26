@@ -47,7 +47,7 @@ public class Gui_avataresController implements Initializable {
 
     @FXML
     private void avatarMeninaSelecinado(ActionEvent event) {
-        selecionado = "menina";
+        modelAvatares.setSelecionado("menina");
     }
 
     @FXML
