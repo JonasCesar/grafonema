@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.IOException;
@@ -24,13 +19,14 @@ public class Model_avatares {
     private String selecionado;
     
     public Model_avatares() {
+               
     }
     
     //
     public void getGuiJogoPrincipal(ActionEvent event) throws IOException{
         window = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent cenaPrincipal;
-        if (selecionado.equals("menino")) {
+        if (getSelecionado().equals("menino")) {
             System.out.println("Menino Selecionado");
             cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
         } else {
@@ -46,8 +42,7 @@ public class Model_avatares {
     
     public void setSelecionado(String valor){
         this.selecionado = valor;
-    }
-    
+    }    
     public String getSelecionado(){
         return selecionado;
     }

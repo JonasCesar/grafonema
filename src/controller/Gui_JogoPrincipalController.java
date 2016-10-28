@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
  * @author jonas
  */
 public class Gui_JogoPrincipalController implements Initializable {
+
     @FXML
     private Button btn_1;
     @FXML
@@ -35,20 +36,34 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Label tempo;
     
     
+
+    private JogoPrincipal jogoPrincipal;
+    @FXML
+    private Button pular;
+
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-          
-    }    
+        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular);
+    }
 
     @FXML
     private void handlePular(ActionEvent event) {
-        JogoPrincipal jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5);
-        jogoPrincipal.gerarNovasOpcoes();        
+
+        int qntPulosAtual = jogoPrincipal.jogador.getQntPulos();
+        if (qntPulosAtual == 2) {
+            jogoPrincipal.desabilitarPulo();
+        } else {
+            jogoPrincipal.gerarOpcaoAleatoria();
+            jogoPrincipal.jogador.setQntPulos(qntPulosAtual);
+        }
+
     }
-    
+
 }

@@ -18,6 +18,6 @@
       <Button fx:id="btn_3" layoutX="340.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="C" />
       <Button fx:id="btn_5" layoutX="511.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="E" />
       <Button fx:id="btn_4" layoutX="426.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="D" />
-      <Button layoutX="748.0" layoutY="624.0" mnemonicParsing="false" onAction="#handlePular" text="Pular" />
+      <Button fx:id="pular" layoutX="748.0" layoutY="624.0" mnemonicParsing="false" onAction="#handlePular" text="Pular" />
    </children>
 </AnchorPane>
