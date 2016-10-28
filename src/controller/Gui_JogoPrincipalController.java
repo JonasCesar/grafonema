@@ -7,6 +7,7 @@ package controller;
 
 import model.JogoPrincipal;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ import javafx.scene.control.Label;
  * @author jonas
  */
 public class Gui_JogoPrincipalController implements Initializable {
+
     @FXML
     private Button btn_1;
     @FXML
@@ -35,20 +37,44 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Label tempo;
     
     
+
+
+    private JogoPrincipal jogoPrincipal;
+    @FXML
+    private Button pular;
+    @FXML
+    private Label audio;
+
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-          
-    }    
+        String vogais[] = {"letra_a", "letra_e","letra_i","letra_o","letra_u"};
+        Random indiceVogal = new Random();
+        audio.setText(vogais[indiceVogal.nextInt(5)]);
+        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular,audio);
+    }
 
     @FXML
     private void handlePular(ActionEvent event) {
-        JogoPrincipal jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5);
-        jogoPrincipal.gerarNovasOpcoes();        
+        int qntPulosAtual = jogoPrincipal.jogador.getQntPulos();
+        if (qntPulosAtual == 2) {
+            jogoPrincipal.desabilitarPulo();
+        } else {
+            jogoPrincipal.gerarOpcaoAleatoria();
+            jogoPrincipal.jogador.setQntPulos(qntPulosAtual);
+        }
+
     }
-    
+
+    @FXML
+    private void handleBotoes(ActionEvent event) {
+        jogoPrincipal.verificarRelacaoGaFonema(event);
+    }
+
 }
