@@ -38,7 +38,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     
     
 
-
     private JogoPrincipal jogoPrincipal;
     @FXML
     private Button pular;
