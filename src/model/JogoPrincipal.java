@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +28,7 @@ public class JogoPrincipal {
     @FXML
     private Button btn_4;
     @FXML
-    private Button pular;    
+    private Button pular;
     @FXML
     private Label audio;
 
@@ -35,9 +37,9 @@ public class JogoPrincipal {
     private String audioVogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
 
     public Jogador jogador = new Jogador();
-    
-    private Map<String,String> matrizVogais;
-    
+
+    private Map<String, String> matrizVogais;
+
     private Random indiceAudio;
 
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5, Button pular, Label audio) {
@@ -46,11 +48,12 @@ public class JogoPrincipal {
         this.btn_2 = b2;
         this.btn_3 = b3;
         this.btn_4 = b4;
-        this.btn_5 = b5;        
+        this.btn_5 = b5;
         this.pular = pular;
         this.audio = audio;
         this.indiceAudio = new Random();
-        this.matrizVogais = new HashMap<String,String>();        
+        this.matrizVogais = new HashMap<String, String>();
+        iniciarMatrizAudiosVogal();
 
     }
 
@@ -75,9 +78,9 @@ public class JogoPrincipal {
         Random indice = new Random();
         switch (jogador.getFaseAtual()) {
             case 1:
-                
-                gerarSomAleatorio();          
-                
+
+                gerarSomAleatorio();
+
                 int i = 0;
                 while (i < 5) {
                     int proxValor = indice.nextInt(5);
@@ -107,11 +110,11 @@ public class JogoPrincipal {
         if (fase == 0) {
             jogador.setFaseAtual(1);
         }
-        
-        switch(jogador.getFaseAtual()){
+
+        switch (jogador.getFaseAtual()) {
             case 1:
                 int i = indiceAudio.nextInt(5);
-                audio.setText(audioVogais[i]);                
+                audio.setText(audioVogais[i]);
                 break;
             case 2:
                 break;
@@ -121,8 +124,13 @@ public class JogoPrincipal {
 
     }
 
-    public void verificarRelacaoGaFonema(ActionEvent event) {
-        System.out.println(((Button)event.getSource()).getText()) ;
+    public boolean verificarRelacaoGaFonema(ActionEvent event) {
+        String opcaoEscolhida = (((Button) event.getSource()).getText());
+        
+        System.out.println(opcaoEscolhida);
+        System.out.println(getKeyByValue(matrizVogais, opcaoEscolhida));
+        return ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(audio.getText()));
+
     }
 
     public void atualizarRelogioJogo() {
@@ -141,12 +149,20 @@ public class JogoPrincipal {
         pular.setDisable(true);
     }
 
-    public void iniciarMatrizAudiosVogal(){
+    public void iniciarMatrizAudiosVogal() {
         matrizVogais.put("letra_a", "A");
         matrizVogais.put("letra_e", "E");
         matrizVogais.put("letra_i", "I");
         matrizVogais.put("letra_o", "O");
         matrizVogais.put("letra_u", "U");
     }
-    
+
+    public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
+        for (Entry<T, E> entry : map.entrySet()) {
+            if (Objects.equals(value, entry.getValue())) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
 }

@@ -38,7 +38,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     
     
 
-
     private JogoPrincipal jogoPrincipal;
     @FXML
     private Button pular;
@@ -58,6 +57,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         Random indiceVogal = new Random();
         audio.setText(vogais[indiceVogal.nextInt(5)]);
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular,audio);
+        jogoPrincipal.iniciarMatrizAudiosVogal();
     }
 
     @FXML
@@ -69,12 +69,14 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.gerarOpcaoAleatoria();
             jogoPrincipal.jogador.setQntPulos(qntPulosAtual);
         }
-
     }
 
     @FXML
     private void handleBotoes(ActionEvent event) {
-        jogoPrincipal.verificarRelacaoGaFonema(event);
+        if(jogoPrincipal.verificarRelacaoGaFonema(event)){
+            //trocar a cor do botão
+            ((Button)event.getSource()).setDisable(true);
+        }
     }
 
 }
