@@ -21,7 +21,7 @@ import javafx.scene.control.Label;
  * @author jonas
  */
 public class Gui_JogoPrincipalController implements Initializable {
-
+    
     @FXML
     private Button btn_1;
     @FXML
@@ -36,14 +36,14 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private Label tempo;
     
-    
-
     private JogoPrincipal jogoPrincipal;
     @FXML
     private Button pular;
     @FXML
     private Label audio;
-
+    @FXML
+    private Label pontuacao;
+    
 
     /**
      * Initializes the controller class.
@@ -53,13 +53,13 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String vogais[] = {"letra_a", "letra_e","letra_i","letra_o","letra_u"};
+        String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
         audio.setText(vogais[indiceVogal.nextInt(5)]);
-        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular,audio);
+        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao);
         jogoPrincipal.iniciarMatrizAudiosVogal();
     }
-
+    
     @FXML
     private void handlePular(ActionEvent event) {
         int qntPulosAtual = jogoPrincipal.jogador.getQntPulos();
@@ -70,13 +70,15 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.jogador.setQntPulos(qntPulosAtual);
         }
     }
-
+    
     @FXML
-    private void handleBotoes(ActionEvent event) {
-        if(jogoPrincipal.verificarRelacaoGaFonema(event)){
+    private void handleBotoes(ActionEvent event) throws InterruptedException {
+        if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
             //trocar a cor do botão
-            ((Button)event.getSource()).setDisable(true);
+            ((Button) event.getSource()).setDisable(true);
+            jogoPrincipal.incrementarPontuacao();            
+            Thread.sleep(2000);
         }
     }
-
+    
 }

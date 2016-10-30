@@ -11,7 +11,7 @@
    <children>
       <Button layoutX="26.0" layoutY="25.0" mnemonicParsing="false" text="Avatar" />
       <ProgressBar layoutX="100.0" layoutY="28.0" prefWidth="200.0" progress="0.66" />
-      <Label layoutX="40.0" layoutY="75.0" text="0 pts" />
+      <Label fx:id="pontuacao" layoutX="40.0" layoutY="75.0" text="0" />
       <Label fx:id="tempo" layoutX="432.0" layoutY="31.0" text="30s" />
       <Button fx:id="btn_1" layoutX="161.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="A" />
       <Button fx:id="btn_2" layoutX="253.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="B" />
