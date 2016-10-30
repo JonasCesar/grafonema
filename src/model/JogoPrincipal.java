@@ -31,6 +31,9 @@ public class JogoPrincipal {
     private Button pular;
     @FXML
     private Label audio;
+    
+    @FXML
+    private Label pontuacao;
 
     private String vogais[] = {"A", "E", "I", "O", "U"};
 
@@ -42,7 +45,7 @@ public class JogoPrincipal {
 
     private Random indiceAudio;
 
-    public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5, Button pular, Label audio) {
+    public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5, Button pular, Label audio, Label pontuacao) {
 
         this.btn_1 = b1;
         this.btn_2 = b2;
@@ -51,9 +54,9 @@ public class JogoPrincipal {
         this.btn_5 = b5;
         this.pular = pular;
         this.audio = audio;
+        this.pontuacao = pontuacao;
         this.indiceAudio = new Random();
         this.matrizVogais = new HashMap<String, String>();
-        iniciarMatrizAudiosVogal();
 
     }
 
@@ -157,6 +160,16 @@ public class JogoPrincipal {
         matrizVogais.put("letra_u", "U");
     }
 
+    /**
+     * Retorna a chave da HashMap correspondente ao valor que é passado como
+     * parâmetro
+     * @param <T>
+     * @param <E>
+     * @param map HasMap que na qual desaja-se pesquisar a chave
+     * @param value valor que terá uma chave relacionada na hashMap
+     * @return a chave correspondente ao valor pesquisado 
+     * (null caso a chave não exista)
+     */
     public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
         for (Entry<T, E> entry : map.entrySet()) {
             if (Objects.equals(value, entry.getValue())) {
@@ -165,4 +178,13 @@ public class JogoPrincipal {
         }
         return null;
     }
+    
+    public void incrementarPontuacao(){
+       int pontuacaoAnterior = Integer.parseInt(pontuacao.getText());
+       int pontuacaoFinal = pontuacaoAnterior+10;
+       pontuacao.setText(""+pontuacaoFinal);
+       
+    }
+    
+    
 }

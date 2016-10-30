@@ -76,8 +76,10 @@ public class Gui_JogoPrincipalController implements Initializable {
         if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
             //trocar a cor do botão
             ((Button) event.getSource()).setDisable(true);
-            jogoPrincipal.incrementarPontuacao();            
-            Thread.sleep(2000);
+            jogoPrincipal.incrementarPontuacao();
+            jogoPrincipal.incrementarAcerto();
+            Thread.sleep(2000);            
+            jogoPrincipal.gerarOpcaoAleatoria();
         }
     }
     
