@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 
 /**
  *
@@ -31,12 +32,15 @@ public class JogoPrincipal {
     private Button pular;
     @FXML
     private Label audio;
-    
+
     @FXML
     private Label pontuacao;
 
+    @FXML
+    private ProgressBar lifeBar;
     private String vogais[] = {"A", "E", "I", "O", "U"};
 
+    //o nome dos arquivos das vogais
     private String audioVogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
 
     public Jogador jogador = new Jogador();
@@ -45,7 +49,8 @@ public class JogoPrincipal {
 
     private Random indiceAudio;
 
-    public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5, Button pular, Label audio, Label pontuacao) {
+    public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
+            Button pular, Label audio, Label pontuacao, ProgressBar lifeBar) {
 
         this.btn_1 = b1;
         this.btn_2 = b2;
@@ -54,6 +59,7 @@ public class JogoPrincipal {
         this.btn_5 = b5;
         this.pular = pular;
         this.audio = audio;
+        this.lifeBar = lifeBar;
         this.pontuacao = pontuacao;
         this.indiceAudio = new Random();
         this.matrizVogais = new HashMap<String, String>();
@@ -66,13 +72,25 @@ public class JogoPrincipal {
      * OBS: OS VALORES GERADOS IRÃO VARIAR EM CADA FASE E DEVERÃO SER
      * CORRESPONDENTES AOS ARQUIVOS DE ÁUDIO QUE ESTARÃO SENDO EXECUTADOS
      *
-     * @param fase fase em que o jogo se encontra
+     * @throws java.lang.InterruptedException
      */
-    public void gerarOpcaoAleatoria() {
-        int fase = jogador.getFaseAtual();
-        System.out.println(fase);
+    public void gerarOpcaoAleatoria() throws InterruptedException {
+        habilitarBotoes();
+        if(jogador.getQntErros()==5){
+            System.out.println("GAME OVER!!!");
+        }     
+        
+        
+        if (jogador.getAcertosTotal() == 10) {
+            System.out.println("Fase bônus");
+            jogador.setFaseAtual(jogador.getFaseAtual() + 1);
+        }
+            
+        
+        
+        //int fase = jogador.getFaseAtual();
         //quando for o inicio do jogo
-        if (fase == 0) {
+        if (jogador.getFaseAtual() == 0) {
             jogador.setFaseAtual(1); //altera a fase do jogador
             System.out.println(jogador.getFaseAtual());
         }
@@ -92,7 +110,8 @@ public class JogoPrincipal {
                         indiceUtilizados.add(proxValor);
                         i++;
                     }
-                }
+                }                
+                
                 btn_1.setText(vogais[(int) novasOpcoes.get(0)]);
                 btn_2.setText(vogais[(int) novasOpcoes.get(1)]);
                 btn_3.setText(vogais[(int) novasOpcoes.get(2)]);
@@ -100,6 +119,11 @@ public class JogoPrincipal {
                 btn_5.setText(vogais[(int) novasOpcoes.get(4)]);
                 break;
             case 2:
+                btn_1.setText("bone");
+                btn_2.setText("que");
+                btn_3.setText("bone");
+                btn_4.setText("que");
+                btn_5.setText("cena");
                 break;
             default:
                 break;
@@ -129,7 +153,7 @@ public class JogoPrincipal {
 
     public boolean verificarRelacaoGaFonema(ActionEvent event) {
         String opcaoEscolhida = (((Button) event.getSource()).getText());
-        
+
         System.out.println(opcaoEscolhida);
         System.out.println(getKeyByValue(matrizVogais, opcaoEscolhida));
         return ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(audio.getText()));
@@ -148,6 +172,13 @@ public class JogoPrincipal {
 
     }
 
+    public void reduzirLifeBar() {
+        double valorAnterior = lifeBar.getProgress();
+        double valorAtualizado = valorAnterior - 0.2;
+        System.out.println(valorAnterior);
+        lifeBar.setProgress(valorAtualizado);
+    }
+
     public void desabilitarPulo() {
         pular.setDisable(true);
     }
@@ -163,12 +194,13 @@ public class JogoPrincipal {
     /**
      * Retorna a chave da HashMap correspondente ao valor que é passado como
      * parâmetro
+     *
      * @param <T>
      * @param <E>
      * @param map HasMap que na qual desaja-se pesquisar a chave
      * @param value valor que terá uma chave relacionada na hashMap
-     * @return a chave correspondente ao valor pesquisado 
-     * (null caso a chave não exista)
+     * @return a chave correspondente ao valor pesquisado (null caso a chave não
+     * exista)
      */
     public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
         for (Entry<T, E> entry : map.entrySet()) {
@@ -178,13 +210,74 @@ public class JogoPrincipal {
         }
         return null;
     }
-    
-    public void incrementarPontuacao(){
-       int pontuacaoAnterior = Integer.parseInt(pontuacao.getText());
-       int pontuacaoFinal = pontuacaoAnterior+10;
-       pontuacao.setText(""+pontuacaoFinal);
-       
+
+    /**
+     * Incrementa, em valores de 10, a quantidade de pontos do jagador
+     */
+    public void incrementarPontuacao() {
+        int pontuacaoAnterior = Integer.parseInt(pontuacao.getText());
+        int ptAnterior = jogador.getPontuacaoTotal();
+        int novaPontuacao = pontuacaoAnterior + 10;
+        jogador.setPontuacaoTotal(novaPontuacao);
+        pontuacao.setText("" + novaPontuacao);
     }
-    
-    
+
+    /**
+     * Incrementa a quantidade de acertos do jogador
+     */
+    public void incrementarAcerto() {
+        jogador.setAcertosTotal(jogador.getAcertosTotal() + 1);
+        System.out.println("Acertos " + jogador.getAcertosTotal());
+    }
+
+    public void habilitarBotoes() {
+        btn_1.setDisable(false);
+        btn_2.setDisable(false);
+        btn_3.setDisable(false);
+        btn_4.setDisable(false);
+        btn_5.setDisable(false);
+
+    }
+
+    /**
+     * OBS: O BOTÃO SELECIONADO AQUI DEVERÁ MUDAR DE COR OU TER OUTRA FORMA DE
+     * DESTAQUE QUE MOSTRE QUE A OPÇÃO ESTÁ ERRADA
+     *
+     * @param event
+     * @return
+     */
+    public Button opcaoCorreta(ActionEvent event) {
+        String opcaoEscolhida = (((Button) event.getSource()).getText());
+        Button temporario = null;
+        String opcaoCorreta = matrizVogais.get(audio.getText());
+        System.out.println(opcaoCorreta);
+        if (opcaoCorreta.equals(btn_1.getText())) {
+            temporario = btn_1;
+        } else if (opcaoCorreta.equals(btn_2.getText())) {
+            temporario = btn_2;
+        } else if (opcaoCorreta.equals(btn_3.getText())) {
+            temporario = btn_3;
+        } else if (opcaoCorreta.equals(btn_4.getText())) {
+            temporario = btn_4;
+        } else if (opcaoCorreta.equals(btn_5.getText())) {
+            temporario = btn_5;
+        }
+        return temporario;
+    }
+
+    public void mostrarOpcaoCorreta(Button botao) throws InterruptedException {
+        botao.setDisable(true);
+        btn_1.setText(btn_1.getText());
+        btn_2.setText(btn_2.getText());
+        btn_3.setText(btn_3.getText());
+        btn_4.setText(btn_4.getText());
+        btn_5.setText(btn_5.getText());
+        gerarOpcaoAleatoria();
+
+    }
+
+    public void incrementarErro() {
+        jogador.setQntErros(jogador.getQntErros()+1);
+        System.out.println("Erros " + jogador.getQntErros());
+    }
 }

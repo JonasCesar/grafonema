@@ -9,11 +9,20 @@ import model.JogoPrincipal;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -21,7 +30,7 @@ import javafx.scene.control.Label;
  * @author jonas
  */
 public class Gui_JogoPrincipalController implements Initializable {
-    
+
     @FXML
     private Button btn_1;
     @FXML
@@ -32,10 +41,10 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Button btn_5;
     @FXML
     private Button btn_4;
-    
+
     @FXML
     private Label tempo;
-    
+
     private JogoPrincipal jogoPrincipal;
     @FXML
     private Button pular;
@@ -43,7 +52,10 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Label audio;
     @FXML
     private Label pontuacao;
-    
+    @FXML
+    private ProgressBar lifeBar;
+    @FXML
+    private FadeTransition ft;
 
     /**
      * Initializes the controller class.
@@ -56,31 +68,71 @@ public class Gui_JogoPrincipalController implements Initializable {
         String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
         audio.setText(vogais[indiceVogal.nextInt(5)]);
-        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao);
+        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
         jogoPrincipal.iniciarMatrizAudiosVogal();
+
     }
-    
+
+    /**
+     * Trata o evento de quando o botão "Pular" for pressionado
+     *
+     * @param event
+     */
     @FXML
-    private void handlePular(ActionEvent event) {
+    private void handlePular(ActionEvent event) throws InterruptedException {
         int qntPulosAtual = jogoPrincipal.jogador.getQntPulos();
+        //se o jogador já pulou 3 vezes
+        //(pois a quantidade de pulos é iniciada com 0
         if (qntPulosAtual == 2) {
+            //desabilita o botão de pular
             jogoPrincipal.desabilitarPulo();
         } else {
             jogoPrincipal.gerarOpcaoAleatoria();
             jogoPrincipal.jogador.setQntPulos(qntPulosAtual);
         }
     }
-    
+
+    /**
+     * Trata os eventos de quando um dos botões correspondentes às respostas são
+     * pressionados
+     *
+     * @param event
+     * @throws InterruptedException
+     */
     @FXML
     private void handleBotoes(ActionEvent event) throws InterruptedException {
+        EventHandler<ActionEvent> endEvent = new EventHandler<ActionEvent>() {
+		
+		@Override
+		public void handle(ActionEvent arg0) {
+                    try {
+                        jogoPrincipal.gerarOpcaoAleatoria();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+		}
+	};
+        //Se a opção escolhida está certa
         if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
             //trocar a cor do botão
-            ((Button) event.getSource()).setDisable(true);
+
             jogoPrincipal.incrementarPontuacao();
             jogoPrincipal.incrementarAcerto();
-            Thread.sleep(2000);            
             jogoPrincipal.gerarOpcaoAleatoria();
+        } else {
+            //reduzir barra de vidas
+            jogoPrincipal.reduzirLifeBar();
+            jogoPrincipal.incrementarErro();
+            
+            Button temp = jogoPrincipal.opcaoCorreta(event);            
+            new Timeline(                        
+                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
+                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)), 
+                        new KeyFrame(Duration.seconds(2), endEvent)).play();
+                        
+            
+
         }
     }
-    
+
 }

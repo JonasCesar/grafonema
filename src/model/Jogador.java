@@ -31,6 +31,9 @@ public class Jogador {
     public Jogador() {
         this.faseAtual = 0;
         this.qntPulos = 0;
+        this.pontuacaoTotal = 0;
+        this.acertosTotal = 0;
+        this.qntErros = 0;
     }
 
     public int getPontuacaoTotal() {
