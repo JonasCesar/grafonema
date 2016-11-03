@@ -75,17 +75,11 @@ public class JogoPrincipal {
      * @throws java.lang.InterruptedException
      */
     public void gerarOpcaoAleatoria() throws InterruptedException {
-        habilitarBotoes();
-        if(jogador.getQntErros()==5){
-            System.out.println("GAME OVER!!!");
-        }     
-        
-        
+        habilitarBotoes();            
         if (jogador.getAcertosTotal() == 10) {
             System.out.println("Fase bônus");
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
-        }
-            
+        }       
         
         
         //int fase = jogador.getFaseAtual();
@@ -279,5 +273,13 @@ public class JogoPrincipal {
     public void incrementarErro() {
         jogador.setQntErros(jogador.getQntErros()+1);
         System.out.println("Erros " + jogador.getQntErros());
+    }
+
+    public boolean isGameOver() {
+        boolean fimDeJogo = false;
+        if(jogador.getQntErros()==5){
+           fimDeJogo = true; 
+        }
+        return fimDeJogo;
     }
 }

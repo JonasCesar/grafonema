@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.io.IOException;
 import model.JogoPrincipal;
 import java.net.URL;
 import java.util.Random;
@@ -18,10 +19,14 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -56,6 +61,10 @@ public class Gui_JogoPrincipalController implements Initializable {
     private ProgressBar lifeBar;
     @FXML
     private FadeTransition ft;
+    
+    private EventHandler<ActionEvent> endEvent;
+
+    private Stage window;
 
     /**
      * Initializes the controller class.
@@ -70,6 +79,18 @@ public class Gui_JogoPrincipalController implements Initializable {
         audio.setText(vogais[indiceVogal.nextInt(5)]);
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
         jogoPrincipal.iniciarMatrizAudiosVogal();
+
+        endEvent = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                try {
+                    jogoPrincipal.gerarOpcaoAleatoria();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
 
     }
 
@@ -100,39 +121,37 @@ public class Gui_JogoPrincipalController implements Initializable {
      * @throws InterruptedException
      */
     @FXML
-    private void handleBotoes(ActionEvent event) throws InterruptedException {
-        EventHandler<ActionEvent> endEvent = new EventHandler<ActionEvent>() {
-		
-		@Override
-		public void handle(ActionEvent arg0) {
-                    try {
-                        jogoPrincipal.gerarOpcaoAleatoria();
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-		}
-	};
-        //Se a opção escolhida está certa
-        if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
-            //trocar a cor do botão
+    private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
 
-            jogoPrincipal.incrementarPontuacao();
-            jogoPrincipal.incrementarAcerto();
-            jogoPrincipal.gerarOpcaoAleatoria();
+        if (jogoPrincipal.isGameOver()) {
+            window = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
+            Scene scene = new Scene(cenaPrincipal, 900, 700);
+            window.setTitle("Grafonema");
+            window.setScene(scene);
+            window.show();
         } else {
-            //reduzir barra de vidas
-            jogoPrincipal.reduzirLifeBar();
-            jogoPrincipal.incrementarErro();
-            
-            Button temp = jogoPrincipal.opcaoCorreta(event);            
-            new Timeline(                        
-                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
-                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)), 
-                        new KeyFrame(Duration.seconds(2), endEvent)).play();
-                        
-            
+            //Se a opção escolhida está certa
+            if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
+                //trocar a cor do botão
 
+                jogoPrincipal.incrementarPontuacao();
+                jogoPrincipal.incrementarAcerto();
+                jogoPrincipal.gerarOpcaoAleatoria();
+            } else {
+                //reduzir barra de vidas
+                jogoPrincipal.reduzirLifeBar();
+                jogoPrincipal.incrementarErro();
+
+                Button temp = jogoPrincipal.opcaoCorreta(event);
+                new Timeline(
+                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
+                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
+                        new KeyFrame(Duration.seconds(2), endEvent)).play();
+
+            }
         }
+
     }
 
 }
