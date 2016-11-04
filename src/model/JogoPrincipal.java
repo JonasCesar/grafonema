@@ -80,33 +80,34 @@ public class JogoPrincipal {
      * @throws java.io.IOException
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
-
-        habilitarBotoes();
+        //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             System.out.println("Fase bônus");
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
         }
-        //int fase = jogador.getFaseAtual();
         //quando for o inicio do jogo
         if (jogador.getFaseAtual() == 0) {
-            jogador.setFaseAtual(1); //altera a fase do jogador
-            System.out.println(jogador.getFaseAtual());
+            jogador.setFaseAtual(1); //altera a fase do jogador para atual
         }
-        ArrayList novasOpcoes = new ArrayList();
-        ArrayList indiceUtilizados = new ArrayList();
-        Random indice = new Random();
-        switch (jogador.getFaseAtual()) {
-            case 1:
-                gerarSomAleatorio();
+        
+        ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
+        ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados
+        Random indice = new Random();//gerador de índices aleatorios
+        switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
+            case 1: //se for na fase 1
+                gerarSomAleatorio(); //gera um som aleatório
                 int i = 0;
+                //loop que gera os índices e os adiciona no array novasOpcoes
                 while (i < 5) {
                     int proxValor = indice.nextInt(5);
-                    if (!indiceUtilizados.contains(proxValor)) {
-                        novasOpcoes.add(proxValor);
-                        indiceUtilizados.add(proxValor);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
                     }
                 }
+                
+                //Altera o valor dos botões
 
                 btn_1.setText(vogais[(int) novasOpcoes.get(0)]);
                 btn_2.setText(vogais[(int) novasOpcoes.get(1)]);
@@ -125,7 +126,9 @@ public class JogoPrincipal {
                 break;
         }
     }
-
+    /**
+     * Gera um som aleatório
+     */
     public void gerarSomAleatorio() {
         Random indice = new Random();
         int fase = jogador.getFaseAtual();
