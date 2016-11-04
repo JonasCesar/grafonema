@@ -14,15 +14,18 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
- *
- * @author iran
+ *@author iran
  */
-public class Model_Inicial {
-    
+public class Model_Inicial {    
     private Stage window;
     public Model_Inicial() {
     }
-    
+    /**
+     * Exibe a tela inicial
+     * 
+     * @param event o usuário clica no botão iniciar
+     * @throws IOException 
+     */
     public void iniciar(ActionEvent event) throws IOException{
         window = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_avatares.fxml"));

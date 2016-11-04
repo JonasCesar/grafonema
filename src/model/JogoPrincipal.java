@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.stage.Stage;
 
 /**
  *
@@ -49,6 +51,8 @@ public class JogoPrincipal {
 
     private Random indiceAudio;
 
+    private Stage window;
+
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label audio, Label pontuacao, ProgressBar lifeBar) {
 
@@ -73,15 +77,15 @@ public class JogoPrincipal {
      * CORRESPONDENTES AOS ARQUIVOS DE ÁUDIO QUE ESTARÃO SENDO EXECUTADOS
      *
      * @throws java.lang.InterruptedException
+     * @throws java.io.IOException
      */
-    public void gerarOpcaoAleatoria() throws InterruptedException {
-        habilitarBotoes();            
+    public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
+
+        habilitarBotoes();
         if (jogador.getAcertosTotal() == 10) {
             System.out.println("Fase bônus");
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
-        }       
-        
-        
+        }
         //int fase = jogador.getFaseAtual();
         //quando for o inicio do jogo
         if (jogador.getFaseAtual() == 0) {
@@ -93,9 +97,7 @@ public class JogoPrincipal {
         Random indice = new Random();
         switch (jogador.getFaseAtual()) {
             case 1:
-
                 gerarSomAleatorio();
-
                 int i = 0;
                 while (i < 5) {
                     int proxValor = indice.nextInt(5);
@@ -104,8 +106,8 @@ public class JogoPrincipal {
                         indiceUtilizados.add(proxValor);
                         i++;
                     }
-                }                
-                
+                }
+
                 btn_1.setText(vogais[(int) novasOpcoes.get(0)]);
                 btn_2.setText(vogais[(int) novasOpcoes.get(1)]);
                 btn_3.setText(vogais[(int) novasOpcoes.get(2)]);
@@ -122,7 +124,6 @@ public class JogoPrincipal {
             default:
                 break;
         }
-
     }
 
     public void gerarSomAleatorio() {
@@ -147,11 +148,9 @@ public class JogoPrincipal {
 
     public boolean verificarRelacaoGaFonema(ActionEvent event) {
         String opcaoEscolhida = (((Button) event.getSource()).getText());
-
         System.out.println(opcaoEscolhida);
         System.out.println(getKeyByValue(matrizVogais, opcaoEscolhida));
         return ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(audio.getText()));
-
     }
 
     public void atualizarRelogioJogo() {
@@ -165,18 +164,26 @@ public class JogoPrincipal {
     public void refazerFase() {
 
     }
-
+    
+    
+    /**
+     * Reduz a barra de life de acordo com os erros do jogador
+     */
     public void reduzirLifeBar() {
         double valorAnterior = lifeBar.getProgress();
         double valorAtualizado = valorAnterior - 0.2;
         System.out.println(valorAnterior);
         lifeBar.setProgress(valorAtualizado);
     }
-
+    /**
+     * 
+     */
     public void desabilitarPulo() {
         pular.setDisable(true);
     }
-
+    /**
+     * Inicia matriz de vogais
+     */
     public void iniciarMatrizAudiosVogal() {
         matrizVogais.put("letra_a", "A");
         matrizVogais.put("letra_e", "E");
@@ -223,7 +230,9 @@ public class JogoPrincipal {
         jogador.setAcertosTotal(jogador.getAcertosTotal() + 1);
         System.out.println("Acertos " + jogador.getAcertosTotal());
     }
-
+    /**
+     * Habilita todos os botões
+     */
     public void habilitarBotoes() {
         btn_1.setDisable(false);
         btn_2.setDisable(false);
@@ -258,27 +267,24 @@ public class JogoPrincipal {
         }
         return temporario;
     }
-
-    public void mostrarOpcaoCorreta(Button botao) throws InterruptedException {
-        botao.setDisable(true);
-        btn_1.setText(btn_1.getText());
-        btn_2.setText(btn_2.getText());
-        btn_3.setText(btn_3.getText());
-        btn_4.setText(btn_4.getText());
-        btn_5.setText(btn_5.getText());
-        gerarOpcaoAleatoria();
-
-    }
-
+    
+    
+    /**
+     * Aumenta em uma unidade a quantidade de erros do jogador
+     */
     public void incrementarErro() {
-        jogador.setQntErros(jogador.getQntErros()+1);
+        jogador.setQntErros(jogador.getQntErros() + 1);
         System.out.println("Erros " + jogador.getQntErros());
     }
-
+    
+    /**
+     * Verifica se é o fim do jogo para o jogador
+     * @return true se sim, do contrário false
+     */
     public boolean isGameOver() {
         boolean fimDeJogo = false;
-        if(jogador.getQntErros()==5){
-           fimDeJogo = true; 
+        if (jogador.getQntErros() == 5) {
+            fimDeJogo = true;
         }
         return fimDeJogo;
     }

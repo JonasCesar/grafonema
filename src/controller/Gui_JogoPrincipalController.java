@@ -46,10 +46,8 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Button btn_5;
     @FXML
     private Button btn_4;
-
     @FXML
     private Label tempo;
-
     private JogoPrincipal jogoPrincipal;
     @FXML
     private Button pular;
@@ -61,7 +59,7 @@ public class Gui_JogoPrincipalController implements Initializable {
     private ProgressBar lifeBar;
     @FXML
     private FadeTransition ft;
-    
+
     private EventHandler<ActionEvent> endEvent;
 
     private Stage window;
@@ -79,14 +77,13 @@ public class Gui_JogoPrincipalController implements Initializable {
         audio.setText(vogais[indiceVogal.nextInt(5)]);
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
         jogoPrincipal.iniciarMatrizAudiosVogal();
-
         endEvent = new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent arg0) {
                 try {
                     jogoPrincipal.gerarOpcaoAleatoria();
-                } catch (InterruptedException ex) {
+                } catch (InterruptedException | IOException ex) {
                     Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -100,7 +97,7 @@ public class Gui_JogoPrincipalController implements Initializable {
      * @param event
      */
     @FXML
-    private void handlePular(ActionEvent event) throws InterruptedException {
+    private void handlePular(ActionEvent event) throws InterruptedException, IOException {
         int qntPulosAtual = jogoPrincipal.jogador.getQntPulos();
         //se o jogador já pulou 3 vezes
         //(pois a quantidade de pulos é iniciada com 0
@@ -122,36 +119,30 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @FXML
     private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
-
-        if (jogoPrincipal.isGameOver()) {
-            window = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
-            Scene scene = new Scene(cenaPrincipal, 900, 700);
-            window.setTitle("Grafonema");
-            window.setScene(scene);
-            window.show();
+        //Se a opção escolhida está certa
+        if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
+            //trocar a cor do botão
+            jogoPrincipal.incrementarPontuacao();
+            jogoPrincipal.incrementarAcerto();
+            jogoPrincipal.gerarOpcaoAleatoria();
         } else {
-            //Se a opção escolhida está certa
-            if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
-                //trocar a cor do botão
+            //reduzir barra de vidas
+            jogoPrincipal.reduzirLifeBar();
+            jogoPrincipal.incrementarErro();
 
-                jogoPrincipal.incrementarPontuacao();
-                jogoPrincipal.incrementarAcerto();
-                jogoPrincipal.gerarOpcaoAleatoria();
-            } else {
-                //reduzir barra de vidas
-                jogoPrincipal.reduzirLifeBar();
-                jogoPrincipal.incrementarErro();
-
-                Button temp = jogoPrincipal.opcaoCorreta(event);
-                new Timeline(
-                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
-                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
-                        new KeyFrame(Duration.seconds(2), endEvent)).play();
-
+            Button temp = jogoPrincipal.opcaoCorreta(event);
+            new Timeline(
+                    new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
+                    new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
+                    new KeyFrame(Duration.seconds(2), endEvent)).play();
+            if (jogoPrincipal.isGameOver()) {
+                window = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
+                Scene scene = new Scene(cenaPrincipal, 900, 700);
+                window.setTitle("Grafonema");
+                window.setScene(scene);
+                window.show();
             }
         }
-
     }
-
 }
