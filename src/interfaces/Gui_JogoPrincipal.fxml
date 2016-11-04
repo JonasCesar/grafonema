@@ -14,10 +14,10 @@
       <Label fx:id="pontuacao" layoutX="40.0" layoutY="75.0" text="0" />
       <Label fx:id="tempo" layoutX="432.0" layoutY="31.0" text="30s" />
       <Button fx:id="btn_1" layoutX="161.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="A" />
-      <Button fx:id="btn_2" layoutX="253.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="B" />
-      <Button fx:id="btn_3" layoutX="340.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="C" />
-      <Button fx:id="btn_5" layoutX="511.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="E" />
-      <Button fx:id="btn_4" layoutX="426.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="D" />
+      <Button fx:id="btn_2" layoutX="253.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="E" />
+      <Button fx:id="btn_3" layoutX="340.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="I" />
+      <Button fx:id="btn_5" layoutX="511.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="U" />
+      <Button fx:id="btn_4" layoutX="426.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="O" />
       <Button fx:id="pular" layoutX="748.0" layoutY="624.0" mnemonicParsing="false" onAction="#handlePular" text="Pular" />
       <Label fx:id="audio" layoutX="426.0" layoutY="152.0" text="Audio" />
    </children>
