@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.IOException;
@@ -21,18 +16,19 @@ public class Model_Inicial {
     public Model_Inicial() {
     }
     /**
-     * Exibe a tela inicial
+     * Exibe a tela dos avatares
      * 
      * @param event o usuário clica no botão iniciar
      * @throws IOException 
      */
     public void iniciar(ActionEvent event) throws IOException{
-        window = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_avatares.fxml"));
-        Scene scene = new Scene(cenaPrincipal, 900, 700);
-        window.setTitle("Grafonema");
-        window.setScene(scene);
-        window.show();
+        window = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        //cria a próxima cena chamando a inteface dos avatares
+        Parent proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_avatares.fxml"));
+        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
+        window.setTitle("Grafonema");//título da cena
+        window.setScene(cena);
+        window.show();//exibe a interface
 
     }
 }
