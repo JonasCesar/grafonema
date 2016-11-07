@@ -60,7 +60,9 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private FadeTransition ft;
 
-    private EventHandler<ActionEvent> endEvent;
+    private EventHandler<ActionEvent> eventoFinal;
+    
+    private EventHandler<ActionEvent> eventoGameOver;
 
     private Stage window;
 
@@ -77,7 +79,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         audio.setText(vogais[indiceVogal.nextInt(5)]);
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
         jogoPrincipal.iniciarMatrizAudiosVogal();
-        endEvent = new EventHandler<ActionEvent>() {
+        eventoFinal = new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent arg0) {
@@ -87,6 +89,24 @@ public class Gui_JogoPrincipalController implements Initializable {
                     Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        };
+        
+        eventoGameOver = new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                window = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                Parent cenaPrincipal = null;
+                try {
+                    cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene = new Scene(cenaPrincipal, 900, 700);
+                window.setTitle("Grafonema");
+                window.setScene(scene);
+                window.show();
+            }
+            
         };
 
     }
@@ -134,14 +154,16 @@ public class Gui_JogoPrincipalController implements Initializable {
             new Timeline(
                     new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
                     new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
-                    new KeyFrame(Duration.seconds(2), endEvent)).play();
+                    new KeyFrame(Duration.seconds(2), eventoFinal)).play();
             if (jogoPrincipal.isGameOver()) {
-                window = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
-                Scene scene = new Scene(cenaPrincipal, 900, 700);
-                window.setTitle("Grafonema");
-                window.setScene(scene);
-                window.show();
+
+                temp = jogoPrincipal.opcaoCorreta(event);
+                new Timeline(
+                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
+                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
+                        new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
+
+                
             }
         }
     }
