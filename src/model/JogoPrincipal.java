@@ -108,12 +108,12 @@ public class JogoPrincipal {
                 }
                 
                 //Altera o valor dos botões
-
                 btn_1.setText(vogais[(int) novasOpcoes.get(0)]);
                 btn_2.setText(vogais[(int) novasOpcoes.get(1)]);
                 btn_3.setText(vogais[(int) novasOpcoes.get(2)]);
                 btn_4.setText(vogais[(int) novasOpcoes.get(3)]);
                 btn_5.setText(vogais[(int) novasOpcoes.get(4)]);
+                
                 break;
             case 2:
                 btn_1.setText("bone");
@@ -127,19 +127,20 @@ public class JogoPrincipal {
         }
     }
     /**
-     * Gera um som aleatório
+     * Gera o som aleatório que o jogador deverá relacionar com uma das opções
      */
     public void gerarSomAleatorio() {
+        //objeto que será utilizado para gera um número aleatório
         Random indice = new Random();
-        int fase = jogador.getFaseAtual();
-        if (fase == 0) {
-            jogador.setFaseAtual(1);
+        int fase = jogador.getFaseAtual();//pega a fase em que o jogador se encontra
+        if (fase == 0) {//se for a primeira fase
+            jogador.setFaseAtual(1);//define a fase atual como 1
         }
-
+        //verifica qual a fase atual do jogador
         switch (jogador.getFaseAtual()) {
             case 1:
-                int i = indiceAudio.nextInt(5);
-                audio.setText(audioVogais[i]);
+                int i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4 
+                audio.setText(audioVogais[i]);//atualiza o áudio
                 break;
             case 2:
                 break;
@@ -148,12 +149,18 @@ public class JogoPrincipal {
         }
 
     }
-
+    
+    /**
+     * Verifica se a opção escolhida pelo jogador é a correta
+     * 
+     * @param event evento disparado quando o jogador escolhe um dos 5 botões
+     * @return true se a opção escolhida foi a correta e false caso contrário
+     */
     public boolean verificarRelacaoGaFonema(ActionEvent event) {
-        String opcaoEscolhida = (((Button) event.getSource()).getText());
-        System.out.println(opcaoEscolhida);
-        System.out.println(getKeyByValue(matrizVogais, opcaoEscolhida));
-        return ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(audio.getText()));
+        String opcaoEscolhida = (((Button) event.getSource()).getText());//pega a opção escolhida pelo usuário
+        //compara o valor que o usuário escolheu com o valor correspondente ao áudio
+        boolean resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(audio.getText()));
+        return resultado;
     }
 
     public void atualizarRelogioJogo() {
@@ -173,9 +180,11 @@ public class JogoPrincipal {
      * Reduz a barra de life de acordo com os erros do jogador
      */
     public void reduzirLifeBar() {
+        //pega o valor anterior da barra de vida
         double valorAnterior = lifeBar.getProgress();
+        //reduz o valor da barra de vida em 0.2 de um total inicial de 1.0
         double valorAtualizado = valorAnterior - 0.2;
-        System.out.println(valorAnterior);
+        //atualiza a barra de vida
         lifeBar.setProgress(valorAtualizado);
     }
     /**
@@ -208,9 +217,9 @@ public class JogoPrincipal {
      */
     //função que recebe o valor associado à chave e retorna a chave
     public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
-        for (Entry<T, E> entry : map.entrySet()) {
-            if (Objects.equals(value, entry.getValue())) {
-                return entry.getKey();
+        for (Entry<T, E> entry : map.entrySet()) {//mapeia as chaves e valores em um pseudo-array
+            if (Objects.equals(value, entry.getValue())) {//verifica se o valor passado como parâmetro é igual ao valor atual da entrada
+                return entry.getKey(); //retorna a entrada que for igual
             }
         }
         return null;
@@ -220,10 +229,13 @@ public class JogoPrincipal {
      * Incrementa, em valores de 10, a quantidade de pontos do jagador
      */
     public void incrementarPontuacao() {
+        //pega a pontuação no label da pontuação
         int pontuacaoAnterior = Integer.parseInt(pontuacao.getText());
-        int ptAnterior = jogador.getPontuacaoTotal();
+        //gera a nova pontuação somando 10 à pontuação anterior
         int novaPontuacao = pontuacaoAnterior + 10;
+        //atualiza a pontuação do jogador
         jogador.setPontuacaoTotal(novaPontuacao);
+        //atualiza o label
         pontuacao.setText("" + novaPontuacao);
     }
 
@@ -235,18 +247,6 @@ public class JogoPrincipal {
         System.out.println("Acertos " + jogador.getAcertosTotal());
     }
     /**
-     * Habilita todos os botões
-     */
-    public void habilitarBotoes() {
-        btn_1.setDisable(false);
-        btn_2.setDisable(false);
-        btn_3.setDisable(false);
-        btn_4.setDisable(false);
-        btn_5.setDisable(false);
-
-    }
-
-    /**
      * OBS: O BOTÃO SELECIONADO AQUI DEVERÁ MUDAR DE COR OU TER OUTRA FORMA DE
      * DESTAQUE QUE MOSTRE QUE A OPÇÃO ESTÁ ERRADA
      *
@@ -254,10 +254,10 @@ public class JogoPrincipal {
      * @return
      */
     public Button opcaoCorreta(ActionEvent event) {
-        String opcaoEscolhida = (((Button) event.getSource()).getText());
         Button temporario = null;
+        //pega o valor da opção correta
         String opcaoCorreta = matrizVogais.get(audio.getText());
-        System.out.println(opcaoCorreta);
+        //verifica quais dos botões é a opção correta
         if (opcaoCorreta.equals(btn_1.getText())) {
             temporario = btn_1;
         } else if (opcaoCorreta.equals(btn_2.getText())) {
@@ -277,8 +277,8 @@ public class JogoPrincipal {
      * Aumenta em uma unidade a quantidade de erros do jogador
      */
     public void incrementarErro() {
+        //incrementa a quantidade de erros do jogador
         jogador.setQntErros(jogador.getQntErros() + 1);
-        System.out.println("Erros " + jogador.getQntErros());
     }
     
     /**
@@ -287,7 +287,7 @@ public class JogoPrincipal {
      */
     public boolean isGameOver() {
         boolean fimDeJogo = false;
-        if (jogador.getQntErros() == 5) {
+        if (jogador.getQntErros() == 5) {//se o jogador errou 5 vezes
             fimDeJogo = true;
         }
         return fimDeJogo;
