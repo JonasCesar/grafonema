@@ -64,11 +64,14 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private FadeTransition ft;
 
-    private EventHandler<ActionEvent> endEvent;
+    private EventHandler<ActionEvent> eventoFinal;
+
+    private EventHandler<ActionEvent> eventoGameOver;
 
     private Stage window;
-    
+
     boolean indicacaoPular;
+    boolean pularErro;
 
     /**
      * Initializes the controller class.
@@ -83,9 +86,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         audio.setText(vogais[indiceVogal.nextInt(5)]);
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
         jogoPrincipal.iniciarMatrizAudiosVogal();
-        
-        endEvent = new EventHandler<ActionEvent>() {
-
+        eventoFinal = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
                 try {
@@ -96,7 +97,24 @@ public class Gui_JogoPrincipalController implements Initializable {
             }
         };
 
-        
+        eventoGameOver = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                window = (Stage) btn_1.getScene().getWindow();
+                Parent cenaPrincipal = null;
+                try {
+                    cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene = new Scene(cenaPrincipal, 900, 700);
+                window.setTitle("Grafonema");
+                window.setScene(scene);
+                window.show();
+            }
+
+        };
+
         Timer timer = new Timer();
         //criação da tarefa que vai executar durante 1 segunda
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -104,7 +122,7 @@ public class Gui_JogoPrincipalController implements Initializable {
 
             @Override
             public void run() {
-                
+
                 //Platform.runLater para alterar elementos da interface do javaFX
                 Platform.runLater(new Runnable() {
 
@@ -114,14 +132,36 @@ public class Gui_JogoPrincipalController implements Initializable {
                         i--;
                         if (i == 0) {
                             System.out.println("timer cacelado");
-                            timer.cancel();
-                            tempo.setText("tempo esgotado: " + i);
+
+                            try {
+                                jogoPrincipal.gerarOpcaoAleatoria();
+                            } catch (InterruptedException | IOException ex) {
+                                Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            jogoPrincipal.reduzirLifeBar();
+                            jogoPrincipal.incrementarErro();
+                            Button temp = jogoPrincipal.opcaoCorreta(null);
+                            if (!jogoPrincipal.isGameOver()) {
+                                
+                                new Timeline(
+                                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
+                                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
+                                        new KeyFrame(Duration.seconds(2), eventoFinal)).play();
+                                pularErro = true;
+                            } else {
+                                timer.cancel();
+                                new Timeline(
+                                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
+                                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
+                                        new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
+                            }
                         }
-                        if (indicacaoPular) {
+                        if ((indicacaoPular) || (pularErro)) {
+                            System.out.println(i);
                             i = 30;
                             indicacaoPular = false;
+                            pularErro = false;
                         }
-
                     }
 
                 });
@@ -165,24 +205,26 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.incrementarPontuacao();
             jogoPrincipal.incrementarAcerto();
             jogoPrincipal.gerarOpcaoAleatoria();
-        } else {// se errar
+            indicacaoPular = true;
+        } else {
+
             //reduzir barra de vidas
             jogoPrincipal.reduzirLifeBar();
             jogoPrincipal.incrementarErro();
-
             Button temp = jogoPrincipal.opcaoCorreta(event);
             new Timeline(
                     new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
                     new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
-                    new KeyFrame(Duration.seconds(2), endEvent)).play();
+                    new KeyFrame(Duration.seconds(2), eventoFinal)).play();
+            indicacaoPular = true;
             if (jogoPrincipal.isGameOver()) {
-                window = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
-                Scene scene = new Scene(cenaPrincipal, 900, 700);
-                window.setTitle("Grafonema");
-                window.setScene(scene);
-                window.show();
+                temp = jogoPrincipal.opcaoCorreta(event);
+                new Timeline(
+                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
+                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
+                        new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
             }
+
         }
         
         //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
