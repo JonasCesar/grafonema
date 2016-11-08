@@ -51,6 +51,7 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Button btn_4;
     @FXML
     private Label tempo;
+    
     private JogoPrincipal jogoPrincipal;
     @FXML
     private Button pular;
@@ -82,6 +83,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         audio.setText(vogais[indiceVogal.nextInt(5)]);
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
         jogoPrincipal.iniciarMatrizAudiosVogal();
+        
         endEvent = new EventHandler<ActionEvent>() {
 
             @Override
@@ -163,7 +165,7 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.incrementarPontuacao();
             jogoPrincipal.incrementarAcerto();
             jogoPrincipal.gerarOpcaoAleatoria();
-        } else {
+        } else {// se errar
             //reduzir barra de vidas
             jogoPrincipal.reduzirLifeBar();
             jogoPrincipal.incrementarErro();
@@ -182,5 +184,17 @@ public class Gui_JogoPrincipalController implements Initializable {
                 window.show();
             }
         }
+        
+        //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
+        if(jogoPrincipal.jogador.getAcertosPorFase() == 10){
+            window = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+                Scene scene = new Scene(cenaPrincipal, 900, 700);
+                window.setTitle("Grafonema");
+                window.setScene(scene);
+                window.show();
+        }
+        
+        //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
     }
 }

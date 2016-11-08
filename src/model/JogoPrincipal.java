@@ -86,9 +86,9 @@ public class JogoPrincipal {
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
         }
         //quando for o inicio do jogo
-        if (jogador.getFaseAtual() == 0) {
-            jogador.setFaseAtual(1); //altera a fase do jogador para atual
-        }
+//        if (jogador.getFaseAtual() == 0) {
+//            jogador.setFaseAtual(1); //altera a fase do jogador para atual
+//        }
         
         ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
         ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados
@@ -206,6 +206,7 @@ public class JogoPrincipal {
      * @return a chave correspondente ao valor pesquisado (null caso a chave não
      * exista)
      */
+    //função que recebe o valor associado à chave e retorna a chave
     public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
         for (Entry<T, E> entry : map.entrySet()) {
             if (Objects.equals(value, entry.getValue())) {

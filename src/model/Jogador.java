@@ -29,7 +29,7 @@ public class Jogador {
     private int faseAtual;
 
     public Jogador() {
-        this.faseAtual = 0;
+        this.faseAtual = 1;
         this.qntPulos = 0;
         this.pontuacaoTotal = 0;
         this.acertosTotal = 0;
