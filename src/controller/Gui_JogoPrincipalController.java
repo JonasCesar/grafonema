@@ -265,15 +265,5 @@ public class Gui_JogoPrincipalController implements Initializable {
         }
 
         //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
-        if (jogoPrincipal.jogador.getAcertosPorFase() == 10) {
-            window = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            Parent cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
-            Scene scene = new Scene(cenaPrincipal, 900, 700);
-            window.setTitle("Grafonema");
-            window.setScene(scene);
-            window.show();
-        }
-
-        //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
     }
 }
