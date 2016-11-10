@@ -8,7 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -17,20 +18,21 @@ import javafx.stage.Stage;
  */
 public class Gui_InicialController implements Initializable {    
     @FXML
-    private Stage window;
-    @FXML
     private Button iniciar;
     
     private Model_Inicial modelInical = new Model_Inicial();
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Image image = new Image(getClass().getResourceAsStream("play.png"));
+        iniciar.setGraphic(new ImageView(image));
     }
     @FXML
-    private void handleComecar(ActionEvent event) throws IOException {
+    private void handleComecar(ActionEvent event) throws IOException {       
         modelInical.iniciar(event);        
     }
 }
