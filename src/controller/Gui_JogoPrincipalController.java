@@ -141,7 +141,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         eventoVoltar = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                window.setTitle("Voltei");
+                window.setTitle("Grafonema");
                 window.setScene(temp);
                 window.show();
             }
@@ -263,7 +263,6 @@ public class Gui_JogoPrincipalController implements Initializable {
             }
 
         }
-
         //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
     }
 }
