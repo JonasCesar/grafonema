@@ -22,6 +22,7 @@ public class Jogador {
     private ArrayList pontuacaoJogoMemoriaFase;
     private ArrayList acertosJogosMemoriaTotal;
     private int faseAtual;
+    private boolean estaComBonus;
     
     /**
      * Construtor da classe Jogador
@@ -32,6 +33,7 @@ public class Jogador {
         this.pontuacaoTotal = 0;
         this.acertosTotal = 0;
         this.qntErros = 0;
+        this.estaComBonus = false;
     }
     /**
      * Retorna pontuação total do jogador
@@ -248,4 +250,12 @@ public class Jogador {
     public void setFaseAtual(int faseAtual) {
         this.faseAtual = faseAtual;
     }    
+
+    void setBonus(boolean b) {
+        estaComBonus = b;
+    }
+    
+    public boolean getBonus(){
+        return estaComBonus;
+    }
 }

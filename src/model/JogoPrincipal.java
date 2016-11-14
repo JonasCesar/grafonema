@@ -41,13 +41,17 @@ public class JogoPrincipal {
     @FXML
     private ProgressBar lifeBar;
     private String vogais[] = {"A", "E", "I", "O", "U"};
+    private String silabas[] = {"BA", "BE", "BI", "BO", "BU"};
+    
 
     //o nome dos arquivos das vogais
     private String audioVogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
+    private String audioSilabas[] = {"sil_ba", "sil_be", "sil_bi", "sil_bo", "sil_bu"};
 
     public Jogador jogador = new Jogador();
 
     private Map<String, String> matrizVogais;
+    private Map<String, String> matrizSilabas;
 
     private Random indiceAudio;
 
@@ -82,24 +86,26 @@ public class JogoPrincipal {
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
-            System.out.println("Fase bônus");
-            jogador.setFaseAtual(jogador.getFaseAtual() + 1);
+            jogador.setBonus(true);
+            
         }
-        //quando for o inicio do jogo
-//        if (jogador.getFaseAtual() == 0) {
-//            jogador.setFaseAtual(1); //altera a fase do jogador para atual
-//        }
         
+        if(jogador.getQntErros()+jogador.getAcertosTotal()==15){
+            jogador.setFaseAtual(jogador.getFaseAtual()+1);
+        }
+        
+        
+        int i = 0;
+        int proxValor = 0;
         ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
         ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados
         Random indice = new Random();//gerador de índices aleatorios
         switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
             case 1: //se for na fase 1
-                gerarSomAleatorio(); //gera um som aleatório
-                int i = 0;
+                gerarSomAleatorio(); //gera um som aleatório                
                 //loop que gera os índices e os adiciona no array novasOpcoes
                 while (i < 5) {
-                    int proxValor = indice.nextInt(5);
+                    proxValor = indice.nextInt(5);
                     if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -114,13 +120,24 @@ public class JogoPrincipal {
                 btn_4.setText(vogais[(int) novasOpcoes.get(3)]);
                 btn_5.setText(vogais[(int) novasOpcoes.get(4)]);
                 
+                
                 break;
             case 2:
-                btn_1.setText("bone");
-                btn_2.setText("que");
-                btn_3.setText("bone");
-                btn_4.setText("que");
-                btn_5.setText("cena");
+                i = 0;
+                gerarSomAleatorio();
+                while (i < 5) {
+                    proxValor = indice.nextInt(5);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
+                btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
+                btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
+                btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
+                btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
                 break;
             default:
                 break;
@@ -132,6 +149,7 @@ public class JogoPrincipal {
     public void gerarSomAleatorio() {
         //objeto que será utilizado para gera um número aleatório
         Random indice = new Random();
+        int i = 0;
         int fase = jogador.getFaseAtual();//pega a fase em que o jogador se encontra
         if (fase == 0) {//se for a primeira fase
             jogador.setFaseAtual(1);//define a fase atual como 1
@@ -139,10 +157,12 @@ public class JogoPrincipal {
         //verifica qual a fase atual do jogador
         switch (jogador.getFaseAtual()) {
             case 1:
-                int i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4 
+                i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4 
                 audio.setText(audioVogais[i]);//atualiza o áudio
                 break;
             case 2:
+                i = indiceAudio.nextInt(5);
+                audio.setText(audioSilabas[i]);
                 break;
             default:
                 break;
@@ -203,6 +223,18 @@ public class JogoPrincipal {
         matrizVogais.put("letra_o", "O");
         matrizVogais.put("letra_u", "U");
     }
+    
+    
+    public void iniciarMatrizAudioSilabas(){
+        matrizSilabas.put("sil_ba","BA");
+        matrizSilabas.put("sil_be","BE");
+        matrizSilabas.put("sil_bi","BI");
+        matrizSilabas.put("sil_bo","BO");
+        matrizSilabas.put("sil_bu","BU");        
+    }
+    
+    
+    
 
     /**
      * Retorna a chave da HashMap correspondente ao valor que é passado como
@@ -229,10 +261,16 @@ public class JogoPrincipal {
      * Incrementa, em valores de 10, a quantidade de pontos do jagador
      */
     public void incrementarPontuacao() {
+        //valor que será acrescentado à pontuação do jogador
+        int valorAcrescentar = 10;
         //pega a pontuação no label da pontuação
         int pontuacaoAnterior = Integer.parseInt(pontuacao.getText());
-        //gera a nova pontuação somando 10 à pontuação anterior
-        int novaPontuacao = pontuacaoAnterior + 10;
+        //gera a nova pontuação somando 10 à pontuação anterior        
+        if(jogador.getBonus()){
+            valorAcrescentar = 20;
+        }        
+        
+        int novaPontuacao = pontuacaoAnterior + valorAcrescentar;
         //atualiza a pontuação do jogador
         jogador.setPontuacaoTotal(novaPontuacao);
         //atualiza o label
