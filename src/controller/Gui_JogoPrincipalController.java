@@ -70,9 +70,9 @@ public class Gui_JogoPrincipalController implements Initializable {
 
     private Stage window;
 
-    boolean indicacaoPular;
+    boolean indicacaoPular;//indica que o jogador acionou o botão pular
     boolean pularErro;
-    boolean mostrandoCena;
+    boolean mostrandoCena;//indicar que a cena está sendo mostrada ou não
     private EventHandler<ActionEvent> eventoVoltar;
 
     private Scene temp;
@@ -102,6 +102,7 @@ public class Gui_JogoPrincipalController implements Initializable {
             }
         };
 
+        //evento responsável por exibir a janela de GAME OVER 
         eventoGameOver = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -120,6 +121,7 @@ public class Gui_JogoPrincipalController implements Initializable {
 
         };
 
+        //evento responsável por exibir as cenas de progresso na história
         eventoCenas = new EventHandler<ActionEvent>() {
 
             @Override
@@ -139,6 +141,8 @@ public class Gui_JogoPrincipalController implements Initializable {
             }
 
         };
+        
+        //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -150,7 +154,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         };
 
         Timer timer = new Timer();
-        //criação da tarefa que vai executar durante 1 segunda
+        //criação da tarefa que vai executar durante 1 segundo
         timer.scheduleAtFixedRate(new TimerTask() {
             int i = 30;
 
@@ -162,11 +166,11 @@ public class Gui_JogoPrincipalController implements Initializable {
 
                     @Override
                     public void run() {
+                        
+                        //condição que faz o contador de segundos continuar em 30 durante a exibição da cena
                         if (mostrandoCena) {
-
                             i = 30;
                             System.out.println("setou o i como 30");
-
                         }
                         tempo.setText("" + i);
                         i--;
@@ -181,6 +185,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                             jogoPrincipal.reduzirLifeBar();
                             jogoPrincipal.incrementarErro();
                             Button temp = jogoPrincipal.opcaoCorreta(null);
+                            //se o jogador perdeu o jogo exibir a tela de game over
                             if (!jogoPrincipal.isGameOver()) {
 
                                 new Timeline(
@@ -196,19 +201,17 @@ public class Gui_JogoPrincipalController implements Initializable {
                                         new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
                             }
                         }
+                        //se o jogador pulou ou errou voltar o tempo para 30 segundos
                         if ((indicacaoPular) || (pularErro)) {
                             System.out.println(i);
                             i = 30;
                             indicacaoPular = false;
                             pularErro = false;
                         }
-
                     }
-
                 });
             }
         }, 0, 1000);
-
     }
 
     /**
@@ -239,24 +242,24 @@ public class Gui_JogoPrincipalController implements Initializable {
      * @throws InterruptedException
      */
     @FXML
+    //método referente aos botões de opção
     private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
         //Se a opção escolhida está certa
         if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
+            
             //trocar a cor do botão
             jogoPrincipal.incrementarPontuacao();
             jogoPrincipal.incrementarAcerto();
+            
             if (jogoPrincipal.jogador.getAcertosTotal() == 10) {
-                mostrandoCena = true;
+                mostrandoCena = true;//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
                 new Timeline(
                         new KeyFrame(Duration.seconds(0), eventoCenas),
                         new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
-//                        mostrandoCena = false;
-//                        System.out.println("mostrando cena = false");
-
             }
             jogoPrincipal.gerarOpcaoAleatoria();
-            indicacaoPular = true;
+            indicacaoPular = true;//
         } else {
 
             //reduzir barra de vidas
@@ -275,7 +278,6 @@ public class Gui_JogoPrincipalController implements Initializable {
                         new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
                         new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
             }
-
         }
         //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
     }
