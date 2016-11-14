@@ -72,6 +72,7 @@ public class Gui_JogoPrincipalController implements Initializable {
 
     boolean indicacaoPular;
     boolean pularErro;
+    boolean mostrandoCena;
     private EventHandler<ActionEvent> eventoVoltar;
 
     private Scene temp;
@@ -143,6 +144,7 @@ public class Gui_JogoPrincipalController implements Initializable {
             public void handle(ActionEvent event) {
                 window.setTitle("Grafonema");
                 window.setScene(temp);
+                mostrandoCena = false;
                 window.show();
             }
         };
@@ -160,6 +162,12 @@ public class Gui_JogoPrincipalController implements Initializable {
 
                     @Override
                     public void run() {
+                        if (mostrandoCena) {
+
+                            i = 30;
+                            System.out.println("setou o i como 30");
+
+                        }
                         tempo.setText("" + i);
                         i--;
                         if (i == 0) {
@@ -194,6 +202,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                             indicacaoPular = false;
                             pularErro = false;
                         }
+
                     }
 
                 });
@@ -237,9 +246,14 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.incrementarPontuacao();
             jogoPrincipal.incrementarAcerto();
             if (jogoPrincipal.jogador.getAcertosTotal() == 10) {
+                mostrandoCena = true;
+                System.out.println("mostrando cena = true");
                 new Timeline(
                         new KeyFrame(Duration.seconds(0), eventoCenas),
                         new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
+//                        mostrandoCena = false;
+//                        System.out.println("mostrando cena = false");
+
             }
             jogoPrincipal.gerarOpcaoAleatoria();
             indicacaoPular = true;
