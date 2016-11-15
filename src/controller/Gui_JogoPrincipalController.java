@@ -88,6 +88,7 @@ public class Gui_JogoPrincipalController implements Initializable {
 
     private Scene temp;
     private EventHandler<ActionEvent> eventoCenas;
+    private EventHandler<ActionEvent> eventoAcerto, eventoFimAcerto;
 
     /**
      * Initializes the controller class.
@@ -122,9 +123,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                 window.setScene(scene);
                 window.show();
             }
-
         };
-
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = new EventHandler<ActionEvent>() {
             @Override
@@ -132,6 +131,22 @@ public class Gui_JogoPrincipalController implements Initializable {
                 window.setTitle("Grafonema");
                 window.setScene(temp);
                 mostrandoCena = false;
+                eventoAcerto.handle(null);
+                
+                window.show();
+            }
+        };        
+        eventoAcerto = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Button btemp = jogoPrincipal.opcaoCorreta(event);
+                (btemp).setText("X");
+            }
+        };
+        
+        eventoFimAcerto = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {                
                 try {
                     jogoPrincipal.gerarOpcaoAleatoria();
                 } catch (InterruptedException ex) {
@@ -139,10 +154,12 @@ public class Gui_JogoPrincipalController implements Initializable {
                 } catch (IOException ex) {
                     Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                indicacaoPular = true;//
-                window.show();
+                indicacaoPular = true;
             }
         };
+        
+        
+        
 
         /**
          * =
@@ -262,8 +279,9 @@ public class Gui_JogoPrincipalController implements Initializable {
                         new KeyFrame(Duration.seconds(0), eventoCenas),
                         new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
             } else {
-                jogoPrincipal.gerarOpcaoAleatoria();
-                indicacaoPular = true;
+                new Timeline(
+                        new KeyFrame(Duration.seconds(0), eventoAcerto),
+                        new KeyFrame(Duration.seconds(5), eventoFimAcerto)).play();
             }
 
         } else {
