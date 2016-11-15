@@ -135,7 +135,8 @@ public class Gui_JogoPrincipalController implements Initializable {
                 
                 window.show();
             }
-        };        
+        };
+        
         eventoAcerto = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
