@@ -33,6 +33,6 @@ public class Gui_InicialController implements Initializable {
     }
     @FXML
     private void handleComecar(ActionEvent event) throws IOException {       
-        modelInical.iniciar(event);        
+        modelInical.iniciar(event);    
     }
 }

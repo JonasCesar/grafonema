@@ -1,5 +1,6 @@
 package model;
 
+import controller.Gui_JogoPrincipalController;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,12 +8,19 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -35,6 +43,7 @@ public class JogoPrincipal {
     @FXML
     private Label audio;
 
+    private EventHandler<ActionEvent> eventoFinal;
     @FXML
     private Label pontuacao;
 
@@ -42,7 +51,6 @@ public class JogoPrincipal {
     private ProgressBar lifeBar;
     private String vogais[] = {"A", "E", "I", "O", "U"};
     private String silabas[] = {"BA", "BE", "BI", "BO", "BU"};
-    
 
     //o nome dos arquivos das vogais
     private String audioVogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
@@ -87,14 +95,13 @@ public class JogoPrincipal {
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
-            
+
         }
-        
-        if(jogador.getQntErros()+jogador.getAcertosTotal()==15){
-            jogador.setFaseAtual(jogador.getFaseAtual()+1);
+
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
+            jogador.setFaseAtual(jogador.getFaseAtual() + 1);
         }
-        
-        
+
         int i = 0;
         int proxValor = 0;
         ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
@@ -112,15 +119,14 @@ public class JogoPrincipal {
                         i++;
                     }
                 }
-                
+
                 //Altera o valor dos botões
                 btn_1.setText(vogais[(int) novasOpcoes.get(0)]);
                 btn_2.setText(vogais[(int) novasOpcoes.get(1)]);
                 btn_3.setText(vogais[(int) novasOpcoes.get(2)]);
                 btn_4.setText(vogais[(int) novasOpcoes.get(3)]);
                 btn_5.setText(vogais[(int) novasOpcoes.get(4)]);
-                
-                
+
                 break;
             case 2:
                 i = 0;
@@ -143,6 +149,7 @@ public class JogoPrincipal {
                 break;
         }
     }
+
     /**
      * Gera o som aleatório que o jogador deverá relacionar com uma das opções
      */
@@ -169,10 +176,10 @@ public class JogoPrincipal {
         }
 
     }
-    
+
     /**
      * Verifica se a opção escolhida pelo jogador é a correta
-     * 
+     *
      * @param event evento disparado quando o jogador escolhe um dos 5 botões
      * @return true se a opção escolhida foi a correta e false caso contrário
      */
@@ -194,8 +201,7 @@ public class JogoPrincipal {
     public void refazerFase() {
 
     }
-    
-    
+
     /**
      * Reduz a barra de life de acordo com os erros do jogador
      */
@@ -207,12 +213,14 @@ public class JogoPrincipal {
         //atualiza a barra de vida
         lifeBar.setProgress(valorAtualizado);
     }
+
     /**
-     * 
+     *
      */
     public void desabilitarPulo() {
         pular.setDisable(true);
     }
+
     /**
      * Inicia matriz de vogais
      */
@@ -223,18 +231,14 @@ public class JogoPrincipal {
         matrizVogais.put("letra_o", "O");
         matrizVogais.put("letra_u", "U");
     }
-    
-    
-    public void iniciarMatrizAudioSilabas(){
-        matrizSilabas.put("sil_ba","BA");
-        matrizSilabas.put("sil_be","BE");
-        matrizSilabas.put("sil_bi","BI");
-        matrizSilabas.put("sil_bo","BO");
-        matrizSilabas.put("sil_bu","BU");        
+
+    public void iniciarMatrizAudioSilabas() {
+        matrizSilabas.put("sil_ba", "BA");
+        matrizSilabas.put("sil_be", "BE");
+        matrizSilabas.put("sil_bi", "BI");
+        matrizSilabas.put("sil_bo", "BO");
+        matrizSilabas.put("sil_bu", "BU");
     }
-    
-    
-    
 
     /**
      * Retorna a chave da HashMap correspondente ao valor que é passado como
@@ -266,10 +270,10 @@ public class JogoPrincipal {
         //pega a pontuação no label da pontuação
         int pontuacaoAnterior = Integer.parseInt(pontuacao.getText());
         //gera a nova pontuação somando 10 à pontuação anterior        
-        if(jogador.getBonus()){
+        if (jogador.getBonus()) {
             valorAcrescentar = 20;
-        }        
-        
+        }
+
         int novaPontuacao = pontuacaoAnterior + valorAcrescentar;
         //atualiza a pontuação do jogador
         jogador.setPontuacaoTotal(novaPontuacao);
@@ -284,6 +288,7 @@ public class JogoPrincipal {
         jogador.setAcertosTotal(jogador.getAcertosTotal() + 1);
         System.out.println("Acertos " + jogador.getAcertosTotal());
     }
+
     /**
      * OBS: O BOTÃO SELECIONADO AQUI DEVERÁ MUDAR DE COR OU TER OUTRA FORMA DE
      * DESTAQUE QUE MOSTRE QUE A OPÇÃO ESTÁ ERRADA
@@ -309,8 +314,7 @@ public class JogoPrincipal {
         }
         return temporario;
     }
-    
-    
+
     /**
      * Aumenta em uma unidade a quantidade de erros do jogador
      */
@@ -318,9 +322,10 @@ public class JogoPrincipal {
         //incrementa a quantidade de erros do jogador
         jogador.setQntErros(jogador.getQntErros() + 1);
     }
-    
+
     /**
      * Verifica se é o fim do jogo para o jogador
+     *
      * @return true se sim, do contrário false
      */
     public boolean isGameOver() {
@@ -329,5 +334,23 @@ public class JogoPrincipal {
             fimDeJogo = true;
         }
         return fimDeJogo;
+    }
+
+    public void mostrarOpcaoCorreta(Button temp) {
+        eventoFinal = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent arg0) {
+                try {
+                    gerarOpcaoAleatoria();
+                } catch (InterruptedException | IOException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
+                new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
+                new KeyFrame(Duration.seconds(2), eventoFinal)).play();
     }
 }
