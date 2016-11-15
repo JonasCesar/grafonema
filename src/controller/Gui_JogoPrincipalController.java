@@ -5,9 +5,11 @@
  */
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import model.JogoPrincipal;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -29,6 +31,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -66,6 +72,15 @@ public class Gui_JogoPrincipalController implements Initializable {
 
     private Stage window;
 
+    private String path;
+
+    private Media media;
+
+    private MediaPlayer mediaPlayer;
+    private MediaView mediaView = new MediaView();
+
+    private File file;
+
     boolean indicacaoPular;//indica que o jogador acionou o botão pular
     boolean pularErro;
     boolean mostrandoCena;//indicar que a cena está sendo mostrada ou não
@@ -79,6 +94,7 @@ public class Gui_JogoPrincipalController implements Initializable {
      *
      * @param url
      * @param rb
+     * @param path
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -87,8 +103,6 @@ public class Gui_JogoPrincipalController implements Initializable {
         audio.setText(vogais[indiceVogal.nextInt(5)]);
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
         jogoPrincipal.iniciarMatrizAudiosVogal();
-        
-
 
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = new EventHandler<ActionEvent>() {
@@ -110,7 +124,7 @@ public class Gui_JogoPrincipalController implements Initializable {
             }
 
         };
-        
+
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = new EventHandler<ActionEvent>() {
             @Override
@@ -118,13 +132,38 @@ public class Gui_JogoPrincipalController implements Initializable {
                 window.setTitle("Grafonema");
                 window.setScene(temp);
                 mostrandoCena = false;
+                try {
+                    jogoPrincipal.gerarOpcaoAleatoria();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                indicacaoPular = true;//
                 window.show();
             }
         };
 
+        /**
+         * =
+         * "/home/shadows/NetBeansProjects/grafonema/policies.mp3"; Media media
+         * = new Media(new File(path).toURI().toString()); MediaPlayer
+         * mediaPlayer = new MediaPlayer(media); mediaPlayer.setAutoPlay(true);
+         * MediaView mediaView = new MediaView(mediaPlayer); mediaPlayer.play();
+         *
+         *
+         */
+        /**
+         * FileChooser fc = new FileChooser(); fc.getExtensionFilters(); File
+         * file = fc.showOpenDialog(null);
+         *
+         */
+        jogoPrincipal.gerarSomAleatorio();
+
         Timer timer = new Timer();
         //criação da tarefa que vai executar durante 1 segundo
         timer.scheduleAtFixedRate(new TimerTask() {
+
             int i = 30;
 
             @Override
@@ -135,7 +174,7 @@ public class Gui_JogoPrincipalController implements Initializable {
 
                     @Override
                     public void run() {
-                        
+
                         //condição que faz o contador de segundos continuar em 30 durante a exibição da cena
                         if (mostrandoCena) {
                             i = 30;
@@ -143,7 +182,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                         }
                         tempo.setText("" + i);
                         i--;
-                        if (i == 0) {
+                        if (i == -1) {
                             System.out.println("timer cacelado");
 
                             try {
@@ -163,7 +202,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                                 timer.cancel();
                                 //animação
                                 jogoPrincipal.mostraFimDeJogo(temp);
-                                
+
                             }
                         }
                         //se o jogador pulou ou errou voltar o tempo para 30 segundos
@@ -211,20 +250,22 @@ public class Gui_JogoPrincipalController implements Initializable {
     private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
         //Se a opção escolhida está certa
         if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
-            
+
             //trocar a cor do botão
             jogoPrincipal.incrementarPontuacao();
             jogoPrincipal.incrementarAcerto();
-            
+
             if (jogoPrincipal.jogador.getAcertosTotal() == 10) {
                 mostrandoCena = true;//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
                 new Timeline(
                         new KeyFrame(Duration.seconds(0), eventoCenas),
                         new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
+            } else {
+                jogoPrincipal.gerarOpcaoAleatoria();
+                indicacaoPular = true;
             }
-            jogoPrincipal.gerarOpcaoAleatoria();
-            indicacaoPular = true;//
+
         } else {
 
             //reduzir barra de vidas
@@ -232,12 +273,12 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.incrementarErro();
             Button temp = jogoPrincipal.opcaoCorreta(event);
             //animação da opção correta
-            jogoPrincipal.mostrarOpcaoCorreta(temp);           
-            
+            jogoPrincipal.mostrarOpcaoCorreta(temp);
+
             indicacaoPular = true;
             if (jogoPrincipal.isGameOver()) {
                 temp = jogoPrincipal.opcaoCorreta(event);
-                
+
                 //animação do fim de jogo
                 jogoPrincipal.mostraFimDeJogo(temp);
             }
