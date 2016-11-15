@@ -237,6 +237,7 @@ public class Gui_JogoPrincipalController implements Initializable {
             indicacaoPular = true;
             if (jogoPrincipal.isGameOver()) {
                 temp = jogoPrincipal.opcaoCorreta(event);
+                
                 //animação do fim de jogo
                 jogoPrincipal.mostraFimDeJogo(temp);
             }
