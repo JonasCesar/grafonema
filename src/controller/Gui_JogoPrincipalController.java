@@ -64,8 +64,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private FadeTransition ft;
 
-    private EventHandler<ActionEvent> eventoGameOver;
-
     private Stage window;
 
     boolean indicacaoPular;//indica que o jogador acionou o botão pular
@@ -91,24 +89,6 @@ public class Gui_JogoPrincipalController implements Initializable {
         jogoPrincipal.iniciarMatrizAudiosVogal();
         
 
-        //evento responsável por exibir a janela de GAME OVER 
-        eventoGameOver = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                window = (Stage) btn_1.getScene().getWindow();
-                Parent cenaPrincipal = null;
-                try {
-                    cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
-                } catch (IOException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Scene scene = new Scene(cenaPrincipal, 900, 700);
-                window.setTitle("Grafonema");
-                window.setScene(scene);
-                window.show();
-            }
-
-        };
 
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = new EventHandler<ActionEvent>() {
@@ -176,14 +156,14 @@ public class Gui_JogoPrincipalController implements Initializable {
                             Button temp = jogoPrincipal.opcaoCorreta(null);
                             //se o jogador perdeu o jogo exibir a tela de game over
                             if (!jogoPrincipal.isGameOver()) {
+                                //animação
                                 jogoPrincipal.mostrarOpcaoCorreta(temp);
                                 pularErro = true;
                             } else {
                                 timer.cancel();
-                                new Timeline(
-                                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
-                                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
-                                        new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
+                                //animação
+                                jogoPrincipal.mostraFimDeJogo(temp);
+                                
                             }
                         }
                         //se o jogador pulou ou errou voltar o tempo para 30 segundos
@@ -251,16 +231,14 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.reduzirLifeBar();
             jogoPrincipal.incrementarErro();
             Button temp = jogoPrincipal.opcaoCorreta(event);
-            jogoPrincipal.mostrarOpcaoCorreta(temp);
-            
+            //animação da opção correta
+            jogoPrincipal.mostrarOpcaoCorreta(temp);           
             
             indicacaoPular = true;
             if (jogoPrincipal.isGameOver()) {
                 temp = jogoPrincipal.opcaoCorreta(event);
-                new Timeline(
-                        new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
-                        new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
-                        new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
+                //animação do fim de jogo
+                jogoPrincipal.mostraFimDeJogo(temp);
             }
         }
         //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou

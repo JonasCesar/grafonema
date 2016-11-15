@@ -16,6 +16,9 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -43,7 +46,7 @@ public class JogoPrincipal {
     @FXML
     private Label audio;
 
-    private EventHandler<ActionEvent> eventoFinal;
+    private EventHandler<ActionEvent> eventoFinal, eventoGameOver;
     @FXML
     private Label pontuacao;
 
@@ -336,6 +339,12 @@ public class JogoPrincipal {
         return fimDeJogo;
     }
 
+    /**
+     * Exibe uma animação mostrando qual seria a opção que deveria ter sido
+     * escolhida pelo jogador
+     * 
+     * @param temp opção correta
+     */
     public void mostrarOpcaoCorreta(Button temp) {
         eventoFinal = new EventHandler<ActionEvent>() {
             @Override
@@ -352,5 +361,37 @@ public class JogoPrincipal {
                 new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
                 new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
                 new KeyFrame(Duration.seconds(2), eventoFinal)).play();
+    }
+
+    /**
+     * Exibe uma animação mostrando qual seria a opção que deveria ter sido
+     * escolhida pelo jogador e altera a interface para a interface do gameOver
+     * 
+     * @param temp a opção correta
+     */
+    public void mostraFimDeJogo(Button temp) {
+        
+        //evento responsável por exibir a janela de GAME OVER 
+        eventoGameOver = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                window = (Stage) btn_1.getScene().getWindow();
+                Parent cenaPrincipal = null;
+                try {
+                    cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene = new Scene(cenaPrincipal, 900, 700);
+                window.setTitle("Grafonema");
+                window.setScene(scene);
+                window.show();
+            }
+
+        };
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
+                new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
+                new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
     }
 }
