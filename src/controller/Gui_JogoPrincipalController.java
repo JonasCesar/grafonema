@@ -9,16 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import model.JogoPrincipal;
 import java.net.URL;
-import java.nio.file.Path;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -34,7 +31,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -67,20 +63,8 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Label pontuacao;
     @FXML
     private ProgressBar lifeBar;
-    @FXML
-    private FadeTransition ft;
 
     private Stage window;
-
-    private String path;
-
-    private Media media;
-
-    private MediaPlayer mediaPlayer;
-    private MediaView mediaView = new MediaView();
-
-    private File file;
-
     boolean indicacaoPular;//indica que o jogador acionou o botão pular
     boolean pularErro;
     boolean mostrandoCena;//indicar que a cena está sendo mostrada ou não
@@ -95,7 +79,6 @@ public class Gui_JogoPrincipalController implements Initializable {
      *
      * @param url
      * @param rb
-     * @param path
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -157,25 +140,8 @@ public class Gui_JogoPrincipalController implements Initializable {
                 }
                 indicacaoPular = true;
             }
-        };
-        
-        
-        
-
-        /**
-         * =
-         * "/home/shadows/NetBeansProjects/grafonema/policies.mp3"; Media media
-         * = new Media(new File(path).toURI().toString()); MediaPlayer
-         * mediaPlayer = new MediaPlayer(media); mediaPlayer.setAutoPlay(true);
-         * MediaView mediaView = new MediaView(mediaPlayer); mediaPlayer.play();
-         *
-         *
-         */
-        /**
-         * FileChooser fc = new FileChooser(); fc.getExtensionFilters(); File
-         * file = fc.showOpenDialog(null);
-         *
-         */
+        };      
+       
         jogoPrincipal.gerarSomAleatorio();
 
         Timer timer = new Timer();
@@ -303,5 +269,11 @@ public class Gui_JogoPrincipalController implements Initializable {
             }
         }
         //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
+    }
+
+    @FXML
+    private void handleOuvirAudio(ActionEvent event) {
+        String audio = jogoPrincipal.getAudioAtual();
+        jogoPrincipal.tocarAudio(audio);
     }
 }

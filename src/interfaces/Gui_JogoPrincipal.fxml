@@ -25,5 +25,6 @@
             <Image url="@../controller/warrior-icon-23.png" />
          </image>
       </ImageView>
+      <Button layoutX="418.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleOuvirAudio" text="Ouvir" />
    </children>
 </AnchorPane>

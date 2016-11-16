@@ -26,6 +26,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -60,7 +61,7 @@ public class JogoPrincipal {
     private String silabas[] = {"BA", "BE", "BI", "BO", "BU"};
 
     //o nome dos arquivos das vogais
-    private String audioVogais[] = {"v1", "v2", "v3", "v4", "v5"};
+    private String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
     private String audioSilabas[] = {"sil_ba", "sil_be", "sil_bi", "sil_bo", "sil_bu"};
 
     public Jogador jogador = new Jogador();
@@ -76,6 +77,8 @@ public class JogoPrincipal {
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
+    
+    private String nomeAudioAtual;
 
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label audio, Label pontuacao, ProgressBar lifeBar) {
@@ -91,6 +94,7 @@ public class JogoPrincipal {
         this.pontuacao = pontuacao;
         this.indiceAudio = new Random();
         this.matrizVogais = new HashMap<String, String>();
+        nomeAudioAtual = "";
 
     }
 
@@ -238,11 +242,11 @@ public class JogoPrincipal {
      * Inicia matriz de vogais
      */
     public void iniciarMatrizAudiosVogal() {
-        matrizVogais.put("v1", "A");
-        matrizVogais.put("v2", "E");
-        matrizVogais.put("v3", "I");
-        matrizVogais.put("v4", "O");
-        matrizVogais.put("v5", "U");
+        matrizVogais.put("vogal-A", "A");
+        matrizVogais.put("vogal-E", "E");
+        matrizVogais.put("vogal-I", "I");
+        matrizVogais.put("vogal-O", "O");
+        matrizVogais.put("vogal-U", "U");
     }
 
     public void iniciarMatrizAudioSilabas() {
@@ -352,7 +356,7 @@ public class JogoPrincipal {
     /**
      * Exibe uma animação mostrando qual seria a opção que deveria ter sido
      * escolhida pelo jogador
-     * 
+     *
      * @param temp opção correta
      */
     public void mostrarOpcaoCorreta(Button temp) {
@@ -376,11 +380,11 @@ public class JogoPrincipal {
     /**
      * Exibe uma animação mostrando qual seria a opção que deveria ter sido
      * escolhida pelo jogador e altera a interface para a interface do gameOver
-     * 
+     *
      * @param temp a opção correta
      */
     public void mostraFimDeJogo(Button temp) {
-        
+
         //evento responsável por exibir a janela de GAME OVER 
         eventoGameOver = new EventHandler<ActionEvent>() {
             @Override
@@ -405,14 +409,31 @@ public class JogoPrincipal {
                 new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
     }
 
-    public void tocarAudio(String n) {
-         path = "src/controller/"+n+".mp3";
+    public void tocarAudio(String n) {        
+        setNomeAudioAtual(n);
+        switch (jogador.getFaseAtual()) {
+            case 1:
+                path = "src/audios_vogais/" + n + ".mp3";
+                break;
+            default:
+                break;
+
+        }
         file = new File(path);
         path = file.getAbsolutePath();
+        System.out.println(path);
         path = path.replace("\\", "/");
         media = new Media(new File(path).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
+    }
+
+    private void setNomeAudioAtual(String n) {
+        nomeAudioAtual = n;
+    }
+    
+    public String getAudioAtual(){
+        return nomeAudioAtual;
     }
 }
