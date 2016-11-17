@@ -67,7 +67,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Stage window;
     boolean indicacaoPular;//indica que o jogador acionou o botão pular
     boolean pularErro;
-    boolean mostrandoCena;//indicar que a cena está sendo mostrada ou não
     private EventHandler<ActionEvent> eventoVoltar;
 
     private Scene temp;
@@ -87,40 +86,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         audio.setText(vogais[indiceVogal.nextInt(5)]);
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
         jogoPrincipal.iniciarMatrizAudiosVogal();
-
-        //evento responsável por exibir as cenas de progresso na história
-        eventoCenas = new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                window = (Stage) btn_1.getScene().getWindow();
-                Parent cenaPrincipal = null;
-                temp = btn_1.getScene();
-                try {
-                    cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
-                } catch (IOException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Scene scene = new Scene(cenaPrincipal, 900, 700);
-                window.setTitle("Grafonema");
-                window.setScene(scene);
-                window.show();
-            }
-        };
-        //evento para voltar para o jogo pós exibição da cena
-        eventoVoltar = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                window.setTitle("Grafonema");
-                window.setScene(temp);
-                mostrandoCena = false;
-                eventoAcerto.handle(null);
-                
-                window.show();
-            }
-            
-            
-        };
+        
         
         eventoAcerto = new EventHandler<ActionEvent>() {
             @Override
@@ -162,7 +128,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                     public void run() {
 
                         //condição que faz o contador de segundos continuar em 30 durante a exibição da cena
-                        if (mostrandoCena) {
+                        if (jogoPrincipal.getMostrandoCena()) {
                             i = 30;
                             System.out.println("setou o i como 30");
                         }
@@ -242,11 +208,10 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.incrementarAcerto();
 
             if (jogoPrincipal.jogador.getAcertosTotal() == 10) {
-                mostrandoCena = true;//usado para setar como 30 o contador de segundos
+                jogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
-                new Timeline(
-                        new KeyFrame(Duration.seconds(0), eventoCenas),
-                        new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
+                jogoPrincipal.mostrarCenas();
+                
             } else {
                 new Timeline(
                         new KeyFrame(Duration.seconds(0), eventoAcerto),
