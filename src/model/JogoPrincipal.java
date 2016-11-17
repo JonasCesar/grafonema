@@ -482,15 +482,20 @@ public class JogoPrincipal {
                 setMostrandoCena(false);
                 //eventoAcerto.handle(null);
                  Button btemp = opcaoCorreta(null);
-                (btemp).setText("X");
+                (btemp).setText("X");           
 
                 window.show();
+                try {
+                    gerarOpcaoAleatoria();
+                } catch (InterruptedException | IOException ex) {
+                    Logger.getLogger(JogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
-
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
                 new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
-        gerarOpcaoAleatoria();
+        System.out.println("Opção aleatoria gerada");
+        
     }
 }

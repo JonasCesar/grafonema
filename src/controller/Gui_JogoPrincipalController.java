@@ -86,8 +86,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         audio.setText(vogais[indiceVogal.nextInt(5)]);
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
         jogoPrincipal.iniciarMatrizAudiosVogal();
-        
-        
+
         eventoAcerto = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -95,10 +94,10 @@ public class Gui_JogoPrincipalController implements Initializable {
                 (btemp).setText("X");
             }
         };
-        
+
         eventoFimAcerto = new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {                
+            public void handle(ActionEvent event) {
                 try {
                     jogoPrincipal.gerarOpcaoAleatoria();
                 } catch (InterruptedException ex) {
@@ -108,8 +107,8 @@ public class Gui_JogoPrincipalController implements Initializable {
                 }
                 indicacaoPular = true;
             }
-        };      
-       
+        };
+
         jogoPrincipal.gerarSomAleatorio();
 
         Timer timer = new Timer();
@@ -211,11 +210,10 @@ public class Gui_JogoPrincipalController implements Initializable {
                 jogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
                 jogoPrincipal.mostrarCenas();
-                
             } else {
                 new Timeline(
                         new KeyFrame(Duration.seconds(0), eventoAcerto),
-                        new KeyFrame(Duration.seconds(5), eventoFimAcerto)).play();
+                        new KeyFrame(Duration.seconds(1), eventoFimAcerto)).play();
             }
 
         } else {
