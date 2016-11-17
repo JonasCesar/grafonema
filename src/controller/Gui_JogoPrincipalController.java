@@ -126,11 +126,21 @@ public class Gui_JogoPrincipalController implements Initializable {
                     @Override
                     public void run() {
 
-                        //condição que faz o contador de segundos continuar em 30 durante a exibição da cena
-                        if (jogoPrincipal.getMostrandoCena()) {
-                            i = 30;
-                            System.out.println("setou o i como 30");
-                        }
+                        /*condição que faz o contador de segundos 
+                        continuar em 30 durante a exibição da cena 
+                        */
+                        Timer timer2 = new Timer();
+                        timer2.scheduleAtFixedRate(new TimerTask() {
+
+                            @Override
+                            public void run() {
+                                if (jogoPrincipal.getMostrandoCena()) {
+                                    i = 30;
+                                    System.out.println("setou o i como 30");
+                                }
+                            }
+                        }, 0, 50);
+
                         tempo.setText("" + i);
                         i--;
                         if (i == -1) {
@@ -210,6 +220,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                 jogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
                 jogoPrincipal.mostrarCenas();
+
             } else {
                 new Timeline(
                         new KeyFrame(Duration.seconds(0), eventoAcerto),

@@ -116,7 +116,6 @@ public class JogoPrincipal {
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
-
         }
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
@@ -424,6 +423,7 @@ public class JogoPrincipal {
                 break;
 
         }
+        
         file = new File(path);
         path = file.getAbsolutePath();
         System.out.println(path);
