@@ -118,6 +118,8 @@ public class Gui_JogoPrincipalController implements Initializable {
                 
                 window.show();
             }
+            
+            
         };
         
         eventoAcerto = new EventHandler<ActionEvent>() {
