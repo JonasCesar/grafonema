@@ -9,11 +9,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -51,7 +54,7 @@ public class JogoPrincipal {
     private Label audio;
 
     private EventHandler<ActionEvent> eventoFinal, eventoGameOver, eventoCenas,
-            eventoVoltar, eventoAcerto;
+            eventoVoltar, eventoAcerto, eventoFimAcerto;
     @FXML
     private Label pontuacao;
 
@@ -82,10 +85,14 @@ public class JogoPrincipal {
 
     private boolean mostrandoCena;
 
+    private boolean indicacaoPular, pularErro;
+
     private Scene cenaTemporaria;
+    @FXML
+    private Label tempo;
 
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
-            Button pular, Label audio, Label pontuacao, ProgressBar lifeBar) {
+            Button pular, Label audio, Label pontuacao, ProgressBar lifeBar, Label tempo) {
 
         this.btn_1 = b1;
         this.btn_2 = b2;
@@ -99,6 +106,9 @@ public class JogoPrincipal {
         this.indiceAudio = new Random();
         this.matrizVogais = new HashMap<String, String>();
         this.mostrandoCena = false;
+        this.indicacaoPular = false;
+        this.pularErro = false;
+        this.tempo = tempo;
         nomeAudioAtual = "";
 
     }
@@ -116,7 +126,6 @@ public class JogoPrincipal {
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
-
         }
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
@@ -424,6 +433,7 @@ public class JogoPrincipal {
                 break;
 
         }
+
         file = new File(path);
         path = file.getAbsolutePath();
         System.out.println(path);
@@ -481,8 +491,8 @@ public class JogoPrincipal {
                 //mostrandoCena = false;
                 setMostrandoCena(false);
                 //eventoAcerto.handle(null);
-                 Button btemp = opcaoCorreta(null);
-                (btemp).setText("X");           
+                Button btemp = opcaoCorreta(null);
+                (btemp).setText("X");
 
                 window.show();
                 try {
@@ -496,6 +506,122 @@ public class JogoPrincipal {
                 new KeyFrame(Duration.seconds(0), eventoCenas),
                 new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
         System.out.println("Opção aleatoria gerada");
-        
+
     }
+
+    public void setIndicacaoPular(boolean valor) {
+        this.indicacaoPular = valor;
+    }
+
+    public void setPularErro(boolean valor) {
+        this.pularErro = valor;
+    }
+
+    public boolean getIndicacaoPular() {
+        return indicacaoPular;
+    }
+
+    public boolean getPularErro() {
+        return pularErro;
+    }
+
+    public void iniciarTimer() {
+        Timer timer = new Timer();
+        //criação da tarefa que vai executar durante 1 segundo
+        timer.scheduleAtFixedRate(new TimerTask() {
+
+            int i = 30;
+
+            @Override
+            public void run() {
+
+                //Platform.runLater para alterar elementos da interface do javaFX
+                Platform.runLater(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        /*condição que faz o contador de segundos 
+                         continuar em 30 durante a exibição da cena 
+                         */
+                        Timer timer2 = new Timer();
+                        timer2.scheduleAtFixedRate(new TimerTask() {
+
+                            @Override
+                            public void run() {
+                                if (getMostrandoCena()) {
+                                    i = 30;
+                                    System.out.println("setou o i como 30");
+                                }
+                            }
+                        }, 0, 50);
+
+                        tempo.setText("" + i);
+                        i--;
+                        if (i == -1) {
+                            System.out.println("timer cacelado");
+
+                            try {
+                                gerarOpcaoAleatoria();
+                            } catch (InterruptedException | IOException ex) {
+                                Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            reduzirLifeBar();
+                            incrementarErro();
+                            Button temp = opcaoCorreta(null);
+                            //se o jogador perdeu o jogo exibir a tela de game over
+                            if (!isGameOver()) {
+                                //animação
+                                mostrarOpcaoCorreta(temp);
+                                setPularErro(true);
+                            } else {
+                                timer.cancel();
+                                //animação
+                                mostraFimDeJogo(temp);
+
+                            }
+                        }
+                        //se o jogador pulou ou errou voltar o tempo para 30 segundos
+                        if ((getIndicacaoPular()) || (getPularErro())) {
+                            System.out.println(i);
+                            i = 30;
+                            //indicacaoPular = false;
+                            setIndicacaoPular(false);
+                            setPularErro(false);
+                            //pularErro = false;
+                        }
+                    }
+                });
+            }
+        }, 0, 1000);
+    }
+
+    public void mostrarAnimacaoAcerto() {
+        eventoAcerto = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Button btemp = opcaoCorreta(event);
+                (btemp).setText("X");
+            }
+        };
+        
+        
+        eventoFimAcerto = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    gerarOpcaoAleatoria();
+                } catch (InterruptedException | IOException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //indicacaoPular = true;
+                setIndicacaoPular(true);
+            }
+        };
+
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoAcerto),
+                new KeyFrame(Duration.seconds(1), eventoFimAcerto)).play();
+    }
+
 }

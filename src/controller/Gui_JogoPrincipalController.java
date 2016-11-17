@@ -5,7 +5,6 @@
  */
 package controller;
 
-import java.io.File;
 import java.io.IOException;
 import model.JogoPrincipal;
 import java.net.URL;
@@ -21,16 +20,11 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -84,89 +78,10 @@ public class Gui_JogoPrincipalController implements Initializable {
         String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
         audio.setText(vogais[indiceVogal.nextInt(5)]);
-        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar);
-        jogoPrincipal.iniciarMatrizAudiosVogal();
-
-        eventoAcerto = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Button btemp = jogoPrincipal.opcaoCorreta(event);
-                (btemp).setText("X");
-            }
-        };
-
-        eventoFimAcerto = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    jogoPrincipal.gerarOpcaoAleatoria();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                indicacaoPular = true;
-            }
-        };
-
+        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar, tempo);
+        jogoPrincipal.iniciarMatrizAudiosVogal();        
         jogoPrincipal.gerarSomAleatorio();
-
-        Timer timer = new Timer();
-        //criação da tarefa que vai executar durante 1 segundo
-        timer.scheduleAtFixedRate(new TimerTask() {
-
-            int i = 30;
-
-            @Override
-            public void run() {
-
-                //Platform.runLater para alterar elementos da interface do javaFX
-                Platform.runLater(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-                        //condição que faz o contador de segundos continuar em 30 durante a exibição da cena
-                        if (jogoPrincipal.getMostrandoCena()) {
-                            i = 30;
-                            System.out.println("setou o i como 30");
-                        }
-                        tempo.setText("" + i);
-                        i--;
-                        if (i == -1) {
-                            System.out.println("timer cacelado");
-
-                            try {
-                                jogoPrincipal.gerarOpcaoAleatoria();
-                            } catch (InterruptedException | IOException ex) {
-                                Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            jogoPrincipal.reduzirLifeBar();
-                            jogoPrincipal.incrementarErro();
-                            Button temp = jogoPrincipal.opcaoCorreta(null);
-                            //se o jogador perdeu o jogo exibir a tela de game over
-                            if (!jogoPrincipal.isGameOver()) {
-                                //animação
-                                jogoPrincipal.mostrarOpcaoCorreta(temp);
-                                pularErro = true;
-                            } else {
-                                timer.cancel();
-                                //animação
-                                jogoPrincipal.mostraFimDeJogo(temp);
-
-                            }
-                        }
-                        //se o jogador pulou ou errou voltar o tempo para 30 segundos
-                        if ((indicacaoPular) || (pularErro)) {
-                            System.out.println(i);
-                            i = 30;
-                            indicacaoPular = false;
-                            pularErro = false;
-                        }
-                    }
-                });
-            }
-        }, 0, 1000);
+        jogoPrincipal.iniciarTimer();        
     }
 
     /**
@@ -186,7 +101,7 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.gerarOpcaoAleatoria();
             jogoPrincipal.jogador.setQntPulos(qntPulosAtual);
         }
-        indicacaoPular = true;
+        jogoPrincipal.setIndicacaoPular(true);
     }
 
     /**
@@ -210,10 +125,11 @@ public class Gui_JogoPrincipalController implements Initializable {
                 jogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
                 jogoPrincipal.mostrarCenas();
+
             } else {
-                new Timeline(
-                        new KeyFrame(Duration.seconds(0), eventoAcerto),
-                        new KeyFrame(Duration.seconds(1), eventoFimAcerto)).play();
+                jogoPrincipal.mostrarAnimacaoAcerto();
+                
+                
             }
 
         } else {
@@ -224,8 +140,9 @@ public class Gui_JogoPrincipalController implements Initializable {
             Button temp = jogoPrincipal.opcaoCorreta(event);
             //animação da opção correta
             jogoPrincipal.mostrarOpcaoCorreta(temp);
-
-            indicacaoPular = true;
+            jogoPrincipal.setIndicacaoPular(true);
+            //indicacaoPular = true;
+            
             if (jogoPrincipal.isGameOver()) {
                 temp = jogoPrincipal.opcaoCorreta(event);
 
