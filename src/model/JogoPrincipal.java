@@ -26,7 +26,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -51,7 +50,8 @@ public class JogoPrincipal {
     @FXML
     private Label audio;
 
-    private EventHandler<ActionEvent> eventoFinal, eventoGameOver;
+    private EventHandler<ActionEvent> eventoFinal, eventoGameOver, eventoCenas,
+            eventoVoltar, eventoAcerto;
     @FXML
     private Label pontuacao;
 
@@ -77,8 +77,12 @@ public class JogoPrincipal {
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
-    
+
     private String nomeAudioAtual;
+
+    private boolean mostrandoCena;
+
+    private Scene cenaTemporaria;
 
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label audio, Label pontuacao, ProgressBar lifeBar) {
@@ -94,6 +98,7 @@ public class JogoPrincipal {
         this.pontuacao = pontuacao;
         this.indiceAudio = new Random();
         this.matrizVogais = new HashMap<String, String>();
+        this.mostrandoCena = false;
         nomeAudioAtual = "";
 
     }
@@ -203,7 +208,7 @@ public class JogoPrincipal {
     public boolean verificarRelacaoGaFonema(ActionEvent event) {
         String opcaoEscolhida = (((Button) event.getSource()).getText());//pega a opção escolhida pelo usuário
         //compara o valor que o usuário escolheu com o valor correspondente ao áudio
-        boolean resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(audio.getText()));
+        boolean resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(getAudioAtual()));
         return resultado;
     }
 
@@ -409,7 +414,7 @@ public class JogoPrincipal {
                 new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
     }
 
-    public void tocarAudio(String n) {        
+    public void tocarAudio(String n) {
         setNomeAudioAtual(n);
         switch (jogador.getFaseAtual()) {
             case 1:
@@ -432,8 +437,60 @@ public class JogoPrincipal {
     private void setNomeAudioAtual(String n) {
         nomeAudioAtual = n;
     }
-    
-    public String getAudioAtual(){
+
+    public String getAudioAtual() {
         return nomeAudioAtual;
+    }
+
+    public void setMostrandoCena(boolean valor) {
+        this.mostrandoCena = valor;
+    }
+
+    public boolean getMostrandoCena() {
+        return mostrandoCena;
+    }
+
+    public void mostrarCenas() throws InterruptedException, IOException {
+
+        //evento responsável por exibir as cenas de progresso na história
+        eventoCenas = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                window = (Stage) btn_1.getScene().getWindow();
+                Parent cenaPrincipal = null;
+                cenaTemporaria = btn_1.getScene();
+                try {
+                    cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene = new Scene(cenaPrincipal, 900, 700);
+                window.setTitle("Grafonema");
+                window.setScene(scene);
+                window.show();
+            }
+        };
+
+        //evento para voltar para o jogo pós exibição da cena
+        eventoVoltar = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                window.setTitle("Grafonema");
+                window.setScene(cenaTemporaria);
+                //mostrandoCena = false;
+                setMostrandoCena(false);
+                //eventoAcerto.handle(null);
+                 Button btemp = opcaoCorreta(null);
+                (btemp).setText("X");
+
+                window.show();
+            }
+        };
+
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoCenas),
+                new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
+        gerarOpcaoAleatoria();
     }
 }
