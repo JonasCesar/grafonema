@@ -10,13 +10,6 @@ import model.JogoPrincipal;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -26,7 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -52,8 +44,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private Button pular;
     @FXML
-    private Label audio;
-    @FXML
     private Label pontuacao;
     @FXML
     private ProgressBar lifeBar;
@@ -77,8 +67,7 @@ public class Gui_JogoPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
-        audio.setText(vogais[indiceVogal.nextInt(5)]);
-        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, audio, pontuacao, lifeBar, tempo);
+        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo);
         jogoPrincipal.iniciarMatrizAudiosVogal();        
         jogoPrincipal.gerarSomAleatorio();
         jogoPrincipal.iniciarTimer();        

@@ -19,7 +19,6 @@
       <Button fx:id="btn_5" layoutX="511.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="U" />
       <Button fx:id="btn_4" layoutX="426.0" layoutY="467.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#handleBotoes" text="O" />
       <Button fx:id="pular" layoutX="748.0" layoutY="624.0" mnemonicParsing="false" onAction="#handlePular" text="Pular" />
-      <Label fx:id="audio" layoutX="426.0" layoutY="152.0" text="Audio" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="7.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../controller/warrior-icon-23.png" />

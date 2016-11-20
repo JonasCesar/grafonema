@@ -50,8 +50,6 @@ public class JogoPrincipal {
     private Button btn_4;
     @FXML
     private Button pular;
-    @FXML
-    private Label audio;
 
     private EventHandler<ActionEvent> eventoFinal, eventoGameOver, eventoCenas,
             eventoVoltar, eventoAcerto, eventoFimAcerto;
@@ -75,8 +73,8 @@ public class JogoPrincipal {
     private Random indiceAudio;
 
     private Stage window;
-    private String path;
-    private File file;
+    private String caminhoAudio;
+    private File arquivo;
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
@@ -92,7 +90,7 @@ public class JogoPrincipal {
     private Label tempo;
 
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
-            Button pular, Label audio, Label pontuacao, ProgressBar lifeBar, Label tempo) {
+            Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
 
         this.btn_1 = b1;
         this.btn_2 = b2;
@@ -100,7 +98,6 @@ public class JogoPrincipal {
         this.btn_4 = b4;
         this.btn_5 = b5;
         this.pular = pular;
-        this.audio = audio;
         this.lifeBar = lifeBar;
         this.pontuacao = pontuacao;
         this.indiceAudio = new Random();
@@ -196,11 +193,9 @@ public class JogoPrincipal {
             case 1:
                 i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4 
                 tocarAudio(audioVogais[i]);
-                audio.setText(audioVogais[i]);//atualiza o áudio
                 break;
             case 2:
                 i = indiceAudio.nextInt(5);
-                audio.setText(audioSilabas[i]);
                 break;
             default:
                 break;
@@ -253,7 +248,10 @@ public class JogoPrincipal {
     }
 
     /**
-     * Inicia matriz de vogais
+     * Inicia a matriz de vogais
+     * 'vogal-A' é o nome do arquivo de audio
+     * referente à vogal A
+     * 'A' é o valor que aparecerá nos botões
      */
     public void iniciarMatrizAudiosVogal() {
         matrizVogais.put("vogal-A", "A");
@@ -300,11 +298,13 @@ public class JogoPrincipal {
         int valorAcrescentar = 10;
         //pega a pontuação no label da pontuação
         int pontuacaoAnterior = Integer.parseInt(pontuacao.getText());
-        //gera a nova pontuação somando 10 à pontuação anterior        
+        
         if (jogador.getBonus()) {
             valorAcrescentar = 20;
         }
-
+        
+        //gera a nova pontuação somando o valor que deve ser acrescentado à
+        //pontuação anterior
         int novaPontuacao = pontuacaoAnterior + valorAcrescentar;
         //atualiza a pontuação do jogador
         jogador.setPontuacaoTotal(novaPontuacao);
@@ -330,7 +330,7 @@ public class JogoPrincipal {
     public Button opcaoCorreta(ActionEvent event) {
         Button temporario = null;
         //pega o valor da opção correta
-        String opcaoCorreta = matrizVogais.get(audio.getText());
+        String opcaoCorreta = matrizVogais.get(nomeAudioAtual);
         //verifica quais dos botões é a opção correta
         if (opcaoCorreta.equals(btn_1.getText())) {
             temporario = btn_1;
@@ -374,6 +374,7 @@ public class JogoPrincipal {
      * @param temp opção correta
      */
     public void mostrarOpcaoCorreta(Button temp) {
+        //evento final que realiza uma chamada à opcaoAleatoria
         eventoFinal = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
@@ -384,7 +385,7 @@ public class JogoPrincipal {
                 }
             }
         };
-
+        //animação
         new Timeline(
                 new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
                 new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
@@ -422,44 +423,70 @@ public class JogoPrincipal {
                 new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
                 new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
     }
-
+    /**
+     * Executa o audio referente à rodada
+     * 
+     * @param n nome do arquivo sem a extensão
+     */
     public void tocarAudio(String n) {
-        setNomeAudioAtual(n);
-        switch (jogador.getFaseAtual()) {
+        setNomeAudioAtual(n);//define o nome atual do áudio que está sendo utilizado
+        switch (jogador.getFaseAtual()) {//pega a fase atual do jogador
             case 1:
-                path = "src/audios_vogais/" + n + ".mp3";
+                caminhoAudio = "src/audios_vogais/" + n + ".mp3";
                 break;
             default:
                 break;
-
         }
-
-        file = new File(path);
-        path = file.getAbsolutePath();
-        System.out.println(path);
-        path = path.replace("\\", "/");
-        media = new Media(new File(path).toURI().toString());
+        //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
+        arquivo = new File(caminhoAudio);
+        //pega todo do caminho referente ao objeto File criado
+        caminhoAudio = arquivo.getAbsolutePath();
+        //troca todas as barras invertidas duplas ('\\') por '/'
+        caminhoAudio = caminhoAudio.replace("\\", "/");
+        //cria um objeto Media que recebe o objeto 'arquivo' como parâmetro
+        media = new Media(new File(caminhoAudio).toURI().toString());
+        //cria um objeto mediaPlayer que permite qua uma media possa ser reproduzida
         mediaPlayer = new MediaPlayer(media);
+        //toca o audio automaticamente
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
-
+    /**
+     * Define o áudio atual
+     * @param n nome do áudio
+     */
+    
     private void setNomeAudioAtual(String n) {
         nomeAudioAtual = n;
     }
-
+    /**
+     * Retorna o nome do áudio atual
+     * 
+     * @return string contendo o nome áudio atual
+     */
     public String getAudioAtual() {
         return nomeAudioAtual;
     }
-
+    /**
+     * Define se o jogo está mostrando a cena referente aos 10 acertos
+     * @param valor true ou false
+     */
     public void setMostrandoCena(boolean valor) {
         this.mostrandoCena = valor;
     }
-
+    /**
+     * Retorna se a cena referente aos 10 acertos está sendo exibida
+     * @return true se sim. false caso contrário
+     */
     public boolean getMostrandoCena() {
         return mostrandoCena;
     }
-
+    
+    /**
+     * Mostra as cenas após o jogador acertar 10 vezes
+     * @throws InterruptedException
+     * @throws IOException 
+     */
     public void mostrarCenas() throws InterruptedException, IOException {
 
         //evento responsável por exibir as cenas de progresso na história
@@ -467,10 +494,13 @@ public class JogoPrincipal {
 
             @Override
             public void handle(ActionEvent event) {
+                //armazena a cena em que o botão 'btn_1' se encontra atualmente
                 window = (Stage) btn_1.getScene().getWindow();
                 Parent cenaPrincipal = null;
+                //armeza a cena do botão 'btn_1' em uma variável temporária
                 cenaTemporaria = btn_1.getScene();
                 try {
+                    //cenaPrincipal é definida como a classe com as sequencias de cenas
                     cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
                 } catch (IOException ex) {
                     Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
@@ -502,29 +532,47 @@ public class JogoPrincipal {
                 }
             }
         };
+        //animação que exibe as cenas e volta para a interface principal do jogo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
                 new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
         System.out.println("Opção aleatoria gerada");
 
     }
-
+    /**
+     * Define o valor da variável indicacaoPular
+     * @param valor true ou false
+     */
     public void setIndicacaoPular(boolean valor) {
         this.indicacaoPular = valor;
     }
-
+    /**
+     * Define o valor da variável pularErro
+     * @param valor true ou false
+     */
     public void setPularErro(boolean valor) {
         this.pularErro = valor;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public boolean getIndicacaoPular() {
         return indicacaoPular;
     }
-
+    
+    /**
+     * Retorna o valor da variável pularErro
+     * 
+     * @return true ou false
+     */
     public boolean getPularErro() {
         return pularErro;
     }
-
+    
+    /**
+     * Inicia o timer
+     */
     public void iniciarTimer() {
         Timer timer = new Timer();
         //criação da tarefa que vai executar durante 1 segundo
@@ -596,7 +644,11 @@ public class JogoPrincipal {
         }, 0, 1000);
     }
 
+    /**
+     * Mostra a animação de acerto
+     */
     public void mostrarAnimacaoAcerto() {
+        //evento que represanta a ação do acerto
         eventoAcerto = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -605,7 +657,8 @@ public class JogoPrincipal {
             }
         };
         
-        
+        //evento que representa a ação a ser feita depois da 
+        //animação de acerto
         eventoFimAcerto = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
