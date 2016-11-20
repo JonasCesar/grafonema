@@ -15,7 +15,7 @@ public class Jogador {
     private int qntPulos;
     private int qntErros;
     private int acertosTotal;
-    private int acertosPorFase;
+    private ArrayList acertosPorFase;
     private int tempoParaResponderUmaRodada;
     private int mediaDeTempoParaResposta;
     private int pontuacaoJogoMemoriaTotal;
@@ -34,6 +34,8 @@ public class Jogador {
         this.acertosTotal = 0;
         this.qntErros = 0;
         this.estaComBonus = false;
+        this.acertosPorFase = new ArrayList();
+        
     }
     /**
      * Retorna pontuação total do jogador
@@ -156,15 +158,18 @@ public class Jogador {
      * Retorna a quantidade de acertos totais por fase do jogador
      * @return acertosPorFase
      */
-    public int getAcertosPorFase() {
+    public ArrayList getAcertosPorFase() {
         return acertosPorFase;
     }
     /**
      * Define os acertos por fase do jogador
-     * @param acertosPorFase acertos por fase do jogador
+     * 
+     * @param valor acertos
+     * @param fase fase correspondente aos acertos
      */
-    public void setAcertosPorFase(int acertosPorFase) {
-        this.acertosPorFase = acertosPorFase;
+    public void setAcertosPorFase(int fase, int valor) {
+        int posicao = fase-1;
+        this.acertosPorFase.add(posicao, valor);
     }
     /**
      * Retorna o tempo para responder uma jogada

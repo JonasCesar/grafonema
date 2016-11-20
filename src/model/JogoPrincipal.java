@@ -129,7 +129,9 @@ public class JogoPrincipal {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
+            jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());           
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);//atualiza a fase do jogador
+            jogador.setAcertosTotal(0);
         }
 
         int i = 0;
