@@ -126,7 +126,10 @@ public class JogoPrincipal {
         }
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
-            jogador.setFaseAtual(jogador.getFaseAtual() + 1);
+            jogador.setQntErros(0);//restaura a quantidade de erros do jogador
+            jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
+            jogador.setBonus(false);//retira o bônus do jogador
+            jogador.setFaseAtual(jogador.getFaseAtual() + 1);//atualiza a fase do jogador
         }
 
         int i = 0;
@@ -361,7 +364,7 @@ public class JogoPrincipal {
      */
     public boolean isGameOver() {
         boolean fimDeJogo = false;
-        if (jogador.getQntErros() == 5) {//se o jogador errou 5 vezes
+        if (jogador.getQntErros() == 6) {//se o jogador errou 5 vezes
             fimDeJogo = true;
         }
         return fimDeJogo;
