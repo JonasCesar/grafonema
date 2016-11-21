@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.Gui_GameOverController">
+   <children>
+      <Label layoutX="374.0" layoutY="222.0" prefHeight="30.0" prefWidth="152.0" text="Fim do Jogo">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="reiniciar" layoutX="347.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleReiniciar" text="Reiniciar" />
+      <Button fx:id="sair" layoutX="504.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleSair" text="Sair" />
+   </children>
+</AnchorPane>
