@@ -7,21 +7,13 @@ import java.util.ArrayList;
  * @author jonas
  */
 public class Jogador {
-    private int pontuacaoTotal;
-    private ArrayList pontuacaoPorFase;
-    private int tempoJogoTotal;
-    private int avatarEscolhido;
-    private int qntVida;
-    private int qntPulos;
-    private int qntErros;
-    private int acertosTotal;
-    private ArrayList acertosPorFase;
-    private int tempoParaResponderUmaRodada;
-    private int mediaDeTempoParaResposta;
-    private int pontuacaoJogoMemoriaTotal;
-    private ArrayList pontuacaoJogoMemoriaFase;
-    private ArrayList acertosJogosMemoriaTotal;
-    private int faseAtual;
+    private int pontuacaoTotal, tempoJogoTotal, avatarEscolhido, qntVida,
+            faseAtual, qntPulos, qntErros, acertosTotal,
+            tempoParaResponderUmaRodada, mediaDeTempoParaResposta,
+            pontuacaoJogoMemoriaTotal;
+    
+    private ArrayList pontuacaoPorFase, acertosPorFase, pontuacaoJogoMemoriaFase, 
+            acertosJogosMemoriaTotal;
     private boolean estaComBonus;
     
     /**
@@ -255,11 +247,17 @@ public class Jogador {
     public void setFaseAtual(int faseAtual) {
         this.faseAtual = faseAtual;
     }    
-
+    /**
+     * Seta o valor de estaComBonus
+     * @param b true ou false
+     */
     void setBonus(boolean b) {
         estaComBonus = b;
     }
-    
+    /**
+     * Retorna se o jogador esta com bonus ou não
+     * @return estaComBonus
+     */
     public boolean getBonus(){
         return estaComBonus;
     }

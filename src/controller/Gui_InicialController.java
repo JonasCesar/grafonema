@@ -31,6 +31,11 @@ public class Gui_InicialController implements Initializable {
         Image image = new Image(getClass().getResourceAsStream("play.png"));
         iniciar.setGraphic(new ImageView(image));
     }
+    /**
+     * Começa o jogo
+     * @param event botão de Começar
+     * @throws IOException 
+     */
     @FXML
     private void handleComecar(ActionEvent event) throws IOException {       
         modelInical.iniciar(event);    
