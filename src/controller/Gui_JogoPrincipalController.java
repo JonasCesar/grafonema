@@ -105,8 +105,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
         //Se a opção escolhida está certa
         if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
-
-            //trocar a cor do botão
             jogoPrincipal.incrementarPontuacao();
             jogoPrincipal.incrementarAcerto();
 
@@ -116,13 +114,10 @@ public class Gui_JogoPrincipalController implements Initializable {
                 jogoPrincipal.mostrarCenas();
 
             } else {
-                jogoPrincipal.mostrarAnimacaoAcerto();
-                
-                
+                jogoPrincipal.mostrarAnimacaoAcerto();               
             }
 
         } else {
-
             //reduzir barra de vidas
             jogoPrincipal.reduzirLifeBar();
             jogoPrincipal.incrementarErro();
