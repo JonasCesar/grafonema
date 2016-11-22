@@ -42,5 +42,6 @@ public class Gui_GameOverController implements Initializable {
     private void handleSair(ActionEvent event) throws IOException {        
         window = (Stage) ((Button) event.getSource()).getScene().getWindow();        
         window.close();
+        System.exit(0);
     }
 }
