@@ -39,22 +39,12 @@ import javafx.util.Duration;
 public class JogoPrincipal {
 
     @FXML
-    private Button btn_1;
-    @FXML
-    private Button btn_2;
-    @FXML
-    private Button btn_3;
-    @FXML
-    private Button btn_5;
-    @FXML
-    private Button btn_4;
-    @FXML
-    private Button pular;
-
+    private Button btn_1, btn_2, btn_3, btn_4, btn_5, pular;
+   
     private EventHandler<ActionEvent> gerarProximaRodada, eventoGameOver, eventoCenas,
             eventoVoltar, eventoAcerto, eventoFimAcerto;
     @FXML
-    private Label pontuacao;
+    private Label pontuacao, tempo;
 
     @FXML
     private ProgressBar lifeBar;
@@ -62,33 +52,30 @@ public class JogoPrincipal {
     private String silabas[] = {"BA", "BE", "BI", "BO", "BU"};
 
     //o nome dos arquivos das vogais
-    private String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
-    private String audioSilabas[] = {"sil_ba", "sil_be", "sil_bi", "sil_bo", "sil_bu"};
+    private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
+   
+    private final String audioSilabasSimples[] = {
+        "ad","al", "am", "an", "ar", "as", "az", "ção",
+        "ções", "el", "em", "en", "er", "es", "il", "im", "in", "ir", "is", "ol",
+        "om", "on", "or", "os", "ul", "um", "un", "ur", "us"};
 
     public Jogador jogador = new Jogador();
 
-    private Map<String, String> matrizVogais;
-    private Map<String, String> matrizSilabas;
+    private Map<String, String> matrizVogais, matrizSilabas;
 
     private Random indiceAudio;
 
     private Stage window;
-    private String caminhoAudio;
+    private String caminhoAudio, nomeAudioAtual;
     private File arquivo;
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
 
-    private String nomeAudioAtual;
-
-    private boolean mostrandoCena;
-
-    private boolean indicacaoPular, pularErro;
+    private boolean mostrandoCena, indicacaoPular, pularErro;
 
     private Scene cenaTemporaria;
-    @FXML
-    private Label tempo;
-
+    
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
 
@@ -201,7 +188,8 @@ public class JogoPrincipal {
                 tocarAudio(audioVogais[i]);
                 break;
             case 2:
-                i = indiceAudio.nextInt(5);
+                i = indiceAudio.nextInt(29);
+                tocarAudio(audioSilabasSimples[i]);
                 break;
             default:
                 break;
@@ -298,6 +286,8 @@ public class JogoPrincipal {
         matrizSilabas.put("us", "US");
 
     }
+    
+    
 
     /**
      * Retorna a chave da HashMap correspondente ao valor que é passado como
@@ -332,7 +322,6 @@ public class JogoPrincipal {
         if (jogador.getBonus()) {
             valorAcrescentar = 20;
         }
-
         //gera a nova pontuação somando o valor que deve ser acrescentado à
         //pontuação anterior
         int novaPontuacao = pontuacaoAnterior + valorAcrescentar;
@@ -359,8 +348,19 @@ public class JogoPrincipal {
      */
     public Button opcaoCorreta(ActionEvent event) {
         Button temporario = null;
+        String opcaoCorreta = "";
         //pega o valor da opção correta
-        String opcaoCorreta = matrizVogais.get(nomeAudioAtual);
+        switch(jogador.getFaseAtual()){
+            case 1:
+                opcaoCorreta = matrizVogais.get(nomeAudioAtual);
+                break;
+            case 2:
+                opcaoCorreta = matrizSilabas.get(nomeAudioAtual);
+                break;
+            default:
+                break;
+        }
+        
         //verifica quais dos botões é a opção correta
         if (opcaoCorreta.equals(btn_1.getText())) {
             temporario = btn_1;
@@ -457,7 +457,7 @@ public class JogoPrincipal {
     }
 
     /**
-     * Executa o audio referente à rodada
+     * Executa o audio referente à rodada atual
      *
      * @param n nome do arquivo sem a extensão
      */
@@ -467,6 +467,8 @@ public class JogoPrincipal {
             case 1:
                 caminhoAudio = "src/audios_vogais/" + n + ".mp3";
                 break;
+            case 2:
+                caminhoAudio = "src/audios_silabas_simples/" + n + ".mp3";
             default:
                 break;
         }
@@ -599,8 +601,8 @@ public class JogoPrincipal {
     }
 
     /**
-     *
-     * @return
+     * Retorna o valor de indicacaoPular
+     * @return indicacaoPular
      */
     public boolean getIndicacaoPular() {
         return indicacaoPular;
@@ -710,7 +712,6 @@ public class JogoPrincipal {
                 setIndicacaoPular(true);
             }
         };
-
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoAcerto),
                 new KeyFrame(Duration.seconds(1), eventoFimAcerto)).play();

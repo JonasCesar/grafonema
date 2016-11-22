@@ -11,10 +11,8 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -28,34 +26,16 @@ import javafx.stage.Stage;
 public class Gui_JogoPrincipalController implements Initializable {
 
     @FXML
-    private Button btn_1;
+    private Button btn_1, btn_2, btn_3, btn_5, btn_4, pular;
     @FXML
-    private Button btn_2;
-    @FXML
-    private Button btn_3;
-    @FXML
-    private Button btn_5;
-    @FXML
-    private Button btn_4;
-    @FXML
-    private Label tempo;
+    private Label tempo, pontuacao;
 
     private JogoPrincipal jogoPrincipal;
-    @FXML
-    private Button pular;
-    @FXML
-    private Label pontuacao;
     @FXML
     private ProgressBar lifeBar;
 
     private Stage window;
-    boolean indicacaoPular;//indica que o jogador acionou o botão pular
-    boolean pularErro;
-    private EventHandler<ActionEvent> eventoVoltar;
-
-    private Scene temp;
-    private EventHandler<ActionEvent> eventoCenas;
-    private EventHandler<ActionEvent> eventoAcerto, eventoFimAcerto;
+    boolean indicacaoPular, pularErro ;//indica que o jogador acionou o botão pular
 
     /**
      * Initializes the controller class.
@@ -68,9 +48,10 @@ public class Gui_JogoPrincipalController implements Initializable {
         String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo);
-        jogoPrincipal.iniciarMatrizAudiosVogal();        
-        jogoPrincipal.gerarSomAleatorio();
-        jogoPrincipal.iniciarTimer();        
+        jogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
+        jogoPrincipal.iniciarMatrizAudioSilabas();
+        jogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
+        jogoPrincipal.iniciarTimer();//inicia o relógio
     }
 
     /**
@@ -87,9 +68,11 @@ public class Gui_JogoPrincipalController implements Initializable {
             //desabilita o botão de pular
             jogoPrincipal.desabilitarPulo();
         } else {
+            //gera uma opção aleatória
             jogoPrincipal.gerarOpcaoAleatoria();
-            jogoPrincipal.jogador.setQntPulos(qntPulosAtual);
+            jogoPrincipal.jogador.setQntPulos(qntPulosAtual);//incrementa quantidade de pulos do jogador
         }
+        //seta indicacaoPular como true
         jogoPrincipal.setIndicacaoPular(true);
     }
 
@@ -105,31 +88,29 @@ public class Gui_JogoPrincipalController implements Initializable {
     private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
         //Se a opção escolhida está certa
         if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
-            jogoPrincipal.incrementarPontuacao();
-            jogoPrincipal.incrementarAcerto();
+            jogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
+            jogoPrincipal.incrementarAcerto();//incrementar o acerto
 
             if (jogoPrincipal.jogador.getAcertosTotal() == 10) {
                 jogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
-                jogoPrincipal.mostrarCenas();
+                jogoPrincipal.mostrarCenas();//mostra as cenas depois que o jogador acerta 10 vezes
 
             } else {
+                //mostra a animação de acerto
                 jogoPrincipal.mostrarAnimacaoAcerto();               
             }
 
         } else {
             //reduzir barra de vidas
             jogoPrincipal.reduzirLifeBar();
-            jogoPrincipal.incrementarErro();
+            jogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
             Button temp = jogoPrincipal.opcaoCorreta(event);
             //animação da opção correta
             jogoPrincipal.mostrarOpcaoCorreta(temp);
-            jogoPrincipal.setIndicacaoPular(true);
-            //indicacaoPular = true;
-            
-            if (jogoPrincipal.isGameOver()) {
+            jogoPrincipal.setIndicacaoPular(true);//seta indicacaoPular como true            
+            if (jogoPrincipal.isGameOver()) {//se for o fim do jogo
                 temp = jogoPrincipal.opcaoCorreta(event);
-
                 //animação do fim de jogo
                 jogoPrincipal.mostraFimDeJogo(temp);
             }
@@ -137,9 +118,13 @@ public class Gui_JogoPrincipalController implements Initializable {
         //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
     }
 
+    /**
+     * Executa novamente o áudio
+     * @param event botão ouvirAudio
+     */
     @FXML
     private void handleOuvirAudio(ActionEvent event) {
         String audio = jogoPrincipal.getAudioAtual();
-        jogoPrincipal.tocarAudio(audio);
+        jogoPrincipal.tocarAudio(audio);//chama o método que toca o áudio
     }
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.net.URL;
@@ -24,12 +19,13 @@ public class Gui_SequenciaCenasController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        Image img = new Image("/controller/vinho.jpg");
-        
+        Image img = new Image("/controller/vinho.jpg");        
         imgView.setImage(img);
     }    
     
