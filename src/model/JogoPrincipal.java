@@ -266,11 +266,37 @@ public class JogoPrincipal {
     }
 
     public void iniciarMatrizAudioSilabas() {
-        matrizSilabas.put("sil_ba", "BA");
-        matrizSilabas.put("sil_be", "BE");
-        matrizSilabas.put("sil_bi", "BI");
-        matrizSilabas.put("sil_bo", "BO");
-        matrizSilabas.put("sil_bu", "BU");
+        
+        matrizSilabas.put("ad", "AD");
+        matrizSilabas.put("al", "AL");
+        matrizSilabas.put("am", "AM");
+        matrizSilabas.put("an", "AN");
+        matrizSilabas.put("ar", "AR");
+        matrizSilabas.put("as", "AS");
+        matrizSilabas.put("az", "AZ");
+        matrizSilabas.put("ção", "ÇÃO");
+        matrizSilabas.put("ções", "ÇÕES");
+        matrizSilabas.put("el", "EL");
+        matrizSilabas.put("em", "EM");
+        matrizSilabas.put("en", "EN");
+        matrizSilabas.put("er", "ER");
+        matrizSilabas.put("es", "ES");
+        matrizSilabas.put("il", "IL");
+        matrizSilabas.put("im", "IM");
+        matrizSilabas.put("in", "IN");
+        matrizSilabas.put("ir", "IR");
+        matrizSilabas.put("is", "IS");
+        matrizSilabas.put("ol", "OL");
+        matrizSilabas.put("om", "OM");
+        matrizSilabas.put("on", "ON");
+        matrizSilabas.put("or", "OR");
+        matrizSilabas.put("os", "OS");
+        matrizSilabas.put("ul", "UL");
+        matrizSilabas.put("um", "UM");
+        matrizSilabas.put("un", "UN");
+        matrizSilabas.put("ur", "UR");
+        matrizSilabas.put("us", "US");
+
     }
 
     /**
