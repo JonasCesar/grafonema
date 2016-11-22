@@ -364,7 +364,7 @@ public class JogoPrincipal {
      */
     public boolean isGameOver() {
         boolean fimDeJogo = false;
-        if (jogador.getQntErros() == 6) {//se o jogador errou 5 vezes
+        if (jogador.getQntErros() == 5) {//se o jogador errou 5 vezes
             fimDeJogo = true;
         }
         return fimDeJogo;
@@ -463,7 +463,6 @@ public class JogoPrincipal {
      *
      * @param n nome do áudio
      */
-
     private void setNomeAudioAtual(String n) {
         nomeAudioAtual = n;
     }
@@ -626,14 +625,14 @@ public class JogoPrincipal {
                         tempo.setText("" + i);
                         i--;
                         if (i == -1) {
-                            System.out.println("timer cacelado");
                             Button temp = opcaoCorreta(null);
-                            reduzirLifeBar();
-                            incrementarErro();
-                            mostrarOpcaoCorreta(temp);
                             //se o jogador perdeu o jogo exibir a tela de game over
-                            if (!isGameOver()) {                           //animação
+                            if (!isGameOver()) {
+                                System.out.println("timer cacelado");
 
+                                reduzirLifeBar();
+                                incrementarErro();
+                                mostrarOpcaoCorreta(temp);//animação
                                 setPularErro(true);
                             } else {
                                 timer.cancel();
