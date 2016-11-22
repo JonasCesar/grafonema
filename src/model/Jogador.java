@@ -247,11 +247,17 @@ public class Jogador {
     public void setFaseAtual(int faseAtual) {
         this.faseAtual = faseAtual;
     }    
-
+    /**
+     * Seta o valor de estaComBonus
+     * @param b true ou false
+     */
     void setBonus(boolean b) {
         estaComBonus = b;
     }
-    
+    /**
+     * Retorna se o jogador esta com bonus ou não
+     * @return estaComBonus
+     */
     public boolean getBonus(){
         return estaComBonus;
     }

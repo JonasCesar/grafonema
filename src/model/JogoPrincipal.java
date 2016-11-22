@@ -413,7 +413,7 @@ public class JogoPrincipal {
     }
 
     /**
-     * Executa o audio referente à rodada
+     * Executa o audio referente à rodada atual
      *
      * @param n nome do arquivo sem a extensão
      */
@@ -555,8 +555,8 @@ public class JogoPrincipal {
     }
 
     /**
-     *
-     * @return
+     * Retorna o valor de indicacaoPular
+     * @return indicacaoPular
      */
     public boolean getIndicacaoPular() {
         return indicacaoPular;

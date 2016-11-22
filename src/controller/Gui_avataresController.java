@@ -33,7 +33,7 @@ public class Gui_avataresController implements Initializable {
     
     @FXML
     private Button avancar;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

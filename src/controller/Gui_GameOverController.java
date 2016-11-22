@@ -29,13 +29,24 @@ public class Gui_GameOverController implements Initializable {
     
     private Stage window;
 
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+    /**
+     * Realiza a função de reiniciar o jogo
+     * @param event botão reiniciar
+     * @throws IOException 
+     */
     @FXML
     private void handleReiniciar(ActionEvent event) throws IOException {
         gameOver.reiniciarJogo(event);
     }
+    /**
+     * Sai do jogo
+     * @param event botão sair
+     * @throws IOException 
+     */
     @FXML
     private void handleSair(ActionEvent event) throws IOException {        
         window = (Stage) ((Button) event.getSource()).getScene().getWindow();        
