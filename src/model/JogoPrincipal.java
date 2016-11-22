@@ -51,7 +51,7 @@ public class JogoPrincipal {
     @FXML
     private Button pular;
 
-    private EventHandler<ActionEvent> eventoFinal, eventoGameOver, eventoCenas,
+    private EventHandler<ActionEvent> gerarProximaRodada, eventoGameOver, eventoCenas,
             eventoVoltar, eventoAcerto, eventoFimAcerto;
     @FXML
     private Label pontuacao;
@@ -141,6 +141,7 @@ public class JogoPrincipal {
         Random indice = new Random();//gerador de índices aleatorios
         switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
             case 1: //se for na fase 1
+                System.out.println("PASSSSEEEEIIIIII");
                 gerarSomAleatorio(); //gera um som aleatório                
                 //loop que gera os índices e os adiciona no array novasOpcoes
                 while (i < 5) {
@@ -191,7 +192,7 @@ public class JogoPrincipal {
         int i = 0;
         int fase = jogador.getFaseAtual();//pega a fase em que o jogador se encontra
         if (fase == 0) {//se for a primeira fase
-            jogador.setFaseAtual(1);//define a fase atual como 1
+            jogador.setFaseAtual(1);//definOSe a fase atual  1
         }
         //verifica qual a fase atual do jogador
         switch (jogador.getFaseAtual()) {
@@ -380,7 +381,7 @@ public class JogoPrincipal {
      */
     public void mostrarOpcaoCorreta(Button temp) {
         //evento final que realiza uma chamada à opcaoAleatoria
-        eventoFinal = new EventHandler<ActionEvent>() {
+        gerarProximaRodada = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
                 try {
@@ -394,7 +395,7 @@ public class JogoPrincipal {
         new Timeline(
                 new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
                 new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
-                new KeyFrame(Duration.seconds(2), eventoFinal)).play();
+                new KeyFrame(Duration.seconds(2), gerarProximaRodada)).play();
     }
 
     /**
