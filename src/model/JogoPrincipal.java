@@ -53,7 +53,11 @@ public class JogoPrincipal {
 
     //o nome dos arquivos das vogais
     private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
-    private final String audioSilabasSimples[] = {};
+   
+    private final String audioSilabasSimples[] = {
+        "ad","al", "am", "an", "ar", "as", "az", "ção",
+        "ções", "el", "em", "en", "er", "es", "il", "im", "in", "ir", "is", "ol",
+        "om", "on", "or", "os", "ul", "um", "un", "ur", "us"};
 
     public Jogador jogador = new Jogador();
 
@@ -184,7 +188,8 @@ public class JogoPrincipal {
                 tocarAudio(audioVogais[i]);
                 break;
             case 2:
-                i = indiceAudio.nextInt(5);
+                i = indiceAudio.nextInt(29);
+                tocarAudio(audioSilabasSimples[i]);
                 break;
             default:
                 break;
@@ -255,6 +260,8 @@ public class JogoPrincipal {
         matrizSilabas.put("sil_bo", "BO");
         matrizSilabas.put("sil_bu", "BU");
     }
+    
+    
 
     /**
      * Retorna a chave da HashMap correspondente ao valor que é passado como
@@ -315,8 +322,19 @@ public class JogoPrincipal {
      */
     public Button opcaoCorreta(ActionEvent event) {
         Button temporario = null;
+        String opcaoCorreta = "";
         //pega o valor da opção correta
-        String opcaoCorreta = matrizVogais.get(nomeAudioAtual);
+        switch(jogador.getFaseAtual()){
+            case 1:
+                opcaoCorreta = matrizVogais.get(nomeAudioAtual);
+                break;
+            case 2:
+                opcaoCorreta = matrizSilabas.get(nomeAudioAtual);
+                break;
+            default:
+                break;
+        }
+        
         //verifica quais dos botões é a opção correta
         if (opcaoCorreta.equals(btn_1.getText())) {
             temporario = btn_1;
@@ -423,6 +441,8 @@ public class JogoPrincipal {
             case 1:
                 caminhoAudio = "src/audios_vogais/" + n + ".mp3";
                 break;
+            case 2:
+                caminhoAudio = "src/audios_silabas_simples/" + n + ".mp3";
             default:
                 break;
         }

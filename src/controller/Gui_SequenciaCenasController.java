@@ -25,8 +25,7 @@ public class Gui_SequenciaCenasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        Image img = new Image("/controller/vinho.jpg");
-        
+        Image img = new Image("/controller/vinho.jpg");        
         imgView.setImage(img);
     }    
     
