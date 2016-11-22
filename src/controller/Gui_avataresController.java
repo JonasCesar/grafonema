@@ -11,10 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -43,20 +40,30 @@ public class Gui_avataresController implements Initializable {
         avancar.setDisable(true);
     }
     
-    
+    /**
+     * Evento disparado quando o avatar que representa o menino é selecionado
+     * @param event botao menino
+     */
     @FXML
     private void avatarMeninoSelecionado(ActionEvent event) {
         modelAvatares.setSelecionado("menino");
         avancar.setDisable(false);
 
     }
-
+    /**
+     * Evento disparado quando o avatar que representa a menina é selecionado
+     * @param event botão menina
+     */
     @FXML
     private void avatarMeninaSelecinado(ActionEvent event) {
         modelAvatares.setSelecionado("menina");
         avancar.setDisable(false);
     }
-
+    /**
+     * Evento disparado quando o botão avançar é selecionado
+     * @param event botão avançar
+     * @throws IOException 
+     */
     @FXML
     private void handleAvancar(ActionEvent event) throws IOException {
         modelAvatares.getGuiJogoPrincipal(event);

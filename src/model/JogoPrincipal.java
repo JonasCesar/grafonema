@@ -39,22 +39,12 @@ import javafx.util.Duration;
 public class JogoPrincipal {
 
     @FXML
-    private Button btn_1;
-    @FXML
-    private Button btn_2;
-    @FXML
-    private Button btn_3;
-    @FXML
-    private Button btn_5;
-    @FXML
-    private Button btn_4;
-    @FXML
-    private Button pular;
-
+    private Button btn_1, btn_2, btn_3, btn_4, btn_5, pular;
+   
     private EventHandler<ActionEvent> gerarProximaRodada, eventoGameOver, eventoCenas,
             eventoVoltar, eventoAcerto, eventoFimAcerto;
     @FXML
-    private Label pontuacao;
+    private Label pontuacao, tempo;
 
     @FXML
     private ProgressBar lifeBar;
@@ -62,33 +52,26 @@ public class JogoPrincipal {
     private String silabas[] = {"BA", "BE", "BI", "BO", "BU"};
 
     //o nome dos arquivos das vogais
-    private String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
-    private String audioSilabas[] = {"sil_ba", "sil_be", "sil_bi", "sil_bo", "sil_bu"};
+    private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
+    private final String audioSilabasSimples[] = {};
 
     public Jogador jogador = new Jogador();
 
-    private Map<String, String> matrizVogais;
-    private Map<String, String> matrizSilabas;
+    private Map<String, String> matrizVogais, matrizSilabas;
 
     private Random indiceAudio;
 
     private Stage window;
-    private String caminhoAudio;
+    private String caminhoAudio, nomeAudioAtual;
     private File arquivo;
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
 
-    private String nomeAudioAtual;
-
-    private boolean mostrandoCena;
-
-    private boolean indicacaoPular, pularErro;
+    private boolean mostrandoCena, indicacaoPular, pularErro;
 
     private Scene cenaTemporaria;
-    @FXML
-    private Label tempo;
-
+    
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
 
@@ -129,7 +112,7 @@ public class JogoPrincipal {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
-            jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());           
+            jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
         }
@@ -241,7 +224,7 @@ public class JogoPrincipal {
         //pega o valor anterior da barra de vida
         double valorAnterior = lifeBar.getProgress();
         //reduz o valor da barra de vida em 0.2 de um total inicial de 1.0
-        double valorAtualizado = valorAnterior - 0.2;
+        double valorAtualizado = valorAnterior - 0.1666;
         //atualiza a barra de vida
         lifeBar.setProgress(valorAtualizado);
     }
@@ -254,10 +237,8 @@ public class JogoPrincipal {
     }
 
     /**
-     * Inicia a matriz de vogais
-     * 'vogal-A' é o nome do arquivo de audio
-     * referente à vogal A
-     * 'A' é o valor que aparecerá nos botões
+     * Inicia a matriz de vogais 'vogal-A' é o nome do arquivo de audio
+     * referente à vogal A 'A' é o valor que aparecerá nos botões
      */
     public void iniciarMatrizAudiosVogal() {
         matrizVogais.put("vogal-A", "A");
@@ -304,11 +285,10 @@ public class JogoPrincipal {
         int valorAcrescentar = 10;
         //pega a pontuação no label da pontuação
         int pontuacaoAnterior = Integer.parseInt(pontuacao.getText());
-        
+
         if (jogador.getBonus()) {
             valorAcrescentar = 20;
         }
-        
         //gera a nova pontuação somando o valor que deve ser acrescentado à
         //pontuação anterior
         int novaPontuacao = pontuacaoAnterior + valorAcrescentar;
@@ -367,7 +347,7 @@ public class JogoPrincipal {
      */
     public boolean isGameOver() {
         boolean fimDeJogo = false;
-        if (jogador.getQntErros() == 6) {//se o jogador errou 5 vezes
+        if (jogador.getQntErros() == 5) {//se o jogador errou 5 vezes
             fimDeJogo = true;
         }
         return fimDeJogo;
@@ -386,8 +366,10 @@ public class JogoPrincipal {
             public void handle(ActionEvent arg0) {
                 try {
                     gerarOpcaoAleatoria();
-                } catch (InterruptedException | IOException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(JogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(JogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -399,8 +381,8 @@ public class JogoPrincipal {
     }
 
     /**
-     * Exibe uma animação mostrando qual seria a opção que deveria ter sido
-     * escolhida pelo jogador e altera a interface para a interface do gameOver
+     * Exibe uma animação mostrando qual a opção que deveria ter sido escolhida
+     * pelo jogador e altera a interface para a interface do gameOver
      *
      * @param temp a opção correta
      */
@@ -429,9 +411,10 @@ public class JogoPrincipal {
                 new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
                 new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
     }
+
     /**
      * Executa o audio referente à rodada
-     * 
+     *
      * @param n nome do arquivo sem a extensão
      */
     public void tocarAudio(String n) {
@@ -457,41 +440,48 @@ public class JogoPrincipal {
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
+
     /**
      * Define o áudio atual
+     *
      * @param n nome do áudio
      */
-    
     private void setNomeAudioAtual(String n) {
         nomeAudioAtual = n;
     }
+
     /**
      * Retorna o nome do áudio atual
-     * 
+     *
      * @return string contendo o nome áudio atual
      */
     public String getAudioAtual() {
         return nomeAudioAtual;
     }
+
     /**
      * Define se o jogo está mostrando a cena referente aos 10 acertos
+     *
      * @param valor true ou false
      */
     public void setMostrandoCena(boolean valor) {
         this.mostrandoCena = valor;
     }
+
     /**
      * Retorna se a cena referente aos 10 acertos está sendo exibida
+     *
      * @return true se sim. false caso contrário
      */
     public boolean getMostrandoCena() {
         return mostrandoCena;
     }
-    
+
     /**
      * Mostra as cenas após o jogador acertar 10 vezes
+     *
      * @throws InterruptedException
-     * @throws IOException 
+     * @throws IOException
      */
     public void mostrarCenas() throws InterruptedException, IOException {
 
@@ -545,37 +535,42 @@ public class JogoPrincipal {
         System.out.println("Opção aleatoria gerada");
 
     }
+
     /**
      * Define o valor da variável indicacaoPular
+     *
      * @param valor true ou false
      */
     public void setIndicacaoPular(boolean valor) {
         this.indicacaoPular = valor;
     }
+
     /**
      * Define o valor da variável pularErro
+     *
      * @param valor true ou false
      */
     public void setPularErro(boolean valor) {
         this.pularErro = valor;
     }
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public boolean getIndicacaoPular() {
         return indicacaoPular;
     }
-    
+
     /**
      * Retorna o valor da variável pularErro
-     * 
+     *
      * @return true ou false
      */
     public boolean getPularErro() {
         return pularErro;
     }
-    
+
     /**
      * Inicia o timer
      */
@@ -584,7 +579,7 @@ public class JogoPrincipal {
         //criação da tarefa que vai executar durante 1 segundo
         timer.scheduleAtFixedRate(new TimerTask() {
 
-            int i = 30;
+            int i = 10;
 
             @Override
             public void run() {
@@ -613,20 +608,14 @@ public class JogoPrincipal {
                         tempo.setText("" + i);
                         i--;
                         if (i == -1) {
-                            System.out.println("timer cacelado");
-
-                            try {
-                                gerarOpcaoAleatoria();
-                            } catch (InterruptedException | IOException ex) {
-                                Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            reduzirLifeBar();
-                            incrementarErro();
                             Button temp = opcaoCorreta(null);
                             //se o jogador perdeu o jogo exibir a tela de game over
                             if (!isGameOver()) {
-                                //animação
-                                mostrarOpcaoCorreta(temp);
+                                System.out.println("timer cacelado");
+
+                                reduzirLifeBar();
+                                incrementarErro();
+                                mostrarOpcaoCorreta(temp);//animação
                                 setPularErro(true);
                             } else {
                                 timer.cancel();
@@ -638,7 +627,7 @@ public class JogoPrincipal {
                         //se o jogador pulou ou errou voltar o tempo para 30 segundos
                         if ((getIndicacaoPular()) || (getPularErro())) {
                             System.out.println(i);
-                            i = 30;
+                            i = 5;
                             //indicacaoPular = false;
                             setIndicacaoPular(false);
                             setPularErro(false);
@@ -662,7 +651,7 @@ public class JogoPrincipal {
                 (btemp).setText("X");
             }
         };
-        
+
         //evento que representa a ação a ser feita depois da 
         //animação de acerto
         eventoFimAcerto = new EventHandler<ActionEvent>() {
@@ -677,7 +666,6 @@ public class JogoPrincipal {
                 setIndicacaoPular(true);
             }
         };
-
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoAcerto),
                 new KeyFrame(Duration.seconds(1), eventoFimAcerto)).play();

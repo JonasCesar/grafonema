@@ -23,9 +23,7 @@ import javafx.stage.Stage;
 public class Gui_GameOverController implements Initializable {
 
     @FXML
-    private Button reiniciar;
-    @FXML
-    private Button sair;
+    private Button reiniciar, sair;
 
     private Model_gameOver gameOver = new Model_gameOver();
     

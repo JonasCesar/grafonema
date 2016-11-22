@@ -28,34 +28,16 @@ import javafx.stage.Stage;
 public class Gui_JogoPrincipalController implements Initializable {
 
     @FXML
-    private Button btn_1;
+    private Button btn_1, btn_2, btn_3, btn_5, btn_4, pular;
     @FXML
-    private Button btn_2;
-    @FXML
-    private Button btn_3;
-    @FXML
-    private Button btn_5;
-    @FXML
-    private Button btn_4;
-    @FXML
-    private Label tempo;
+    private Label tempo, pontuacao;
 
     private JogoPrincipal jogoPrincipal;
-    @FXML
-    private Button pular;
-    @FXML
-    private Label pontuacao;
     @FXML
     private ProgressBar lifeBar;
 
     private Stage window;
-    boolean indicacaoPular;//indica que o jogador acionou o botão pular
-    boolean pularErro;
-    private EventHandler<ActionEvent> eventoVoltar;
-
-    private Scene temp;
-    private EventHandler<ActionEvent> eventoCenas;
-    private EventHandler<ActionEvent> eventoAcerto, eventoFimAcerto;
+    boolean indicacaoPular, pularErro ;//indica que o jogador acionou o botão pular
 
     /**
      * Initializes the controller class.
@@ -105,8 +87,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
         //Se a opção escolhida está certa
         if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
-
-            //trocar a cor do botão
             jogoPrincipal.incrementarPontuacao();
             jogoPrincipal.incrementarAcerto();
 
@@ -116,13 +96,10 @@ public class Gui_JogoPrincipalController implements Initializable {
                 jogoPrincipal.mostrarCenas();
 
             } else {
-                jogoPrincipal.mostrarAnimacaoAcerto();
-                
-                
+                jogoPrincipal.mostrarAnimacaoAcerto();               
             }
 
         } else {
-
             //reduzir barra de vidas
             jogoPrincipal.reduzirLifeBar();
             jogoPrincipal.incrementarErro();

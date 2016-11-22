@@ -7,21 +7,13 @@ import java.util.ArrayList;
  * @author jonas
  */
 public class Jogador {
-    private int pontuacaoTotal;
-    private ArrayList pontuacaoPorFase;
-    private int tempoJogoTotal;
-    private int avatarEscolhido;
-    private int qntVida;
-    private int qntPulos;
-    private int qntErros;
-    private int acertosTotal;
-    private ArrayList acertosPorFase;
-    private int tempoParaResponderUmaRodada;
-    private int mediaDeTempoParaResposta;
-    private int pontuacaoJogoMemoriaTotal;
-    private ArrayList pontuacaoJogoMemoriaFase;
-    private ArrayList acertosJogosMemoriaTotal;
-    private int faseAtual;
+    private int pontuacaoTotal, tempoJogoTotal, avatarEscolhido, qntVida,
+            faseAtual, qntPulos, qntErros, acertosTotal,
+            tempoParaResponderUmaRodada, mediaDeTempoParaResposta,
+            pontuacaoJogoMemoriaTotal;
+    
+    private ArrayList pontuacaoPorFase, acertosPorFase, pontuacaoJogoMemoriaFase, 
+            acertosJogosMemoriaTotal;
     private boolean estaComBonus;
     
     /**
