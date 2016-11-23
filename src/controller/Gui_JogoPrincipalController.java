@@ -26,9 +26,25 @@ import javafx.stage.Stage;
 public class Gui_JogoPrincipalController implements Initializable {
 
     @FXML
-    private Button btn_1, btn_2, btn_3, btn_5, btn_4, pular;
+    private Button btn_1;
     @FXML
-    private Label tempo, pontuacao;
+    private Button btn_2;
+    @FXML
+    private Button btn_3;
+    @FXML
+    private Button btn_4;
+    @FXML
+    private Button btn_5;
+    @FXML
+    private Button btn_6;
+    @FXML
+    private Button pular;
+            
+    @FXML
+    private Label tempo;
+    
+    @FXML
+    private Label pontuacao;
 
     private JogoPrincipal jogoPrincipal;
     @FXML

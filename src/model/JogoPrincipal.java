@@ -39,25 +39,41 @@ import javafx.util.Duration;
 public class JogoPrincipal {
 
     @FXML
-    private Button btn_1, btn_2, btn_3, btn_4, btn_5, pular;
+    private Button btn_1;
+    @FXML        
+    private Button btn_2;
+    @FXML
+    private Button btn_3;
+    @FXML
+    private Button btn_4;
+    @FXML
+    private Button btn_5;
+    @FXML    
+    private Button pular;
    
     private EventHandler<ActionEvent> gerarProximaRodada, eventoGameOver, eventoCenas,
             eventoVoltar, eventoAcerto, eventoFimAcerto;
     @FXML
-    private Label pontuacao, tempo;
+    private Label pontuacao;
+    
+    @FXML
+    private Label tempo;
 
     @FXML
     private ProgressBar lifeBar;
     private String vogais[] = {"A", "E", "I", "O", "U"};
-    private String silabas[] = {"BA", "BE", "BI", "BO", "BU"};
+    private String silabas[] = {
+        "AD", "AL", "AM", "AN", "AR", "AS", "AZ", "ÇÃO", "ÇÕES", "EL", "EM",
+        "EN", "ER", "ES", "IL", "IM", "IN", "IR", "IS", "OL", "OM", "ON", "OR",
+        "UL", "UM", "UR", "US"};
 
     //o nome dos arquivos das vogais
     private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
    
     private final String audioSilabasSimples[] = {
-        "ad","al", "am", "an", "ar", "as", "az", "ção",
-        "ções", "el", "em", "en", "er", "es", "il", "im", "in", "ir", "is", "ol",
-        "om", "on", "or", "os", "ul", "um", "un", "ur", "us"};
+        "ad","al", "am", "an", "ar", "as", "az", "ção", "ções", "el", "em",
+        "en", "er", "es", "il", "im", "in", "ir", "is", "ol", "om", "on", "or",
+        "os", "ul", "um", "un", "ur", "us"};
 
     public Jogador jogador = new Jogador();
 
@@ -89,6 +105,7 @@ public class JogoPrincipal {
         this.pontuacao = pontuacao;
         this.indiceAudio = new Random();
         this.matrizVogais = new HashMap<String, String>();
+        this.matrizSilabas = new HashMap<String, String>();
         this.mostrandoCena = false;
         this.indicacaoPular = false;
         this.pularErro = false;
