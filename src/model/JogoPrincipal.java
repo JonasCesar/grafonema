@@ -40,7 +40,7 @@ public class JogoPrincipal {
 
     @FXML
     private Button btn_1;
-    @FXML        
+    @FXML
     private Button btn_2;
     @FXML
     private Button btn_3;
@@ -48,14 +48,14 @@ public class JogoPrincipal {
     private Button btn_4;
     @FXML
     private Button btn_5;
-    @FXML    
+    @FXML
     private Button pular;
-   
+
     private EventHandler<ActionEvent> gerarProximaRodada, eventoGameOver, eventoCenas,
             eventoVoltar, eventoAcerto, eventoFimAcerto;
     @FXML
     private Label pontuacao;
-    
+
     @FXML
     private Label tempo;
 
@@ -65,13 +65,13 @@ public class JogoPrincipal {
     private String silabas[] = {
         "AD", "AL", "AM", "AN", "AR", "AS", "AZ", "ÇÃO", "ÇÕES", "EL", "EM",
         "EN", "ER", "ES", "IL", "IM", "IN", "IR", "IS", "OL", "OM", "ON", "OR",
-        "UL", "UM", "UR", "US"};
+        "OS", "UL", "UM", "UN", "UR", "US"};
 
     //o nome dos arquivos das vogais
     private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
-   
+
     private final String audioSilabasSimples[] = {
-        "ad","al", "am", "an", "ar", "as", "az", "ção", "ções", "el", "em",
+        "ad", "al", "am", "an", "ar", "as", "az", "ção", "ções", "el", "em",
         "en", "er", "es", "il", "im", "in", "ir", "is", "ol", "om", "on", "or",
         "os", "ul", "um", "un", "ur", "us"};
 
@@ -91,7 +91,7 @@ public class JogoPrincipal {
     private boolean mostrandoCena, indicacaoPular, pularErro;
 
     private Scene cenaTemporaria;
-    
+
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
 
@@ -141,7 +141,7 @@ public class JogoPrincipal {
         int i = 0;
         int proxValor = 0;
         ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
-        ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados
+        ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados ????
         Random indice = new Random();//gerador de índices aleatorios
         switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
             case 1: //se for na fase 1
@@ -165,23 +165,66 @@ public class JogoPrincipal {
                 btn_5.setText(vogais[(int) novasOpcoes.get(4)]);
 
                 break;
+            //DE ALGUMA FORMA RETORNAR O VALOR DO SOM ALEATÓRIO
             case 2:
                 i = 0;
-                gerarSomAleatorio();
-                while (i < 5) {
-                    proxValor = indice.nextInt(5);
+                int som = gerarSomAleatorio();
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size()<=5) {
+
+                    proxValor = indice.nextInt(29); 
+                    
                     if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
                     }
                 }
-                btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
-                btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
-                btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
-                btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
-                btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
-                break;
+
+                Random ind = new Random();
+
+                int valor = ind.nextInt(5);
+                if (valor == 0) {
+                    System.out.println("som saindo " + silabas[som]);
+                    btn_1.setText(silabas[som]);
+                    btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
+                    btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
+                    btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
+                    btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
+                    break;
+                } else if (valor == 1) {
+                    System.out.println("som saindo " + silabas[som]);
+                    btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
+                    btn_2.setText(silabas[som]);
+                    btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
+                    btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
+                    btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
+                    break;
+                } else if (valor == 2) {
+                    System.out.println("som saindo " + silabas[som]);
+                    btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
+                    btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
+                    btn_3.setText(silabas[som]);
+                    btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
+                    btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
+                    break;
+                } else if (valor == 3) {
+                    System.out.println("som saindo " + silabas[som]);
+                    btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
+                    btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
+                    btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
+                    btn_4.setText(silabas[som]);
+                    btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
+                    break;
+                } else if (valor == 4) {
+                    System.out.println("som saindo " + silabas[som]);
+                    btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
+                    btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
+                    btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
+                    btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
+                    btn_5.setText(silabas[som]);
+                    break;
+                }
             default:
                 break;
         }
@@ -190,14 +233,12 @@ public class JogoPrincipal {
     /**
      * Gera o som aleatório que o jogador deverá relacionar com uma das opções
      */
-    public void gerarSomAleatorio() {
+    public int gerarSomAleatorio() {
         //objeto que será utilizado para gera um número aleatório
-        Random indice = new Random();
+
         int i = 0;
-        int fase = jogador.getFaseAtual();//pega a fase em que o jogador se encontra
-        if (fase == 0) {//se for a primeira fase
-            jogador.setFaseAtual(1);//definOSe a fase atual  1
-        }
+
+        int y = 0;
         //verifica qual a fase atual do jogador
         switch (jogador.getFaseAtual()) {
             case 1:
@@ -206,11 +247,15 @@ public class JogoPrincipal {
                 break;
             case 2:
                 i = indiceAudio.nextInt(29);
+                System.out.println("o som gerado foi o som: " + audioSilabasSimples[i]);
                 tocarAudio(audioSilabasSimples[i]);
+                y = i;
                 break;
             default:
                 break;
         }
+
+        return y;
 
     }
 
@@ -223,7 +268,16 @@ public class JogoPrincipal {
     public boolean verificarRelacaoGaFonema(ActionEvent event) {
         String opcaoEscolhida = (((Button) event.getSource()).getText());//pega a opção escolhida pelo usuário
         //compara o valor que o usuário escolheu com o valor correspondente ao áudio
-        boolean resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(getAudioAtual()));
+        boolean resultado = false;
+        switch(jogador.getFaseAtual()){
+            case 1:
+                resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(getAudioAtual()));
+                break;
+            case 2:
+                resultado = ((getKeyByValue(matrizSilabas, opcaoEscolhida)).equals(getAudioAtual()));
+                break;
+        }       
+        
         return resultado;
     }
 
@@ -271,7 +325,7 @@ public class JogoPrincipal {
     }
 
     public void iniciarMatrizAudioSilabas() {
-        
+
         matrizSilabas.put("ad", "AD");
         matrizSilabas.put("al", "AL");
         matrizSilabas.put("am", "AM");
@@ -303,8 +357,6 @@ public class JogoPrincipal {
         matrizSilabas.put("us", "US");
 
     }
-    
-    
 
     /**
      * Retorna a chave da HashMap correspondente ao valor que é passado como
@@ -367,7 +419,7 @@ public class JogoPrincipal {
         Button temporario = null;
         String opcaoCorreta = "";
         //pega o valor da opção correta
-        switch(jogador.getFaseAtual()){
+        switch (jogador.getFaseAtual()) {
             case 1:
                 opcaoCorreta = matrizVogais.get(nomeAudioAtual);
                 break;
@@ -377,7 +429,7 @@ public class JogoPrincipal {
             default:
                 break;
         }
-        
+
         //verifica quais dos botões é a opção correta
         if (opcaoCorreta.equals(btn_1.getText())) {
             temporario = btn_1;
@@ -619,6 +671,7 @@ public class JogoPrincipal {
 
     /**
      * Retorna o valor de indicacaoPular
+     *
      * @return indicacaoPular
      */
     public boolean getIndicacaoPular() {
