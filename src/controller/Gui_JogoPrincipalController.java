@@ -122,13 +122,14 @@ public class Gui_JogoPrincipalController implements Initializable {
             jogoPrincipal.reduzirLifeBar();
             jogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
             Button temp = jogoPrincipal.opcaoCorreta(event);
-            //animação da opção correta
-            jogoPrincipal.mostrarOpcaoCorreta(temp);
-            jogoPrincipal.setIndicacaoPular(true);//seta indicacaoPular como true            
+            
+            //animação da opção correta            
             if (jogoPrincipal.isGameOver()) {//se for o fim do jogo
                 temp = jogoPrincipal.opcaoCorreta(event);
                 //animação do fim de jogo
                 jogoPrincipal.mostraFimDeJogo(temp);
+            }else{
+                jogoPrincipal.mostrarOpcaoCorreta(temp);
             }
         }
         //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
