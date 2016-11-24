@@ -65,7 +65,14 @@ public class JogoPrincipal {
     private String silabas[] = {
         "AD", "AL", "AM", "AN", "AR", "AS", "AZ", "ÇÃO", "ÇÕES", "EL", "EM",
         "EN", "ER", "ES", "IL", "IM", "IN", "IR", "IS", "OL", "OM", "ON", "OR",
-        "OS", "UL", "UM", "UN", "UR", "US"};
+        "OS", "UL", "UM", "UN", "UR", "US", "BA", "BE", "BI", "BO", "BU", "CA",
+        "CE", "CI", "CO", "CU", "DA", "DE", "DI", "DO", "DU", "FA", "FE", "FI",
+        "FO", "FU", "GA", "GE", "GI", "GO", "GU", "JA", "JE", "JI", "JO", "JU",
+        "LA", "LE", "LI", "LO", "LU", "MA", "ME", "MI", "MO", "MU", "NA", "NE",
+        "NI", "NO", "NU", "PA", "PE", "PI", "PO", "PU", "RA", "RE", "RI", "RO",
+        "RU", "SA", "SE", "SI", "SO", "SU", "TA", "TE", "TI", "TO", "TU", "VA",
+        "VE", "VI", "VO", "VU", "XA", "XE", "XI", "XO", "XU", "ZA", "ZE", "ZI",
+        "ZO", "ZU"};
 
     //o nome dos arquivos das vogais
     private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
@@ -73,7 +80,14 @@ public class JogoPrincipal {
     private final String audioSilabasSimples[] = {
         "ad", "al", "am", "an", "ar", "as", "az", "ção", "ções", "el", "em",
         "en", "er", "es", "il", "im", "in", "ir", "is", "ol", "om", "on", "or",
-        "os", "ul", "um", "un", "ur", "us"};
+        "os", "ul", "um", "un", "ur", "us", "ba", "be", "bi", "bo", "bu", "ca",
+        "ce", "ci", "co", "cu", "da", "de", "di", "do", "du", "fa", "fe", "fi",
+        "fo", "fu", "ga", "ge", "gi", "go", "gu", "ja", "je", "ji", "jo", "ju",
+        "la", "le", "li", "lo", "lu", "ma", "me", "mi", "mo", "mu", "na", "ne",
+        "ni", "no", "nu", "pa", "pe", "pi", "po", "pu", "ra", "re", "ri", "ro",
+        "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu", "va",
+        "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo", "xu", "za", "ze", "zi",
+        "zo", "zu"};
 
     public Jogador jogador = new Jogador();
 
@@ -178,7 +192,7 @@ public class JogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(29);
+                    proxValor = indice.nextInt(110);
 
                     if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
@@ -252,7 +266,7 @@ public class JogoPrincipal {
                 tocarAudio(audioVogais[i]);
                 break;
             case 2:
-                i = indiceAudio.nextInt(29);
+                i = indiceAudio.nextInt(110);
                 System.out.println("o som gerado foi o som: " + audioSilabasSimples[i]);
                 tocarAudio(audioSilabasSimples[i]);
                 y = i;
@@ -361,6 +375,86 @@ public class JogoPrincipal {
         matrizSilabas.put("un", "UN");
         matrizSilabas.put("ur", "UR");
         matrizSilabas.put("us", "US");
+        matrizSilabas.put("ba", "BA");
+        matrizSilabas.put("be", "BE");
+        matrizSilabas.put("bi", "BI");
+        matrizSilabas.put("bo", "BO");
+        matrizSilabas.put("bu", "BU");
+        matrizSilabas.put("ca", "CA");
+        matrizSilabas.put("ce", "CE");
+        matrizSilabas.put("ci", "CI");
+        matrizSilabas.put("co", "CO");
+        matrizSilabas.put("cu", "CU");
+        matrizSilabas.put("da", "DA");
+        matrizSilabas.put("de", "DE");
+        matrizSilabas.put("di", "DI");
+        matrizSilabas.put("do", "DO");
+        matrizSilabas.put("du", "DU");
+        matrizSilabas.put("fa", "FA");
+        matrizSilabas.put("fe", "FE");
+        matrizSilabas.put("fi", "FI");
+        matrizSilabas.put("fo", "FO");
+        matrizSilabas.put("fu", "FU");
+        matrizSilabas.put("ga", "GA");
+        matrizSilabas.put("ge", "GE");
+        matrizSilabas.put("gi", "GI");
+        matrizSilabas.put("go", "GO");
+        matrizSilabas.put("gu", "GU");
+        matrizSilabas.put("ja", "JA");
+        matrizSilabas.put("je", "JE");
+        matrizSilabas.put("ji", "JI");
+        matrizSilabas.put("jo", "JO");
+        matrizSilabas.put("ju", "JU");
+        matrizSilabas.put("la", "LA");
+        matrizSilabas.put("le", "LE");
+        matrizSilabas.put("li", "LI");
+        matrizSilabas.put("lo", "LO");
+        matrizSilabas.put("lu", "LU");
+        matrizSilabas.put("ma", "MA");
+        matrizSilabas.put("me", "ME");
+        matrizSilabas.put("mi", "MI");
+        matrizSilabas.put("mo", "MO");
+        matrizSilabas.put("mu", "MU");
+        matrizSilabas.put("na", "NA");
+        matrizSilabas.put("ne", "NE");
+        matrizSilabas.put("ni", "NI");
+        matrizSilabas.put("no", "NO");
+        matrizSilabas.put("nu", "NU");
+        matrizSilabas.put("pa", "PA");
+        matrizSilabas.put("pe", "PE");
+        matrizSilabas.put("pi", "PI");
+        matrizSilabas.put("po", "PO");
+        matrizSilabas.put("pu", "PU");
+        matrizSilabas.put("ra", "RA");
+        matrizSilabas.put("re", "RE");
+        matrizSilabas.put("ri", "RI");
+        matrizSilabas.put("ro", "RO");
+        matrizSilabas.put("ru", "RU");
+        matrizSilabas.put("sa", "SA");
+        matrizSilabas.put("se", "SE");
+        matrizSilabas.put("si", "SI");
+        matrizSilabas.put("so", "SO");
+        matrizSilabas.put("su", "SU");
+        matrizSilabas.put("ta", "TA");
+        matrizSilabas.put("te", "TE");
+        matrizSilabas.put("ti", "TI");
+        matrizSilabas.put("to", "TO");
+        matrizSilabas.put("tu", "TU");
+        matrizSilabas.put("va", "VA");
+        matrizSilabas.put("ve", "VE");
+        matrizSilabas.put("vi", "VI");
+        matrizSilabas.put("vo", "VO");
+        matrizSilabas.put("vu", "VU");
+        matrizSilabas.put("xa", "XA");
+        matrizSilabas.put("xe", "XE");
+        matrizSilabas.put("xi", "XI");
+        matrizSilabas.put("xo", "XO");
+        matrizSilabas.put("xu", "XU");
+        matrizSilabas.put("za", "ZA");
+        matrizSilabas.put("ze", "ZE");
+        matrizSilabas.put("zi", "ZI");
+        matrizSilabas.put("zo", "ZO");
+        matrizSilabas.put("zu", "ZU");
 
     }
 
