@@ -317,6 +317,7 @@ public class JogoPrincipal {
      * referente à vogal A 'A' é o valor que aparecerá nos botões
      */
     public void iniciarMatrizAudiosVogal() {
+        
         matrizVogais.put("vogal-A", "A");
         matrizVogais.put("vogal-E", "E");
         matrizVogais.put("vogal-I", "I");
