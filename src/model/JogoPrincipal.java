@@ -52,7 +52,7 @@ public class JogoPrincipal {
     private Button pular;
 
     private EventHandler<ActionEvent> gerarProximaRodada, eventoGameOver, eventoCenas,
-            eventoVoltar, eventoAcerto, eventoFimAcerto;
+            eventoVoltar, eventoAcerto, eventoFimAcerto, reiniciarRelogio;
     @FXML
     private Label pontuacao;
 
@@ -91,6 +91,8 @@ public class JogoPrincipal {
     private boolean mostrandoCena, indicacaoPular, pularErro;
 
     private Scene cenaTemporaria;
+
+    private Button correto;
 
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
@@ -145,8 +147,9 @@ public class JogoPrincipal {
         Random indice = new Random();//gerador de índices aleatorios
         switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
             case 1: //se for na fase 1
-                System.out.println("PASSSSEEEEIIIIII");
-                gerarSomAleatorio(); //gera um som aleatório                
+                if (!isGameOver()) {
+                    gerarSomAleatorio(); //gera um som aleatório                
+                }
                 //loop que gera os índices e os adiciona no array novasOpcoes
                 while (i < 5) {
                     proxValor = indice.nextInt(5);
@@ -168,12 +171,15 @@ public class JogoPrincipal {
             //DE ALGUMA FORMA RETORNAR O VALOR DO SOM ALEATÓRIO
             case 2:
                 i = 0;
-                int som = gerarSomAleatorio();
+                int som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
                 indiceUtilizados.add(som);
-                while (indiceUtilizados.size()<=5) {
+                while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(29); 
-                    
+                    proxValor = indice.nextInt(29);
+
                     if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -269,15 +275,15 @@ public class JogoPrincipal {
         String opcaoEscolhida = (((Button) event.getSource()).getText());//pega a opção escolhida pelo usuário
         //compara o valor que o usuário escolheu com o valor correspondente ao áudio
         boolean resultado = false;
-        switch(jogador.getFaseAtual()){
+        switch (jogador.getFaseAtual()) {
             case 1:
                 resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 2:
                 resultado = ((getKeyByValue(matrizSilabas, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
-        }       
-        
+        }
+
         return resultado;
     }
 
@@ -461,7 +467,7 @@ public class JogoPrincipal {
      */
     public boolean isGameOver() {
         boolean fimDeJogo = false;
-        if (jogador.getQntErros() == 5) {//se o jogador errou 5 vezes
+        if (jogador.getQntErros() == 6) {//se o jogador errou 5 vezes
             fimDeJogo = true;
         }
         return fimDeJogo;
@@ -480,18 +486,27 @@ public class JogoPrincipal {
             public void handle(ActionEvent arg0) {
                 try {
                     gerarOpcaoAleatoria();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(JogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
+
+                } catch (InterruptedException | IOException ex) {
                     Logger.getLogger(JogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+        };
+
+        reiniciarRelogio = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                setIndicacaoPular(true);
             }
         };
         //animação
         new Timeline(
                 new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
-                new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
-                new KeyFrame(Duration.seconds(2), gerarProximaRodada)).play();
+                new KeyFrame(Duration.seconds(1), new KeyValue(temp.opacityProperty(), 1)),
+                new KeyFrame(Duration.seconds(1), gerarProximaRodada),
+                new KeyFrame(Duration.seconds(1), reiniciarRelogio)).play();
+
     }
 
     /**
@@ -522,8 +537,8 @@ public class JogoPrincipal {
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
-                new KeyFrame(Duration.seconds(3), new KeyValue(temp.opacityProperty(), 1)),
-                new KeyFrame(Duration.seconds(2), eventoGameOver)).play();
+                new KeyFrame(Duration.seconds(1), new KeyValue(temp.opacityProperty(), 1)),
+                new KeyFrame(Duration.seconds(1), eventoGameOver)).play();
     }
 
     /**
@@ -696,7 +711,7 @@ public class JogoPrincipal {
         //criação da tarefa que vai executar durante 1 segundo
         timer.scheduleAtFixedRate(new TimerTask() {
 
-            int i = 10;
+            int i = 5;
 
             @Override
             public void run() {
@@ -719,26 +734,27 @@ public class JogoPrincipal {
                                     i = 30;
                                     System.out.println("setou o i como 30");
                                 }
+
                             }
                         }, 0, 50);
 
                         tempo.setText("" + i);
                         i--;
+
                         if (i == -1) {
-                            Button temp = opcaoCorreta(null);
+                            correto = opcaoCorreta(null);
                             //se o jogador perdeu o jogo exibir a tela de game over
                             if (!isGameOver()) {
                                 System.out.println("timer cacelado");
 
                                 reduzirLifeBar();
                                 incrementarErro();
-                                mostrarOpcaoCorreta(temp);//animação
+                                mostrarOpcaoCorreta(correto);//animação
                                 setPularErro(true);
                             } else {
-                                timer.cancel();
-                                //animação
-                                mostraFimDeJogo(temp);
+                                System.out.println("Entrou aqui essa bosta");
 
+                                //animação
                             }
                         }
                         //se o jogador pulou ou errou voltar o tempo para 30 segundos
@@ -749,7 +765,12 @@ public class JogoPrincipal {
                             setIndicacaoPular(false);
                             setPularErro(false);
                             //pularErro = false;
+                            if (isGameOver()) {
+                                mostraFimDeJogo(correto);
+                                timer.cancel();
+                            }
                         }
+
                     }
                 });
             }
