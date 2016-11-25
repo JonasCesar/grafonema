@@ -56,7 +56,5 @@ public class Model_avatares {
      */
     public String getSelecionado(){
         return selecionado;
-    }
-    
-    
+    }    
 }

@@ -66,6 +66,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo);
         jogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
         jogoPrincipal.iniciarMatrizAudioSilabas();
+        jogoPrincipal.iniciarMatrizSilabasSimplesB();
         jogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
         jogoPrincipal.iniciarTimer();//inicia o relógio
     }
@@ -129,10 +130,10 @@ public class Gui_JogoPrincipalController implements Initializable {
                 //animação do fim de jogo
                 jogoPrincipal.mostraFimDeJogo(temp);
             }else{
+                //animação da opção correta
                 jogoPrincipal.mostrarOpcaoCorreta(temp);
             }
         }
-        //colocar aqui se acertos for igual a 10 mostrar a cena da fase que passou
     }
 
     /**

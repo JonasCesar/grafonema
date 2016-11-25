@@ -62,17 +62,18 @@ public class JogoPrincipal {
     @FXML
     private ProgressBar lifeBar;
     private String vogais[] = {"A", "E", "I", "O", "U"};
-    private String silabas[] = {
+    private String silabasSimples[] = {
         "AD", "AL", "AM", "AN", "AR", "AS", "AZ", "ÇÃO", "ÇÕES", "EL", "EM",
         "EN", "ER", "ES", "IL", "IM", "IN", "IR", "IS", "OL", "OM", "ON", "OR",
-        "OS", "UL", "UM", "UN", "UR", "US", "BA", "BE", "BI", "BO", "BU", "CA",
-        "CE", "CI", "CO", "CU", "DA", "DE", "DI", "DO", "DU", "FA", "FE", "FI",
-        "FO", "FU", "GA", "GE", "GI", "GO", "GU", "JA", "JE", "JI", "JO", "JU",
-        "LA", "LE", "LI", "LO", "LU", "MA", "ME", "MI", "MO", "MU", "NA", "NE",
-        "NI", "NO", "NU", "PA", "PE", "PI", "PO", "PU", "RA", "RE", "RI", "RO",
-        "RU", "SA", "SE", "SI", "SO", "SU", "TA", "TE", "TI", "TO", "TU", "VA",
-        "VE", "VI", "VO", "VU", "XA", "XE", "XI", "XO", "XU", "ZA", "ZE", "ZI",
-        "ZO", "ZU"};
+        "OS", "UL", "UM", "UN", "UR", "US"};
+    private String silabasSimplesB[] = {
+        "BA", "BE", "BI", "BO", "BU", "CA", "CE", "CI", "CO", "CU", "DA", "DE",
+        "DI", "DO", "DU", "FA", "FE", "FI", "FO", "FU", "GA", "GE", "GI", "GO",
+        "GU", "JA", "JE", "JI", "JO", "JU", "LA", "LE", "LI", "LO", "LU", "MA",
+        "ME", "MI", "MO", "MU", "NA", "NE", "NI", "NO", "NU", "PA", "PE", "PI",
+        "PO", "PU", "RA", "RE", "RI", "RO", "RU", "SA", "SE", "SI", "SO", "SU",
+        "TA", "TE", "TI", "TO", "TU", "VA", "VE", "VI", "VO", "VU", "XA", "XE",
+        "XI", "XO", "XU", "ZA", "ZE", "ZI", "ZO", "ZU"};
 
     //o nome dos arquivos das vogais
     private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
@@ -80,7 +81,10 @@ public class JogoPrincipal {
     private final String audioSilabasSimples[] = {
         "ad", "al", "am", "an", "ar", "as", "az", "ção", "ções", "el", "em",
         "en", "er", "es", "il", "im", "in", "ir", "is", "ol", "om", "on", "or",
-        "os", "ul", "um", "un", "ur", "us", "ba", "be", "bi", "bo", "bu", "ca",
+        "os", "ul", "um", "un", "ur", "us"};
+
+    private final String audioSilabasSimplesB[] = {
+        "ba", "be", "bi", "bo", "bu", "ca",
         "ce", "ci", "co", "cu", "da", "de", "di", "do", "du", "fa", "fe", "fi",
         "fo", "fu", "ga", "ge", "gi", "go", "gu", "ja", "je", "ji", "jo", "ju",
         "la", "le", "li", "lo", "lu", "ma", "me", "mi", "mo", "mu", "na", "ne",
@@ -91,7 +95,8 @@ public class JogoPrincipal {
 
     public Jogador jogador = new Jogador();
 
-    private Map<String, String> matrizVogais, matrizSilabas;
+    private Map<String, String> matrizVogais, matrizSilabasSimples,
+            matrizSilabasSimplesB;
 
     private Random indiceAudio;
 
@@ -121,7 +126,8 @@ public class JogoPrincipal {
         this.pontuacao = pontuacao;
         this.indiceAudio = new Random();
         this.matrizVogais = new HashMap<String, String>();
-        this.matrizSilabas = new HashMap<String, String>();
+        this.matrizSilabasSimples = new HashMap<String, String>();
+        this.matrizSilabasSimplesB = new HashMap<String, String>();
         this.mostrandoCena = false;
         this.indicacaoPular = false;
         this.pularErro = false;
@@ -160,7 +166,7 @@ public class JogoPrincipal {
         ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados ????
         Random indice = new Random();//gerador de índices aleatorios
         switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
-            case 1: //se for na fase 1
+            case 1: //FASE 1
                 if (!isGameOver()) {
                     gerarSomAleatorio(); //gera um som aleatório                
                 }
@@ -182,8 +188,8 @@ public class JogoPrincipal {
                 btn_5.setText(vogais[(int) novasOpcoes.get(4)]);
 
                 break;
-            //DE ALGUMA FORMA RETORNAR O VALOR DO SOM ALEATÓRIO
-            case 2:
+
+            case 2://FASE DOIS
                 i = 0;
                 int som = 0;
                 if (!isGameOver()) {
@@ -192,7 +198,7 @@ public class JogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(110);
+                    proxValor = indice.nextInt(29);
 
                     if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
@@ -201,57 +207,87 @@ public class JogoPrincipal {
                     }
                 }
 
-                Random ind = new Random();
+                preencherOpcoes(silabasSimples, som, novasOpcoes);
 
-                int valor = ind.nextInt(5);
-                if (valor == 0) {
-                    System.out.println("som saindo " + silabas[som]);
-                    btn_1.setText(silabas[som]);
-                    btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
-                    btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
-                    btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
-                    btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
-                    break;
-                } else if (valor == 1) {
-                    System.out.println("som saindo " + silabas[som]);
-                    btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
-                    btn_2.setText(silabas[som]);
-                    btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
-                    btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
-                    btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
-                    break;
-                } else if (valor == 2) {
-                    System.out.println("som saindo " + silabas[som]);
-                    btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
-                    btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
-                    btn_3.setText(silabas[som]);
-                    btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
-                    btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
-                    break;
-                } else if (valor == 3) {
-                    System.out.println("som saindo " + silabas[som]);
-                    btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
-                    btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
-                    btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
-                    btn_4.setText(silabas[som]);
-                    btn_5.setText(silabas[(int) novasOpcoes.get(4)]);
-                    break;
-                } else if (valor == 4) {
-                    System.out.println("som saindo " + silabas[som]);
-                    btn_1.setText(silabas[(int) novasOpcoes.get(0)]);
-                    btn_2.setText(silabas[(int) novasOpcoes.get(1)]);
-                    btn_3.setText(silabas[(int) novasOpcoes.get(2)]);
-                    btn_4.setText(silabas[(int) novasOpcoes.get(3)]);
-                    btn_5.setText(silabas[som]);
-                    break;
-                }
-            default:
                 break;
+            case 3:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(81);
+
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                preencherOpcoes(silabasSimplesB, som, novasOpcoes);
+                break;
+        }
+    }
+
+    /*função para preencher as opções na tela inserindo 
+     em um local aleatório a opção correspondente ao áudio
+     (USADA A PARTIR DA FASE DAS SÍLABAS)
+     */
+    public void preencherOpcoes(String categoria[], int s, ArrayList no) {
+
+        Random ind = new Random();
+        int valor = ind.nextInt(5);
+        if (valor == 0) {
+
+            btn_1.setText(categoria[s]);
+            btn_2.setText(categoria[(int) no.get(1)]);
+            btn_3.setText(categoria[(int) no.get(2)]);
+            btn_4.setText(categoria[(int) no.get(3)]);
+            btn_5.setText(categoria[(int) no.get(4)]);
+
+        } else if (valor == 1) {
+
+            btn_1.setText(categoria[(int) no.get(0)]);
+            btn_2.setText(categoria[s]);
+            btn_3.setText(categoria[(int) no.get(2)]);
+            btn_4.setText(categoria[(int) no.get(3)]);
+            btn_5.setText(categoria[(int) no.get(4)]);
+
+        } else if (valor == 2) {
+
+            btn_1.setText(categoria[(int) no.get(0)]);
+            btn_2.setText(categoria[(int) no.get(1)]);
+            btn_3.setText(categoria[s]);
+            btn_4.setText(categoria[(int) no.get(3)]);
+            btn_5.setText(categoria[(int) no.get(4)]);
+
+        } else if (valor == 3) {
+
+            btn_1.setText(categoria[(int) no.get(0)]);
+            btn_2.setText(categoria[(int) no.get(1)]);
+            btn_3.setText(categoria[(int) no.get(2)]);
+            btn_4.setText(categoria[s]);
+            btn_5.setText(categoria[(int) no.get(4)]);
+
+        } else if (valor == 4) {
+
+            btn_1.setText(categoria[(int) no.get(0)]);
+            btn_2.setText(categoria[(int) no.get(1)]);
+            btn_3.setText(categoria[(int) no.get(2)]);
+            btn_4.setText(categoria[(int) no.get(3)]);
+            btn_5.setText(categoria[s]);
+
         }
     }
 
     /**
      * Gera o som aleatório que o jogador deverá relacionar com uma das opções
+     *
+     * @return a posicao do array referente ao áudio que deve ser reproduzido
      */
     public int gerarSomAleatorio() {
         //objeto que será utilizado para gera um número aleatório
@@ -266,9 +302,15 @@ public class JogoPrincipal {
                 tocarAudio(audioVogais[i]);
                 break;
             case 2:
-                i = indiceAudio.nextInt(110);
+                i = indiceAudio.nextInt(29);
                 System.out.println("o som gerado foi o som: " + audioSilabasSimples[i]);
                 tocarAudio(audioSilabasSimples[i]);
+                y = i;
+                break;
+            case 3:
+                i = indiceAudio.nextInt(80);
+                System.out.println("o som gerado foi o som: " + audioSilabasSimplesB[i]);
+                tocarAudio(audioSilabasSimplesB[i]);
                 y = i;
                 break;
             default:
@@ -294,7 +336,10 @@ public class JogoPrincipal {
                 resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 2:
-                resultado = ((getKeyByValue(matrizSilabas, opcaoEscolhida)).equals(getAudioAtual()));
+                resultado = ((getKeyByValue(matrizSilabasSimples, opcaoEscolhida)).equals(getAudioAtual()));
+                break;
+            case 3:
+                resultado = ((getKeyByValue(matrizSilabasSimplesB, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
         }
 
@@ -337,6 +382,7 @@ public class JogoPrincipal {
      * referente à vogal A 'A' é o valor que aparecerá nos botões
      */
     public void iniciarMatrizAudiosVogal() {
+
         matrizVogais.put("vogal-A", "A");
         matrizVogais.put("vogal-E", "E");
         matrizVogais.put("vogal-I", "I");
@@ -344,118 +390,124 @@ public class JogoPrincipal {
         matrizVogais.put("vogal-U", "U");
     }
 
+    /**
+     * Inicia a matriz de sílabas
+     */
     public void iniciarMatrizAudioSilabas() {
 
-        matrizSilabas.put("ad", "AD");
-        matrizSilabas.put("al", "AL");
-        matrizSilabas.put("am", "AM");
-        matrizSilabas.put("an", "AN");
-        matrizSilabas.put("ar", "AR");
-        matrizSilabas.put("as", "AS");
-        matrizSilabas.put("az", "AZ");
-        matrizSilabas.put("ção", "ÇÃO");
-        matrizSilabas.put("ções", "ÇÕES");
-        matrizSilabas.put("el", "EL");
-        matrizSilabas.put("em", "EM");
-        matrizSilabas.put("en", "EN");
-        matrizSilabas.put("er", "ER");
-        matrizSilabas.put("es", "ES");
-        matrizSilabas.put("il", "IL");
-        matrizSilabas.put("im", "IM");
-        matrizSilabas.put("in", "IN");
-        matrizSilabas.put("ir", "IR");
-        matrizSilabas.put("is", "IS");
-        matrizSilabas.put("ol", "OL");
-        matrizSilabas.put("om", "OM");
-        matrizSilabas.put("on", "ON");
-        matrizSilabas.put("or", "OR");
-        matrizSilabas.put("os", "OS");
-        matrizSilabas.put("ul", "UL");
-        matrizSilabas.put("um", "UM");
-        matrizSilabas.put("un", "UN");
-        matrizSilabas.put("ur", "UR");
-        matrizSilabas.put("us", "US");
-        matrizSilabas.put("ba", "BA");
-        matrizSilabas.put("be", "BE");
-        matrizSilabas.put("bi", "BI");
-        matrizSilabas.put("bo", "BO");
-        matrizSilabas.put("bu", "BU");
-        matrizSilabas.put("ca", "CA");
-        matrizSilabas.put("ce", "CE");
-        matrizSilabas.put("ci", "CI");
-        matrizSilabas.put("co", "CO");
-        matrizSilabas.put("cu", "CU");
-        matrizSilabas.put("da", "DA");
-        matrizSilabas.put("de", "DE");
-        matrizSilabas.put("di", "DI");
-        matrizSilabas.put("do", "DO");
-        matrizSilabas.put("du", "DU");
-        matrizSilabas.put("fa", "FA");
-        matrizSilabas.put("fe", "FE");
-        matrizSilabas.put("fi", "FI");
-        matrizSilabas.put("fo", "FO");
-        matrizSilabas.put("fu", "FU");
-        matrizSilabas.put("ga", "GA");
-        matrizSilabas.put("ge", "GE");
-        matrizSilabas.put("gi", "GI");
-        matrizSilabas.put("go", "GO");
-        matrizSilabas.put("gu", "GU");
-        matrizSilabas.put("ja", "JA");
-        matrizSilabas.put("je", "JE");
-        matrizSilabas.put("ji", "JI");
-        matrizSilabas.put("jo", "JO");
-        matrizSilabas.put("ju", "JU");
-        matrizSilabas.put("la", "LA");
-        matrizSilabas.put("le", "LE");
-        matrizSilabas.put("li", "LI");
-        matrizSilabas.put("lo", "LO");
-        matrizSilabas.put("lu", "LU");
-        matrizSilabas.put("ma", "MA");
-        matrizSilabas.put("me", "ME");
-        matrizSilabas.put("mi", "MI");
-        matrizSilabas.put("mo", "MO");
-        matrizSilabas.put("mu", "MU");
-        matrizSilabas.put("na", "NA");
-        matrizSilabas.put("ne", "NE");
-        matrizSilabas.put("ni", "NI");
-        matrizSilabas.put("no", "NO");
-        matrizSilabas.put("nu", "NU");
-        matrizSilabas.put("pa", "PA");
-        matrizSilabas.put("pe", "PE");
-        matrizSilabas.put("pi", "PI");
-        matrizSilabas.put("po", "PO");
-        matrizSilabas.put("pu", "PU");
-        matrizSilabas.put("ra", "RA");
-        matrizSilabas.put("re", "RE");
-        matrizSilabas.put("ri", "RI");
-        matrizSilabas.put("ro", "RO");
-        matrizSilabas.put("ru", "RU");
-        matrizSilabas.put("sa", "SA");
-        matrizSilabas.put("se", "SE");
-        matrizSilabas.put("si", "SI");
-        matrizSilabas.put("so", "SO");
-        matrizSilabas.put("su", "SU");
-        matrizSilabas.put("ta", "TA");
-        matrizSilabas.put("te", "TE");
-        matrizSilabas.put("ti", "TI");
-        matrizSilabas.put("to", "TO");
-        matrizSilabas.put("tu", "TU");
-        matrizSilabas.put("va", "VA");
-        matrizSilabas.put("ve", "VE");
-        matrizSilabas.put("vi", "VI");
-        matrizSilabas.put("vo", "VO");
-        matrizSilabas.put("vu", "VU");
-        matrizSilabas.put("xa", "XA");
-        matrizSilabas.put("xe", "XE");
-        matrizSilabas.put("xi", "XI");
-        matrizSilabas.put("xo", "XO");
-        matrizSilabas.put("xu", "XU");
-        matrizSilabas.put("za", "ZA");
-        matrizSilabas.put("ze", "ZE");
-        matrizSilabas.put("zi", "ZI");
-        matrizSilabas.put("zo", "ZO");
-        matrizSilabas.put("zu", "ZU");
+        matrizSilabasSimples.put("ad", "AD");
+        matrizSilabasSimples.put("al", "AL");
+        matrizSilabasSimples.put("am", "AM");
+        matrizSilabasSimples.put("an", "AN");
+        matrizSilabasSimples.put("ar", "AR");
+        matrizSilabasSimples.put("as", "AS");
+        matrizSilabasSimples.put("az", "AZ");
+        matrizSilabasSimples.put("ção", "ÇÃO");
+        matrizSilabasSimples.put("ções", "ÇÕES");
+        matrizSilabasSimples.put("el", "EL");
+        matrizSilabasSimples.put("em", "EM");
+        matrizSilabasSimples.put("en", "EN");
+        matrizSilabasSimples.put("er", "ER");
+        matrizSilabasSimples.put("es", "ES");
+        matrizSilabasSimples.put("il", "IL");
+        matrizSilabasSimples.put("im", "IM");
+        matrizSilabasSimples.put("in", "IN");
+        matrizSilabasSimples.put("ir", "IR");
+        matrizSilabasSimples.put("is", "IS");
+        matrizSilabasSimples.put("ol", "OL");
+        matrizSilabasSimples.put("om", "OM");
+        matrizSilabasSimples.put("on", "ON");
+        matrizSilabasSimples.put("or", "OR");
+        matrizSilabasSimples.put("os", "OS");
+        matrizSilabasSimples.put("ul", "UL");
+        matrizSilabasSimples.put("um", "UM");
+        matrizSilabasSimples.put("un", "UN");
+        matrizSilabasSimples.put("ur", "UR");
+        matrizSilabasSimples.put("us", "US");
 
+    }
+
+    public void iniciarMatrizSilabasSimplesB() {
+        matrizSilabasSimplesB.put("ba", "BA");
+        matrizSilabasSimplesB.put("be", "BE");
+        matrizSilabasSimplesB.put("bi", "BI");
+        matrizSilabasSimplesB.put("bo", "BO");
+        matrizSilabasSimplesB.put("bu", "BU");
+        matrizSilabasSimplesB.put("ca", "CA");
+        matrizSilabasSimplesB.put("ce", "CE");
+        matrizSilabasSimplesB.put("ci", "CI");
+        matrizSilabasSimplesB.put("co", "CO");
+        matrizSilabasSimplesB.put("cu", "CU");
+        matrizSilabasSimplesB.put("da", "DA");
+        matrizSilabasSimplesB.put("de", "DE");
+        matrizSilabasSimplesB.put("di", "DI");
+        matrizSilabasSimplesB.put("do", "DO");
+        matrizSilabasSimplesB.put("du", "DU");
+        matrizSilabasSimplesB.put("fa", "FA");
+        matrizSilabasSimplesB.put("fe", "FE");
+        matrizSilabasSimplesB.put("fi", "FI");
+        matrizSilabasSimplesB.put("fo", "FO");
+        matrizSilabasSimplesB.put("fu", "FU");
+        matrizSilabasSimplesB.put("ga", "GA");
+        matrizSilabasSimplesB.put("ge", "GE");
+        matrizSilabasSimplesB.put("gi", "GI");
+        matrizSilabasSimplesB.put("go", "GO");
+        matrizSilabasSimplesB.put("gu", "GU");
+        matrizSilabasSimplesB.put("ja", "JA");
+        matrizSilabasSimplesB.put("je", "JE");
+        matrizSilabasSimplesB.put("ji", "JI");
+        matrizSilabasSimplesB.put("jo", "JO");
+        matrizSilabasSimplesB.put("ju", "JU");
+        matrizSilabasSimplesB.put("la", "LA");
+        matrizSilabasSimplesB.put("le", "LE");
+        matrizSilabasSimplesB.put("li", "LI");
+        matrizSilabasSimplesB.put("lo", "LO");
+        matrizSilabasSimplesB.put("lu", "LU");
+        matrizSilabasSimplesB.put("ma", "MA");
+        matrizSilabasSimplesB.put("me", "ME");
+        matrizSilabasSimplesB.put("mi", "MI");
+        matrizSilabasSimplesB.put("mo", "MO");
+        matrizSilabasSimplesB.put("mu", "MU");
+        matrizSilabasSimplesB.put("na", "NA");
+        matrizSilabasSimplesB.put("ne", "NE");
+        matrizSilabasSimplesB.put("ni", "NI");
+        matrizSilabasSimplesB.put("no", "NO");
+        matrizSilabasSimplesB.put("nu", "NU");
+        matrizSilabasSimplesB.put("pa", "PA");
+        matrizSilabasSimplesB.put("pe", "PE");
+        matrizSilabasSimplesB.put("pi", "PI");
+        matrizSilabasSimplesB.put("po", "PO");
+        matrizSilabasSimplesB.put("pu", "PU");
+        matrizSilabasSimplesB.put("ra", "RA");
+        matrizSilabasSimplesB.put("re", "RE");
+        matrizSilabasSimplesB.put("ri", "RI");
+        matrizSilabasSimplesB.put("ro", "RO");
+        matrizSilabasSimplesB.put("ru", "RU");
+        matrizSilabasSimplesB.put("sa", "SA");
+        matrizSilabasSimplesB.put("se", "SE");
+        matrizSilabasSimplesB.put("si", "SI");
+        matrizSilabasSimplesB.put("so", "SO");
+        matrizSilabasSimplesB.put("su", "SU");
+        matrizSilabasSimplesB.put("ta", "TA");
+        matrizSilabasSimplesB.put("te", "TE");
+        matrizSilabasSimplesB.put("ti", "TI");
+        matrizSilabasSimplesB.put("to", "TO");
+        matrizSilabasSimplesB.put("tu", "TU");
+        matrizSilabasSimplesB.put("va", "VA");
+        matrizSilabasSimplesB.put("ve", "VE");
+        matrizSilabasSimplesB.put("vi", "VI");
+        matrizSilabasSimplesB.put("vo", "VO");
+        matrizSilabasSimplesB.put("vu", "VU");
+        matrizSilabasSimplesB.put("xa", "XA");
+        matrizSilabasSimplesB.put("xe", "XE");
+        matrizSilabasSimplesB.put("xi", "XI");
+        matrizSilabasSimplesB.put("xo", "XO");
+        matrizSilabasSimplesB.put("xu", "XU");
+        matrizSilabasSimplesB.put("za", "ZA");
+        matrizSilabasSimplesB.put("ze", "ZE");
+        matrizSilabasSimplesB.put("zi", "ZI");
+        matrizSilabasSimplesB.put("zo", "ZO");
+        matrizSilabasSimplesB.put("zu", "ZU");
     }
 
     /**
@@ -524,7 +576,10 @@ public class JogoPrincipal {
                 opcaoCorreta = matrizVogais.get(nomeAudioAtual);
                 break;
             case 2:
-                opcaoCorreta = matrizSilabas.get(nomeAudioAtual);
+                opcaoCorreta = matrizSilabasSimples.get(nomeAudioAtual);
+                break;
+            case 3:
+                opcaoCorreta = matrizSilabasSimplesB.get(nomeAudioAtual);
                 break;
             default:
                 break;
@@ -573,7 +628,7 @@ public class JogoPrincipal {
      * @param temp opção correta
      */
     public void mostrarOpcaoCorreta(Button temp) {
-        //evento final que realiza uma chamada à opcaoAleatoria
+        //evento final que realiza uma chamada ao método que gera uma opcao aleatoria
         gerarProximaRodada = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
@@ -585,7 +640,7 @@ public class JogoPrincipal {
                 }
             }
         };
-
+        //evento que reinicia seta o valor boleano que indica que o relógio deve ser reiniciado
         reiniciarRelogio = new EventHandler<ActionEvent>() {
 
             @Override
@@ -647,6 +702,10 @@ public class JogoPrincipal {
                 break;
             case 2:
                 caminhoAudio = "src/audios_silabas_simples/" + n + ".mp3";
+                break;
+            case 3:
+                caminhoAudio = "src/audios_silabas_simplesB/" + n + ".mp3";
+                break;
             default:
                 break;
         }
@@ -663,6 +722,7 @@ public class JogoPrincipal {
         //toca o audio automaticamente
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
+        
     }
 
     /**
