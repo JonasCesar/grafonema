@@ -238,7 +238,8 @@ public class JogoPrincipal {
      (USADA A PARTIR DA FASE DAS SÍLABAS)
      */
     public void preencherOpcoes(String categoria[], int s, ArrayList no) {
-
+        
+        System.out.println(categoria.length);
         Random ind = new Random();
         int valor = ind.nextInt(5);
         if (valor == 0) {
