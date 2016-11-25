@@ -112,6 +112,8 @@ public class JogoPrincipal {
     private Scene cenaTemporaria;
 
     private Button correto;
+    
+    private Timer timer;
 
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
@@ -146,6 +148,7 @@ public class JogoPrincipal {
      * @throws java.io.IOException
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
+
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
@@ -219,7 +222,7 @@ public class JogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(81);
+                    proxValor = indice.nextInt(80);
 
                     if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
@@ -238,7 +241,8 @@ public class JogoPrincipal {
      (USADA A PARTIR DA FASE DAS SÍLABAS)
      */
     public void preencherOpcoes(String categoria[], int s, ArrayList no) {
-
+        
+        System.out.println(categoria.length);
         Random ind = new Random();
         int valor = ind.nextInt(5);
         if (valor == 0) {
@@ -535,6 +539,7 @@ public class JogoPrincipal {
      * Incrementa, em valores de 10, a quantidade de pontos do jagador
      */
     public void incrementarPontuacao() {
+        
         //valor que será acrescentado à pontuação do jogador
         int valorAcrescentar = 10;
         //pega a pontuação no label da pontuação
@@ -556,6 +561,7 @@ public class JogoPrincipal {
      * Incrementa a quantidade de acertos do jogador
      */
     public void incrementarAcerto() {
+        setIndicacaoPular(true);
         jogador.setAcertosTotal(jogador.getAcertosTotal() + 1);
         System.out.println("Acertos " + jogador.getAcertosTotal());
     }
@@ -886,6 +892,9 @@ public class JogoPrincipal {
                                 if (getMostrandoCena()) {
                                     i = 30;
                                     System.out.println("setou o i como 30");
+                                }
+                                if(getIndicacaoPular()){
+                                    i = i+0;
                                 }
 
                             }
