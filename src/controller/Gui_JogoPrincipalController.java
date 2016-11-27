@@ -67,6 +67,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         jogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
         jogoPrincipal.iniciarMatrizAudioSilabas();
         jogoPrincipal.iniciarMatrizSilabasSimplesB();
+        jogoPrincipal.inicarMatrizSilabasComplexas2();
         jogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
         jogoPrincipal.iniciarTimer();//inicia o relógio
     }

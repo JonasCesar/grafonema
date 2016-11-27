@@ -74,6 +74,17 @@ public class JogoPrincipal {
         "PO", "PU", "RA", "RE", "RI", "RO", "RU", "SA", "SE", "SI", "SO", "SU",
         "TA", "TE", "TI", "TO", "TU", "VA", "VE", "VI", "VO", "VU", "XA", "XE",
         "XI", "XO", "XU", "ZA", "ZE", "ZI", "ZO", "ZU"};
+    private String silabasComplexas2[] = {
+        "BLA", "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU",
+        "CLA", "CLE", "CLI", "CLO", "CLU", "CRA", "CRE", "CRI", "CRO", "CRU",
+        "DLA", "DLE", "DLI", "DLO", "DLU", "DRA", "DRE", "DRI", "DRO", "DRU",
+        "FLA", "FLE", "FLI", "FLO", "FLU", "FRA", "FRE", "FRI", "FRO", "FRU",
+        "GLA", "GLE", "GLI", "GLO", "GLU", "GRA", "GRE", "GRI", "GRO", "GRU",
+        "PLA", "PLE", "PLI", "PLO", "PLU", "PRA", "PRE", "PRI", "PRO", "PRU",
+        "TI", "TLA", "TLE", "TLI", "TLO", "TLU", "TRA", "TRE", "TRI", "TRO",
+        "TRU", "VLA", "VLE", "VLI", "VLO", "VLU", "VRA", "VRE", "VRI", "VRO",
+        "VRU"
+    };
 
     //o nome dos arquivos das vogais
     private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
@@ -93,10 +104,21 @@ public class JogoPrincipal {
         "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo", "xu", "za", "ze", "zi",
         "zo", "zu"};
 
+    private final String audiosSilabasComplexas2[] = {
+        "bla", "ble", "bli", "blo", "blu", "bra", "bre", "bri", "bro", "bru",
+        "cla", "cle", "cli", "clo", "clu", "cra", "cre", "cri", "cro", "cru",
+        "dla", "dle", "dli", "dlo", "dlu", "dra", "dre", "dri", "dro", "dru",
+        "fla", "fle", "fli", "flo", "flu", "fra", "fre", "fri", "fro", "fru",
+        "gla", "gle", "gli", "glo", "glu", "gra", "gre", "gri", "gro", "gru",
+        "pla", "ple", "pli", "plo", "plu", "pra", "pre", "pri", "pro", "pru",
+        "ti", "tla", "tle", "tli", "tlo", "tlu", "tra", "tre", "tri", "tro",
+        "tru", "vla", "vle", "vli", "vlo", "vlu", "vra", "vre", "vri", "vro",
+        "vru"};
+
     public Jogador jogador = new Jogador();
 
-    private Map<String, String> matrizVogais, matrizSilabasSimples,
-            matrizSilabasSimplesB;
+    private final Map<String, String> matrizVogais, matrizSilabasSimples,
+            matrizSilabasSimplesB, matrizSilabasComplexas2;
 
     private Random indiceAudio;
 
@@ -112,7 +134,7 @@ public class JogoPrincipal {
     private Scene cenaTemporaria;
 
     private Button correto;
-    
+
     private Timer timer;
 
     public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
@@ -130,6 +152,7 @@ public class JogoPrincipal {
         this.matrizVogais = new HashMap<String, String>();
         this.matrizSilabasSimples = new HashMap<String, String>();
         this.matrizSilabasSimplesB = new HashMap<String, String>();
+        this.matrizSilabasComplexas2 = new HashMap<String, String>();
         this.mostrandoCena = false;
         this.indicacaoPular = false;
         this.pularErro = false;
@@ -233,6 +256,27 @@ public class JogoPrincipal {
 
                 preencherOpcoes(silabasSimplesB, som, novasOpcoes);
                 break;
+
+            case 4:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(80);
+
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                preencherOpcoes(silabasComplexas2, som, novasOpcoes);
+                break;
         }
     }
 
@@ -241,8 +285,8 @@ public class JogoPrincipal {
      (USADA A PARTIR DA FASE DAS SÍLABAS)
      */
     public void preencherOpcoes(String categoria[], int s, ArrayList no) {
-        
-        System.out.println(categoria.length);
+
+        System.out.println("Categoria "+categoria.length);
         Random ind = new Random();
         int valor = ind.nextInt(5);
         if (valor == 0) {
@@ -317,6 +361,12 @@ public class JogoPrincipal {
                 tocarAudio(audioSilabasSimplesB[i]);
                 y = i;
                 break;
+            case 4:
+                i = indiceAudio.nextInt(80);
+                System.out.println("o som gerado foi o som: " + audioSilabasSimplesB[i]);
+                tocarAudio(audiosSilabasComplexas2[i]);
+                y = i;
+                break;
             default:
                 break;
         }
@@ -344,6 +394,12 @@ public class JogoPrincipal {
                 break;
             case 3:
                 resultado = ((getKeyByValue(matrizSilabasSimplesB, opcaoEscolhida)).equals(getAudioAtual()));
+                break;
+            case 4:
+                System.out.println("FASE QUATRO!!!");
+                resultado = ((getKeyByValue(matrizSilabasComplexas2, opcaoEscolhida)).equals(getAudioAtual()));
+                break;
+            default:
                 break;
         }
 
@@ -514,6 +570,90 @@ public class JogoPrincipal {
         matrizSilabasSimplesB.put("zu", "ZU");
     }
 
+    public void inicarMatrizSilabasComplexas2() {
+        matrizSilabasComplexas2.put("bla","BLA");
+        matrizSilabasComplexas2.put("ble","BLE");
+        matrizSilabasComplexas2.put("bli","BLI");
+        matrizSilabasComplexas2.put("blo","BLO");
+        matrizSilabasComplexas2.put("blu","BLU");
+        matrizSilabasComplexas2.put("bra","BRA");
+        matrizSilabasComplexas2.put("bre","BRE");
+        matrizSilabasComplexas2.put("bri","BRI");
+        matrizSilabasComplexas2.put("bro","BRO");
+        matrizSilabasComplexas2.put("bru","BRU");
+        matrizSilabasComplexas2.put("cla","CLA");
+        matrizSilabasComplexas2.put("cle","CLE");
+        matrizSilabasComplexas2.put("cli","CLI");
+        matrizSilabasComplexas2.put("clo","CLO");
+        matrizSilabasComplexas2.put("clu","CLU");
+        matrizSilabasComplexas2.put("cra","CRA");
+        matrizSilabasComplexas2.put("cre","CRE");
+        matrizSilabasComplexas2.put("cri","CRI");
+        matrizSilabasComplexas2.put("cro","CRO");
+        matrizSilabasComplexas2.put("cru","CRU");
+        matrizSilabasComplexas2.put("dla","CLA");
+        matrizSilabasComplexas2.put("dle","DLE");
+        matrizSilabasComplexas2.put("dli","DLI");
+        matrizSilabasComplexas2.put("dlo","DLO");
+        matrizSilabasComplexas2.put("dlu","DLU");
+        matrizSilabasComplexas2.put("dra","DRA");
+        matrizSilabasComplexas2.put("dre","DRE");
+        matrizSilabasComplexas2.put("dri","DRI");
+        matrizSilabasComplexas2.put("dro","DRO");
+        matrizSilabasComplexas2.put("dru","DRU");
+        matrizSilabasComplexas2.put("fla","FLA");
+        matrizSilabasComplexas2.put("fle","FLE");
+        matrizSilabasComplexas2.put("fli","FLI");
+        matrizSilabasComplexas2.put("flo","FLO");
+        matrizSilabasComplexas2.put("flu","FLU");
+        matrizSilabasComplexas2.put("fra","FRA");
+        matrizSilabasComplexas2.put("fre","FRE");
+        matrizSilabasComplexas2.put("fri","FRI");
+        matrizSilabasComplexas2.put("fro","FRO");
+        matrizSilabasComplexas2.put("fru","FRU");
+        matrizSilabasComplexas2.put("gla","GLA");
+        matrizSilabasComplexas2.put("gle","GLE");
+        matrizSilabasComplexas2.put("gli","GLI");
+        matrizSilabasComplexas2.put("glo","GLO");
+        matrizSilabasComplexas2.put("glu","GLU");
+        matrizSilabasComplexas2.put("gra","GRA");
+        matrizSilabasComplexas2.put("gre","GRE");
+        matrizSilabasComplexas2.put("gri","GRI");
+        matrizSilabasComplexas2.put("gro","GRO");
+        matrizSilabasComplexas2.put("gru","GRU");
+        matrizSilabasComplexas2.put("pla","PLA");
+        matrizSilabasComplexas2.put("ple","PLE");
+        matrizSilabasComplexas2.put("pli","PLI");
+        matrizSilabasComplexas2.put("plo","PLO");
+        matrizSilabasComplexas2.put("plu","PLU");        
+        matrizSilabasComplexas2.put("pra","PRA");
+        matrizSilabasComplexas2.put("pre","PRE");
+        matrizSilabasComplexas2.put("pri","PRI");
+        matrizSilabasComplexas2.put("pro","PRO");
+        matrizSilabasComplexas2.put("pru","PRU");
+        matrizSilabasComplexas2.put("ti","TI");
+        matrizSilabasComplexas2.put("tla","TLA");
+        matrizSilabasComplexas2.put("tle","TLE");
+        matrizSilabasComplexas2.put("tli","TLI");
+        matrizSilabasComplexas2.put("tlo","TLO");
+        matrizSilabasComplexas2.put("tlu","TLU");
+        matrizSilabasComplexas2.put("tra","TRA");
+        matrizSilabasComplexas2.put("tre","TRE");
+        matrizSilabasComplexas2.put("tri","TRI");
+        matrizSilabasComplexas2.put("tro","TRO");
+        matrizSilabasComplexas2.put("tru","TRU");
+        matrizSilabasComplexas2.put("vla","VLA");
+        matrizSilabasComplexas2.put("vle","VLE");
+        matrizSilabasComplexas2.put("vli","VLI");
+        matrizSilabasComplexas2.put("vlo","VLO");
+        matrizSilabasComplexas2.put("vlu","VLU");
+        matrizSilabasComplexas2.put("vra","VRA");
+        matrizSilabasComplexas2.put("vre","VRE");
+        matrizSilabasComplexas2.put("vri","VRI");
+        matrizSilabasComplexas2.put("vro","VRO");
+        matrizSilabasComplexas2.put("vru","VRU");
+    }
+
     /**
      * Retorna a chave da HashMap correspondente ao valor que é passado como
      * parâmetro
@@ -539,7 +679,7 @@ public class JogoPrincipal {
      * Incrementa, em valores de 10, a quantidade de pontos do jagador
      */
     public void incrementarPontuacao() {
-        
+
         //valor que será acrescentado à pontuação do jogador
         int valorAcrescentar = 10;
         //pega a pontuação no label da pontuação
@@ -586,6 +726,9 @@ public class JogoPrincipal {
                 break;
             case 3:
                 opcaoCorreta = matrizSilabasSimplesB.get(nomeAudioAtual);
+                break;
+            case 4:
+                opcaoCorreta = matrizSilabasComplexas2.get(nomeAudioAtual);
                 break;
             default:
                 break;
@@ -712,6 +855,9 @@ public class JogoPrincipal {
             case 3:
                 caminhoAudio = "src/audios_silabas_simplesB/" + n + ".mp3";
                 break;
+            case 4:
+                caminhoAudio = "src/audios_silabas_complexas2/" + n + ".mp3";
+                break;
             default:
                 break;
         }
@@ -728,7 +874,7 @@ public class JogoPrincipal {
         //toca o audio automaticamente
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
-        
+
     }
 
     /**
@@ -893,8 +1039,8 @@ public class JogoPrincipal {
                                     i = 30;
                                     System.out.println("setou o i como 30");
                                 }
-                                if(getIndicacaoPular()){
-                                    i = i+0;
+                                if (getIndicacaoPular()) {
+                                    i = i + 0;
                                 }
 
                             }
@@ -921,7 +1067,7 @@ public class JogoPrincipal {
                         }
                         //se o jogador pulou ou errou voltar o tempo para 30 segundos
                         if ((getIndicacaoPular()) || (getPularErro())) {
-                            System.out.println(i);
+                            //System.out.println(i);
                             i = 5;
                             //indicacaoPular = false;
                             setIndicacaoPular(false);
