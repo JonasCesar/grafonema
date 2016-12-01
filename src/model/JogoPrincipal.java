@@ -86,6 +86,21 @@ public class JogoPrincipal {
         "VRU"
     };
 
+    private String palavrasSimples[] = {
+        "AMARELO", "AMO", "ANEL", "APITO", "ARVORE", "BALA", "BANANA", "BATATA",
+        "BATE", "BIRUTA", "BOCA", "BOLA", "BOLO", "BONECA", "BONÉ",
+        "BONITO", "BULE", "CABELO", "CAFÉ", "CAMA", "CAMELO", "CAMISA", "CAPACETE",
+        "CASACO", "CASA", "CAVALO", "CEREJA", "CINTO", "COLA", "COMO", "COPO",
+        "CORUJA", "DADO", "DEDO", "ESCOLA", "ESCOVA", "FACA", "FADA", "FOCA",
+        "FOGO", "GALO", "GATO", "GELADO", "GELO", "JACARE", "JANELA",
+        "LAPA", "LATA", "LEITE", "LIXO", "LUA", "LUTA", "LUVA", "MACACO", "MALA",
+        "MENINA", "MENINO", "MESA", "MOEDA", "MUSICA", "NOVELA", "PAREDE", "PATO",
+        "PELADO", "PÉ", "PENA", "PERA", "PETECA", "PIANO", "PIPA", "PIPOCA", "PIRULITO",
+        "PORTA", "RATO", "REI", "RICO", "ROBO", "ROSA", "RUA", "SABADO", "SAPATO",
+        "SAPO", "SINO", "TAPETE", "TATU", "TELEFONE", "TETO", "TIJOLO", "TOMATE",
+        "URRO", "UVA", "VACA", "VELA", "XICARA"
+    };
+
     //o nome dos arquivos das vogais
     private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
 
@@ -115,10 +130,25 @@ public class JogoPrincipal {
         "tru", "vla", "vle", "vli", "vlo", "vlu", "vra", "vre", "vri", "vro",
         "vru"};
 
+    private final String audiosPalavrasSimples[] = {
+        "amarelo", "amo", "anel", "apito", "arvore", "bala", "banana", "batata",
+        "bate", "biruta", "boca", "bola", "bolo", "boneca", "boné",
+        "bonito", "bule", "cabelo", "café", "cama", "camelo", "camisa", "capacete",
+        "casaco", "casa", "cavalo", "cereja", "cinto", "cola", "como", "copo",
+        "coruja", "dado", "dedo", "escola", "escova", "faca", "fada", "foca",
+        "fogo", "galo", "gato", "gelado", "gelo", "jacare", "janela", "lapa",
+        "lata", "leite", "lixo", "lua", "luta", "luva", "macaco", "mala",
+        "menina", "menino", "mesa", "moeda", "musica", "novela", "parede", "pato",
+        "pelado", "pé", "pena", "pera", "peteca", "piano", "pipa", "pipoca",
+        "pirulito", "porta", "rato", "rei", "rico", "robo", "rosa", "rua",
+        "sabado", "sapato", "sapo", "sino", "tapete", "tatu", "telefone", "teto",
+        "tijolo", "tomate", "urro", "uva", "vaca", "vela", "xicara"
+    };
+
     public Jogador jogador = new Jogador();
 
     private final Map<String, String> matrizVogais, matrizSilabasSimples,
-            matrizSilabasSimplesB, matrizSilabasComplexas2;
+            matrizSilabasSimplesB, matrizSilabasComplexas2, matrizPalavrasSimples;
 
     private Random indiceAudio;
 
@@ -153,6 +183,7 @@ public class JogoPrincipal {
         this.matrizSilabasSimples = new HashMap<String, String>();
         this.matrizSilabasSimplesB = new HashMap<String, String>();
         this.matrizSilabasComplexas2 = new HashMap<String, String>();
+        this.matrizPalavrasSimples = new HashMap<String, String>();
         this.mostrandoCena = false;
         this.indicacaoPular = false;
         this.pularErro = false;
@@ -177,7 +208,7 @@ public class JogoPrincipal {
             jogador.setBonus(true);
         }
 
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 5) {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
@@ -277,6 +308,26 @@ public class JogoPrincipal {
 
                 preencherOpcoes(silabasComplexas2, som, novasOpcoes);
                 break;
+            case 5:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(93);
+
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                preencherOpcoes(palavrasSimples, som, novasOpcoes);
+                break;
         }
     }
 
@@ -286,7 +337,7 @@ public class JogoPrincipal {
      */
     public void preencherOpcoes(String categoria[], int s, ArrayList no) {
 
-        System.out.println("Categoria "+categoria.length);
+        System.out.println("Categoria " + categoria.length);
         Random ind = new Random();
         int valor = ind.nextInt(5);
         if (valor == 0) {
@@ -363,8 +414,14 @@ public class JogoPrincipal {
                 break;
             case 4:
                 i = indiceAudio.nextInt(80);
-                System.out.println("o som gerado foi o som: " + audioSilabasSimplesB[i]);
+                System.out.println("o som gerado foi o som: " + audiosSilabasComplexas2[i]);
                 tocarAudio(audiosSilabasComplexas2[i]);
+                y = i;
+                break;
+            case 5:
+                i = indiceAudio.nextInt(93);
+                System.out.println("o som gerado foi o som: " + palavrasSimples[i]);
+                tocarAudio(audiosPalavrasSimples[i]);
                 y = i;
                 break;
             default:
@@ -398,6 +455,10 @@ public class JogoPrincipal {
             case 4:
                 System.out.println("FASE QUATRO!!!");
                 resultado = ((getKeyByValue(matrizSilabasComplexas2, opcaoEscolhida)).equals(getAudioAtual()));
+                break;
+            case 5:
+                System.out.println("FASE CINCO!!!");
+                resultado = ((getKeyByValue(matrizPalavrasSimples, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             default:
                 break;
@@ -571,87 +632,185 @@ public class JogoPrincipal {
     }
 
     public void inicarMatrizSilabasComplexas2() {
-        matrizSilabasComplexas2.put("bla","BLA");
-        matrizSilabasComplexas2.put("ble","BLE");
-        matrizSilabasComplexas2.put("bli","BLI");
-        matrizSilabasComplexas2.put("blo","BLO");
-        matrizSilabasComplexas2.put("blu","BLU");
-        matrizSilabasComplexas2.put("bra","BRA");
-        matrizSilabasComplexas2.put("bre","BRE");
-        matrizSilabasComplexas2.put("bri","BRI");
-        matrizSilabasComplexas2.put("bro","BRO");
-        matrizSilabasComplexas2.put("bru","BRU");
-        matrizSilabasComplexas2.put("cla","CLA");
-        matrizSilabasComplexas2.put("cle","CLE");
-        matrizSilabasComplexas2.put("cli","CLI");
-        matrizSilabasComplexas2.put("clo","CLO");
-        matrizSilabasComplexas2.put("clu","CLU");
-        matrizSilabasComplexas2.put("cra","CRA");
-        matrizSilabasComplexas2.put("cre","CRE");
-        matrizSilabasComplexas2.put("cri","CRI");
-        matrizSilabasComplexas2.put("cro","CRO");
-        matrizSilabasComplexas2.put("cru","CRU");
-        matrizSilabasComplexas2.put("dla","CLA");
-        matrizSilabasComplexas2.put("dle","DLE");
-        matrizSilabasComplexas2.put("dli","DLI");
-        matrizSilabasComplexas2.put("dlo","DLO");
-        matrizSilabasComplexas2.put("dlu","DLU");
-        matrizSilabasComplexas2.put("dra","DRA");
-        matrizSilabasComplexas2.put("dre","DRE");
-        matrizSilabasComplexas2.put("dri","DRI");
-        matrizSilabasComplexas2.put("dro","DRO");
-        matrizSilabasComplexas2.put("dru","DRU");
-        matrizSilabasComplexas2.put("fla","FLA");
-        matrizSilabasComplexas2.put("fle","FLE");
-        matrizSilabasComplexas2.put("fli","FLI");
-        matrizSilabasComplexas2.put("flo","FLO");
-        matrizSilabasComplexas2.put("flu","FLU");
-        matrizSilabasComplexas2.put("fra","FRA");
-        matrizSilabasComplexas2.put("fre","FRE");
-        matrizSilabasComplexas2.put("fri","FRI");
-        matrizSilabasComplexas2.put("fro","FRO");
-        matrizSilabasComplexas2.put("fru","FRU");
-        matrizSilabasComplexas2.put("gla","GLA");
-        matrizSilabasComplexas2.put("gle","GLE");
-        matrizSilabasComplexas2.put("gli","GLI");
-        matrizSilabasComplexas2.put("glo","GLO");
-        matrizSilabasComplexas2.put("glu","GLU");
-        matrizSilabasComplexas2.put("gra","GRA");
-        matrizSilabasComplexas2.put("gre","GRE");
-        matrizSilabasComplexas2.put("gri","GRI");
-        matrizSilabasComplexas2.put("gro","GRO");
-        matrizSilabasComplexas2.put("gru","GRU");
-        matrizSilabasComplexas2.put("pla","PLA");
-        matrizSilabasComplexas2.put("ple","PLE");
-        matrizSilabasComplexas2.put("pli","PLI");
-        matrizSilabasComplexas2.put("plo","PLO");
-        matrizSilabasComplexas2.put("plu","PLU");        
-        matrizSilabasComplexas2.put("pra","PRA");
-        matrizSilabasComplexas2.put("pre","PRE");
-        matrizSilabasComplexas2.put("pri","PRI");
-        matrizSilabasComplexas2.put("pro","PRO");
-        matrizSilabasComplexas2.put("pru","PRU");
-        matrizSilabasComplexas2.put("ti","TI");
-        matrizSilabasComplexas2.put("tla","TLA");
-        matrizSilabasComplexas2.put("tle","TLE");
-        matrizSilabasComplexas2.put("tli","TLI");
-        matrizSilabasComplexas2.put("tlo","TLO");
-        matrizSilabasComplexas2.put("tlu","TLU");
-        matrizSilabasComplexas2.put("tra","TRA");
-        matrizSilabasComplexas2.put("tre","TRE");
-        matrizSilabasComplexas2.put("tri","TRI");
-        matrizSilabasComplexas2.put("tro","TRO");
-        matrizSilabasComplexas2.put("tru","TRU");
-        matrizSilabasComplexas2.put("vla","VLA");
-        matrizSilabasComplexas2.put("vle","VLE");
-        matrizSilabasComplexas2.put("vli","VLI");
-        matrizSilabasComplexas2.put("vlo","VLO");
-        matrizSilabasComplexas2.put("vlu","VLU");
-        matrizSilabasComplexas2.put("vra","VRA");
-        matrizSilabasComplexas2.put("vre","VRE");
-        matrizSilabasComplexas2.put("vri","VRI");
-        matrizSilabasComplexas2.put("vro","VRO");
-        matrizSilabasComplexas2.put("vru","VRU");
+        matrizSilabasComplexas2.put("bla", "BLA");
+        matrizSilabasComplexas2.put("ble", "BLE");
+        matrizSilabasComplexas2.put("bli", "BLI");
+        matrizSilabasComplexas2.put("blo", "BLO");
+        matrizSilabasComplexas2.put("blu", "BLU");
+        matrizSilabasComplexas2.put("bra", "BRA");
+        matrizSilabasComplexas2.put("bre", "BRE");
+        matrizSilabasComplexas2.put("bri", "BRI");
+        matrizSilabasComplexas2.put("bro", "BRO");
+        matrizSilabasComplexas2.put("bru", "BRU");
+        matrizSilabasComplexas2.put("cla", "CLA");
+        matrizSilabasComplexas2.put("cle", "CLE");
+        matrizSilabasComplexas2.put("cli", "CLI");
+        matrizSilabasComplexas2.put("clo", "CLO");
+        matrizSilabasComplexas2.put("clu", "CLU");
+        matrizSilabasComplexas2.put("cra", "CRA");
+        matrizSilabasComplexas2.put("cre", "CRE");
+        matrizSilabasComplexas2.put("cri", "CRI");
+        matrizSilabasComplexas2.put("cro", "CRO");
+        matrizSilabasComplexas2.put("cru", "CRU");
+        matrizSilabasComplexas2.put("dla", "CLA");
+        matrizSilabasComplexas2.put("dle", "DLE");
+        matrizSilabasComplexas2.put("dli", "DLI");
+        matrizSilabasComplexas2.put("dlo", "DLO");
+        matrizSilabasComplexas2.put("dlu", "DLU");
+        matrizSilabasComplexas2.put("dra", "DRA");
+        matrizSilabasComplexas2.put("dre", "DRE");
+        matrizSilabasComplexas2.put("dri", "DRI");
+        matrizSilabasComplexas2.put("dro", "DRO");
+        matrizSilabasComplexas2.put("dru", "DRU");
+        matrizSilabasComplexas2.put("fla", "FLA");
+        matrizSilabasComplexas2.put("fle", "FLE");
+        matrizSilabasComplexas2.put("fli", "FLI");
+        matrizSilabasComplexas2.put("flo", "FLO");
+        matrizSilabasComplexas2.put("flu", "FLU");
+        matrizSilabasComplexas2.put("fra", "FRA");
+        matrizSilabasComplexas2.put("fre", "FRE");
+        matrizSilabasComplexas2.put("fri", "FRI");
+        matrizSilabasComplexas2.put("fro", "FRO");
+        matrizSilabasComplexas2.put("fru", "FRU");
+        matrizSilabasComplexas2.put("gla", "GLA");
+        matrizSilabasComplexas2.put("gle", "GLE");
+        matrizSilabasComplexas2.put("gli", "GLI");
+        matrizSilabasComplexas2.put("glo", "GLO");
+        matrizSilabasComplexas2.put("glu", "GLU");
+        matrizSilabasComplexas2.put("gra", "GRA");
+        matrizSilabasComplexas2.put("gre", "GRE");
+        matrizSilabasComplexas2.put("gri", "GRI");
+        matrizSilabasComplexas2.put("gro", "GRO");
+        matrizSilabasComplexas2.put("gru", "GRU");
+        matrizSilabasComplexas2.put("pla", "PLA");
+        matrizSilabasComplexas2.put("ple", "PLE");
+        matrizSilabasComplexas2.put("pli", "PLI");
+        matrizSilabasComplexas2.put("plo", "PLO");
+        matrizSilabasComplexas2.put("plu", "PLU");
+        matrizSilabasComplexas2.put("pra", "PRA");
+        matrizSilabasComplexas2.put("pre", "PRE");
+        matrizSilabasComplexas2.put("pri", "PRI");
+        matrizSilabasComplexas2.put("pro", "PRO");
+        matrizSilabasComplexas2.put("pru", "PRU");
+        matrizSilabasComplexas2.put("ti", "TI");
+        matrizSilabasComplexas2.put("tla", "TLA");
+        matrizSilabasComplexas2.put("tle", "TLE");
+        matrizSilabasComplexas2.put("tli", "TLI");
+        matrizSilabasComplexas2.put("tlo", "TLO");
+        matrizSilabasComplexas2.put("tlu", "TLU");
+        matrizSilabasComplexas2.put("tra", "TRA");
+        matrizSilabasComplexas2.put("tre", "TRE");
+        matrizSilabasComplexas2.put("tri", "TRI");
+        matrizSilabasComplexas2.put("tro", "TRO");
+        matrizSilabasComplexas2.put("tru", "TRU");
+        matrizSilabasComplexas2.put("vla", "VLA");
+        matrizSilabasComplexas2.put("vle", "VLE");
+        matrizSilabasComplexas2.put("vli", "VLI");
+        matrizSilabasComplexas2.put("vlo", "VLO");
+        matrizSilabasComplexas2.put("vlu", "VLU");
+        matrizSilabasComplexas2.put("vra", "VRA");
+        matrizSilabasComplexas2.put("vre", "VRE");
+        matrizSilabasComplexas2.put("vri", "VRI");
+        matrizSilabasComplexas2.put("vro", "VRO");
+        matrizSilabasComplexas2.put("vru", "VRU");
+    }
+
+    public void iniciarMatrizPalavrasSimples() {
+        matrizPalavrasSimples.put("amarelo", "AMARELO");
+        matrizPalavrasSimples.put("amo", "AMO");
+        matrizPalavrasSimples.put("anel", "ANEL");
+        matrizPalavrasSimples.put("apito", "APITO");
+        matrizPalavrasSimples.put("arvore", "ARVORE");
+        matrizPalavrasSimples.put("bala", "BALA");
+        matrizPalavrasSimples.put("banana", "BANANA");
+        matrizPalavrasSimples.put("batata", "BATATA");
+        matrizPalavrasSimples.put("bate", "BATE");
+        matrizPalavrasSimples.put("biruta", "BIRUTA");
+        matrizPalavrasSimples.put("boca", "BOCA");
+        matrizPalavrasSimples.put("bola", "BOLA");
+        matrizPalavrasSimples.put("bolo", "BOLO");
+        matrizPalavrasSimples.put("boneca", "BONECA");
+        matrizPalavrasSimples.put("boné", "BONÉ");
+        matrizPalavrasSimples.put("bonito", "BONITO");
+        matrizPalavrasSimples.put("bule", "BULE");
+        matrizPalavrasSimples.put("cabelo", "CABELO");
+        matrizPalavrasSimples.put("café", "CAFÉ");
+        matrizPalavrasSimples.put("cama", "CAMA");
+        matrizPalavrasSimples.put("camelo", "CAMELO");
+        matrizPalavrasSimples.put("camisa", "CAMISA");
+        matrizPalavrasSimples.put("capacete", "CAPACETE");
+        matrizPalavrasSimples.put("casaco", "CASACO");
+        matrizPalavrasSimples.put("casa", "CASA");
+        matrizPalavrasSimples.put("cavalo", "CAVALO");
+        matrizPalavrasSimples.put("cereja", "CEREJA");
+        matrizPalavrasSimples.put("cinto", "CINTO");
+        matrizPalavrasSimples.put("cola", "COLA");
+        matrizPalavrasSimples.put("como", "COMO");
+        matrizPalavrasSimples.put("copo", "COPO");
+        matrizPalavrasSimples.put("coruja", "CORUJA");
+        matrizPalavrasSimples.put("dado", "DADO");
+        matrizPalavrasSimples.put("dedo", "DEDO");
+        matrizPalavrasSimples.put("escola", "ESCOLA");
+        matrizPalavrasSimples.put("escova", "ESCOVA");
+        matrizPalavrasSimples.put("faca", "FACA");
+        matrizPalavrasSimples.put("fada", "FADA");
+        matrizPalavrasSimples.put("foca", "FOCA");
+        matrizPalavrasSimples.put("fogo", "FOGO");
+        matrizPalavrasSimples.put("galo", "GALO");
+        matrizPalavrasSimples.put("gato", "GATO");
+        matrizPalavrasSimples.put("gelado", "GELADO");
+        matrizPalavrasSimples.put("gelo", "GELO");
+        matrizPalavrasSimples.put("jacare", "JACARE");
+        matrizPalavrasSimples.put("janela", "JANELA");
+        matrizPalavrasSimples.put("lapa", "LAPA");
+        matrizPalavrasSimples.put("lata", "LATA");
+        matrizPalavrasSimples.put("leite", "LEITA");
+        matrizPalavrasSimples.put("lixo", "LIXO");
+        matrizPalavrasSimples.put("lua", "LUA");
+        matrizPalavrasSimples.put("luta", "LUTA");
+        matrizPalavrasSimples.put("luva", "LUVA");
+        matrizPalavrasSimples.put("macaco", "MACACO");
+        matrizPalavrasSimples.put("mala", "MALA");
+        matrizPalavrasSimples.put("menina", "MENINA");
+        matrizPalavrasSimples.put("menino", "MENINO");
+        matrizPalavrasSimples.put("mesa", "MESA");
+        matrizPalavrasSimples.put("moeda", "MOEDA");
+        matrizPalavrasSimples.put("musica", "MUSICA");
+        matrizPalavrasSimples.put("novela", "NOVELA");
+        matrizPalavrasSimples.put("parede", "PAREDE");
+        matrizPalavrasSimples.put("pato", "PATO");
+        matrizPalavrasSimples.put("pelado", "PELADO");
+        matrizPalavrasSimples.put("pé", "PÉ");
+        matrizPalavrasSimples.put("pena", "PENA");
+        matrizPalavrasSimples.put("pera", "PERA");
+        matrizPalavrasSimples.put("peteca", "PETECA");
+        matrizPalavrasSimples.put("piano", "PIANO");
+        matrizPalavrasSimples.put("pipa", "PIPA");
+        matrizPalavrasSimples.put("pipoca", "PIPOCA");
+        matrizPalavrasSimples.put("pirulito", "PIRULITO");
+        matrizPalavrasSimples.put("porta", "PORTA");
+        matrizPalavrasSimples.put("rato", "RATO");
+        matrizPalavrasSimples.put("rei", "REI");
+        matrizPalavrasSimples.put("rico", "RICO");
+        matrizPalavrasSimples.put("robo", "ROBO");
+        matrizPalavrasSimples.put("rosa", "ROSA");
+        matrizPalavrasSimples.put("rua", "RUA");
+        matrizPalavrasSimples.put("sábado", "SÁBADO");
+        matrizPalavrasSimples.put("sapato", "SAPATO");
+        matrizPalavrasSimples.put("sapo", "SAPO");
+        matrizPalavrasSimples.put("sino", "SINO");
+        matrizPalavrasSimples.put("tapete", "TAPETE");
+        matrizPalavrasSimples.put("tatu", "TATU");
+        matrizPalavrasSimples.put("telefone", "TELEFONE");
+        matrizPalavrasSimples.put("teto", "TETO");
+        matrizPalavrasSimples.put("tijolo", "TIJOLO");
+        matrizPalavrasSimples.put("tomate", "TOMATE");
+        matrizPalavrasSimples.put("urro", "URRO");
+        matrizPalavrasSimples.put("uva", "UVA");
+        matrizPalavrasSimples.put("vaca", "VACA");
+        matrizPalavrasSimples.put("vela", "VELA");
+        matrizPalavrasSimples.put("xicara", "XICARA");
+
     }
 
     /**
@@ -729,6 +888,9 @@ public class JogoPrincipal {
                 break;
             case 4:
                 opcaoCorreta = matrizSilabasComplexas2.get(nomeAudioAtual);
+                break;
+            case 5:
+                opcaoCorreta = matrizPalavrasSimples.get(nomeAudioAtual);
                 break;
             default:
                 break;
@@ -857,6 +1019,9 @@ public class JogoPrincipal {
                 break;
             case 4:
                 caminhoAudio = "src/audios_silabas_complexas2/" + n + ".mp3";
+                break;
+            case 5:
+                caminhoAudio = "src/audios_palavras_simples/" + n + ".mp3";
                 break;
             default:
                 break;
