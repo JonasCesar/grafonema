@@ -86,6 +86,71 @@ public class JogoPrincipal {
         "VRU"
     };
 
+    private String silabasComplexas[] = {
+        "BAL", "BAM", "BAN", "BÃO", "BAR", "BAS", "BAZ", "BEL", "BEM", "BEN",
+        "BER", "BES", "BEZ", "BIL", "BIM", "BIN", "BIR", "BIS", "BIZ", "BOL",
+        "BOM", "BON", "BOR", "BOS", "BOZ", "BUL", "BUM", "BUN", "BUR", "BUS",
+        "BUZ", "CÃES", "CAL", "CAM", "CAN", "CÃO", "CAR", "CAS", "CAZ", "CEL",
+        "CEM", "CEN", "CER", "CES", "CEZ", "CHAL", "CHAM", "CHAN", "CHÃO",
+        "CHAR", "CHAS", "CHEI", "CHEM", "CHE", "CHEN", "CHER", "CHES", "CHIL",
+        "CHIM", "CHIN", "CHIR", "CHIS", "CHOL", "CHOM", "CHON", "CHOR", "CHUL",
+        "CHUM", "CHUN", "CHUR", "CIM", "CIN", "CIR", "CIS", "ÇÕES", "COL", "COM",
+        "CON", "COR", "COS", "COZ", "CUL", "CUM", "CUN", "CUR", "CUS", "CUZ", "DÃES",
+        "DAL", "DAM", "DAN", "DÃO", "DAR", "DAS", "DAZ", "DEL", "DEM", "DEN", "DER",
+        "DES", "DEZ", "DIL", "DIM", "DIN", "DIR", "DIS", "DIZ", "DOL", "DOM", "DON",
+        "DOR", "DOS", "DOZ", "DUL", "DUM", "DUN", "DUR", "DUS", "DUZ", "FAL", "FAM",
+        "FAN", "FAR", "FAS", "FAZ", "FEL", "FEM", "FEN", "FER", "FES", "FEZ",
+        "FIL", "FIM", "FIN", "FIR", "FIS", "FIZ", "FOL", "FOM", "FON", "FOR", "FOS",
+        "FOZ", "FUI", "FUL", "FUM", "FUN", "FUR", "FUS", "FUZ", "GAL", "GAM", "GAN",
+        "GÃO", "GAR", "GEL", "GEM", "GEN", "GER", "GES", "GIL", "GIM", "GIN",
+        "GIR", "GIS", "GIZ", "GOL", "GOM", "GON", "GOR", "GUA", "GUL", "GUM",
+        "GUN", "GUR", "IS", "JAL", "JAM", "JAN", "JÃO", "JAR", "JAS", "JAZ", "JEM",
+        "JEN", "JER", "JES", "JIL", "JIM", "JIN", "JIR", "JOL", "JOM", "JON", "JOR",
+        "JOS", "JOZ", "JUL", "JUM", "JUN", "JUR", "JUS", "JUZ", "LAL", "LAM", "LAN",
+        "LÃO", "LAR", "LAS", "LAZ", "LEM", "LEN", "LER", "LES", "LEZ", "LIM", "LIN",
+        "LIR", "LIS", "LIZ", "LOM", "LON", "LOR", "LOS", "LOZ", "LUM", "LUN", "LUR",
+        "LUS", "LUZ", "MAL", "MAM", "MAN", "MÃO", "MÃOS", "MAR", "MAS", "MAZ", "MEL",
+        "MEM", "MEN", "MER", "MES", "MEZ", "MIL", "MIM", "MIN", "MIR", "MIS", "MIZ",
+        "MOL", "MOM", "MON", "MOR", "MOS", "MOZ", "MUL", "MUM", "MUN", "MUR", "MUS",
+        "MUZ", "NAL", "NAM", "NAN", "NÃO", "NÃOS", "NAR", "NAS", "NAU", "NAZ", "NEL",
+        "NEM", "NEN", "NER", "NES", "NEZ", "NIL", "NIM", "NIN", "NIR", "NIS", "NIZ",
+        "NOL", "NOM", "NON", "NOR", "NOS", "NOZ", "NUL", "NUM", "NUN", "NUR", "NUS",
+        "NUZ", "PÃES", "PAL", "PAM", "PAN", "PÃO", "PAR", "PAS", "PAZ", "PEC", "PEL",
+        "PEM", "PEN", "PER", "PES", "PEZ", "PIL", "PIM", "PIN", "PIR", "PIS", "PIZ",
+        "POL", "POM", "PON", "POR", "POS", "POZ", "PUL", "PUM", "PUN", "PUR", "PUS",
+        "PUZ", "QUAL", "QUÃO", "RÃES", "RAL", "RAM", "RAN", "RÃO", "RAR", "RAS", "RAZ", "REL"
+    };
+
+    private String[] silabasComplexas3 = {
+        "BLAM", "BLAN", "BLAS", "BLEM", "BLEN", "BLES", "BLIM", "BLIN", "BLIS", "BLOM",
+        "BLON", "BLOS", "BLUM", "BLUN", "BONS", "BRAM", "BRAN", "BRAS", "BREM", "BREN",
+        "BRES", "BRIM", "BRIS", "BROM", "BRON", "BROS", "BRUM", "BRUS", "CHA", "CHÃO",
+        "CHAS", "CHER", "CHES", "CHIR", "CHIS", "CHOR", "CHOS", "CHUR", "CHUS", "CLAM",
+        "CLAN", "CLAS", "CLEM", "CLEN", "CLES", "CLIM", "CLIN", "CLIS", "CLOM", "CLON",
+        "CLOS", "CLUM", "CLUN", "CLUS", "COM", "CON", "CRAM", "CRAN", "CRAS", "CREM",
+        "CREN", "CRES", "CRIM", "CRIN", "CRIS", "CROM", "CRON", "CROS", "CRUM", "CRUN",
+        "CRUS", "DLAS", "DLES", "DLIS", "DLOS", "DLUS", "DLUS", "DRAM", "DRAN", "DRAS",
+        "DREM", "DREN", "DRES", "DRIM", "DRIN", "DRIS", "DROM", "DRON", "DROS", "DRUM",
+        "DRUN", "DRUS", "FAN", "FLAM", "FLAN", "FLAS", "FLEM", "FLEN", "FLES", "FLIM",
+        "FLIN", "FLIS", "FLOM", "FLON", "FLOS", "FLUM", "FLUN", "FLUS", "FRAM", "FRAN",
+        "FRAS", "FREM", "FREN", "FRES", "FRIM", "FRIN", "FRIS", "FROM", "FRON", "FROS",
+        "FRUM", "FRUS", "GLAM", "GLAN", "GLAS", "GLEM", "GLEN", "GLES", "GLIM", "GLIN",
+        "GLIS", "GLOM", "GLON", "GLOS", "GLUM", "GLUN", "GLUS", "GLUS", "GOM", "GON",
+        "GRAM", "GRAN", "GRAS", "GREM", "GREN", "GRES", "GRIM", "GRIN", "GRIS", "GROM",
+        "GRON", "GROS", "GRUM", "GRUN", "GRUS", "GUAM", "GUAN", "GUAR", "GUEM", "GUE",
+        "GUEN", "GUER", "GUIM", "GUI", "GUIN", "GUIR", "GUO", "GUON", "LHEU", "PERS",
+        "PLAM", "PLAN", "PLAS", "PLEM", "PLEN", "PLES", "PLIM", "PLIN", "PLIS", "PLOM",
+        "PLON", "PLOS", "PLUM", "PLUS", "PLUS", "PRAM", "PRAN", "PRAS", "PREM", "PREN",
+        "PRES", "PRIM", "PRIN", "PRIS", "PROM", "PRON", "PROS", "PRUM", "PRUS", "PSI",
+        "QUA", "QUAN", "QUÃO", "QUAR", "QUEM", "QUE", "QUEN", "QUER", "QUIM", "QUI",
+        "QUIN", "QUIR", "QUO", "TLAM", "TLAN", "TLAS", "TLEM", "TLEN", "TLES", "TLIM",
+        "TLIN", "TLIS", "TLOM", "TLON", "TLOS", "TLUM", "TLUS", "TRAN", "TRAS", "TREM",
+        "TREN", "TRES", "TRIM", "TRIS", "TROM", "TRON", "TROS", "TRUM", "TRUN", "TRUS",
+        "VLAS", "VLEM", "VLEN", "VLES", "VLIM", "VLIS", "VLOM", "VLON", "VLOS", "VLUM",
+        "VLUN", "VLUS", "VRAM", "VRAN", "VRAS", "VREM", "VREN", "VRES", "VRIM", "VRIN",
+        "VRIS", "VROM", "VRON", "VROS", "VRUM", "VRUN", "VRUS"
+    };
+
     private String palavrasSimples[] = {
         "AMARELO", "AMO", "ANEL", "APITO", "ARVORE", "BALA", "BANANA", "BATATA",
         "BATE", "BIRUTA", "BOCA", "BOLA", "BOLO", "BONECA", "BONÉ",
@@ -119,6 +184,41 @@ public class JogoPrincipal {
         "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo", "xu", "za", "ze", "zi",
         "zo", "zu"};
 
+    private final String audiosSilabasComplexas[] = {
+        "bal", "bam", "ban", "bão", "bar", "bas", "baz", "bel", "bem", "ben",
+        "ber", "bes", "bez", "bil", "bim", "bin", "bir", "bis", "biz", "bol",
+        "bom", "bon", "bor", "bos", "boz", "bul", "bum", "bun", "bur", "bus",
+        "buz", "cães", "cal", "cam", "can", "cão", "car", "cas", "caz", "cel",
+        "cem", "cen", "cer", "ces", "cez", "chal", "cham", "chan", "chão",
+        "char", "chas", "chei", "chem", "che", "chen", "cher", "ches", "chil",
+        "chim", "chin", "chir", "chis", "chol", "chom", "chon", "chor", "chul",
+        "chum", "chun", "chur", "cim", "cin", "cir", "cis", "ções", "col", "com",
+        "con", "cor", "cos", "coz", "cul", "cum", "cun", "cur", "cus", "cuz", "dães",
+        "dal", "dam", "dan", "dão", "dar", "das", "daz", "del", "dem", "den", "der",
+        "des", "dez", "dil", "dim", "din", "dir", "dis", "diz", "dol", "dom", "don",
+        "dor", "dos", "doz", "dul", "dum", "dun", "dur", "dus", "duz", "fal", "fam",
+        "fan", "far", "fas", "faz", "fel", "fem", "fen", "fer", "fes", "fez",
+        "fil", "fim", "fin", "fir", "fis", "fiz", "fol", "fom", "fon", "for", "fos",
+        "foz", "fui", "ful", "fum", "fun", "fur", "fus", "fuz", "gal", "gam", "gan",
+        "gão", "gar", "gel", "gem", "gen", "ger", "ges", "gil", "gim", "gin",
+        "gir", "gis", "giz", "gol", "gom", "gon", "gor", "gua", "gul", "gum",
+        "gun", "gur", "is", "jal", "jam", "jan", "jão", "jar", "jas", "jaz", "jem",
+        "jen", "jer", "jes", "jil", "jim", "jin", "jir", "jol", "jom", "jon", "jor",
+        "jos", "joz", "jul", "jum", "jun", "jur", "jus", "juz", "lal", "lam", "lan",
+        "lão", "lar", "las", "laz", "lem", "len", "ler", "les", "lez", "lim", "lin",
+        "lir", "lis", "liz", "lom", "lon", "lor", "los", "loz", "lum", "lun", "lur",
+        "lus", "luz", "mal", "mam", "man", "mão", "mãos", "mar", "mas", "maz", "mel",
+        "mem", "men", "mer", "mes", "mez", "mil", "mim", "min", "mir", "mis", "miz",
+        "mol", "mom", "mon", "mor", "mos", "moz", "mul", "mum", "mun", "mur", "mus",
+        "muz", "nal", "nam", "nan", "não", "nãos", "nar", "nas", "nau", "naz", "nel",
+        "nem", "nen", "ner", "nes", "nez", "nil", "nim", "nin", "nir", "nis", "niz",
+        "nol", "nom", "non", "nor", "nos", "noz", "nul", "num", "nun", "nur", "nus",
+        "nuz", "pães", "pal", "pam", "pan", "pão", "par", "pas", "paz", "pec", "pel",
+        "pem", "pen", "per", "pes", "pez", "pil", "pim", "pin", "pir", "pis", "piz",
+        "pol", "pom", "pon", "por", "pos", "poz", "pul", "pum", "pun", "pur", "pus",
+        "puz", "qual", "quão", "rães", "ral", "ram", "ran", "rão", "rar", "ras", "raz", "rel"
+    };
+
     private final String audiosSilabasComplexas2[] = {
         "bla", "ble", "bli", "blo", "blu", "bra", "bre", "bri", "bro", "bru",
         "cla", "cle", "cli", "clo", "clu", "cra", "cre", "cri", "cro", "cru",
@@ -145,10 +245,40 @@ public class JogoPrincipal {
         "tijolo", "tomate", "urro", "uva", "vaca", "vela", "xicara"
     };
 
+    private final String audiosSilabasComplexas3[] = {
+        "blam", "blan", "blas", "blem", "blen", "bles", "blim", "blin", "blis", "blom",
+        "blon", "blos", "blum", "blun", "bons", "bram", "bran", "bras", "brem", "bren",
+        "bres", "brim", "bris", "brom", "bron", "bros", "brum", "brus", "cha", "chão",
+        "chas", "cher", "ches", "chir", "chis", "chor", "chos", "chur", "chus", "clam",
+        "clan", "clas", "clem", "clen", "cles", "clim", "clin", "clis", "clom", "clon",
+        "clos", "clum", "clun", "clus", "com", "con", "cram", "cran", "cras", "crem",
+        "cren", "cres", "crim", "crin", "cris", "crom", "cron", "cros", "crum", "crun",
+        "crus", "dlas", "dles", "dlis", "dlos", "dlus", "dram", "dran", "dras",
+        "drem", "dren", "dres", "drim", "drin", "dris", "drom", "dron", "dros", "drum",
+        "drun", "drus", "fan", "flam", "flan", "flas", "flem", "flen", "fles", "flim",
+        "flin", "flis", "flom", "flon", "flos", "flum", "flun", "flus", "fram", "fran",
+        "fras", "frem", "fren", "fres", "frim", "frin", "fris", "from", "fron", "fros",
+        "frum", "frus", "glam", "glan", "glas", "glem", "glen", "gles", "glim", "glin",
+        "glis", "glom", "glon", "glos", "glum", "glun", "glus", "gom", "gon",
+        "gram", "gran", "gras", "grem", "gren", "gres", "grim", "grin", "gris", "grom",
+        "gron", "gros", "grum", "grun", "grus", "guam", "guan", "guar", "guem", "gue",
+        "guen", "guer", "guim", "gui", "guin", "guir", "guo", "guon", "lheu", "pers",
+        "plam", "plan", "plas", "plem", "plen", "ples", "plim", "plin", "plis", "plom",
+        "plon", "plos", "plum", "plus", "pram", "pran", "pras", "prem", "pren",
+        "pres", "prim", "prin", "pris", "prom", "pron", "pros", "prum", "prus", "psi",
+        "qua", "quan", "quão", "quar", "quem", "que", "quen", "quer", "quim", "qui",
+        "quin", "quir", "quo", "tlam", "tlan", "tlas", "tlem", "tlen", "tles", "tlim",
+        "tlin", "tlis", "tlom", "tlon", "tlos", "tlum", "tlus", "tran", "tras", "trem",
+        "tren", "tres", "trim", "tris", "trom", "tron", "tros", "trum", "trun", "trus",
+        "vlas", "vlem", "vlen", "vles", "vlim", "vlis", "vlom", "vlon", "vlos", "vlum",
+        "vlun", "vlus", "vram", "vran", "vras", "vrem", "vren", "vres", "vrim", "vrin",
+        "vris", "vrom", "vron", "vros", "vrum", "vrun", "vrus"};
+
     public Jogador jogador = new Jogador();
 
     private final Map<String, String> matrizVogais, matrizSilabasSimples,
-            matrizSilabasSimplesB, matrizSilabasComplexas2, matrizPalavrasSimples;
+            matrizSilabasSimplesB, matrizSilabasComplexas2, matrizPalavrasSimples,
+            matrizSilabasComplexas, matrizSilabasComplexas3;
 
     private Random indiceAudio;
 
@@ -183,7 +313,10 @@ public class JogoPrincipal {
         this.matrizSilabasSimples = new HashMap<String, String>();
         this.matrizSilabasSimplesB = new HashMap<String, String>();
         this.matrizSilabasComplexas2 = new HashMap<String, String>();
+        this.matrizSilabasComplexas3 = new HashMap<String, String>();
+        this.matrizSilabasComplexas = new HashMap<String, String>();
         this.matrizPalavrasSimples = new HashMap<String, String>();
+
         this.mostrandoCena = false;
         this.indicacaoPular = false;
         this.pularErro = false;
@@ -297,16 +430,15 @@ public class JogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(80);
-
+                    proxValor = indice.nextInt(93);
                     if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
                     }
                 }
+                preencherOpcoes(palavrasSimples, som, novasOpcoes);
 
-                preencherOpcoes(silabasComplexas2, som, novasOpcoes);
                 break;
             case 5:
                 i = 0;
@@ -317,8 +449,7 @@ public class JogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(93);
-
+                    proxValor = indice.nextInt(110);
                     if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -326,8 +457,46 @@ public class JogoPrincipal {
                     }
                 }
 
-                preencherOpcoes(palavrasSimples, som, novasOpcoes);
+                preencherOpcoes(silabasComplexas, som, novasOpcoes);
                 break;
+            case 6:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(80);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(silabasComplexas2, som, novasOpcoes);
+                break;
+            
+            case 7:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(264);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(silabasComplexas3, som, novasOpcoes);
+                break;
+
         }
     }
 
@@ -413,15 +582,28 @@ public class JogoPrincipal {
                 y = i;
                 break;
             case 4:
+                i = indiceAudio.nextInt(93);
+                System.out.println("o som gerado foi o som: " + palavrasSimples[i]);
+                tocarAudio(audiosPalavrasSimples[i]);
+
+                y = i;
+                break;
+            case 5:
+                i = indiceAudio.nextInt(111);
+                System.out.println("o som gerado foi o som: " + audiosSilabasComplexas[i]);
+                tocarAudio(audiosSilabasComplexas[i]);
+                y = i;
+                break;
+            case 6:
                 i = indiceAudio.nextInt(80);
                 System.out.println("o som gerado foi o som: " + audiosSilabasComplexas2[i]);
                 tocarAudio(audiosSilabasComplexas2[i]);
                 y = i;
                 break;
-            case 5:
-                i = indiceAudio.nextInt(93);
-                System.out.println("o som gerado foi o som: " + palavrasSimples[i]);
-                tocarAudio(audiosPalavrasSimples[i]);
+            case 7:
+                i = indiceAudio.nextInt(264);
+                System.out.println("o som gerado foi o som: " + audiosSilabasComplexas2[i]);
+                tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
                 break;
             default:
@@ -454,11 +636,19 @@ public class JogoPrincipal {
                 break;
             case 4:
                 System.out.println("FASE QUATRO!!!");
-                resultado = ((getKeyByValue(matrizSilabasComplexas2, opcaoEscolhida)).equals(getAudioAtual()));
+                resultado = ((getKeyByValue(matrizPalavrasSimples, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 5:
                 System.out.println("FASE CINCO!!!");
-                resultado = ((getKeyByValue(matrizPalavrasSimples, opcaoEscolhida)).equals(getAudioAtual()));
+                resultado = ((getKeyByValue(matrizSilabasComplexas, opcaoEscolhida)).equals(getAudioAtual()));
+                break;
+            case 6:
+                System.out.println("FASE SEIS!!!");
+                resultado = ((getKeyByValue(matrizSilabasComplexas2, opcaoEscolhida)).equals(getAudioAtual()));
+                break;
+            case 7:
+                System.out.println("FASE SETE");
+                resultado = ((getKeyByValue(matrizSilabasComplexas3, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             default:
                 break;
@@ -814,6 +1004,618 @@ public class JogoPrincipal {
     }
 
     /**
+     *
+     */
+    public void iniciarMatrizSilabasComplexas() {
+        matrizSilabasComplexas.put("bal", "BAL");
+        matrizSilabasComplexas.put("bam", "BAM");
+        matrizSilabasComplexas.put("ban", "BAN");
+        matrizSilabasComplexas.put("bão", "BÃO");
+        matrizSilabasComplexas.put("bar", "BAR");
+        matrizSilabasComplexas.put("bas", "BAS");
+        matrizSilabasComplexas.put("baz", "BAZ");
+        matrizSilabasComplexas.put("bel", "BEL");
+        matrizSilabasComplexas.put("bem", "BEM");
+        matrizSilabasComplexas.put("ben", "BEN");
+        matrizSilabasComplexas.put("ber", "BER");
+        matrizSilabasComplexas.put("bes", "BES");
+        matrizSilabasComplexas.put("bez", "BEZ");
+        matrizSilabasComplexas.put("bil", "BIL");
+        matrizSilabasComplexas.put("bim", "BIM");
+        matrizSilabasComplexas.put("bin", "BIN");
+        matrizSilabasComplexas.put("bir", "BIR");
+        matrizSilabasComplexas.put("bis", "BIS");
+        matrizSilabasComplexas.put("biz", "BIZ");
+        matrizSilabasComplexas.put("bol", "BOL");
+        matrizSilabasComplexas.put("bom", "BOM");
+        matrizSilabasComplexas.put("bon", "BON");
+        matrizSilabasComplexas.put("bor", "BOR");
+        matrizSilabasComplexas.put("bos", "BOS");
+        matrizSilabasComplexas.put("boz", "BOZ");
+        matrizSilabasComplexas.put("bul", "BUL");
+        matrizSilabasComplexas.put("bum", "BUM");
+        matrizSilabasComplexas.put("bun", "BUN");
+        matrizSilabasComplexas.put("bur", "BUR");
+        matrizSilabasComplexas.put("bus", "BUS");
+        matrizSilabasComplexas.put("buz", "BUZ");
+        matrizSilabasComplexas.put("cães", "CÃES");
+        matrizSilabasComplexas.put("cal", "CAL");
+        matrizSilabasComplexas.put("cam", "CAM");
+        matrizSilabasComplexas.put("can", "CAN");
+        matrizSilabasComplexas.put("cão", "CÃO");
+        matrizSilabasComplexas.put("car", "CAR");
+        matrizSilabasComplexas.put("cas", "CAS");
+        matrizSilabasComplexas.put("caz", "CAZ");
+        matrizSilabasComplexas.put("cel", "CEL");
+        matrizSilabasComplexas.put("cem", "CEM");
+        matrizSilabasComplexas.put("cen", "CEN");
+        matrizSilabasComplexas.put("cer", "CER");
+        matrizSilabasComplexas.put("ces", "CES");
+        matrizSilabasComplexas.put("cez", "CEZ");
+        matrizSilabasComplexas.put("chal", "CHAL");
+        matrizSilabasComplexas.put("cham", "CHAM");
+        matrizSilabasComplexas.put("chan", "CHAN");
+        matrizSilabasComplexas.put("chão", "CHÃO");
+        matrizSilabasComplexas.put("char", "CHAR");
+        matrizSilabasComplexas.put("chas", "CHAS");
+        matrizSilabasComplexas.put("chei", "CHEI");
+        matrizSilabasComplexas.put("chem", "CHEM");
+        matrizSilabasComplexas.put("che", "CHE");
+        matrizSilabasComplexas.put("chen", "CHEN");
+        matrizSilabasComplexas.put("cher", "CHER");
+        matrizSilabasComplexas.put("ches", "CHES");
+        matrizSilabasComplexas.put("chil", "CHIL");
+        matrizSilabasComplexas.put("chim", "CHIM");
+        matrizSilabasComplexas.put("chin", "CHIN");
+        matrizSilabasComplexas.put("chir", "CHIR");
+        matrizSilabasComplexas.put("chis", "CHIS");
+        matrizSilabasComplexas.put("chol", "CHOL");
+        matrizSilabasComplexas.put("chom", "CHOM");
+        matrizSilabasComplexas.put("chon", "CHON");
+        matrizSilabasComplexas.put("chor", "CHOR");
+        matrizSilabasComplexas.put("chul", "CHUL");
+        matrizSilabasComplexas.put("chum", "CHUM");
+        matrizSilabasComplexas.put("chun", "CHUN");
+        matrizSilabasComplexas.put("chur", "CHUR");
+        matrizSilabasComplexas.put("cim", "CIM");
+        matrizSilabasComplexas.put("cin", "CIN");
+        matrizSilabasComplexas.put("cir", "CIR");
+        matrizSilabasComplexas.put("cis", "CIS");
+        matrizSilabasComplexas.put("ções", "ÇÕES");
+        matrizSilabasComplexas.put("col", "COL");
+        matrizSilabasComplexas.put("com", "COM");
+        matrizSilabasComplexas.put("con", "CON");
+        matrizSilabasComplexas.put("cor", "COR");
+        matrizSilabasComplexas.put("cos", "COS");
+        matrizSilabasComplexas.put("coz", "COZ");
+        matrizSilabasComplexas.put("cul", "CUL");
+        matrizSilabasComplexas.put("cum", "CUM");
+        matrizSilabasComplexas.put("cun", "CUN");
+        matrizSilabasComplexas.put("cur", "CUR");
+        matrizSilabasComplexas.put("cus", "CUS");
+        matrizSilabasComplexas.put("cuz", "CUZ");
+        matrizSilabasComplexas.put("dães", "DÃES");
+        matrizSilabasComplexas.put("dal", "DAL");
+        matrizSilabasComplexas.put("dam", "DAM");
+        matrizSilabasComplexas.put("dan", "DAN");
+        matrizSilabasComplexas.put("dão", "DÃO");
+        matrizSilabasComplexas.put("dar", "DAR");
+        matrizSilabasComplexas.put("das", "DAS");
+        matrizSilabasComplexas.put("daz", "DAZ");
+        matrizSilabasComplexas.put("del", "DEL");
+        matrizSilabasComplexas.put("dem", "DEM");
+        matrizSilabasComplexas.put("den", "DEN");
+        matrizSilabasComplexas.put("der", "DER");
+        matrizSilabasComplexas.put("des", "DES");
+        matrizSilabasComplexas.put("dez", "DEZ");
+        matrizSilabasComplexas.put("dil", "DIL");
+        matrizSilabasComplexas.put("dim", "DIM");
+        matrizSilabasComplexas.put("din", "DIN");
+        matrizSilabasComplexas.put("dir", "DIR");
+        matrizSilabasComplexas.put("dis", "DIS");
+        matrizSilabasComplexas.put("diz", "DIZ");
+        matrizSilabasComplexas.put("dol", "DOL");
+        matrizSilabasComplexas.put("dom", "DOM");
+        matrizSilabasComplexas.put("don", "DON");
+        matrizSilabasComplexas.put("dor", "DOR");
+        matrizSilabasComplexas.put("dos", "DOS");
+        matrizSilabasComplexas.put("doz", "DOZ");
+        matrizSilabasComplexas.put("dul", "DUL");
+        matrizSilabasComplexas.put("dum", "DUM");
+        matrizSilabasComplexas.put("dun", "DUN");
+        matrizSilabasComplexas.put("dur", "DUR");
+        matrizSilabasComplexas.put("dus", "DUS");
+        matrizSilabasComplexas.put("duz", "DUZ");
+        matrizSilabasComplexas.put("fal", "FAL");
+        matrizSilabasComplexas.put("fam", "FAM");
+        matrizSilabasComplexas.put("fan", "FAN");
+        matrizSilabasComplexas.put("far", "FAR");
+        matrizSilabasComplexas.put("fas", "FAS");
+        matrizSilabasComplexas.put("faz", "FAZ");
+        matrizSilabasComplexas.put("fel", "FEL");
+        matrizSilabasComplexas.put("fem", "FEM");
+        matrizSilabasComplexas.put("fen", "FEN");
+        matrizSilabasComplexas.put("fer", "FER");
+        matrizSilabasComplexas.put("fes", "FES");
+        matrizSilabasComplexas.put("fez", "FEZ");
+        matrizSilabasComplexas.put("fil", "FIL");
+        matrizSilabasComplexas.put("fim", "FIM");
+        matrizSilabasComplexas.put("fin", "FIN");
+        matrizSilabasComplexas.put("fir", "FIR");
+        matrizSilabasComplexas.put("fis", "FIS");
+        matrizSilabasComplexas.put("fiz", "FIZ");
+        matrizSilabasComplexas.put("fol", "FOL");
+        matrizSilabasComplexas.put("fom", "FOM");
+        matrizSilabasComplexas.put("fon", "FON");
+        matrizSilabasComplexas.put("for", "FOR");
+        matrizSilabasComplexas.put("fos", "FOS");
+        matrizSilabasComplexas.put("foz", "FOZ");
+        matrizSilabasComplexas.put("fui", "FUI");
+        matrizSilabasComplexas.put("ful", "FUL");
+        matrizSilabasComplexas.put("fum", "FUM");
+        matrizSilabasComplexas.put("fun", "FUN");
+        matrizSilabasComplexas.put("fur", "FUR");
+        matrizSilabasComplexas.put("fus", "FUS");
+        matrizSilabasComplexas.put("fuz", "FUZ");
+        matrizSilabasComplexas.put("gal", "GAL");
+        matrizSilabasComplexas.put("gam", "GAM");
+        matrizSilabasComplexas.put("gan", "GAN");
+        matrizSilabasComplexas.put("gão", "GÃO");
+        matrizSilabasComplexas.put("gar", "GAR");
+        matrizSilabasComplexas.put("gel", "GEL");
+        matrizSilabasComplexas.put("gem", "GEM");
+        matrizSilabasComplexas.put("gen", "GEN");
+        matrizSilabasComplexas.put("ger", "GER");
+        matrizSilabasComplexas.put("ges", "GES");
+        matrizSilabasComplexas.put("gil", "GIL");
+        matrizSilabasComplexas.put("gim", "GIM");
+        matrizSilabasComplexas.put("gin", "GIN");
+        matrizSilabasComplexas.put("gir", "GIR");
+        matrizSilabasComplexas.put("gis", "GIS");
+        matrizSilabasComplexas.put("giz", "GIZ");
+        matrizSilabasComplexas.put("gol", "GOL");
+        matrizSilabasComplexas.put("gom", "GOM");
+        matrizSilabasComplexas.put("gon", "GON");
+        matrizSilabasComplexas.put("gor", "GOR");
+        matrizSilabasComplexas.put("gua", "GUA");
+        matrizSilabasComplexas.put("gul", "GUL");
+        matrizSilabasComplexas.put("gum", "GUM");
+        matrizSilabasComplexas.put("gun", "GUN");
+        matrizSilabasComplexas.put("gur", "GUR");
+        matrizSilabasComplexas.put("is", "IS");
+        matrizSilabasComplexas.put("jal", "JAL");
+        matrizSilabasComplexas.put("jam", "JAM");
+        matrizSilabasComplexas.put("jan", "JAN");
+        matrizSilabasComplexas.put("jão", "JÃO");
+        matrizSilabasComplexas.put("jar", "JAR");
+        matrizSilabasComplexas.put("jas", "JAS");
+        matrizSilabasComplexas.put("jaz", "JAZ");
+        matrizSilabasComplexas.put("jem", "JEM");
+        matrizSilabasComplexas.put("jen", "JEN");
+        matrizSilabasComplexas.put("jer", "JER");
+        matrizSilabasComplexas.put("jes", "JES");
+        matrizSilabasComplexas.put("jil", "JIL");
+        matrizSilabasComplexas.put("jim", "JIM");
+        matrizSilabasComplexas.put("jin", "JIN");
+        matrizSilabasComplexas.put("jir", "JIR");
+        matrizSilabasComplexas.put("jol", "JOL");
+        matrizSilabasComplexas.put("jom", "JOM");
+        matrizSilabasComplexas.put("jon", "JON");
+        matrizSilabasComplexas.put("jor", "JOR");
+        matrizSilabasComplexas.put("jos", "JOS");
+        matrizSilabasComplexas.put("joz", "JOZ");
+        matrizSilabasComplexas.put("jul", "JUL");
+        matrizSilabasComplexas.put("jum", "JUM");
+        matrizSilabasComplexas.put("jun", "JUN");
+        matrizSilabasComplexas.put("jur", "JUR");
+        matrizSilabasComplexas.put("jus", "JUS");
+        matrizSilabasComplexas.put("juz", "JUZ");
+        matrizSilabasComplexas.put("lal", "LAL");
+        matrizSilabasComplexas.put("lam", "LAM");
+        matrizSilabasComplexas.put("lan", "LAN");
+        matrizSilabasComplexas.put("lão", "LÃO");
+        matrizSilabasComplexas.put("lar", "LAR");
+        matrizSilabasComplexas.put("las", "LAS");
+        matrizSilabasComplexas.put("laz", "LAZ");
+        matrizSilabasComplexas.put("lem", "LEM");
+        matrizSilabasComplexas.put("len", "LEN");
+        matrizSilabasComplexas.put("ler", "LER");
+        matrizSilabasComplexas.put("les", "LES");
+        matrizSilabasComplexas.put("lez", "LEZ");
+        matrizSilabasComplexas.put("lim", "LIM");
+        matrizSilabasComplexas.put("lin", "LIN");
+        matrizSilabasComplexas.put("lir", "LIR");
+        matrizSilabasComplexas.put("lis", "LIS");
+        matrizSilabasComplexas.put("liz", "LIZ");
+        matrizSilabasComplexas.put("lom", "LOM");
+        matrizSilabasComplexas.put("lon", "LON");
+        matrizSilabasComplexas.put("lor", "LOR");
+        matrizSilabasComplexas.put("los", "LOS");
+        matrizSilabasComplexas.put("loz", "LOZ");
+        matrizSilabasComplexas.put("lum", "LUM");
+        matrizSilabasComplexas.put("lun", "LUN");
+        matrizSilabasComplexas.put("lur", "LUR");
+        matrizSilabasComplexas.put("lus", "LUS");
+        matrizSilabasComplexas.put("luz", "LUZ");
+        matrizSilabasComplexas.put("mal", "MAL");
+        matrizSilabasComplexas.put("mam", "MAM");
+        matrizSilabasComplexas.put("man", "MAN");
+        matrizSilabasComplexas.put("mão", "MÃO");
+        matrizSilabasComplexas.put("mãos", "MÃOS");
+        matrizSilabasComplexas.put("mar", "MAR");
+        matrizSilabasComplexas.put("mas", "MAS");
+        matrizSilabasComplexas.put("maz", "MAZ");
+        matrizSilabasComplexas.put("mel", "MEL");
+        matrizSilabasComplexas.put("mem", "MEM");
+        matrizSilabasComplexas.put("men", "MEN");
+        matrizSilabasComplexas.put("mer", "MER");
+        matrizSilabasComplexas.put("mes", "MES");
+        matrizSilabasComplexas.put("mez", "MEZ");
+        matrizSilabasComplexas.put("mil", "MIL");
+        matrizSilabasComplexas.put("mim", "MIM");
+        matrizSilabasComplexas.put("min", "MIN");
+        matrizSilabasComplexas.put("mir", "MIR");
+        matrizSilabasComplexas.put("mis", "MIS");
+        matrizSilabasComplexas.put("miz", "MIZ");
+        matrizSilabasComplexas.put("mol", "MOL");
+        matrizSilabasComplexas.put("mom", "MOM");
+        matrizSilabasComplexas.put("mon", "MON");
+        matrizSilabasComplexas.put("mor", "MOR");
+        matrizSilabasComplexas.put("mos", "MOS");
+        matrizSilabasComplexas.put("moz", "MOZ");
+        matrizSilabasComplexas.put("mul", "MUL");
+        matrizSilabasComplexas.put("mum", "MUM");
+        matrizSilabasComplexas.put("mun", "MUN");
+        matrizSilabasComplexas.put("mur", "MUR");
+        matrizSilabasComplexas.put("mus", "MUS");
+        matrizSilabasComplexas.put("muz", "MUZ");
+        matrizSilabasComplexas.put("nal", "NAL");
+        matrizSilabasComplexas.put("nam", "NAM");
+        matrizSilabasComplexas.put("nan", "NAN");
+        matrizSilabasComplexas.put("não", "NÃO");
+        matrizSilabasComplexas.put("nãos", "NÃOS");
+        matrizSilabasComplexas.put("nar", "NAR");
+        matrizSilabasComplexas.put("nas", "NAS");
+        matrizSilabasComplexas.put("nau", "NAU");
+        matrizSilabasComplexas.put("naz", "NAZ");
+        matrizSilabasComplexas.put("nel", "NEL");
+        matrizSilabasComplexas.put("nem", "NEM");
+        matrizSilabasComplexas.put("nen", "NEN");
+        matrizSilabasComplexas.put("ner", "NER");
+        matrizSilabasComplexas.put("nes", "NES");
+        matrizSilabasComplexas.put("nez", "NEZ");
+        matrizSilabasComplexas.put("nil", "NIL");
+        matrizSilabasComplexas.put("nim", "NIM");
+        matrizSilabasComplexas.put("nin", "NIN");
+        matrizSilabasComplexas.put("nir", "NIR");
+        matrizSilabasComplexas.put("nis", "NIS");
+        matrizSilabasComplexas.put("niz", "NIZ");
+        matrizSilabasComplexas.put("nol", "NOL");
+        matrizSilabasComplexas.put("nom", "NOM");
+        matrizSilabasComplexas.put("non", "NON");
+        matrizSilabasComplexas.put("nor", "NOR");
+        matrizSilabasComplexas.put("nos", "NOS");
+        matrizSilabasComplexas.put("noz", "NOZ");
+        matrizSilabasComplexas.put("nul", "NUL");
+        matrizSilabasComplexas.put("num", "NUM");
+        matrizSilabasComplexas.put("nun", "NUN");
+        matrizSilabasComplexas.put("nur", "NUR");
+        matrizSilabasComplexas.put("nus", "NUS");
+        matrizSilabasComplexas.put("nuz", "NUZ");
+        matrizSilabasComplexas.put("pães", "PÃES");
+        matrizSilabasComplexas.put("pal", "PAL");
+        matrizSilabasComplexas.put("pam", "PAM");
+        matrizSilabasComplexas.put("pan", "PAN");
+        matrizSilabasComplexas.put("pão", "PÃO");
+        matrizSilabasComplexas.put("par", "PAR");
+        matrizSilabasComplexas.put("pas", "PAS");
+        matrizSilabasComplexas.put("paz", "PAZ");
+        matrizSilabasComplexas.put("pec", "PEC");
+        matrizSilabasComplexas.put("pel", "PEL");
+        matrizSilabasComplexas.put("pem", "PEM");
+        matrizSilabasComplexas.put("pen", "PEN");
+        matrizSilabasComplexas.put("per", "PER");
+        matrizSilabasComplexas.put("pes", "PES");
+        matrizSilabasComplexas.put("pez", "PEZ");
+        matrizSilabasComplexas.put("pil", "PIL");
+        matrizSilabasComplexas.put("pim", "PIM");
+        matrizSilabasComplexas.put("pin", "PIN");
+        matrizSilabasComplexas.put("pir", "PIR");
+        matrizSilabasComplexas.put("pis", "PIS");
+        matrizSilabasComplexas.put("piz", "PIZ");
+        matrizSilabasComplexas.put("pol", "POL");
+        matrizSilabasComplexas.put("pom", "POM");
+        matrizSilabasComplexas.put("pon", "PON");
+        matrizSilabasComplexas.put("por", "POR");
+        matrizSilabasComplexas.put("pos", "POS");
+        matrizSilabasComplexas.put("poz", "POZ");
+        matrizSilabasComplexas.put("pul", "PUL");
+        matrizSilabasComplexas.put("pum", "PUM");
+        matrizSilabasComplexas.put("pun", "PUN");
+        matrizSilabasComplexas.put("pur", "PUR");
+        matrizSilabasComplexas.put("pus", "PUS");
+        matrizSilabasComplexas.put("puz", "PUZ");
+        matrizSilabasComplexas.put("qual", "QUAL");
+        matrizSilabasComplexas.put("quão", "QUÃO");
+        matrizSilabasComplexas.put("rães", "RÃES");
+        matrizSilabasComplexas.put("ral", "RAL");
+        matrizSilabasComplexas.put("ram", "RAM");
+        matrizSilabasComplexas.put("ran", "RAN");
+        matrizSilabasComplexas.put("rão", "RÃO");
+        matrizSilabasComplexas.put("rar", "RAR");
+        matrizSilabasComplexas.put("ras", "RAS");
+        matrizSilabasComplexas.put("raz", "RAZ");
+        matrizSilabasComplexas.put("rel", "REL");
+    }
+
+    public void matrizSilabasComplexas3() {
+        matrizSilabasComplexas3.put("blam", "BLAM");
+        matrizSilabasComplexas3.put("blan", "BLAN");
+        matrizSilabasComplexas3.put("blas", "BLAS");
+        matrizSilabasComplexas3.put("blem", "BLEM");
+        matrizSilabasComplexas3.put("blen", "BLEN");
+        matrizSilabasComplexas3.put("bles", "BLES");
+        matrizSilabasComplexas3.put("blim", "BLIM");
+        matrizSilabasComplexas3.put("blin", "BLIN");
+        matrizSilabasComplexas3.put("blis", "BLIS");
+        matrizSilabasComplexas3.put("blom", "BLOM");
+        matrizSilabasComplexas3.put("blon", "BLON");
+        matrizSilabasComplexas3.put("blos", "BLOS");
+        matrizSilabasComplexas3.put("blum", "BLUM");
+        matrizSilabasComplexas3.put("blun", "BLUN");
+        matrizSilabasComplexas3.put("bons", "BONS");
+        matrizSilabasComplexas3.put("bram", "BRAM");
+        matrizSilabasComplexas3.put("bran", "BRAN");
+        matrizSilabasComplexas3.put("bras", "BRAS");
+        matrizSilabasComplexas3.put("brem", "BREM");
+        matrizSilabasComplexas3.put("bren", "BREN");
+        matrizSilabasComplexas3.put("bres", "BRES");
+        matrizSilabasComplexas3.put("brim", "BRIM");
+        matrizSilabasComplexas3.put("bris", "BRIS");
+        matrizSilabasComplexas3.put("brom", "BROM");
+        matrizSilabasComplexas3.put("bron", "BRON");
+        matrizSilabasComplexas3.put("bros", "BROS");
+        matrizSilabasComplexas3.put("brum", "BRUM");
+        matrizSilabasComplexas3.put("brus", "BRUS");
+        matrizSilabasComplexas3.put("cha", "CHA");
+        matrizSilabasComplexas3.put("chão", "CHÃO");
+        matrizSilabasComplexas3.put("chas", "CHAS");
+        matrizSilabasComplexas3.put("cher", "CHER");
+        matrizSilabasComplexas3.put("ches", "CHES");
+        matrizSilabasComplexas3.put("chir", "CHIR");
+        matrizSilabasComplexas3.put("chis", "CHIS");
+        matrizSilabasComplexas3.put("chor", "CHOR");
+        matrizSilabasComplexas3.put("chos", "CHOS");
+        matrizSilabasComplexas3.put("chur", "CHUR");
+        matrizSilabasComplexas3.put("chus", "CHUS");
+        matrizSilabasComplexas3.put("clam", "CLAM");
+        matrizSilabasComplexas3.put("clan", "CLAN");
+        matrizSilabasComplexas3.put("clas", "CLAS");
+        matrizSilabasComplexas3.put("clem", "CLEM");
+        matrizSilabasComplexas3.put("clen", "CLEN");
+        matrizSilabasComplexas3.put("cles", "CLES");
+        matrizSilabasComplexas3.put("clim", "CLIM");
+        matrizSilabasComplexas3.put("clin", "CLIN");
+        matrizSilabasComplexas3.put("clis", "CLIS");
+        matrizSilabasComplexas3.put("clom", "CLOM");
+        matrizSilabasComplexas3.put("clon", "CLON");
+        matrizSilabasComplexas3.put("clos", "CLOS");
+        matrizSilabasComplexas3.put("clum", "CLUM");
+        matrizSilabasComplexas3.put("clun", "CLUN");
+        matrizSilabasComplexas3.put("clus", "CLUS");
+        matrizSilabasComplexas3.put("com", "COM");
+        matrizSilabasComplexas3.put("con", "CON");
+        matrizSilabasComplexas3.put("cram", "CRAM");
+        matrizSilabasComplexas3.put("cran", "CRAN");
+        matrizSilabasComplexas3.put("cras", "CRAS");
+        matrizSilabasComplexas3.put("crem", "CREM");
+        matrizSilabasComplexas3.put("cren", "CREN");
+        matrizSilabasComplexas3.put("cres", "CRES");
+        matrizSilabasComplexas3.put("crim", "CRIM");
+        matrizSilabasComplexas3.put("crin", "CRIN");
+        matrizSilabasComplexas3.put("cris", "CRIS");
+        matrizSilabasComplexas3.put("crom", "CROM");
+        matrizSilabasComplexas3.put("cron", "CRON");
+        matrizSilabasComplexas3.put("cros", "CROS");
+        matrizSilabasComplexas3.put("crum", "CRUM");
+        matrizSilabasComplexas3.put("crun", "CRUN");
+        matrizSilabasComplexas3.put("crus", "CRUS");
+        matrizSilabasComplexas3.put("dlas", "DLAS");
+        matrizSilabasComplexas3.put("dles", "DLES");
+        matrizSilabasComplexas3.put("dlis", "DLIS");
+        matrizSilabasComplexas3.put("dlos", "DLOS");
+        matrizSilabasComplexas3.put("dlus", "DLUS");
+        matrizSilabasComplexas3.put("dram", "DRAM");
+        matrizSilabasComplexas3.put("dran", "DRAN");
+        matrizSilabasComplexas3.put("dras", "DRAS");
+        matrizSilabasComplexas3.put("drem", "DREM");
+        matrizSilabasComplexas3.put("dren", "DREN");
+        matrizSilabasComplexas3.put("dres", "DRES");
+        matrizSilabasComplexas3.put("drim", "DRIM");
+        matrizSilabasComplexas3.put("drin", "DRIN");
+        matrizSilabasComplexas3.put("dris", "DRIS");
+        matrizSilabasComplexas3.put("drom", "DROM");
+        matrizSilabasComplexas3.put("dron", "DRON");
+        matrizSilabasComplexas3.put("dros", "DROS");
+        matrizSilabasComplexas3.put("drum", "DRUM");
+        matrizSilabasComplexas3.put("drun", "DRUN");
+        matrizSilabasComplexas3.put("drus", "DRUS");
+        matrizSilabasComplexas3.put("fan", "FAN");
+        matrizSilabasComplexas3.put("flam", "FLAM");
+        matrizSilabasComplexas3.put("flan", "FLAN");
+        matrizSilabasComplexas3.put("flas", "FLAS");
+        matrizSilabasComplexas3.put("flem", "FLEM");
+        matrizSilabasComplexas3.put("flen", "FLEN");
+        matrizSilabasComplexas3.put("fles", "FLES");
+        matrizSilabasComplexas3.put("flim", "FLIM");
+        matrizSilabasComplexas3.put("flin", "FLIN");
+        matrizSilabasComplexas3.put("flis", "FLIS");
+        matrizSilabasComplexas3.put("flom", "FLOM");
+        matrizSilabasComplexas3.put("flon", "FLON");
+        matrizSilabasComplexas3.put("flos", "FLOS");
+        matrizSilabasComplexas3.put("flum", "FLUM");
+        matrizSilabasComplexas3.put("flun", "FLUN");
+        matrizSilabasComplexas3.put("flus", "FLUS");
+        matrizSilabasComplexas3.put("fram", "FRAM");
+        matrizSilabasComplexas3.put("fran", "FRAN");
+        matrizSilabasComplexas3.put("fras", "FRAS");
+        matrizSilabasComplexas3.put("frem", "FREM");
+        matrizSilabasComplexas3.put("fren", "FREN");
+        matrizSilabasComplexas3.put("fres", "FRES");
+        matrizSilabasComplexas3.put("frim", "FRIM");
+        matrizSilabasComplexas3.put("frin", "FRIN");
+        matrizSilabasComplexas3.put("fris", "FRIS");
+        matrizSilabasComplexas3.put("from", "FROM");
+        matrizSilabasComplexas3.put("fron", "FRON");
+        matrizSilabasComplexas3.put("fros", "FROS");
+        matrizSilabasComplexas3.put("frum", "FRUM");
+        matrizSilabasComplexas3.put("frus", "FRUS");
+        matrizSilabasComplexas3.put("glam", "GLAM");
+        matrizSilabasComplexas3.put("glan", "GLAN");
+        matrizSilabasComplexas3.put("glas", "GLAS");
+        matrizSilabasComplexas3.put("glem", "GLEM");
+        matrizSilabasComplexas3.put("glen", "GLEN");
+        matrizSilabasComplexas3.put("gles", "GLES");
+        matrizSilabasComplexas3.put("glim", "GLIM");
+        matrizSilabasComplexas3.put("glin", "GLIN");
+        matrizSilabasComplexas3.put("glis", "GLIS");
+        matrizSilabasComplexas3.put("glom", "GLOM");
+        matrizSilabasComplexas3.put("glon", "GLON");
+        matrizSilabasComplexas3.put("glos", "GLOS");
+        matrizSilabasComplexas3.put("glum", "GLUM");
+        matrizSilabasComplexas3.put("glun", "GLUN");
+        matrizSilabasComplexas3.put("glus", "GLUS");
+        matrizSilabasComplexas3.put("gom", "GOM");
+        matrizSilabasComplexas3.put("gon", "GON");
+        matrizSilabasComplexas3.put("gram", "GRAM");
+        matrizSilabasComplexas3.put("gran", "GRAN");
+        matrizSilabasComplexas3.put("gras", "GRAS");
+        matrizSilabasComplexas3.put("grem", "GREM");
+        matrizSilabasComplexas3.put("gren", "GREN");
+        matrizSilabasComplexas3.put("gres", "GRES");
+        matrizSilabasComplexas3.put("grim", "GRIM");
+        matrizSilabasComplexas3.put("grin", "GRIN");
+        matrizSilabasComplexas3.put("gris", "GRIS");
+        matrizSilabasComplexas3.put("grom", "GROM");
+        matrizSilabasComplexas3.put("gron", "GRON");
+        matrizSilabasComplexas3.put("gros", "GROS");
+        matrizSilabasComplexas3.put("grum", "GRUM");
+        matrizSilabasComplexas3.put("grun", "GRUN");
+        matrizSilabasComplexas3.put("grus", "GRUS");
+        matrizSilabasComplexas3.put("guam", "GUAM");
+        matrizSilabasComplexas3.put("guan", "GUAN");
+        matrizSilabasComplexas3.put("guar", "GUAR");
+        matrizSilabasComplexas3.put("guem", "GUEM");
+        matrizSilabasComplexas3.put("gue", "GUE");
+        matrizSilabasComplexas3.put("guen", "GUEN");
+        matrizSilabasComplexas3.put("guer", "GUER");
+        matrizSilabasComplexas3.put("guim", "GUIM");
+        matrizSilabasComplexas3.put("gui", "GUI");
+        matrizSilabasComplexas3.put("guin", "GUIN");
+        matrizSilabasComplexas3.put("guir", "GUIR");
+        matrizSilabasComplexas3.put("guo", "GUO");
+        matrizSilabasComplexas3.put("guon", "GUON");
+        matrizSilabasComplexas3.put("lheu", "LHEU");
+        matrizSilabasComplexas3.put("pers", "PERS");
+        matrizSilabasComplexas3.put("plam", "PLAM");
+        matrizSilabasComplexas3.put("plan", "PLAN");
+        matrizSilabasComplexas3.put("plas", "PLAS");
+        matrizSilabasComplexas3.put("plem", "PLEM");
+        matrizSilabasComplexas3.put("plen", "PLEN");
+        matrizSilabasComplexas3.put("ples", "PLES");
+        matrizSilabasComplexas3.put("plim", "PLIM");
+        matrizSilabasComplexas3.put("plin", "PLIN");
+        matrizSilabasComplexas3.put("plis", "PLIS");
+        matrizSilabasComplexas3.put("plom", "PLOM");
+        matrizSilabasComplexas3.put("plon", "PLON");
+        matrizSilabasComplexas3.put("plos", "PLOS");
+        matrizSilabasComplexas3.put("plum", "PLUM");
+        matrizSilabasComplexas3.put("plus", "PLUS");
+        matrizSilabasComplexas3.put("pram", "PRAM");
+        matrizSilabasComplexas3.put("pran", "PRAN");
+        matrizSilabasComplexas3.put("pras", "PRES");
+        matrizSilabasComplexas3.put("prem", "PREM");
+        matrizSilabasComplexas3.put("pren", "PREN");
+        matrizSilabasComplexas3.put("pres", "PRES");
+        matrizSilabasComplexas3.put("prim", "PRIM");
+        matrizSilabasComplexas3.put("prin", "PRIN");
+        matrizSilabasComplexas3.put("pris", "PRIS");
+        matrizSilabasComplexas3.put("prom", "PROM");
+        matrizSilabasComplexas3.put("pron", "PRON");
+        matrizSilabasComplexas3.put("pros", "PROS");
+        matrizSilabasComplexas3.put("prum", "PRUM");
+        matrizSilabasComplexas3.put("prus", "PRUS");
+        matrizSilabasComplexas3.put("psi", "PSI");
+        matrizSilabasComplexas3.put("qua", "QUA");
+        matrizSilabasComplexas3.put("quan", "QUAN");
+        matrizSilabasComplexas3.put("quão", "QUÃO");
+        matrizSilabasComplexas3.put("quar", "QUAR");
+        matrizSilabasComplexas3.put("quem", "QUEM");
+        matrizSilabasComplexas3.put("que", "QUE");
+        matrizSilabasComplexas3.put("quen", "QUEN");
+        matrizSilabasComplexas3.put("quer", "QUER");
+        matrizSilabasComplexas3.put("quim", "QUIM");
+        matrizSilabasComplexas3.put("qui", "QUI");
+        matrizSilabasComplexas3.put("quin", "QUIN");
+        matrizSilabasComplexas3.put("quir", "QUIR");
+        matrizSilabasComplexas3.put("quo", "QUO");
+        matrizSilabasComplexas3.put("tlam", "TLAM");
+        matrizSilabasComplexas3.put("tlan", "TLAN");
+        matrizSilabasComplexas3.put("tlas", "TLAS");
+        matrizSilabasComplexas3.put("tlem", "TLEM");
+        matrizSilabasComplexas3.put("tlen", "TLEN");
+        matrizSilabasComplexas3.put("tles", "TLES");
+        matrizSilabasComplexas3.put("tlim", "TLIM");
+        matrizSilabasComplexas3.put("tlin", "TLIN");
+        matrizSilabasComplexas3.put("tlis", "TLIS");
+        matrizSilabasComplexas3.put("tlom", "TLOM");
+        matrizSilabasComplexas3.put("tlon", "TLON");
+        matrizSilabasComplexas3.put("tlos", "TLOS");
+        matrizSilabasComplexas3.put("tlum", "TLUM");
+        matrizSilabasComplexas3.put("tlus", "TLUS");
+        matrizSilabasComplexas3.put("tran", "TRAN");
+        matrizSilabasComplexas3.put("tras", "TRAS");
+        matrizSilabasComplexas3.put("trem", "TREM");
+        matrizSilabasComplexas3.put("tren", "TREN");
+        matrizSilabasComplexas3.put("tres", "TRES");
+        matrizSilabasComplexas3.put("trim", "TRIM");
+        matrizSilabasComplexas3.put("tris", "TRIS");
+        matrizSilabasComplexas3.put("trom", "TROM");
+        matrizSilabasComplexas3.put("tron", "TRON");
+        matrizSilabasComplexas3.put("tros", "TROS");
+        matrizSilabasComplexas3.put("trum", "TRUM");
+        matrizSilabasComplexas3.put("trun", "TRUN");
+        matrizSilabasComplexas3.put("trus", "TRUS");
+        matrizSilabasComplexas3.put("vlas", "VLAS");
+        matrizSilabasComplexas3.put("vlem", "VLEM");
+        matrizSilabasComplexas3.put("vlen", "VLEN");
+        matrizSilabasComplexas3.put("vles", "VLES");
+        matrizSilabasComplexas3.put("vlim", "VLIM");
+        matrizSilabasComplexas3.put("vlis", "VLIS");
+        matrizSilabasComplexas3.put("vlom", "VLOM");
+        matrizSilabasComplexas3.put("vlon", "VLON");
+        matrizSilabasComplexas3.put("vlos", "VLOS");
+        matrizSilabasComplexas3.put("vlum", "VLUM");
+        matrizSilabasComplexas3.put("vlun", "VLUN");
+        matrizSilabasComplexas3.put("vlus", "VLUS");
+        matrizSilabasComplexas3.put("vram", "VRAM");
+        matrizSilabasComplexas3.put("vran", "VRAN");
+        matrizSilabasComplexas3.put("vras", "VRAS");
+        matrizSilabasComplexas3.put("vrem", "VREM");
+        matrizSilabasComplexas3.put("vren", "VREN");
+        matrizSilabasComplexas3.put("vres", "VRES");
+        matrizSilabasComplexas3.put("vrim", "VRIM");
+        matrizSilabasComplexas3.put("vrin", "VRIN");
+        matrizSilabasComplexas3.put("vris", "VRIS");
+        matrizSilabasComplexas3.put("vrom", "VROM");
+        matrizSilabasComplexas3.put("vron", "VRON");
+        matrizSilabasComplexas3.put("vros", "VROS");
+        matrizSilabasComplexas3.put("vrum", "VRUM");
+        matrizSilabasComplexas3.put("vrun", "VRUN");
+        matrizSilabasComplexas3.put("vrus", "VRUS");
+    }
+
+    /**
      * Retorna a chave da HashMap correspondente ao valor que é passado como
      * parâmetro
      *
@@ -887,10 +1689,16 @@ public class JogoPrincipal {
                 opcaoCorreta = matrizSilabasSimplesB.get(nomeAudioAtual);
                 break;
             case 4:
-                opcaoCorreta = matrizSilabasComplexas2.get(nomeAudioAtual);
+                opcaoCorreta = matrizPalavrasSimples.get(nomeAudioAtual);
                 break;
             case 5:
-                opcaoCorreta = matrizPalavrasSimples.get(nomeAudioAtual);
+                opcaoCorreta = matrizSilabasComplexas.get(nomeAudioAtual);
+                break;
+            case 6:
+                opcaoCorreta = matrizSilabasComplexas2.get(nomeAudioAtual);
+                break;
+            case 7:
+                opcaoCorreta = matrizSilabasComplexas3.get(nomeAudioAtual);
                 break;
             default:
                 break;
@@ -1018,10 +1826,16 @@ public class JogoPrincipal {
                 caminhoAudio = "src/audios_silabas_simplesB/" + n + ".mp3";
                 break;
             case 4:
-                caminhoAudio = "src/audios_silabas_complexas2/" + n + ".mp3";
+                caminhoAudio = "src/audios_palavras_simples/" + n + ".mp3";
                 break;
             case 5:
-                caminhoAudio = "src/audios_palavras_simples/" + n + ".mp3";
+                caminhoAudio = "src/audios_silabas_complexas/" + n + ".mp3";
+                break;
+            case 6:
+                caminhoAudio = "src/audios_silabas_complexas2/" + n + ".mp3";
+                break;
+            case 7:
+                caminhoAudio = "src/audios_silabas_complexas3/" + n + ".mp3";
                 break;
             default:
                 break;
@@ -1281,5 +2095,4 @@ public class JogoPrincipal {
                 new KeyFrame(Duration.seconds(0), eventoAcerto),
                 new KeyFrame(Duration.seconds(1), eventoFimAcerto)).play();
     }
-
 }
