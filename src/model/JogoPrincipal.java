@@ -129,26 +129,26 @@ public class JogoPrincipal {
         "CLAN", "CLAS", "CLEM", "CLEN", "CLES", "CLIM", "CLIN", "CLIS", "CLOM", "CLON",
         "CLOS", "CLUM", "CLUN", "CLUS", "COM", "CON", "CRAM", "CRAN", "CRAS", "CREM",
         "CREN", "CRES", "CRIM", "CRIN", "CRIS", "CROM", "CRON", "CROS", "CRUM", "CRUN",
-        "CRUS", "DLAS", "DLES", "DLIS", "DLOS", "DLUS", "DLUS", "DRAM", "DRAN", "DRAS",
-        "DREM", "DREN", "DRES", "DRIM", "DRIN", "DRIS", "DROM", "DRON", "DROS", "DRUM",
-        "DRUN", "DRUS", "FAN", "FLAM", "FLAN", "FLAS", "FLEM", "FLEN", "FLES", "FLIM",
-        "FLIN", "FLIS", "FLOM", "FLON", "FLOS", "FLUM", "FLUN", "FLUS", "FRAM", "FRAN",
-        "FRAS", "FREM", "FREN", "FRES", "FRIM", "FRIN", "FRIS", "FROM", "FRON", "FROS",
-        "FRUM", "FRUS", "GLAM", "GLAN", "GLAS", "GLEM", "GLEN", "GLES", "GLIM", "GLIN",
-        "GLIS", "GLOM", "GLON", "GLOS", "GLUM", "GLUN", "GLUS", "GLUS", "GOM", "GON",
-        "GRAM", "GRAN", "GRAS", "GREM", "GREN", "GRES", "GRIM", "GRIN", "GRIS", "GROM",
-        "GRON", "GROS", "GRUM", "GRUN", "GRUS", "GUAM", "GUAN", "GUAR", "GUEM", "GUE",
-        "GUEN", "GUER", "GUIM", "GUI", "GUIN", "GUIR", "GUO", "GUON", "LHEU", "PERS",
-        "PLAM", "PLAN", "PLAS", "PLEM", "PLEN", "PLES", "PLIM", "PLIN", "PLIS", "PLOM",
-        "PLON", "PLOS", "PLUM", "PLUS", "PLUS", "PRAM", "PRAN", "PRAS", "PREM", "PREN",
-        "PRES", "PRIM", "PRIN", "PRIS", "PROM", "PRON", "PROS", "PRUM", "PRUS", "PSI",
-        "QUA", "QUAN", "QUÃO", "QUAR", "QUEM", "QUE", "QUEN", "QUER", "QUIM", "QUI",
-        "QUIN", "QUIR", "QUO", "TLAM", "TLAN", "TLAS", "TLEM", "TLEN", "TLES", "TLIM",
-        "TLIN", "TLIS", "TLOM", "TLON", "TLOS", "TLUM", "TLUS", "TRAN", "TRAS", "TREM",
-        "TREN", "TRES", "TRIM", "TRIS", "TROM", "TRON", "TROS", "TRUM", "TRUN", "TRUS",
-        "VLAS", "VLEM", "VLEN", "VLES", "VLIM", "VLIS", "VLOM", "VLON", "VLOS", "VLUM",
-        "VLUN", "VLUS", "VRAM", "VRAN", "VRAS", "VREM", "VREN", "VRES", "VRIM", "VRIN",
-        "VRIS", "VROM", "VRON", "VROS", "VRUM", "VRUN", "VRUS"
+        "CRUS", "DLAS", "DLES", "DLIS", "DLOS", "DLUS", "DRAM", "DRAN", "DRAS", "DREM",
+        "DREN", "DRES", "DRIM", "DRIN", "DRIS", "DROM", "DRON", "DROS", "DRUM", "DRUN",
+        "DRUS", "FAN", "FLAM", "FLAN", "FLAS", "FLEM", "FLEN", "FLES", "FLIM", "FLIN",
+        "FLIS", "FLOM", "FLON", "FLOS", "FLUM", "FLUN", "FLUS", "FRAM", "FRAN", "FRAS",
+        "FREM", "FREN", "FRES", "FRIM", "FRIN", "FRIS", "FROM", "FRON", "FROS", "FRUM",
+        "FRUS", "GLAM", "GLAN", "GLAS", "GLEM", "GLEN", "GLES", "GLIM", "GLIN", "GLIS",
+        "GLOM", "GLON", "GLOS", "GLUM", "GLUN", "GLUS", "GOM", "GON", "GRAM", "GRAN",
+        "GRAS", "GREM", "GREN", "GRES", "GRIM", "GRIN", "GRIS", "GROM", "GRON", "GROS",
+        "GRUM", "GRUN", "GRUS", "GUAM", "GUAN", "GUAR", "GUEM", "GUE", "GUEN", "GUER",
+        "GUIM", "GUI", "GUIN", "GUIR", "GUO", "GUON", "LHEU", "PERS", "PLAM", "PLAN",
+        "PLAS", "PLEM", "PLEN", "PLES", "PLIM", "PLIN", "PLIS", "PLOM", "PLON", "PLOS",
+        "PLUM", "PLUS", "PRAM", "PRAN", "PRAS", "PREM", "PREN", "PRES", "PRIM", "PRIN",
+        "PRIS", "PROM", "PRON", "PROS", "PRUM", "PRUS", "PSI", "QUA", "QUAN", "QUÃO",
+        "QUAR", "QUEM", "QUE", "QUEN", "QUER", "QUIM", "QUI", "QUIN", "QUIR", "QUO",
+        "TLAM", "TLAN", "TLAS", "TLEM", "TLEN", "TLES", "TLIM", "TLIN", "TLIS", "TLOM",
+        "TLON", "TLOS", "TLUM", "TLUS", "TRAN", "TRAS", "TREM", "TREN", "TRES", "TRIM",
+        "TRIS", "TROM", "TRON", "TROS", "TRUM", "TRUN", "TRUS", "VLAS", "VLEM", "VLEN",
+        "VLES", "VLIM", "VLIS", "VLOM", "VLON", "VLOS", "VLUM", "VLUN", "VLUS", "VRAM",
+        "VRAN", "VRAS", "VREM", "VREN", "VRES", "VRIM", "VRIN", "VRIS", "VROM", "VRON",
+        "VROS", "VRUM", "VRUN", "VRUS"
     };
 
     private String palavrasSimples[] = {
@@ -253,26 +253,26 @@ public class JogoPrincipal {
         "clan", "clas", "clem", "clen", "cles", "clim", "clin", "clis", "clom", "clon",
         "clos", "clum", "clun", "clus", "com", "con", "cram", "cran", "cras", "crem",
         "cren", "cres", "crim", "crin", "cris", "crom", "cron", "cros", "crum", "crun",
-        "crus", "dlas", "dles", "dlis", "dlos", "dlus", "dram", "dran", "dras",
-        "drem", "dren", "dres", "drim", "drin", "dris", "drom", "dron", "dros", "drum",
-        "drun", "drus", "fan", "flam", "flan", "flas", "flem", "flen", "fles", "flim",
-        "flin", "flis", "flom", "flon", "flos", "flum", "flun", "flus", "fram", "fran",
-        "fras", "frem", "fren", "fres", "frim", "frin", "fris", "from", "fron", "fros",
-        "frum", "frus", "glam", "glan", "glas", "glem", "glen", "gles", "glim", "glin",
-        "glis", "glom", "glon", "glos", "glum", "glun", "glus", "gom", "gon",
-        "gram", "gran", "gras", "grem", "gren", "gres", "grim", "grin", "gris", "grom",
-        "gron", "gros", "grum", "grun", "grus", "guam", "guan", "guar", "guem", "gue",
-        "guen", "guer", "guim", "gui", "guin", "guir", "guo", "guon", "lheu", "pers",
-        "plam", "plan", "plas", "plem", "plen", "ples", "plim", "plin", "plis", "plom",
-        "plon", "plos", "plum", "plus", "pram", "pran", "pras", "prem", "pren",
-        "pres", "prim", "prin", "pris", "prom", "pron", "pros", "prum", "prus", "psi",
-        "qua", "quan", "quão", "quar", "quem", "que", "quen", "quer", "quim", "qui",
-        "quin", "quir", "quo", "tlam", "tlan", "tlas", "tlem", "tlen", "tles", "tlim",
-        "tlin", "tlis", "tlom", "tlon", "tlos", "tlum", "tlus", "tran", "tras", "trem",
-        "tren", "tres", "trim", "tris", "trom", "tron", "tros", "trum", "trun", "trus",
-        "vlas", "vlem", "vlen", "vles", "vlim", "vlis", "vlom", "vlon", "vlos", "vlum",
-        "vlun", "vlus", "vram", "vran", "vras", "vrem", "vren", "vres", "vrim", "vrin",
-        "vris", "vrom", "vron", "vros", "vrum", "vrun", "vrus"};
+        "crus", "dlas", "dles", "dlis", "dlos", "dlus", "dram", "dran", "dras", "drem",
+        "dren", "dres", "drim", "drin", "dris", "drom", "dron", "dros", "drum", "drun",
+        "drus", "fan", "flam", "flan", "flas", "flem", "flen", "fles", "flim", "flin",
+        "flis", "flom", "flon", "flos", "flum", "flun", "flus", "fram", "fran", "fras",
+        "frem", "fren", "fres", "frim", "frin", "fris", "from", "fron", "fros", "frum",
+        "frus", "glam", "glan", "glas", "glem", "glen", "gles", "glim", "glin", "glis",
+        "glom", "glon", "glos", "glum", "glun", "glus", "gom", "gon", "gram", "gran",
+        "gras", "grem", "gren", "gres", "grim", "grin", "gris", "grom", "gron", "gros",
+        "grum", "grun", "grus", "guam", "guan", "guar", "guem", "gue", "guen", "guer",
+        "guim", "gui", "guin", "guir", "guo", "guon", "lheu", "pers", "plam", "plan",
+        "plas", "plem", "plen", "ples", "plim", "plin", "plis", "plom", "plon", "plos",
+        "plum", "plus", "pram", "pran", "pras", "prem", "pren", "pres", "prim", "prin",
+        "pris", "prom", "pron", "pros", "prum", "prus", "psi", "qua", "quan", "quão",
+        "quar", "quem", "que", "quen", "quer", "quim", "qui", "quin", "quir", "quo",
+        "tlam", "tlan", "tlas", "tlem", "tlen", "tles", "tlim", "tlin", "tlis", "tlom",
+        "tlon", "tlos", "tlum", "tlus", "tran", "tras", "trem", "tren", "tres", "trim",
+        "tris", "trom", "tron", "tros", "trum", "trun", "trus", "vlas", "vlem", "vlen",
+        "vles", "vlim", "vlis", "vlom", "vlon", "vlos", "vlum", "vlun", "vlus", "vram",
+        "vran", "vras", "vrem", "vren", "vres", "vrim", "vrin", "vris", "vrom", "vron",
+        "vros", "vrum", "vrun", "vrus"};
 
     public Jogador jogador = new Jogador();
 
@@ -477,7 +477,7 @@ public class JogoPrincipal {
                 }
                 preencherOpcoes(silabasComplexas2, som, novasOpcoes);
                 break;
-            
+
             case 7:
                 i = 0;
                 som = 0;
@@ -601,8 +601,8 @@ public class JogoPrincipal {
                 y = i;
                 break;
             case 7:
-                i = indiceAudio.nextInt(264);
-                System.out.println("o som gerado foi o som: " + audiosSilabasComplexas2[i]);
+                i = indiceAudio.nextInt(266);
+                System.out.println("o som gerado foi o som: " + audiosSilabasComplexas3[i]);
                 tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
                 break;
@@ -1348,7 +1348,7 @@ public class JogoPrincipal {
         matrizSilabasComplexas.put("rel", "REL");
     }
 
-    public void matrizSilabasComplexas3() {
+    public void iniciarMatrizSilabasComplexas3() {
         matrizSilabasComplexas3.put("blam", "BLAM");
         matrizSilabasComplexas3.put("blan", "BLAN");
         matrizSilabasComplexas3.put("blas", "BLAS");
@@ -1533,7 +1533,7 @@ public class JogoPrincipal {
         matrizSilabasComplexas3.put("plus", "PLUS");
         matrizSilabasComplexas3.put("pram", "PRAM");
         matrizSilabasComplexas3.put("pran", "PRAN");
-        matrizSilabasComplexas3.put("pras", "PRES");
+        matrizSilabasComplexas3.put("pras", "PRAS");
         matrizSilabasComplexas3.put("prem", "PREM");
         matrizSilabasComplexas3.put("pren", "PREN");
         matrizSilabasComplexas3.put("pres", "PRES");
@@ -1584,7 +1584,7 @@ public class JogoPrincipal {
         matrizSilabasComplexas3.put("tron", "TRON");
         matrizSilabasComplexas3.put("tros", "TROS");
         matrizSilabasComplexas3.put("trum", "TRUM");
-        matrizSilabasComplexas3.put("trun", "TRUN");
+        matrizSilabasComplexas3.put("trun", "TRUM");
         matrizSilabasComplexas3.put("trus", "TRUS");
         matrizSilabasComplexas3.put("vlas", "VLAS");
         matrizSilabasComplexas3.put("vlem", "VLEM");

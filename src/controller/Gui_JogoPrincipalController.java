@@ -68,6 +68,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         jogoPrincipal.iniciarMatrizAudioSilabas();
         jogoPrincipal.iniciarMatrizSilabasSimplesB();
         jogoPrincipal.inicarMatrizSilabasComplexas2();
+        jogoPrincipal.iniciarMatrizSilabasComplexas3();
         jogoPrincipal.iniciarMatrizPalavrasSimples();
         jogoPrincipal.iniciarMatrizSilabasComplexas();
         jogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
