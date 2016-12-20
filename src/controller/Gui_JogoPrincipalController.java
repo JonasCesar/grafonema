@@ -6,7 +6,7 @@
 package controller;
 
 import java.io.IOException;
-import model.JogoPrincipal;
+import model.ModelJogoPrincipal;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -46,7 +46,7 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private Label pontuacao;
 
-    private JogoPrincipal jogoPrincipal;
+    private ModelJogoPrincipal modelJogoPrincipal;
     @FXML
     private ProgressBar lifeBar;
 
@@ -63,16 +63,16 @@ public class Gui_JogoPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
-        jogoPrincipal = new JogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo);
-        jogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
-        jogoPrincipal.iniciarMatrizAudioSilabas();
-        jogoPrincipal.iniciarMatrizSilabasSimplesB();
-        jogoPrincipal.inicarMatrizSilabasComplexas2();
-        jogoPrincipal.iniciarMatrizSilabasComplexas3();
-        jogoPrincipal.iniciarMatrizPalavrasSimples();
-        jogoPrincipal.iniciarMatrizSilabasComplexas();
-        jogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
-        jogoPrincipal.iniciarTimer();//inicia o relógio
+        modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo);
+        modelJogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
+        modelJogoPrincipal.iniciarMatrizAudioSilabas();
+        modelJogoPrincipal.iniciarMatrizSilabasSimplesB();
+        modelJogoPrincipal.inicarMatrizSilabasComplexas2();
+        modelJogoPrincipal.iniciarMatrizSilabasComplexas3();
+        modelJogoPrincipal.iniciarMatrizPalavrasSimples();
+        modelJogoPrincipal.iniciarMatrizSilabasComplexas();
+        modelJogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
+        modelJogoPrincipal.iniciarTimer();//inicia o relógio
     }
 
     /**
@@ -82,19 +82,19 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @FXML
     private void handlePular(ActionEvent event) throws InterruptedException, IOException {
-        int qntPulosAtual = jogoPrincipal.jogador.getQntPulos();
+        int qntPulosAtual = modelJogoPrincipal.jogador.getQntPulos();
         //se o jogador já pulou 3 vezes
         //(pois a quantidade de pulos é iniciada com 0
         if (qntPulosAtual == 2) {
             //desabilita o botão de pular
-            jogoPrincipal.desabilitarPulo();
+            modelJogoPrincipal.desabilitarPulo();
         } else {
             //gera uma opção aleatória
-            jogoPrincipal.gerarOpcaoAleatoria();
-            jogoPrincipal.jogador.setQntPulos(qntPulosAtual);//incrementa quantidade de pulos do jogador
+            modelJogoPrincipal.gerarOpcaoAleatoria();
+            modelJogoPrincipal.jogador.setQntPulos(qntPulosAtual);//incrementa quantidade de pulos do jogador
         }
         //seta indicacaoPular como true
-        jogoPrincipal.setIndicacaoPular(true);
+        modelJogoPrincipal.setIndicacaoPular(true);
     }
 
     /**
@@ -108,34 +108,34 @@ public class Gui_JogoPrincipalController implements Initializable {
     //método referente aos botões de opção
     private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
         //Se a opção escolhida está certa
-        if (jogoPrincipal.verificarRelacaoGaFonema(event)) {
-            jogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
-            jogoPrincipal.incrementarAcerto();//incrementar o acerto
+        if (modelJogoPrincipal.verificarRelacaoGaFonema(event)) {
+            modelJogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
+            modelJogoPrincipal.incrementarAcerto();//incrementar o acerto
 
-            if (jogoPrincipal.jogador.getAcertosTotal() == 10) {
-                jogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
+            if (modelJogoPrincipal.jogador.getAcertosTotal() == 10) {
+                modelJogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
-                jogoPrincipal.mostrarCenas();//mostra as cenas depois que o jogador acerta 10 vezes
+                modelJogoPrincipal.mostrarCenas();//mostra as cenas depois que o jogador acerta 10 vezes
 
             } else {
                 //mostra a animação de acerto
-                jogoPrincipal.mostrarAnimacaoAcerto();               
+                modelJogoPrincipal.mostrarAnimacaoAcerto();               
             }
 
         } else {
             //reduzir barra de vidas
-            jogoPrincipal.reduzirLifeBar();
-            jogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
-            Button temp = jogoPrincipal.opcaoCorreta(event);
+            modelJogoPrincipal.reduzirLifeBar();
+            modelJogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
+            Button temp = modelJogoPrincipal.opcaoCorreta(event);
             
             //animação da opção correta            
-            if (jogoPrincipal.isGameOver()) {//se for o fim do jogo
-                temp = jogoPrincipal.opcaoCorreta(event);
+            if (modelJogoPrincipal.isGameOver()) {//se for o fim do jogo
+                temp = modelJogoPrincipal.opcaoCorreta(event);
                 //animação do fim de jogo
-                jogoPrincipal.mostraFimDeJogo(temp);
+                modelJogoPrincipal.mostraFimDeJogo(temp);
             }else{
                 //animação da opção correta
-                jogoPrincipal.mostrarOpcaoCorreta(temp);
+                modelJogoPrincipal.mostrarOpcaoCorreta(temp);
             }
         }
     }
@@ -146,7 +146,7 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @FXML
     private void handleOuvirAudio(ActionEvent event) {
-        String audio = jogoPrincipal.getAudioAtual();
-        jogoPrincipal.tocarAudio(audio);//chama o método que toca o áudio
+        String audio = modelJogoPrincipal.getAudioAtual();
+        modelJogoPrincipal.tocarAudio(audio);//chama o método que toca o áudio
     }
 }

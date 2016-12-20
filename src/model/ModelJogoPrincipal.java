@@ -36,7 +36,7 @@ import javafx.util.Duration;
  *
  * @author jonas
  */
-public class JogoPrincipal {
+public class ModelJogoPrincipal {
 
     @FXML
     private Button btn_1;
@@ -149,6 +149,34 @@ public class JogoPrincipal {
         "VLES", "VLIM", "VLIS", "VLOM", "VLON", "VLOS", "VLUM", "VLUN", "VLUS", "VRAM",
         "VRAN", "VRAS", "VREM", "VREN", "VRES", "VRIM", "VRIN", "VRIS", "VROM", "VRON",
         "VROS", "VRUM", "VRUN", "VRUS"
+    };
+
+    private String frasesSimples[] = {
+        "A BONECA É BONITA", "A BRUXA É FEIA", "A CASA É AZUL", "ALINE GOSTA DE MAÇÃ",
+        "A MELANCIA É GOSTOSA", "A NEVE É BRANCA", "A PORTA ESTÁ ABERTA", "A TV ESTÁ LIGADA",
+        "BETO GOSTA DE CORRER", "BIA ESTÁ ESTUDANDO", "BIBI COMPROU UMA BOLSA", "EU ADORO LER",
+        "EU AMO VOCÊ", "HOJE VAI CHOVER", "HUGO JOGA FUTEBOL", "JOANA CAIU DA CAMA", "JOÃO USA BONÉ",
+        "JOSÉ É QUERIDO", "MAGALI ADORA COMER", "MALU ADORA NOVELAS", "MAMÃE FEZ UM BOLO", 
+        "MARIA ESTÁ NA ESCOLA", "MÁRIO USA GRAVATA", "MEU CABELO É PRETO", "MEU VESTIDO É ROSA",
+        "MINHA MÃE É LINDA", "O BEBÊ ESTÁ CHORANDO", "O CARRO É VERMELHO", "O CAVALO É MARRON",
+        "O DIA ESTÁ NUBLADO", "O ELEFANTE É GRANDE", "O GATO PULOU DA ÁRVORE", "O LIVRO É PEQUENO",
+        "O MACACO É SAPECA", "O PATO ESTÁ ANDANDO", "O PINTINHO CISCA NO CHÃO", "O RATO É DENTUÇO",
+        "O REI É BONDOSO", "O SAPATO É AMARELO", "O SAPO ESTÁ NO LAGO", "O TELEFONE ESTÁ TOCANDO",
+        "O URSO É PELUDO", "PAPAI CHEGOU EM CASA" };
+
+    private String audiosFrasesSimples[] = {
+        "a_boneca_eh_bonita", "a_bruxa_eh_feia", "a_casa_eh_azul",
+        "aline_gosta_de_maca", "a_melancia_eh_gostosa", "a_neve_eh_branca",
+        "a_porta_esta_aberta", "a_tv_esta_ligada", "beto_gosta_de_correr",
+        "bia_esta_estudando", "bibi_comprou_uma_bolsa", "eu_adoro_ler",
+        "eu_amo_vc", "hoje_vai_chover", "hugo_joga_futebol", "joana_caiu_da_cama",
+        "joao_usa_bone", "josé_eh_querido", "magali_adora_comer", "malu_adora_novelas",
+        "mamae_fez_um_bolo", "maria_está_na_escola", "mario_usa_gravata", "meu_cabelo_eh_preto",
+        "meu_vestido_eh_rosa", "minha_mae_eh_linda", "o_bebe_esta_chorando", "o_carro_eh_vermelho",
+        "o_cavalo_eh_marrom", "o_dia_esta_nublado", "o_elefante_eh_grande", "o_gato_pulou_da_arvore",
+        "o_livro_eh_pequeno", "o_macaco_eh_sapeca", "o_pato_esta_andando", "o_pintinho_cisca_no_chao",
+        "o_rato_eh_dentuco", "o_rei_eh_bondoso", "o_sapato_eh_amarelo", "o_sapo_esta_no_lago",
+        "o_telefone_esta_tocando", "o_urso_eh_peludo", "papai_chegou_em_casa"
     };
 
     private String palavrasSimples[] = {
@@ -278,7 +306,7 @@ public class JogoPrincipal {
 
     private final Map<String, String> matrizVogais, matrizSilabasSimples,
             matrizSilabasSimplesB, matrizSilabasComplexas2, matrizPalavrasSimples,
-            matrizSilabasComplexas, matrizSilabasComplexas3;
+            matrizSilabasComplexas, matrizSilabasComplexas3, matrizFrasesSimples;
 
     private Random indiceAudio;
 
@@ -297,7 +325,7 @@ public class JogoPrincipal {
 
     private Timer timer;
 
-    public JogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
+    public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
 
         this.btn_1 = b1;
@@ -316,6 +344,7 @@ public class JogoPrincipal {
         this.matrizSilabasComplexas3 = new HashMap<String, String>();
         this.matrizSilabasComplexas = new HashMap<String, String>();
         this.matrizPalavrasSimples = new HashMap<String, String>();
+        this.matrizFrasesSimples = new HashMap<String, String>();
 
         this.mostrandoCena = false;
         this.indicacaoPular = false;
@@ -341,7 +370,7 @@ public class JogoPrincipal {
             jogador.setBonus(true);
         }
 
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 5) {
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
@@ -496,6 +525,24 @@ public class JogoPrincipal {
                 }
                 preencherOpcoes(silabasComplexas3, som, novasOpcoes);
                 break;
+            case 9:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(50);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(frasesSimples, som, novasOpcoes);
+                break;
 
         }
     }
@@ -606,6 +653,12 @@ public class JogoPrincipal {
                 tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
                 break;
+            case 8:
+                i = indiceAudio.nextInt(50);
+                System.out.println("o som gerado foi o som: " + audiosFrasesSimples[i]);
+                tocarAudio(audiosFrasesSimples[i]);
+                y = i;
+                break;    
             default:
                 break;
         }
@@ -649,6 +702,9 @@ public class JogoPrincipal {
             case 7:
                 System.out.println("FASE SETE");
                 resultado = ((getKeyByValue(matrizSilabasComplexas3, opcaoEscolhida)).equals(getAudioAtual()));
+                break;
+            case 9:
+                resultado = ((getKeyByValue(matrizFrasesSimples, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             default:
                 break;
@@ -1755,7 +1811,8 @@ public class JogoPrincipal {
                     gerarOpcaoAleatoria();
 
                 } catch (InterruptedException | IOException ex) {
-                    Logger.getLogger(JogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModelJogoPrincipal.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -1792,8 +1849,10 @@ public class JogoPrincipal {
                 Parent cenaPrincipal = null;
                 try {
                     cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
+
                 } catch (IOException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Gui_JogoPrincipalController.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
                 Scene scene = new Scene(cenaPrincipal, 900, 700);
                 window.setTitle("Grafonema");
@@ -1913,8 +1972,10 @@ public class JogoPrincipal {
                 try {
                     //cenaPrincipal é definida como a classe com as sequencias de cenas
                     cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+
                 } catch (IOException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Gui_JogoPrincipalController.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
                 Scene scene = new Scene(cenaPrincipal, 900, 700);
                 window.setTitle("Grafonema");
@@ -1938,8 +1999,10 @@ public class JogoPrincipal {
                 window.show();
                 try {
                     gerarOpcaoAleatoria();
+
                 } catch (InterruptedException | IOException ex) {
-                    Logger.getLogger(JogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModelJogoPrincipal.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -1995,7 +2058,7 @@ public class JogoPrincipal {
         //criação da tarefa que vai executar durante 1 segundo
         timer.scheduleAtFixedRate(new TimerTask() {
 
-            int i = 5;
+            int i = 30;
 
             @Override
             public void run() {
@@ -2047,7 +2110,7 @@ public class JogoPrincipal {
                         //se o jogador pulou ou errou voltar o tempo para 30 segundos
                         if ((getIndicacaoPular()) || (getPularErro())) {
                             //System.out.println(i);
-                            i = 5;
+                            i = 30;
                             //indicacaoPular = false;
                             setIndicacaoPular(false);
                             setPularErro(false);
@@ -2069,27 +2132,23 @@ public class JogoPrincipal {
      */
     public void mostrarAnimacaoAcerto() {
         //evento que represanta a ação do acerto
-        eventoAcerto = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Button btemp = opcaoCorreta(event);
-                (btemp).setText("X");
-            }
+        eventoAcerto = (ActionEvent event) -> {
+            Button btemp = opcaoCorreta(event);
+            (btemp).setText("X");
         };
 
         //evento que representa a ação a ser feita depois da 
         //animação de acerto
-        eventoFimAcerto = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    gerarOpcaoAleatoria();
-                } catch (InterruptedException | IOException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                //indicacaoPular = true;
-                setIndicacaoPular(true);
+        eventoFimAcerto = (ActionEvent event) -> {
+            try {
+                gerarOpcaoAleatoria();
+                
+            } catch (InterruptedException | IOException ex) {
+                Logger.getLogger(Gui_JogoPrincipalController.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
+            //indicacaoPular = true;
+            setIndicacaoPular(true);
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoAcerto),
