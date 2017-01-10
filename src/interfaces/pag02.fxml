@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag02Controller">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="900.0">
+         <children>
+            <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
+            <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
+            <Button layoutX="634.0" layoutY="598.0" mnemonicParsing="false" text="Manual" />
+            <TextArea layoutX="8.0" layoutY="155.0" prefHeight="401.0" prefWidth="177.0" />
+            <Label layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="169.0" text="Palavras Estudadas" textAlignment="CENTER" />
+            <Label fx:id="palavraAtual" layoutX="511.0" layoutY="228.0" text="PALAVRA" />
+            <Button layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
+            <Button layoutX="406.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio1" text="1" />
+            <Button layoutX="527.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio2" text="2" />
+            <Button layoutX="650.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio3" text="3" />
+            <Button layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
