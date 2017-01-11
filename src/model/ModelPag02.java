@@ -5,11 +5,20 @@
  */
 package model;
 
+import controller.Pag01Controller;
 import controller.Pag02Controller;
+import controller.Pag03Controller;
 import java.io.File;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
 
 /**
  *
@@ -25,6 +34,8 @@ public class ModelPag02 {
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
+    
+    private Stage janela;
     
     public ModelPag02() {
         this.unidadeAtual = "u00";
@@ -111,6 +122,39 @@ public class ModelPag02 {
         //toca o audio automaticamente
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
+    }
+
+    public void proximaPagina(ActionEvent event) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
+        
+        
+        //cria a próxima cena chamando a inteface dos avatares        
+        Parent proximaCena = (Parent) fxmloader.load();
+        Pag03Controller pg03Cont = fxmloader.<Pag03Controller>getController();
+        pg03Cont.setUnidadeAtual(getUnidadeAtual());
+        
+        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
+        janela.setTitle("Projeto 2");//título da cena
+        janela.setScene(cena);
+        janela.show();//exibe a interface
+        pg03Cont.audioInicial();
+        pg03Cont.setImagens(getUnidadeAtual());
+    }
+
+    public void paginaAnterior(ActionEvent event) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));        
+        //cria a próxima cena chamando a inteface dos avatares        
+        Parent proximaCena = (Parent) fxmloader.load();
+        Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
+        
+        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
+        janela.setTitle("Projeto 2");//título da cena
+        janela.setScene(cena);
+        janela.show();//exibe a interface
+        pg01Cont.setUnidadeAtual(getUnidadeAtual());
+        pg01Cont.tocarAudio();
     }
     
     

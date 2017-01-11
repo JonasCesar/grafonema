@@ -5,6 +5,7 @@
  */
 package controller;
 
+import model.ModelPag04;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -15,13 +16,21 @@ import javafx.fxml.Initializable;
  * @author shadows
  */
 public class Pag04Controller implements Initializable {
+    private ModelPag04 modelPag04;
+    public Pag04Controller() {
+    }
 
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        modelPag04 = new ModelPag04();
     }    
+
+    public void setUnidadeAtual(String unidadeAtual) {
+        modelPag04.setUnidadeAtual(unidadeAtual);
+    }
     
 }

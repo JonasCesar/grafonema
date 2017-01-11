@@ -28,7 +28,7 @@ public class Pag02Controller implements Initializable {
     @FXML
     private Label palavraAtual;
     
-    private Stage janela;
+    
     
     private ModelPag02 modelPag02 = new ModelPag02();
     
@@ -44,12 +44,12 @@ public class Pag02Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     @FXML
-    private void avancar(ActionEvent event) {
-        
+    private void avancar(ActionEvent event) throws IOException {
+        modelPag02.proximaPagina(event);
     }
 
     @FXML
@@ -69,19 +69,7 @@ public class Pag02Controller implements Initializable {
 
     @FXML
     private void voltar(ActionEvent event) throws IOException {
-        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));
-        
-        
-        //cria a próxima cena chamando a inteface dos avatares        
-        Parent proximaCena = (Parent) fxmloader.load();
-        Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
-        
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
-        pg01Cont.tocarAudio();
+        modelPag02.paginaAnterior(event);        
     }
 
     public String getUnidadeAtual() {
