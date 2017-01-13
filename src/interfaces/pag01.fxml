@@ -19,7 +19,7 @@
             <Image url="@../imagens/licao01/l1u1.png" />
          </image>
       </ImageView>
-      <Label layoutX="524.0" layoutY="67.0" text="Unidade X" />
+      <Label fx:id="tituloUnidade" layoutX="524.0" layoutY="67.0" text="Unidade" />
       <Button layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
    </children>
 </AnchorPane>

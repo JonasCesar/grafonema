@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package model;
-import controller.Pag02Controller;
+
+import controller.MenuInicialController;
 import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -22,39 +23,45 @@ import javafx.stage.Stage;
  *
  * @author shadows
  */
-public class ModelPag01 {
-    private String unidadeAtual;
+public class ModelPag07 {
+    private Stage janela;
     private String caminhoAudio;
-    
     private File arquivo;
-
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
-    private Stage janela;
+    private String unidadeAtual;
+
+    public ModelPag07() {
+        this.unidadeAtual = "u00";
+    }
+   
+
     
-    
-    public ModelPag01() {
-        this.unidadeAtual = "u00";        
+    public void proximaPagina(ActionEvent event) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
+        
+        
+        //cria a próxima cena chamando a inteface dos avatares        
+        Parent proximaCena = (Parent) fxmloader.load();
+        MenuInicialController menuInicialCont = fxmloader.<MenuInicialController>getController();
+        menuInicialCont.setUnidadeAtual(getUnidadeAtual());
+        
+        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
+        janela.setTitle("Projeto 2");//título da cena
+        janela.setScene(cena);
+        janela.show();//exibe a interface
     }
 
-    public String getUnidadeAtual() {
-        return this.unidadeAtual;
-    }
-    /**
-     * OBS: Enviar a atualização da unidade para todas as
-     * classes que utilizarem
-     * @param unidadeAtual 
-     * @param classe 
-     */
-    public void setUnidadeAtual(String unidadeAtual, Label tituloUnidade) {
-        
-        this.unidadeAtual = unidadeAtual;
+    public void setUnidadeAtual(String unidade, Label tituloUnidade) {
+        this.unidadeAtual = unidade;
+        System.out.println(unidade);
         tituloUnidade.setText(tituloUnidade.getText()+" "+unidadeAtual.substring(1));
     }
 
     public void tocarAudio() {
-        switch (getUnidadeAtual()) {
+         switch (getUnidadeAtual()) {
             case "u01":
                 caminhoAudio = "src/audios/u01/l1p1.MP3";
                 break;
@@ -78,21 +85,9 @@ public class ModelPag01 {
         mediaView.setMediaPlayer(mediaPlayer);
     }
 
-    public void proximaPagina(ActionEvent event) throws IOException {
-        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02.fxml"));
-        
-        
-        //cria a próxima cena chamando a inteface dos avatares        
-        Parent proximaCena = (Parent) fxmloader.load();
-        Pag02Controller pg02Cont = fxmloader.<Pag02Controller>getController();
-        pg02Cont.setUnidadeAtual(getUnidadeAtual());
-        
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
+    public String getUnidadeAtual() {
+        return this.unidadeAtual;
+       
     }
-    
     
 }

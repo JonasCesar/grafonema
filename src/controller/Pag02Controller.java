@@ -34,6 +34,7 @@ public class Pag02Controller implements Initializable {
     
     private String unidadeAtual;
     
+    
     public Pag02Controller() {
         unidadeAtual = "u00";
         
@@ -77,6 +78,13 @@ public class Pag02Controller implements Initializable {
     }
 
     public void setUnidadeAtual(String unidade) {
+        switch(unidade){
+            case "u01":
+                palavraAtual.setText("VOVÔ");
+                break;
+            default:
+                break;
+        }
         modelPag02.setUnidadeAtual(unidade);
     }
     

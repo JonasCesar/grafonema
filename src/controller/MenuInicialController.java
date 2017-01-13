@@ -45,5 +45,9 @@ public class MenuInicialController implements Initializable {
                 break;
         }
     }
+
+    public void setUnidadeAtual(String unidadeAtual) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
