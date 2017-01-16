@@ -8,8 +8,6 @@
 
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.Pag06Controller">
-   <children>
-      <AnchorPane id="AnchorPane" layoutX="40.0" layoutY="40.0" prefHeight="700.0" prefWidth="900.0">
          <children>
             <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
             <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
@@ -22,6 +20,4 @@
             <Label fx:id="p2" layoutX="465.0" layoutY="348.0" text="E MEU AMIGO" />
             <TextField fx:id="resposta" layoutX="377.0" layoutY="343.0" prefHeight="25.0" prefWidth="82.0" />
          </children>
-      </AnchorPane>
-   </children>
 </AnchorPane>
