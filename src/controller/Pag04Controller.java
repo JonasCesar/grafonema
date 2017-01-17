@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -41,6 +42,10 @@ public class Pag04Controller implements Initializable {
     private Label f2;
     @FXML
     private Label f1;
+    private double newTranslateX;
+    private double newTranslateY;
+    @FXML
+    private ImageView espaco;
 
     public Pag04Controller() {
     }
@@ -57,11 +62,7 @@ public class Pag04Controller implements Initializable {
         modelPag04.setUnidadeAtual(unidadeAtual);
         switch (unidadeAtual) {
             case "u01":
-                p1.setText("VA");
-                p2.setText("VE");
-                p3.setText("VI");
-                p4.setText("VO");
-                p5.setText("VU");
+
                 break;
             default:
                 break;
@@ -91,14 +92,20 @@ public class Pag04Controller implements Initializable {
 
     @FXML
     private void mouseArrastado(MouseEvent event) {
-        System.out.println("Mouse arrastado");
+        //System.out.println("Mouse arrastado");
         double offsetX = event.getSceneX() - orgSceneX;
-            double offsetY = event.getSceneY() - orgSceneY;
-            double newTranslateX = orgTranslateX + offsetX;
-            double newTranslateY = orgTranslateY + offsetY;
-             
-            ((Label)(event.getSource())).setTranslateX(newTranslateX);
-            ((Label)(event.getSource())).setTranslateY(newTranslateY);
+        double offsetY = event.getSceneY() - orgSceneY;
+        newTranslateX = orgTranslateX + offsetX;
+        newTranslateY = orgTranslateY + offsetY;
+
+        ((Label) (event.getSource())).setTranslateX(newTranslateX);
+        ((Label) (event.getSource())).setTranslateY(newTranslateY);
+        verificarColisao(event);
+        if ((newTranslateX > 45.0 && newTranslateX < 60.0) && (newTranslateY > 260.0 && newTranslateY < 285.0)) {
+            System.out.println("Cu");
+        } else {
+            System.out.println("Cuzão");
+        }
     }
 
     private void mouseSolto(MouseDragEvent event) {
@@ -111,7 +118,29 @@ public class Pag04Controller implements Initializable {
 
     @FXML
     private void mouseLiberado(MouseEvent event) {
-        System.out.println("Mouse liberado");
+        if ((verificarColisao(event))) {
+            System.out.println("Era pra dá certo");
+            //se for a opcao correta
+            if (modelPag04.verificarEscolhaSilaba(event)) {
+                
+            } else {
+                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+            }
+
+        } else {
+            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+        }
+    }
+
+    private boolean verificarColisao(MouseEvent evento) {
+        if (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent())) {
+            return true;
+        } else {
+        }
+
+        return false;
     }
 
 }

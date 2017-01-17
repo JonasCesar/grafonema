@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -54,7 +55,13 @@ public class ModelPag04 {
         this.unidadeAtual = unidadeAtual;
         switch(unidadeAtual){
             case "u01":
-                p1.setText("VO");
+                p1.setText("VA");
+                p2.setText("VE");
+                p3.setText("VI");
+                p4.setText("VO");
+                p5.setText("VU");                
+                f1.setText("ÁR");
+                f2.setText("RE");
                 break;
             default:
                 break;
@@ -96,7 +103,19 @@ public class ModelPag04 {
        
     }
     
-    
-    
-    
+    public boolean verificarEscolhaSilaba(MouseEvent event) {
+        String silabaEscolhida = ((Label)event.getSource()).getText();
+        boolean opcaoCorreta = false;
+        switch(getUnidadeAtual()){
+            case "u01":
+                if(silabaEscolhida.equals("VO")){
+                    opcaoCorreta = true;
+                }                
+                break;
+            default:
+                break;
+        }
+        
+        return opcaoCorreta;
+    }   
 }
