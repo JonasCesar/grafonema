@@ -36,17 +36,17 @@
          <font>
             <Font size="25.0" />
          </font></Label>
-      <Label fx:id="f2" layoutX="550.0" layoutY="424.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="f2">
+      <Label fx:id="f2" layoutX="550.0" layoutY="424.0" text="f2">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="f1" layoutX="373.0" layoutY="424.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="f1">
+      <Label fx:id="f1" layoutX="373.0" layoutY="424.0" text="f1">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="f21" layoutX="460.0" layoutY="424.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="...">
+      <Label fx:id="f21" layoutX="460.0" layoutY="424.0" text="...">
          <font>
             <Font size="25.0" />
          </font>
