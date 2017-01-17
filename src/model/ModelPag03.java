@@ -5,9 +5,7 @@
  */
 package model;
 
-import controller.Pag01Controller;
 import controller.Pag02Controller;
-import controller.Pag03Controller;
 import controller.Pag04Controller;
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +22,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**

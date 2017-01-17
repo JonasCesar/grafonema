@@ -13,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -20,6 +22,7 @@ import javafx.scene.control.Label;
  * @author shadows
  */
 public class Pag04Controller implements Initializable {
+
     private ModelPag04 modelPag04;
     @FXML
     private Label p1;
@@ -31,27 +34,34 @@ public class Pag04Controller implements Initializable {
     private Label p5;
     @FXML
     private Label p2;
+
+    double orgSceneX, orgSceneY;
+    double orgTranslateX, orgTranslateY;
+    @FXML
+    private Label f2;
+    @FXML
+    private Label f1;
+
     public Pag04Controller() {
     }
 
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag04 = new ModelPag04();
-    }    
+        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2);
+    }
 
     public void setUnidadeAtual(String unidadeAtual) {
         modelPag04.setUnidadeAtual(unidadeAtual);
-        switch(unidadeAtual){
+        switch (unidadeAtual) {
             case "u01":
                 p1.setText("VA");
                 p2.setText("VE");
                 p3.setText("VI");
                 p4.setText("VO");
-                p5.setText("VU");                
+                p5.setText("VU");
                 break;
             default:
                 break;
@@ -67,5 +77,41 @@ public class Pag04Controller implements Initializable {
     private void voltar(ActionEvent event) throws IOException {
         modelPag04.paginaAnterior(event);
     }
-    
+
+    @FXML
+    private void mousePressionado(MouseEvent event) {
+        System.out.println("Mouse clicado");
+
+        orgSceneX = event.getSceneX();
+        orgSceneY = event.getSceneY();
+        orgTranslateX = ((Label) (event.getSource())).getTranslateX();
+        orgTranslateY = ((Label) (event.getSource())).getTranslateY();
+
+    }
+
+    @FXML
+    private void mouseArrastado(MouseEvent event) {
+        System.out.println("Mouse arrastado");
+        double offsetX = event.getSceneX() - orgSceneX;
+            double offsetY = event.getSceneY() - orgSceneY;
+            double newTranslateX = orgTranslateX + offsetX;
+            double newTranslateY = orgTranslateY + offsetY;
+             
+            ((Label)(event.getSource())).setTranslateX(newTranslateX);
+            ((Label)(event.getSource())).setTranslateY(newTranslateY);
+    }
+
+    private void mouseSolto(MouseDragEvent event) {
+        System.out.println("Mouse solto");
+    }
+
+    private void mouseExitHandle(MouseDragEvent event) {
+
+    }
+
+    @FXML
+    private void mouseLiberado(MouseEvent event) {
+        System.out.println("Mouse liberado");
+    }
+
 }

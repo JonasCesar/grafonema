@@ -9,10 +9,12 @@ import controller.Pag03Controller;
 import controller.Pag05Controller;
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -22,12 +24,41 @@ import javafx.stage.Stage;
 public class ModelPag04 {
     private String unidadeAtual;
     private Stage janela;
-    public ModelPag04() {
-        
+    @FXML
+    private Label p1;
+    @FXML
+    private Label p4;
+    @FXML
+    private Label p3;
+    @FXML
+    private Label p5;
+    @FXML
+    private Label p2;
+    
+    @FXML
+    private Label f2;
+    @FXML
+    private Label f1;
+    
+    public ModelPag04(Label p1,Label p2, Label p3, Label p4, Label p5, Label f1, Label f2) {
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+        this.p4 = p4;
+        this.p5 = p5;
+        this.f1 = f1;
+        this.f2 = f2;
     }
 
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
+        switch(unidadeAtual){
+            case "u01":
+                p1.setText("VO");
+                break;
+            default:
+                break;
+        }
     }
     
     public String getUnidadeAtual(){
