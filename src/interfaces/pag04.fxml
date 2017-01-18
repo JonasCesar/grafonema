@@ -36,17 +36,17 @@
          <font>
             <Font size="25.0" />
          </font></Label>
-      <Label fx:id="f2" layoutX="550.0" layoutY="424.0" text="f2">
+      <Label fx:id="f2" layoutX="511.0" layoutY="424.0" text="f2">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="f1" layoutX="373.0" layoutY="424.0" text="f1">
+      <Label fx:id="f1" layoutX="410.0" layoutY="424.0" text="f1">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="f21" layoutX="460.0" layoutY="424.0" text="...">
+      <Label fx:id="espaco" layoutX="444.0" layoutY="414.0" prefHeight="43.0" prefWidth="47.0" text="...">
          <font>
             <Font size="25.0" />
          </font>

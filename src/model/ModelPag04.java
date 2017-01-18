@@ -54,7 +54,13 @@ public class ModelPag04 {
         this.unidadeAtual = unidadeAtual;
         switch(unidadeAtual){
             case "u01":
-                p1.setText("VO");
+                p1.setText("VA");
+                p2.setText("VE");
+                p3.setText("VI");
+                p4.setText("VO");
+                p5.setText("VU");                
+                f1.setText("ÁR");
+                f2.setText("RE");
                 break;
             default:
                 break;
@@ -68,7 +74,6 @@ public class ModelPag04 {
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
-        
         
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();

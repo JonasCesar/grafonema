@@ -41,6 +41,8 @@ public class Pag04Controller implements Initializable {
     private Label f2;
     @FXML
     private Label f1;
+    private double newTranslateX;
+    private double newTranslateY;
 
     public Pag04Controller() {
     }
@@ -57,11 +59,7 @@ public class Pag04Controller implements Initializable {
         modelPag04.setUnidadeAtual(unidadeAtual);
         switch (unidadeAtual) {
             case "u01":
-                p1.setText("VA");
-                p2.setText("VE");
-                p3.setText("VI");
-                p4.setText("VO");
-                p5.setText("VU");
+
                 break;
             default:
                 break;
@@ -93,12 +91,12 @@ public class Pag04Controller implements Initializable {
     private void mouseArrastado(MouseEvent event) {
         System.out.println("Mouse arrastado");
         double offsetX = event.getSceneX() - orgSceneX;
-            double offsetY = event.getSceneY() - orgSceneY;
-            double newTranslateX = orgTranslateX + offsetX;
-            double newTranslateY = orgTranslateY + offsetY;
-             
-            ((Label)(event.getSource())).setTranslateX(newTranslateX);
-            ((Label)(event.getSource())).setTranslateY(newTranslateY);
+        double offsetY = event.getSceneY() - orgSceneY;
+        newTranslateX = orgTranslateX + offsetX;
+        newTranslateY = orgTranslateY + offsetY;
+
+        ((Label) (event.getSource())).setTranslateX(newTranslateX);
+        ((Label) (event.getSource())).setTranslateY(newTranslateY);
     }
 
     private void mouseSolto(MouseDragEvent event) {
@@ -111,7 +109,11 @@ public class Pag04Controller implements Initializable {
 
     @FXML
     private void mouseLiberado(MouseEvent event) {
-        System.out.println("Mouse liberado");
+        if (newTranslateX == 444.0 || newTranslateY == 414.0) {
+            System.out.println("Cu");
+        } else {
+            System.out.println("Cuzão");
+        }
     }
 
 }
