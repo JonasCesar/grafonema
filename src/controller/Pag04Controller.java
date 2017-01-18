@@ -45,7 +45,7 @@ public class Pag04Controller implements Initializable {
     private double newTranslateX;
     private double newTranslateY;
     @FXML
-    private ImageView espaco;
+    private Label espaco;
 
     public Pag04Controller() {
     }
@@ -101,11 +101,6 @@ public class Pag04Controller implements Initializable {
         ((Label) (event.getSource())).setTranslateX(newTranslateX);
         ((Label) (event.getSource())).setTranslateY(newTranslateY);
         verificarColisao(event);
-        if ((newTranslateX > 45.0 && newTranslateX < 60.0) && (newTranslateY > 260.0 && newTranslateY < 285.0)) {
-            System.out.println("Cu");
-        } else {
-            System.out.println("Cuzão");
-        }
     }
 
     private void mouseSolto(MouseDragEvent event) {

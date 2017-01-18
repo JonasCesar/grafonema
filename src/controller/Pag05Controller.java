@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -32,12 +33,24 @@ public class Pag05Controller implements Initializable {
     private Label p2;
 
     private ModelPag05 modelPag05;
+    @FXML
+    private Label espaco;
+    @FXML
+    private Label f1;
+    @FXML
+    private Label f2;
+    private double orgSceneX;
+    private double orgSceneY;
+    private double orgTranslateX;
+    private double newTranslateX;
+    private double orgTranslateY;
+    private double newTranslateY;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05 = new ModelPag05();
+        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2);
     }    
 
     public void setUnidadeAtual(String unidadeAtual) {
@@ -63,6 +76,54 @@ public class Pag05Controller implements Initializable {
     @FXML
     private void voltar(ActionEvent event) throws IOException {
         modelPag05.paginaAnterior(event);
+    }
+
+    @FXML
+    private void mouseLiberado(MouseEvent event) {
+         if ((verificarColisao(event))) {
+            System.out.println("Era pra dá certo");
+            //se for a opcao correta
+            if (modelPag05.verificarEscolhaSilaba(event)) {
+                
+            } else {
+                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+            }
+
+        } else {
+            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+        }
+    }
+
+    @FXML
+    private void mouseArrastado(MouseEvent event) {
+        //System.out.println("Mouse arrastado");
+        double offsetX = event.getSceneX() - orgSceneX;
+        double offsetY = event.getSceneY() - orgSceneY;
+        newTranslateX = orgTranslateX + offsetX;
+        newTranslateY = orgTranslateY + offsetY;
+
+        ((Label) (event.getSource())).setTranslateX(newTranslateX);
+        ((Label) (event.getSource())).setTranslateY(newTranslateY);
+        verificarColisao(event);
+    }
+
+    @FXML
+    private void mousePressionado(MouseEvent event) {
+        orgSceneX = event.getSceneX();
+        orgSceneY = event.getSceneY();
+        orgTranslateX = ((Label) (event.getSource())).getTranslateX();
+        orgTranslateY = ((Label) (event.getSource())).getTranslateY();
+    }
+
+    private boolean verificarColisao(MouseEvent evento) {
+        if (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent())) {
+            return true;
+        } else {
+            
+        }
+        return false;       
     }
     
 }

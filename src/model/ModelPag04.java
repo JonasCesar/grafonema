@@ -110,7 +110,7 @@ public class ModelPag04 {
             case "u01":
                 if(silabaEscolhida.equals("VO")){
                     opcaoCorreta = true;
-                }                
+                }
                 break;
             default:
                 break;
