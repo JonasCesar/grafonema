@@ -93,6 +93,10 @@ public class ModelPag01 {
         janela.setScene(cena);
         janela.show();//exibe a interface
     }
+
+    public void pararAudio() {
+        mediaPlayer.stop();        
+    }
     
     
 }

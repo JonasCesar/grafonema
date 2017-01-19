@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -65,11 +64,13 @@ public class Pag04Controller implements Initializable {
 
     @FXML
     private void avancar(ActionEvent event) throws IOException {
+        modelPag04.pararAudio();
         modelPag04.proximaPagina(event);
     }
 
     @FXML
     private void voltar(ActionEvent event) throws IOException {
+        modelPag04.pararAudio();
         modelPag04.paginaAnterior(event);
     }
 
@@ -95,14 +96,6 @@ public class Pag04Controller implements Initializable {
         ((Label) (event.getSource())).setTranslateX(newTranslateX);
         ((Label) (event.getSource())).setTranslateY(newTranslateY);
         verificarColisao(event);
-    }
-
-    private void mouseSolto(MouseDragEvent event) {
-        System.out.println("Mouse solto");
-    }
-
-    private void mouseExitHandle(MouseDragEvent event) {
-
     }
 
     @FXML

@@ -51,16 +51,19 @@ public class Pag06Controller implements Initializable {
 
     @FXML
     private void avancar(ActionEvent event) throws IOException {
+        modelPag06.pararAudio();
         modelPag06.proximaPagina(event);
     }
 
     @FXML
     private void voltar(ActionEvent event) throws IOException {
+        modelPag06.pararAudio();
         modelPag06.paginaAnterior(event);
     }    
 
     @FXML
     private void verificarTexto(ActionEvent event) {
+        modelPag06.pararAudio();
         if(modelPag06.verificarResposta(resposta.getText())){
             resposta.setText(resposta.getText().toUpperCase());
             resposta.setDisable(true);

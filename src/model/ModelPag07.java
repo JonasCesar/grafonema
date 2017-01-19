@@ -89,5 +89,9 @@ public class ModelPag07 {
         return this.unidadeAtual;
        
     }
+
+    public void pararAudio() {
+        mediaPlayer.stop();
+    }
     
 }

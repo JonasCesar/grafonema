@@ -190,4 +190,8 @@ public class ModelPag03 {
         
     }
 
+    public void pararAudio() {
+        mediaPlayer.stop();
+    }
+
 }

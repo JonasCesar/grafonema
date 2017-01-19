@@ -151,5 +151,9 @@ public class ModelPag05 {
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
+
+    public void pararAudio() {
+        mediaPlayer.stop();
+    }
     
 }

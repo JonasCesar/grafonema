@@ -65,11 +65,13 @@ public class Pag05Controller implements Initializable {
 
     @FXML
     private void avancar(ActionEvent event) throws IOException {
+        modelPag05.pararAudio();
         modelPag05.proximaPagina(event);
     }
 
     @FXML
     private void voltar(ActionEvent event) throws IOException {
+        modelPag05.pararAudio();
         modelPag05.paginaAnterior(event);
     }
 

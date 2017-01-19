@@ -25,18 +25,19 @@ import javafx.stage.Stage;
  * @author shadows
  */
 public class ModelPag02 {
+
     private String unidadeAtual;
     private Pag02Controller pg02;
     private String caminhoAudio;
-    
+
     private File arquivo;
 
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
-    
+
     private Stage janela;
-    
+
     public ModelPag02() {
         this.unidadeAtual = "u00";
     }
@@ -47,8 +48,8 @@ public class ModelPag02 {
 
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
-    }    
-    
+    }
+
     public void tocarAudio1() {
         switch (getUnidadeAtual()) {
             case "u01":
@@ -73,7 +74,7 @@ public class ModelPag02 {
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
-    
+
     public void tocarAudio2() {
         switch (getUnidadeAtual()) {
             case "u01":
@@ -98,7 +99,7 @@ public class ModelPag02 {
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
-    
+
     public void tocarAudio3() {
         switch (getUnidadeAtual()) {
             case "u01":
@@ -127,13 +128,12 @@ public class ModelPag02 {
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
-        
-        
+
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
         Pag03Controller pg03Cont = fxmloader.<Pag03Controller>getController();
         pg03Cont.setUnidadeAtual(getUnidadeAtual());
-        
+
         Scene cena = new Scene(proximaCena, 900, 700);//tamanho
         janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
@@ -144,11 +144,11 @@ public class ModelPag02 {
 
     public void paginaAnterior(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));        
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
         Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
-        
+
         Scene cena = new Scene(proximaCena, 900, 700);//tamanho
         janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
@@ -156,6 +156,13 @@ public class ModelPag02 {
         pg01Cont.setUnidadeAtual(getUnidadeAtual());
         pg01Cont.tocarAudio();
     }
-    
-    
+
+    public void pararAudio() {
+        try {
+            mediaPlayer.stop();
+        } catch (Exception e) {
+            
+        }
+
+    }
 }

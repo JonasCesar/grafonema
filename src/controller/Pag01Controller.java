@@ -5,13 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -58,8 +53,8 @@ public class Pag01Controller implements Initializable {
 
     @FXML
     private void avancar(ActionEvent event) throws IOException {
+        modelPag01.pararAudio();
         modelPag01.proximaPagina(event);        
-        
     }
 
 }

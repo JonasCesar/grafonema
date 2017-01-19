@@ -40,26 +40,31 @@ public class Pag02Controller implements Initializable {
 
     @FXML
     private void avancar(ActionEvent event) throws IOException {
+        modelPag02.pararAudio();
         modelPag02.proximaPagina(event);
     }
 
     @FXML
     private void audio1(ActionEvent event) {
+        modelPag02.pararAudio();
         modelPag02.tocarAudio1();
     }
 
     @FXML
     private void audio2(ActionEvent event) {
+        modelPag02.pararAudio();
         modelPag02.tocarAudio2();
     }
 
     @FXML
     private void audio3(ActionEvent event) {
+        modelPag02.pararAudio();
         modelPag02.tocarAudio3();
     }
 
     @FXML
     private void voltar(ActionEvent event) throws IOException {
+        modelPag02.pararAudio();
         modelPag02.paginaAnterior(event);        
     }
 

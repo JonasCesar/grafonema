@@ -132,5 +132,9 @@ public class ModelPag06 {
                 break;
         }
     }
+
+    public void pararAudio() {
+        mediaPlayer.stop();
+    }
     
 }
