@@ -66,7 +66,7 @@ public class Pag03Controller implements Initializable {
     }
 
     @FXML
-    private void verificarImagem(MouseEvent event) {
+    private void verificarImagem(MouseEvent event) throws MalformedURLException {
         modelPag03.verificarImagem(event);
     }
     

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import controller.Pag02Controller;
@@ -107,20 +102,20 @@ public class ModelPag03 {
 
     }
 
-    public void verificarImagem(MouseEvent event) {
+    public void verificarImagem(MouseEvent event) throws MalformedURLException {
         String imgClicada = ((ImageView)event.getSource()).getId();
+        String nomeImagem = imgClicada.substring(3, 4);
         
         switch (getUnidadeAtual()) {
             //acertos img1, img3, img5
             case "u01":
                 if(imgClicada.equals("img1") || imgClicada.equals("img3") || imgClicada.equals("img5")){
-                    System.out.println("Coco");
-                    ((ImageView)event.getSource()).setDisable(true);
+                    f1= new File("src/imagens/licao01/"+nomeImagem+"c.png");
+                    ((ImageView)event.getSource()).setImage(new Image(f1.toURI().toURL().toString()));
                 }else{
-                    
+                    f1= new File("src/imagens/licao01/"+nomeImagem+"e.png");
+                    ((ImageView)event.getSource()).setImage(new Image(f1.toURI().toURL().toString()));                
                 }
-                   
-                
                 break;
             default:
                 break;
