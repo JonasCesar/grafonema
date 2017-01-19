@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.Pag06Controller">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag06Controller">
          <children>
             <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
             <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
@@ -19,5 +18,6 @@
             <Button layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
             <Label fx:id="p2" layoutX="465.0" layoutY="348.0" text="E MEU AMIGO" />
             <TextField fx:id="resposta" layoutX="377.0" layoutY="343.0" prefHeight="25.0" prefWidth="82.0" />
+      <Button layoutX="584.0" layoutY="343.0" mnemonicParsing="false" onAction="#verificarTexto" text="OK" />
          </children>
 </AnchorPane>

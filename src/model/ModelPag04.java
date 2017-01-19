@@ -7,6 +7,7 @@ package model;
 
 import controller.Pag03Controller;
 import controller.Pag05Controller;
+import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 /**
@@ -40,6 +44,11 @@ public class ModelPag04 {
     private Label f2;
     @FXML
     private Label f1;
+    private String caminhoAudio;
+    private File arquivo;
+    private Media media;
+    private MediaPlayer mediaPlayer;
+    private MediaView mediaView = new MediaView();
     
     public ModelPag04(Label p1,Label p2, Label p3, Label p4, Label p5, Label f1, Label f2) {
         this.p1 = p1;
@@ -86,6 +95,7 @@ public class ModelPag04 {
         janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface
+        pg05Cont.tocarAudio();
     }
 
     public void paginaAnterior(ActionEvent event) throws IOException {
@@ -118,4 +128,29 @@ public class ModelPag04 {
         
         return opcaoCorreta;
     }   
+
+    public void tocarAudio() {
+        switch (getUnidadeAtual()) {
+            case "u01":
+                caminhoAudio = "src/audios/u01/l1p4.MP3";
+                break;
+            default:
+                System.out.println("Não foi");
+                break;
+        }
+
+        //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
+        arquivo = new File(caminhoAudio);
+        //pega todo do caminho referente ao objeto File criado
+        caminhoAudio = arquivo.getAbsolutePath();
+        //troca todas as barras invertidas duplas ('\\') por '/'
+        caminhoAudio = caminhoAudio.replace("\\", "/");
+        //cria um objeto Media que recebe o objeto 'arquivo' como parâmetro
+        media = new Media(new File(caminhoAudio).toURI().toString());
+        //cria um objeto mediaPlayer que permite qua uma media possa ser reproduzida
+        mediaPlayer = new MediaPlayer(media);
+        //toca o audio automaticamente
+        mediaPlayer.setAutoPlay(true);
+        mediaView.setMediaPlayer(mediaPlayer);
+    }
 }

@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import model.ModelPag05;
 
 /**
  * FXML Controller class
@@ -35,13 +34,24 @@ public class Pag06Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag06 = new ModelPag06();
+        modelPag06 = new ModelPag06(p1,p2);
     }    
 
     public void setUnidadeAtual(String unidade) {
-        System.out.println(unidade);
         modelPag06.setUnidadeAtual(unidade);
+        switch(getUnidadeAtual()){
+            case "u01":
+                modelPag06.definirLabels();
+                break;
+            default:
+                break;
+        }
+               
         
+    }
+    
+    public String getUnidadeAtual(){
+        return modelPag06.getUnidadeAtual();
     }
 
     @FXML
@@ -53,4 +63,19 @@ public class Pag06Controller implements Initializable {
     private void voltar(ActionEvent event) throws IOException {
         modelPag06.paginaAnterior(event);
     }    
+
+    @FXML
+    private void verificarTexto(ActionEvent event) {
+        if(modelPag06.verificarResposta(resposta.getText())){
+            resposta.setText(resposta.getText().toUpperCase());
+            resposta.setDisable(true);
+        }else{
+            resposta.setText("");
+        }
+        
+    }
+
+    public void tocarAudio() {
+        modelPag06.tocarAudio();
+    }
 }

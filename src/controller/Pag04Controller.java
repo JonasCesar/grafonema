@@ -13,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -136,6 +135,10 @@ public class Pag04Controller implements Initializable {
         }
 
         return false;
+    }
+
+    public void tocarAudio() {
+        modelPag04.tocarAudio();        
     }
 
 }

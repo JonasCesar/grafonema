@@ -125,5 +125,9 @@ public class Pag05Controller implements Initializable {
         }
         return false;       
     }
+
+    public void tocarAudio() {
+        modelPag05.tocarAudio();
+    }
     
 }

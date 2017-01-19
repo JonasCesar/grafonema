@@ -102,6 +102,7 @@ public class ModelPag03 {
         janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface
+        pg04Cont.tocarAudio();
 
     }
 
