@@ -111,8 +111,7 @@ public class ModelPag04 {
         janela.show();//exibe a interface
         pg03Cont.setUnidadeAtual(getUnidadeAtual());
         pg03Cont.audioInicial();
-        pg03Cont.setImagens(getUnidadeAtual());
-       
+        pg03Cont.setImagens(getUnidadeAtual());       
     }
     
     public boolean verificarEscolhaSilaba(MouseEvent event) {

@@ -8,59 +8,69 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag04Controller">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag04Controller">
+    <stylesheets>
+        <URL value="@/css/estilosPag04.css" />
+    </stylesheets>
     <children>
+        
         <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
         <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
         <Button layoutX="634.0" layoutY="598.0" mnemonicParsing="false" text="Manual" />
         <TextArea layoutX="8.0" layoutY="155.0" prefHeight="401.0" prefWidth="177.0" />
         <Label layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="169.0" text="Palavras Estudadas" textAlignment="CENTER" />
         <Label fx:id="p1" layoutX="329.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P1">
-         <font>
-            <Font size="25.0" />
-         </font></Label>
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
         <Button layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
         <Button layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
         <Label fx:id="p4" layoutX="585.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P4">
-         <font>
-            <Font size="25.0" />
-         </font></Label>
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
         <Label fx:id="p3" layoutX="495.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P3">
-         <font>
-            <Font size="25.0" />
-         </font></Label>
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
         <Label fx:id="p5" layoutX="673.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P5">
-         <font>
-            <Font size="25.0" />
-         </font></Label>
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
         <Label fx:id="p2" layoutX="408.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P2">
-         <font>
-            <Font size="25.0" />
-         </font></Label>
-      <Label fx:id="f2" layoutX="496.0" layoutY="424.0" text="f2">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <Label fx:id="f1" layoutX="410.0" layoutY="424.0" text="f1">
-         <font>
-            <Font size="25.0" />
-         </font>
-         <padding>
-            <Insets right="10.0" />
-         </padding>
-      </Label>
-      <Label fx:id="espaco" layoutX="442.0" layoutY="424.0" text="...">
-         <font>
-            <Font size="25.0" />
-         </font>
-         <opaqueInsets>
-            <Insets left="10.0" right="10.0" />
-         </opaqueInsets>
-         <padding>
-            <Insets left="10.0" right="10.0" />
-         </padding>
-      </Label>
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
+        <Label fx:id="f2" layoutX="496.0" layoutY="424.0" text="f2">
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
+        <Label fx:id="f1" layoutX="410.0" layoutY="424.0" text="f1">
+            <font>
+                <Font size="25.0" />
+            </font>
+            <padding>
+                <Insets right="10.0" />
+            </padding>
+        </Label>
+        <Label fx:id="espaco" layoutX="442.0" layoutY="424.0" text="...">
+            <font>
+                <Font size="25.0" />
+            </font>
+            <opaqueInsets>
+                <Insets left="10.0" right="10.0" />
+            </opaqueInsets>
+            <padding>
+                <Insets left="10.0" right="10.0" />
+            </padding>
+        </Label>
     </children>
 </AnchorPane>
