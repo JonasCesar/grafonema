@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
@@ -56,8 +51,7 @@ public class Pag03Controller implements Initializable {
 
     @FXML
     private void avancar(ActionEvent event) throws IOException {
-        modelPag03.proximaPagina(event);
-        
+        modelPag03.proximaPagina(event);        
     }
 
     @FXML

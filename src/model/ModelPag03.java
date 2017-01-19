@@ -86,6 +86,7 @@ public class ModelPag03 {
         janela.setScene(cena);
         janela.show();//exibe a interface
         pag02Cont.setUnidadeAtual(getUnidadeAtual());
+        
     }
 
     public void proximaPagina(ActionEvent event) throws IOException {

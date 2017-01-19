@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
@@ -81,7 +76,6 @@ public class Pag05Controller implements Initializable {
     @FXML
     private void mouseLiberado(MouseEvent event) {
          if ((verificarColisao(event))) {
-            System.out.println("Era pra dá certo");
             //se for a opcao correta
             if (modelPag05.verificarEscolhaSilaba(event)) {
                 

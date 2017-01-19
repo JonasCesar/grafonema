@@ -110,6 +110,7 @@ public class ModelPag04 {
         janela.setScene(cena);
         janela.show();//exibe a interface
         pg03Cont.setUnidadeAtual(getUnidadeAtual());
+        pg03Cont.audioInicial();
        
     }
     

@@ -104,6 +104,7 @@ public class ModelPag05 {
         janela.setScene(cena);
         janela.show();//exibe a interface
         pg04Cont.setUnidadeAtual(getUnidadeAtual());
+        pg04Cont.tocarAudio();
     }
 
     private String getUnidadeAtual() {
