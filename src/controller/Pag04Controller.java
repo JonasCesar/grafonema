@@ -28,7 +28,7 @@ public class Pag04Controller implements Initializable {
     private Label p5;
     @FXML
     private Label p2;
-
+    
     double orgSceneX, orgSceneY;
     double orgTranslateX, orgTranslateY;
     @FXML
@@ -48,7 +48,7 @@ public class Pag04Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2);
+        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2,espaco);
     }
 
     public void setUnidadeAtual(String unidadeAtual) {
@@ -104,6 +104,7 @@ public class Pag04Controller implements Initializable {
             System.out.println("Era pra dá certo");
             //se for a opcao correta
             if (modelPag04.verificarEscolhaSilaba(event)) {
+                modelPag04.alterarLabelEspaco(event);
                 
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);

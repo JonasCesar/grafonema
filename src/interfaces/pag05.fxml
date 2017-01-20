@@ -8,8 +8,12 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag05Controller">    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag05Controller">    
+    <stylesheets>
+        <URL value="@/css/estilosPag05.css" />
+    </stylesheets>
     <children>
         <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
         <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
@@ -18,7 +22,7 @@
         <Label layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="169.0" text="Palavras Estudadas" textAlignment="CENTER" />
         <Button layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
         <Button layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-      <Label fx:id="f1" layoutX="410.0" layoutY="424.0" text="f1">
+      <Label fx:id="f1" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="410.0" layoutY="424.0" text="f1">
          <font>
             <Font size="25.0" />
          </font>
@@ -59,16 +63,13 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="espaco" layoutX="457.0" layoutY="424.0" text="f2">
+      <Label fx:id="espaco" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="459.0" layoutY="417.0" maxHeight="0.0" maxWidth="30.0" minHeight="45.0" minWidth="45.0" prefHeight="30.0" prefWidth="30.0" text="VO">
          <font>
             <Font size="25.0" />
          </font>
          <opaqueInsets>
             <Insets left="10.0" right="10.0" />
          </opaqueInsets>
-         <padding>
-            <Insets left="10.0" right="10.0" />
-         </padding>
       </Label>
     </children>
 </AnchorPane>

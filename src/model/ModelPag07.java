@@ -46,7 +46,7 @@ public class ModelPag07 {
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
         MenuInicialController menuInicialCont = fxmloader.<MenuInicialController>getController();
-        menuInicialCont.setUnidadeAtual(getUnidadeAtual());
+        //menuInicialCont.setUnidadeAtual(getUnidadeAtual());
         
         Scene cena = new Scene(proximaCena, 900, 700);//tamanho
         janela.setTitle("Projeto 2");//título da cena

@@ -49,8 +49,9 @@ public class ModelPag04 {
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
+    private Label espaco;
     
-    public ModelPag04(Label p1,Label p2, Label p3, Label p4, Label p5, Label f1, Label f2) {
+    public ModelPag04(Label p1,Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -58,6 +59,7 @@ public class ModelPag04 {
         this.p5 = p5;
         this.f1 = f1;
         this.f2 = f2;
+        this.espaco = espaco;
     }
 
     public void setUnidadeAtual(String unidadeAtual) {
@@ -157,5 +159,11 @@ public class ModelPag04 {
 
     public void pararAudio() {
         mediaPlayer.stop();
+    }
+
+    public void alterarLabelEspaco(MouseEvent evento) {
+        System.out.println("Entrou aqui");
+        espaco.setText(((Label)evento.getSource()).getText());
+        ((Label)evento.getSource()).setVisible(false);
     }
 }
