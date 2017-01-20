@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.MenuInicialController;
 import controller.Pag04Controller;
 import controller.Pag06Controller;
 import java.io.File;
@@ -44,13 +45,17 @@ public class ModelPag05 {
     private Label f2;
     @FXML
     private Label f1;
+    
+    @FXML
+    private Label espaco;
+    
     private String caminhoAudio;
     private File arquivo;
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
     
-    public ModelPag05(Label p1,Label p2, Label p3, Label p4, Label p5, Label f1, Label f2) {
+    public ModelPag05(Label p1,Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -58,6 +63,7 @@ public class ModelPag05 {
         this.p5 = p5;
         this.f1 = f1;
         this.f2 = f2;
+        this.espaco = espaco;
         this.unidadeAtual = "u00";
     }    
 
@@ -71,6 +77,7 @@ public class ModelPag05 {
                 p4.setText("VO");
                 p5.setText("VU");                
                 f1.setText("POL");
+                espaco.setText("...");
                 break;
             default:
                 break;
@@ -155,5 +162,25 @@ public class ModelPag05 {
     public void pararAudio() {
         mediaPlayer.stop();
     }
+
+    public void alterarLabelEspaco(MouseEvent evento) {
+        System.out.println(((Label)evento.getSource()).getText());
+        espaco.setText("VO");
+        ((Label)evento.getSource()).setVisible(false);
+    }
     
+    public void menuInicial(ActionEvent event) throws IOException {
+        
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
+        
+        Parent proximaCena = (Parent) fxmloader.load();
+        MenuInicialController miController = fxmloader.<MenuInicialController>getController();
+        
+        Scene cena = new Scene(proximaCena, 900, 700);
+        janela.setTitle("Menu Inicial");//título da cena
+        janela.setScene(cena);
+        janela.show();//exibe a interface     
+        
+    }
 }

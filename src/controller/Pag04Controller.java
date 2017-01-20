@@ -104,6 +104,7 @@ public class Pag04Controller implements Initializable {
             System.out.println("Era pra dá certo");
             //se for a opcao correta
             if (modelPag04.verificarEscolhaSilaba(event)) {
+                modelPag04.alterarLabelEspaco(event);
                 
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
@@ -128,5 +129,11 @@ public class Pag04Controller implements Initializable {
     public void tocarAudio() {
         modelPag04.tocarAudio();        
     }
+    
+    @FXML
+    private void menuInicial(ActionEvent event) throws IOException{
+        modelPag04.menuInicial(event);
+    }
+
 
 }

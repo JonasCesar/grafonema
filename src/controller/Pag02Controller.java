@@ -67,6 +67,11 @@ public class Pag02Controller implements Initializable {
         modelPag02.pararAudio();
         modelPag02.paginaAnterior(event);        
     }
+    
+    @FXML
+    private void menuInicial(ActionEvent event) throws IOException{
+        modelPag02.menuInicial(event);
+    }
 
     public String getUnidadeAtual() {
         return modelPag02.getUnidadeAtual();

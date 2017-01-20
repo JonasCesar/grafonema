@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.MenuInicialController;
 import controller.Pag03Controller;
 import controller.Pag05Controller;
 import java.io.File;
@@ -157,5 +158,26 @@ public class ModelPag04 {
 
     public void pararAudio() {
         mediaPlayer.stop();
+    }
+
+    public void alterarLabelEspaco(MouseEvent evento) {
+        System.out.println("Entrou aqui");
+        f2.setText(((Label)evento.getSource()).getText());
+        ((Label)evento.getSource()).setVisible(false);
+    }
+    
+    public void menuInicial(ActionEvent event) throws IOException {
+        
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
+        
+        Parent proximaCena = (Parent) fxmloader.load();
+        MenuInicialController miController = fxmloader.<MenuInicialController>getController();
+        
+        Scene cena = new Scene(proximaCena, 900, 700);
+        janela.setTitle("Menu Inicial");//título da cena
+        janela.setScene(cena);
+        janela.show();//exibe a interface     
+        
     }
 }

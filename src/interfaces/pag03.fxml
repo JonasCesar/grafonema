@@ -46,5 +46,6 @@
                 <Image url="@../imagens/licao01/.png" />
             </image>
         </ImageView>
+      <Button layoutX="45.0" layoutY="54.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
     </children>
 </AnchorPane>

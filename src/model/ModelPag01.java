@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model;
+import controller.MenuInicialController;
 import controller.Pag02Controller;
 import java.io.File;
 import java.io.IOException;
@@ -96,6 +97,21 @@ public class ModelPag01 {
 
     public void pararAudio() {
         mediaPlayer.stop();        
+    }
+    
+    public void menuInicial(ActionEvent event) throws IOException {
+        
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
+        
+        Parent proximaCena = (Parent) fxmloader.load();
+        MenuInicialController miController = fxmloader.<MenuInicialController>getController();
+        
+        Scene cena = new Scene(proximaCena, 900, 700);
+        janela.setTitle("Menu Inicial");//título da cena
+        janela.setScene(cena);
+        janela.show();//exibe a interface     
+        
     }
     
     

@@ -72,6 +72,11 @@ public class Pag06Controller implements Initializable {
         }
         
     }
+    
+        @FXML
+    private void menuInicial(ActionEvent event) throws IOException{
+        modelPag06.menuInicial(event);
+    }
 
     public void tocarAudio() {
         modelPag06.tocarAudio();

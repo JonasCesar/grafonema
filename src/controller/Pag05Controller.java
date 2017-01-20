@@ -45,7 +45,7 @@ public class Pag05Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2);
+        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco);
     }    
 
     public void setUnidadeAtual(String unidadeAtual) {
@@ -80,7 +80,9 @@ public class Pag05Controller implements Initializable {
          if ((verificarColisao(event))) {
             //se for a opcao correta
             if (modelPag05.verificarEscolhaSilaba(event)) {
-                
+                modelPag05.alterarLabelEspaco(event);
+                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
                 ((Label) (event.getSource())).setTranslateY(orgTranslateY);
@@ -124,6 +126,11 @@ public class Pag05Controller implements Initializable {
 
     public void tocarAudio() {
         modelPag05.tocarAudio();
+    }
+    
+        @FXML
+    private void menuInicial(ActionEvent event) throws IOException{
+        modelPag05.menuInicial(event);
     }
     
 }

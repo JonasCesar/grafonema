@@ -19,5 +19,6 @@
             <Label fx:id="p2" layoutX="465.0" layoutY="348.0" text="E MEU AMIGO" />
             <TextField fx:id="resposta" layoutX="377.0" layoutY="343.0" prefHeight="25.0" prefWidth="82.0" />
       <Button layoutX="584.0" layoutY="343.0" mnemonicParsing="false" onAction="#verificarTexto" text="OK" />
+      <Button layoutX="47.0" layoutY="54.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
          </children>
 </AnchorPane>

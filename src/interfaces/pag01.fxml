@@ -21,5 +21,6 @@
       </ImageView>
       <Label fx:id="tituloUnidade" layoutX="524.0" layoutY="67.0" text="Unidade" />
       <Button layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
+      <Button layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
    </children>
 </AnchorPane>
