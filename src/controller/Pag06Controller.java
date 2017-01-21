@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -67,6 +67,7 @@ public class Pag06Controller implements Initializable {
         modelPag06.pararAudio();
         if(modelPag06.verificarResposta(resposta.getText())){
             resposta.setText(resposta.getText().toUpperCase());
+            resposta.setStyle("-fx-background-color: green;");
             resposta.setDisable(true);
         }else{
             resposta.setText("");

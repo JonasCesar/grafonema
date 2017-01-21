@@ -11,3 +11,7 @@ and open the template in the editor.
 #resposta{
     
 }
+
+#resposta .content {
+    -fx-background-color: text-area-background ;
+}

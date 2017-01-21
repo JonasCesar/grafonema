@@ -58,7 +58,7 @@
                 <Font size="25.0" />
             </font>
         </Label>
-        <Label fx:id="espaco" alignment="CENTER" ellipsisString="VO" layoutX="449.0" layoutY="416.0" maxHeight="45.0" maxWidth="45.0" minHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="45.0">
+        <Label fx:id="espaco" alignment="CENTER" ellipsisString="" layoutX="449.0" layoutY="416.0" maxHeight="45.0" maxWidth="45.0" minHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="45.0">
             <font>
                 <Font size="25.0" />
             </font>

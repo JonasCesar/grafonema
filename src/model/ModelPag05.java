@@ -163,8 +163,8 @@ public class ModelPag05 {
     }
 
     public void alterarLabelEspaco(MouseEvent evento) {
-        System.out.println(((Label)evento.getSource()).getText());
-        espaco.setText("VO");
+        
+        espaco.setText(((Label)evento.getSource()).getText());
         ((Label)evento.getSource()).setVisible(false);
     }
     

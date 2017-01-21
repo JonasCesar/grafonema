@@ -88,6 +88,7 @@ public class ModelPag06 {
             case "u01":
                 if(resposta.toUpperCase().equals("VOVÔ")){
                     respostaCorreta = true;
+                    
                 }                
                 break;
             default:
@@ -103,7 +104,6 @@ public class ModelPag06 {
                 caminhoAudio = "src/audios/u01/l1p6.MP3";
                 break;
             default:
-                System.out.println("Não foi");
                 break;
         }
 
