@@ -128,4 +128,9 @@ public class Pag05Controller implements Initializable {
         modelPag05.tocarAudio();
     }
     
+    @FXML
+    private void menuInicial(ActionEvent event) throws IOException{
+        modelPag05.menuInicial(event);
+    }
+    
 }

@@ -56,5 +56,10 @@ public class Pag01Controller implements Initializable {
         modelPag01.pararAudio();
         modelPag01.proximaPagina(event);        
     }
+    
+    @FXML
+    private void menuInicial(ActionEvent event) throws IOException{
+        modelPag01.menuInicial(event);
+    }
 
 }

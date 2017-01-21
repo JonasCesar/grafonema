@@ -22,5 +22,6 @@
       <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
       <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
       <Button layoutX="634.0" layoutY="598.0" mnemonicParsing="false" text="Manual" />
+      <Button layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
    </children>
 </AnchorPane>

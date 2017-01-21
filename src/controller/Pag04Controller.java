@@ -101,7 +101,6 @@ public class Pag04Controller implements Initializable {
     @FXML
     private void mouseLiberado(MouseEvent event) {
         if ((verificarColisao(event))) {
-            System.out.println("Era pra dá certo");
             //se for a opcao correta
             if (modelPag04.verificarEscolhaSilaba(event)) {
                 modelPag04.alterarLabelEspaco(event);
@@ -128,6 +127,11 @@ public class Pag04Controller implements Initializable {
 
     public void tocarAudio() {
         modelPag04.tocarAudio();        
+    }
+    
+    @FXML
+    private void menuInicial(ActionEvent event) throws IOException{
+        modelPag04.menuInicial(event);
     }
 
 }

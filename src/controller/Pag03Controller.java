@@ -70,4 +70,9 @@ public class Pag03Controller implements Initializable {
         modelPag03.verificarImagem(event);
     }
     
+    @FXML
+    private void menuInicial(ActionEvent event) throws IOException{
+        modelPag03.menuInicial(event);
+    }
+    
 }
