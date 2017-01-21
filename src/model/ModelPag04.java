@@ -28,6 +28,7 @@ import javafx.stage.Stage;
  * @author shadows
  */
 public class ModelPag04 {
+
     private String unidadeAtual;
     private Stage janela;
     @FXML
@@ -40,7 +41,7 @@ public class ModelPag04 {
     private Label p5;
     @FXML
     private Label p2;
-    
+
     @FXML
     private Label f2;
     @FXML
@@ -51,8 +52,8 @@ public class ModelPag04 {
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
     private Label espaco;
-    
-    public ModelPag04(Label p1,Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
+
+    public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -65,13 +66,13 @@ public class ModelPag04 {
 
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
-        switch(unidadeAtual){
+        switch (unidadeAtual) {
             case "u01":
                 p1.setText("VA");
                 p2.setText("VE");
                 p3.setText("VI");
                 p4.setText("VO");
-                p5.setText("VU");                
+                p5.setText("VU");
                 f1.setText("ÁR");
                 f2.setText("RE");
                 break;
@@ -79,59 +80,52 @@ public class ModelPag04 {
                 break;
         }
     }
-    
-    public String getUnidadeAtual(){
+
+    public String getUnidadeAtual() {
         return this.unidadeAtual;
     }
 
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
-        
-        
+
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
         Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
         pg05Cont.setUnidadeAtual(getUnidadeAtual());
-        
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
+
+        exibirCena(proximaCena);
         pg05Cont.tocarAudio();
     }
 
     public void paginaAnterior(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));        
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
         Pag03Controller pg03Cont = fxmloader.<Pag03Controller>getController();
-        
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
+
+        exibirCena(proximaCena);
         pg03Cont.setUnidadeAtual(getUnidadeAtual());
         pg03Cont.audioInicial();
-        pg03Cont.setImagens(getUnidadeAtual());       
+        pg03Cont.setImagens(getUnidadeAtual());
     }
-    
+
     public boolean verificarEscolhaSilaba(MouseEvent event) {
-        String silabaEscolhida = ((Label)event.getSource()).getText();
+        String silabaEscolhida = ((Label) event.getSource()).getText();
         boolean opcaoCorreta = false;
-        switch(getUnidadeAtual()){
+        switch (getUnidadeAtual()) {
             case "u01":
-                if(silabaEscolhida.equals("VO")){
+                if (silabaEscolhida.equals("VO")) {
                     opcaoCorreta = true;
                 }
                 break;
             default:
                 break;
         }
-        
+
         return opcaoCorreta;
-    }   
+    }
 
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
@@ -143,6 +137,36 @@ public class ModelPag04 {
                 break;
         }
 
+        play(caminhoAudio);
+    }
+
+    public void pararAudio() {
+        mediaPlayer.stop();
+    }
+
+    public void alterarLabelEspaco(MouseEvent evento) {
+        espaco.setText(((Label) evento.getSource()).getText());
+        ((Label) evento.getSource()).setVisible(false);
+    }
+
+    public void menuInicial(ActionEvent event) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
+
+        Parent proximaCena = (Parent) fxmloader.load();
+        MenuInicialController miController = fxmloader.<MenuInicialController>getController();
+
+        exibirCena(proximaCena);
+    }
+
+    public void exibirCena(Parent proximaCena) {
+        Scene cena = new Scene(proximaCena, 900, 700);
+        janela.setTitle("Menu Inicial");//título da cena
+        janela.setScene(cena);
+        janela.show();//exibe a interface  
+    }
+    
+    public void play(String caminhoAudio){
         //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
         arquivo = new File(caminhoAudio);
         //pega todo do caminho referente ao objeto File criado
@@ -156,27 +180,5 @@ public class ModelPag04 {
         //toca o audio automaticamente
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
-    }
-
-    public void pararAudio() {
-        mediaPlayer.stop();
-    }
-
-    public void alterarLabelEspaco(MouseEvent evento) {
-        espaco.setText(((Label)evento.getSource()).getText());
-        ((Label)evento.getSource()).setVisible(false);
-    }
-
-    public void menuInicial(ActionEvent event) throws IOException {
-         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
-        
-        Parent proximaCena = (Parent) fxmloader.load();
-        MenuInicialController miController = fxmloader.<MenuInicialController>getController();
-        
-        Scene cena = new Scene(proximaCena, 900, 700);
-        janela.setTitle("Menu Inicial");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface  
     }
 }

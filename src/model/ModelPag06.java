@@ -26,6 +26,7 @@ import javafx.stage.Stage;
  * @author shadows
  */
 public class ModelPag06 {
+
     private String unidadeAtual;
     private Stage janela;
     private File arquivo;
@@ -33,14 +34,14 @@ public class ModelPag06 {
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
-    
+
     private Label p1, p2;
 
     public ModelPag06(Label p1, Label p2) {
         this.p1 = p1;
         this.p2 = p2;
         this.unidadeAtual = "u00";
-    }   
+    }
 
     public void setUnidadeAtual(String unidade) {
         this.unidadeAtual = unidade;
@@ -49,32 +50,25 @@ public class ModelPag06 {
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag07.fxml"));
-        
-        
+
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
         Pag07Controller pg07Cont = fxmloader.<Pag07Controller>getController();
-        System.out.println("Pag 6 "+getUnidadeAtual());
+        System.out.println("Pag 6 " + getUnidadeAtual());
         pg07Cont.setUnidadeAtual(getUnidadeAtual());
-        
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
+
+        exibirCena(proximaCena);
         pg07Cont.tocarAudio();
     }
 
     public void paginaAnterior(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));        
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
         Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
-        
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
+
+        exibirCena(proximaCena);
         pg05Cont.setUnidadeAtual(getUnidadeAtual());
         pg05Cont.tocarAudio();
     }
@@ -85,12 +79,12 @@ public class ModelPag06 {
 
     public boolean verificarResposta(String resposta) {
         boolean respostaCorreta = false;
-        switch(getUnidadeAtual()){
+        switch (getUnidadeAtual()) {
             case "u01":
-                if(resposta.toUpperCase().equals("VOVÔ")){
+                if (resposta.toUpperCase().equals("VOVÔ")) {
                     respostaCorreta = true;
-                    
-                }                
+
+                }
                 break;
             default:
                 break;
@@ -99,7 +93,7 @@ public class ModelPag06 {
     }
 
     public void tocarAudio() {
-    
+
         switch (getUnidadeAtual()) {
             case "u01":
                 caminhoAudio = "src/audios/u01/l1p6.MP3";
@@ -108,6 +102,42 @@ public class ModelPag06 {
                 break;
         }
 
+        play(caminhoAudio);
+    }
+
+    public void definirLabels() {
+        switch (getUnidadeAtual()) {
+            case "u01":
+                p1.setText("O");
+                p2.setText("É MEU AMIGO");
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void pararAudio() {
+        mediaPlayer.stop();
+    }
+
+    public void menuInicial(ActionEvent event) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
+
+        Parent proximaCena = (Parent) fxmloader.load();
+        MenuInicialController miController = fxmloader.<MenuInicialController>getController();
+
+        exibirCena(proximaCena);
+    }
+
+    public void exibirCena(Parent proximaCena) {
+        Scene cena = new Scene(proximaCena, 900, 700);
+        janela.setTitle("Menu Inicial");//título da cena
+        janela.setScene(cena);
+        janela.show();//exibe a interface  
+    }
+
+    public void play(String caminhoAudio) {
         //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
         arquivo = new File(caminhoAudio);
         //pega todo do caminho referente ao objeto File criado
@@ -123,32 +153,4 @@ public class ModelPag06 {
         mediaView.setMediaPlayer(mediaPlayer);
     }
 
-    public void definirLabels() {
-        switch(getUnidadeAtual()){
-            case "u01":
-                p1.setText("O");
-                p2.setText("É MEU AMIGO");
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void pararAudio() {
-        mediaPlayer.stop();
-    }
-
-   public void menuInicial(ActionEvent event) throws IOException {
-         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
-        
-        Parent proximaCena = (Parent) fxmloader.load();
-        MenuInicialController miController = fxmloader.<MenuInicialController>getController();
-        
-        Scene cena = new Scene(proximaCena, 900, 700);
-        janela.setTitle("Menu Inicial");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface  
-    }
-    
 }

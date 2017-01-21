@@ -61,19 +61,7 @@ public class ModelPag02 {
                 break;
         }
 
-        //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
-        arquivo = new File(caminhoAudio);
-        //pega todo do caminho referente ao objeto File criado
-        caminhoAudio = arquivo.getAbsolutePath();
-        //troca todas as barras invertidas duplas ('\\') por '/'
-        caminhoAudio = caminhoAudio.replace("\\", "/");
-        //cria um objeto Media que recebe o objeto 'arquivo' como parâmetro
-        media = new Media(new File(caminhoAudio).toURI().toString());
-        //cria um objeto mediaPlayer que permite qua uma media possa ser reproduzida
-        mediaPlayer = new MediaPlayer(media);
-        //toca o audio automaticamente
-        mediaPlayer.setAutoPlay(true);
-        mediaView.setMediaPlayer(mediaPlayer);
+        play(caminhoAudio);
     }
 
     public void tocarAudio2() {
@@ -86,19 +74,7 @@ public class ModelPag02 {
                 break;
         }
 
-        //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
-        arquivo = new File(caminhoAudio);
-        //pega todo do caminho referente ao objeto File criado
-        caminhoAudio = arquivo.getAbsolutePath();
-        //troca todas as barras invertidas duplas ('\\') por '/'
-        caminhoAudio = caminhoAudio.replace("\\", "/");
-        //cria um objeto Media que recebe o objeto 'arquivo' como parâmetro
-        media = new Media(new File(caminhoAudio).toURI().toString());
-        //cria um objeto mediaPlayer que permite qua uma media possa ser reproduzida
-        mediaPlayer = new MediaPlayer(media);
-        //toca o audio automaticamente
-        mediaPlayer.setAutoPlay(true);
-        mediaView.setMediaPlayer(mediaPlayer);
+        play(caminhoAudio);
     }
 
     public void tocarAudio3() {
@@ -111,19 +87,7 @@ public class ModelPag02 {
                 break;
         }
 
-        //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
-        arquivo = new File(caminhoAudio);
-        //pega todo do caminho referente ao objeto File criado
-        caminhoAudio = arquivo.getAbsolutePath();
-        //troca todas as barras invertidas duplas ('\\') por '/'
-        caminhoAudio = caminhoAudio.replace("\\", "/");
-        //cria um objeto Media que recebe o objeto 'arquivo' como parâmetro
-        media = new Media(new File(caminhoAudio).toURI().toString());
-        //cria um objeto mediaPlayer que permite qua uma media possa ser reproduzida
-        mediaPlayer = new MediaPlayer(media);
-        //toca o audio automaticamente
-        mediaPlayer.setAutoPlay(true);
-        mediaView.setMediaPlayer(mediaPlayer);
+        play(caminhoAudio);
     }
 
     public void proximaPagina(ActionEvent event) throws IOException {
@@ -135,10 +99,7 @@ public class ModelPag02 {
         Pag03Controller pg03Cont = fxmloader.<Pag03Controller>getController();
         pg03Cont.setUnidadeAtual(getUnidadeAtual());
 
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
+        exibirCena(proximaCena);
         pg03Cont.audioInicial();
         pg03Cont.setImagens(getUnidadeAtual());
     }
@@ -150,10 +111,7 @@ public class ModelPag02 {
         Parent proximaCena = (Parent) fxmloader.load();
         Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
 
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
+        exibirCena(proximaCena);
         pg01Cont.setUnidadeAtual(getUnidadeAtual());
         pg01Cont.tocarAudio();
     }
@@ -174,9 +132,29 @@ public class ModelPag02 {
         Parent proximaCena = (Parent) fxmloader.load();
         MenuInicialController miController = fxmloader.<MenuInicialController>getController();
         
+        exibirCena(proximaCena);
+    }
+    
+    public void exibirCena(Parent proximaCena) {
         Scene cena = new Scene(proximaCena, 900, 700);
         janela.setTitle("Menu Inicial");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface  
+    }
+    
+    public void play(String caminhoAudio){
+        //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
+        arquivo = new File(caminhoAudio);
+        //pega todo do caminho referente ao objeto File criado
+        caminhoAudio = arquivo.getAbsolutePath();
+        //troca todas as barras invertidas duplas ('\\') por '/'
+        caminhoAudio = caminhoAudio.replace("\\", "/");
+        //cria um objeto Media que recebe o objeto 'arquivo' como parâmetro
+        media = new Media(new File(caminhoAudio).toURI().toString());
+        //cria um objeto mediaPlayer que permite qua uma media possa ser reproduzida
+        mediaPlayer = new MediaPlayer(media);
+        //toca o audio automaticamente
+        mediaPlayer.setAutoPlay(true);
+        mediaView.setMediaPlayer(mediaPlayer);
     }
 }
