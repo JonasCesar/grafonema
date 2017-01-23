@@ -76,6 +76,7 @@ public class Pag02Controller implements Initializable {
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{
         modelPag02.menuInicial(event);
+        modelPag02.pararAudio();
     }
 
     public String getUnidadeAtual() {

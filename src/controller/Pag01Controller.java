@@ -75,6 +75,7 @@ public class Pag01Controller implements Initializable {
     @FXML
     private void menuInicial(ActionEvent event) throws IOException {
         modelPag01.menuInicial(event);
+        modelPag01.pararAudio();
     }
 
     @FXML
