@@ -49,7 +49,7 @@ public class Pag01Controller implements Initializable {
     public void tocarAudio() {
         
         ObservableList<String> items = FXCollections.observableArrayList(
-                "Single", "Double", "Suite", "Family App");
+                "VOVÔ", "Double", "Suite", "Family App");
         listaPalavras.setItems(items);
         modelPag01.tocarAudio();
     }
@@ -76,7 +76,8 @@ public class Pag01Controller implements Initializable {
 
     @FXML
     private void mouseClicado(MouseEvent event) {
-        System.out.println(listaPalavras.getSelectionModel().getSelectedItem());
+        String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
+        modelPag01.tocarAudioPalavraSelecionada(palavraSelecionada);        
     }
 
 }

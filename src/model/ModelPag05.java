@@ -185,5 +185,16 @@ public class ModelPag05 {
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
+
+    public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
+        switch(palavraSelecionada){
+            case "VOVÔ":
+                caminhoAudio = "src/audios/u01/l1p2a1.MP3";
+                break;
+            default:
+                break;
+        }
+        play(caminhoAudio);
+    }
     
 }

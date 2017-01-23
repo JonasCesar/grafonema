@@ -26,7 +26,13 @@ public class Pag06Controller implements Initializable {
     private TextField resposta;
     private ModelPag06 modelPag06;
     @FXML
-    private ListView<?> listaPalavras;
+    private ListView<String> listaPalavras;
+
+    public Pag06Controller() {
+        listaPalavras = new ListView<String>();
+    }
+    
+    
 
     /**
      * Initializes the controller class.
@@ -90,6 +96,8 @@ public class Pag06Controller implements Initializable {
 
     @FXML
     private void mouseClicado(MouseEvent event) {
+        String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
+        modelPag06.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
     
 }

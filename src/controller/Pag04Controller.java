@@ -29,7 +29,7 @@ public class Pag04Controller implements Initializable {
     private Label p5;
     @FXML
     private Label p2;
-    
+
     double orgSceneX, orgSceneY;
     double orgTranslateX, orgTranslateY;
     @FXML
@@ -41,9 +41,10 @@ public class Pag04Controller implements Initializable {
     @FXML
     private Label espaco;
     @FXML
-    private ListView<?> listaPalavras;
+    private ListView<String> listaPalavras;
 
     public Pag04Controller() {
+        listaPalavras = new ListView<String>();
     }
 
     /**
@@ -51,7 +52,7 @@ public class Pag04Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2,espaco);
+        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco);
     }
 
     public void setUnidadeAtual(String unidadeAtual) {
@@ -107,7 +108,7 @@ public class Pag04Controller implements Initializable {
             //se for a opcao correta
             if (modelPag04.verificarEscolhaSilaba(event)) {
                 modelPag04.alterarLabelEspaco(event);
-                
+
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
                 ((Label) (event.getSource())).setTranslateY(orgTranslateY);
@@ -129,16 +130,18 @@ public class Pag04Controller implements Initializable {
     }
 
     public void tocarAudio() {
-        modelPag04.tocarAudio();        
+        modelPag04.tocarAudio();
     }
-    
+
     @FXML
-    private void menuInicial(ActionEvent event) throws IOException{
+    private void menuInicial(ActionEvent event) throws IOException {
         modelPag04.menuInicial(event);
     }
 
     @FXML
     private void mouseClicado(MouseEvent event) {
+        String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
+        modelPag04.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
 
 }

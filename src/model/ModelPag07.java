@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -107,6 +108,17 @@ public class ModelPag07 {
         //toca o audio automaticamente
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
+    }
+
+   public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
+        switch(palavraSelecionada){
+            case "VOVÔ":
+                caminhoAudio = "src/audios/u01/l1p2a1.MP3";
+                break;
+            default:
+                break;
+        }
+        play(caminhoAudio);
     }
 
 }

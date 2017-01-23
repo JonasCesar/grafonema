@@ -42,7 +42,13 @@ public class Pag05Controller implements Initializable {
     private double orgTranslateY;
     private double newTranslateY;
     @FXML
-    private ListView<?> listaPalavras;
+    private ListView<String> listaPalavras;
+
+    public Pag05Controller() {
+        listaPalavras = new ListView<String>();
+    }
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -138,6 +144,8 @@ public class Pag05Controller implements Initializable {
 
     @FXML
     private void mouseClicado(MouseEvent event) {
+        String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
+        modelPag05.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
     
 }

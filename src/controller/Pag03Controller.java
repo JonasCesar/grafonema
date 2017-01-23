@@ -36,10 +36,16 @@ public class Pag03Controller implements Initializable {
     
     private ModelPag03 modelPag03;
     @FXML
-    private ListView<?> listaPalavras;
+    private ListView<String> listaPalavras;
+
+    public Pag03Controller() {
+        listaPalavras = new ListView<String>();
+    }
     /**
      * Initializes the controller class.
      */
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         modelPag03 = new ModelPag03(img1,img2,img3,img4,img5,img6);
@@ -80,6 +86,8 @@ public class Pag03Controller implements Initializable {
 
     @FXML
     private void mouseClicado(MouseEvent event) {
+        String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
+        modelPag03.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
     
 }

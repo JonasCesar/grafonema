@@ -24,11 +24,12 @@ public class Pag02Controller implements Initializable {
     
     private String unidadeAtual;
     @FXML
-    private ListView<?> listaPalavras;
+    private ListView<String> listaPalavras;
     
     
     public Pag02Controller() {
         unidadeAtual = "u00";
+        listaPalavras = new ListView<String>();
         
     }
 
@@ -94,5 +95,7 @@ public class Pag02Controller implements Initializable {
 
     @FXML
     private void mouseClicado(MouseEvent event) {
+        String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
+        modelPag02.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
 }

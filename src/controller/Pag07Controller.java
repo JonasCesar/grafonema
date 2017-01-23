@@ -22,7 +22,13 @@ public class Pag07Controller implements Initializable {
     
     private ModelPag07 modelPag07;
     @FXML
-    private ListView<?> listaPalavras;
+    private ListView<String> listaPalavras;
+
+    public Pag07Controller() {
+        listaPalavras = new ListView<String>();
+    }
+    
+    
 
     /**
      * Initializes the controller class.
@@ -58,5 +64,7 @@ public class Pag07Controller implements Initializable {
 
     @FXML
     private void mouseClicado(MouseEvent event) {
+        String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
+        modelPag07.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
 }
