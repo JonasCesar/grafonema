@@ -1,5 +1,8 @@
 package controller;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import model.ModelPag01;
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +30,7 @@ public class Pag01Controller implements Initializable {
     private Label tituloUnidade;
     @FXML
     private ListView<String> listaPalavras;
+    ObservableList<String> items = FXCollections.observableArrayList();
 
     public Pag01Controller() {
         unidadeAtual = "u00";
@@ -42,14 +46,12 @@ public class Pag01Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
 
     }
 
     public void tocarAudio() {
+
         
-        ObservableList<String> items = FXCollections.observableArrayList(
-                "VOVÔ", "Double", "Suite", "Family App");
         listaPalavras.setItems(items);
         modelPag01.tocarAudio();
     }
@@ -58,8 +60,9 @@ public class Pag01Controller implements Initializable {
         return modelPag01.getUnidadeAtual();
     }
 
-    public void setUnidadeAtual(String unidade) {
-       
+    public void setUnidadeAtual(String unidade) throws FileNotFoundException, IOException {
+        atualizarListaPalavras();
+
         modelPag01.setUnidadeAtual(unidade, tituloUnidade);
     }
 
@@ -77,7 +80,30 @@ public class Pag01Controller implements Initializable {
     @FXML
     private void mouseClicado(MouseEvent event) {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
-        modelPag01.tocarAudioPalavraSelecionada(palavraSelecionada);        
+        modelPag01.tocarAudioPalavraSelecionada(palavraSelecionada);
+    }
+
+    private void atualizarListaPalavras() throws FileNotFoundException, IOException {
+        BufferedReader lerArq = null;
+        try {
+            FileReader arquivo = new FileReader("src/AudiosPalavrasEstudadas/texto.txt");
+            lerArq = new BufferedReader(arquivo);
+            
+            String linha = lerArq.readLine();
+            if(linha.length()<1){
+                linha = lerArq.readLine();
+            }
+            while (linha != null) {
+                System.out.printf("%s\n", linha);
+                items.add(linha);
+                linha = lerArq.readLine(); // lê da segunda até a última linha
+            }
+            listaPalavras.setItems(items);
+            lerArq.close();
+        } catch (Exception e) {
+            System.out.println("Provavelmente é a primeira unidade");
+        }
+
     }
 
 }

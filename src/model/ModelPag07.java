@@ -6,8 +6,13 @@
 package model;
 
 import controller.MenuInicialController;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,6 +51,7 @@ public class ModelPag07 {
         Parent proximaCena = (Parent) fxmloader.load();
         MenuInicialController menuInicialCont = fxmloader.<MenuInicialController>getController();
         //menuInicialCont.setUnidadeAtual(getUnidadeAtual());
+        salvarPalavraEstudadas(getUnidadeAtual());
         exibirCena(proximaCena);
     }
 
@@ -93,8 +99,8 @@ public class ModelPag07 {
         janela.setScene(cena);
         janela.show();//exibe a interface  
     }
-    
-    public void play(String caminhoAudio){
+
+    public void play(String caminhoAudio) {
         //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
         arquivo = new File(caminhoAudio);
         //pega todo do caminho referente ao objeto File criado
@@ -110,8 +116,8 @@ public class ModelPag07 {
         mediaView.setMediaPlayer(mediaPlayer);
     }
 
-   public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
-        switch(palavraSelecionada){
+    public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
+        switch (palavraSelecionada) {
             case "VOVÔ":
                 caminhoAudio = "src/audios/u01/l1p2a1.MP3";
                 break;
@@ -119,6 +125,45 @@ public class ModelPag07 {
                 break;
         }
         play(caminhoAudio);
+    }
+
+    public void salvarPalavraEstudadas(String unidade) throws IOException {
+        String novaPalavra = "";
+        boolean encontrado = false;
+        BufferedReader lerArq = null;
+        switch (unidade) {
+            case "u01":
+                novaPalavra = "\nVOVÔ";
+                break;
+            default:
+                break;
+        }
+        File arquivoEscrita = new File("src/AudiosPalavrasEstudadas/texto.txt"); // se já existir, será sobreescrito
+        FileWriter fw = new FileWriter(arquivoEscrita, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        try {
+            FileReader arquivoLeitura = new FileReader("src/AudiosPalavrasEstudadas/texto.txt");
+            lerArq = new BufferedReader(arquivoLeitura);
+
+            String linha = lerArq.readLine();
+            if (linha == null) {//ocorre quando for
+                System.out.println("Linha nula");
+                bw.write(novaPalavra);
+                encontrado = true;
+            } else {
+                Scanner wordFinder = new Scanner(arquivoEscrita);
+                String palavra = wordFinder.findWithinHorizon(novaPalavra, 0);
+                boolean jaFoiAdicionada = palavra.length() != 0;
+                if (!jaFoiAdicionada) {
+                    bw.write(novaPalavra);
+                    bw.flush();
+                }
+            }
+            lerArq.close();
+        } catch (Exception e) {
+        }
+
+        bw.close();
     }
 
 }
