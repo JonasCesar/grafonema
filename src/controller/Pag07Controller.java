@@ -60,6 +60,7 @@ public class Pag07Controller implements Initializable {
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{
         modelPag07.menuInicial(event);
+        modelPag07.pararAudio();
     }
 
     @FXML
