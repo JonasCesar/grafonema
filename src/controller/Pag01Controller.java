@@ -50,9 +50,6 @@ public class Pag01Controller implements Initializable {
     }
 
     public void tocarAudio() {
-
-        
-        listaPalavras.setItems(items);
         modelPag01.tocarAudio();
     }
 
@@ -62,7 +59,6 @@ public class Pag01Controller implements Initializable {
 
     public void setUnidadeAtual(String unidade) throws FileNotFoundException, IOException {
         atualizarListaPalavras();
-
         modelPag01.setUnidadeAtual(unidade, tituloUnidade);
     }
 
@@ -75,6 +71,7 @@ public class Pag01Controller implements Initializable {
     @FXML
     private void menuInicial(ActionEvent event) throws IOException {
         modelPag01.menuInicial(event);
+        modelPag01.pararAudio();
     }
 
     @FXML
