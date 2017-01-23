@@ -8,7 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -23,6 +25,8 @@ public class Pag06Controller implements Initializable {
     @FXML
     private TextField resposta;
     private ModelPag06 modelPag06;
+    @FXML
+    private ListView<?> listaPalavras;
 
     /**
      * Initializes the controller class.
@@ -82,6 +86,10 @@ public class Pag06Controller implements Initializable {
     
     public void tocarAudio() {
         modelPag06.tocarAudio();
+    }
+
+    @FXML
+    private void mouseClicado(MouseEvent event) {
     }
     
 }

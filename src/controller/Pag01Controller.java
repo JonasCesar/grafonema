@@ -1,12 +1,17 @@
 package controller;
+
 import model.ModelPag01;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -17,14 +22,16 @@ public class Pag01Controller implements Initializable {
 
     private String unidadeAtual;
 
-    private ModelPag01 modelPag01;          
+    private ModelPag01 modelPag01;
     @FXML
     private Label tituloUnidade;
-    
+    @FXML
+    private ListView<String> listaPalavras;
 
     public Pag01Controller() {
         unidadeAtual = "u00";
         modelPag01 = new ModelPag01();
+        listaPalavras = new ListView<String>();
     }
 
     /**
@@ -35,11 +42,16 @@ public class Pag01Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
 
     }
 
     public void tocarAudio() {
-        modelPag01.tocarAudio();        
+        
+        ObservableList<String> items = FXCollections.observableArrayList(
+                "Single", "Double", "Suite", "Family App");
+        listaPalavras.setItems(items);
+        modelPag01.tocarAudio();
     }
 
     public String getUnidadeAtual() {
@@ -47,19 +59,24 @@ public class Pag01Controller implements Initializable {
     }
 
     public void setUnidadeAtual(String unidade) {
-        System.out.println(unidade);
+       
         modelPag01.setUnidadeAtual(unidade, tituloUnidade);
     }
 
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag01.pararAudio();
-        modelPag01.proximaPagina(event);        
+        modelPag01.proximaPagina(event);
     }
-    
+
     @FXML
-    private void menuInicial(ActionEvent event) throws IOException{
+    private void menuInicial(ActionEvent event) throws IOException {
         modelPag01.menuInicial(event);
+    }
+
+    @FXML
+    private void mouseClicado(MouseEvent event) {
+        System.out.println(listaPalavras.getSelectionModel().getSelectedItem());
     }
 
 }

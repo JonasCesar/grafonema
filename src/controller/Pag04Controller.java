@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -39,6 +40,8 @@ public class Pag04Controller implements Initializable {
     private double newTranslateY;
     @FXML
     private Label espaco;
+    @FXML
+    private ListView<?> listaPalavras;
 
     public Pag04Controller() {
     }
@@ -132,6 +135,10 @@ public class Pag04Controller implements Initializable {
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{
         modelPag04.menuInicial(event);
+    }
+
+    @FXML
+    private void mouseClicado(MouseEvent event) {
     }
 
 }

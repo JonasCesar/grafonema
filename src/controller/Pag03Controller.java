@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -34,6 +35,8 @@ public class Pag03Controller implements Initializable {
     private ImageView img4;
     
     private ModelPag03 modelPag03;
+    @FXML
+    private ListView<?> listaPalavras;
     /**
      * Initializes the controller class.
      */
@@ -73,6 +76,10 @@ public class Pag03Controller implements Initializable {
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{
         modelPag03.menuInicial(event);
+    }
+
+    @FXML
+    private void mouseClicado(MouseEvent event) {
     }
     
 }

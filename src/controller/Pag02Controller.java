@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -21,6 +23,8 @@ public class Pag02Controller implements Initializable {
     private ModelPag02 modelPag02 = new ModelPag02();
     
     private String unidadeAtual;
+    @FXML
+    private ListView<?> listaPalavras;
     
     
     public Pag02Controller() {
@@ -87,4 +91,8 @@ public class Pag02Controller implements Initializable {
         }
         modelPag02.setUnidadeAtual(unidade);
     }    
+
+    @FXML
+    private void mouseClicado(MouseEvent event) {
+    }
 }

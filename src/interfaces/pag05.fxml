@@ -18,7 +18,6 @@
         <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
         <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
         <Button layoutX="634.0" layoutY="598.0" mnemonicParsing="false" text="Manual" />
-        <TextArea layoutX="8.0" layoutY="155.0" prefHeight="401.0" prefWidth="177.0" />
         <Label layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="169.0" text="Palavras Estudadas" textAlignment="CENTER" />
         <Button layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
         <Button layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
@@ -72,5 +71,6 @@
          </opaqueInsets>
       </Label>
       <Button layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
+      <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="169.0" />
     </children>
 </AnchorPane>

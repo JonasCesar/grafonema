@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -19,6 +21,8 @@ public class Pag07Controller implements Initializable {
     private Label tituloUnidade;
     
     private ModelPag07 modelPag07;
+    @FXML
+    private ListView<?> listaPalavras;
 
     /**
      * Initializes the controller class.
@@ -50,5 +54,9 @@ public class Pag07Controller implements Initializable {
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{
         modelPag07.menuInicial(event);
+    }
+
+    @FXML
+    private void mouseClicado(MouseEvent event) {
     }
 }
