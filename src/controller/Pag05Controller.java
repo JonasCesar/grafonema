@@ -90,6 +90,7 @@ public class Pag05Controller implements Initializable {
             //se for a opcao correta
             if (modelPag05.verificarEscolhaSilaba(event)) {
                 modelPag05.alterarLabelEspaco(event);
+                modelPag05.tocarAudioAcerto();
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
                 ((Label) (event.getSource())).setTranslateY(orgTranslateY);
             } else {

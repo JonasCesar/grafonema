@@ -119,6 +119,7 @@ public class ModelPag01 {
         mediaView.setMediaPlayer(mediaPlayer);
     }
 
+    
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         switch(palavraSelecionada){
             case "VOVÔ":
