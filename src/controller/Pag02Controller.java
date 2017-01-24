@@ -1,8 +1,6 @@
 package controller;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import model.ModelPag02;
 import java.io.IOException;
 import java.net.URL;
@@ -32,11 +30,11 @@ public class Pag02Controller implements Initializable {
     private ListView<String> listaPalavras;
     
     ObservableList<String> items = FXCollections.observableArrayList();
-    
+    private ControllerClasseComum controlerComum;
     public Pag02Controller() {
         unidadeAtual = "u00";
         listaPalavras = new ListView<String>();
-        
+        controlerComum = new ControllerClasseComum(listaPalavras);
     }
 
     /**
@@ -108,25 +106,7 @@ public class Pag02Controller implements Initializable {
     }
     
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-        BufferedReader lerArq = null;
-        try {
-            FileReader arquivo = new FileReader("src/AudiosPalavrasEstudadas/texto.txt");
-            lerArq = new BufferedReader(arquivo);
-            
-            String linha = lerArq.readLine();
-            if(linha.length()<1){
-                linha = lerArq.readLine();
-            }
-            while (linha != null) {
-                System.out.printf("%s\n", linha);
-                items.add(linha);
-                linha = lerArq.readLine(); // lê da segunda até a última linha
-            }
-            listaPalavras.setItems(items);
-            lerArq.close();
-        } catch (Exception e) {
-            System.out.println("Provavelmente é a primeira unidade");
-        }
+        controlerComum.atualizarListaPalavras(listaPalavras);
 
     }
 }

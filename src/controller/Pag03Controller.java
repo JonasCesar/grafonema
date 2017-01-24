@@ -1,8 +1,6 @@
 package controller;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import model.ModelPag03;
@@ -42,10 +40,11 @@ public class Pag03Controller implements Initializable {
     private ModelPag03 modelPag03;
     @FXML
     private ListView<String> listaPalavras;
-    
+    private ControllerClasseComum controlerComum;
     ObservableList<String> items = FXCollections.observableArrayList();
     public Pag03Controller() {
         listaPalavras = new ListView<String>();
+        controlerComum = new ControllerClasseComum(listaPalavras);
     }
     /**
      * Initializes the controller class.
@@ -98,25 +97,7 @@ public class Pag03Controller implements Initializable {
         modelPag03.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-        BufferedReader lerArq = null;
-        try {
-            FileReader arquivo = new FileReader("src/AudiosPalavrasEstudadas/texto.txt");
-            lerArq = new BufferedReader(arquivo);
-            
-            String linha = lerArq.readLine();
-            if(linha.length()<1){
-                linha = lerArq.readLine();
-            }
-            while (linha != null) {
-                System.out.printf("%s\n", linha);
-                items.add(linha);
-                linha = lerArq.readLine(); // lê da segunda até a última linha
-            }
-            listaPalavras.setItems(items);
-            lerArq.close();
-        } catch (Exception e) {
-            System.out.println("Provavelmente é a primeira unidade");
-        }
+        controlerComum.atualizarListaPalavras(listaPalavras);
 
     }
 }
