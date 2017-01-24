@@ -62,6 +62,11 @@ public class Pag07Controller implements Initializable {
         modelPag07.proximaPagina(event);
     }
     
+    @FXML
+    private void voltar(ActionEvent event) throws IOException {
+        modelPag07.pararAudio();
+        modelPag07.paginaAnterior(event);
+    }
     
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{

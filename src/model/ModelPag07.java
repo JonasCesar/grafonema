@@ -6,6 +6,7 @@
 package model;
 
 import controller.MenuInicialController;
+import controller.Pag06Controller;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -121,6 +122,18 @@ public class ModelPag07 {
         }
 
         bw.close();
+    }
+
+    public void paginaAnterior(ActionEvent event) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06.fxml"));
+        //cria a próxima cena chamando a inteface dos avatares        
+        Parent proximaCena = (Parent) fxmloader.load();
+        Pag06Controller pg06Cont = fxmloader.<Pag06Controller>getController();
+
+        mCC.exibirCena(proximaCena, janela);
+        pg06Cont.setUnidadeAtual(getUnidadeAtual());
+        pg06Cont.tocarAudio();
     }
 
 }
