@@ -99,10 +99,10 @@ public class ModelPag03 {
             //acertos img1, img3, img5
             case "u01":
                 if(imgClicada.equals("img1") || imgClicada.equals("img3") || imgClicada.equals("img5")){
-                    f1= new File("src/imagens/licao01/"+nomeImagem+"c.png");
+                    f1= new File("src/imagens/licao01/"+nomeImagem+"c.jpg");
                     ((ImageView)event.getSource()).setImage(new Image(f1.toURI().toURL().toString()));
                 }else{
-                    f1= new File("src/imagens/licao01/"+nomeImagem+"e.png");
+                    f1= new File("src/imagens/licao01/"+nomeImagem+"e.jpg");
                     ((ImageView)event.getSource()).setImage(new Image(f1.toURI().toURL().toString()));                
                 }
                 break;
@@ -131,12 +131,12 @@ public class ModelPag03 {
          */
         switch(unidadeAtual){
             case "u01": 
-                f1= new File("src/imagens/licao01/1.png");
-                f2= new File("src/imagens/licao01/2.png");
-                f3= new File("src/imagens/licao01/3.png");
-                f4= new File("src/imagens/licao01/4.png");
-                f5= new File("src/imagens/licao01/5.png");
-                f6= new File("src/imagens/licao01/6.png");
+                f1= new File("src/imagens/licao01/1.jpg");
+                f2= new File("src/imagens/licao01/2.jpg");
+                f3= new File("src/imagens/licao01/3.jpg");
+                f4= new File("src/imagens/licao01/4.jpg");
+                f5= new File("src/imagens/licao01/5.jpg");
+                f6= new File("src/imagens/licao01/6.jpg");
                 
                 /**
                 i2 = new Image(getClass().getResourceAsStream("src/imagens/licao01/2.png"));
