@@ -5,7 +5,6 @@
  */
 package model;
 
-import controller.MenuInicialController;
 import controller.Pag04Controller;
 import controller.Pag06Controller;
 import java.io.File;
@@ -18,9 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 /**
@@ -51,10 +47,7 @@ public class ModelPag05 {
     
     private String caminhoAudio;
     private File arquivo;
-    private Media media;
-    private MediaPlayer mediaPlayer;
-    private MediaView mediaView = new MediaView();
-    
+    private ModelClasseComum mCC;
     public ModelPag05(Label p1,Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
         this.p1 = p1;
         this.p2 = p2;
@@ -65,6 +58,7 @@ public class ModelPag05 {
         this.f2 = f2;
         this.espaco = espaco;
         this.unidadeAtual = "u00";
+        mCC = new ModelClasseComum(janela);
     }    
 
     public void setUnidadeAtual(String unidadeAtual) {
@@ -106,7 +100,7 @@ public class ModelPag05 {
         Parent proximaCena = (Parent) fxmloader.load();
         Pag04Controller pg04Cont = fxmloader.<Pag04Controller>getController();
         
-        exibirCena(proximaCena);
+        mCC.exibirCena(proximaCena, janela);
         pg04Cont.setUnidadeAtual(getUnidadeAtual());
         pg04Cont.tocarAudio();
     }
@@ -140,11 +134,11 @@ public class ModelPag05 {
                 System.out.println("Não foi");
                 break;
         }
-        play(caminhoAudio);
+        mCC.play(caminhoAudio);
     }
 
     public void pararAudio() {
-        mediaPlayer.stop();
+        mCC.pararAudio();
     }
 
     public void alterarLabelEspaco(MouseEvent evento) {
@@ -154,47 +148,11 @@ public class ModelPag05 {
     }
 
    public void menuInicial(ActionEvent event) throws IOException {
-         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
-        
-        Parent proximaCena = (Parent) fxmloader.load();
-        MenuInicialController miController = fxmloader.<MenuInicialController>getController();
-        
-        exibirCena(proximaCena);
-    }
-   
-   public void exibirCena(Parent proximaCena) {
-        Scene cena = new Scene(proximaCena, 900, 700);
-        janela.setTitle("Menu Inicial");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface  
-    }
-   
-   public void play(String caminhoAudio){
-        //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
-        arquivo = new File(caminhoAudio);
-        //pega todo do caminho referente ao objeto File criado
-        caminhoAudio = arquivo.getAbsolutePath();
-        //troca todas as barras invertidas duplas ('\\') por '/'
-        caminhoAudio = caminhoAudio.replace("\\", "/");
-        //cria um objeto Media que recebe o objeto 'arquivo' como parâmetro
-        media = new Media(new File(caminhoAudio).toURI().toString());
-        //cria um objeto mediaPlayer que permite qua uma media possa ser reproduzida
-        mediaPlayer = new MediaPlayer(media);
-        //toca o audio automaticamente
-        mediaPlayer.setAutoPlay(true);
-        mediaView.setMediaPlayer(mediaPlayer);
+        mCC.menuInicial(event);
     }
 
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
-        switch(palavraSelecionada){
-            case "VOVÔ":
-                caminhoAudio = "src/audios/u01/l1p2a1.MP3";
-                break;
-            default:
-                break;
-        }
-        play(caminhoAudio);
+        mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
     
     public void tocarAudioAcerto(){

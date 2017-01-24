@@ -1,10 +1,13 @@
 package controller;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import model.ModelPag03;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,9 +40,11 @@ public class Pag03Controller implements Initializable {
     private ModelPag03 modelPag03;
     @FXML
     private ListView<String> listaPalavras;
-
+    private ControllerClasseComum controlerComum;
+    ObservableList<String> items = FXCollections.observableArrayList();
     public Pag03Controller() {
         listaPalavras = new ListView<String>();
+        controlerComum = new ControllerClasseComum(listaPalavras);
     }
     /**
      * Initializes the controller class.
@@ -54,7 +59,8 @@ public class Pag03Controller implements Initializable {
         modelPag03.tocarAudioInicial();
     }
 
-    public void setUnidadeAtual(String unidade) {
+    public void setUnidadeAtual(String unidade) throws IOException {
+        atualizarListaPalavras();
         modelPag03.setUnidadeAtual(unidade);
     }
 
@@ -90,5 +96,8 @@ public class Pag03Controller implements Initializable {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag03.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-    
+    private void atualizarListaPalavras() throws FileNotFoundException, IOException {
+        controlerComum.atualizarListaPalavras(listaPalavras);
+
+    }
 }

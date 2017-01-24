@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.FileNotFoundException;
 import model.ModelPag01;
 import java.io.IOException;
 import java.net.URL;
@@ -27,11 +28,13 @@ public class Pag01Controller implements Initializable {
     private Label tituloUnidade;
     @FXML
     private ListView<String> listaPalavras;
-
+    ObservableList<String> items = FXCollections.observableArrayList();
+    private ControllerClasseComum controlerComum;
     public Pag01Controller() {
         unidadeAtual = "u00";
         modelPag01 = new ModelPag01();
         listaPalavras = new ListView<String>();
+        controlerComum = new ControllerClasseComum(listaPalavras);
     }
 
     /**
@@ -42,15 +45,10 @@ public class Pag01Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
 
     }
 
     public void tocarAudio() {
-        
-        ObservableList<String> items = FXCollections.observableArrayList(
-                "VOVÔ", "Double", "Suite", "Family App");
-        listaPalavras.setItems(items);
         modelPag01.tocarAudio();
     }
 
@@ -58,8 +56,8 @@ public class Pag01Controller implements Initializable {
         return modelPag01.getUnidadeAtual();
     }
 
-    public void setUnidadeAtual(String unidade) {
-       
+    public void setUnidadeAtual(String unidade) throws FileNotFoundException, IOException {
+        atualizarListaPalavras();
         modelPag01.setUnidadeAtual(unidade, tituloUnidade);
     }
 
@@ -78,7 +76,11 @@ public class Pag01Controller implements Initializable {
     @FXML
     private void mouseClicado(MouseEvent event) {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
-        modelPag01.tocarAudioPalavraSelecionada(palavraSelecionada);        
+        modelPag01.tocarAudioPalavraSelecionada(palavraSelecionada);
+    }
+
+    private void atualizarListaPalavras() throws FileNotFoundException, IOException {
+        controlerComum.atualizarListaPalavras(listaPalavras);
     }
 
 }

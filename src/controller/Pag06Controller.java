@@ -1,9 +1,12 @@
 package controller;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import model.ModelPag06;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,9 +30,11 @@ public class Pag06Controller implements Initializable {
     private ModelPag06 modelPag06;
     @FXML
     private ListView<String> listaPalavras;
-
+    ObservableList<String> items = FXCollections.observableArrayList();
+    private ControllerClasseComum controlerComum;
     public Pag06Controller() {
         listaPalavras = new ListView<String>();
+        controlerComum = new ControllerClasseComum(listaPalavras);
     }
     
     
@@ -42,7 +47,8 @@ public class Pag06Controller implements Initializable {
         modelPag06 = new ModelPag06(p1,p2);
     }    
 
-    public void setUnidadeAtual(String unidade) {
+    public void setUnidadeAtual(String unidade) throws IOException {
+        atualizarListaPalavras();
         modelPag06.setUnidadeAtual(unidade);
         switch(getUnidadeAtual()){
             case "u01":
@@ -99,6 +105,10 @@ public class Pag06Controller implements Initializable {
     private void mouseClicado(MouseEvent event) {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag06.tocarAudioPalavraSelecionada(palavraSelecionada);
+    }
+    
+    private void atualizarListaPalavras() throws FileNotFoundException, IOException {
+        controlerComum.atualizarListaPalavras(listaPalavras);
     }
     
 }
