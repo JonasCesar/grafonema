@@ -15,13 +15,13 @@
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>     
     <children>
-        <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
-        <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
-        <Button layoutX="634.0" layoutY="598.0" mnemonicParsing="false" text="Manual" />
+        <Button fx:id="som" layoutX="340.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
+        <Button fx:id="abc" layoutX="507.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
+        <Button fx:id="manual" layoutX="646.0" layoutY="598.0" mnemonicParsing="false" text="Manual" />
         <Label layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="169.0" text="Palavras Estudadas" textAlignment="CENTER" />
-        <Button layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
-        <Button layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-        <Button layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
+        <Button fx:id="avancar" layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
+        <Button fx:id="voltar" layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+        <Button fx:id="menuInicial" layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
         <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
         <FlowPane layoutX="182.0" layoutY="298.0" prefHeight="179.0" prefWidth="675.0">
             <children>
@@ -52,7 +52,7 @@
                         <Insets right="55.0" />
                     </FlowPane.margin>
                 </Label>
-                <Button mnemonicParsing="false" onAction="#verificarTexto" text="OK">
+                <Button fx:id="confirmar" mnemonicParsing="false" onAction="#verificarTexto" text="OK">
                     <font>
                         <Font size="19.0" />
                     </font>

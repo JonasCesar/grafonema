@@ -10,9 +10,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 
 /**
  * FXML Controller class
@@ -30,6 +37,14 @@ public class Pag01Controller implements Initializable {
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
+    @FXML
+    private Button som;
+    @FXML
+    private Button abc;
+    @FXML
+    private Button manual;
+    @FXML
+    private Button avancar;
     public Pag01Controller() {
         unidadeAtual = "u00";
         modelPag01 = new ModelPag01();
@@ -45,6 +60,7 @@ public class Pag01Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
 
     }
 

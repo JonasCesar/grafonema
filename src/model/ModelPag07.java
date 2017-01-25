@@ -50,7 +50,8 @@ public class ModelPag07 {
 
     public void setUnidadeAtual(String unidade, Label tituloUnidade) {
         this.unidadeAtual = unidade;
-        System.out.println(unidade);
+        
+        System.out.println(tituloUnidade+" " + unidade);
         tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));
     }
 

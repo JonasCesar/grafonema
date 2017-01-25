@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -31,6 +32,24 @@ public class Pag02Controller implements Initializable {
     
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
+    @FXML
+    private Button som;
+    @FXML
+    private Button abc;
+    @FXML
+    private Button manual;
+    @FXML
+    private Button avancar;
+    @FXML
+    private Button audio1;
+    @FXML
+    private Button audio2;
+    @FXML
+    private Button audio3;
+    @FXML
+    private Button voltar;
+    @FXML
+    private Button menuInicial;
     public Pag02Controller() {
         unidadeAtual = "u00";
         listaPalavras = new ListView<String>();
