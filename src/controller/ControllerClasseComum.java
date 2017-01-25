@@ -39,16 +39,13 @@ public class ControllerClasseComum {
                 linha = lerArq.readLine();
             }
             while (linha != null) {
-                System.out.printf("%s\n", linha);
                 items.add(linha);
-                linha = lerArq.readLine(); // lê da segunda até a última linha
+                linha = lerArq.readLine();
             }
             listaPalavras.setItems(items);
             lerArq.close();
         } catch (Exception e) {
             System.out.println("Provavelmente é a primeira unidade");
         }
-
-    }
-    
+    }    
 }

@@ -48,25 +48,29 @@
                 <Font size="25.0" />
             </font>
         </Label>
-        <Label fx:id="f2" layoutX="507.0" layoutY="424.0" text="f2">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Label fx:id="f1" layoutX="410.0" layoutY="424.0" text="f1">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Label fx:id="espaco" alignment="CENTER" ellipsisString="" layoutX="449.0" layoutY="416.0" maxHeight="45.0" maxWidth="45.0" minHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="45.0">
-            <font>
-                <Font size="25.0" />
-            </font>
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-        </Label>
         <Button layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
         <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
+      <FlowPane layoutX="481.0" layoutY="365.0" prefHeight="51.0" prefWidth="342.0">
+         <children>
+              <Label fx:id="f1" text="Ar">
+                  <font>
+                      <Font size="25.0" />
+                  </font>
+              </Label>
+              <Label fx:id="espaco" alignment="CENTER" ellipsisString="" maxHeight="45.0" maxWidth="45.0" minHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="45.0">
+                  <font>
+                      <Font size="25.0" />
+                  </font>
+                  <opaqueInsets>
+                      <Insets />
+                  </opaqueInsets>
+              </Label>
+              <Label fx:id="f2" text="f2">
+                  <font>
+                      <Font size="25.0" />
+                  </font>
+              </Label>
+         </children>
+      </FlowPane>
     </children>
 </AnchorPane>

@@ -131,12 +131,8 @@ public class Pag05Controller implements Initializable {
     }
 
     private boolean verificarColisao(MouseEvent evento) {
-        if (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent())) {
-            return true;
-        } else {
-            
-        }
-        return false;       
+        boolean colidiu = (((Label) (evento.getSource())).getBoundsInLocal().intersects(espaco.getBoundsInLocal()));        
+        return colidiu;       
     }
 
     public void tocarAudio() {
