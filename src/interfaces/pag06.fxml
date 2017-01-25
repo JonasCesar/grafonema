@@ -11,7 +11,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag06Controller">
     <stylesheets>
-        <URL value="@/css/estilosPag06.css" />
+        <URL value="@/css/estilosPag06.css" />        
+        <URL value="@/css/estilosGerais.css" />
     </stylesheets>     
     <children>
         <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />

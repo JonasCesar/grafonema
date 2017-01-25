@@ -40,7 +40,7 @@ public class Pag07Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag07 = new ModelPag07();
+        modelPag07 = new ModelPag07();        
     }    
     
     public void tocarAudio() {

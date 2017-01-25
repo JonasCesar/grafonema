@@ -6,8 +6,12 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag02Controller">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag02Controller">
+    <stylesheets>
+        <URL value="@/css/estilosGerais.css" />
+    </stylesheets>
     <children>
          
         <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />

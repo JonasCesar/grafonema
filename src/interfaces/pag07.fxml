@@ -8,7 +8,10 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag07Controller">
-   <children>
+   <stylesheets>
+        <URL value="@/css/estilosGerais.css" />
+    </stylesheets>
+    <children>
       <Button layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
       <Button layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
       <Label fx:id="tituloUnidade" layoutX="534.0" layoutY="77.0" text="Unidade" />
