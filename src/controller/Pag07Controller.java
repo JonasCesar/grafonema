@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -64,12 +65,12 @@ public class Pag07Controller implements Initializable {
         atualizarListaPalavras();
         modelPag07.setUnidadeAtual(unidadeAtual, tituloUnidade);
     }
-
+    @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag07.pararAudio();
         modelPag07.proximaPagina(event);
     }
-    
+    @FXML
     private void voltar(ActionEvent event) throws IOException {
         modelPag07.pararAudio();
         modelPag07.paginaAnterior(event);
@@ -89,5 +90,16 @@ public class Pag07Controller implements Initializable {
     
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
+    }
+    
+    @FXML
+    private void sombrearBotao(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        ((Button)((event)).getSource()).setEffect(sombras);
+    }
+    
+    @FXML
+    private void retirarSombraBotao(MouseEvent event) {        
+        ((Button)((event)).getSource()).setEffect(null);
     }
 }

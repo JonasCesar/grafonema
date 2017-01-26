@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -140,16 +141,8 @@ public class Pag04Controller implements Initializable {
     }
 
     private boolean verificarColisao(MouseEvent evento) {
-        if (((Label) (evento.getSource())).getBoundsInLocal().intersects(espaco.getBoundsInLocal())) {
-            return true;
-        } else {
-            System.out.println((((Label) (evento.getSource())).getBoundsInLocal()).intersects(espaco.getBoundsInLocal()));
-            System.out.println(espaco.getBoundsInLocal());
-            
-            
-        }
 
-        return false;
+        return ((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent());
     }
 
     public void tocarAudio() {
@@ -170,6 +163,17 @@ public class Pag04Controller implements Initializable {
     
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
        controlerComum.atualizarListaPalavras(listaPalavras);
+    }
+    
+    @FXML
+    private void sombrearBotao(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        ((Button)((event)).getSource()).setEffect(sombras);
+    }
+    
+    @FXML
+    private void retirarSombraBotao(MouseEvent event) {        
+        ((Button)((event)).getSource()).setEffect(null);
     }
 
 }

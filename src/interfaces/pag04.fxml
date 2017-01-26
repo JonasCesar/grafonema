@@ -17,45 +17,63 @@
     </stylesheets>
     <children>
         
-        <Button fx:id="som" layoutX="340.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
-        <Button fx:id="abc" layoutX="507.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
-        <Button fx:id="manual" layoutX="646.0" layoutY="598.0" mnemonicParsing="false" text="Manual" />
+        <Button fx:id="som" layoutX="340.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Som" />
+        <Button fx:id="abc" layoutX="507.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
+        <Button fx:id="manual" layoutX="646.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
         <Label layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="169.0" text="Palavras Estudadas" textAlignment="CENTER" />
-        <Label fx:id="p1" layoutX="329.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P1">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Button fx:id="avancar" layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
-        <Button fx:id="voltar" layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-        <Label fx:id="p4" layoutX="585.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P4">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Label fx:id="p3" layoutX="495.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P3">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Label fx:id="p5" layoutX="673.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P5">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Label fx:id="p2" layoutX="408.0" layoutY="152.0" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P2">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Button fx:id="menuInicial" layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
+        <Button fx:id="avancar" layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
+        <Button fx:id="voltar" layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
+        <Button fx:id="menuInicial" layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
         <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
-      <FlowPane layoutX="481.0" layoutY="365.0" prefHeight="51.0" prefWidth="342.0">
+      <FlowPane layoutX="273.0" layoutY="197.0" prefHeight="179.0" prefWidth="516.0">
          <children>
+              <Label fx:id="p1" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P1">
+                  <font>
+                      <Font size="25.0" />
+                  </font>
+               <FlowPane.margin>
+                  <Insets bottom="50.0" left="110.0" right="30.0" />
+               </FlowPane.margin>
+              </Label>
+              <Label fx:id="p2" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P2">
+                  <font>
+                      <Font size="25.0" />
+                  </font>
+               <FlowPane.margin>
+                  <Insets bottom="50.0" right="30.0" />
+               </FlowPane.margin>
+              </Label>
+              <Label fx:id="p3" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P3">
+                  <font>
+                      <Font size="25.0" />
+                  </font>
+               <FlowPane.margin>
+                  <Insets bottom="50.0" right="30.0" />
+               </FlowPane.margin>
+              </Label>
+              <Label fx:id="p4" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P4">
+                  <font>
+                      <Font size="25.0" />
+                  </font>
+               <FlowPane.margin>
+                  <Insets bottom="50.0" right="30.0" />
+               </FlowPane.margin>
+              </Label>
+              <Label fx:id="p5" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P5">
+                  <font>
+                      <Font size="25.0" />
+                  </font>
+               <FlowPane.margin>
+                  <Insets bottom="50.0" right="30.0" />
+               </FlowPane.margin>
+              </Label>
               <Label fx:id="f1" text="Ar">
                   <font>
                       <Font size="25.0" />
                   </font>
+               <FlowPane.margin>
+                  <Insets left="210.0" top="70.0" />
+               </FlowPane.margin>
               </Label>
               <Label fx:id="espaco" alignment="CENTER" ellipsisString="" maxHeight="45.0" maxWidth="45.0" minHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="45.0">
                   <font>
@@ -64,11 +82,17 @@
                   <opaqueInsets>
                       <Insets />
                   </opaqueInsets>
+               <FlowPane.margin>
+                  <Insets top="70.0" />
+               </FlowPane.margin>
               </Label>
               <Label fx:id="f2" text="f2">
                   <font>
                       <Font size="25.0" />
                   </font>
+               <FlowPane.margin>
+                  <Insets top="70.0" />
+               </FlowPane.margin>
               </Label>
          </children>
       </FlowPane>
