@@ -14,13 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 
 /**
  * FXML Controller class
@@ -46,6 +40,8 @@ public class Pag01Controller implements Initializable {
     private Button manual;
     @FXML
     private Button avancar;
+    @FXML
+    private Label palavrasEstudadas;
     public Pag01Controller() {
         unidadeAtual = "u00";
         modelPag01 = new ModelPag01();

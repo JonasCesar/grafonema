@@ -53,7 +53,6 @@ public class ModelPag01 {
                 caminhoAudio = "src/audios/u01/l1p1.MP3";
                 break;
             default:
-                System.out.println("Não foi");
                 break;
         }
         mCC.play(caminhoAudio);

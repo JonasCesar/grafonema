@@ -38,6 +38,12 @@ public class Pag07Controller implements Initializable {
     private Button manual;
     @FXML
     private Button menuInicial;
+    @FXML
+    private Button voltar;
+    @FXML
+    private Button avancar;
+    @FXML
+    private Label palavrasEstudadas;
     public Pag07Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);

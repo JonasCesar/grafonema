@@ -12,9 +12,19 @@ and open the template in the editor.
 
 .button:focused {
     -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color; 
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 5, 4, 3;
-    -fx-font-family: "Arial Black";
+    -fx-background-insets: 0, 1, 2, 3, 0;
+    -fx-background-radius: 30;
+    -fx-font-size: 14px;
+    //-fx-font-family: "Arial Black";
+}
+
+.button{
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
 }
 
 //estilos dos botões inferiores
@@ -47,8 +57,8 @@ and open the template in the editor.
     -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
 }
-.label {
-    -fx-font-size: 25px;
+#palavrasEstudadas {
+    -fx-font-size: 12px;
     -fx-font-family: "Arial Black";
     -fx-font-weight: bold;
     -fx-text-fill: #333333;

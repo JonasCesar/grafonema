@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import controller.MenuInicialController;
@@ -61,7 +56,7 @@ public class ModelClasseComum {
     public void exibirCena(Parent proximaCena, Stage janela) {
         this.janela = janela;
         Scene cena = new Scene(proximaCena, 900, 700);
-        janela.setTitle("Menu Inicial");//título da cena
+        janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface  
     }

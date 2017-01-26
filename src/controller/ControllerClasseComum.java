@@ -45,7 +45,7 @@ public class ControllerClasseComum {
             listaPalavras.setItems(items);
             lerArq.close();
         } catch (Exception e) {
-            System.out.println("Provavelmente é a primeira unidade");
+            
         }
     }    
 }

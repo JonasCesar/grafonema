@@ -62,6 +62,8 @@ public class Pag05Controller implements Initializable {
     private Button voltar;
     @FXML
     private Button menuInicial;
+    @FXML
+    private Label palavrasEstudadas;
     public Pag05Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -145,7 +147,7 @@ public class Pag05Controller implements Initializable {
     }
 
     private boolean verificarColisao(MouseEvent evento) {
-        boolean colidiu = (((Label) (evento.getSource())).getBoundsInLocal().intersects(espaco.getBoundsInLocal()));        
+            boolean colidiu = (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent()));        
         return colidiu;       
     }
 
