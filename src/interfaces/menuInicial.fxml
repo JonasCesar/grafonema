@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuInicialController">
+<AnchorPane id="AnchorPane" maxHeight="750.0" maxWidth="1000.0" minHeight="750.0" minWidth="1000.0" prefHeight="750.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuInicialController">
     <stylesheets>
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
    <children>
-      <Button fx:id="u01" layoutX="78.0" layoutY="178.0" mnemonicParsing="false" onAction="#iniciarUnidade" text="Unidade 1">
+      <Button fx:id="u01" layoutX="78.0" layoutY="178.0" mnemonicParsing="false" onAction="#iniciarUnidade" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 1">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -22,7 +22,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="270.0" layoutY="178.0" mnemonicParsing="false" text="Unidade 2">
+      <Button layoutX="270.0" layoutY="178.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 2">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -30,7 +30,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="462.0" layoutY="178.0" mnemonicParsing="false" text="Unidade 3">
+      <Button layoutX="462.0" layoutY="178.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 3">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -38,7 +38,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="655.0" layoutY="178.0" mnemonicParsing="false" text="Unidade 4">
+      <Button layoutX="726.0" layoutY="178.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 4">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -46,7 +46,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="79.0" layoutY="268.0" mnemonicParsing="false" text="Unidade 1">
+      <Button layoutX="79.0" layoutY="268.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 4">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -54,7 +54,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="271.0" layoutY="268.0" mnemonicParsing="false" text="Unidade 2">
+      <Button layoutX="271.0" layoutY="268.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 5">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -62,7 +62,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="463.0" layoutY="268.0" mnemonicParsing="false" text="Unidade 3">
+      <Button layoutX="463.0" layoutY="268.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 6">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -70,7 +70,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="654.0" layoutY="268.0" mnemonicParsing="false" text="Unidade 4">
+      <Button layoutX="725.0" layoutY="268.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 7">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -78,7 +78,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="79.0" layoutY="358.0" mnemonicParsing="false" text="Unidade 1">
+      <Button layoutX="79.0" layoutY="358.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 8">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -86,7 +86,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="271.0" layoutY="358.0" mnemonicParsing="false" text="Unidade 2">
+      <Button layoutX="271.0" layoutY="358.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 9">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -94,7 +94,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="463.0" layoutY="358.0" mnemonicParsing="false" text="Unidade 3">
+      <Button layoutX="463.0" layoutY="358.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 10">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -102,7 +102,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="656.0" layoutY="358.0" mnemonicParsing="false" text="Unidade 4">
+      <Button layoutX="727.0" layoutY="358.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 11">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -110,7 +110,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="656.0" layoutY="448.0" mnemonicParsing="false" text="Unidade 4">
+      <Button layoutX="727.0" layoutY="448.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 15">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -118,7 +118,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="463.0" layoutY="448.0" mnemonicParsing="false" text="Unidade 3">
+      <Button layoutX="463.0" layoutY="448.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 14">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -126,7 +126,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="271.0" layoutY="448.0" mnemonicParsing="false" text="Unidade 2">
+      <Button layoutX="271.0" layoutY="448.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 13">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -134,7 +134,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="79.0" layoutY="448.0" mnemonicParsing="false" text="Unidade 1">
+      <Button layoutX="79.0" layoutY="448.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 12">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>

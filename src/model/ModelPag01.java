@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 import controller.Pag02Controller;
 import java.io.File;
@@ -53,7 +48,6 @@ public class ModelPag01 {
                 caminhoAudio = "src/audios/u01/l1p1.MP3";
                 break;
             default:
-                System.out.println("Não foi");
                 break;
         }
         mCC.play(caminhoAudio);

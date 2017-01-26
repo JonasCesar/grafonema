@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
@@ -56,6 +57,8 @@ public class Pag03Controller implements Initializable {
     private Button voltar;
     @FXML
     private Button menuInicial;
+    @FXML
+    private Label palavrasEstudadas;
     public Pag03Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);

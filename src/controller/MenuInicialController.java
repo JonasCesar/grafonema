@@ -13,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -50,4 +52,14 @@ public class MenuInicialController implements Initializable {
         
     }
     
+    @FXML
+    private void sombrearBotao(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        ((Button)((event)).getSource()).setEffect(sombras);
+    }
+    
+    @FXML
+    private void retirarSombraBotao(MouseEvent event) {        
+        ((Button)((event)).getSource()).setEffect(null);
+    }
 }

@@ -23,9 +23,9 @@
                 <Image url="@../imagens/licao01/l1u1.png" />
             </image>
         </ImageView>
-        <Label layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="169.0" text="Palavras Estudadas" textAlignment="CENTER" />
+        <Label fx:id="palavrasEstudadas" layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
         <Label fx:id="tituloUnidade" layoutX="524.0" layoutY="67.0" text="Unidade" />
-        <Button fx:id="menuInicial" layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
+        <Button layoutX="13.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
         <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
     </children>
 </AnchorPane>

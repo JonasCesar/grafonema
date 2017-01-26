@@ -48,6 +48,8 @@ public class Pag06Controller implements Initializable {
     private Button menuInicial;
     @FXML
     private Button confirmar;
+    @FXML
+    private Label palavrasEstudadas;
     public Pag06Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);

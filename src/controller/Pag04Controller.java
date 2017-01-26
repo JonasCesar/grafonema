@@ -61,6 +61,8 @@ public class Pag04Controller implements Initializable {
     private Button voltar;
     @FXML
     private Button menuInicial;
+    @FXML
+    private Label palavrasEstudadas;
     public Pag04Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
