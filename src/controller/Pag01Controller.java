@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -42,6 +43,9 @@ public class Pag01Controller implements Initializable {
     private Button avancar;
     @FXML
     private Label palavrasEstudadas;
+    @FXML
+    private AnchorPane painel;
+
     public Pag01Controller() {
         unidadeAtual = "u00";
         modelPag01 = new ModelPag01();
@@ -58,10 +62,10 @@ public class Pag01Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-
     }
 
     public void tocarAudio() {
+        
         modelPag01.tocarAudio();
     }
 
@@ -99,14 +103,12 @@ public class Pag01Controller implements Initializable {
     @FXML
     private void sombrearBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
-        ((Button)((event)).getSource()).setEffect(sombras);
+        ((Button) ((event)).getSource()).setEffect(sombras);
     }
-    
+
     @FXML
-    private void retirarSombraBotao(MouseEvent event) {        
-        ((Button)((event)).getSource()).setEffect(null);
+    private void retirarSombraBotao(MouseEvent event) {
+        ((Button) ((event)).getSource()).setEffect(null);
     }
-    
-    
 
 }

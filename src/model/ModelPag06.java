@@ -5,10 +5,8 @@
  */
 package model;
 
-import controller.MenuInicialController;
 import controller.Pag05Controller;
 import controller.Pag07Controller;
-import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

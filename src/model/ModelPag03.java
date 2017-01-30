@@ -1,6 +1,5 @@
 package model;
 
-import controller.MenuInicialController;
 import controller.Pag02Controller;
 import controller.Pag04Controller;
 import java.io.File;

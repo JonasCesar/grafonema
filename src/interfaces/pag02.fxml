@@ -23,7 +23,7 @@
         <Button fx:id="audio1" layoutX="406.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio1" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="1" />
         <Button fx:id="audio2" layoutX="527.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio2" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="2" />
         <Button fx:id="audio3" layoutX="650.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio3" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="3" />
-        <Button fx:id="voltar" layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
+        <Button fx:id="voltar" layoutX="203.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
         <Button layoutX="13.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
       <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
     </children>

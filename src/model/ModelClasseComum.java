@@ -55,7 +55,7 @@ public class ModelClasseComum {
     
     public void exibirCena(Parent proximaCena, Stage janela) {
         this.janela = janela;
-        Scene cena = new Scene(proximaCena, 900, 700);
+        Scene cena = new Scene(proximaCena, 950, 700);
         janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface  

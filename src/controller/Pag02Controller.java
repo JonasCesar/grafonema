@@ -53,6 +53,8 @@ public class Pag02Controller implements Initializable {
     private Button menuInicial;
     @FXML
     private Label palavrasEstudadas;
+    @FXML
+    private Label tituloUnidade;
     public Pag02Controller() {
         unidadeAtual = "u00";
         listaPalavras = new ListView<String>();

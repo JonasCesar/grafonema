@@ -25,7 +25,7 @@ public class MenuInicialController implements Initializable {
     @FXML
     private Button u01;
     
-    private ModelmenuInicial menuInicial;
+    private ModelmenuInicial menuInicial; 
 
     /**
      * Initializes the controller class.

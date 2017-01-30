@@ -130,6 +130,7 @@ public class Pag04Controller implements Initializable {
             //se for a opcao correta
             if (modelPag04.verificarEscolhaSilaba(event)) {
                 modelPag04.alterarLabelEspaco(event);
+                modelPag04.executarPalavra();
 
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
@@ -141,9 +142,12 @@ public class Pag04Controller implements Initializable {
             ((Label) (event.getSource())).setTranslateY(orgTranslateY);
         }
     }
-
+    /**
+     * Veriifica se a label solta é a label correta que deveria ter sido arrastada
+     * @param evento o botão do mouse é solto
+     * @return true ou false
+     */
     private boolean verificarColisao(MouseEvent evento) {
-
         return ((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent());
     }
 

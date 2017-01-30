@@ -86,10 +86,7 @@ public class ModelPag05 {
         Pag06Controller pg06Cont = fxmloader.<Pag06Controller>getController();
         pg06Cont.setUnidadeAtual(getUnidadeAtual());
         
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
+        mCC.exibirCena(proximaCena, janela);
         pg06Cont.tocarAudio();
     }
 
