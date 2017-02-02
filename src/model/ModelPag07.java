@@ -58,10 +58,10 @@ public class ModelPag07 {
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p1.MP3";
+                caminhoAudio = "src/audios/u01/l1p1.mp3";
                 break;
             default:
-                System.out.println("Não foi");
+                
                 break;
         }
 
@@ -106,7 +106,6 @@ public class ModelPag07 {
 
             String linha = lerArq.readLine();
             if (linha == null) {//ocorre quando for
-                System.out.println("Linha nula");
                 bw.write(novaPalavra);
                 encontrado = true;
             } else {

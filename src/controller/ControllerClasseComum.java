@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Classe com alguma métodos e atributos compartilhados por mais de uma classe
  */
 package controller;
 
@@ -26,10 +24,16 @@ public class ControllerClasseComum {
         this.listaPalavras = listaPalavras;
         
     }
-    
+    /**
+     * Atualiza a lista de palavras que foram estudadas
+     * @param listaPalavras listView que deverá ser alterada
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void atualizarListaPalavras(ListView listaPalavras) throws FileNotFoundException, IOException {
         this.listaPalavras = listaPalavras;
         BufferedReader lerArq = null;
+        //tenta criar e ler o arquivo texto
         try {
             FileReader arquivo = new FileReader("src/AudiosPalavrasEstudadas/texto.txt");
             lerArq = new BufferedReader(arquivo);
