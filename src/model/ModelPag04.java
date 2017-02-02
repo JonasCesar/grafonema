@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import controller.Pag03Controller;
@@ -174,7 +169,7 @@ public class ModelPag04 {
         switch (getUnidadeAtual()) {
             case "u01":
                 //diretório do audio
-                caminhoAudio = "src/audios/u01/l1p4.MP3";
+                caminhoAudio = "src/audios/u01/l1p4.mp3";
                 break;
             default:
                 break;

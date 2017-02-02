@@ -8,8 +8,10 @@ and open the template in the editor.
     Author     : shadows
 */
 
-#espaco{
+#espaco, #f1, #f2{
+    -fx-border-style: hidden hidden solid hidden;
     -fx-border-color: black;
+   
    
 }
 

@@ -56,8 +56,6 @@ public class Pag03Controller implements Initializable {
     @FXML
     private Button voltar;
     @FXML
-    private Button menuInicial;
-    @FXML
     private Label palavrasEstudadas;
     public Pag03Controller() {
         listaPalavras = new ListView<String>();
@@ -127,5 +125,11 @@ public class Pag03Controller implements Initializable {
     @FXML
     private void retirarSombraBotao(MouseEvent event) {        
         ((Button)((event)).getSource()).setEffect(null);
+    }
+
+    @FXML
+    private void executarAudioImagem(MouseEvent event) {
+        modelPag03.executarAudioImagem(event);
+        
     }
 }

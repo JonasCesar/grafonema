@@ -45,11 +45,11 @@ public class Pag06Controller implements Initializable {
     @FXML
     private Button voltar;
     @FXML
-    private Button menuInicial;
-    @FXML
     private Button confirmar;
     @FXML
     private Label palavrasEstudadas;
+    @FXML
+    private Button ouvirNovamente;
     public Pag06Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -173,6 +173,14 @@ public class Pag06Controller implements Initializable {
     @FXML
     private void retirarSombraBotao(MouseEvent event) {        
         ((Button)((event)).getSource()).setEffect(null);
+    }
+    /**
+     * Executa novamente a frase que deve ser completada pelo usuário
+     * @param event quando o botão for clicado
+     */
+    @FXML
+    private void ouvirNovamente(ActionEvent event) {
+        modelPag06.executarAudioFrase();
     }
     
 }

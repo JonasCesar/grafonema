@@ -1,3 +1,6 @@
+/**
+ * Controller da pagina 02
+ */
 package controller;
 
 import java.io.FileNotFoundException;
@@ -70,31 +73,49 @@ public class Pag02Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }    
-
+    /**
+     * Avança para a proxima pagina
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag02.pararAudio();
         modelPag02.proximaPagina(event);
     }
-
+    /**
+     * Executa o audio 1
+     * @param event clique no botão do audio 1
+     */
     @FXML
     private void audio1(ActionEvent event) {
         modelPag02.pararAudio();
         modelPag02.tocarAudio1();
     }
-
+    /**
+     * Executa o audio 2
+     * @param event clique no botão do audio 2
+     */
     @FXML
     private void audio2(ActionEvent event) {
         modelPag02.pararAudio();
         modelPag02.tocarAudio2();
     }
-
+    /**
+     * Executa o audio 3
+     * @param event clique no botão do audio 3
+     */
     @FXML
     private void audio3(ActionEvent event) {
         modelPag02.pararAudio();
         modelPag02.tocarAudio3();
     }
-
+    /**
+     * Volta para a pagina anterior
+     * @param event
+     * @throws IOException 
+     */
+    
     @FXML
     private void voltar(ActionEvent event) throws IOException {
         modelPag02.pararAudio();

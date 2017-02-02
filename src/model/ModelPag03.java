@@ -113,10 +113,9 @@ public class ModelPag03 {
     public void tocarAudioInicial() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p3.MP3";
+                caminhoAudio = "src/audios/u01/l1p3.mp3";
                 break;
             default:
-                System.out.println("Não foi");
                 break;
         }
 
@@ -137,18 +136,8 @@ public class ModelPag03 {
                 f5= new File("src/imagens/licao01/5.jpg");
                 f6= new File("src/imagens/licao01/6.jpg");
                 
-                /**
-                i2 = new Image(getClass().getResourceAsStream("src/imagens/licao01/2.png"));
-                i3 = new Image(getClass().getResourceAsStream("src/imagens/licao01/3.png"));
-                i4 = new Image(getClass().getResourceAsStream("src/imagens/licao01/4.png"));
-                i5 = new Image(getClass().getResourceAsStream("src/imagens/licao01/5.png"));
-                i6 = new Image(getClass().getResourceAsStream("src/imagens/licao01/6.png"));
-                * */
-                
-                
                 break;
             default:
-                System.out.println("Coco");
                 break;
         }
         img1.setImage(new Image(f1.toURI().toURL().toString()));
@@ -171,6 +160,18 @@ public class ModelPag03 {
     
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
+    }
+
+    public void executarAudioImagem(MouseEvent event) {
+        String idImagem = ((ImageView)event.getSource()).getId();
+        String nomeImagem = idImagem.substring(3, 4);
+        switch(getUnidadeAtual()){
+            case "u01":
+                caminhoAudio = "src/audios/u01/"+nomeImagem+".mp3";
+                break;
+        }
+        mCC.play(caminhoAudio);
+        System.out.println("Tocar "+caminhoAudio);
     }
 
 }

@@ -102,8 +102,6 @@ public class Pag04Controller implements Initializable {
 
     @FXML
     private void mousePressionado(MouseEvent event) {
-        System.out.println("Mouse clicado");
-
         orgSceneX = event.getSceneX();
         orgSceneY = event.getSceneY();
         orgTranslateX = ((Label) (event.getSource())).getTranslateX();
@@ -113,15 +111,12 @@ public class Pag04Controller implements Initializable {
 
     @FXML
     private void mouseArrastado(MouseEvent event) {
-        System.out.println("Mouse arrastado");
         double offsetX = event.getSceneX() - orgSceneX;
         double offsetY = event.getSceneY() - orgSceneY;
         newTranslateX = orgTranslateX + offsetX;
         newTranslateY = orgTranslateY + offsetY;
-
         ((Label) (event.getSource())).setTranslateX(newTranslateX);
         ((Label) (event.getSource())).setTranslateY(newTranslateY);
-        //verificarColisao(event);
     }
 
     @FXML

@@ -59,5 +59,6 @@
                 </Button>
             </children>
         </FlowPane>
+      <Button fx:id="ouvirNovamente" layoutX="356.0" layoutY="178.0" mnemonicParsing="false" onAction="#ouvirNovamente" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Ouvir Novamente" />
     </children>
 </AnchorPane>
