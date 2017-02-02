@@ -112,8 +112,7 @@ public class Pag05Controller implements Initializable {
             //se for a opcao correta
             if (modelPag05.verificarEscolhaSilaba(event)) {
                 modelPag05.alterarLabelEspaco(event);
-                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+                modelPag05.executarPalavra();
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
                 ((Label) (event.getSource())).setTranslateY(orgTranslateY);
@@ -127,7 +126,6 @@ public class Pag05Controller implements Initializable {
 
     @FXML
     private void mouseArrastado(MouseEvent event) {
-        //System.out.println("Mouse arrastado");
         double offsetX = event.getSceneX() - orgSceneX;
         double offsetY = event.getSceneY() - orgSceneY;
         newTranslateX = orgTranslateX + offsetX;

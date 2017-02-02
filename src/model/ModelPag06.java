@@ -120,4 +120,15 @@ public class ModelPag06 {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
 
+    public void executarAudioFrase() {
+        switch (getUnidadeAtual()) {
+            case "u01":
+                caminhoAudio = "src/audios/u01/frase.mp3";
+                break;
+            default:               
+                break;
+        }
+        mCC.play(caminhoAudio);
+    }
+
 }
