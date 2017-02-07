@@ -63,6 +63,9 @@ public class Pag04Controller implements Initializable {
     private Button menuInicial;
     @FXML
     private Label palavrasEstudadas;
+    
+    private final int pagina = 4;
+    
     public Pag04Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -175,6 +178,11 @@ public class Pag04Controller implements Initializable {
     @FXML
     private void retirarSombraBotao(MouseEvent event) {        
         ((Button)((event)).getSource()).setEffect(null);
+    }
+    
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag04.abrirManual(event, pagina);
     }
 
 }

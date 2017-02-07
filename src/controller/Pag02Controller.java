@@ -58,6 +58,8 @@ public class Pag02Controller implements Initializable {
     private Label palavrasEstudadas;
     @FXML
     private Label tituloUnidade;
+    
+    private final int pagina = 2;
     public Pag02Controller() {
         unidadeAtual = "u00";
         listaPalavras = new ListView<String>();
@@ -164,5 +166,10 @@ public class Pag02Controller implements Initializable {
     @FXML
     private void retirarSombraBotao(MouseEvent event) {        
         ((Button)((event)).getSource()).setEffect(null);
+    }
+    
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag02.abrirManual(event, pagina);
     }
 }

@@ -1,5 +1,6 @@
 package model;
 
+import controller.ManualController;
 import controller.MenuInicialController;
 import java.io.File;
 import java.io.IOException;
@@ -24,9 +25,12 @@ public class ModelClasseComum {
     private MediaView mediaView = new MediaView();
     private Stage janela;
     private String caminhoAudio;
+    private String unidadeAtual;
+    private ActionEvent eventoTemporario;
 
     public ModelClasseComum(Stage janela) {
         this.janela = janela;
+        eventoTemporario = null;
     }
     
     public void play(String caminhoAudio){
@@ -81,5 +85,27 @@ public class ModelClasseComum {
         MenuInicialController miController = fxmloader.<MenuInicialController>getController();
         
         exibirCena(proximaCena, janela);
+    }
+
+    void abrirManual(ActionEvent event, int pagina) throws IOException {
+        
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/manual.fxml"));
+        
+        Parent proximaCena = (Parent) fxmloader.load();
+        ManualController manualController = fxmloader.<ManualController>getController();        
+        exibirCena(proximaCena, janela);
+        System.out.println(getUnidadeAtual());
+        manualController.setUnidadeAtual(getUnidadeAtual());
+        manualController.setPaginaTemporaria(pagina);
+    }
+    
+    public void setUnidadeAtual(String unidadeAtual){
+        
+        this.unidadeAtual = unidadeAtual;
+    }
+    
+    public String getUnidadeAtual(){
+        return this.unidadeAtual;
     }
 }

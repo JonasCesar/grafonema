@@ -57,6 +57,8 @@ public class Pag03Controller implements Initializable {
     private Button voltar;
     @FXML
     private Label palavrasEstudadas;
+    
+    private final int pagina = 3;
     public Pag03Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -131,5 +133,10 @@ public class Pag03Controller implements Initializable {
     private void executarAudioImagem(MouseEvent event) {
         modelPag03.executarAudioImagem(event);
         
+    }
+    
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag03.abrirManual(event, pagina);
     }
 }

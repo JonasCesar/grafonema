@@ -80,5 +80,11 @@ public class ModelPag01 {
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
+
+    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+        mCC.pararAudio();
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirManual(event, pagina);
+    }
     
 }

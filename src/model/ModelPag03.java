@@ -174,4 +174,8 @@ public class ModelPag03 {
         System.out.println("Tocar "+caminhoAudio);
     }
 
+    public void abrirManual(ActionEvent event, int pagina) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
