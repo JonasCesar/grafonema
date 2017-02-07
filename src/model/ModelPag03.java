@@ -174,4 +174,10 @@ public class ModelPag03 {
         System.out.println("Tocar "+caminhoAudio);
     }
 
+    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+         mCC.pararAudio();
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirManual(event, pagina);
+    }
+
 }

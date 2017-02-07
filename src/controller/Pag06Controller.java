@@ -50,6 +50,8 @@ public class Pag06Controller implements Initializable {
     private Label palavrasEstudadas;
     @FXML
     private Button ouvirNovamente;
+    
+    private final int pagina = 6;
     public Pag06Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -183,4 +185,8 @@ public class Pag06Controller implements Initializable {
         modelPag06.executarAudioFrase();
     }
     
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag06.abrirManual(event, pagina);
+    }
 }

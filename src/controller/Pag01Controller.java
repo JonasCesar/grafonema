@@ -18,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -46,8 +45,8 @@ public class Pag01Controller implements Initializable {
     private Button avancar;
     @FXML
     private Label palavrasEstudadas;
-    @FXML
-    private AnchorPane painel;
+    
+    private final int pagina = 1;
 
     public Pag01Controller() {
         unidadeAtual = "u00";
@@ -142,6 +141,11 @@ public class Pag01Controller implements Initializable {
     @FXML
     private void retirarSombraBotao(MouseEvent event) {
         ((Button) ((event)).getSource()).setEffect(null);
+    }
+
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag01.abrirManual(event, pagina);
     }
 
 }

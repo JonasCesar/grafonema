@@ -44,6 +44,8 @@ public class Pag07Controller implements Initializable {
     private Button avancar;
     @FXML
     private Label palavrasEstudadas;
+    
+    private final int pagina = 7;
     public Pag07Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -107,5 +109,10 @@ public class Pag07Controller implements Initializable {
     @FXML
     private void retirarSombraBotao(MouseEvent event) {        
         ((Button)((event)).getSource()).setEffect(null);
+    }
+    
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag07.abrirManual(event, pagina);
     }
 }

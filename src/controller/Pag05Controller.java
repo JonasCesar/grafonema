@@ -46,6 +46,7 @@ public class Pag05Controller implements Initializable {
     private double newTranslateX;
     private double orgTranslateY;
     private double newTranslateY;
+    private final int pagina = 5;
     @FXML
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
@@ -180,5 +181,8 @@ public class Pag05Controller implements Initializable {
     private void retirarSombraBotao(MouseEvent event) {        
         ((Button)((event)).getSource()).setEffect(null);
     }
-    
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag05.abrirManual(event, pagina);
+    }
 }
