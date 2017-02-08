@@ -13,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +25,7 @@ import javafx.stage.Stage;
 public class ModelPag05 {
     private Stage janela;
     private String unidadeAtual;
+    //Declaração das labels utilizadas
     @FXML
     private Label p1;
     @FXML
@@ -44,10 +44,23 @@ public class ModelPag05 {
     
     @FXML
     private Label espaco;
-    
+    //diretório do arquivo de audio
     private String caminhoAudio;
     private File arquivo;
+    //classe com métodos com a mesma estrutura das outras classes
     private ModelClasseComum mCC;
+    /**
+     * Construtor da classe
+     * Labels utilzadas nas paginas:
+     * @param p1
+     * @param p2
+     * @param p3
+     * @param p4
+     * @param p5
+     * @param f1
+     * @param f2
+     * @param espaco 
+     */
     public ModelPag05(Label p1,Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
         this.p1 = p1;
         this.p2 = p2;
@@ -60,7 +73,10 @@ public class ModelPag05 {
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
     }    
-
+    /**
+     * Define a unidade atual e as label referente a essa pagina
+     * @param unidadeAtual 
+     */
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
         switch(unidadeAtual){
@@ -77,7 +93,11 @@ public class ModelPag05 {
                 break;
         }
     }
-
+    /**
+     * Avança para a pagina 6
+     * @param event
+     * @throws IOException 
+     */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06.fxml"));        
@@ -86,17 +106,18 @@ public class ModelPag05 {
         Pag06Controller pg06Cont = fxmloader.<Pag06Controller>getController();
         pg06Cont.setUnidadeAtual(getUnidadeAtual());
         
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
-        janela.setTitle("Projeto 2");//título da cena
-        janela.setScene(cena);
-        janela.show();//exibe a interface
+        mCC.exibirCena(proximaCena, janela);
         pg06Cont.tocarAudio();
     }
-
+    /**
+     * Retorna para a pagina 4
+     * @param event
+     * @throws IOException 
+     */
     public void paginaAnterior(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));        
-        //cria a próxima cena chamando a inteface dos avatares        
+        //cria a próxima cena
         Parent proximaCena = (Parent) fxmloader.load();
         Pag04Controller pg04Cont = fxmloader.<Pag04Controller>getController();
         
@@ -104,11 +125,18 @@ public class ModelPag05 {
         pg04Cont.setUnidadeAtual(getUnidadeAtual());
         pg04Cont.tocarAudio();
     }
-
+    /**
+     * Pega a unidade atual
+     * @return 
+     */
     private String getUnidadeAtual() {
         return this.unidadeAtual;
     }
-
+    /**
+     * Verifica se a palavra escolhida é a correta
+     * @param event mouse liberado
+     * @return true ou false
+     */
     public boolean verificarEscolhaSilaba(MouseEvent event) {
         String silabaEscolhida = ((Label)event.getSource()).getText();
         boolean opcaoCorreta = false;
@@ -124,46 +152,63 @@ public class ModelPag05 {
         
         return opcaoCorreta;
     }
-
+    /**
+     *Executa o audio automatico quando a interface é iniciada 
+     */
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p5.MP3";
+                caminhoAudio = "src/audios/u01/l1p5.mp3";
                 break;
             default:
-                System.out.println("Não foi");
+                
                 break;
         }
         mCC.play(caminhoAudio);
     }
-
+    /**
+     * para a execução do audio atual
+     */
     public void pararAudio() {
         mCC.pararAudio();
     }
-
+    /**
+     * Altera o valor do espaço
+     * @param evento 
+     */
     public void alterarLabelEspaco(MouseEvent evento) {
         
         espaco.setText(((Label)evento.getSource()).getText());
         ((Label)evento.getSource()).setVisible(false);
     }
-
+    /**
+     * Handle que leva ao menu inicial
+     * @param event
+     * @throws IOException 
+     */
    public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
-
+   /**
+    * Executa o áudio da palavra selecionada na lista de palavras estudadas
+    * @param palavraSelecionada 
+    */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
     
-//    public void tocarAudioAcerto(boolean acerto){
-//        caminhoAudio = "src/audios/u01/resposta_certa.mp3";
-//        if(acerto){
-//            mCC.play(caminhoAudio);
-//        }
-//        else{
-//            caminhoAudio = "src/audios/u01/errou.mp3";
-//            mCC.play(caminhoAudio);
-//        }  
-//    }
+    /**
+     * Executa a palavra completada 
+     */
+    public void executarPalavra() {
+        switch (getUnidadeAtual()) {
+            case "u01":
+                caminhoAudio = "src/audios/u01/polvo.mp3";
+                break;
+            default:               
+                break;
+        }
+        mCC.play(caminhoAudio);
+    }
     
 }

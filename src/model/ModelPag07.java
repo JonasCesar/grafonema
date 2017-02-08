@@ -6,6 +6,7 @@
 package model;
 
 import controller.MenuInicialController;
+import controller.Pag06Controller;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -49,17 +50,18 @@ public class ModelPag07 {
 
     public void setUnidadeAtual(String unidade, Label tituloUnidade) {
         this.unidadeAtual = unidade;
-        System.out.println(unidade);
+        
+        System.out.println(tituloUnidade+" " + unidade);
         tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));
     }
 
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p1.MP3";
+                caminhoAudio = "src/audios/u01/l1p1.mp3";
                 break;
             default:
-                System.out.println("Não foi");
+                
                 break;
         }
 
@@ -104,7 +106,6 @@ public class ModelPag07 {
 
             String linha = lerArq.readLine();
             if (linha == null) {//ocorre quando for
-                System.out.println("Linha nula");
                 bw.write(novaPalavra);
                 encontrado = true;
             } else {
@@ -121,6 +122,18 @@ public class ModelPag07 {
         }
 
         bw.close();
+    }
+
+    public void paginaAnterior(ActionEvent event) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06.fxml"));
+        //cria a próxima cena chamando a inteface dos avatares        
+        Parent proximaCena = (Parent) fxmloader.load();
+        Pag06Controller pg06Cont = fxmloader.<Pag06Controller>getController();
+
+        mCC.exibirCena(proximaCena, janela);
+        pg06Cont.setUnidadeAtual(getUnidadeAtual());
+        pg06Cont.tocarAudio();
     }
 
 }

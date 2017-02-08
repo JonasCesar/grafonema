@@ -10,8 +10,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -28,6 +30,20 @@ public class Pag07Controller implements Initializable {
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
+    @FXML
+    private Button som;
+    @FXML
+    private Button abc;
+    @FXML
+    private Button manual;
+    @FXML
+    private Button menuInicial;
+    @FXML
+    private Button voltar;
+    @FXML
+    private Button avancar;
+    @FXML
+    private Label palavrasEstudadas;
     public Pag07Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -40,7 +56,7 @@ public class Pag07Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag07 = new ModelPag07();
+        modelPag07 = new ModelPag07();        
     }    
     
     public void tocarAudio() {
@@ -55,13 +71,16 @@ public class Pag07Controller implements Initializable {
         atualizarListaPalavras();
         modelPag07.setUnidadeAtual(unidadeAtual, tituloUnidade);
     }
-
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag07.pararAudio();
         modelPag07.proximaPagina(event);
     }
-    
+    @FXML
+    private void voltar(ActionEvent event) throws IOException {
+        modelPag07.pararAudio();
+        modelPag07.paginaAnterior(event);
+    }
     
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{
@@ -77,5 +96,16 @@ public class Pag07Controller implements Initializable {
     
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
+    }
+    
+    @FXML
+    private void sombrearBotao(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        ((Button)((event)).getSource()).setEffect(sombras);
+    }
+    
+    @FXML
+    private void retirarSombraBotao(MouseEvent event) {        
+        ((Button)((event)).getSource()).setEffect(null);
     }
 }

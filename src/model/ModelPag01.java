@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import controller.Pag02Controller;
@@ -52,10 +47,9 @@ public class ModelPag01 {
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p1.MP3";
+                caminhoAudio = "src/audios/u01/l1p1.mp3";
                 break;
             default:
-                System.out.println("Não foi");
                 break;
         }
         mCC.play(caminhoAudio);
@@ -90,4 +84,10 @@ public class ModelPag01 {
         mCC.ABC(event);
     }
 
+    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+        mCC.pararAudio();
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirManual(event, pagina);
+    }
+    
 }

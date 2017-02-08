@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07/02/2017, 15:14:32
+    Author     : shadows
+*/
+
+.text-area {
+    
+  -fx-font-family: Consolas;
+  -fx-highlight-fill: #00ff00;
+  -fx-highlight-text-fill: #000000;
+  -fx-text-fill: black;
+  
+  
+}

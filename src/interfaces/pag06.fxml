@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -10,32 +11,54 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag06Controller">
     <stylesheets>
-        <URL value="@/css/estilosPag06.css" />
+        <URL value="@/css/estilosPag06.css" />        
+        <URL value="@/css/estilosGerais.css" />
     </stylesheets>     
     <children>
-        <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
-        <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
-        <Button layoutX="634.0" layoutY="598.0" mnemonicParsing="false" text="Manual" />
-        <Label layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="169.0" text="Palavras Estudadas" textAlignment="CENTER" />
-        <Label fx:id="p1" layoutX="276.0" layoutY="348.0" text="O">
-         <font>
-            <Font size="25.0" />
-         </font></Label>
-        <Button layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" text="Avançar" />
-        <Button layoutX="230.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-        <Label fx:id="p2" layoutX="431.0" layoutY="348.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="25.0" />
-         </font></Label>
-        <TextField fx:id="resposta" alignment="CENTER" layoutX="308.0" layoutY="340.0" prefHeight="30.0" prefWidth="114.0">
-         <font>
-            <Font size="25.0" />
-         </font></TextField>
-        <Button layoutX="709.0" layoutY="344.0" mnemonicParsing="false" onAction="#verificarTexto" text="OK">
-         <font>
-            <Font size="19.0" />
-         </font></Button>
-         <Button layoutX="47.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" prefHeight="39.0" prefWidth="103.0" text="Menu Inicial" />
-         <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="169.0" />
+        <Button fx:id="som" layoutX="340.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Som" />
+        <Button fx:id="abc" layoutX="507.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
+        <Button fx:id="manual" layoutX="646.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
+        <Label fx:id="palavrasEstudadas" layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
+        <Button fx:id="avancar" layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
+        <Button fx:id="voltar" layoutX="203.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
+        <Button layoutX="13.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
+        <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
+        <FlowPane layoutX="182.0" layoutY="298.0" prefHeight="179.0" prefWidth="675.0">
+            <children>
+                <Label fx:id="p1" alignment="CENTER_RIGHT" graphicTextGap="8.0">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                    <opaqueInsets>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                    </opaqueInsets>
+                    <FlowPane.margin>
+                        <Insets right="5.0" />
+                    </FlowPane.margin>
+                </Label>
+                <TextField fx:id="resposta" alignment="CENTER">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                    <FlowPane.margin>
+                        <Insets right="5.0" />
+                    </FlowPane.margin>
+                </TextField>
+                <Label fx:id="p2">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                    <FlowPane.margin>
+                        <Insets right="55.0" />
+                    </FlowPane.margin>
+                </Label>
+                <Button fx:id="confirmar" mnemonicParsing="false" onAction="#verificarTexto" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="OK">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Button>
+            </children>
+        </FlowPane>
+      <Button fx:id="ouvirNovamente" layoutX="356.0" layoutY="178.0" mnemonicParsing="false" onAction="#ouvirNovamente" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Ouvir Novamente" />
     </children>
 </AnchorPane>

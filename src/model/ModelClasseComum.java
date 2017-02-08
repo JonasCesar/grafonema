@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import controller.ABCController;
+import controller.ManualController;
 import controller.MenuInicialController;
 import java.io.File;
 import java.io.IOException;
@@ -31,9 +27,12 @@ public class ModelClasseComum {
     private MediaView mediaView = new MediaView();
     private Stage janela;
     private String caminhoAudio;
+    private String unidadeAtual;
+    private ActionEvent eventoTemporario;
 
     public ModelClasseComum(Stage janela) {
         this.janela = janela;
+        eventoTemporario = null;
     }
 
     public void play(String caminhoAudio) {
@@ -62,16 +61,17 @@ public class ModelClasseComum {
 
     public void exibirCena(Parent proximaCena, Stage janela) {
         this.janela = janela;
-        Scene cena = new Scene(proximaCena, 900, 700);
-        janela.setTitle("Menu Inicial");//título da cena
+        Scene cena = new Scene(proximaCena, 950, 700);
+        janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface  
     }
 
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
-        switch (palavraSelecionada) {
+        pararAudio();
+        switch(palavraSelecionada){
             case "VOVÔ":
-                caminhoAudio = "src/audios/u01/l1p2a1.MP3";
+                caminhoAudio = "src/AudiosPalavrasEstudadas/vovo.mp3";
                 break;
             default:
                 break;
@@ -97,5 +97,27 @@ public class ModelClasseComum {
         ABCController ABCCont = fxmloader.<ABCController>getController();
 
         exibirCena(proximaCena, janela);
+    }
+
+    void abrirManual(ActionEvent event, int pagina) throws IOException {
+        
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/manual.fxml"));
+        
+        Parent proximaCena = (Parent) fxmloader.load();
+        ManualController manualController = fxmloader.<ManualController>getController();        
+        exibirCena(proximaCena, janela);
+        System.out.println(getUnidadeAtual());
+        manualController.setUnidadeAtual(getUnidadeAtual());
+        manualController.setPaginaTemporaria(pagina);
+    }
+    
+    public void setUnidadeAtual(String unidadeAtual){
+        
+        this.unidadeAtual = unidadeAtual;
+    }
+    
+    public String getUnidadeAtual(){
+        return this.unidadeAtual;
     }
 }

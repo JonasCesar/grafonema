@@ -5,10 +5,8 @@
  */
 package model;
 
-import controller.MenuInicialController;
 import controller.Pag05Controller;
 import controller.Pag07Controller;
-import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -88,15 +86,13 @@ public class ModelPag06 {
     }
 
     public void tocarAudio() {
-
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p6.MP3";
+                caminhoAudio = "src/audios/u01/l1p6.mp3";
                 break;
             default:
                 break;
         }
-
         mCC.play(caminhoAudio);
     }
 
@@ -132,6 +128,17 @@ public class ModelPag06 {
             caminhoAudio = "src/audios/u01/errou.mp3";
             mCC.play(caminhoAudio);
         }  
+    }
+
+    public void executarAudioFrase() {
+        switch (getUnidadeAtual()) {
+            case "u01":
+                caminhoAudio = "src/audios/u01/frase.mp3";
+                break;
+            default:               
+                break;
+        }
+        mCC.play(caminhoAudio);
     }
 
 }

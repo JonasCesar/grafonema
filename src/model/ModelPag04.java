@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
-import controller.MenuInicialController;
 import controller.Pag03Controller;
 import controller.Pag05Controller;
 import java.io.File;
@@ -24,9 +18,13 @@ import javafx.stage.Stage;
  * @author shadows
  */
 public class ModelPag04 {
-
+    
+    //String que armazena o valor da unidade atual
     private String unidadeAtual;
+    //Janela ondo programa
     private Stage janela;
+    
+    //Labels utilizadas na pagina
     @FXML
     private Label p1;
     @FXML
@@ -42,12 +40,29 @@ public class ModelPag04 {
     private Label f2;
     @FXML
     private Label f1;
+    
+    
+    //String utilizada nos diretórios dos audios
     private String caminhoAudio;
+    //arquivo de audio que deve ser criado
     private File arquivo;
-
+    
+    //label que terá seu conteúdo substituído
     private Label espaco;
+    //classe com métodos com a mesma estrutura das outras classes
     private ModelClasseComum mCC;
-
+    /**
+     * Construtor da classe
+     * Labels que são referenciadas do controlador:
+     * @param p1
+     * @param p2
+     * @param p3
+     * @param p4
+     * @param p5
+     * @param f1
+     * @param f2
+     * @param espaco 
+     */
     public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
         this.p1 = p1;
         this.p2 = p2;
@@ -59,9 +74,13 @@ public class ModelPag04 {
         this.espaco = espaco;
         mCC = new ModelClasseComum(janela);
     }
-
+    /**
+     * Define a unidade atual
+     * @param unidadeAtual 
+     */
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
+        //define o conteúdo das labels da pag 4 
         switch (unidadeAtual) {
             case "u01":
                 p1.setText("VA");
@@ -76,16 +95,24 @@ public class ModelPag04 {
                 break;
         }
     }
-
+    /**
+     * Retorna a unidade atual
+     * @return 
+     */
     public String getUnidadeAtual() {
         return this.unidadeAtual;
     }
 
+    /**
+     * Avança para a pagin 5
+     * @param event
+     * @throws IOException 
+     */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
 
-        //cria a próxima cena chamando a inteface dos avatares        
+        //cria a próxima cena     
         Parent proximaCena = (Parent) fxmloader.load();
         Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
         pg05Cont.setUnidadeAtual(getUnidadeAtual());
@@ -94,10 +121,15 @@ public class ModelPag04 {
         pg05Cont.tocarAudio();
     }
 
+    /**
+     * Retorna para a pagina 3
+     * @param event botão "Voltar" clicado
+     * @throws IOException 
+     */
     public void paginaAnterior(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
-        //cria a próxima cena chamando a inteface dos avatares        
+        //cria a próxima cena     
         Parent proximaCena = (Parent) fxmloader.load();
         Pag03Controller pg03Cont = fxmloader.<Pag03Controller>getController();
 
@@ -107,9 +139,16 @@ public class ModelPag04 {
         pg03Cont.setImagens(getUnidadeAtual());
     }
 
+    /**
+     * Verifica se se a sílaba escolhida é a correta
+     * @param event mouse liberado
+     * @return true ou false
+     */
     public boolean verificarEscolhaSilaba(MouseEvent event) {
+        //converte conteudo do evento para string
         String silabaEscolhida = ((Label) event.getSource()).getText();
         boolean opcaoCorreta = false;
+        //verifica a unidade atual
         switch (getUnidadeAtual()) {
             case "u01":
                 if (silabaEscolhida.equals("VO")) {
@@ -119,53 +158,67 @@ public class ModelPag04 {
             default:
                 break;
         }
-
+        //retorna o valor booleano
         return opcaoCorreta;
     }
-
+    /**
+     *Audio executado automaticamente quando a interface é iniciada 
+     */
     public void tocarAudio() {
+        //verifica a unidade atual
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p4.MP3";
+                //diretório do audio
+                caminhoAudio = "src/audios/u01/l1p4.mp3";
                 break;
             default:
-                System.out.println("Não foi");
                 break;
         }
-
+        //executa o audio
         mCC.play(caminhoAudio);
     }
 
     public void pararAudio() {
         mCC.pararAudio();
     }
-
+    /**
+     * Altera o conteúdo da label espaço vazia
+     * @param evento 
+     */
     public void alterarLabelEspaco(MouseEvent evento) {
+        //pega o conteúdo da label selecionada
         espaco.setText(((Label) evento.getSource()).getText());
+        //esconde a label que havia sido selecionada
         ((Label) evento.getSource()).setVisible(false);
     }
-
+    /**
+     * Handle para o botão que retorna ao menu inicial
+     * @param event evento disparado ao se clicar no botãos
+     * @throws IOException 
+     */
     public void menuInicial(ActionEvent event) throws IOException {
        mCC.menuInicial(event);
     }
-
+    /**
+     * Executa a palavra que foi selecionada na lista de palavras estudadas
+     * @param palavraSelecionada string da palavra selecionada
+     */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-    
-//    public void tocarAudioAcerto(boolean acerto){
-//        caminhoAudio = "src/audios/u01/resposta_certa.mp3";
-//        if(acerto){
-//            mCC.play(caminhoAudio);
-//        }
-//        else{
-//            caminhoAudio = "src/audios/u01/errou.mp3";
-//            mCC.play(caminhoAudio);
-//        }
-//        
-//    }
-    
-    public void ABCJanela(ActionEvent event) throws IOException {
-       mCC.ABC(event);
+
+    public void executarPalavra() {
+        switch (getUnidadeAtual()) {
+            case "u01":
+                caminhoAudio = "src/audios/u01/arvore.mp3";
+                break;
+            default:               
+                break;
+        }
+        mCC.play(caminhoAudio);
+    }
+
+    public void abrirManual(ActionEvent event, int pagina) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

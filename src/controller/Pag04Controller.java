@@ -10,8 +10,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -47,6 +49,23 @@ public class Pag04Controller implements Initializable {
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
+    @FXML
+    private Button som;
+    @FXML
+    private Button abc;
+    @FXML
+    private Button manual;
+    @FXML
+    private Button avancar;
+    @FXML
+    private Button voltar;
+    @FXML
+    private Button menuInicial;
+    @FXML
+    private Label palavrasEstudadas;
+    
+    private final int pagina = 4;
+    
     public Pag04Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -86,8 +105,6 @@ public class Pag04Controller implements Initializable {
 
     @FXML
     private void mousePressionado(MouseEvent event) {
-        System.out.println("Mouse clicado");
-
         orgSceneX = event.getSceneX();
         orgSceneY = event.getSceneY();
         orgTranslateX = ((Label) (event.getSource())).getTranslateX();
@@ -97,15 +114,12 @@ public class Pag04Controller implements Initializable {
 
     @FXML
     private void mouseArrastado(MouseEvent event) {
-        //System.out.println("Mouse arrastado");
         double offsetX = event.getSceneX() - orgSceneX;
         double offsetY = event.getSceneY() - orgSceneY;
         newTranslateX = orgTranslateX + offsetX;
         newTranslateY = orgTranslateY + offsetY;
-
         ((Label) (event.getSource())).setTranslateX(newTranslateX);
         ((Label) (event.getSource())).setTranslateY(newTranslateY);
-        verificarColisao(event);
     }
 
     @FXML
@@ -114,7 +128,7 @@ public class Pag04Controller implements Initializable {
             //se for a opcao correta
             if (modelPag04.verificarEscolhaSilaba(event)) {
                 modelPag04.alterarLabelEspaco(event);
-                //modelPag04.tocarAudioAcerto(true);
+                modelPag04.executarPalavra();
 
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
@@ -127,14 +141,13 @@ public class Pag04Controller implements Initializable {
             ((Label) (event.getSource())).setTranslateY(orgTranslateY);
         }
     }
-
+    /**
+     * Veriifica se a label solta é a label correta que deveria ter sido arrastada
+     * @param evento o botão do mouse é solto
+     * @return true ou false
+     */
     private boolean verificarColisao(MouseEvent evento) {
-        if (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent())) {
-            return true;
-        } else {
-        }
-
-        return false;
+        return ((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent());
     }
 
     public void tocarAudio() {
@@ -155,6 +168,22 @@ public class Pag04Controller implements Initializable {
     
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
        controlerComum.atualizarListaPalavras(listaPalavras);
+    }
+    
+    @FXML
+    private void sombrearBotao(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        ((Button)((event)).getSource()).setEffect(sombras);
+    }
+    
+    @FXML
+    private void retirarSombraBotao(MouseEvent event) {        
+        ((Button)((event)).getSource()).setEffect(null);
+    }
+    
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag04.abrirManual(event, pagina);
     }
 
 }

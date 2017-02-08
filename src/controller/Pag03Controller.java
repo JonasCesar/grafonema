@@ -11,7 +11,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -42,6 +45,20 @@ public class Pag03Controller implements Initializable {
     private ListView<String> listaPalavras;
     private ControllerClasseComum controlerComum;
     ObservableList<String> items = FXCollections.observableArrayList();
+    @FXML
+    private Button som;
+    @FXML
+    private Button abc;
+    @FXML
+    private Button manual;
+    @FXML
+    private Button avancar;
+    @FXML
+    private Button voltar;
+    @FXML
+    private Label palavrasEstudadas;
+    
+    private final int pagina = 3;
     public Pag03Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -99,5 +116,27 @@ public class Pag03Controller implements Initializable {
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
 
+    }
+    
+    @FXML
+    private void sombrearBotao(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        ((Button)((event)).getSource()).setEffect(sombras);
+    }
+    
+    @FXML
+    private void retirarSombraBotao(MouseEvent event) {        
+        ((Button)((event)).getSource()).setEffect(null);
+    }
+
+    @FXML
+    private void executarAudioImagem(MouseEvent event) {
+        modelPag03.executarAudioImagem(event);
+        
+    }
+    
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag03.abrirManual(event, pagina);
     }
 }

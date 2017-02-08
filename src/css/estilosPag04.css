@@ -8,11 +8,17 @@ and open the template in the editor.
     Author     : shadows
 */
 
-#espaco{
+#espaco, #f1, #f2{
+    -fx-border-style: hidden hidden solid hidden;
     -fx-border-color: black;
    
-}
-.label {
-    
+   
 }
 
+#p1, #p2, #p3, #p4, #p5, #p6, #f1, #f2, #espaco{
+    -fx-font-size: 25px;
+    -fx-font-family: "Arial Black";
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}

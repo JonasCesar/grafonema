@@ -5,7 +5,6 @@
  */
 package model;
 
-import controller.MenuInicialController;
 import controller.Pag01Controller;
 import controller.Pag02Controller;
 import controller.Pag03Controller;
@@ -48,10 +47,9 @@ public class ModelPag02 {
     public void tocarAudio1() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p2a1.MP3";
+                caminhoAudio = "src/audios/u01/l1p2a1.mp3";
                 break;
             default:
-                System.out.println("Não foi");
                 break;
         }
 
@@ -61,10 +59,10 @@ public class ModelPag02 {
     public void tocarAudio2() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p2a2.MP3";
+                caminhoAudio = "src/audios/u01/l1p2a2.mp3";
                 break;
             default:
-                System.out.println("Não foi");
+                
                 break;
         }
 
@@ -74,10 +72,10 @@ public class ModelPag02 {
     public void tocarAudio3() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p2a3.MP3";
+                caminhoAudio = "src/audios/u01/l1p2a3.mp3";
                 break;
             default:
-                System.out.println("Não foi");
+                
                 break;
         }
 
@@ -120,5 +118,9 @@ public class ModelPag02 {
     
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
+    }
+
+    public void abrirManual(ActionEvent event, int pagina) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

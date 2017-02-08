@@ -10,8 +10,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -48,6 +50,20 @@ public class Pag05Controller implements Initializable {
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
+    @FXML
+    private Button som;
+    @FXML
+    private Button abc;
+    @FXML
+    private Button manual;
+    @FXML
+    private Button avancar;
+    @FXML
+    private Button voltar;
+    @FXML
+    private Button menuInicial;
+    @FXML
+    private Label palavrasEstudadas;
     public Pag05Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -96,9 +112,7 @@ public class Pag05Controller implements Initializable {
             //se for a opcao correta
             if (modelPag05.verificarEscolhaSilaba(event)) {
                 modelPag05.alterarLabelEspaco(event);
-                //modelPag05.tocarAudioAcerto(true);
-                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+                modelPag05.executarPalavra();
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
                 ((Label) (event.getSource())).setTranslateY(orgTranslateY);
@@ -113,7 +127,6 @@ public class Pag05Controller implements Initializable {
 
     @FXML
     private void mouseArrastado(MouseEvent event) {
-        //System.out.println("Mouse arrastado");
         double offsetX = event.getSceneX() - orgSceneX;
         double offsetY = event.getSceneY() - orgSceneY;
         newTranslateX = orgTranslateX + offsetX;
@@ -133,12 +146,8 @@ public class Pag05Controller implements Initializable {
     }
 
     private boolean verificarColisao(MouseEvent evento) {
-        if (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent())) {
-            return true;
-        } else {
-            
-        }
-        return false;       
+            boolean colidiu = (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent()));        
+        return colidiu;       
     }
 
     public void tocarAudio() {
@@ -160,6 +169,17 @@ public class Pag05Controller implements Initializable {
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
 
+    }
+    
+    @FXML
+    private void sombrearBotao(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        ((Button)((event)).getSource()).setEffect(sombras);
+    }
+    
+    @FXML
+    private void retirarSombraBotao(MouseEvent event) {        
+        ((Button)((event)).getSource()).setEffect(null);
     }
     
 }
