@@ -68,7 +68,7 @@ public class Pag06Controller implements Initializable {
     }    
     /**
      * Define a unidade atual
-     * @param unidade
+     * @param unidade valor da unidade atual
      * @throws IOException 
      */
     public void setUnidadeAtual(String unidade) throws IOException {
@@ -83,14 +83,14 @@ public class Pag06Controller implements Initializable {
         }  
     }
     /**
-     * Retorna a unidade atual
-     * @return 
+     * Pega a unidade atual
+     * @return string com o valor da unidade atual
      */
     public String getUnidadeAtual(){
         return modelPag06.getUnidadeAtual();
     }
     /**
-     * Avança para a pagina 6
+     * Avança para a proxima pagina
      * @param event
      * @throws IOException 
      */
@@ -100,7 +100,7 @@ public class Pag06Controller implements Initializable {
         modelPag06.proximaPagina(event);
     }
     /**
-     * Volta para a pag 5
+     * Volta para a pagina anterior
      * @param event
      * @throws IOException 
      */
@@ -127,8 +127,8 @@ public class Pag06Controller implements Initializable {
     }
 
     /**
-     * Handle para o menu inicial
-     * @param event
+     * Leva o usuário para o menu inicial
+     * @param event clique no botão "Menu Inicial"
      * @throws IOException 
      */
     @FXML
@@ -143,8 +143,8 @@ public class Pag06Controller implements Initializable {
         modelPag06.tocarAudio();
     }
     /**
-     * Handle para quando o mouse for clicado
-     * @param event 
+     * Trata o evento de quando o mouse é clicado na lista de palavras
+     * @param event mouse é pressionado
      */
     @FXML
     private void mouseClicado(MouseEvent event) {
@@ -160,8 +160,8 @@ public class Pag06Controller implements Initializable {
         controlerComum.atualizarListaPalavras(listaPalavras);
     }
     /**
-     * handle para quando o mouse estiver em cima de um botão
-     * @param event 
+     * Realiza o efeito de sombrear o botão quando o mouse passar por cima dele
+     * @param event movimentação do mouse sobre os componentes
      */
     @FXML
     private void sombrearBotao(MouseEvent event) {
@@ -169,8 +169,8 @@ public class Pag06Controller implements Initializable {
         ((Button)((event)).getSource()).setEffect(sombras);
     }
     /**
-     * Adiciona o efeito de desombreamento no botão
-     * @param event 
+     * Realiza o efeito de dessombrear o botão quando o mouse for retirado de cima dele
+     * @param event movimentação do mouse para fora do botão
      */
     @FXML
     private void retirarSombraBotao(MouseEvent event) {        
@@ -184,9 +184,23 @@ public class Pag06Controller implements Initializable {
     private void ouvirNovamente(ActionEvent event) {
         modelPag06.executarAudioFrase();
     }
-    
+    /**
+     * Abre o manual do software
+     * @param event clique no botão
+     * @throws IOException 
+     */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag06.abrirManual(event, pagina);
+    }
+    /**
+     * Abre a função ABC do software
+     * @param event clique no botão "ABC"
+     * @throws IOException 
+     */
+    @FXML
+    private void abc(ActionEvent event) throws IOException {
+        modelPag06.ABCJanela(event);
+        modelPag06.pararAudio();
     }
 }

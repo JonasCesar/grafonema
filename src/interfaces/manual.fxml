@@ -15,7 +15,18 @@
     </stylesheets>
     <children>
         <Button layoutX="39.0" layoutY="55.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
-      <TextArea editable="false" layoutX="104.0" layoutY="175.0" prefHeight="513.0" prefWidth="789.0" text="    Em busca da erradicação da alfabetização: desenvolvimento de ferramenta de colaboração ao ensino inicial&#10;da leitura e da escrita &#10;&#10;&#10;Ordem/partes/páginas de cada unidade:&#10;Página 1: apresentação e leitura do gênero com destaque à palavra-chave e às sílabas já conhecidas &#10;Página 2: áudio das sílabas e dos fonemas da palavra-chave (à esquerda, palavras referência estudadas até então&#10;para revisão. Ao clicar em quaisquer delas linkar para o áudio das sílabas e dos fonemas).&#10;Página 3: atividade de clicar no som da sílaba-chave (ao passar o mouse sobre as figuras você escutará os seus&#10;sons).&#10;Página 4: completar a palavra com a sílaba&#10;Página 5: idem a anterior.&#10;Página 6: escrita. Preenchimento de texto com a palavra chave.&#10;Página 7: Releitura do gênero com destaque à palavra-chave.&#10;&#10;&#10;&#10;Ícones permanentes&#10;- descubra o som das letras (ícone ABC) &#10;- sugestões de atividades em pdf disponível para impressão  (Montar palavras ou frases com fichas móveis) &#10;- orientações ao professor (ícone com chapeuzinho de professor) " wrapText="true" />
+      <TextArea editable="false" layoutX="104.0" layoutY="175.0" prefHeight="513.0" prefWidth="789.0" 
+                text="    Em busca da erradicação da alfabetização: desenvolvimento de ferramenta de 
+colaboração ao ensino inicial&#10;da leitura e da escrita &#10;&#10;&#10;Ordem/partes/páginas de cada
+ unidade:&#10;Página 1: apresentação e leitura do gênero com destaque à palavra-chave e às sílabas já 
+conhecidas &#10;Página 2: áudio das sílabas e dos fonemas da palavra-chave (à esquerda, palavras referência 
+estudadas até então&#10;para revisão. Ao clicar em quaisquer delas linkar para o áudio das sílabas e dos fonemas).
+&#10;Página 3: atividade de clicar no som da sílaba-chave (ao passar o mouse sobre as figuras você escutará os seus
+&#10;sons).&#10;Página 4: completar a palavra com a sílaba&#10;Página 5: idem a anterior.&#10;Página 6: escrita. 
+Preenchimento de texto com a palavra chave.&#10;Página 7: Releitura do gênero com destaque à palavra-chave.
+&#10;&#10;&#10;&#10;Ícones permanentes&#10;- descubra o som das letras (ícone ABC) &#10;- sugestões de atividades 
+em pdf disponível para impressão  (Montar palavras ou frases com fichas móveis) &#10;- orientações ao professor 
+(ícone com chapeuzinho de professor) " wrapText="true" />
       <Button layoutX="816.0" layoutY="55.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
         
     </children>

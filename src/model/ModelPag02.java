@@ -36,14 +36,27 @@ public class ModelPag02 {
         mCC = new ModelClasseComum(janela);
     }
 
+    /**
+     * Pega a unidade atual em execução
+     *
+     * @return string com o valor da unidade atual
+     */
     public String getUnidadeAtual() {
         return unidadeAtual;
     }
 
+    /**
+     * Define a unidade em que o software se encontra
+     *
+     * @param unidadeAtual unidade atual da execução
+     */
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
     }
 
+    /**
+     * Executa o audio 1 da página
+     */
     public void tocarAudio1() {
         switch (getUnidadeAtual()) {
             case "u01":
@@ -56,32 +69,44 @@ public class ModelPag02 {
         mCC.play(caminhoAudio);
     }
 
+    /**
+     * Executa o audio 2 da página
+     */
     public void tocarAudio2() {
         switch (getUnidadeAtual()) {
             case "u01":
                 caminhoAudio = "src/audios/u01/l1p2a2.mp3";
                 break;
             default:
-                
+
                 break;
         }
 
         mCC.play(caminhoAudio);
     }
 
+    /**
+     * Executa o audio 3 da pagina
+     */
     public void tocarAudio3() {
         switch (getUnidadeAtual()) {
             case "u01":
                 caminhoAudio = "src/audios/u01/l1p2a3.mp3";
                 break;
             default:
-                
+
                 break;
         }
 
         mCC.play(caminhoAudio);
     }
 
+    /**
+     * Carrega a próxima página na tela
+     *
+     * @param event disparado pelo método avancar do controller
+     * @throws IOException
+     */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
@@ -96,6 +121,11 @@ public class ModelPag02 {
         pg03Cont.setImagens(getUnidadeAtual());
     }
 
+    /**
+     * Carrega a página anterior
+     * @param event disparado pelo método voltar do controller
+     * @throws IOException
+     */
     public void paginaAnterior(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));
@@ -108,21 +138,52 @@ public class ModelPag02 {
         pg01Cont.tocarAudio();
     }
 
+    /**
+     * Para o audio em execução
+     */
     public void pararAudio() {
         mCC.pararAudio();
     }
 
+    /**
+     * Carrega o menu inicial
+     *
+     * @param event disparado pelo método "menuInicial" do controller
+     * @throws IOException
+     */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
-    
+
+    /**
+     * Executa o audio da palavra clicada
+     *
+     * @param palavraSelecionada string que representa a palavra selecionada
+     */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
 
+    /**
+     * Carrega a interface do manual do software
+     *
+     * @param event disparado pelo método
+     * @param pagina pagina de onde o manual foi chamado
+     * @throws IOException
+     */
     public void abrirManual(ActionEvent event, int pagina) throws IOException {
-         mCC.pararAudio();
+        mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
+    }
+
+    /**
+     * Carrega a interface do ABC
+     *
+     * @param event disparado pelo método ABCJanela do controller
+     * @throws IOException
+     */
+    public void ABCJanela(ActionEvent event) throws IOException {
+        mCC.ABC(event);
     }
 }

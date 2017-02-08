@@ -109,7 +109,7 @@ public class Pag01Controller implements Initializable {
         modelPag01.pararAudio(); //para o áudio que está sendo executado
     }
     /**
-     * Trata o evento de quando o mouse é clicado
+     * Trata o evento de quando o mouse é clicado na lista de palavras
      * @param event mouse é pressionado
      */
     @FXML
@@ -118,7 +118,7 @@ public class Pag01Controller implements Initializable {
         modelPag01.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
     /**
-     * Atualiza a lista de palavras
+     * Atualiza a lista de palavras estudadas
      * @throws FileNotFoundException
      * @throws IOException 
      */
@@ -136,18 +136,26 @@ public class Pag01Controller implements Initializable {
     }
     /**
      * Realiza o efeito de dessombrear o botão quando o mouse for retirado de cima dele
-     * @param event movimentação do mouse em cima do botão
+     * @param event movimentação do mouse para fora do botão
      */
     @FXML
     private void retirarSombraBotao(MouseEvent event) {
         ((Button) ((event)).getSource()).setEffect(null);
     }
-
+    /**
+     * Abre o manual do software
+     * @param event clique no botão
+     * @throws IOException 
+     */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag01.abrirManual(event, pagina);
     }
-
+    /**
+     * Abre a função ABC do software
+     * @param event clique no botão "ABC"
+     * @throws IOException 
+     */
     @FXML
     private void abc(ActionEvent event) throws IOException {
         modelPag01.ABCJanela(event);

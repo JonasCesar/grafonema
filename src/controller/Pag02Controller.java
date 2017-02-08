@@ -123,17 +123,28 @@ public class Pag02Controller implements Initializable {
         modelPag02.pararAudio();
         modelPag02.paginaAnterior(event);        
     }
-    
+    /**
+     * Leva o usuario para o menu inicial
+     * @param event clique no botao "Menu Inicial"
+     * @throws IOException 
+     */
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{
         modelPag02.menuInicial(event);
         modelPag02.pararAudio();
     }
-
+    /**
+     * Pega a unidade atual
+     * @return string com o valor da unidade atual
+     */
     public String getUnidadeAtual() {
         return modelPag02.getUnidadeAtual();
     }
-
+    /**
+     * Define a unidade atual
+     * @param unidade valor da unidade atual
+     * @throws IOException 
+     */
     public void setUnidadeAtual(String unidade) throws IOException {
         atualizarListaPalavras();
         switch(unidade){
@@ -145,31 +156,58 @@ public class Pag02Controller implements Initializable {
         }
         modelPag02.setUnidadeAtual(unidade);
     }    
-
+    /**
+     * Trata o evento de quando o mouse é clicado na lista de palavras
+     * @param event mouse é pressionado
+     */
     @FXML
     private void mouseClicado(MouseEvent event) {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag02.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-    
+    /**
+     * Atualiza a lista de palavras estudadas
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
 
     }
-    
+    /**
+     * Realiza o efeito de sombrear o botão quando o mouse passar por cima dele
+     * @param event movimentação do mouse sobre os componentes
+     */
     @FXML
     private void sombrearBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         ((Button)((event)).getSource()).setEffect(sombras);
     }
-    
+    /**
+     * Realiza o efeito de dessombrear o botão quando o mouse for retirado de cima dele
+     * @param event movimentação do mouse para fora do botão
+     */
     @FXML
     private void retirarSombraBotao(MouseEvent event) {        
         ((Button)((event)).getSource()).setEffect(null);
     }
-    
+    /**
+     * Abre o manual do software
+     * @param event clique no botão
+     * @throws IOException 
+     */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag02.abrirManual(event, pagina);
+    }
+    /**
+     * Abre a função ABC do software
+     * @param event clique no botão "ABC"
+     * @throws IOException 
+     */
+    @FXML
+    private void abc(ActionEvent event) throws IOException {
+        modelPag02.ABCJanela(event);
+        modelPag02.pararAudio();
     }
 }

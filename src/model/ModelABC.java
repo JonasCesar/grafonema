@@ -119,4 +119,8 @@ public class ModelABC {
 
     }
 
+    public void pararAudio() {
+        mCC.pararAudio();
+    }
+
 }

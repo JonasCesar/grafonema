@@ -5,7 +5,6 @@
  */
 package controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,6 +49,7 @@ public class ABCController implements Initializable {
         System.out.println("botão escolhido = " + letraEscolhida);
         //modelABC.desenharLetra(letraEscolhida);
         desenharLetra(letraEscolhida);
+        modelABC.pararAudio();
         modelABC.tocarSomLetra(letraEscolhida);
 
     }
@@ -68,6 +68,7 @@ public class ABCController implements Initializable {
     private void passouRato(MouseEvent event) throws IOException {
 
         //modelABC.tocarAudio(event);
+        modelABC.pararAudio();
         modelABC.tocarAudioUnicoLetras(botaoEscolhido);
         System.out.println("passou no rato");
     }
