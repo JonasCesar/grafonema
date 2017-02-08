@@ -155,9 +155,15 @@ public class ModelPag05 {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
     
-    public void tocarAudioAcerto(){
-        caminhoAudio = "src/audios/u01/resposta_certa.mp3";
-        play(caminhoAudio);
-    }
+//    public void tocarAudioAcerto(boolean acerto){
+//        caminhoAudio = "src/audios/u01/resposta_certa.mp3";
+//        if(acerto){
+//            mCC.play(caminhoAudio);
+//        }
+//        else{
+//            caminhoAudio = "src/audios/u01/errou.mp3";
+//            mCC.play(caminhoAudio);
+//        }  
+//    }
     
 }

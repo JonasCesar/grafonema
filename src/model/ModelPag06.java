@@ -77,8 +77,9 @@ public class ModelPag06 {
             case "u01":
                 if (resposta.toUpperCase().equals("VOVÔ")) {
                     respostaCorreta = true;
-
-                }
+                    tocarAudioAcerto(respostaCorreta);
+                }else
+                    tocarAudioAcerto(false);
                 break;
             default:
                 break;
@@ -120,6 +121,17 @@ public class ModelPag06 {
 
    public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
+    }
+   
+   public void tocarAudioAcerto(boolean acerto){
+        caminhoAudio = "src/audios/u01/resposta_certa.mp3";
+        if(acerto){
+            mCC.play(caminhoAudio);
+        }
+        else{
+            caminhoAudio = "src/audios/u01/errou.mp3";
+            mCC.play(caminhoAudio);
+        }  
     }
 
 }

@@ -83,4 +83,9 @@ public class Pag01Controller implements Initializable {
         controlerComum.atualizarListaPalavras(listaPalavras);
     }
 
+    @FXML
+    private void abc(ActionEvent event) throws IOException {
+        modelPag01.ABCJanela(event);
+        modelPag01.pararAudio();
+    }
 }

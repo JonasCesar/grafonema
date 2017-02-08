@@ -33,8 +33,7 @@ public class ModelmenuInicial {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));
         
-        
-        //cria a próxima cena chamando a inteface dos avatares        
+        //cria a próxima cena chamando a inteface dos avatares
         Parent proximaCena = (Parent) fxmloader.load();
         Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
         pg01Cont.setUnidadeAtual(unidade);        

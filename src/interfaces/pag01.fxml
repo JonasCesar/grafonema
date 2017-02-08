@@ -10,7 +10,7 @@
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag01Controller">
    <children>
       <Button layoutX="397.0" layoutY="598.0" mnemonicParsing="false" text="Som" />
-      <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" text="ABC" />
+      <Button layoutX="519.0" layoutY="598.0" mnemonicParsing="false" onAction="#abc" text="ABC" />
       <Button layoutX="634.0" layoutY="598.0" mnemonicParsing="false" text="Manual" />
       <Label layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="169.0" text="Palavras Estudadas" textAlignment="CENTER" />
       <ImageView fitHeight="392.0" fitWidth="400.0" layoutX="342.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
