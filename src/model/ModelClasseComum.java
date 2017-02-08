@@ -1,5 +1,6 @@
 package model;
 
+import controller.ABCController;
 import controller.ManualController;
 import controller.MenuInicialController;
 import java.io.File;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
  * @author shadows
  */
 public class ModelClasseComum {
+
     private File arquivo;
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -32,8 +34,8 @@ public class ModelClasseComum {
         this.janela = janela;
         eventoTemporario = null;
     }
-    
-    public void play(String caminhoAudio){
+
+    public void play(String caminhoAudio) {
         //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
         arquivo = new File(caminhoAudio);
         //pega todo do caminho referente ao objeto File criado
@@ -48,15 +50,15 @@ public class ModelClasseComum {
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
-    
+
     public void pararAudio() {
-        try{
+        try {
             mediaPlayer.stop();
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+
         }
     }
-    
+
     public void exibirCena(Parent proximaCena, Stage janela) {
         this.janela = janela;
         Scene cena = new Scene(proximaCena, 950, 700);
@@ -64,7 +66,7 @@ public class ModelClasseComum {
         janela.setScene(cena);
         janela.show();//exibe a interface  
     }
-   
+
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         pararAudio();
         switch(palavraSelecionada){
@@ -76,14 +78,24 @@ public class ModelClasseComum {
         }
         play(caminhoAudio);
     }
-    
+
     public void menuInicial(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
-        
+
         Parent proximaCena = (Parent) fxmloader.load();
         MenuInicialController miController = fxmloader.<MenuInicialController>getController();
-        
+
+        exibirCena(proximaCena, janela);
+    }
+
+    public void ABC(ActionEvent event) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/ABC.fxml"));
+
+        Parent proximaCena = (Parent) fxmloader.load();
+        ABCController ABCCont = fxmloader.<ABCController>getController();
+
         exibirCena(proximaCena, janela);
     }
 

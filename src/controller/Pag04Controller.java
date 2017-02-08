@@ -133,6 +133,7 @@ public class Pag04Controller implements Initializable {
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
                 ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+                //modelPag04.tocarAudioAcerto(false);
             }
 
         } else {

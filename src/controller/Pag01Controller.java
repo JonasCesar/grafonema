@@ -148,4 +148,9 @@ public class Pag01Controller implements Initializable {
         modelPag01.abrirManual(event, pagina);
     }
 
+    @FXML
+    private void abc(ActionEvent event) throws IOException {
+        modelPag01.ABCJanela(event);
+        modelPag01.pararAudio();
+    }
 }

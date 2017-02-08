@@ -117,6 +117,7 @@ public class Pag05Controller implements Initializable {
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
                 ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+                //modelPag05.tocarAudioAcerto(false);
             }
 
         } else {
