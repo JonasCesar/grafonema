@@ -216,5 +216,9 @@ public class ModelPag05 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
+
+    public void ABCJanela(ActionEvent event) throws IOException {
+        mCC.ABC(event);
+    }
     
 }
