@@ -22,6 +22,7 @@ import javafx.scene.input.MouseEvent;
  * @author shadows
  */
 public class Pag05Controller implements Initializable {
+
     @FXML
     private Label p1;
     @FXML
@@ -64,30 +65,32 @@ public class Pag05Controller implements Initializable {
     private Button menuInicial;
     @FXML
     private Label palavrasEstudadas;
+    
+    private final int pagina = 5;
+
     public Pag05Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
     }
-    
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco);
-    }    
+        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2, espaco);
+    }
 
     public void setUnidadeAtual(String unidadeAtual) throws IOException {
         atualizarListaPalavras();
         modelPag05.setUnidadeAtual(unidadeAtual);
-        switch(unidadeAtual){
+        switch (unidadeAtual) {
             case "u01":
                 p1.setText("VA");
                 p2.setText("VE");
                 p3.setText("VI");
                 p4.setText("VO");
-                p5.setText("VU");                
+                p5.setText("VU");
                 break;
             default:
                 break;
@@ -108,7 +111,7 @@ public class Pag05Controller implements Initializable {
 
     @FXML
     private void mouseLiberado(MouseEvent event) {
-         if ((verificarColisao(event))) {
+        if ((verificarColisao(event))) {
             //se for a opcao correta
             if (modelPag05.verificarEscolhaSilaba(event)) {
                 modelPag05.alterarLabelEspaco(event);
@@ -146,16 +149,16 @@ public class Pag05Controller implements Initializable {
     }
 
     private boolean verificarColisao(MouseEvent evento) {
-            boolean colidiu = (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent()));        
-        return colidiu;       
+        boolean colidiu = (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent()));
+        return colidiu;
     }
 
     public void tocarAudio() {
         modelPag05.tocarAudio();
     }
-    
+
     @FXML
-    private void menuInicial(ActionEvent event) throws IOException{
+    private void menuInicial(ActionEvent event) throws IOException {
         modelPag05.menuInicial(event);
         modelPag05.pararAudio();
     }
@@ -165,21 +168,26 @@ public class Pag05Controller implements Initializable {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag05.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-    
+
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
 
     }
-    
+
     @FXML
     private void sombrearBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
-        ((Button)((event)).getSource()).setEffect(sombras);
+        ((Button) ((event)).getSource()).setEffect(sombras);
     }
-    
+
     @FXML
-    private void retirarSombraBotao(MouseEvent event) {        
-        ((Button)((event)).getSource()).setEffect(null);
+    private void retirarSombraBotao(MouseEvent event) {
+        ((Button) ((event)).getSource()).setEffect(null);
     }
-    
+
+    @FXML
+    private void abrirABC(ActionEvent event) throws IOException {
+        modelPag05.abrirABC(event, pagina);
+        modelPag05.pararAudio();
+    }
 }

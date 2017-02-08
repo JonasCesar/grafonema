@@ -18,12 +18,12 @@ import javafx.stage.Stage;
  * @author shadows
  */
 public class ModelPag04 {
-    
+
     //String que armazena o valor da unidade atual
     private String unidadeAtual;
     //Janela ondo programa
     private Stage janela;
-    
+
     //Labels utilizadas na pagina
     @FXML
     private Label p1;
@@ -40,20 +40,20 @@ public class ModelPag04 {
     private Label f2;
     @FXML
     private Label f1;
-    
-    
+
     //String utilizada nos diretórios dos audios
     private String caminhoAudio;
     //arquivo de audio que deve ser criado
     private File arquivo;
-    
+
     //label que terá seu conteúdo substituído
     private Label espaco;
     //classe com métodos com a mesma estrutura das outras classes
     private ModelClasseComum mCC;
+
     /**
-     * Construtor da classe
-     * Labels que são referenciadas do controlador:
+     * Construtor da classe Labels que são referenciadas do controlador:
+     *
      * @param p1
      * @param p2
      * @param p3
@@ -61,7 +61,7 @@ public class ModelPag04 {
      * @param p5
      * @param f1
      * @param f2
-     * @param espaco 
+     * @param espaco
      */
     public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
         this.p1 = p1;
@@ -74,9 +74,11 @@ public class ModelPag04 {
         this.espaco = espaco;
         mCC = new ModelClasseComum(janela);
     }
+
     /**
      * Define a unidade atual
-     * @param unidadeAtual 
+     *
+     * @param unidadeAtual
      */
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
@@ -95,9 +97,11 @@ public class ModelPag04 {
                 break;
         }
     }
+
     /**
      * Retorna a unidade atual
-     * @return 
+     *
+     * @return
      */
     public String getUnidadeAtual() {
         return this.unidadeAtual;
@@ -105,8 +109,9 @@ public class ModelPag04 {
 
     /**
      * Avança para a pagin 5
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -123,8 +128,9 @@ public class ModelPag04 {
 
     /**
      * Retorna para a pagina 3
+     *
      * @param event botão "Voltar" clicado
-     * @throws IOException 
+     * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -141,6 +147,7 @@ public class ModelPag04 {
 
     /**
      * Verifica se se a sílaba escolhida é a correta
+     *
      * @param event mouse liberado
      * @return true ou false
      */
@@ -161,8 +168,9 @@ public class ModelPag04 {
         //retorna o valor booleano
         return opcaoCorreta;
     }
+
     /**
-     *Audio executado automaticamente quando a interface é iniciada 
+     * Audio executado automaticamente quando a interface é iniciada
      */
     public void tocarAudio() {
         //verifica a unidade atual
@@ -181,9 +189,11 @@ public class ModelPag04 {
     public void pararAudio() {
         mCC.pararAudio();
     }
+
     /**
      * Altera o conteúdo da label espaço vazia
-     * @param evento 
+     *
+     * @param evento
      */
     public void alterarLabelEspaco(MouseEvent evento) {
         //pega o conteúdo da label selecionada
@@ -191,16 +201,20 @@ public class ModelPag04 {
         //esconde a label que havia sido selecionada
         ((Label) evento.getSource()).setVisible(false);
     }
+
     /**
      * Handle para o botão que retorna ao menu inicial
+     *
      * @param event evento disparado ao se clicar no botãos
-     * @throws IOException 
+     * @throws IOException
      */
     public void menuInicial(ActionEvent event) throws IOException {
-       mCC.menuInicial(event);
+        mCC.menuInicial(event);
     }
+
     /**
      * Executa a palavra que foi selecionada na lista de palavras estudadas
+     *
      * @param palavraSelecionada string da palavra selecionada
      */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
@@ -212,7 +226,7 @@ public class ModelPag04 {
             case "u01":
                 caminhoAudio = "src/audios/u01/arvore.mp3";
                 break;
-            default:               
+            default:
                 break;
         }
         mCC.play(caminhoAudio);
@@ -220,5 +234,10 @@ public class ModelPag04 {
 
     public void abrirManual(ActionEvent event, int pagina) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void abrirABC(ActionEvent event, int pagina) throws IOException {
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirABC(event, pagina);
     }
 }

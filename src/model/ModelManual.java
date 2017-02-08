@@ -51,14 +51,14 @@ public class ModelManual {
         switch(pagina){
             case 1:
                 pag01Cont = fxmloader.<Pag01Controller>getController();
-                System.out.println("Aqui 2");
+                System.out.println("Aqui 1");
                 mCC.exibirCena(proximaCena, janela);
-                System.out.println("Aqui 3");
+                System.out.println("Aqui 2");
                 System.out.println(getUnidadeAtual());
                 pag01Cont.setUnidadeAtual(getUnidadeAtual());
-                System.out.println("Aqui 4");
+                System.out.println("Aqui 3");
                 pag01Cont.tocarAudio();
-                System.out.println("Aqui 6");
+                System.out.println("Aqui 4");
                 break;
         }
         

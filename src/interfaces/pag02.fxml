@@ -15,7 +15,7 @@
     <children>
          
         <Button fx:id="som" layoutX="340.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Som" />
-        <Button fx:id="abc" layoutX="507.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
+        <Button fx:id="abc" layoutX="507.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
         <Button fx:id="manual" layoutX="646.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
         <Label fx:id="palavrasEstudadas" layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
         <Label fx:id="palavraAtual" layoutX="511.0" layoutY="228.0" text="PALAVRA" />

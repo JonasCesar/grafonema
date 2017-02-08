@@ -25,15 +25,16 @@ import javafx.scene.input.MouseEvent;
  * @author shadows
  */
 public class Pag02Controller implements Initializable {
+
     @FXML
-    private Label palavraAtual;    
-    
+    private Label palavraAtual;
+
     private ModelPag02 modelPag02 = new ModelPag02();
-    
+
     private String unidadeAtual;
     @FXML
     private ListView<String> listaPalavras;
-    
+
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
     @FXML
@@ -58,8 +59,9 @@ public class Pag02Controller implements Initializable {
     private Label palavrasEstudadas;
     @FXML
     private Label tituloUnidade;
-    
+
     private final int pagina = 2;
+
     public Pag02Controller() {
         unidadeAtual = "u00";
         listaPalavras = new ListView<String>();
@@ -68,25 +70,30 @@ public class Pag02Controller implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+
+    }
+
     /**
      * Avança para a proxima pagina
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag02.pararAudio();
         modelPag02.proximaPagina(event);
     }
+
     /**
      * Executa o audio 1
+     *
      * @param event clique no botão do audio 1
      */
     @FXML
@@ -94,8 +101,10 @@ public class Pag02Controller implements Initializable {
         modelPag02.pararAudio();
         modelPag02.tocarAudio1();
     }
+
     /**
      * Executa o audio 2
+     *
      * @param event clique no botão do audio 2
      */
     @FXML
@@ -103,8 +112,10 @@ public class Pag02Controller implements Initializable {
         modelPag02.pararAudio();
         modelPag02.tocarAudio2();
     }
+
     /**
      * Executa o audio 3
+     *
      * @param event clique no botão do audio 3
      */
     @FXML
@@ -112,20 +123,22 @@ public class Pag02Controller implements Initializable {
         modelPag02.pararAudio();
         modelPag02.tocarAudio3();
     }
+
     /**
      * Volta para a pagina anterior
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
-    
+
     @FXML
     private void voltar(ActionEvent event) throws IOException {
         modelPag02.pararAudio();
-        modelPag02.paginaAnterior(event);        
+        modelPag02.paginaAnterior(event);
     }
-    
+
     @FXML
-    private void menuInicial(ActionEvent event) throws IOException{
+    private void menuInicial(ActionEvent event) throws IOException {
         modelPag02.menuInicial(event);
         modelPag02.pararAudio();
     }
@@ -136,7 +149,7 @@ public class Pag02Controller implements Initializable {
 
     public void setUnidadeAtual(String unidade) throws IOException {
         atualizarListaPalavras();
-        switch(unidade){
+        switch (unidade) {
             case "u01":
                 palavraAtual.setText("VOVÔ");
                 break;
@@ -144,32 +157,38 @@ public class Pag02Controller implements Initializable {
                 break;
         }
         modelPag02.setUnidadeAtual(unidade);
-    }    
+    }
 
     @FXML
     private void mouseClicado(MouseEvent event) {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag02.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-    
+
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
 
     }
-    
+
     @FXML
     private void sombrearBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
-        ((Button)((event)).getSource()).setEffect(sombras);
+        ((Button) ((event)).getSource()).setEffect(sombras);
     }
-    
+
     @FXML
-    private void retirarSombraBotao(MouseEvent event) {        
-        ((Button)((event)).getSource()).setEffect(null);
+    private void retirarSombraBotao(MouseEvent event) {
+        ((Button) ((event)).getSource()).setEffect(null);
     }
-    
+
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag02.abrirManual(event, pagina);
+    }
+
+    @FXML
+    private void abrirABC(ActionEvent event) throws IOException {
+        modelPag02.abrirABC(event, pagina);
+        modelPag02.pararAudio();
     }
 }

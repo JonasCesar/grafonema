@@ -33,6 +33,7 @@ public class ModelClasseComum {
     public ModelClasseComum(Stage janela) {
         this.janela = janela;
         eventoTemporario = null;
+        unidadeAtual = "u00";
     }
 
     public void play(String caminhoAudio) {
@@ -65,6 +66,7 @@ public class ModelClasseComum {
         janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface  
+        System.out.println("exibiu a cena certinho");
     }
 
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
@@ -89,24 +91,27 @@ public class ModelClasseComum {
         exibirCena(proximaCena, janela);
     }
 
-    public void ABC(ActionEvent event) throws IOException {
+    public void abrirABC(ActionEvent event, int pagina) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/ABC.fxml"));
-
         Parent proximaCena = (Parent) fxmloader.load();
         ABCController ABCCont = fxmloader.<ABCController>getController();
-
         exibirCena(proximaCena, janela);
+        
+        System.out.println(getUnidadeAtual());
+        ABCCont.setUnidadeAtual(getUnidadeAtual());
+        ABCCont.setPaginaTemporaria(pagina);
+
     }
 
     void abrirManual(ActionEvent event, int pagina) throws IOException {
         
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/manual.fxml"));
-        
         Parent proximaCena = (Parent) fxmloader.load();
         ManualController manualController = fxmloader.<ManualController>getController();        
         exibirCena(proximaCena, janela);
+
         System.out.println(getUnidadeAtual());
         manualController.setUnidadeAtual(getUnidadeAtual());
         manualController.setPaginaTemporaria(pagina);

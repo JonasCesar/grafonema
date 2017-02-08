@@ -28,9 +28,10 @@ import javafx.stage.Stage;
 public class ModelPag07 {
 
     private Stage janela;
-    private String caminhoAudio;    
+    private String caminhoAudio;
     private String unidadeAtual;
     private ModelClasseComum mCC;
+
     public ModelPag07() {
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
@@ -50,8 +51,8 @@ public class ModelPag07 {
 
     public void setUnidadeAtual(String unidade, Label tituloUnidade) {
         this.unidadeAtual = unidade;
-        
-        System.out.println(tituloUnidade+" " + unidade);
+
+        System.out.println(tituloUnidade + " " + unidade);
         tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));
     }
 
@@ -61,7 +62,7 @@ public class ModelPag07 {
                 caminhoAudio = "src/audios/u01/l1p1.mp3";
                 break;
             default:
-                
+
                 break;
         }
 
@@ -134,6 +135,11 @@ public class ModelPag07 {
         mCC.exibirCena(proximaCena, janela);
         pg06Cont.setUnidadeAtual(getUnidadeAtual());
         pg06Cont.tocarAudio();
+    }
+
+    public void abrirABC(ActionEvent event, int pagina) throws IOException {
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirABC(event, pagina);
     }
 
 }

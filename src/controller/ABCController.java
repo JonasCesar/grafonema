@@ -32,9 +32,12 @@ public class ABCController implements Initializable {
 
     public Image img;
 
+    private int paginaTemporaria;
+
     public ABCController() {
         //modelABC = new ModelABC(imgLetra, img);
         modelABC = new ModelABC();
+        paginaTemporaria = 0;
     }
 
     public String botaoEscolhido = "";
@@ -54,9 +57,14 @@ public class ABCController implements Initializable {
 
     }
 
+    public void setUnidadeAtual(String unidadeAtual) {
+        modelABC.setUnidadeAtual(unidadeAtual);
+    }
+
     @FXML
     public void voltar(ActionEvent event) throws IOException {
-
+        System.out.println(" Temp" +paginaTemporaria);
+        modelABC.voltar(event, paginaTemporaria);
     }
 
     @FXML
@@ -124,5 +132,9 @@ public class ABCController implements Initializable {
 
         imgLetra.setImage(img);
 
+    }
+
+    public void setPaginaTemporaria(int pagina) {
+        paginaTemporaria = pagina;
     }
 }

@@ -24,10 +24,10 @@ public class ModelPag06 {
     private String unidadeAtual;
     private Stage janela;
     private String caminhoAudio;
-    
 
     private Label p1, p2;
     private ModelClasseComum mCC;
+
     public ModelPag06(Label p1, Label p2) {
         this.p1 = p1;
         this.p2 = p2;
@@ -76,8 +76,9 @@ public class ModelPag06 {
                 if (resposta.toUpperCase().equals("VOVÔ")) {
                     respostaCorreta = true;
                     tocarAudioAcerto(respostaCorreta);
-                }else
+                } else {
                     tocarAudioAcerto(false);
+                }
                 break;
             default:
                 break;
@@ -115,19 +116,18 @@ public class ModelPag06 {
         mCC.menuInicial(event);
     }
 
-   public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
+    public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-   
-   public void tocarAudioAcerto(boolean acerto){
+
+    public void tocarAudioAcerto(boolean acerto) {
         caminhoAudio = "src/audios/u01/resposta_certa.mp3";
-        if(acerto){
+        if (acerto) {
             mCC.play(caminhoAudio);
-        }
-        else{
+        } else {
             caminhoAudio = "src/audios/u01/errou.mp3";
             mCC.play(caminhoAudio);
-        }  
+        }
     }
 
     public void executarAudioFrase() {
@@ -135,10 +135,15 @@ public class ModelPag06 {
             case "u01":
                 caminhoAudio = "src/audios/u01/frase.mp3";
                 break;
-            default:               
+            default:
                 break;
         }
         mCC.play(caminhoAudio);
+    }
+
+    public void abrirABC(ActionEvent event, int pagina) throws IOException {
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirABC(event, pagina);
     }
 
 }

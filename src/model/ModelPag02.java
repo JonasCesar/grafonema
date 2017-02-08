@@ -62,7 +62,7 @@ public class ModelPag02 {
                 caminhoAudio = "src/audios/u01/l1p2a2.mp3";
                 break;
             default:
-                
+
                 break;
         }
 
@@ -75,7 +75,7 @@ public class ModelPag02 {
                 caminhoAudio = "src/audios/u01/l1p2a3.mp3";
                 break;
             default:
-                
+
                 break;
         }
 
@@ -115,12 +115,17 @@ public class ModelPag02 {
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
-    
+
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
 
     public void abrirManual(ActionEvent event, int pagina) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void abrirABC(ActionEvent event, int pagina) throws IOException {
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirABC(event, pagina);
     }
 }

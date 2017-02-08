@@ -63,9 +63,9 @@ public class Pag04Controller implements Initializable {
     private Button menuInicial;
     @FXML
     private Label palavrasEstudadas;
-    
+
     private final int pagina = 4;
-    
+
     public Pag04Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -141,8 +141,11 @@ public class Pag04Controller implements Initializable {
             ((Label) (event.getSource())).setTranslateY(orgTranslateY);
         }
     }
+
     /**
-     * Veriifica se a label solta é a label correta que deveria ter sido arrastada
+     * Veriifica se a label solta é a label correta que deveria ter sido
+     * arrastada
+     *
      * @param evento o botão do mouse é solto
      * @return true ou false
      */
@@ -165,25 +168,30 @@ public class Pag04Controller implements Initializable {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag04.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-    
+
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-       controlerComum.atualizarListaPalavras(listaPalavras);
+        controlerComum.atualizarListaPalavras(listaPalavras);
     }
-    
+
     @FXML
     private void sombrearBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
-        ((Button)((event)).getSource()).setEffect(sombras);
+        ((Button) ((event)).getSource()).setEffect(sombras);
     }
-    
+
     @FXML
-    private void retirarSombraBotao(MouseEvent event) {        
-        ((Button)((event)).getSource()).setEffect(null);
+    private void retirarSombraBotao(MouseEvent event) {
+        ((Button) ((event)).getSource()).setEffect(null);
     }
-    
+
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag04.abrirManual(event, pagina);
     }
 
+    @FXML
+    private void abrirABC(ActionEvent event) throws IOException {
+        modelPag04.abrirABC(event, pagina);
+        modelPag04.pararAudio();
+    }
 }

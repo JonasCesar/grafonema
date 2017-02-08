@@ -22,9 +22,10 @@ import javafx.scene.input.MouseEvent;
  * @author shadows
  */
 public class Pag07Controller implements Initializable {
+
     @FXML
     private Label tituloUnidade;
-    
+
     private ModelPag07 modelPag07;
     @FXML
     private ListView<String> listaPalavras;
@@ -44,46 +45,49 @@ public class Pag07Controller implements Initializable {
     private Button avancar;
     @FXML
     private Label palavrasEstudadas;
+
+    private final int pagina = 7;
+    
     public Pag07Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
     }
-    
-    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag07 = new ModelPag07();        
-    }    
-    
-    public void tocarAudio() {
-        modelPag07.tocarAudio();        
+        modelPag07 = new ModelPag07();
     }
-    
-     public String getUnidadeAtual() {
+
+    public void tocarAudio() {
+        modelPag07.tocarAudio();
+    }
+
+    public String getUnidadeAtual() {
         return modelPag07.getUnidadeAtual();
     }
-    
+
     public void setUnidadeAtual(String unidadeAtual) throws IOException {
         atualizarListaPalavras();
         modelPag07.setUnidadeAtual(unidadeAtual, tituloUnidade);
     }
+
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag07.pararAudio();
         modelPag07.proximaPagina(event);
     }
+
     @FXML
     private void voltar(ActionEvent event) throws IOException {
         modelPag07.pararAudio();
         modelPag07.paginaAnterior(event);
     }
-    
+
     @FXML
-    private void menuInicial(ActionEvent event) throws IOException{
+    private void menuInicial(ActionEvent event) throws IOException {
         modelPag07.menuInicial(event);
         modelPag07.pararAudio();
     }
@@ -93,19 +97,25 @@ public class Pag07Controller implements Initializable {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag07.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-    
+
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
     }
-    
+
     @FXML
     private void sombrearBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
-        ((Button)((event)).getSource()).setEffect(sombras);
+        ((Button) ((event)).getSource()).setEffect(sombras);
     }
-    
+
     @FXML
-    private void retirarSombraBotao(MouseEvent event) {        
-        ((Button)((event)).getSource()).setEffect(null);
+    private void retirarSombraBotao(MouseEvent event) {
+        ((Button) ((event)).getSource()).setEffect(null);
+    }
+
+    @FXML
+    private void abrirABC(ActionEvent event) throws IOException {
+        modelPag07.abrirABC(event, pagina);
+        modelPag07.pararAudio();
     }
 }
