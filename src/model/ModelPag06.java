@@ -34,11 +34,17 @@ public class ModelPag06 {
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
     }
-
+    /**
+     *Define a unidade em que o software se encontra
+     */
     public void setUnidadeAtual(String unidade) {
         this.unidadeAtual = unidade;
     }
-
+    /**
+     * Carrega a próxima página na tela
+     * @param event disparado pelo método avancar do controller
+     * @throws IOException 
+     */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag07.fxml"));
@@ -52,7 +58,11 @@ public class ModelPag06 {
         mCC.exibirCena(proximaCena, janela);
         pg07Cont.tocarAudio();
     }
-
+/**
+     * Carrega a página anterior
+     * @param event disparado pelo método voltar do controller
+     * @throws IOException
+     */
     public void paginaAnterior(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
@@ -64,11 +74,18 @@ public class ModelPag06 {
         pg05Cont.setUnidadeAtual(getUnidadeAtual());
         pg05Cont.tocarAudio();
     }
-
+    /**
+     * Pega a unidade atual em execução
+     * @return string com o valor da unidade atual
+     */
     public String getUnidadeAtual() {
         return this.unidadeAtual;
     }
-
+/**
+ * Verifica se a resposta 
+ * @param resposta string digitada pela pessoa
+ * @return 
+ */
     public boolean verificarResposta(String resposta) {
         boolean respostaCorreta = false;
         switch (getUnidadeAtual()) {
@@ -107,16 +124,25 @@ public class ModelPag06 {
                 break;
         }
     }
-
+    /**
+     * Para o audio em execução
+     */
     public void pararAudio() {
         mCC.pararAudio();
     }
-
+    /**
+     * Carrega o menu inicial
+     * @param event disparado pelo método "menuInicial" do controller
+     * @throws IOException 
+     */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
-
-    public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
+/**
+     * Executa o audio da palavra clicada
+     * @param palavraSelecionada string que representa a palavra selecionada
+     */
+   public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
 
@@ -140,6 +166,23 @@ public class ModelPag06 {
         }
         mCC.play(caminhoAudio);
     }
+/**
+     * Carrega a interface do manual do software
+     * @param event disparado pelo método
+     * @param pagina pagina de onde o manual foi chamado
+     * @throws IOException 
+     */
+    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+        mCC.pararAudio();
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirManual(event, pagina);
+    }
+/**
+     * Carrega a interface do ABC
+     * @param event disparado pelo método ABCJanela do controller
+     * @throws IOException 
+     */
+   
 
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());

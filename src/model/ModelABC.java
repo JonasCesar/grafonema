@@ -132,7 +132,7 @@ public class ModelABC {
     }
     
     public void voltar(ActionEvent evento, int pagina) throws IOException{
-        System.out.println("Entrou voltar");
+        mCC.pararAudio();
         janela = (Stage) ((Button) evento.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = null;
         Pag01Controller pag01Cont;
@@ -168,6 +168,37 @@ public class ModelABC {
                 
                 mCC.exibirCena(proximaCena, janela);
                 pag02Cont.setUnidadeAtual(getUnidadeAtual());
+                break;
+            case 3:
+                pag03Cont = fxmloader.<Pag03Controller>getController();
+                mCC.exibirCena(proximaCena, janela);
+                pag03Cont.setUnidadeAtual(getUnidadeAtual());
+                pag03Cont.audioInicial();
+                pag03Cont.setImagens(getUnidadeAtual());
+                break;
+            case 4:
+                pag04Cont = fxmloader.<Pag04Controller>getController();
+                mCC.exibirCena(proximaCena, janela);
+                pag04Cont.setUnidadeAtual(getUnidadeAtual());
+                pag04Cont.tocarAudio();
+                break;
+            case 5:
+                pag05Cont = fxmloader.<Pag05Controller>getController();
+                mCC.exibirCena(proximaCena, janela);
+                pag05Cont.setUnidadeAtual(getUnidadeAtual());
+                pag05Cont.tocarAudio();
+                break;
+            case 6:
+                pag06Cont = fxmloader.<Pag06Controller>getController();
+                mCC.exibirCena(proximaCena, janela);
+                pag06Cont.setUnidadeAtual(getUnidadeAtual());
+                pag06Cont.tocarAudio();
+                break;
+            case 7:
+                pag07Cont = fxmloader.<Pag07Controller>getController();
+                mCC.exibirCena(proximaCena, janela);
+                pag07Cont.setUnidadeAtual(getUnidadeAtual());
+                break;
                 
         }
     }
@@ -179,6 +210,10 @@ public class ModelABC {
 
     public String getUnidadeAtual() {
         return unidadeAtual;
+    }
+
+    public void pararAudio() {
+        mCC.pararAudio();
     }
 
 }

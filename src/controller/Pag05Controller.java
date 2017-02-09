@@ -47,6 +47,7 @@ public class Pag05Controller implements Initializable {
     private double newTranslateX;
     private double orgTranslateY;
     private double newTranslateY;
+    private final int pagina = 5;
     @FXML
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
@@ -66,8 +67,7 @@ public class Pag05Controller implements Initializable {
     @FXML
     private Label palavrasEstudadas;
     
-    private final int pagina = 5;
-
+    
     public Pag05Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -78,9 +78,13 @@ public class Pag05Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2, espaco);
-    }
-
+        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco);
+    }    
+    /**
+     * Define a unidade atual
+     * @param unidade valor da unidade atual
+     * @throws IOException 
+     */
     public void setUnidadeAtual(String unidadeAtual) throws IOException {
         atualizarListaPalavras();
         modelPag05.setUnidadeAtual(unidadeAtual);
@@ -96,13 +100,21 @@ public class Pag05Controller implements Initializable {
                 break;
         }
     }
-
+    /**
+     * Avança para a proxima pagina
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag05.pararAudio();
         modelPag05.proximaPagina(event);
     }
-
+    /**
+     * Volta para a pagina anterior
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void voltar(ActionEvent event) throws IOException {
         modelPag05.pararAudio();
@@ -156,34 +168,66 @@ public class Pag05Controller implements Initializable {
     public void tocarAudio() {
         modelPag05.tocarAudio();
     }
-
+    /**
+     * Leva o usuário para o menu inicial
+     * @param event clique no botão "Menu Inicial"
+     * @throws IOException 
+     */
     @FXML
     private void menuInicial(ActionEvent event) throws IOException {
         modelPag05.menuInicial(event);
         modelPag05.pararAudio();
     }
-
+    /**
+     * Trata o evento de quando o mouse é clicado na lista de palavras
+     * @param event mouse é pressionado
+     */
     @FXML
     private void mouseClicado(MouseEvent event) {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag05.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-
+    /**
+     * Atualiza a lista de palavras estudadas
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
 
     }
-
+    /**
+     * Realiza o efeito de sombrear o botão quando o mouse passar por cima dele
+     * @param event movimentação do mouse sobre os componentes
+     */
     @FXML
     private void sombrearBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         ((Button) ((event)).getSource()).setEffect(sombras);
     }
-
+    /**
+     * Realiza o efeito de dessombrear o botão quando o mouse for retirado de cima dele
+     * @param event movimentação do mouse para fora do botão
+     */
     @FXML
     private void retirarSombraBotao(MouseEvent event) {
         ((Button) ((event)).getSource()).setEffect(null);
     }
+    
+    /**
+     * Abre o manual do software
+     * @param event clique no botão
+     * @throws IOException 
+     */
+    @FXML
+    private void abrirManual(ActionEvent event) throws IOException {
+        modelPag05.abrirManual(event, pagina);
+    }
+    /**
+     * Abre a função ABC do software
+     * @param event clique no botão "ABC"
+     * @throws IOException 
+     */
 
     @FXML
     private void abrirABC(ActionEvent event) throws IOException {

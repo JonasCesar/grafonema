@@ -111,8 +111,6 @@ public class ModelClasseComum {
         Parent proximaCena = (Parent) fxmloader.load();
         ManualController manualController = fxmloader.<ManualController>getController();        
         exibirCena(proximaCena, janela);
-
-        System.out.println(getUnidadeAtual());
         manualController.setUnidadeAtual(getUnidadeAtual());
         manualController.setPaginaTemporaria(pagina);
     }

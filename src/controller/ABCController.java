@@ -5,7 +5,6 @@
  */
 package controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -46,13 +45,19 @@ public class ABCController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    /**
+     * Reconhece qual botão (A-Z) foi clicado
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     public void handleButton(ActionEvent event) throws IOException {
         String letraEscolhida = ((Button) event.getSource()).getText();
         System.out.println("botão escolhido = " + letraEscolhida);
         //modelABC.desenharLetra(letraEscolhida);
+        botaoEscolhido = letraEscolhida;
         desenharLetra(letraEscolhida);
+        modelABC.pararAudio();
         modelABC.tocarSomLetra(letraEscolhida);
 
     }
@@ -71,62 +76,59 @@ public class ABCController implements Initializable {
     private void menuInicial(ActionEvent event) throws IOException {
         modelABC.menuInicial(event);
     }
-
+    /**
+     * Reconhece quando o mouse é passado sobre a imagem da letra
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void passouRato(MouseEvent event) throws IOException {
 
         //modelABC.tocarAudio(event);
+        modelABC.pararAudio();
         modelABC.tocarAudioUnicoLetras(botaoEscolhido);
         System.out.println("passou no rato");
     }
-
+    /**
+     * Exibe a imagem referente ao botão que foi clicado
+     * @param letra letra representado
+     */
     public void desenharLetra(String letra) {
         System.out.println("entrou no desenha letra");
         switch (letra) {
 
             case "A":
-                img = new Image("/ABCimg/aaaa.jpg");
-                botaoEscolhido = "A";
+                img = new Image("/ABCimg/aaaa.jpg");                
                 break;
             case "B":
                 img = new Image("/ABCimg/bbbb.jpg");
-                botaoEscolhido = "B";
                 break;
             case "C":
                 img = new Image("/ABCimg/cccc.jpg");
-                botaoEscolhido = "C";
                 break;
             case "D":
-                img = new Image("/ABCimg/dddd.jpg");
-                botaoEscolhido = "D";
+                img = new Image("/ABCimg/dddd.jpg");                
                 break;
             case "E":
                 img = new Image("/ABCimg/eeee.jpg");
-                botaoEscolhido = "E";
                 break;
             case "F":
                 img = new Image("/ABCimg/ffff.jpg");
-                botaoEscolhido = "F";
                 break;
             case "G":
                 img = new Image("/ABCimg/gggg.jpg");
-                botaoEscolhido = "G";
                 break;
             case "H":
                 img = new Image("/ABCimg/hhhh.jpg");
-                botaoEscolhido = "H";
                 break;
             case "I":
                 img = new Image("/ABCimg/iiii.jpg");
-                botaoEscolhido = "I";
                 break;
             case "J":
                 img = new Image("/ABCimg/jjjj.jpg");
-                botaoEscolhido = "J";
                 break;
             case "K":
                 img = new Image("/ABCimg/kkkk.jpg");
-                botaoEscolhido = "K";
                 break;
         }
 
