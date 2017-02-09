@@ -47,7 +47,9 @@ public class Pag05Controller implements Initializable {
     private double newTranslateX;
     private double orgTranslateY;
     private double newTranslateY;
+    
     private final int pagina = 5;
+    
     @FXML
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
@@ -67,7 +69,6 @@ public class Pag05Controller implements Initializable {
     @FXML
     private Label palavrasEstudadas;
     
-    private final int pagina = 5;
 
     public Pag05Controller() {
         listaPalavras = new ListView<String>();
@@ -229,10 +230,6 @@ public class Pag05Controller implements Initializable {
      * @param event clique no botão "ABC"
      * @throws IOException 
      */
-    @FXML
-    private void abc(ActionEvent event) throws IOException {
-        modelPag05.ABCJanela(event);
-
     @FXML
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag05.abrirABC(event, pagina);

@@ -239,13 +239,5 @@ public class ModelPag05 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
-/**
-     * Carrega a interface do ABC
-     * @param event disparado pelo método ABCJanela do controller
-     * @throws IOException 
-     */
-    public void ABCJanela(ActionEvent event) throws IOException {
-        mCC.ABC(event);
-    }
     
 }

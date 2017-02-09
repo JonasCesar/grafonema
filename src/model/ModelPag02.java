@@ -183,10 +183,6 @@ public class ModelPag02 {
      * @param event disparado pelo método ABCJanela do controller
      * @throws IOException
      */
-    public void ABCJanela(ActionEvent event) throws IOException {
-        mCC.ABC(event);
-    }
-
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);

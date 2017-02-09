@@ -179,8 +179,8 @@ public class Pag03Controller implements Initializable {
      * @throws IOException 
      */
     @FXML
-    private void abc(ActionEvent event) throws IOException {
-        modelPag03.ABCJanela(event);
+    private void abrirABC(ActionEvent event) throws IOException {
+        modelPag03.abrirABC(event, pagina);
         modelPag03.pararAudio();
     }
 }

@@ -197,11 +197,7 @@ public class Pag06Controller implements Initializable {
      * Abre a função ABC do software
      * @param event clique no botão "ABC"
      * @throws IOException 
-     */
-    @FXML
-    private void abc(ActionEvent event) throws IOException {
-        modelPag06.ABCJanela(event);
-    
+     */  
     @FXML
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag06.abrirABC(event, pagina);

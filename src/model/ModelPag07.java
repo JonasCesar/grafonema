@@ -179,8 +179,6 @@ public class ModelPag07 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
     }
-
-}
     /**
      * Carrega a interface do manual do software
      *
@@ -192,16 +190,6 @@ public class ModelPag07 {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
-    }
-
-    /**
-     * Carrega a interface do ABC
-     *
-     * @param event disparado pelo método ABCJanela do controller
-     * @throws IOException
-     */
-    public void ABCJanela(ActionEvent event) throws IOException {
-        mCC.ABC(event);
     }
 
 }
