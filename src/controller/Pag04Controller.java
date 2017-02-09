@@ -80,7 +80,6 @@ public class Pag04Controller implements Initializable {
     }
     /**
      * Define a unidade atual
-     * @param unidade valor da unidade atual
      * @throws IOException 
      */
     public void setUnidadeAtual(String unidadeAtual) throws IOException {

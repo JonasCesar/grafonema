@@ -87,6 +87,8 @@ public class ModelPag03 {
         pag02Cont.setUnidadeAtual(getUnidadeAtual());
 
     }
+
+    
     /**
      * Carrega a próxima página na tela
      * @param event disparado pelo método avancar do controller
@@ -164,6 +166,8 @@ public class ModelPag03 {
         img6.setImage(new Image(f6.toURI().toURL().toString()));
 
     }
+
+    
     /**
      * Para o audio em execução
      */
