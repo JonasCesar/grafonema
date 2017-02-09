@@ -77,9 +77,8 @@ public class ModelPag05 {
     }
 
     /**
-     * Define a unidade atual e as label referente a essa pagina
-     *
-     * @param unidadeAtual
+     * Define a unidade atual e as labels referentes a essa pagina
+     * @param unidadeAtual 
      */
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
@@ -99,10 +98,9 @@ public class ModelPag05 {
     }
 
     /**
-     * Avança para a pagina 6
-     *
-     * @param event
-     * @throws IOException
+     * Carrega a próxima página na tela
+     * @param event disparado pelo método avancar do controller
+     * @throws IOException 
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -117,9 +115,8 @@ public class ModelPag05 {
     }
 
     /**
-     * Retorna para a pagina 4
-     *
-     * @param event
+     * Carrega a página anterior
+     * @param event disparado pelo método voltar do controller
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
@@ -133,11 +130,9 @@ public class ModelPag05 {
         pg04Cont.setUnidadeAtual(getUnidadeAtual());
         pg04Cont.tocarAudio();
     }
-
-    /**
-     * Pega a unidade atual
-     *
-     * @return
+   /**
+     * Pega a unidade atual em execução
+     * @return string com o valor da unidade atual
      */
     private String getUnidadeAtual() {
         return this.unidadeAtual;
@@ -181,7 +176,7 @@ public class ModelPag05 {
     }
 
     /**
-     * para a execução do audio atual
+     * Para o audio em execução
      */
     public void pararAudio() {
         mCC.pararAudio();
@@ -199,19 +194,16 @@ public class ModelPag05 {
     }
 
     /**
-     * Handle que leva ao menu inicial
-     *
-     * @param event
-     * @throws IOException
+     * Carrega o menu inicial
+     * @param event disparado pelo método "menuInicial" do controller
+     * @throws IOException 
      */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
-
-    /**
-     * Executa o áudio da palavra selecionada na lista de palavras estudadas
-     *
-     * @param palavraSelecionada
+   /**
+     * Executa o audio da palavra clicada
+     * @param palavraSelecionada string que representa a palavra selecionada
      */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
@@ -236,4 +228,24 @@ public class ModelPag05 {
         mCC.abrirABC(event, pagina);
     }
 
+/**
+     * Carrega a interface do manual do software
+     * @param event disparado pelo método
+     * @param pagina pagina de onde o manual foi chamado
+     * @throws IOException 
+     */
+    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+         mCC.pararAudio();
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirManual(event, pagina);
+    }
+/**
+     * Carrega a interface do ABC
+     * @param event disparado pelo método ABCJanela do controller
+     * @throws IOException 
+     */
+    public void ABCJanela(ActionEvent event) throws IOException {
+        mCC.ABC(event);
+    }
+    
 }

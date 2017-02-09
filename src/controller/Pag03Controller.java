@@ -75,18 +75,30 @@ public class Pag03Controller implements Initializable {
     public void audioInicial(){
         modelPag03.tocarAudioInicial();
     }
-
+    /**
+     * Define a unidade atual
+     * @param unidade valor da unidade atual
+     * @throws IOException 
+     */
     public void setUnidadeAtual(String unidade) throws IOException {
         atualizarListaPalavras();
         modelPag03.setUnidadeAtual(unidade);
     }
-
+    /**
+     * Avança para a proxima pagina
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag03.pararAudio();
         modelPag03.proximaPagina(event);        
     }
-
+    /**
+     * Volta para a pagina anterior
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void voltar(ActionEvent event) throws IOException {
         modelPag03.pararAudio();
@@ -101,29 +113,47 @@ public class Pag03Controller implements Initializable {
     private void verificarImagem(MouseEvent event) throws MalformedURLException {
         modelPag03.verificarImagem(event);
     }
-    
+    /**
+     * Leva o usuário para o menu inicial
+     * @param event clique no botão "Menu Inicial"
+     * @throws IOException 
+     */
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{
         modelPag03.menuInicial(event);
         modelPag03.pararAudio();
     }
-
+    /**
+     * Trata o evento de quando o mouse é clicado na lista de palavras
+     * @param event mouse é pressionado
+     */
     @FXML
     private void mouseClicado(MouseEvent event) {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag03.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
+    /**
+     * Atualiza a lista de palavras estudadas
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
         controlerComum.atualizarListaPalavras(listaPalavras);
 
     }
-    
+    /**
+     * Realiza o efeito de sombrear o botão quando o mouse passar por cima dele
+     * @param event movimentação do mouse sobre os componentes
+     */
     @FXML
     private void sombrearBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         ((Button)((event)).getSource()).setEffect(sombras);
     }
-    
+    /**
+     * Realiza o efeito de dessombrear o botão quando o mouse for retirado de cima dele
+     * @param event movimentação do mouse para fora do botão
+     */
     @FXML
     private void retirarSombraBotao(MouseEvent event) {        
         ((Button)((event)).getSource()).setEffect(null);
@@ -134,15 +164,23 @@ public class Pag03Controller implements Initializable {
         modelPag03.executarAudioImagem(event);
         
     }
-    
+    /**
+     * Abre o manual do software
+     * @param event clique no botão
+     * @throws IOException 
+     */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag03.abrirManual(event, pagina);
     }
-    
+    /**
+     * Abre a função ABC do software
+     * @param event clique no botão "ABC"
+     * @throws IOException 
+     */
     @FXML
-    private void abrirABC(ActionEvent event) throws IOException {
-        modelPag03.abrirABC(event, pagina);
+    private void abc(ActionEvent event) throws IOException {
+        modelPag03.ABCJanela(event);
         modelPag03.pararAudio();
     }
 }

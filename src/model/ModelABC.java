@@ -181,4 +181,8 @@ public class ModelABC {
         return unidadeAtual;
     }
 
+    public void pararAudio() {
+        mCC.pararAudio();
+    }
+
 }

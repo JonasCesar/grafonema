@@ -1,3 +1,7 @@
+/**
+ * Model da página 4
+ */
+
 package model;
 
 import controller.Pag03Controller;
@@ -76,9 +80,8 @@ public class ModelPag04 {
     }
 
     /**
-     * Define a unidade atual
-     *
-     * @param unidadeAtual
+     *Define a unidade em que o software se encontra
+     * @param unidadeAtual unidade atual da execução
      */
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
@@ -99,19 +102,17 @@ public class ModelPag04 {
     }
 
     /**
-     * Retorna a unidade atual
-     *
-     * @return
+     * Pega a unidade atual em execução
+     * @return string com o valor da unidade atual
      */
     public String getUnidadeAtual() {
         return this.unidadeAtual;
     }
 
     /**
-     * Avança para a pagin 5
-     *
-     * @param event
-     * @throws IOException
+     * Carrega a próxima página na tela
+     * @param event disparado pelo método avancar do controller
+     * @throws IOException 
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -127,9 +128,8 @@ public class ModelPag04 {
     }
 
     /**
-     * Retorna para a pagina 3
-     *
-     * @param event botão "Voltar" clicado
+     * Carrega a página anterior
+     * @param event disparado pelo método voltar do controller
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
@@ -185,7 +185,9 @@ public class ModelPag04 {
         //executa o audio
         mCC.play(caminhoAudio);
     }
-
+    /**
+     * Para o audio em execução
+     */
     public void pararAudio() {
         mCC.pararAudio();
     }
@@ -203,24 +205,24 @@ public class ModelPag04 {
     }
 
     /**
-     * Handle para o botão que retorna ao menu inicial
-     *
-     * @param event evento disparado ao se clicar no botãos
-     * @throws IOException
+     * Carrega o menu inicial
+     * @param event disparado pelo método "menuInicial" do controller
+     * @throws IOException 
      */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
 
     /**
-     * Executa a palavra que foi selecionada na lista de palavras estudadas
-     *
-     * @param palavraSelecionada string da palavra selecionada
+     * Executa o audio da palavra clicada
+     * @param palavraSelecionada string que representa a palavra selecionada
      */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-
+    /**
+     * Executa a palavra completada 
+     */
     public void executarPalavra() {
         switch (getUnidadeAtual()) {
             case "u01":
@@ -231,9 +233,24 @@ public class ModelPag04 {
         }
         mCC.play(caminhoAudio);
     }
-
-    public void abrirManual(ActionEvent event, int pagina) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+/**
+     * Carrega a interface do manual do software
+     * @param event disparado pelo método
+     * @param pagina pagina de onde o manual foi chamado
+     * @throws IOException 
+     */
+    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+         mCC.pararAudio();
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirManual(event, pagina);
+    }
+/**
+     * Carrega a interface do ABC
+     * @param event disparado pelo método ABCJanela do controller
+     * @throws IOException 
+     */
+    public void ABCJanela(ActionEvent event) throws IOException {
+        mCC.ABC(event);
     }
 
     public void abrirABC(ActionEvent event, int pagina) throws IOException {

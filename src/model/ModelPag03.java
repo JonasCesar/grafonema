@@ -1,3 +1,6 @@
+/**
+ * Model da página 3
+ */
 package model;
 
 import controller.Pag02Controller;
@@ -53,15 +56,25 @@ public class ModelPag03 {
         caminhoAudio = "";
         mCC = new ModelClasseComum(janela);
     }
-
+/**
+     *Define a unidade em que o software se encontra
+     * @param unidadeAtual unidade atual da execução
+     */
     public void setUnidadeAtual(String unidade) {
         this.unidadeAtual = unidade;
     }
-
+    /**
+     * Pega a unidade atual em execução
+     * @return string com o valor da unidade atual
+     */
     public String getUnidadeAtual() {
         return unidadeAtual;
     }
-
+/**
+     * Carrega a página anterior
+     * @param event disparado pelo método voltar do controller
+     * @throws IOException
+     */
     public void paginaAnterior(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02.fxml"));
@@ -75,6 +88,12 @@ public class ModelPag03 {
 
     }
 
+    
+    /**
+     * Carrega a próxima página na tela
+     * @param event disparado pelo método avancar do controller
+     * @throws IOException 
+     */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
@@ -148,14 +167,25 @@ public class ModelPag03 {
 
     }
 
+    
+    /**
+     * Para o audio em execução
+     */
     public void pararAudio() {
         mCC.pararAudio();
     }
-
+    /**
+     * Carrega o menu inicial
+     * @param event disparado pelo método "menuInicial" do controller
+     * @throws IOException 
+     */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
-
+    /**
+     * Executa o audio da palavra clicada
+     * @param palavraSelecionada string que representa a palavra selecionada
+     */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
@@ -171,9 +201,24 @@ public class ModelPag03 {
         mCC.play(caminhoAudio);
         System.out.println("Tocar " + caminhoAudio);
     }
-
-    public void abrirManual(ActionEvent event, int pagina) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+/**
+     * Carrega a interface do manual do software
+     * @param event disparado pelo método
+     * @param pagina pagina de onde o manual foi chamado
+     * @throws IOException 
+     */
+    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+        mCC.pararAudio();
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirManual(event, pagina);
+    }
+/**
+     * Carrega a interface do ABC
+     * @param event disparado pelo método ABCJanela do controller
+     * @throws IOException 
+     */
+    public void ABCJanela(ActionEvent event) throws IOException {
+        mCC.ABC(event);
     }
 
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
