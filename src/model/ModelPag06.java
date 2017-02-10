@@ -34,16 +34,19 @@ public class ModelPag06 {
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
     }
+
     /**
-     *Define a unidade em que o software se encontra
+     * Define a unidade em que o software se encontra
      */
     public void setUnidadeAtual(String unidade) {
         this.unidadeAtual = unidade;
     }
+
     /**
      * Carrega a próxima página na tela
+     *
      * @param event disparado pelo método avancar do controller
-     * @throws IOException 
+     * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -58,8 +61,10 @@ public class ModelPag06 {
         mCC.exibirCena(proximaCena, janela);
         pg07Cont.tocarAudio();
     }
-/**
+
+    /**
      * Carrega a página anterior
+     *
      * @param event disparado pelo método voltar do controller
      * @throws IOException
      */
@@ -74,27 +79,31 @@ public class ModelPag06 {
         pg05Cont.setUnidadeAtual(getUnidadeAtual());
         pg05Cont.tocarAudio();
     }
+
     /**
      * Pega a unidade atual em execução
+     *
      * @return string com o valor da unidade atual
      */
     public String getUnidadeAtual() {
         return this.unidadeAtual;
     }
-/**
- * Verifica se a resposta 
- * @param resposta string digitada pela pessoa
- * @return 
- */
+
+    /**
+     * Verifica se a resposta
+     *
+     * @param resposta string digitada pela pessoa
+     * @return
+     */
     public boolean verificarResposta(String resposta) {
         boolean respostaCorreta = false;
         switch (getUnidadeAtual()) {
             case "u01":
                 if (resposta.toUpperCase().equals("VOVÔ")) {
                     respostaCorreta = true;
-                    tocarAudioAcerto(respostaCorreta);
+                    //tocarAudioAcerto(respostaCorreta);
                 } else {
-                    tocarAudioAcerto(false);
+                    //tocarAudioAcerto(false);
                 }
                 break;
             default:
@@ -124,37 +133,43 @@ public class ModelPag06 {
                 break;
         }
     }
+
     /**
      * Para o audio em execução
      */
     public void pararAudio() {
         mCC.pararAudio();
     }
+
     /**
      * Carrega o menu inicial
+     *
      * @param event disparado pelo método "menuInicial" do controller
-     * @throws IOException 
+     * @throws IOException
      */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
-/**
+
+    /**
      * Executa o audio da palavra clicada
+     *
      * @param palavraSelecionada string que representa a palavra selecionada
      */
-   public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
+    public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
 
-    public void tocarAudioAcerto(boolean acerto) {
-        caminhoAudio = "src/audios/u01/resposta_certa.mp3";
-        if (acerto) {
-            mCC.play(caminhoAudio);
-        } else {
-            caminhoAudio = "src/audios/u01/errou.mp3";
-            mCC.play(caminhoAudio);
-        }
-    }
+//    áudios de zoeira só pra teste    
+//    public void tocarAudioAcerto(boolean acerto) {
+//        caminhoAudio = "src/audios/u01/resposta_certa.mp3";
+//        if (acerto) {
+//            mCC.play(caminhoAudio);
+//        } else {
+//            caminhoAudio = "src/audios/u01/errou.mp3";
+//            mCC.play(caminhoAudio);
+//        }
+//    }
 
     public void executarAudioFrase() {
         switch (getUnidadeAtual()) {
@@ -166,11 +181,13 @@ public class ModelPag06 {
         }
         mCC.play(caminhoAudio);
     }
-/**
+
+    /**
      * Carrega a interface do manual do software
+     *
      * @param event disparado pelo método
      * @param pagina pagina de onde o manual foi chamado
-     * @throws IOException 
+     * @throws IOException
      */
     public void abrirManual(ActionEvent event, int pagina) throws IOException {
         mCC.pararAudio();

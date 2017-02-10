@@ -118,7 +118,7 @@ public class Pag06Controller implements Initializable {
         modelPag06.pararAudio();
         if(modelPag06.verificarResposta(resposta.getText())){
             resposta.setText(resposta.getText().toUpperCase());
-            resposta.setStyle("-fx-background-color: green;");
+            resposta.setStyle("-fx-background-color: yellow; -fx-font-weight: bold; fx-color: black;");
             resposta.setDisable(true);
             modelPag06.executarAudioFrase();
         }else{
