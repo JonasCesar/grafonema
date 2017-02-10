@@ -179,7 +179,6 @@ public class ModelPag07 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
     }
-
     /**
      * Carrega a interface do manual do software
      *

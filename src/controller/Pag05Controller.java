@@ -47,7 +47,9 @@ public class Pag05Controller implements Initializable {
     private double newTranslateX;
     private double orgTranslateY;
     private double newTranslateY;
+    
     private final int pagina = 5;
+    
     @FXML
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
