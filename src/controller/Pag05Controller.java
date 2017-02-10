@@ -69,7 +69,7 @@ public class Pag05Controller implements Initializable {
     @FXML
     private Label palavrasEstudadas;
     
-
+    
     public Pag05Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -230,6 +230,7 @@ public class Pag05Controller implements Initializable {
      * @param event clique no botão "ABC"
      * @throws IOException 
      */
+
     @FXML
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag05.abrirABC(event, pagina);

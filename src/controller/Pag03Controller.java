@@ -169,7 +169,6 @@ public class Pag03Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException 
      */
-    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag03.abrirManual(event, pagina);
     }

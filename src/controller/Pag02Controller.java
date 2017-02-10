@@ -173,11 +173,10 @@ public class Pag02Controller implements Initializable {
                 break;
         }
         modelPag02.setUnidadeAtual(unidade);
-    }
 
+    }    
     /**
      * Trata o evento de quando o mouse é clicado na lista de palavras
-     *
      * @param event mouse é pressionado
      */
     @FXML

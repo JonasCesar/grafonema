@@ -29,7 +29,7 @@ public class ModelPag07 {
     private String caminhoAudio;
     private String unidadeAtual;
     private ModelClasseComum mCC;
-
+    private final int pagina = 7;
     public ModelPag07() {
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);

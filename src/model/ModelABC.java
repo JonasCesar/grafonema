@@ -130,9 +130,9 @@ public class ModelABC {
     public void executarAudio(String letra) {
 
     }
-
-    public void voltar(ActionEvent evento, int pagina) throws IOException {
-        System.out.println("Entrou voltar");
+    
+    public void voltar(ActionEvent evento, int pagina) throws IOException{
+        mCC.pararAudio();
         janela = (Stage) ((Button) evento.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = null;
         Pag01Controller pag01Cont;
@@ -195,7 +195,7 @@ public class ModelABC {
                 mCC.exibirCena(proximaCena, janela);
                 pag07Cont.setUnidadeAtual(getUnidadeAtual());
                 break;
-
+                
         }
     }
 

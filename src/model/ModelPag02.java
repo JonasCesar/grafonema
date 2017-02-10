@@ -177,10 +177,11 @@ public class ModelPag02 {
         mCC.abrirManual(event, pagina);
     }
 
+  
     /**
      * Carrega a interface do ABC
-     *
      * @param event disparado pelo método ABCJanela do controller
+     * @param pagina
      * @throws IOException
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
