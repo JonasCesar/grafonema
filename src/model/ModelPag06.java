@@ -92,9 +92,9 @@ public class ModelPag06 {
             case "u01":
                 if (resposta.toUpperCase().equals("VOVÔ")) {
                     respostaCorreta = true;
-                    tocarAudioAcerto(respostaCorreta);
+                    //tocarAudioAcerto(respostaCorreta);
                 } else {
-                    tocarAudioAcerto(false);
+                    //tocarAudioAcerto(false);
                 }
                 break;
             default:
@@ -145,7 +145,7 @@ public class ModelPag06 {
    public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-
+   /**
     public void tocarAudioAcerto(boolean acerto) {
         caminhoAudio = "src/audios/u01/resposta_certa.mp3";
         if (acerto) {
@@ -154,7 +154,7 @@ public class ModelPag06 {
             caminhoAudio = "src/audios/u01/errou.mp3";
             mCC.play(caminhoAudio);
         }
-    }
+    }*/
 
     public void executarAudioFrase() {
         switch (getUnidadeAtual()) {
@@ -177,12 +177,6 @@ public class ModelPag06 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
-/**
-     * Carrega a interface do ABC
-     * @param event disparado pelo método ABCJanela do controller
-     * @throws IOException 
-     */
-   
 
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());

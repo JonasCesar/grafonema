@@ -142,16 +142,13 @@ public class ModelABC {
         Pag05Controller pag05Cont;
         Pag06Controller pag06Cont;
         Pag07Controller pag07Cont;
-        
-        
-        
-        fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag0"+pagina+".fxml"));
+
+        fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag0" + pagina + ".fxml"));
 
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
-        
 
-        switch(pagina){
+        switch (pagina) {
             case 1:
                 pag01Cont = fxmloader.<Pag01Controller>getController();
                 System.out.println("Aqui 2 abc");
@@ -165,7 +162,6 @@ public class ModelABC {
                 break;
             case 2:
                 pag02Cont = fxmloader.<Pag02Controller>getController();
-                
                 mCC.exibirCena(proximaCena, janela);
                 pag02Cont.setUnidadeAtual(getUnidadeAtual());
                 break;
@@ -202,8 +198,7 @@ public class ModelABC {
                 
         }
     }
-    
-    
+
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
     }

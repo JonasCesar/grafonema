@@ -155,4 +155,6 @@ public class Pag07Controller implements Initializable {
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag07.abrirManual(event, pagina);
     }
+    
+    
 }
