@@ -17,6 +17,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -67,6 +68,8 @@ public class Pag04Controller implements Initializable {
     private final int pagina = 4;
     @FXML
     private ImageView imagemAudio;
+    @FXML
+    private AnchorPane janelaPrograma;
 
     public Pag04Controller() {
         listaPalavras = new ListView<String>();
@@ -78,7 +81,7 @@ public class Pag04Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco, imagemAudio);
+        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco, imagemAudio, janelaPrograma);
     }
     /**
      * Define a unidade atual
@@ -124,6 +127,7 @@ public class Pag04Controller implements Initializable {
         orgSceneY = event.getSceneY();
         orgTranslateX = ((Label) (event.getSource())).getTranslateX();
         orgTranslateY = ((Label) (event.getSource())).getTranslateY();
+        janelaPrograma.setStyle("-fx-cursor: hand;");
 
     }
 
@@ -135,6 +139,7 @@ public class Pag04Controller implements Initializable {
         newTranslateY = orgTranslateY + offsetY;
         ((Label) (event.getSource())).setTranslateX(newTranslateX);
         ((Label) (event.getSource())).setTranslateY(newTranslateY);
+        janelaPrograma.setStyle("-fx-cursor: move;");
     }
 
     @FXML
@@ -155,6 +160,7 @@ public class Pag04Controller implements Initializable {
             ((Label) (event.getSource())).setTranslateX(orgTranslateX);
             ((Label) (event.getSource())).setTranslateY(orgTranslateY);
         }
+        janelaPrograma.setStyle("-fx-cursor: none");
     }
 
     /**

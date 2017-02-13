@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag04Controller">
+<AnchorPane id="AnchorPane" fx:id="janelaPrograma" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag04Controller">
     <stylesheets>
         <URL value="@/css/estilosPag04.css" />
         <URL value="@/css/estilosGerais.css" />

@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -61,6 +62,8 @@ public class ModelPag04 {
     private ImageView imagemAudio;
     
     private File imagem;
+    
+    private AnchorPane janelaPrograma;
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
      *
@@ -73,7 +76,8 @@ public class ModelPag04 {
      * @param f2
      * @param espaco
      */
-    public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, ImageView imagemAudio) {
+    public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
+            Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
