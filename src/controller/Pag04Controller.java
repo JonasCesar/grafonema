@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -60,11 +61,11 @@ public class Pag04Controller implements Initializable {
     @FXML
     private Button voltar;
     @FXML
-    private Button menuInicial;
-    @FXML
     private Label palavrasEstudadas;
 
     private final int pagina = 4;
+    @FXML
+    private ImageView imagemAudio;
 
     public Pag04Controller() {
         listaPalavras = new ListView<String>();
@@ -76,7 +77,7 @@ public class Pag04Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco);
+        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco, imagemAudio);
     }
     /**
      * Define a unidade atual
@@ -222,7 +223,6 @@ public class Pag04Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException
      */
-    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag04.abrirManual(event, pagina);
     }
@@ -237,6 +237,12 @@ public class Pag04Controller implements Initializable {
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag04.abrirABC(event, pagina);
         modelPag04.pararAudio();
+    }
+
+    @FXML
+    private void ouvirNovamente(ActionEvent event) {
+        modelPag04.pararAudio();
+        modelPag04.tocarAudio();
     }
 
 }

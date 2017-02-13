@@ -8,12 +8,15 @@ import controller.Pag03Controller;
 import controller.Pag05Controller;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -55,6 +58,9 @@ public class ModelPag04 {
     //classe com métodos com a mesma estrutura das outras classes
     private ModelClasseComum mCC;
 
+    private ImageView imagemAudio;
+    
+    private File imagem;
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
      *
@@ -67,7 +73,7 @@ public class ModelPag04 {
      * @param f2
      * @param espaco
      */
-    public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
+    public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, ImageView imagemAudio) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -77,15 +83,17 @@ public class ModelPag04 {
         this.f2 = f2;
         this.espaco = espaco;
         mCC = new ModelClasseComum(janela);
+        this.imagemAudio = imagemAudio;
     }
 
     /**
      *Define a unidade em que o software se encontra
      * @param unidadeAtual unidade atual da execução
      */
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(String unidadeAtual) throws MalformedURLException {
         this.unidadeAtual = unidadeAtual;
-        //define o conteúdo das labels da pag 4 
+        //define o conteúdo das labels da pag 4
+         
         switch (unidadeAtual) {
             case "u01":
                 p1.setText("VA");
@@ -95,10 +103,12 @@ public class ModelPag04 {
                 p5.setText("VU");
                 f1.setText("ÁR");
                 f2.setText("RE");
+                imagem = new File("src/imagens/licao01/arvorepb.jpg");
                 break;
             default:
                 break;
         }
+        imagemAudio.setImage(new Image(imagem.toURI().toURL().toString()));
     }
 
     /**
@@ -150,8 +160,9 @@ public class ModelPag04 {
      *
      * @param event mouse liberado
      * @return true ou false
+     * @throws java.net.MalformedURLException
      */
-    public boolean verificarEscolhaSilaba(MouseEvent event) {
+    public boolean verificarEscolhaSilaba(MouseEvent event) throws MalformedURLException {
         //converte conteudo do evento para string
         String silabaEscolhida = ((Label) event.getSource()).getText();
         boolean opcaoCorreta = false;
@@ -160,6 +171,8 @@ public class ModelPag04 {
             case "u01":
                 if (silabaEscolhida.equals("VO")) {
                     opcaoCorreta = true;
+                    imagem = new File("src/imagens/licao01/arvorecor.jpg");
+                    imagemAudio.setImage(new Image(imagem.toURI().toURL().toString()));
                 }
                 break;
             default:
