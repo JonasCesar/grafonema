@@ -2,6 +2,7 @@ package controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import model.ModelPag04;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -137,7 +138,7 @@ public class Pag04Controller implements Initializable {
     }
 
     @FXML
-    private void mouseLiberado(MouseEvent event) {
+    private void mouseLiberado(MouseEvent event) throws MalformedURLException {
         if ((verificarColisao(event))) {
             //se for a opcao correta
             if (modelPag04.verificarEscolhaSilaba(event)) {

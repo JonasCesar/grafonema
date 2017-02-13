@@ -2,6 +2,7 @@ package controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import model.ModelPag05;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -65,9 +67,9 @@ public class Pag05Controller implements Initializable {
     @FXML
     private Button voltar;
     @FXML
-    private Button menuInicial;
-    @FXML
     private Label palavrasEstudadas;
+    @FXML
+    private ImageView imagemAudio;
     
     
     public Pag05Controller() {
@@ -80,10 +82,11 @@ public class Pag05Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco);
+        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco,imagemAudio);
     }    
     /**
      * Define a unidade atual
+     * @param unidadeAtual
      * @param unidade valor da unidade atual
      * @throws IOException 
      */
@@ -92,11 +95,7 @@ public class Pag05Controller implements Initializable {
         modelPag05.setUnidadeAtual(unidadeAtual);
         switch (unidadeAtual) {
             case "u01":
-                p1.setText("VA");
-                p2.setText("VE");
-                p3.setText("VI");
-                p4.setText("VO");
-                p5.setText("VU");
+                
                 break;
             default:
                 break;
@@ -124,7 +123,7 @@ public class Pag05Controller implements Initializable {
     }
 
     @FXML
-    private void mouseLiberado(MouseEvent event) {
+    private void mouseLiberado(MouseEvent event) throws MalformedURLException {
         if ((verificarColisao(event))) {
             //se for a opcao correta
             if (modelPag05.verificarEscolhaSilaba(event)) {
@@ -221,7 +220,6 @@ public class Pag05Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException 
      */
-    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag05.abrirManual(event, pagina);
     }

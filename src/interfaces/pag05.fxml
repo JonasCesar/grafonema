@@ -24,7 +24,7 @@
         <Button fx:id="voltar" layoutX="203.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
       <Button layoutX="781.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
       <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
-      <FlowPane layoutX="273.0" layoutY="197.0" prefHeight="179.0" prefWidth="516.0">
+      <FlowPane layoutX="152.0" layoutY="297.0" prefHeight="185.0" prefWidth="462.0">
          <children>
             <Label fx:id="p1" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P1">
                <font>
@@ -95,5 +95,6 @@
               </Label>
          </children>
       </FlowPane>
+      <ImageView fx:id="imagemAudio" fitHeight="200.0" fitWidth="200.0" layoutX="650.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>
