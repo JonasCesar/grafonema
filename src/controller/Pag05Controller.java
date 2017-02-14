@@ -67,6 +67,8 @@ public class Pag05Controller implements Initializable {
     private ImageView imagemAudio;
     @FXML
     private AnchorPane janelaPrograma;
+    @FXML
+    private ImageView repetir;
     
     
     public Pag05Controller() {
@@ -215,5 +217,23 @@ public class Pag05Controller implements Initializable {
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag05.abrirABC(event, pagina);
         modelPag05.pararAudio();
+    }
+    
+    @FXML
+    private void dessombrearImagem(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        repetir.setEffect(null);
+    }
+
+    @FXML
+    private void sombrearImagem(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        repetir.setEffect(sombras);
+    }
+
+    @FXML
+    private void replayAudio(MouseEvent event) {
+        modelPag05.pararAudio();
+        modelPag05.tocarAudio();
     }
 }

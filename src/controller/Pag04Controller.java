@@ -1,11 +1,14 @@
 package controller;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import model.ModelPag04;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -70,10 +74,12 @@ public class Pag04Controller implements Initializable {
     private ImageView imagemAudio;
     @FXML
     private AnchorPane janelaPrograma;
-
+    @FXML
+    private ImageView repetir;
+        
     public Pag04Controller() {
         listaPalavras = new ListView<String>();
-        controlerComum = new ControllerClasseComum(listaPalavras);
+        controlerComum = new ControllerClasseComum(listaPalavras);        
     }
 
     /**
@@ -82,6 +88,7 @@ public class Pag04Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco, imagemAudio, janelaPrograma);
+                
     }
     /**
      * Define a unidade atual
@@ -90,13 +97,6 @@ public class Pag04Controller implements Initializable {
     public void setUnidadeAtual(String unidadeAtual) throws IOException {
         atualizarListaPalavras();
         modelPag04.setUnidadeAtual(unidadeAtual);
-        switch (unidadeAtual) {
-            case "u01":
-
-                break;
-            default:
-                break;
-        }
     }
     /**
      * Avança para a proxima pagina
@@ -210,8 +210,21 @@ public class Pag04Controller implements Initializable {
         modelPag04.pararAudio();
     }
 
+
     @FXML
-    private void ouvirNovamente(ActionEvent event) {
+    private void dessombrearImagem(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        repetir.setEffect(null);
+    }
+
+    @FXML
+    private void sombrearImagem(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        repetir.setEffect(sombras);
+    }
+
+    @FXML
+    private void replayAudio(MouseEvent event) {
         modelPag04.pararAudio();
         modelPag04.tocarAudio();
     }

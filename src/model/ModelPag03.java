@@ -54,7 +54,7 @@ public class ModelPag03 {
 
         unidadeAtual = "u00";
         caminhoAudio = "";
-        mCC = new ModelClasseComum(janela);
+        mCC = new ModelClasseComum(janela);        
     }
 /**
      *Define a unidade em que o software se encontra
