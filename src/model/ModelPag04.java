@@ -281,7 +281,10 @@ public class ModelPag04 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
     }
-
+    /**
+     * Trata o evento de quando o mouse é pressionado
+     * @param event disparado quando uma das labels contendo as sílabas é pressionada
+     */
     public void mousePressionado(MouseEvent event) {
         orgSceneX = event.getSceneX();
         orgSceneY = event.getSceneY();
@@ -289,7 +292,11 @@ public class ModelPag04 {
         orgTranslateY = ((Label) (event.getSource())).getTranslateY();
         janelaPrograma.setStyle("-fx-cursor: hand;");
     }
-
+    /**
+     * Trata o evento de quando a label pressionada é
+     * arrastada pela tela
+     * @param event disparado quando mouse é arrastado pela tela
+     */
     public void mouseArrastado(MouseEvent event) {
         double offsetX = event.getSceneX() - orgSceneX;
         double offsetY = event.getSceneY() - orgSceneY;
@@ -299,7 +306,11 @@ public class ModelPag04 {
         ((Label) (event.getSource())).setTranslateY(newTranslateY);
         janelaPrograma.setStyle("-fx-cursor: move;");
     }
-
+    /**
+     * Trata o evento de quando o mouse, que estava pressionado, é solto
+     * @param event mouse é liberado (label é solta)
+     * @throws MalformedURLException 
+     */
     public void mouseLiberado(MouseEvent event) throws MalformedURLException {
         if ((verificarColisao(event))) {
             //se for a opcao correta
@@ -321,7 +332,7 @@ public class ModelPag04 {
     }
     
     /**
-     * Veriifica se a label solta é a label correta que deveria ter sido
+     * Verifica se a label solta é a label correta que deveria ter sido
      * arrastada
      *
      * @param evento o botão do mouse é solto

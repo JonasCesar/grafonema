@@ -93,13 +93,6 @@ public class Pag05Controller implements Initializable {
     public void setUnidadeAtual(String unidadeAtual) throws IOException {
         atualizarListaPalavras();
         modelPag05.setUnidadeAtual(unidadeAtual);
-        switch (unidadeAtual) {
-            case "u01":
-                
-                break;
-            default:
-                break;
-        }
     }
     /**
      * Avança para a proxima pagina
@@ -218,19 +211,28 @@ public class Pag05Controller implements Initializable {
         modelPag05.abrirABC(event, pagina);
         modelPag05.pararAudio();
     }
-    
+    /**
+     * Retira a sombra do icone de "replay"
+     * @param event mouse passado por cima do icone
+     */
     @FXML
     private void dessombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(null);
     }
-
+    /**
+     * Adiciona uma sobra ao icone de "Replay"
+     * @param event 
+     */
     @FXML
     private void sombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(sombras);
     }
-
+    /**
+     * Executa o áudio da classe novamente
+     * @param event 
+     */
     @FXML
     private void replayAudio(MouseEvent event) {
         modelPag05.pararAudio();

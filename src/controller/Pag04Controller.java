@@ -1,14 +1,14 @@
+/**
+ * Controller da página 4
+ */
 package controller;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import model.ModelPag04;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -120,24 +119,38 @@ public class Pag04Controller implements Initializable {
         modelPag04.pararAudio();
         modelPag04.paginaAnterior(event);
     }
-
+    /**
+     * Chama o método do model que trata o evento de quando o mouse é pressionado
+     * @param event uma das labels contendo as sílabas é pressionada
+     */
     @FXML
     private void mousePressionado(MouseEvent event) {
         modelPag04.mousePressionado(event);
     }
-
+    /**
+     * Chama o método do model que trata o evento de quando a label pressionada é
+     * arrastada pela tela
+     * @param event mouse é arrastado pela tela
+     */
     @FXML
     private void mouseArrastado(MouseEvent event) {
         modelPag04.mouseArrastado(event);
         
     }
-
+    /**
+     * Chama o método do model que trata o evento de quando o mouse, que estava pressionado,
+     * é solto
+     * @param event mouse é liberado (label é solta)
+     * @throws MalformedURLException 
+     */
     @FXML
     private void mouseLiberado(MouseEvent event) throws MalformedURLException {
         modelPag04.mouseLiberado(event);
         
     }
-
+    /**
+     * Executa o audio da pagina
+     */
     public void tocarAudio() {
         modelPag04.tocarAudio();
     }
@@ -210,19 +223,28 @@ public class Pag04Controller implements Initializable {
         modelPag04.pararAudio();
     }
 
-
+    /**
+     * Retira a sombra do icone de "replay"
+     * @param event mouse passado por cima do icone
+     */
     @FXML
     private void dessombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(null);
     }
-
+    /**
+     * Adiciona uma sobra ao icone de "Replay"
+     * @param event 
+     */
     @FXML
     private void sombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(sombras);
     }
-
+    /**
+     * Executa o áudio da classe novamente
+     * @param event 
+     */
     @FXML
     private void replayAudio(MouseEvent event) {
         modelPag04.pararAudio();

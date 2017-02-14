@@ -107,7 +107,11 @@ public class ModelPag03 {
         pg04Cont.tocarAudio();
 
     }
-
+    /**
+     * Verifica se a imagem clicada contem o fonema 
+     * @param event disparado quando uma das 6 imagens é clicada
+     * @throws MalformedURLException 
+     */
     public void verificarImagem(MouseEvent event) throws MalformedURLException {
         String imgClicada = ((ImageView) event.getSource()).getId();
         String nomeImagem = imgClicada.substring(3, 4);
@@ -127,7 +131,9 @@ public class ModelPag03 {
                 break;
         }
     }
-
+    /**
+     * Executa o audio inicial da página
+     */
     public void tocarAudioInicial() {
         switch (getUnidadeAtual()) {
             case "u01":
@@ -139,7 +145,12 @@ public class ModelPag03 {
 
         mCC.play(caminhoAudio);
     }
-
+    /**
+     * Define as imagens da página
+     * @param unidadeAtual unidade atual em execução
+     * @throws MalformedURLException 
+     */
+    
     public void definirImagens(String unidadeAtual) throws MalformedURLException {
         String caminho = "";
         /**
@@ -158,6 +169,9 @@ public class ModelPag03 {
             default:
                 break;
         }
+        /**
+         * Seta as imagens nos imageViews 
+         */
         img1.setImage(new Image(f1.toURI().toURL().toString()));
         img2.setImage(new Image(f2.toURI().toURL().toString()));
         img3.setImage(new Image(f3.toURI().toURL().toString()));
@@ -189,7 +203,10 @@ public class ModelPag03 {
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-
+    /**
+     * Executa o áudio referente a cada imagem
+     * @param event mouse é passado por cima de uma das imagens
+     */
     public void executarAudioImagem(MouseEvent event) {
         String idImagem = ((ImageView) event.getSource()).getId();
         String nomeImagem = idImagem.substring(3, 4);

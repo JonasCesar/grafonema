@@ -1,3 +1,6 @@
+/**
+ * Model do controller "ControllerClasseComum"
+ */
 package model;
 
 import controller.ABCController;
