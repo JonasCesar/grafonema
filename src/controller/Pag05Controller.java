@@ -17,6 +17,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -42,13 +43,7 @@ public class Pag05Controller implements Initializable {
     @FXML
     private Label f1;
     @FXML
-    private Label f2;
-    private double orgSceneX;
-    private double orgSceneY;
-    private double orgTranslateX;
-    private double newTranslateX;
-    private double orgTranslateY;
-    private double newTranslateY;
+    private Label f2;    
     
     private final int pagina = 5;
     
@@ -70,6 +65,8 @@ public class Pag05Controller implements Initializable {
     private Label palavrasEstudadas;
     @FXML
     private ImageView imagemAudio;
+    @FXML
+    private AnchorPane janelaPrograma;
     
     
     public Pag05Controller() {
@@ -79,15 +76,16 @@ public class Pag05Controller implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco,imagemAudio);
+        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco,imagemAudio, janelaPrograma);
     }    
     /**
      * Define a unidade atual
      * @param unidadeAtual
-     * @param unidade valor da unidade atual
      * @throws IOException 
      */
     public void setUnidadeAtual(String unidadeAtual) throws IOException {
@@ -121,51 +119,35 @@ public class Pag05Controller implements Initializable {
         modelPag05.pararAudio();
         modelPag05.paginaAnterior(event);
     }
-
+    /**
+     * Chama o método do model que trata o evento de quando o mouse é liberado
+     * @param event mouse liberado
+     * @throws MalformedURLException 
+     */
     @FXML
     private void mouseLiberado(MouseEvent event) throws MalformedURLException {
-        if ((verificarColisao(event))) {
-            //se for a opcao correta
-            if (modelPag05.verificarEscolhaSilaba(event)) {
-                modelPag05.alterarLabelEspaco(event);
-                modelPag05.executarPalavra();
-            } else {
-                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
-                //modelPag05.tocarAudioAcerto(false);
-            }
-
-        } else {
-            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
-        }
+        modelPag05.mouseLiberado(event);
+        
     }
-
+    /**
+     * Trata o evento de quando o mouse é arrastado
+     * @param event mouse arrastado
+     */
     @FXML
     private void mouseArrastado(MouseEvent event) {
-        double offsetX = event.getSceneX() - orgSceneX;
-        double offsetY = event.getSceneY() - orgSceneY;
-        newTranslateX = orgTranslateX + offsetX;
-        newTranslateY = orgTranslateY + offsetY;
-
-        ((Label) (event.getSource())).setTranslateX(newTranslateX);
-        ((Label) (event.getSource())).setTranslateY(newTranslateY);
-        verificarColisao(event);
+        modelPag05.mouseArrastado(event);        
     }
-
+    /**
+     * Trata o evento de quando o mouse é pressionado
+     * @param event mouse pressionado
+     */
     @FXML
     private void mousePressionado(MouseEvent event) {
-        orgSceneX = event.getSceneX();
-        orgSceneY = event.getSceneY();
-        orgTranslateX = ((Label) (event.getSource())).getTranslateX();
-        orgTranslateY = ((Label) (event.getSource())).getTranslateY();
+        modelPag05.mousePressionado(event);        
     }
-
-    private boolean verificarColisao(MouseEvent evento) {
-        boolean colidiu = (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent()));
-        return colidiu;
-    }
-
+    /**
+     * toca o audio da pag 05
+     */
     public void tocarAudio() {
         modelPag05.tocarAudio();
     }

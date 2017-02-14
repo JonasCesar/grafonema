@@ -123,55 +123,19 @@ public class Pag04Controller implements Initializable {
 
     @FXML
     private void mousePressionado(MouseEvent event) {
-        orgSceneX = event.getSceneX();
-        orgSceneY = event.getSceneY();
-        orgTranslateX = ((Label) (event.getSource())).getTranslateX();
-        orgTranslateY = ((Label) (event.getSource())).getTranslateY();
-        janelaPrograma.setStyle("-fx-cursor: hand;");
-
+        modelPag04.mousePressionado(event);
     }
 
     @FXML
     private void mouseArrastado(MouseEvent event) {
-        double offsetX = event.getSceneX() - orgSceneX;
-        double offsetY = event.getSceneY() - orgSceneY;
-        newTranslateX = orgTranslateX + offsetX;
-        newTranslateY = orgTranslateY + offsetY;
-        ((Label) (event.getSource())).setTranslateX(newTranslateX);
-        ((Label) (event.getSource())).setTranslateY(newTranslateY);
-        janelaPrograma.setStyle("-fx-cursor: move;");
+        modelPag04.mouseArrastado(event);
+        
     }
 
     @FXML
     private void mouseLiberado(MouseEvent event) throws MalformedURLException {
-        if ((verificarColisao(event))) {
-            //se for a opcao correta
-            if (modelPag04.verificarEscolhaSilaba(event)) {
-                modelPag04.alterarLabelEspaco(event);
-                modelPag04.executarPalavra();
-
-            } else {
-                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
-                //modelPag04.tocarAudioAcerto(false);
-            }
-
-        } else {
-            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
-        }
-        janelaPrograma.setStyle("-fx-cursor: none");
-    }
-
-    /**
-     * Veriifica se a label solta é a label correta que deveria ter sido
-     * arrastada
-     *
-     * @param evento o botão do mouse é solto
-     * @return true ou false
-     */
-    private boolean verificarColisao(MouseEvent evento) {
-        return ((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent());
+        modelPag04.mouseLiberado(event);
+        
     }
 
     public void tocarAudio() {

@@ -64,6 +64,12 @@ public class ModelPag04 {
     private File imagem;
     
     private AnchorPane janelaPrograma;
+    private double orgSceneX;
+    private double orgSceneY;
+    private double orgTranslateX;
+    private double orgTranslateY;
+    private double newTranslateX;
+    private double newTranslateY;
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
      *
@@ -75,6 +81,8 @@ public class ModelPag04 {
      * @param f1
      * @param f2
      * @param espaco
+     * @param imagemAudio
+     * @param janelaPrograma
      */
     public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
             Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma) {
@@ -88,6 +96,7 @@ public class ModelPag04 {
         this.espaco = espaco;
         mCC = new ModelClasseComum(janela);
         this.imagemAudio = imagemAudio;
+        this.janelaPrograma = janelaPrograma;
     }
 
     /**
@@ -271,5 +280,54 @@ public class ModelPag04 {
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
+    }
+
+    public void mousePressionado(MouseEvent event) {
+        orgSceneX = event.getSceneX();
+        orgSceneY = event.getSceneY();
+        orgTranslateX = ((Label) (event.getSource())).getTranslateX();
+        orgTranslateY = ((Label) (event.getSource())).getTranslateY();
+        janelaPrograma.setStyle("-fx-cursor: hand;");
+    }
+
+    public void mouseArrastado(MouseEvent event) {
+        double offsetX = event.getSceneX() - orgSceneX;
+        double offsetY = event.getSceneY() - orgSceneY;
+        newTranslateX = orgTranslateX + offsetX;
+        newTranslateY = orgTranslateY + offsetY;
+        ((Label) (event.getSource())).setTranslateX(newTranslateX);
+        ((Label) (event.getSource())).setTranslateY(newTranslateY);
+        janelaPrograma.setStyle("-fx-cursor: move;");
+    }
+
+    public void mouseLiberado(MouseEvent event) throws MalformedURLException {
+        if ((verificarColisao(event))) {
+            //se for a opcao correta
+            if (verificarEscolhaSilaba(event)) {
+                alterarLabelEspaco(event);
+                executarPalavra();
+
+            } else {
+                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+                //modelPag04.tocarAudioAcerto(false);
+            }
+
+        } else {
+            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+        }
+        janelaPrograma.setStyle("-fx-cursor: none");
+    }
+    
+    /**
+     * Veriifica se a label solta é a label correta que deveria ter sido
+     * arrastada
+     *
+     * @param evento o botão do mouse é solto
+     * @return true ou false
+     */
+    private boolean verificarColisao(MouseEvent evento) {
+        return ((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent());
     }
 }

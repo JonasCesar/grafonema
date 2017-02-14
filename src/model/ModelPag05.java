@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -55,6 +56,13 @@ public class ModelPag05 {
     private ModelClasseComum mCC;
     private File imagem;
     private ImageView imagemAudio;
+    private AnchorPane janelaPrograma;
+    private double orgSceneX;
+    private double orgSceneY;
+    private double orgTranslateX;
+    private double orgTranslateY;
+    private double newTranslateX;
+    private double newTranslateY;
 
     /**
      * Construtor da classe Labels utilzadas nas paginas:
@@ -67,8 +75,10 @@ public class ModelPag05 {
      * @param f1
      * @param f2
      * @param espaco
+     * @param imagemAudio
+     * @param janelaPrograma
      */
-    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, ImageView imagemAudio) {
+    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -80,6 +90,7 @@ public class ModelPag05 {
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
         this.imagemAudio = imagemAudio;
+        this.janelaPrograma = janelaPrograma;
     }
 
     /**
@@ -232,7 +243,12 @@ public class ModelPag05 {
         }
         mCC.play(caminhoAudio);
     }
-
+    /**
+     * Abre o ABC do software
+     * @param event botão "ABC" clicado
+     * @param pagina pagina de onde o botão "ABC" foi clicado
+     * @throws IOException 
+     */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
@@ -249,5 +265,64 @@ public class ModelPag05 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
+    /**
+     * Trata o evento em que o mouse é arrastado depois de ser pressionado
+     * @param event mouse arrastado pela janela
+     */
     
+    public void mouseArrastado(MouseEvent event) {
+        double offsetX = event.getSceneX() - orgSceneX;
+        double offsetY = event.getSceneY() - orgSceneY;
+        newTranslateX = orgTranslateX + offsetX;
+        newTranslateY = orgTranslateY + offsetY;
+
+        ((Label) (event.getSource())).setTranslateX(newTranslateX);
+        ((Label) (event.getSource())).setTranslateY(newTranslateY);
+        verificarColisao(event);
+        janelaPrograma.setStyle("-fx-cursor: move;");
+    }
+    /**
+     * Verifica se a label solta dentro do espaço em branco
+     * @param evento label é solta
+     * @return true se sim, do contrário false
+     */
+    
+    public boolean verificarColisao(MouseEvent evento) {
+        boolean colidiu = (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent()));
+        return colidiu;
+    }
+    /**
+     * Trata o evento de quando o mouse é liberado
+     * @param event label é solta
+     * @throws MalformedURLException 
+     */
+    public void mouseLiberado(MouseEvent event) throws MalformedURLException {
+        if ((verificarColisao(event))) {
+            //se for a opcao correta
+            if (verificarEscolhaSilaba(event)) {
+                alterarLabelEspaco(event);
+                executarPalavra();
+            } else {
+                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+                //modelPag05.tocarAudioAcerto(false);
+            }
+
+        } else {
+            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+        }
+        janelaPrograma.setStyle("-fx-cursor: none;");
+    }
+    /**
+     * Trata o evento de quando uma das labels é selecionada
+     * @param event label pressionada
+     */
+    public void mousePressionado(MouseEvent event) {
+        orgSceneX = event.getSceneX();
+        orgSceneY = event.getSceneY();
+        orgTranslateX = ((Label) (event.getSource())).getTranslateX();
+        orgTranslateY = ((Label) (event.getSource())).getTranslateY();
+        janelaPrograma.setStyle("-fx-cursor: hand;");
+    }
 }
