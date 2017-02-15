@@ -48,8 +48,6 @@ public class Pag06Controller implements Initializable {
     private Button confirmar;
     @FXML
     private Label palavrasEstudadas;
-    @FXML
-    private Button ouvirNovamente;
     
     private final int pagina = 6;
     public Pag06Controller() {
@@ -180,7 +178,6 @@ public class Pag06Controller implements Initializable {
      * Executa novamente a frase que deve ser completada pelo usuário
      * @param event quando o botão for clicado
      */
-    @FXML
     private void ouvirNovamente(ActionEvent event) {
         modelPag06.executarAudioFrase();
     }
@@ -189,7 +186,6 @@ public class Pag06Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException 
      */
-    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag06.abrirManual(event, pagina);
     }
