@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -47,5 +48,10 @@
         <ImageView fx:id="img4" fitHeight="150.0" fitWidth="200.0" layoutX="221.0" layoutY="326.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true" />
         <Button layoutX="781.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
         <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
+      <Text fx:id="instrucao" layoutX="92.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="590.697265625">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

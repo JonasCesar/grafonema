@@ -6,12 +6,22 @@ package model;
 import controller.Pag05Controller;
 import controller.Pag07Controller;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -25,12 +35,18 @@ public class ModelPag06 {
 
     private Label p1, p2;
     private ModelClasseComum mCC;
+    
+    @FXML
+    private Text instrucao;
+    private EventHandler<ActionEvent> primeiroAudio;
+    private EventHandler<ActionEvent> segundoAudio;
 
-    public ModelPag06(Label p1, Label p2) {
+    public ModelPag06(Label p1, Label p2, Text instrucao1) {
         this.p1 = p1;
         this.p2 = p2;
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
+        this.instrucao = instrucao1;
     }
 
     /**
@@ -89,20 +105,17 @@ public class ModelPag06 {
     }
 
     /**
-     * Verifica se a resposta
+     * Verifica se a resposta digita pelo usuário é a resposta correta
      *
      * @param resposta string digitada pela pessoa
      * @return
      */
-    public boolean verificarResposta(String resposta) {
+    public boolean verificarResposta(String resposta) throws InterruptedException {
         boolean respostaCorreta = false;
         switch (getUnidadeAtual()) {
             case "u01":
                 if (resposta.toUpperCase().equals("VOVÔ")) {
-                    respostaCorreta = true;
-                    //tocarAudioAcerto(respostaCorreta);
-                } else {
-                    //tocarAudioAcerto(false);
+                    respostaCorreta = true;                    
                 }
                 break;
             default:
@@ -206,6 +219,58 @@ public class ModelPag06 {
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
+    }
+    
+    //faz exibir a instrução da atividade atual na tela
+    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
+
+        switch (unidadeAtual) {
+
+            case "u01":
+                instrucao.setText("Digite a palavra que você aprendeu para formar a frase:\n \"o vovô é meu amigo\"");
+            break;
+        }
+
+    }
+    
+    private void tocarAudioParabens() throws InterruptedException {
+        Random indiceParabens = new Random();
+        int numeroAudio = indiceParabens.nextInt(3);
+        caminhoAudio = "src/audios/acerto/"+numeroAudio+".mp3";
+        mCC.play(caminhoAudio);
+        
+    }
+    
+    public void audioAcerto(){        
+        //evento que represanta a ação do acerto
+        primeiroAudio = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    tocarAudioParabens();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
+        //evento que representa o audio a ser executado depois o
+        segundoAudio = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               executarAudioFrase();
+            }
+        };
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), primeiroAudio),
+                new KeyFrame(Duration.seconds(3), segundoAudio)).play();
+    }
+
+    public void audioErro() {
+        Random indiceErro = new Random();
+        int numeroAudio = indiceErro.nextInt(3);
+        caminhoAudio = "src/audios/erro/"+numeroAudio+".mp3";
+        mCC.play(caminhoAudio);
     }
 
 }

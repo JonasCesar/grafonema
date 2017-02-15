@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -39,39 +40,50 @@ public class ModelPag03 {
     private ImageView img5;
     @FXML
     private ImageView img4;
-
+    
+    @FXML
+    private Text instrucao;
+    
     private File f1, f2, f3, f4, f5, f6;
     private Stage janela;
     private ModelClasseComum mCC;
 
-    public ModelPag03(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6) {
+    public ModelPag03(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1) {
         this.img1 = i1;
         this.img2 = i2;
         this.img3 = i3;
         this.img4 = i4;
         this.img5 = i5;
         this.img6 = i6;
-
+        
+        this.instrucao = instrucao1;
+        
         unidadeAtual = "u00";
         caminhoAudio = "";
         mCC = new ModelClasseComum(janela);        
     }
-/**
-     *Define a unidade em que o software se encontra
+
+    /**
+     * Define a unidade em que o software se encontra
+     *
      * @param unidadeAtual unidade atual da execução
      */
     public void setUnidadeAtual(String unidade) {
         this.unidadeAtual = unidade;
     }
+
     /**
      * Pega a unidade atual em execução
+     *
      * @return string com o valor da unidade atual
      */
     public String getUnidadeAtual() {
         return unidadeAtual;
     }
-/**
+
+    /**
      * Carrega a página anterior
+     *
      * @param event disparado pelo método voltar do controller
      * @throws IOException
      */
@@ -88,11 +100,11 @@ public class ModelPag03 {
 
     }
 
-    
     /**
      * Carrega a próxima página na tela
+     *
      * @param event disparado pelo método avancar do controller
-     * @throws IOException 
+     * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -181,23 +193,26 @@ public class ModelPag03 {
 
     }
 
-    
     /**
      * Para o audio em execução
      */
     public void pararAudio() {
         mCC.pararAudio();
     }
+
     /**
      * Carrega o menu inicial
+     *
      * @param event disparado pelo método "menuInicial" do controller
-     * @throws IOException 
+     * @throws IOException
      */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
+
     /**
      * Executa o audio da palavra clicada
+     *
      * @param palavraSelecionada string que representa a palavra selecionada
      */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
@@ -208,6 +223,7 @@ public class ModelPag03 {
      * @param event mouse é passado por cima de uma das imagens
      */
     public void executarAudioImagem(MouseEvent event) {
+        mCC.pararAudio();
         String idImagem = ((ImageView) event.getSource()).getId();
         String nomeImagem = idImagem.substring(3, 4);
         switch (getUnidadeAtual()) {
@@ -218,26 +234,41 @@ public class ModelPag03 {
         mCC.play(caminhoAudio);
         System.out.println("Tocar " + caminhoAudio);
     }
-/**
+
+    /**
      * Carrega a interface do manual do software
+     *
      * @param event disparado pelo método
      * @param pagina pagina de onde o manual foi chamado
-     * @throws IOException 
+     * @throws IOException
      */
     public void abrirManual(ActionEvent event, int pagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
-/**
+
+    /**
      * Carrega a interface do ABC
+     *
      * @param event disparado pelo método ABCJanela do controller
-     * @throws IOException 
+     * @throws IOException
      */
-    
 
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
+    }
+    
+    //faz exibir a instrução da atividade atual na tela
+    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
+
+        switch (unidadeAtual) {
+
+            case "u01":
+                instrucao.setText("Clique nas imagens que tem o som \"vô\"");
+            break;
+        }
+
     }
 }

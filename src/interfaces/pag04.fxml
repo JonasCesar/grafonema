@@ -96,7 +96,7 @@
               </Label>
          </children>
       </FlowPane>
-      
+      <Text fx:id="instrucao" layoutX="283.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="345.10107421875" />
       <ImageView fx:id="imagemAudio" fitHeight="200.0" fitWidth="200.0" layoutX="650.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="repetir" fitHeight="100.0" fitWidth="91.0" layoutX="373.0" layoutY="153.0" onMouseClicked="#replayAudio" onMouseEntered="#sombrearImagem" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true">
          <image>

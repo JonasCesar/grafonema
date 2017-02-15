@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -36,7 +37,7 @@
                         <Insets right="5.0" />
                     </FlowPane.margin>
                 </Label>
-                <TextField fx:id="resposta" alignment="CENTER">
+                <TextField fx:id="resposta" alignment="CENTER" prefHeight="38.0" prefWidth="156.0">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -59,5 +60,15 @@
                 </Button>
             </children>
         </FlowPane>
+      <Text fx:id="instrucao" layoutX="255.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="408.7294921875">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="repetir" fitHeight="100.0" fitWidth="91.0" layoutX="373.0" layoutY="153.0" onMouseClicked="#replayAudio" onMouseEntered="#sombrearImagem" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/replayicon.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

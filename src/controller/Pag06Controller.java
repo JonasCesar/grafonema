@@ -2,6 +2,7 @@ package controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import model.ModelPag06;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +16,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -50,6 +53,12 @@ public class Pag06Controller implements Initializable {
     private Label palavrasEstudadas;
     
     private final int pagina = 6;
+    
+    @FXML
+    private Text instrucao;
+    @FXML
+    private ImageView repetir;
+    
     public Pag06Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -62,7 +71,7 @@ public class Pag06Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag06 = new ModelPag06(p1,p2);
+        modelPag06 = new ModelPag06(p1,p2, instrucao);
     }    
     /**
      * Define a unidade atual
@@ -112,15 +121,17 @@ public class Pag06Controller implements Initializable {
      * @param event 
      */
     @FXML
-    private void verificarTexto(ActionEvent event) {
+    private void verificarTexto(ActionEvent event) throws InterruptedException {
         modelPag06.pararAudio();
         if(modelPag06.verificarResposta(resposta.getText())){
             resposta.setText(resposta.getText().toUpperCase());
-            resposta.setStyle("-fx-background-color: yellow; -fx-font-weight: bold; fx-color: black;");
+            resposta.setStyle("-fx-background-color: grey; -fx-font-weight: bold; fx-color: black;");
             resposta.setDisable(true);
-            modelPag06.executarAudioFrase();
+            modelPag06.audioAcerto();
         }else{
+            modelPag06.audioErro();
             resposta.setText("");
+            
         }
     }
 
@@ -137,8 +148,9 @@ public class Pag06Controller implements Initializable {
     /**
      * Executa automaticamente o audio da pagina 
      */
-    public void tocarAudio() {
+    public void tocarAudio() throws MalformedURLException {
         modelPag06.tocarAudio();
+        setInstrucao(modelPag06.getUnidadeAtual());
     }
     /**
      * Trata o evento de quando o mouse é clicado na lista de palavras
@@ -199,5 +211,37 @@ public class Pag06Controller implements Initializable {
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag06.abrirABC(event, pagina);
         modelPag06.pararAudio();
+    }
+    
+    //redireciona para o método definir instrução do model que irá imprimir a instrução na tela
+    public void setInstrucao(String unidadeAtual) throws MalformedURLException {
+        modelPag06.definirInstrucao(unidadeAtual);
+    }
+    /**
+     * Retira a sombra do icone de "replay"
+     * @param event mouse passado por cima do icone
+     */
+    @FXML
+    private void dessombrearImagem(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        repetir.setEffect(null);
+    }
+    /**
+     * Adiciona uma sobra ao icone de "Replay"
+     * @param event 
+     */
+    @FXML
+    private void sombrearImagem(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        repetir.setEffect(sombras);
+    }
+    /**
+     * Executa o áudio da classe novamente
+     * @param event 
+     */
+    @FXML
+    private void replayAudio(MouseEvent event) {
+        modelPag06.pararAudio();
+        modelPag06.tocarAudio();
     }
 }

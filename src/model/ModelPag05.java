@@ -24,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -71,6 +72,8 @@ public class ModelPag05 {
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
 
+    @FXML
+    private Text instrucao;
     /**
      * Construtor da classe Labels utilzadas nas paginas:
      *
@@ -85,7 +88,7 @@ public class ModelPag05 {
      * @param imagemAudio
      * @param janelaPrograma
      */
-    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma) {
+    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -98,6 +101,8 @@ public class ModelPag05 {
         mCC = new ModelClasseComum(janela);
         this.imagemAudio = imagemAudio;
         this.janelaPrograma = janelaPrograma;
+        this.instrucao = instrucao1;
+                
     }
 
     /**
@@ -122,7 +127,7 @@ public class ModelPag05 {
                 break;
         }
     }
-
+    
     /**
      * Carrega a próxima página na tela
      * @param event disparado pelo método avancar do controller
@@ -160,7 +165,7 @@ public class ModelPag05 {
      * Pega a unidade atual em execução
      * @return string com o valor da unidade atual
      */
-    private String getUnidadeAtual() {
+    public String getUnidadeAtual() {
         return this.unidadeAtual;
     }
 
@@ -336,7 +341,7 @@ public class ModelPag05 {
     
     private void tocarAudioParabens() throws InterruptedException {
         Random indiceParabens = new Random();
-        int numeroAudio = indiceParabens.nextInt(2);
+        int numeroAudio = indiceParabens.nextInt(3);
         caminhoAudio = "src/audios/acerto/"+numeroAudio+".mp3";
         mCC.play(caminhoAudio);
         
@@ -365,13 +370,22 @@ public class ModelPag05 {
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), primeiroAudio),
-                new KeyFrame(Duration.seconds(2), segundoAudio)).play();
+                new KeyFrame(Duration.seconds(3), segundoAudio)).play();
     }
 
     private void audioErro() {
         Random indiceErro = new Random();
-        int numeroAudio = indiceErro.nextInt(2);
+        int numeroAudio = indiceErro.nextInt(3);
         caminhoAudio = "src/audios/erro/"+numeroAudio+".mp3";
         mCC.play(caminhoAudio);
+    }
+    
+    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
+        switch (unidadeAtual) {
+            case "u01":
+                instrucao.setText("Complete com a parte que está faltando:\"POLVO\"");
+            break;
+        }
+
     }
 }
