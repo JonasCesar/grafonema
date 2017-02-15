@@ -96,5 +96,6 @@
               </Label>
          </children>
       </FlowPane>
+      <Text fx:id="instrucao" layoutX="283.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="345.10107421875" />
     </children>
 </AnchorPane>

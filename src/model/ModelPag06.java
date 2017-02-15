@@ -8,11 +8,14 @@ package model;
 import controller.Pag05Controller;
 import controller.Pag07Controller;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -27,12 +30,16 @@ public class ModelPag06 {
 
     private Label p1, p2;
     private ModelClasseComum mCC;
+    
+    @FXML
+    private Text instrucao;
 
-    public ModelPag06(Label p1, Label p2) {
+    public ModelPag06(Label p1, Label p2, Text instrucao1) {
         this.p1 = p1;
         this.p2 = p2;
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
+        this.instrucao = instrucao1;
     }
 
     /**
@@ -198,6 +205,18 @@ public class ModelPag06 {
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
+    }
+    
+    //faz exibir a instrução da atividade atual na tela
+    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
+
+        switch (unidadeAtual) {
+
+            case "u01":
+                instrucao.setText("Digite a palavra que você aprendeu para formar a frase:\n \"o vovô é meu amigo\"");
+            break;
+        }
+
     }
 
 }

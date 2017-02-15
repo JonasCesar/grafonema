@@ -9,6 +9,7 @@ import controller.Pag04Controller;
 import controller.Pag06Controller;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -51,6 +53,8 @@ public class ModelPag05 {
     //classe com métodos com a mesma estrutura das outras classes
     private ModelClasseComum mCC;
 
+    @FXML
+    private Text instrucao;
     /**
      * Construtor da classe Labels utilzadas nas paginas:
      *
@@ -63,7 +67,7 @@ public class ModelPag05 {
      * @param f2
      * @param espaco
      */
-    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
+    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, Text instrucao1) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -74,6 +78,7 @@ public class ModelPag05 {
         this.espaco = espaco;
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
+        this.instrucao = instrucao1;
     }
 
     /**
@@ -96,7 +101,7 @@ public class ModelPag05 {
                 break;
         }
     }
-
+    
     /**
      * Carrega a próxima página na tela
      * @param event disparado pelo método avancar do controller
@@ -134,7 +139,7 @@ public class ModelPag05 {
      * Pega a unidade atual em execução
      * @return string com o valor da unidade atual
      */
-    private String getUnidadeAtual() {
+    public String getUnidadeAtual() {
         return this.unidadeAtual;
     }
 
@@ -238,6 +243,18 @@ public class ModelPag05 {
          mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
+    }
+    
+    //faz exibir a instrução da atividade atual na tela
+    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
+
+        switch (unidadeAtual) {
+
+            case "u01":
+                instrucao.setText("Complete com a parte que está faltando: \"POLVO\"");
+            break;
+        }
+
     }
     
 }

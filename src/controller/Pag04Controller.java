@@ -2,6 +2,7 @@ package controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import model.ModelPag04;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -60,11 +62,12 @@ public class Pag04Controller implements Initializable {
     @FXML
     private Button voltar;
     @FXML
-    private Button menuInicial;
-    @FXML
     private Label palavrasEstudadas;
 
     private final int pagina = 4;
+    
+    @FXML
+    private Text instrucao;
 
     public Pag04Controller() {
         listaPalavras = new ListView<String>();
@@ -76,7 +79,7 @@ public class Pag04Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco);
+        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco, instrucao);
     }
     /**
      * Define a unidade atual
@@ -166,8 +169,9 @@ public class Pag04Controller implements Initializable {
         return ((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent());
     }
 
-    public void tocarAudio() {
+    public void tocarAudio() throws MalformedURLException {
         modelPag04.tocarAudio();
+        setInstrucao(modelPag04.getUnidadeAtual());
     }
 
     /**
@@ -222,7 +226,6 @@ public class Pag04Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException
      */
-    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag04.abrirManual(event, pagina);
     }
@@ -237,6 +240,11 @@ public class Pag04Controller implements Initializable {
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag04.abrirABC(event, pagina);
         modelPag04.pararAudio();
+    }
+    
+    //redireciona para o método definir instrução do model que irá imprimir a instrução na tela
+    public void setInstrucao(String unidadeAtual) throws MalformedURLException    {
+        modelPag04.definirInstrucao(unidadeAtual);
     }
 
 }

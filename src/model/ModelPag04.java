@@ -8,6 +8,7 @@ import controller.Pag03Controller;
 import controller.Pag05Controller;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -45,6 +47,9 @@ public class ModelPag04 {
     @FXML
     private Label f1;
 
+    @FXML
+    private Text instrucao;
+    
     //String utilizada nos diretórios dos audios
     private String caminhoAudio;
     //arquivo de audio que deve ser criado
@@ -67,7 +72,7 @@ public class ModelPag04 {
      * @param f2
      * @param espaco
      */
-    public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco) {
+    public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, Text instrucao1) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -76,6 +81,7 @@ public class ModelPag04 {
         this.f1 = f1;
         this.f2 = f2;
         this.espaco = espaco;
+        this.instrucao = instrucao1;
         mCC = new ModelClasseComum(janela);
     }
 
@@ -254,5 +260,17 @@ public class ModelPag04 {
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
+    }
+    
+    //faz exibir a instrução da atividade atual na tela
+    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
+
+        switch (unidadeAtual) {
+
+            case "u01":
+                instrucao.setText("Complete com a parte que está faltando: \"ÁRVORE\"");
+            break;
+        }
+
     }
 }
