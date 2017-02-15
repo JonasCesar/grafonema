@@ -17,6 +17,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import model.ModelPag04;
 
 /**
  * FXML Controller class
@@ -57,8 +59,11 @@ public class Pag03Controller implements Initializable {
     private Button voltar;
     @FXML
     private Label palavrasEstudadas;
+    @FXML
+    private Text instrucao;
     
     private final int pagina = 3;
+    
     public Pag03Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -71,10 +76,11 @@ public class Pag03Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag03 = new ModelPag03(img1,img2,img3,img4,img5,img6);
+        modelPag03 = new ModelPag03(img1,img2,img3,img4,img5,img6, instrucao);
     }    
-    public void audioInicial(){
+    public void audioInicial() throws MalformedURLException{
         modelPag03.tocarAudioInicial();
+        setInstrucao(modelPag03.getUnidadeAtual());
     }
     /**
      * Define a unidade atual
@@ -93,7 +99,8 @@ public class Pag03Controller implements Initializable {
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag03.pararAudio();
-        modelPag03.proximaPagina(event);        
+        modelPag03.proximaPagina(event);    
+        
     }
     /**
      * Volta para a pagina anterior
@@ -106,6 +113,11 @@ public class Pag03Controller implements Initializable {
         modelPag03.paginaAnterior(event);
     }
 
+    //redireciona para o método definir instrução do model que irá imprimir a instrução na tela
+    public void setInstrucao(String unidadeAtual) throws MalformedURLException    {
+        modelPag03.definirInstrucao(unidadeAtual);
+    }
+    
     public void setImagens(String unidadeAtual) throws MalformedURLException {
         modelPag03.definirImagens(unidadeAtual);
     }

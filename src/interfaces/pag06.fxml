@@ -59,5 +59,11 @@
                 </Button>
             </children>
         </FlowPane>
+      <Button fx:id="ouvirNovamente" layoutX="356.0" layoutY="178.0" mnemonicParsing="false" onAction="#ouvirNovamente" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Ouvir Novamente" />
+      <Text fx:id="instrucao" layoutX="255.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="408.7294921875">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
