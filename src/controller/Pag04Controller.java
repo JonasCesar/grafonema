@@ -144,9 +144,8 @@ public class Pag04Controller implements Initializable {
      * @throws MalformedURLException 
      */
     @FXML
-    private void mouseLiberado(MouseEvent event) throws MalformedURLException {
-        modelPag04.mouseLiberado(event);
-        
+    private void mouseLiberado(MouseEvent event) throws MalformedURLException, InterruptedException {
+        modelPag04.mouseLiberado(event);        
     }
     /**
      * Executa o audio da pagina

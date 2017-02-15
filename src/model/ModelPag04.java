@@ -9,7 +9,13 @@ import controller.Pag05Controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -70,6 +77,8 @@ public class ModelPag04 {
     private double orgTranslateY;
     private double newTranslateX;
     private double newTranslateY;
+    private EventHandler<ActionEvent> primeiroAudio;
+    private EventHandler<ActionEvent> segundoAudio;
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
      *
@@ -310,17 +319,19 @@ public class ModelPag04 {
      * Trata o evento de quando o mouse, que estava pressionado, é solto
      * @param event mouse é liberado (label é solta)
      * @throws MalformedURLException 
+     * @throws java.lang.InterruptedException 
      */
-    public void mouseLiberado(MouseEvent event) throws MalformedURLException {
+    public void mouseLiberado(MouseEvent event) throws MalformedURLException, InterruptedException {
         if ((verificarColisao(event))) {
             //se for a opcao correta
             if (verificarEscolhaSilaba(event)) {
                 alterarLabelEspaco(event);
-                executarPalavra();
+                audioAcerto();        
 
             } else {
                 ((Label) (event.getSource())).setTranslateX(orgTranslateX);
                 ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+                audioErro();
                 //modelPag04.tocarAudioAcerto(false);
             }
 
@@ -340,5 +351,46 @@ public class ModelPag04 {
      */
     private boolean verificarColisao(MouseEvent evento) {
         return ((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent());
+    }
+
+    private void tocarAudioParabens() throws InterruptedException {
+        Random indiceParabens = new Random();
+        int numeroAudio = indiceParabens.nextInt(2);
+        caminhoAudio = "src/audios/acerto/"+numeroAudio+".mp3";
+        mCC.play(caminhoAudio);
+        
+    }
+    
+    public void audioAcerto(){
+        
+        //evento que represanta a ação do acerto
+        primeiroAudio = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    tocarAudioParabens();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
+        //evento que representa o audio a ser executado depois o
+        segundoAudio = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               executarPalavra();
+            }
+        };
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), primeiroAudio),
+                new KeyFrame(Duration.seconds(2), segundoAudio)).play();
+    }
+
+    private void audioErro() {
+        Random indiceErro = new Random();
+        int numeroAudio = indiceErro.nextInt(2);
+        caminhoAudio = "src/audios/erro/"+numeroAudio+".mp3";
+        mCC.play(caminhoAudio);
     }
 }
