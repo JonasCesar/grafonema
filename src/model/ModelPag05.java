@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Model da página 5
  */
 package model;
 
@@ -10,15 +8,25 @@ import controller.Pag06Controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -52,6 +60,17 @@ public class ModelPag05 {
     private File arquivo;
     //classe com métodos com a mesma estrutura das outras classes
     private ModelClasseComum mCC;
+    private File imagem;
+    private ImageView imagemAudio;
+    private AnchorPane janelaPrograma;
+    private double orgSceneX;
+    private double orgSceneY;
+    private double orgTranslateX;
+    private double orgTranslateY;
+    private double newTranslateX;
+    private double newTranslateY;
+    private EventHandler<ActionEvent> primeiroAudio;
+    private EventHandler<ActionEvent> segundoAudio;
 
     @FXML
     private Text instrucao;
@@ -66,8 +85,10 @@ public class ModelPag05 {
      * @param f1
      * @param f2
      * @param espaco
+     * @param imagemAudio
+     * @param janelaPrograma
      */
-    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, Text instrucao1) {
+    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -78,14 +99,17 @@ public class ModelPag05 {
         this.espaco = espaco;
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
+        this.imagemAudio = imagemAudio;
+        this.janelaPrograma = janelaPrograma;
         this.instrucao = instrucao1;
+                
     }
 
     /**
      * Define a unidade atual e as labels referentes a essa pagina
      * @param unidadeAtual 
      */
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(String unidadeAtual) throws MalformedURLException {
         this.unidadeAtual = unidadeAtual;
         switch (unidadeAtual) {
             case "u01":
@@ -96,6 +120,8 @@ public class ModelPag05 {
                 p5.setText("VU");
                 f1.setText("POL");
                 espaco.setText("");
+                imagem = new File("src/imagens/licao01/polvopb.jpg");
+                imagemAudio.setImage(new Image(imagem.toURI().toURL().toString()));
                 break;
             default:
                 break;
@@ -149,13 +175,15 @@ public class ModelPag05 {
      * @param event mouse liberado
      * @return true ou false
      */
-    public boolean verificarEscolhaSilaba(MouseEvent event) {
+    public boolean verificarEscolhaSilaba(MouseEvent event) throws MalformedURLException {
         String silabaEscolhida = ((Label) event.getSource()).getText();
         boolean opcaoCorreta = false;
         switch (getUnidadeAtual()) {
             case "u01":
                 if (silabaEscolhida.equals("VO")) {
                     opcaoCorreta = true;
+                    imagem = new File("src/imagens/licao01/polvocor.jpg");
+                    imagemAudio.setImage(new Image(imagem.toURI().toURL().toString()));
                 }
                 break;
             default:
@@ -227,7 +255,12 @@ public class ModelPag05 {
         }
         mCC.play(caminhoAudio);
     }
-
+    /**
+     * Abre o ABC do software
+     * @param event botão "ABC" clicado
+     * @param pagina pagina de onde o botão "ABC" foi clicado
+     * @throws IOException 
+     */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
@@ -244,17 +277,117 @@ public class ModelPag05 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
+    /**
+     * Trata o evento em que o mouse é arrastado depois de ser pressionado
+     * @param event mouse arrastado pela janela
+     */
     
-    //faz exibir a instrução da atividade atual na tela
+    public void mouseArrastado(MouseEvent event) {
+        double offsetX = event.getSceneX() - orgSceneX;
+        double offsetY = event.getSceneY() - orgSceneY;
+        newTranslateX = orgTranslateX + offsetX;
+        newTranslateY = orgTranslateY + offsetY;
+
+        ((Label) (event.getSource())).setTranslateX(newTranslateX);
+        ((Label) (event.getSource())).setTranslateY(newTranslateY);
+        verificarColisao(event);
+        janelaPrograma.setStyle("-fx-cursor: move;");
+    }
+    /**
+     * Verifica se a label solta dentro do espaço em branco
+     * @param evento label é solta
+     * @return true se sim, do contrário false
+     */
+    
+    public boolean verificarColisao(MouseEvent evento) {
+        boolean colidiu = (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent()));
+        return colidiu;
+    }
+    /**
+     * Trata o evento de quando o mouse é liberado
+     * @param event label é solta
+     * @throws MalformedURLException 
+     */
+    public void mouseLiberado(MouseEvent event) throws MalformedURLException {
+        if ((verificarColisao(event))) {
+            //se for a opcao correta
+            if (verificarEscolhaSilaba(event)) {
+                alterarLabelEspaco(event);
+                audioAcerto();
+            } else {
+                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+                audioErro();
+            }
+
+        } else {
+            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+            
+        }
+        janelaPrograma.setStyle("-fx-cursor: none;");
+    }
+    /**
+     * Trata o evento de quando uma das labels é selecionada
+     * @param event label pressionada
+     */
+    public void mousePressionado(MouseEvent event) {
+        orgSceneX = event.getSceneX();
+        orgSceneY = event.getSceneY();
+        orgTranslateX = ((Label) (event.getSource())).getTranslateX();
+        orgTranslateY = ((Label) (event.getSource())).getTranslateY();
+        janelaPrograma.setStyle("-fx-cursor: hand;");
+    }
+    
+    private void tocarAudioParabens() throws InterruptedException {
+        Random indiceParabens = new Random();
+        int numeroAudio = indiceParabens.nextInt(2);
+        caminhoAudio = "src/audios/acerto/"+numeroAudio+".mp3";
+        mCC.play(caminhoAudio);
+        
+    }
+    
+    public void audioAcerto(){
+        
+        //evento que represanta a ação do acerto
+        primeiroAudio = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    tocarAudioParabens();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
+        //evento que representa o audio a ser executado depois o
+        segundoAudio = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               executarPalavra();
+            }
+        };
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), primeiroAudio),
+                new KeyFrame(Duration.seconds(2), segundoAudio)).play();
+    }
+
+    private void audioErro() {
+        Random indiceErro = new Random();
+        int numeroAudio = indiceErro.nextInt(2);
+        caminhoAudio = "src/audios/erro/"+numeroAudio+".mp3";
+        mCC.play(caminhoAudio);
+    }
+    
     public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
 
         switch (unidadeAtual) {
 
             case "u01":
-                instrucao.setText("Complete com a parte que está faltando: \"POLVO\"");
+                instrucao.setText("Complete com a paret que está faltando:\"POLVO\"");
             break;
         }
 
     }
-    
 }

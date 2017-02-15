@@ -1,3 +1,6 @@
+/**
+ * Model do controller "ControllerClasseComum"
+ */
 package model;
 
 import controller.ABCController;
@@ -35,7 +38,10 @@ public class ModelClasseComum {
         eventoTemporario = null;
         unidadeAtual = "u00";
     }
-
+    /**
+     * Executa um arquivo de audio
+     * @param caminhoAudio caminho do arquivo que deve ser executado
+     */
     public void play(String caminhoAudio) {
         //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
         arquivo = new File(caminhoAudio);
@@ -51,7 +57,9 @@ public class ModelClasseComum {
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
-
+    /**
+     * Parar o audio em execução atualmente
+     */
     public void pararAudio() {
         try {
             mediaPlayer.stop();
@@ -59,7 +67,11 @@ public class ModelClasseComum {
 
         }
     }
-
+    /**
+     * Carrega uma cena
+     * @param proximaCena a cena a ser carregada
+     * @param janela janela onde será carregada a cena
+     */
     public void exibirCena(Parent proximaCena, Stage janela) {
         this.janela = janela;
         Scene cena = new Scene(proximaCena, 950, 700);
@@ -68,7 +80,10 @@ public class ModelClasseComum {
         janela.show();//exibe a interface  
         System.out.println("exibiu a cena certinho");
     }
-
+    /**
+     * Executa o audio da palavra selecionada na listView
+     * @param palavraSelecionada 
+     */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         pararAudio();
         switch(palavraSelecionada){
@@ -80,7 +95,11 @@ public class ModelClasseComum {
         }
         play(caminhoAudio);
     }
-
+    /**
+     * Carrega o menu inicial do jogo
+     * @param event disparado pelo método "menuInicial" presente em todos os controllers
+     * @throws IOException 
+     */
     public void menuInicial(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
@@ -90,7 +109,12 @@ public class ModelClasseComum {
 
         exibirCena(proximaCena, janela);
     }
-
+    /**
+     * Carrega a janela do ABC
+     * @param event disparado pelo método abrirABC presente em todos os controllers
+     * @param pagina pagina de onde o método foi chamado
+     * @throws IOException 
+     */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/ABC.fxml"));
@@ -103,7 +127,12 @@ public class ModelClasseComum {
         ABCCont.setPaginaTemporaria(pagina);
 
     }
-
+    /**
+     * Abre o manual do software
+     * @param event disparado pelo método abrirManual presente em todas as classes
+     * @param pagina pagina de onde o método foi chamado
+     * @throws IOException 
+     */
     void abrirManual(ActionEvent event, int pagina) throws IOException {
         
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -114,12 +143,18 @@ public class ModelClasseComum {
         manualController.setUnidadeAtual(getUnidadeAtual());
         manualController.setPaginaTemporaria(pagina);
     }
-    
+    /**
+     * Define a unidade atual que será necessária em algumas funções
+     * @param unidadeAtual unidade em que o usuário se encontra
+     */
     public void setUnidadeAtual(String unidadeAtual){
         
         this.unidadeAtual = unidadeAtual;
     }
-    
+    /**
+     * Retorna a unidade atual
+     * @return 
+     */
     public String getUnidadeAtual(){
         return this.unidadeAtual;
     }

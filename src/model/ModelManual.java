@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Model do controller "ManualController"
  */
 package model;
 
@@ -33,18 +31,32 @@ public class ModelManual {
         mCC = new ModelClasseComum(janela);
         unidadeAtual = "u00";
     }
-
+    /**
+     * Chama o menu inicial
+     * @param event
+     * @throws IOException 
+     */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
-
+    /**
+     * Para a execução do áudio atual
+     */
     public void pararAudio() {
         mCC.pararAudio();
     }
-
+    /**
+     * Volta para a pagina de onde o manual foi chamado
+     * @param evento disparado quando o botão "Manual" é clicado
+     * @param pagina pagina de onde o manual foi chamado
+     * @throws IOException 
+     */
     public void voltar(ActionEvent evento, int pagina) throws IOException {
         janela = (Stage) ((Button) evento.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = null;
+        /**
+         * Controllers das paginas
+         */
         Pag01Controller pag01Cont;
         Pag02Controller pag02Cont;
         Pag03Controller pag03Cont;
@@ -52,12 +64,12 @@ public class ModelManual {
         Pag05Controller pag05Cont;
         Pag06Controller pag06Cont;
         Pag07Controller pag07Cont;
-
+        //carrega o loader do fxml referente à pagina que chamou o manual
         fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag0" + pagina + ".fxml"));
 
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
-
+        //carrega a interface correta para cada página
         switch (pagina) {
             case 1:
                 pag01Cont = fxmloader.<Pag01Controller>getController();
@@ -103,11 +115,17 @@ public class ModelManual {
         }
 
     }
-
+    /**
+     * Define a unidade atual
+     * @param unidadeAtual unidade atual
+     */
     public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
     }
-
+    /**
+     * Retorna a unidade atual
+     * @return string referente à unidade atual
+     */
     public String getUnidadeAtual() {
         return unidadeAtual;
     }

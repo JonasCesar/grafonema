@@ -1,3 +1,7 @@
+/**
+ * Model do menu inicial
+ */
+
 package model;
 
 import java.io.IOException;
@@ -23,7 +27,12 @@ public class ModelmenuInicial {
         
         
     }
-    
+    /**
+     * Inicia a primeira pagina do software
+     * @param event disparado quando uma das unidades é escolhida
+     * @param unidade unidade escolhida
+     * @throws IOException 
+     */
     public void iniciar(ActionEvent event, String unidade) throws IOException{
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));  

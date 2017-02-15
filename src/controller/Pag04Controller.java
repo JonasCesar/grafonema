@@ -1,3 +1,6 @@
+/**
+ * Controller da página 4
+ */
 package controller;
 
 import java.io.FileNotFoundException;
@@ -15,7 +18,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 /**
@@ -67,11 +72,20 @@ public class Pag04Controller implements Initializable {
     private final int pagina = 4;
     
     @FXML
+    ImageView repetir;
+    
+    @FXML
+    ImageView imagemAudio;
+    
+    @FXML
+    AnchorPane janelaPrograma;
+    
+    @FXML
     private Text instrucao;
 
     public Pag04Controller() {
         listaPalavras = new ListView<String>();
-        controlerComum = new ControllerClasseComum(listaPalavras);
+        controlerComum = new ControllerClasseComum(listaPalavras);        
     }
 
     /**
@@ -79,7 +93,7 @@ public class Pag04Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco, instrucao);
+        modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco, imagemAudio, janelaPrograma, instrucao);
     }
     /**
      * Define a unidade atual
@@ -88,13 +102,6 @@ public class Pag04Controller implements Initializable {
     public void setUnidadeAtual(String unidadeAtual) throws IOException {
         atualizarListaPalavras();
         modelPag04.setUnidadeAtual(unidadeAtual);
-        switch (unidadeAtual) {
-            case "u01":
-
-                break;
-            default:
-                break;
-        }
     }
     /**
      * Avança para a proxima pagina
@@ -118,55 +125,33 @@ public class Pag04Controller implements Initializable {
         modelPag04.pararAudio();
         modelPag04.paginaAnterior(event);
     }
-
+    /**
+     * Chama o método do model que trata o evento de quando o mouse é pressionado
+     * @param event uma das labels contendo as sílabas é pressionada
+     */
     @FXML
     private void mousePressionado(MouseEvent event) {
-        orgSceneX = event.getSceneX();
-        orgSceneY = event.getSceneY();
-        orgTranslateX = ((Label) (event.getSource())).getTranslateX();
-        orgTranslateY = ((Label) (event.getSource())).getTranslateY();
-
+        modelPag04.mousePressionado(event);
     }
-
+    /**
+     * Chama o método do model que trata o evento de quando a label pressionada é
+     * arrastada pela tela
+     * @param event mouse é arrastado pela tela
+     */
     @FXML
     private void mouseArrastado(MouseEvent event) {
-        double offsetX = event.getSceneX() - orgSceneX;
-        double offsetY = event.getSceneY() - orgSceneY;
-        newTranslateX = orgTranslateX + offsetX;
-        newTranslateY = orgTranslateY + offsetY;
-        ((Label) (event.getSource())).setTranslateX(newTranslateX);
-        ((Label) (event.getSource())).setTranslateY(newTranslateY);
+        modelPag04.mouseArrastado(event);
+        
     }
-
-    @FXML
-    private void mouseLiberado(MouseEvent event) {
-        if ((verificarColisao(event))) {
-            //se for a opcao correta
-            if (modelPag04.verificarEscolhaSilaba(event)) {
-                modelPag04.alterarLabelEspaco(event);
-                modelPag04.executarPalavra();
-
-            } else {
-                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
-                //modelPag04.tocarAudioAcerto(false);
-            }
-
-        } else {
-            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
-        }
-    }
-
     /**
-     * Veriifica se a label solta é a label correta que deveria ter sido
-     * arrastada
-     *
-     * @param evento o botão do mouse é solto
-     * @return true ou false
+     * Chama o método do model que trata o evento de quando o mouse, que estava pressionado,
+     * é solto
+     * @param event mouse é liberado (label é solta)
+     * @throws MalformedURLException 
      */
-    private boolean verificarColisao(MouseEvent evento) {
-        return ((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent());
+    @FXML
+    private void mouseLiberado(MouseEvent event) throws MalformedURLException, InterruptedException {
+        modelPag04.mouseLiberado(event);        
     }
 
     public void tocarAudio() throws MalformedURLException {
@@ -246,5 +231,35 @@ public class Pag04Controller implements Initializable {
     public void setInstrucao(String unidadeAtual) throws MalformedURLException    {
         modelPag04.definirInstrucao(unidadeAtual);
     }
+
+    /**
+     * Retira a sombra do icone de "replay"
+     * @param event mouse passado por cima do icone
+     */
+    @FXML
+    private void dessombrearImagem(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        repetir.setEffect(null);
+    }
+    /**
+     * Adiciona uma sobra ao icone de "Replay"
+     * @param event 
+     */
+    @FXML
+    private void sombrearImagem(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        repetir.setEffect(sombras);
+    }
+    /**
+     * Executa o áudio da classe novamente
+     * @param event 
+     */
+    @FXML
+    private void replayAudio(MouseEvent event) {
+        modelPag04.pararAudio();
+        modelPag04.tocarAudio();
+    }
+    
+    
 
 }

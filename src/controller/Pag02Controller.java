@@ -98,8 +98,15 @@ public class Pag02Controller implements Initializable {
      */
     @FXML
     private void audio1(ActionEvent event) {
+        String verde = "-fx-background-color: \n" +
+"        linear-gradient(#97ff5b, #54e600),\n" +
+"        linear-gradient(#b1ff83, #83f143),\n" +
+"        linear-gradient(#a0ff69, #6def22),\n" +
+"        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n" +
+"        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));";
         modelPag02.pararAudio();
         modelPag02.tocarAudio1();
+        ((Button)event.getSource()).setStyle(verde);
     }
 
     /**
@@ -109,8 +116,15 @@ public class Pag02Controller implements Initializable {
      */
     @FXML
     private void audio2(ActionEvent event) {
+        String verde = "-fx-background-color: \n" +
+"        linear-gradient(#97ff5b, #54e600),\n" +
+"        linear-gradient(#b1ff83, #83f143),\n" +
+"        linear-gradient(#a0ff69, #6def22),\n" +
+"        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n" +
+"        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));";
         modelPag02.pararAudio();
         modelPag02.tocarAudio2();
+        ((Button)event.getSource()).setStyle(verde);
     }
 
     /**
@@ -120,8 +134,15 @@ public class Pag02Controller implements Initializable {
      */
     @FXML
     private void audio3(ActionEvent event) {
+        String verde = "-fx-background-color: \n" +
+"        linear-gradient(#97ff5b, #54e600),\n" +
+"        linear-gradient(#b1ff83, #83f143),\n" +
+"        linear-gradient(#a0ff69, #6def22),\n" +
+"        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n" +
+"        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));";
         modelPag02.pararAudio();
         modelPag02.tocarAudio3();
+        ((Button)event.getSource()).setStyle(verde);
     }
 
     /**

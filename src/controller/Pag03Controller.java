@@ -68,11 +68,12 @@ public class Pag03Controller implements Initializable {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
     }
+       
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         modelPag03 = new ModelPag03(img1,img2,img3,img4,img5,img6, instrucao);

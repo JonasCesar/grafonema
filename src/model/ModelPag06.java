@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Model da página 6
  */
 package model;
 
@@ -44,6 +42,7 @@ public class ModelPag06 {
 
     /**
      * Define a unidade em que o software se encontra
+     * @param unidade
      */
     public void setUnidadeAtual(String unidade) {
         this.unidadeAtual = unidade;
@@ -118,7 +117,9 @@ public class ModelPag06 {
         }
         return respostaCorreta;
     }
-
+    /**
+     * Executa o áudio da página
+     */
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
             case "u01":
@@ -129,7 +130,9 @@ public class ModelPag06 {
         }
         mCC.play(caminhoAudio);
     }
-
+    /**
+     * Define as labels que serão utilizadas na página baseado na unidade atual
+     */
     public void definirLabels() {
         switch (getUnidadeAtual()) {
             case "u01":
@@ -201,7 +204,12 @@ public class ModelPag06 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
-
+    /**
+     * Abre o função "ABC" do programa
+     * @param event disparado quando o botão "ABC" é clicado
+     * @param pagina pagina de onde a função "ABC" foi chamada
+     * @throws IOException 
+     */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);

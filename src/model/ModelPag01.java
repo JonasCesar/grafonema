@@ -1,3 +1,6 @@
+/**
+ * Model da pagina 1
+ */
 package model;
 
 import controller.Pag02Controller;
