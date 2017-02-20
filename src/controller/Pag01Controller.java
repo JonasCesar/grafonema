@@ -16,7 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -47,12 +49,15 @@ public class Pag01Controller implements Initializable {
     private Label palavrasEstudadas;
     
     private final int pagina = 1;
+    @FXML
+    private ImageView iconeOuvir;
 
     public Pag01Controller() {
         unidadeAtual = "u00";
         modelPag01 = new ModelPag01();
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
+        iconeOuvir = new ImageView();
     }
 
     /**
@@ -63,6 +68,9 @@ public class Pag01Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
+        listaPalavras.setTooltip(ouvirPalavras);
+        
         
     }
     /**
@@ -161,5 +169,13 @@ public class Pag01Controller implements Initializable {
         modelPag01.abrirABC(event, pagina);
         modelPag01.pararAudio();
         System.out.println("abriu o abc da pagina 1");
+    }
+
+    @FXML
+    private void dicaOuvirPalavras(MouseEvent event) {
+       // System.out.println("Vovo");
+        Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
+        
+        listaPalavras.setTooltip(ouvirPalavras);
     }
 }

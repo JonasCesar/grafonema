@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -72,6 +73,8 @@ public class Pag06Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         modelPag06 = new ModelPag06(p1,p2, instrucao);
+        Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
+        listaPalavras.setTooltip(ouvirPalavras);
     }    
     /**
      * Define a unidade atual

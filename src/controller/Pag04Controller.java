@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -94,6 +95,8 @@ public class Pag04Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         modelPag04 = new ModelPag04(p1, p2, p3, p4, p5, f1, f2, espaco, imagemAudio, janelaPrograma, instrucao);
+        Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
+        listaPalavras.setTooltip(ouvirPalavras);
     }
     /**
      * Define a unidade atual

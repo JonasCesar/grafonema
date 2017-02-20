@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -76,6 +77,8 @@ public class Pag03Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         modelPag03 = new ModelPag03(img1,img2,img3,img4,img5,img6, instrucao);
+        Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
+        listaPalavras.setTooltip(ouvirPalavras);
     }    
     public void audioInicial() throws MalformedURLException{
         modelPag03.tocarAudioInicial();
