@@ -38,8 +38,6 @@ public class Pag01Controller implements Initializable {
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
     @FXML
-    private Button som;
-    @FXML
     private Button abc;
     @FXML
     private Button manual;
@@ -51,6 +49,8 @@ public class Pag01Controller implements Initializable {
     private final int pagina = 1;
     @FXML
     private ImageView iconeOuvir;
+    @FXML
+    private Button atividades;
 
     public Pag01Controller() {
         unidadeAtual = "u00";
@@ -70,6 +70,9 @@ public class Pag01Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
+        abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
+        atividades.setTooltip(new Tooltip("Clique para ver as atividades para imprimir"));
+        manual.setTooltip(new Tooltip("Clique para ler o manual do programa "));
         
         
     }
@@ -177,5 +180,9 @@ public class Pag01Controller implements Initializable {
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         
         listaPalavras.setTooltip(ouvirPalavras);
+    }
+
+    @FXML
+    private void sugestaoAtividades(ActionEvent event) {
     }
 }

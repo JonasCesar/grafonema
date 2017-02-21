@@ -60,8 +60,6 @@ public class Pag05Controller implements Initializable {
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
     @FXML
-    private Button som;
-    @FXML
     private Button abc;
     @FXML
     private Button manual;
@@ -83,6 +81,8 @@ public class Pag05Controller implements Initializable {
 
     @FXML
     ImageView repetir;
+    @FXML
+    private Button atividades;
     
     public Pag05Controller() {
         listaPalavras = new ListView<String>();
@@ -275,5 +275,9 @@ public class Pag05Controller implements Initializable {
     
     public void setInstrucao(String unidadeAtual) throws MalformedURLException    {
         modelPag05.definirInstrucao(unidadeAtual);
+    }
+
+    @FXML
+    private void sugestaoAtividades(ActionEvent event) {
     }
 }

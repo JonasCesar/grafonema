@@ -39,8 +39,6 @@ public class Pag02Controller implements Initializable {
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
     @FXML
-    private Button som;
-    @FXML
     private Button abc;
     @FXML
     private Button manual;
@@ -55,13 +53,11 @@ public class Pag02Controller implements Initializable {
     @FXML
     private Button voltar;
     @FXML
-    private Button menuInicial;
-    @FXML
     private Label palavrasEstudadas;
-    @FXML
-    private Label tituloUnidade;
 
     private final int pagina = 2;
+    @FXML
+    private Button atividades;
 
     public Pag02Controller() {
         unidadeAtual = "u00";
@@ -247,7 +243,6 @@ public class Pag02Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException
      */
-    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag02.abrirManual(event, pagina);
     }
@@ -262,5 +257,9 @@ public class Pag02Controller implements Initializable {
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag02.abrirABC(event, pagina);
         modelPag02.pararAudio();
+    }
+
+    @FXML
+    private void sugestaoAtividades(ActionEvent event) {
     }
 }

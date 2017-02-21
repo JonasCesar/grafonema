@@ -48,8 +48,6 @@ public class Pag03Controller implements Initializable {
     private ControllerClasseComum controlerComum;
     ObservableList<String> items = FXCollections.observableArrayList();
     @FXML
-    private Button som;
-    @FXML
     private Button abc;
     @FXML
     private Button manual;
@@ -63,6 +61,8 @@ public class Pag03Controller implements Initializable {
     private Text instrucao;
     
     private final int pagina = 3;
+    @FXML
+    private Button atividades;
     
     public Pag03Controller() {
         listaPalavras = new ListView<String>();
@@ -196,5 +196,9 @@ public class Pag03Controller implements Initializable {
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag03.abrirABC(event, pagina);
         modelPag03.pararAudio();
+    }
+
+    @FXML
+    private void sugestaoAtividades(ActionEvent event) {
     }
 }

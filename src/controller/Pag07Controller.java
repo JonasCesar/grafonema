@@ -33,13 +33,9 @@ public class Pag07Controller implements Initializable {
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
     @FXML
-    private Button som;
-    @FXML
     private Button abc;
     @FXML
     private Button manual;
-    @FXML
-    private Button menuInicial;
     @FXML
     private Button voltar;
     @FXML
@@ -48,6 +44,8 @@ public class Pag07Controller implements Initializable {
     private Label palavrasEstudadas;
     
     private final int pagina = 7;
+    @FXML
+    private Button atividades;
     public Pag07Controller() {
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
@@ -154,9 +152,12 @@ public class Pag07Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException 
      */
-    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag07.abrirManual(event, pagina);
+    }
+
+    @FXML
+    private void sugestaoAtividades(ActionEvent event) {
     }
     
     
