@@ -1,5 +1,6 @@
 package controller;
 
+
 import model.Model_avatares;
 import java.io.IOException;
 import java.net.URL;
@@ -61,7 +62,8 @@ public class Gui_avataresController implements Initializable {
      */
     @FXML
     private void handleAvancar(ActionEvent event) throws IOException {
-        modelAvatares.getGuiJogoPrincipal(event);
+        modelAvatares.getCenaInicial(event);
+        ///modelAvatares.getGuiJogoPrincipal(event);
     }
 
 }
