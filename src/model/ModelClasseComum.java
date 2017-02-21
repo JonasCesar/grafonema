@@ -76,6 +76,7 @@ public class ModelClasseComum {
         this.janela = janela;
         Scene cena = new Scene(proximaCena, 950, 700);
         janela.setTitle("Projeto 2");//título da cena
+        
         janela.setScene(cena);
         janela.show();//exibe a interface  
         System.out.println("exibiu a cena certinho");

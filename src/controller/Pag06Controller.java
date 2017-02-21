@@ -39,8 +39,6 @@ public class Pag06Controller implements Initializable {
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
     @FXML
-    private Button som;
-    @FXML
     private Button abc;
     @FXML
     private Button manual;
@@ -59,6 +57,8 @@ public class Pag06Controller implements Initializable {
     private Text instrucao;
     @FXML
     private ImageView repetir;
+    @FXML
+    private Button atividades;
     
     public Pag06Controller() {
         listaPalavras = new ListView<String>();
@@ -75,6 +75,9 @@ public class Pag06Controller implements Initializable {
         modelPag06 = new ModelPag06(p1,p2, instrucao);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
+        abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
+        atividades.setTooltip(new Tooltip("Clique para ver as atividades para imprimir"));
+        manual.setTooltip(new Tooltip("Clique para ler o manual do programa "));
     }    
     /**
      * Define a unidade atual
@@ -246,5 +249,9 @@ public class Pag06Controller implements Initializable {
     private void replayAudio(MouseEvent event) {
         modelPag06.pararAudio();
         modelPag06.tocarAudio();
+    }
+
+    @FXML
+    private void sugestaoAtividades(ActionEvent event) {
     }
 }

@@ -60,8 +60,6 @@ public class Pag05Controller implements Initializable {
     ObservableList<String> items = FXCollections.observableArrayList();
     private ControllerClasseComum controlerComum;
     @FXML
-    private Button som;
-    @FXML
     private Button abc;
     @FXML
     private Button manual;
@@ -83,6 +81,8 @@ public class Pag05Controller implements Initializable {
 
     @FXML
     ImageView repetir;
+    @FXML
+    private Button atividades;
     
     public Pag05Controller() {
         listaPalavras = new ListView<String>();
@@ -99,6 +99,9 @@ public class Pag05Controller implements Initializable {
         modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco,imagemAudio, janelaPrograma, instrucao);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
+        abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
+        atividades.setTooltip(new Tooltip("Clique para ver as atividades para imprimir"));
+        manual.setTooltip(new Tooltip("Clique para ler o manual do programa "));
     }    
     /**
      * Define a unidade atual
@@ -275,5 +278,9 @@ public class Pag05Controller implements Initializable {
     
     public void setInstrucao(String unidadeAtual) throws MalformedURLException    {
         modelPag05.definirInstrucao(unidadeAtual);
+    }
+
+    @FXML
+    private void sugestaoAtividades(ActionEvent event) {
     }
 }
