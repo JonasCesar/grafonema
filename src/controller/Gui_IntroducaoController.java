@@ -1,7 +1,7 @@
 package controller;
 
 
-import model.Model_avatares;
+import model.Model_Introducao;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  *
  * @author shadows
  */
-public class Gui_avataresController implements Initializable {
+public class Gui_IntroducaoController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -25,7 +25,7 @@ public class Gui_avataresController implements Initializable {
 
     private String selecionado;
 
-    private Model_avatares modelAvatares = new Model_avatares();
+    private Model_Introducao modelAvatares = new Model_Introducao();
     
     @FXML
     private Button avancar;

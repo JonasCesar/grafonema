@@ -13,13 +13,13 @@ import javafx.stage.Stage;
  *
  * @author iran
  */
-public class Model_avatares {
+public class Model_Introducao {
 
     private Stage window;
 
     private String selecionado;
     
-    public Model_avatares() {
+    public Model_Introducao() {
         
     }
 
