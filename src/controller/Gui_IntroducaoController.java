@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author shadows
  */
-public class Gui_Introducao implements Initializable {
+public class Gui_IntroducaoController implements Initializable {
 
     /**
      * Initializes the controller class.

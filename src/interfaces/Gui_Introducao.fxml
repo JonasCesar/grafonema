@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_avataresController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_IntroducaoController">
    <children>
       <Button fx:id="avancar" layoutX="727.0" layoutY="510.0" mnemonicParsing="false" onAction="#handleAvancar" text="Avançar" />
       <Text layoutX="132.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá, seja bem vindo ao grafogame, iniciaremos agora uma jornada até o mundo mágico do conhecimento.Está pronto?" textAlignment="CENTER" wrappingWidth="635.7294921875">
