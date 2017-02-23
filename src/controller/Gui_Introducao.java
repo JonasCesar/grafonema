@@ -1,6 +1,6 @@
 package controller;
 
-import model.Model_avatares;
+import model.Model_Introducao;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author shadows
  */
-public class Gui_avataresController implements Initializable {
+public class Gui_Introducao implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -24,7 +24,7 @@ public class Gui_avataresController implements Initializable {
 
     private String selecionado;
 
-    private Model_avatares modelAvatares = new Model_avatares();
+    private Model_Introducao modelAvatares = new Model_Introducao();
     
     @FXML
     private Button avancar;
@@ -32,28 +32,8 @@ public class Gui_avataresController implements Initializable {
     //@Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        avancar.setDisable(true);
     }
     
-    /**
-     * Evento disparado quando o avatar que representa o menino é selecionado
-     * @param event botao menino
-     */
-    @FXML
-    private void avatarMeninoSelecionado(ActionEvent event) {
-        modelAvatares.setSelecionado("menino");
-        avancar.setDisable(false);
-
-    }
-    /**
-     * Evento disparado quando o avatar que representa a menina é selecionado
-     * @param event botão menina
-     */
-    @FXML
-    private void avatarMeninaSelecinado(ActionEvent event) {
-        modelAvatares.setSelecionado("menina");
-        avancar.setDisable(false);
-    }
     /**
      * Evento disparado quando o botão avançar é selecionado
      * @param event botão avançar

@@ -19,9 +19,8 @@ public class Gui_SequenciaCenasController implements Initializable {
     private Model_SequenciaCenas modelSeqCenas;
 
     public Gui_SequenciaCenasController() {
-        modelSeqCenas = new Model_SequenciaCenas(imgView);
-    }
-    
+       
+    }   
     
     /**
      * Initializes the controller class.
@@ -30,7 +29,7 @@ public class Gui_SequenciaCenasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+         modelSeqCenas = new Model_SequenciaCenas(imgView);
         
     }
     
