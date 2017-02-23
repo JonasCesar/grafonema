@@ -1,5 +1,6 @@
 package model;
 
+import controller.Gui_SequenciaCenasController;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +18,9 @@ public class Model_Introducao {
     private Stage window;
 
     private String selecionado;
-
+    
     public Model_Introducao() {
-
+        
     }
 
     /**
@@ -32,7 +33,11 @@ public class Model_Introducao {
         //pega a cena em que o botão que disparou o evento estava
         window = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent proximaCena;
-        proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+        if (getSelecionado().equals("menino")) {//verifica se o avatar selecionado é menino
+            proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+        } else {//caso contrário é menina
+            proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+        }
         //cria uma cena 
         Scene cena = new Scene(proximaCena, 900, 700);
         window.setTitle("Grafonema");//título da cena
@@ -56,5 +61,19 @@ public class Model_Introducao {
      */
     public String getSelecionado() {
         return selecionado;
+    }
+
+    public void getCenaInicial(ActionEvent event) throws IOException {
+        window = (Stage) ((Button) event.getSource()).getScene().getWindow();       
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+        Parent proximaCena = (Parent) fxmloader.load();        
+        Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+        //cria uma cena 
+        Scene cena = new Scene(proximaCena, 900, 700);
+        window.setTitle("Grafonema");//título da cena
+        window.setScene(cena);
+        window.show();//exibe a cena
+        sequenciaCenas.executarCenaInicial();
+        
     }
 }
