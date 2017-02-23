@@ -33,11 +33,9 @@ public class Model_Introducao {
         //pega a cena em que o botão que disparou o evento estava
         window = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent proximaCena;
-        if (getSelecionado().equals("menino")) {//verifica se o avatar selecionado é menino
-            proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
-        } else {//caso contrário é menina
-            proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
-        }
+        
+        proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+        
         //cria uma cena 
         Scene cena = new Scene(proximaCena, 900, 700);
         window.setTitle("Grafonema");//título da cena

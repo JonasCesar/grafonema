@@ -33,28 +33,8 @@ public class Gui_IntroducaoController implements Initializable {
     //@Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        avancar.setDisable(true);
     }
     
-    /**
-     * Evento disparado quando o avatar que representa o menino é selecionado
-     * @param event botao menino
-     */
-    @FXML
-    private void avatarMeninoSelecionado(ActionEvent event) {
-        modelAvatares.setSelecionado("menino");
-        avancar.setDisable(false);
-
-    }
-    /**
-     * Evento disparado quando o avatar que representa a menina é selecionado
-     * @param event botão menina
-     */
-    @FXML
-    private void avatarMeninaSelecinado(ActionEvent event) {
-        modelAvatares.setSelecionado("menina");
-        avancar.setDisable(false);
-    }
     /**
      * Evento disparado quando o botão avançar é selecionado
      * @param event botão avançar
