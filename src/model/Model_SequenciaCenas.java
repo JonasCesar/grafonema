@@ -5,7 +5,9 @@
  */
 package model;
 
+import controller.Gui_JogoPrincipalController;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,12 +16,16 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -38,6 +44,7 @@ public class Model_SequenciaCenas {
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
+    private Stage window;
 
     public Model_SequenciaCenas(ImageView imagem) {
         imgView = imagem;
@@ -48,7 +55,7 @@ public class Model_SequenciaCenas {
         //evento que represanta a primeira cena do acerto
         c1 = (ActionEvent event) -> {
             try {
-                arquivoImagem = new File("src/Imagens/fase1/vinho.jpg");
+                arquivoImagem = new File("src/Imagens/fase1/vinho.png");
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
             } catch (MalformedURLException ex) {
                 Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,7 +96,7 @@ public class Model_SequenciaCenas {
         };
 
         c5 = (ActionEvent event) -> {
-            arquivoImagem = new File("src/Imagens/fase1/g3.jpg");
+            arquivoImagem = new File("src/Imagens/fase1/g2.png");
             try {
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
             } catch (MalformedURLException ex) {
@@ -109,10 +116,10 @@ public class Model_SequenciaCenas {
 
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
-                new KeyFrame(Duration.seconds(1), c2),
-                new KeyFrame(Duration.seconds(2), c3),
-                new KeyFrame(Duration.seconds(3), c4),
-                new KeyFrame(Duration.seconds(4), c5)).play();
+                new KeyFrame(Duration.seconds(2), c2),
+                new KeyFrame(Duration.seconds(4), c3),
+                new KeyFrame(Duration.seconds(6), c4),
+                new KeyFrame(Duration.seconds(8), c5)).play();
 
     }
 
@@ -140,10 +147,27 @@ public class Model_SequenciaCenas {
             }
 
         };
+        
+        c3 = (ActionEvent event) -> {
+            window = (Stage) imgView.getScene().getWindow();
+                Parent cenaPrincipal = null;
+                try {
+                    cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
 
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui_JogoPrincipalController.class
+                            .getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene = new Scene(cenaPrincipal, 900, 700);
+                window.setTitle("Grafonema");
+                window.setScene(scene);
+                window.show();
+
+        };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
-                new KeyFrame(Duration.seconds(10), c2)).play();
+                new KeyFrame(Duration.seconds(10), c2),
+                new KeyFrame(Duration.seconds(20), c3)).play();
 
     }
     

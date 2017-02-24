@@ -1,8 +1,10 @@
 package model;
 
+import controller.Gui_SequenciaCenasController;
 import controller.Gui_JogoPrincipalController;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -156,13 +158,13 @@ public class ModelJogoPrincipal {
         "A MELANCIA É GOSTOSA", "A NEVE É BRANCA", "A PORTA ESTÁ ABERTA", "A TV ESTÁ LIGADA",
         "BETO GOSTA DE CORRER", "BIA ESTÁ ESTUDANDO", "BIBI COMPROU UMA BOLSA", "EU ADORO LER",
         "EU AMO VOCÊ", "HOJE VAI CHOVER", "HUGO JOGA FUTEBOL", "JOANA CAIU DA CAMA", "JOÃO USA BONÉ",
-        "JOSÉ É QUERIDO", "MAGALI ADORA COMER", "MALU ADORA NOVELAS", "MAMÃE FEZ UM BOLO", 
+        "JOSÉ É QUERIDO", "MAGALI ADORA COMER", "MALU ADORA NOVELAS", "MAMÃE FEZ UM BOLO",
         "MARIA ESTÁ NA ESCOLA", "MÁRIO USA GRAVATA", "MEU CABELO É PRETO", "MEU VESTIDO É ROSA",
         "MINHA MÃE É LINDA", "O BEBÊ ESTÁ CHORANDO", "O CARRO É VERMELHO", "O CAVALO É MARRON",
         "O DIA ESTÁ NUBLADO", "O ELEFANTE É GRANDE", "O GATO PULOU DA ÁRVORE", "O LIVRO É PEQUENO",
         "O MACACO É SAPECA", "O PATO ESTÁ ANDANDO", "O PINTINHO CISCA NO CHÃO", "O RATO É DENTUÇO",
         "O REI É BONDOSO", "O SAPATO É AMARELO", "O SAPO ESTÁ NO LAGO", "O TELEFONE ESTÁ TOCANDO",
-        "O URSO É PELUDO", "PAPAI CHEGOU EM CASA" };
+        "O URSO É PELUDO", "PAPAI CHEGOU EM CASA"};
 
     private String audiosFrasesSimples[] = {
         "a_boneca_eh_bonita", "a_bruxa_eh_feia", "a_casa_eh_azul",
@@ -658,7 +660,7 @@ public class ModelJogoPrincipal {
                 System.out.println("o som gerado foi o som: " + audiosFrasesSimples[i]);
                 tocarAudio(audiosFrasesSimples[i]);
                 y = i;
-                break;    
+                break;
             default:
                 break;
         }
@@ -1969,18 +1971,25 @@ public class ModelJogoPrincipal {
                 Parent cenaPrincipal = null;
                 //armeza a cena do botão 'btn_1' em uma variável temporária
                 cenaTemporaria = btn_1.getScene();
-                try {
-                    //cenaPrincipal é definida como a classe com as sequencias de cenas
-                    cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
 
+                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+                Parent proximaCena = null;
+                try {
+                    proximaCena = (Parent) fxmloader.load();
                 } catch (IOException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class
-                            .getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Scene scene = new Scene(cenaPrincipal, 900, 700);
-                window.setTitle("Grafonema");
-                window.setScene(scene);
-                window.show();
+                Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+                //cria uma cena 
+                Scene cena = new Scene(proximaCena, 900, 700);
+                window.setTitle("Grafonema");//título da cena
+                window.setScene(cena);
+                window.show();//exibe a cena
+                try {
+                    sequenciaCenas.iniciarCena();
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
 
@@ -2142,7 +2151,7 @@ public class ModelJogoPrincipal {
         eventoFimAcerto = (ActionEvent event) -> {
             try {
                 gerarOpcaoAleatoria();
-                
+
             } catch (InterruptedException | IOException ex) {
                 Logger.getLogger(Gui_JogoPrincipalController.class
                         .getName()).log(Level.SEVERE, null, ex);
