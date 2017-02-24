@@ -54,7 +54,7 @@ public class Model_SequenciaCenas {
     }
 
     public void iniciarCenas() throws MalformedURLException {
-        caminho1=caminho2=caminho3=caminho4=caminho5 = "";
+        caminho1 = caminho2 = caminho3 = caminho4 = caminho5 = "";
         switch (getFaseAtual()) {
             case 1:
                 caminho1 = "vinho";
@@ -80,8 +80,10 @@ public class Model_SequenciaCenas {
         //evento que represanta a primeira cena do acerto
         c1 = (ActionEvent event) -> {
             try {
-                arquivoImagem = new File("src/Imagens/fase1/"+caminho1+".png");
+                arquivoImagem = new File("src/Imagens/fase1/" + caminho1 + ".png");
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
+                caminhoAudio = "src/audiosEfeitosSonoros/espada.mp3";
+                tocarAudio(caminhoAudio);
             } catch (MalformedURLException ex) {
                 Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -92,7 +94,10 @@ public class Model_SequenciaCenas {
         //animação de acerto
         c2 = (ActionEvent event) -> {
             System.out.println("Segundo");
-            arquivoImagem = new File("src/Imagens/fase1/"+caminho2+".png");
+            caminhoAudio = "src/audiosEfeitosSonoros/espada2.mp3";
+            tocarAudio(caminhoAudio);
+            arquivoImagem = new File("src/Imagens/fase1/" + caminho2 + ".png");
+
             try {
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
             } catch (MalformedURLException ex) {
@@ -102,7 +107,9 @@ public class Model_SequenciaCenas {
 
         c3 = (ActionEvent event) -> {
             System.out.println("Terceiro");
-            arquivoImagem = new File("src/Imagens/fase1/"+caminho3+".png");
+            caminhoAudio = "src/audiosEfeitosSonoros/espada2.mp3";
+            tocarAudio(caminhoAudio);
+            arquivoImagem = new File("src/Imagens/fase1/" + caminho3 + ".png");
             try {
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
             } catch (MalformedURLException ex) {
@@ -111,8 +118,10 @@ public class Model_SequenciaCenas {
         };
 
         c4 = (ActionEvent event) -> {
-            System.out.println("Terceiro");
-            arquivoImagem = new File("src/Imagens/fase1/"+caminho4+".png");
+            System.out.println("quarto");
+            caminhoAudio = "src/audiosEfeitosSonoros/espada.mp3";
+            tocarAudio(caminhoAudio);
+            arquivoImagem = new File("src/Imagens/fase1/" + caminho4 + ".png");
             try {
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
             } catch (MalformedURLException ex) {
@@ -121,7 +130,10 @@ public class Model_SequenciaCenas {
         };
 
         c5 = (ActionEvent event) -> {
-            arquivoImagem = new File("src/Imagens/fase1/"+caminho5+".png");
+            System.out.println("Quinto");
+            caminhoAudio = "src/audiosEfeitosSonoros/espada.mp3";
+            tocarAudio(caminhoAudio);
+            arquivoImagem = new File("src/Imagens/fase1/" + caminho5 + ".png");
             try {
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
             } catch (MalformedURLException ex) {
