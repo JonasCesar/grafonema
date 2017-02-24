@@ -1986,6 +1986,7 @@ public class ModelJogoPrincipal {
                 window.setScene(cena);
                 window.show();//exibe a cena
                 try {
+                    sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
                     sequenciaCenas.iniciarCena();
                 } catch (MalformedURLException ex) {
                     Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
