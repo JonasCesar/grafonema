@@ -109,6 +109,9 @@ public class Gui_JogoPrincipalController implements Initializable {
     private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
         //Se a opção escolhida está certa
         if (modelJogoPrincipal.verificarRelacaoGaFonema(event)) {
+            
+            //MUDAR A APARENCIA DO BOTAO EM CASO DE ACERTO
+            
             modelJogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
             modelJogoPrincipal.incrementarAcerto();//incrementar o acerto
 

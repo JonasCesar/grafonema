@@ -7,8 +7,12 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?> 
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_JogoPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_JogoPrincipalController">
+    <stylesheets>
+        <URL value="@/css/estilosGerais.css" />
+    </stylesheets>
    <children>
       <ProgressBar fx:id="lifeBar" layoutX="152.0" layoutY="29.0" prefWidth="200.0" progress="1.0" />
       <Label fx:id="pontuacao" layoutX="82.0" layoutY="193.0" text="0" />
