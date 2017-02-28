@@ -54,7 +54,7 @@ public class ModelJogoPrincipal {
     private Button pular;
 
     private EventHandler<ActionEvent> gerarProximaRodada, eventoGameOver, eventoCenas,
-            eventoVoltar, eventoAcerto, eventoFimAcerto, reiniciarRelogio;
+            eventoVoltar, eventoAcerto, eventoFimAcerto, eventoCorOriginal, eventoErro, reiniciarRelogio;
     @FXML
     private Label pontuacao;
 
@@ -2142,9 +2142,33 @@ public class ModelJogoPrincipal {
      */
     public void mostrarAnimacaoAcerto() {
         //evento que represanta a ação do acerto
+        //MUDA A COR DO BOTÃO
         eventoAcerto = (ActionEvent event) -> {
             Button btemp = opcaoCorreta(event);
-            (btemp).setText("X");
+            //(btemp).setText("X");
+            btemp.setStyle("-fx-background-color: \n"
+                    + "        linear-gradient(#97ff5b, #54e600),\n"
+                    + "        linear-gradient(#b1ff83, #83f143),\n"
+                    + "        linear-gradient(#a0ff69, #6def22),\n"
+                    + "        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                    + "        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));");
+        };
+
+        eventoCorOriginal = (ActionEvent event) -> {
+            Button btemp = opcaoCorreta(event);
+            //(btemp).setText("X");
+            btemp.setStyle("-fx-background-color: \n"
+                    + "        linear-gradient(#ffd65b, #e68400),\n"
+                    + "        linear-gradient(#ffef84, #f2ba44),\n"
+                    + "        linear-gradient(#ffea6a, #efaa22),\n"
+                    + "        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                    + "        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                    + "    -fx-background-radius: 30;\n"
+                    + "    -fx-background-insets: 0,1,2,3,0;\n"
+                    + "    -fx-text-fill: #654b00;\n"
+                    + "    -fx-font-weight: bold;\n"
+                    + "    -fx-font-size: 14px;\n"
+                    + "    -fx-padding: 10 20 10 20;");
         };
 
         //evento que representa a ação a ser feita depois da 
@@ -2160,8 +2184,51 @@ public class ModelJogoPrincipal {
             //indicacaoPular = true;
             setIndicacaoPular(true);
         };
+
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoAcerto),
-                new KeyFrame(Duration.seconds(1), eventoFimAcerto)).play();
+                new KeyFrame(Duration.seconds(1), eventoCorOriginal),
+                new KeyFrame(Duration.seconds(2), eventoFimAcerto)).play();
+
+    }
+    
+    
+    //ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    public void mostrarAnimacaoErro(ActionEvent ev) {
+        //evento que represanta a ação do acerto
+        eventoErro = (ActionEvent event) -> {
+            //MUDA A COR DO BOTÃO
+            Button btemp = (Button)ev.getSource();
+            //(btemp).setText("X");
+            btemp.setStyle("-fx-background-color: \n"
+                    + "        linear-gradient(#ff0000, #ff0000),\n"
+                    + "        linear-gradient(#ff0000, #7B68EE),\n"
+                    + "        linear-gradient(#483D8B, #ff0000),\n"
+                    + "        linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));");
+        };
+
+        eventoCorOriginal = (ActionEvent event) -> {
+            Button btemp = (Button)ev.getSource();
+            //(btemp).setText("X");
+            btemp.setStyle("-fx-background-color: \n"
+                    + "        linear-gradient(#ffd65b, #e68400),\n"
+                    + "        linear-gradient(#ffef84, #f2ba44),\n"
+                    + "        linear-gradient(#ffea6a, #efaa22),\n"
+                    + "        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                    + "        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                    + "    -fx-background-radius: 30;\n"
+                    + "    -fx-background-insets: 0,1,2,3,0;\n"
+                    + "    -fx-text-fill: #654b00;\n"
+                    + "    -fx-font-weight: bold;\n"
+                    + "    -fx-font-size: 14px;\n"
+                    + "    -fx-padding: 10 20 10 20;");
+        };
+
+        
+
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoErro),
+                new KeyFrame(Duration.seconds(1), eventoCorOriginal)).play();
+
     }
 }
