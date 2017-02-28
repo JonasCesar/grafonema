@@ -57,13 +57,20 @@ public class Model_SequenciaCenas {
         caminho1 = caminho2 = caminho3 = caminho4 = caminho5 = "";
         switch (getFaseAtual()) {
             case 1:
-                caminho1 = "vinho";
-                caminho2 = "g1";
-                caminho3 = "g2";
-                caminho4 = "g3";
-                caminho5 = "g2";
+                System.out.println("Unidade 1");
+                caminho1 = "fase1/vinho";
+                caminho2 = "fase1/g1";
+                caminho3 = "fase1/g2";
+                caminho4 = "fase1/g3";
+                caminho5 = "fase1/g2";
                 break;
             case 2:
+                System.out.println("Unidade 2");
+                caminho1 = "fase2/img1";
+                caminho2 = "fase2/img2";
+                caminho3 = "fase2/im3";
+                caminho4 = "fase2/img4";
+                caminho5 = "fase2/img5";
                 break;
             case 3:
                 break;
@@ -80,7 +87,7 @@ public class Model_SequenciaCenas {
         //evento que represanta a primeira cena do acerto
         c1 = (ActionEvent event) -> {
             try {
-                arquivoImagem = new File("src/Imagens/fase1/" + caminho1 + ".png");
+                arquivoImagem = new File("src/Imagens/"+caminho1 + ".png");
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
                 caminhoAudio = "src/audiosEfeitosSonoros/espada.mp3";
                 tocarAudio(caminhoAudio);
@@ -96,7 +103,7 @@ public class Model_SequenciaCenas {
             System.out.println("Segundo");
             caminhoAudio = "src/audiosEfeitosSonoros/espada2.mp3";
             tocarAudio(caminhoAudio);
-            arquivoImagem = new File("src/Imagens/fase1/" + caminho2 + ".png");
+            arquivoImagem = new File("src/Imagens/"+caminho2 + ".png");
 
             try {
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
@@ -109,7 +116,7 @@ public class Model_SequenciaCenas {
             System.out.println("Terceiro");
             caminhoAudio = "src/audiosEfeitosSonoros/espada2.mp3";
             tocarAudio(caminhoAudio);
-            arquivoImagem = new File("src/Imagens/fase1/" + caminho3 + ".png");
+            arquivoImagem = new File("src/Imagens/"+caminho3 + ".png");
             try {
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
             } catch (MalformedURLException ex) {
@@ -121,7 +128,7 @@ public class Model_SequenciaCenas {
             System.out.println("quarto");
             caminhoAudio = "src/audiosEfeitosSonoros/espada.mp3";
             tocarAudio(caminhoAudio);
-            arquivoImagem = new File("src/Imagens/fase1/" + caminho4 + ".png");
+            arquivoImagem = new File("src/Imagens/"+caminho4 +".png");
             try {
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
             } catch (MalformedURLException ex) {
@@ -133,7 +140,7 @@ public class Model_SequenciaCenas {
             System.out.println("Quinto");
             caminhoAudio = "src/audiosEfeitosSonoros/espada.mp3";
             tocarAudio(caminhoAudio);
-            arquivoImagem = new File("src/Imagens/fase1/" + caminho5 + ".png");
+            arquivoImagem = new File("src/Imagens/"+caminho5 +".png");
             try {
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
             } catch (MalformedURLException ex) {
