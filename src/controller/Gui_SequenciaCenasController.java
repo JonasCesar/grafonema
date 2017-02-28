@@ -4,8 +4,6 @@ import java.net.MalformedURLException;
 import model.Model_SequenciaCenas;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
@@ -19,9 +17,10 @@ public class Gui_SequenciaCenasController implements Initializable {
     @FXML    
     private ImageView imgView;
     private Model_SequenciaCenas modelSeqCenas;
+    private int unidadeAtual;
 
     public Gui_SequenciaCenasController() {
-       
+       unidadeAtual = 0;
     }   
     
     /**
@@ -41,6 +40,10 @@ public class Gui_SequenciaCenasController implements Initializable {
     
     public void executarCenaInicial(){
         modelSeqCenas.executarCenaInicial();
+    }
+
+    public void setFaseAtual(int faseAtual) {
+        modelSeqCenas.setFaseAtual(faseAtual);
     }
     
 }

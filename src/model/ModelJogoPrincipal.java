@@ -1986,6 +1986,7 @@ public class ModelJogoPrincipal {
                 window.setScene(cena);
                 window.show();//exibe a cena
                 try {
+                    sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
                     sequenciaCenas.iniciarCena();
                 } catch (MalformedURLException ex) {
                     Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
@@ -2018,7 +2019,7 @@ public class ModelJogoPrincipal {
         //animação que exibe as cenas e volta para a interface principal do jogo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(5), eventoVoltar)).play();
+                new KeyFrame(Duration.seconds(10), eventoVoltar)).play();
         System.out.println("Opção aleatoria gerada");
 
     }
