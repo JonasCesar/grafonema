@@ -13,7 +13,7 @@
          <children>
             <ImageView fx:id="imgView" fitHeight="690.0" fitWidth="569.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Imagens/floresta-espinhos.jpg" />
+                  <Image url="@../../../../Imagens/hercules-clip-art-hercules001.gif" />
                </image></ImageView>
          </children>
       </StackPane>

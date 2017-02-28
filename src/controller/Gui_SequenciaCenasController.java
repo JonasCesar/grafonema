@@ -46,4 +46,8 @@ public class Gui_SequenciaCenasController implements Initializable {
         modelSeqCenas.setFaseAtual(faseAtual);
     }
     
+    public void executarCenaFimFase() throws MalformedURLException{
+        modelSeqCenas.executarCenaFimDaFase();
+    }
+    
 }

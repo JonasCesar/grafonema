@@ -54,7 +54,8 @@ public class ModelJogoPrincipal {
     private Button pular;
 
     private EventHandler<ActionEvent> gerarProximaRodada, eventoGameOver, eventoCenas,
-            eventoVoltar, eventoAcerto, eventoFimAcerto, reiniciarRelogio;
+            eventoVoltar, eventoAcerto, eventoFimAcerto, eventoCorOriginal, eventoErro,
+            reiniciarRelogio, eventoInicioFase;
     @FXML
     private Label pontuacao;
 
@@ -327,6 +328,8 @@ public class ModelJogoPrincipal {
 
     private Timer timer;
 
+    Gui_SequenciaCenasController sequenciaCenas = new Gui_SequenciaCenasController();
+
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
 
@@ -372,188 +375,27 @@ public class ModelJogoPrincipal {
             jogador.setBonus(true);
         }
 
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 11) {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
             jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());
-            jogador.setFaseAtual(jogador.getFaseAtual() + 1);//atualiza a fase do jogador
+            mostrarCenaFinalFase();
+            //jogador.setFaseAtual(jogador.getFaseAtual() + 1);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
+            System.out.println("Voltou da cena");
             //chamar a cena de fim
             //chamar a cena de inicio da proxima fase
             /**
-             * OBS:
-             * VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
+             * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
              */
-           
+
+        }else{
+            gerarOpcaoAudio();
         }
-
-        int i = 0;
-        int proxValor = 0;
-        ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
-        ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados ????
-        Random indice = new Random();//gerador de índices aleatorios
-        switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
-            case 1: //FASE 1
-                if (!isGameOver()) {
-                    gerarSomAleatorio(); //gera um som aleatório                
-                }
-                //loop que gera os índices e os adiciona no array novasOpcoes
-                while (i < 5) {
-                    proxValor = indice.nextInt(5);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
-                        novasOpcoes.add(proxValor);//adiciona o indice no array
-                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
-                        i++;
-                    }
-                }
-
-                //Altera o valor dos botões
-                btn_1.setText(vogais[(int) novasOpcoes.get(0)]);
-                btn_2.setText(vogais[(int) novasOpcoes.get(1)]);
-                btn_3.setText(vogais[(int) novasOpcoes.get(2)]);
-                btn_4.setText(vogais[(int) novasOpcoes.get(3)]);
-                btn_5.setText(vogais[(int) novasOpcoes.get(4)]);
-
-                break;
-
-            case 2://FASE DOIS
-                i = 0;
-                int som = 0;
-                if (!isGameOver()) {
-                    som = gerarSomAleatorio();
-                }
-                indiceUtilizados.add(som);
-                while (indiceUtilizados.size() <= 5) {
-
-                    proxValor = indice.nextInt(29);
-
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
-                        novasOpcoes.add(proxValor);//adiciona o indice no array
-                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
-                        i++;
-                    }
-                }
-
-                preencherOpcoes(silabasSimples, som, novasOpcoes);
-
-                break;
-            case 3:
-                i = 0;
-                som = 0;
-                if (!isGameOver()) {
-                    som = gerarSomAleatorio();
-                }
-                indiceUtilizados.add(som);
-                while (indiceUtilizados.size() <= 5) {
-
-                    proxValor = indice.nextInt(80);
-
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
-                        novasOpcoes.add(proxValor);//adiciona o indice no array
-                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
-                        i++;
-                    }
-                }
-
-                preencherOpcoes(silabasSimplesB, som, novasOpcoes);
-                break;
-
-            case 4:
-                i = 0;
-                som = 0;
-                if (!isGameOver()) {
-                    som = gerarSomAleatorio();
-                }
-                indiceUtilizados.add(som);
-                while (indiceUtilizados.size() <= 5) {
-
-                    proxValor = indice.nextInt(93);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
-                        novasOpcoes.add(proxValor);//adiciona o indice no array
-                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
-                        i++;
-                    }
-                }
-                preencherOpcoes(palavrasSimples, som, novasOpcoes);
-
-                break;
-            case 5:
-                i = 0;
-                som = 0;
-                if (!isGameOver()) {
-                    som = gerarSomAleatorio();
-                }
-                indiceUtilizados.add(som);
-                while (indiceUtilizados.size() <= 5) {
-
-                    proxValor = indice.nextInt(110);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
-                        novasOpcoes.add(proxValor);//adiciona o indice no array
-                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
-                        i++;
-                    }
-                }
-
-                preencherOpcoes(silabasComplexas, som, novasOpcoes);
-                break;
-            case 6:
-                i = 0;
-                som = 0;
-                if (!isGameOver()) {
-                    som = gerarSomAleatorio();
-                }
-                indiceUtilizados.add(som);
-                while (indiceUtilizados.size() <= 5) {
-
-                    proxValor = indice.nextInt(80);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
-                        novasOpcoes.add(proxValor);//adiciona o indice no array
-                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
-                        i++;
-                    }
-                }
-                preencherOpcoes(silabasComplexas2, som, novasOpcoes);
-                break;
-
-            case 7:
-                i = 0;
-                som = 0;
-                if (!isGameOver()) {
-                    som = gerarSomAleatorio();
-                }
-                indiceUtilizados.add(som);
-                while (indiceUtilizados.size() <= 5) {
-
-                    proxValor = indice.nextInt(264);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
-                        novasOpcoes.add(proxValor);//adiciona o indice no array
-                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
-                        i++;
-                    }
-                }
-                preencherOpcoes(silabasComplexas3, som, novasOpcoes);
-                break;
-            case 9:
-                i = 0;
-                som = 0;
-                if (!isGameOver()) {
-                    som = gerarSomAleatorio();
-                }
-                indiceUtilizados.add(som);
-                while (indiceUtilizados.size() <= 5) {
-
-                    proxValor = indice.nextInt(50);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
-                        novasOpcoes.add(proxValor);//adiciona o indice no array
-                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
-                        i++;
-                    }
-                }
-                preencherOpcoes(frasesSimples, som, novasOpcoes);
-                break;
-
-        }
+        
+        
+        
     }
 
     /*função para preencher as opções na tela inserindo 
@@ -1921,7 +1763,7 @@ public class ModelJogoPrincipal {
         //toca o audio automaticamente
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
-        
+
     }
 
     /**
@@ -2149,9 +1991,33 @@ public class ModelJogoPrincipal {
      */
     public void mostrarAnimacaoAcerto() {
         //evento que represanta a ação do acerto
+        //MUDA A COR DO BOTÃO
         eventoAcerto = (ActionEvent event) -> {
             Button btemp = opcaoCorreta(event);
-            (btemp).setText("X");
+            //(btemp).setText("X");
+            btemp.setStyle("-fx-background-color: \n"
+                    + "        linear-gradient(#97ff5b, #54e600),\n"
+                    + "        linear-gradient(#b1ff83, #83f143),\n"
+                    + "        linear-gradient(#a0ff69, #6def22),\n"
+                    + "        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                    + "        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));");
+        };
+
+        eventoCorOriginal = (ActionEvent event) -> {
+            Button btemp = opcaoCorreta(event);
+            //(btemp).setText("X");
+            btemp.setStyle("-fx-background-color: \n"
+                    + "        linear-gradient(#ffd65b, #e68400),\n"
+                    + "        linear-gradient(#ffef84, #f2ba44),\n"
+                    + "        linear-gradient(#ffea6a, #efaa22),\n"
+                    + "        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                    + "        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                    + "    -fx-background-radius: 30;\n"
+                    + "    -fx-background-insets: 0,1,2,3,0;\n"
+                    + "    -fx-text-fill: #654b00;\n"
+                    + "    -fx-font-weight: bold;\n"
+                    + "    -fx-font-size: 14px;\n"
+                    + "    -fx-padding: 10 20 10 20;");
         };
 
         //evento que representa a ação a ser feita depois da 
@@ -2167,8 +2033,276 @@ public class ModelJogoPrincipal {
             //indicacaoPular = true;
             setIndicacaoPular(true);
         };
+
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoAcerto),
-                new KeyFrame(Duration.seconds(1), eventoFimAcerto)).play();
+                new KeyFrame(Duration.seconds(1), eventoCorOriginal),
+                new KeyFrame(Duration.seconds(2), eventoFimAcerto)).play();
+
+    }
+
+    //ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    public void mostrarAnimacaoErro(ActionEvent ev) {
+        //evento que represanta a ação do acerto
+        eventoErro = (ActionEvent event) -> {
+            //MUDA A COR DO BOTÃO
+            Button btemp = (Button) ev.getSource();
+            //(btemp).setText("X");
+            btemp.setStyle("-fx-background-color: \n"
+                    + "        linear-gradient(#ff0000, #ff0000),\n"
+                    + "        linear-gradient(#ff0000, #7B68EE),\n"
+                    + "        linear-gradient(#483D8B, #ff0000),\n"
+                    + "        linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));");
+        };
+
+        eventoCorOriginal = (ActionEvent event) -> {
+            Button btemp = (Button) ev.getSource();
+            //(btemp).setText("X");
+            btemp.setStyle("-fx-background-color: \n"
+                    + "        linear-gradient(#ffd65b, #e68400),\n"
+                    + "        linear-gradient(#ffef84, #f2ba44),\n"
+                    + "        linear-gradient(#ffea6a, #efaa22),\n"
+                    + "        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                    + "        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                    + "    -fx-background-radius: 30;\n"
+                    + "    -fx-background-insets: 0,1,2,3,0;\n"
+                    + "    -fx-text-fill: #654b00;\n"
+                    + "    -fx-font-weight: bold;\n"
+                    + "    -fx-font-size: 14px;\n"
+                    + "    -fx-padding: 10 20 10 20;");
+        };
+
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoErro),
+                new KeyFrame(Duration.seconds(1), eventoCorOriginal)).play();
+
+    }
+
+    public void mostrarCenaFinalFase() throws MalformedURLException {
+        //evento responsável por exibir as cenas de progresso na história
+        eventoCenas = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                //armazena a cena em que o botão 'btn_1' se encontra atualmente
+                window = (Stage) btn_1.getScene().getWindow();
+                Parent cenaPrincipal = null;
+                //armeza a cena do botão 'btn_1' em uma variável temporária
+                cenaTemporaria = btn_1.getScene();
+
+                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+                Parent proximaCena = null;
+                try {
+                    proximaCena = (Parent) fxmloader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+                //cria uma cena 
+                Scene cena = new Scene(proximaCena, 900, 700);
+                window.setTitle("Grafonema");//título da cena
+                window.setScene(cena);
+                window.show();//exibe a cena
+                sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+                try {
+                    sequenciaCenas.executarCenaFimFase();
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
+        //evento para voltar para o jogo pós exibição da cena
+        eventoVoltar = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                window.setTitle("Grafonema");
+                window.setScene(cenaTemporaria);
+                //mostrandoCena = false;
+                setMostrandoCena(false);
+                //eventoAcerto.handle(null);
+                //Button btemp = opcaoCorreta(null);
+
+                window.show();
+                System.out.println(jogador.getFaseAtual() + 1);
+                jogador.setFaseAtual(jogador.getFaseAtual() + 1);
+                gerarOpcaoAudio();
+
+            }
+        };
+
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoCenas),
+                new KeyFrame(Duration.seconds(2), eventoVoltar)).play();
+
+    }
+
+    private void gerarOpcaoAudio() {
+        int i = 0;
+        int proxValor = 0;
+        ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
+        ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados ????
+        Random indice = new Random();//gerador de índices aleatorios
+        switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
+            case 1: //FASE 1
+                if (!isGameOver()) {
+                    gerarSomAleatorio(); //gera um som aleatório                
+                }
+                //loop que gera os índices e os adiciona no array novasOpcoes
+                while (i < 5) {
+                    proxValor = indice.nextInt(5);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                //Altera o valor dos botões
+                btn_1.setText(vogais[(int) novasOpcoes.get(0)]);
+                btn_2.setText(vogais[(int) novasOpcoes.get(1)]);
+                btn_3.setText(vogais[(int) novasOpcoes.get(2)]);
+                btn_4.setText(vogais[(int) novasOpcoes.get(3)]);
+                btn_5.setText(vogais[(int) novasOpcoes.get(4)]);
+
+                break;
+
+            case 2://FASE DOIS
+                i = 0;
+                int som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(29);
+
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                preencherOpcoes(silabasSimples, som, novasOpcoes);
+
+                break;
+            case 3:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(80);
+
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                preencherOpcoes(silabasSimplesB, som, novasOpcoes);
+                break;
+
+            case 4:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(93);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(palavrasSimples, som, novasOpcoes);
+
+                break;
+            case 5:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(110);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                preencherOpcoes(silabasComplexas, som, novasOpcoes);
+                break;
+            case 6:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(80);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(silabasComplexas2, som, novasOpcoes);
+                break;
+
+            case 7:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(264);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(silabasComplexas3, som, novasOpcoes);
+                break;
+            case 9:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(50);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(frasesSimples, som, novasOpcoes);
+                break;
+
+        }
     }
 }
