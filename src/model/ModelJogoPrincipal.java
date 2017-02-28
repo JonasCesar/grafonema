@@ -379,6 +379,13 @@ public class ModelJogoPrincipal {
             jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
+            //chamar a cena de fim
+            //chamar a cena de inicio da proxima fase
+            /**
+             * OBS:
+             * VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
+             */
+           
         }
 
         int i = 0;
@@ -1012,7 +1019,7 @@ public class ModelJogoPrincipal {
         matrizPalavrasSimples.put("janela", "JANELA");
         matrizPalavrasSimples.put("lapa", "LAPA");
         matrizPalavrasSimples.put("lata", "LATA");
-        matrizPalavrasSimples.put("leite", "LEITA");
+        matrizPalavrasSimples.put("leite", "LEITE");
         matrizPalavrasSimples.put("lixo", "LIXO");
         matrizPalavrasSimples.put("lua", "LUA");
         matrizPalavrasSimples.put("luta", "LUTA");
@@ -1914,7 +1921,7 @@ public class ModelJogoPrincipal {
         //toca o audio automaticamente
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
-
+        
     }
 
     /**

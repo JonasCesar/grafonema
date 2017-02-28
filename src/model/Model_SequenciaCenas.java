@@ -47,10 +47,11 @@ public class Model_SequenciaCenas {
     private Stage window;
     private int faseAtual;
     String caminho1, caminho2, caminho3, caminho4, caminho5 = "";
+    private File arquivoImagemPB;
 
     public Model_SequenciaCenas(ImageView imagem) {
         imgView = imagem;
-        faseAtual = 0;
+        faseAtual = 1;
     }
 
     public void iniciarCenas() throws MalformedURLException {
@@ -173,12 +174,28 @@ public class Model_SequenciaCenas {
     }
 
     public void executarCenaInicial() {
+       caminho1 = caminho2 = caminho3 = "";
+        
+        switch(getFaseAtual()){
+            case 1:
+                System.out.println("SDs");
+                caminho1 = "fase1/fe";                
+                caminho2 = "fase1/fepb";
+                caminho3 = "audios_vogais/frase1";                
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
 
         c1 = (ActionEvent event) -> {
             try {
-                arquivoImagem = new File("src/Imagens/estrada.jpg");
+                arquivoImagem = new File("src/Imagens/"+caminho1+".jpg");
                 imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
-                caminhoAudio = "src/audios_vogais/frase1.mp3";
+                caminhoAudio = "src/"+caminho3+".mp3";
                 tocarAudio(caminhoAudio);
             } catch (MalformedURLException ex) {
                 Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
@@ -187,9 +204,9 @@ public class Model_SequenciaCenas {
         };
 
         c2 = (ActionEvent event) -> {
-            try {
-                arquivoImagem = new File("src/Imagens/estradapb.jpg");
-                imgView.setImage(new Image(arquivoImagem.toURI().toURL().toString()));
+            try {                
+                arquivoImagemPB = new File("src/Imagens/"+caminho2+".jpg");
+                imgView.setImage(new Image(arquivoImagemPB.toURI().toURL().toString()));
 
             } catch (MalformedURLException ex) {
                 Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
@@ -218,6 +235,31 @@ public class Model_SequenciaCenas {
                 new KeyFrame(Duration.seconds(10), c2),
                 new KeyFrame(Duration.seconds(20), c3)).play();
 
+    }
+    
+    public void executarCenaFimDaFase() throws MalformedURLException{
+        caminho1=caminho2=caminho3 = "";
+        switch(getFaseAtual()){
+            case 1:
+                caminho1 = "fase1/fim";                
+                caminho3 = "audios_vogais/frase1";
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break; 
+            
+        }
+        c1 = (ActionEvent event) -> {
+            tocarAudio(caminhoAudio);
+
+        };
+        
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), c1),
+                new KeyFrame(Duration.seconds(10), c3)).play();
     }
 
     public void tocarAudio(String caminhoAudio) {
