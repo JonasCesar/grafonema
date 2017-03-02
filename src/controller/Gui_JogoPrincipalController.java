@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  * @author jonas
  */
 public class Gui_JogoPrincipalController implements Initializable {
-    
+
     @FXML
     private Button btn_1;
     @FXML
@@ -39,19 +39,23 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Button btn_6;
     @FXML
     private Button pular;
-    
+
     @FXML
     private Label tempo;
-    
+
     @FXML
     private Label pontuacao;
-    
+
     private ModelJogoPrincipal modelJogoPrincipal;
     @FXML
     private ProgressBar lifeBar;
-    
+
     private Stage window;
     boolean indicacaoPular, pularErro;//indica que o jogador acionou o botão pular
+
+    public Gui_JogoPrincipalController() {
+
+    }
 
     /**
      * Initializes the controller class.
@@ -67,12 +71,18 @@ public class Gui_JogoPrincipalController implements Initializable {
         modelJogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
         modelJogoPrincipal.iniciarMatrizAudioSilabas();
         modelJogoPrincipal.iniciarMatrizSilabasSimplesB();
-        modelJogoPrincipal.inicarMatrizSilabasComplexas2();
+        modelJogoPrincipal.iniciarMatrizSilabasComplexas2();
         modelJogoPrincipal.iniciarMatrizSilabasComplexas3();
         modelJogoPrincipal.iniciarMatrizPalavrasSimples();
         modelJogoPrincipal.iniciarMatrizSilabasComplexas();
+
+    }
+
+    public void iniciarJogo() {
+
         modelJogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
         modelJogoPrincipal.iniciarTimer();//inicia o relógio
+
     }
 
     /**
@@ -111,7 +121,6 @@ public class Gui_JogoPrincipalController implements Initializable {
         if (modelJogoPrincipal.verificarRelacaoGaFonema(event)) {
 
             //MUDAR A APARENCIA DO BOTAO EM CASO DE ACERTO
-            
             modelJogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
             modelJogoPrincipal.incrementarAcerto();//incrementar o acerto
 
@@ -119,24 +128,21 @@ public class Gui_JogoPrincipalController implements Initializable {
                 modelJogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
                 modelJogoPrincipal.mostrarCenas();//mostra as cenas depois que o jogador acerta 10 vezes
-                
+
 //
             } else {
                 //mostra a animação de acerto
-                modelJogoPrincipal.mostrarAnimacaoAcerto();                
+                modelJogoPrincipal.mostrarAnimacaoAcerto();
             }
-            
-            
+
         } else {
             //reduzir barra de vidas
             modelJogoPrincipal.mostrarAnimacaoErro(event);
             modelJogoPrincipal.reduzirLifeBar();
             modelJogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
             Button temp = modelJogoPrincipal.opcaoCorreta(event);
-            
+
             //mostrar a animaçao de erro
-            
-            
             //animação da opção correta            
             if (modelJogoPrincipal.isGameOver()) {//se for o fim do jogo
                 temp = modelJogoPrincipal.opcaoCorreta(event);

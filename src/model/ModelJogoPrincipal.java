@@ -356,6 +356,8 @@ public class ModelJogoPrincipal {
         this.pularErro = false;
         this.tempo = tempo;
         nomeAudioAtual = "";
+        window = null;
+        cenaTemporaria = null;
 
     }
 
@@ -381,21 +383,20 @@ public class ModelJogoPrincipal {
             jogador.setBonus(false);//retira o bônus do jogador
             jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());
             mostrarCenaFinalFase();
-            //jogador.setFaseAtual(jogador.getFaseAtual() + 1);//atualiza a fase do jogador
+//            jogador.setFaseAtual(faseAtualTemp);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
-            System.out.println("Voltou da cena");
-            //chamar a cena de fim
+            System.out.print("Voltou da cena ");
+            //          gerarOpcaoAudio();
             //chamar a cena de inicio da proxima fase
             /**
              * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
              */
 
-        }else{
+        } else {
+            System.out.println("final");
             gerarOpcaoAudio();
         }
-        
-        
-        
+
     }
 
     /*função para preencher as opções na tela inserindo 
@@ -462,6 +463,7 @@ public class ModelJogoPrincipal {
 
         int y = 0;
         //verifica qual a fase atual do jogador
+        System.out.println("faseAtual " + jogador.getFaseAtual());
         switch (jogador.getFaseAtual()) {
             case 1:
                 i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4 
@@ -728,7 +730,7 @@ public class ModelJogoPrincipal {
         matrizSilabasSimplesB.put("zu", "ZU");
     }
 
-    public void inicarMatrizSilabasComplexas2() {
+    public void iniciarMatrizSilabasComplexas2() {
         matrizSilabasComplexas2.put("bla", "BLA");
         matrizSilabasComplexas2.put("ble", "BLE");
         matrizSilabasComplexas2.put("bli", "BLI");
@@ -1581,7 +1583,7 @@ public class ModelJogoPrincipal {
      * @param event
      * @return
      */
-    public Button opcaoCorreta(ActionEvent event) {
+    public Button opcaoCorreta(ActionEvent event) throws NullPointerException {
         Button temporario = null;
         String opcaoCorreta = "";
         //pega o valor da opção correta
@@ -1611,18 +1613,23 @@ public class ModelJogoPrincipal {
                 break;
         }
 
-        //verifica quais dos botões é a opção correta
-        if (opcaoCorreta.equals(btn_1.getText())) {
-            temporario = btn_1;
-        } else if (opcaoCorreta.equals(btn_2.getText())) {
-            temporario = btn_2;
-        } else if (opcaoCorreta.equals(btn_3.getText())) {
-            temporario = btn_3;
-        } else if (opcaoCorreta.equals(btn_4.getText())) {
-            temporario = btn_4;
-        } else if (opcaoCorreta.equals(btn_5.getText())) {
-            temporario = btn_5;
+        try {
+            //verifica quais dos botões é a opção correta
+            if (opcaoCorreta.equals(btn_1.getText())) {
+                temporario = btn_1;
+            } else if (opcaoCorreta.equals(btn_2.getText())) {
+                temporario = btn_2;
+            } else if (opcaoCorreta.equals(btn_3.getText())) {
+                temporario = btn_3;
+            } else if (opcaoCorreta.equals(btn_4.getText())) {
+                temporario = btn_4;
+            } else if (opcaoCorreta.equals(btn_5.getText())) {
+                temporario = btn_5;
+            }
+        } catch (NullPointerException e) {
+
         }
+
         return temporario;
     }
 
@@ -1938,7 +1945,7 @@ public class ModelJogoPrincipal {
                             public void run() {
                                 if (getMostrandoCena()) {
                                     i = 30;
-                                    System.out.println("setou o i como 30");
+                                    //System.out.println("setou o i como 30");
                                 }
                                 if (getIndicacaoPular()) {
                                     i = i + 0;
@@ -2078,12 +2085,86 @@ public class ModelJogoPrincipal {
 
     }
 
+    /**
+     * Mostra a cena final depois que o jogador terminou a fase
+     *
+     * @throws MalformedURLException
+     */
     public void mostrarCenaFinalFase() throws MalformedURLException {
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
+                //armazena a cena em que o botão 'btn_1' se encontra atualmente
+                window = (Stage) btn_1.getScene().getWindow();
+                Parent cenaPrincipal = null;
+                //armeza a cena do botão 'btn_1' em uma variável temporária
+                cenaTemporaria = btn_1.getScene();
+                //mostrandoCena = false;
+                setMostrandoCena(true);
+
+                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+                Parent proximaCena = null;
+                try {
+                    proximaCena = (Parent) fxmloader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+                //cria uma cena 
+                Scene cena = new Scene(proximaCena, 900, 700);
+                window.setTitle("Grafonema");//título da cena
+                window.setScene(cena);
+                window.show();//exibe a cena
+                sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+                try {
+                    //funcionando
+                    sequenciaCenas.executarCenaFimFase();
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        //evento que mostra a cena do início da fase
+        eventoInicioFase = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                sequenciaCenas.executarCenaMeioFase();
+            }
+        };
+        
+        eventoVoltar = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                window.setTitle("Grafonema");
+                window.setScene(cenaTemporaria);
+                //mostrandoCena = false;
+                setMostrandoCena(false);
+                //eventoAcerto.handle(null);
+                Button btemp = opcaoCorreta(null);
+                window.show();
+                jogador.setFaseAtual(jogador.getFaseAtual()+1);
+                gerarOpcaoAudio();
+                
+            }
+        };
+        
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoCenas),
+                new KeyFrame(Duration.seconds(15), eventoInicioFase),
+                new KeyFrame(Duration.seconds(25), eventoVoltar)).play();
+                
+    }
+
+    public void mostrarCenaInicialFase() {
+        //evento responsável por exibir as cenas de progresso na história
+        eventoCenas = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(" public void mostrarCenaInicialFase() {");
                 //armazena a cena em que o botão 'btn_1' se encontra atualmente
                 window = (Stage) btn_1.getScene().getWindow();
                 Parent cenaPrincipal = null;
@@ -2104,18 +2185,17 @@ public class ModelJogoPrincipal {
                 window.setScene(cena);
                 window.show();//exibe a cena
                 sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
-                try {
-                    sequenciaCenas.executarCenaFimFase();
-                } catch (MalformedURLException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+
+                sequenciaCenas.executarCenaInicial();
+
             }
         };
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = new EventHandler<ActionEvent>() {
-            @Override
+
             public void handle(ActionEvent event) {
+                System.out.println("evntVoltar mostrarCenaInicialFase");
                 window.setTitle("Grafonema");
                 window.setScene(cenaTemporaria);
                 //mostrandoCena = false;
@@ -2124,16 +2204,23 @@ public class ModelJogoPrincipal {
                 //Button btemp = opcaoCorreta(null);
 
                 window.show();
-                System.out.println(jogador.getFaseAtual() + 1);
-                jogador.setFaseAtual(jogador.getFaseAtual() + 1);
-                gerarOpcaoAudio();
-
+                try {
+                    gerarOpcaoAleatoria();
+                } catch (IOException | InterruptedException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
-
+        /**
+         * OBSERVAÇÃO:
+         *
+         *
+         * OS TEMPOS ENTRE O PRIMEIRO KEYFRAME E O SEGUNDO DEVE SER COMPATÍVEL
+         * COM O TEMPO DENTRO DO EVENTO "eventoCenas"
+         */
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(2), eventoVoltar)).play();
+                new KeyFrame(Duration.seconds(10), eventoVoltar)).play();
 
     }
 
@@ -2305,4 +2392,5 @@ public class ModelJogoPrincipal {
 
         }
     }
+
 }
