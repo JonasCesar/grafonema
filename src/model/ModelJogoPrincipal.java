@@ -2225,6 +2225,7 @@ public class ModelJogoPrincipal {
     }
 
     private void gerarOpcaoAudio() {
+        System.out.println("Chamou audio aqui");
         int i = 0;
         int proxValor = 0;
         ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
