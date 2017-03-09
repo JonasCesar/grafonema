@@ -7,12 +7,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.Gui_SequenciaCenasController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_SequenciaCenasController">
    <children>
-      <StackPane prefHeight="900.0" prefWidth="700.0">
+      <StackPane layoutX="47.0" prefHeight="700.0" prefWidth="900.0">
          <children>
-            <ImageView fx:id="imgView" fitHeight="890.0" fitWidth="899.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgView" fitHeight="690.0" fitWidth="569.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Imagens/hercules-clip-art-hercules001.gif" />
+               </image></ImageView>
          </children>
       </StackPane>
    </children>

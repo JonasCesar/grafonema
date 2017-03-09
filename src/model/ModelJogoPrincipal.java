@@ -55,7 +55,8 @@ public class ModelJogoPrincipal {
     private Button pular;
 
     private EventHandler<ActionEvent> gerarProximaRodada, eventoGameOver, eventoCenas,
-            eventoVoltar, eventoAcerto, eventoFimAcerto, eventoCorOriginal, eventoErro, reiniciarRelogio;
+            eventoVoltar, eventoAcerto, eventoFimAcerto, eventoCorOriginal, eventoErro,
+            reiniciarRelogio, eventoInicioFase;
     @FXML
     private Label pontuacao;
 
@@ -328,6 +329,8 @@ public class ModelJogoPrincipal {
 
     private Timer timer;
 
+    Gui_SequenciaCenasController sequenciaCenas = new Gui_SequenciaCenasController();
+
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
 
@@ -354,6 +357,8 @@ public class ModelJogoPrincipal {
         this.pularErro = false;
         this.tempo = tempo;
         nomeAudioAtual = "";
+        window = null;
+        cenaTemporaria = null;
 
     }
 
@@ -373,13 +378,24 @@ public class ModelJogoPrincipal {
             jogador.setBonus(true);
         }
 
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 11) {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
             jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());
-            jogador.setFaseAtual(jogador.getFaseAtual() + 1);//atualiza a fase do jogador
+            mostrarCenaFinalFase();
+//            jogador.setFaseAtual(faseAtualTemp);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
+            System.out.print("Voltou da cena ");
+            //          gerarOpcaoAudio();
+            //chamar a cena de inicio da proxima fase
+            /**
+             * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
+             */
+
+        } else {
+            System.out.println("final");
+            gerarOpcaoAudio();
         }
 
         int i = 0;
@@ -638,6 +654,7 @@ public class ModelJogoPrincipal {
 
         int y = 0;
         //verifica qual a fase atual do jogador
+        System.out.println("faseAtual " + jogador.getFaseAtual());
         switch (jogador.getFaseAtual()) {
             case 1:
                 i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4 
@@ -899,7 +916,7 @@ public class ModelJogoPrincipal {
         matrizSilabasSimplesB.put("zu", "ZU");
     }
 
-    public void inicarMatrizSilabasComplexas2() {
+    public void iniciarMatrizSilabasComplexas2() {
         matrizSilabasComplexas2.put("bla", "BLA");
         matrizSilabasComplexas2.put("ble", "BLE");
         matrizSilabasComplexas2.put("bli", "BLI");
@@ -1032,7 +1049,7 @@ public class ModelJogoPrincipal {
         matrizPalavrasSimples.put("janela", "JANELA");
         matrizPalavrasSimples.put("lapa", "LAPA");
         matrizPalavrasSimples.put("lata", "LATA");
-        matrizPalavrasSimples.put("leite", "LEITA");
+        matrizPalavrasSimples.put("leite", "LEITE");
         matrizPalavrasSimples.put("lixo", "LIXO");
         matrizPalavrasSimples.put("lua", "LUA");
         matrizPalavrasSimples.put("luta", "LUTA");
@@ -1752,7 +1769,7 @@ public class ModelJogoPrincipal {
      * @param event
      * @return
      */
-    public Button opcaoCorreta(ActionEvent event) {
+    public Button opcaoCorreta(ActionEvent event) throws NullPointerException {
         Button temporario = null;
         String opcaoCorreta = "";
         //pega o valor da opção correta
@@ -1782,18 +1799,23 @@ public class ModelJogoPrincipal {
                 break;
         }
 
-        //verifica quais dos botões é a opção correta
-        if (opcaoCorreta.equals(btn_1.getText())) {
-            temporario = btn_1;
-        } else if (opcaoCorreta.equals(btn_2.getText())) {
-            temporario = btn_2;
-        } else if (opcaoCorreta.equals(btn_3.getText())) {
-            temporario = btn_3;
-        } else if (opcaoCorreta.equals(btn_4.getText())) {
-            temporario = btn_4;
-        } else if (opcaoCorreta.equals(btn_5.getText())) {
-            temporario = btn_5;
+        try {
+            //verifica quais dos botões é a opção correta
+            if (opcaoCorreta.equals(btn_1.getText())) {
+                temporario = btn_1;
+            } else if (opcaoCorreta.equals(btn_2.getText())) {
+                temporario = btn_2;
+            } else if (opcaoCorreta.equals(btn_3.getText())) {
+                temporario = btn_3;
+            } else if (opcaoCorreta.equals(btn_4.getText())) {
+                temporario = btn_4;
+            } else if (opcaoCorreta.equals(btn_5.getText())) {
+                temporario = btn_5;
+            }
+        } catch (NullPointerException e) {
+
         }
+
         return temporario;
     }
 
@@ -2109,7 +2131,7 @@ public class ModelJogoPrincipal {
                             public void run() {
                                 if (getMostrandoCena()) {
                                     i = 30;
-                                    System.out.println("setou o i como 30");
+                                    //System.out.println("setou o i como 30");
                                 }
                                 if (getIndicacaoPular()) {
                                     i = i + 0;
@@ -2424,4 +2446,313 @@ public class ModelJogoPrincipal {
                 new KeyFrame(Duration.seconds(1), eventoCorOriginal)).play();
 
     }
+
+    /**
+     * Mostra a cena final depois que o jogador terminou a fase
+     *
+     * @throws MalformedURLException
+     */
+    public void mostrarCenaFinalFase() throws MalformedURLException {
+        //evento responsável por exibir as cenas de progresso na história
+        eventoCenas = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                //armazena a cena em que o botão 'btn_1' se encontra atualmente
+                window = (Stage) btn_1.getScene().getWindow();
+                Parent cenaPrincipal = null;
+                //armeza a cena do botão 'btn_1' em uma variável temporária
+                cenaTemporaria = btn_1.getScene();
+                //mostrandoCena = false;
+                setMostrandoCena(true);
+
+                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+                Parent proximaCena = null;
+                try {
+                    proximaCena = (Parent) fxmloader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+                //cria uma cena 
+                Scene cena = new Scene(proximaCena, 900, 700);
+                window.setTitle("Grafonema");//título da cena
+                window.setScene(cena);
+                window.show();//exibe a cena
+                sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+                try {
+                    //funcionando
+                    sequenciaCenas.executarCenaFimFase();
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        //evento que mostra a cena do início da fase
+        eventoInicioFase = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                sequenciaCenas.executarCenaMeioFase();
+            }
+        };
+        
+        eventoVoltar = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                window.setTitle("Grafonema");
+                window.setScene(cenaTemporaria);
+                //mostrandoCena = false;
+                setMostrandoCena(false);
+                //eventoAcerto.handle(null);
+                Button btemp = opcaoCorreta(null);
+                window.show();
+                jogador.setFaseAtual(jogador.getFaseAtual()+1);
+                gerarOpcaoAudio();
+                
+            }
+        };
+        
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoCenas),
+                new KeyFrame(Duration.seconds(15), eventoInicioFase),
+                new KeyFrame(Duration.seconds(25), eventoVoltar)).play();
+                
+    }
+
+    public void mostrarCenaInicialFase() {
+        //evento responsável por exibir as cenas de progresso na história
+        eventoCenas = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(" public void mostrarCenaInicialFase() {");
+                //armazena a cena em que o botão 'btn_1' se encontra atualmente
+                window = (Stage) btn_1.getScene().getWindow();
+                Parent cenaPrincipal = null;
+                //armeza a cena do botão 'btn_1' em uma variável temporária
+                cenaTemporaria = btn_1.getScene();
+
+                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+                Parent proximaCena = null;
+                try {
+                    proximaCena = (Parent) fxmloader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+                //cria uma cena 
+                Scene cena = new Scene(proximaCena, 900, 700);
+                window.setTitle("Grafonema");//título da cena
+                window.setScene(cena);
+                window.show();//exibe a cena
+                sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+
+                sequenciaCenas.executarCenaInicial();
+
+            }
+        };
+
+        //evento para voltar para o jogo pós exibição da cena
+        eventoVoltar = new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                System.out.println("evntVoltar mostrarCenaInicialFase");
+                window.setTitle("Grafonema");
+                window.setScene(cenaTemporaria);
+                //mostrandoCena = false;
+                setMostrandoCena(false);
+                //eventoAcerto.handle(null);
+                //Button btemp = opcaoCorreta(null);
+
+                window.show();
+                try {
+                    gerarOpcaoAleatoria();
+                } catch (IOException | InterruptedException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        /**
+         * OBSERVAÇÃO:
+         *
+         *
+         * OS TEMPOS ENTRE O PRIMEIRO KEYFRAME E O SEGUNDO DEVE SER COMPATÍVEL
+         * COM O TEMPO DENTRO DO EVENTO "eventoCenas"
+         */
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoCenas),
+                new KeyFrame(Duration.seconds(10), eventoVoltar)).play();
+
+    }
+
+    private void gerarOpcaoAudio() {
+        int i = 0;
+        int proxValor = 0;
+        ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
+        ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados ????
+        Random indice = new Random();//gerador de índices aleatorios
+        switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
+            case 1: //FASE 1
+                if (!isGameOver()) {
+                    gerarSomAleatorio(); //gera um som aleatório                
+                }
+                //loop que gera os índices e os adiciona no array novasOpcoes
+                while (i < 5) {
+                    proxValor = indice.nextInt(5);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                //Altera o valor dos botões
+                btn_1.setText(vogais[(int) novasOpcoes.get(0)]);
+                btn_2.setText(vogais[(int) novasOpcoes.get(1)]);
+                btn_3.setText(vogais[(int) novasOpcoes.get(2)]);
+                btn_4.setText(vogais[(int) novasOpcoes.get(3)]);
+                btn_5.setText(vogais[(int) novasOpcoes.get(4)]);
+
+                break;
+
+            case 2://FASE DOIS
+                i = 0;
+                int som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(29);
+
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                preencherOpcoes(silabasSimples, som, novasOpcoes);
+
+                break;
+            case 3:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(80);
+
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                preencherOpcoes(silabasSimplesB, som, novasOpcoes);
+                break;
+
+            case 4:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(93);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(palavrasSimples, som, novasOpcoes);
+
+                break;
+            case 5:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(110);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+
+                preencherOpcoes(silabasComplexas, som, novasOpcoes);
+                break;
+            case 6:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(80);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(silabasComplexas2, som, novasOpcoes);
+                break;
+
+            case 7:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(264);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(silabasComplexas3, som, novasOpcoes);
+                break;
+            case 9:
+                i = 0;
+                som = 0;
+                if (!isGameOver()) {
+                    som = gerarSomAleatorio();
+                }
+                indiceUtilizados.add(som);
+                while (indiceUtilizados.size() <= 5) {
+
+                    proxValor = indice.nextInt(50);
+                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                        novasOpcoes.add(proxValor);//adiciona o indice no array
+                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
+                        i++;
+                    }
+                }
+                preencherOpcoes(frasesSimples, som, novasOpcoes);
+                break;
+
+        }
+    }
+
 }

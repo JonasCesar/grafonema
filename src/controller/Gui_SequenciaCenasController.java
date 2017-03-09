@@ -43,7 +43,20 @@ public class Gui_SequenciaCenasController implements Initializable {
     }
 
     public void setFaseAtual(int faseAtual) {
+        System.out.println("Fase atual "+faseAtual);
         modelSeqCenas.setFaseAtual(faseAtual);
+    }
+    /**
+     * Esse método apenas chama uma imagem
+     * @return 
+     * @throws MalformedURLException 
+     */
+    public void executarCenaFimFase() throws MalformedURLException{
+        modelSeqCenas.executarCenaFimDaFase();
+    }
+    
+    public void executarCenaMeioFase(){
+        modelSeqCenas.executarCenaMeioFase();
     }
     
 }
