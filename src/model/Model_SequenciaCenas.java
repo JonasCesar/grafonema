@@ -73,7 +73,7 @@ public class Model_SequenciaCenas {
                 System.out.println("Unidade 2");
                 caminho1 = "fase2/img1";
                 caminho2 = "fase2/img2";
-                caminho3 = "fase2/im3";
+                caminho3 = "fase2/img3";
                 caminho4 = "fase2/img4";
                 caminho5 = "fase2/img5";
                 break;
@@ -258,9 +258,10 @@ public class Model_SequenciaCenas {
                 caminho1 = "fase1/fim";
                 caminho3 = "src/audios_vogais/frase1.mp3";
                 setFaseAtual(2);
-                valorRetorno = 2;
                 break;
             case 2:
+                caminho1 = "fase2/fim";
+                caminho3 = "src/audios_vogais/frase1.mp3";
                 setFaseAtual(3);
                 break;
             case 3:

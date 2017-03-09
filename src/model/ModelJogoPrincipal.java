@@ -386,7 +386,6 @@ public class ModelJogoPrincipal {
             mostrarCenaFinalFase();
 //            jogador.setFaseAtual(faseAtualTemp);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
-            System.out.print("Voltou da cena ");
             //          gerarOpcaoAudio();
             //chamar a cena de inicio da proxima fase
             /**
@@ -394,7 +393,6 @@ public class ModelJogoPrincipal {
              */
 
         } else {
-            System.out.println("final");
             gerarOpcaoAudio();
         }       
     }
@@ -463,11 +461,10 @@ public class ModelJogoPrincipal {
 
         int y = 0;
         //verifica qual a fase atual do jogador
-        System.out.println("faseAtual " + jogador.getFaseAtual());
         switch (jogador.getFaseAtual()) {
             case 1:
                 i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4 
-                System.out.println("fase 1: o som gerado foi o som: " + audioSilabasSimples[i]);
+                System.out.println("fase 1: o som gerado foi o som: " + audioVogais[i]);
                 tocarAudio(audioVogais[i]);
                 break;
             case 2:
@@ -1568,7 +1565,7 @@ public class ModelJogoPrincipal {
     public void incrementarAcerto() {
         setIndicacaoPular(true);
         jogador.setAcertosTotal(jogador.getAcertosTotal() + 1);
-        System.out.println("Acertos " + jogador.getAcertosTotal());
+        
     }
 
     /**
@@ -2267,6 +2264,7 @@ public class ModelJogoPrincipal {
 
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Mostrando cena final fase");
                 //armazena a cena em que o botão 'btn_1' se encontra atualmente
                 window = (Stage) btn_1.getScene().getWindow();
                 Parent cenaPrincipal = null;

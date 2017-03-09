@@ -12,7 +12,7 @@
    <children>
       <StackPane layoutX="47.0" prefHeight="700.0" prefWidth="900.0">
          <children>
-            <ImageView fx:id="imgView" fitHeight="726.0" fitWidth="710.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgView" fitHeight="726.0" fitWidth="710.0" pickOnBounds="true" preserveRatio="false">
                <viewport>
                   <Rectangle2D />
                </viewport>
