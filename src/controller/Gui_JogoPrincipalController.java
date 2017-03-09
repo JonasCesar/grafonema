@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  * @author jonas
  */
 public class Gui_JogoPrincipalController implements Initializable {
-    
+
     @FXML
     private Button btn_1;
     @FXML
@@ -39,17 +39,17 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Button btn_6;
     @FXML
     private Button pular;
-    
+
     @FXML
     private Label tempo;
-    
+
     @FXML
     private Label pontuacao;
-    
+
     private ModelJogoPrincipal modelJogoPrincipal;
     @FXML
     private ProgressBar lifeBar;
-    
+
     private Stage window;
     boolean indicacaoPular, pularErro;//indica que o jogador acionou o botão pular
 
@@ -73,6 +73,12 @@ public class Gui_JogoPrincipalController implements Initializable {
         modelJogoPrincipal.iniciarMatrizSilabasComplexas();
         modelJogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
         modelJogoPrincipal.iniciarTimer();//inicia o relógio
+
+        btn_1.setStyle("-fx-font-size: 30px; \n-fx-pref-width: 80px;\n -fx-pref-height: 80px;");
+        btn_2.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
+        btn_3.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
+        btn_4.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
+        btn_5.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
     }
 
     /**
@@ -111,7 +117,6 @@ public class Gui_JogoPrincipalController implements Initializable {
         if (modelJogoPrincipal.verificarRelacaoGaFonema(event)) {
 
             //MUDAR A APARENCIA DO BOTAO EM CASO DE ACERTO
-            
             modelJogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
             modelJogoPrincipal.incrementarAcerto();//incrementar o acerto
 
@@ -122,20 +127,17 @@ public class Gui_JogoPrincipalController implements Initializable {
 //
             } else {
                 //mostra a animação de acerto
-                modelJogoPrincipal.mostrarAnimacaoAcerto();                
+                modelJogoPrincipal.mostrarAnimacaoAcerto();
             }
-            
-            
+
         } else {
             //reduzir barra de vidas
             modelJogoPrincipal.mostrarAnimacaoErro(event);
             modelJogoPrincipal.reduzirLifeBar();
             modelJogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
             Button temp = modelJogoPrincipal.opcaoCorreta(event);
-            
+
             //mostrar a animaçao de erro
-            
-            
             //animação da opção correta            
             if (modelJogoPrincipal.isGameOver()) {//se for o fim do jogo
                 temp = modelJogoPrincipal.opcaoCorreta(event);
