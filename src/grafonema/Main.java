@@ -27,7 +27,7 @@ public class Main extends Application {
     public void start(Stage janela) throws IOException {
         this.janela = janela;
         Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Inicial.fxml"));        
-        Scene scene = new Scene(cenaInicial, 900, 700);        
+        Scene scene = new Scene(cenaInicial, 1200, 700);        
         janela.setTitle("Grafonema");
         janela.setScene(scene);
         janela.show();

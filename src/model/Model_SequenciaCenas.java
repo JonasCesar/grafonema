@@ -235,7 +235,7 @@ public class Model_SequenciaCenas {
             Gui_JogoPrincipalController jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
             jogoPrincipalController.iniciarJogo();
 
-            Scene scene = new Scene(cenaPrincipal, 900, 700);
+            Scene scene = new Scene(cenaPrincipal, 1200, 700);
             window.setTitle("Grafonema");
             window.setScene(scene);
             window.show();
