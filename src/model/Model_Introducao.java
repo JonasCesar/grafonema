@@ -37,7 +37,7 @@ public class Model_Introducao {
         proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
         
         //cria uma cena 
-        Scene cena = new Scene(proximaCena, 900, 700);
+        Scene cena = new Scene(proximaCena, 1200, 700);
         window.setTitle("Grafonema");//título da cena
         window.setScene(cena);
         window.show();//exibe a cena
@@ -67,7 +67,7 @@ public class Model_Introducao {
         Parent proximaCena = (Parent) fxmloader.load();        
         Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
         //cria uma cena 
-        Scene cena = new Scene(proximaCena, 900, 700);
+        Scene cena = new Scene(proximaCena, 1200, 700);
         window.setTitle("Grafonema");//título da cena
         window.setScene(cena);
         window.show();//exibe a cena

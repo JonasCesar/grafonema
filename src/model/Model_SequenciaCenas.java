@@ -86,12 +86,32 @@ public class Model_SequenciaCenas {
                 caminho5 = "fase3/img5";
                 break;
             case 4:
+                caminho1 = "fase4/img1";
+                caminho2 = "fase4/img2";
+                caminho3 = "fase4/img3";
+                caminho4 = "fase4/img4";
+                caminho5 = "fase4/img5";
                 break;
             case 5:
+                caminho1 = "fase5/img1";
+                caminho2 = "fase5/img2";
+                caminho3 = "fase5/img3";
+                caminho4 = "fase5/img4";
+                caminho5 = "fase5/img5";
                 break;
             case 6:
+                caminho1 = "fase5/img1";
+                caminho2 = "fase5/img2";
+                caminho3 = "fase5/img3";
+                caminho4 = "fase5/img4";
+                caminho5 = "fase5/img5";
                 break;
             case 7:
+                caminho1 = "fase5/img1";
+                caminho2 = "fase5/img2";
+                caminho3 = "fase5/img3";
+                caminho4 = "fase5/img4";
+                caminho5 = "fase5/img5";
                 break;
         }
 
@@ -194,6 +214,9 @@ public class Model_SequenciaCenas {
                 caminho3 = "audios_vogais/frase1";
                 break;
             case 3:
+                caminho1 = "fase3/inicioFase3";
+                caminho2 = "fase3/inicioFase3pb";
+                caminho3 = "audios_vogais/frase1";
                 break;
             default:
                 break;
@@ -235,7 +258,7 @@ public class Model_SequenciaCenas {
             Gui_JogoPrincipalController jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
             jogoPrincipalController.iniciarJogo();
 
-            Scene scene = new Scene(cenaPrincipal, 900, 700);
+            Scene scene = new Scene(cenaPrincipal, 1200, 700);
             window.setTitle("Grafonema");
             window.setScene(scene);
             window.show();
@@ -293,9 +316,29 @@ public class Model_SequenciaCenas {
                 caminho3 = "audios_vogais/frase1";
                 break;
             case 3:
+                caminho1 = "fase3/inicioFase03";
+                caminho2 = "fase3/inicioFase03pb";
+                caminho3 = "audios_vogais/frase1";
                 break;
-            default:
+            case 4:
+                caminho1 = "fase4/inicioFase04";
+                caminho2 = "fase4/inicioFase04pb";
+                caminho3 = "audios_vogais/frase1";                
                 break;
+            case 5:
+                caminho1 = "fase5/inicioFase05";
+                caminho2 = "fase5/inicioFase05pb";
+                caminho3 = "audios_vogais/frase1";
+                break;
+            case 6:
+                caminho1 = "fase6/inicioFase06";
+                caminho2 = "fase6/inicioFase06pb";
+                caminho3 = "audios_vogais/frase1";
+                break;
+            case 7:
+                caminho1 = "fase7/inicioFase07";
+                caminho2 = "fase7/inicioFase07pb";
+                caminho3 = "audios_vogais/frase1";
         }
 
         c1 = (ActionEvent event) -> {
