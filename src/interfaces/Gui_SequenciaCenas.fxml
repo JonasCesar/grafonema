@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_SequenciaCenasController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_SequenciaCenasController">
    <children>
       <StackPane layoutX="47.0" prefHeight="700.0" prefWidth="900.0">
          <children>

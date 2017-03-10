@@ -7,9 +7,9 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.net.*?> 
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_JogoPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_JogoPrincipalController">
     <stylesheets>
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
@@ -17,17 +17,17 @@
       <ProgressBar fx:id="lifeBar" layoutX="152.0" layoutY="29.0" prefWidth="200.0" progress="1.0" />
       <Label fx:id="pontuacao" layoutX="82.0" layoutY="193.0" text="0" />
       <Label fx:id="tempo" layoutX="468.0" layoutY="31.0" text="30s" />
-      <Button fx:id="btn_1" layoutX="122.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="A" />
-      <Button fx:id="btn_2" layoutX="258.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="E" />
-      <Button fx:id="btn_3" layoutX="396.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="I" />
-      <Button fx:id="btn_5" layoutX="659.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="U" />
-      <Button fx:id="btn_4" layoutX="530.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="O" />
-      <Button fx:id="pular" layoutX="748.0" layoutY="624.0" mnemonicParsing="false" onAction="#handlePular" text="Pular" />
+      <Button fx:id="btn_1" layoutX="171.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="A" />
+      <Button fx:id="btn_2" layoutX="365.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="E" />
+      <Button fx:id="btn_3" layoutX="558.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="I" />
+      <Button fx:id="btn_5" layoutX="948.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="U" />
+      <Button fx:id="btn_4" layoutX="744.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="O" />
+      <Button fx:id="pular" layoutX="1050.0" layoutY="608.0" mnemonicParsing="false" onAction="#handlePular" text="Pular" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="7.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../controller/warrior-icon-23.png" />
          </image>
       </ImageView>
-      <Button layoutX="418.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleOuvirAudio" text="Ouvir" />
+      <Button layoutX="600.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleOuvirAudio" text="Ouvir" />
    </children>
 </AnchorPane>

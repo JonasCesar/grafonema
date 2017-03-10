@@ -25,7 +25,7 @@ public class Model_Inicial {
         window = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         //cria a próxima cena chamando a inteface dos avatares
         Parent proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Introducao.fxml"));
-        Scene cena = new Scene(proximaCena, 900, 700);//tamanho
+        Scene cena = new Scene(proximaCena, 1200, 700);//tamanho
         window.setTitle("Grafonema");//título da cena
         window.setScene(cena);
         window.show();//exibe a interface

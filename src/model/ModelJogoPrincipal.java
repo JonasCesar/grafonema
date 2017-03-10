@@ -1704,7 +1704,7 @@ public class ModelJogoPrincipal {
                     Logger.getLogger(Gui_JogoPrincipalController.class
                             .getName()).log(Level.SEVERE, null, ex);
                 }
-                Scene scene = new Scene(cenaPrincipal, 900, 700);
+                Scene scene = new Scene(cenaPrincipal, 1200, 700);
                 window.setTitle("Grafonema");
                 window.setScene(scene);
                 window.show();
@@ -1829,7 +1829,7 @@ public class ModelJogoPrincipal {
                 }
                 Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
                 //cria uma cena 
-                Scene cena = new Scene(proximaCena, 900, 700);
+                Scene cena = new Scene(proximaCena, 1200, 700);
                 window.setTitle("Grafonema");//título da cena
                 window.setScene(cena);
                 window.show();//exibe a cena
@@ -2282,7 +2282,7 @@ public class ModelJogoPrincipal {
                 }
                 sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
                 //cria uma cena 
-                Scene cena = new Scene(proximaCena, 900, 700);
+                Scene cena = new Scene(proximaCena, 1200, 700);
                 window.setTitle("Grafonema");//título da cena
                 window.setScene(cena);
                 window.show();//exibe a cena
@@ -2349,7 +2349,7 @@ public class ModelJogoPrincipal {
                 }
                 Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
                 //cria uma cena 
-                Scene cena = new Scene(proximaCena, 900, 700);
+                Scene cena = new Scene(proximaCena, 1200, 700);
                 window.setTitle("Grafonema");//título da cena
                 window.setScene(cena);
                 window.show();//exibe a cena
@@ -2456,6 +2456,7 @@ public class ModelJogoPrincipal {
                 preencherOpcoes(silabasSimples, som, novasOpcoes);
 
                 break;
+                
             case 3:
                 
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
