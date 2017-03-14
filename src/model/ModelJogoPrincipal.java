@@ -1854,23 +1854,29 @@ public class ModelJogoPrincipal {
                 //mostrandoCena = false;
                 setMostrandoCena(false);
                 //eventoAcerto.handle(null);
-                Button btemp = opcaoCorreta(null);
-                (btemp).setText("X");
-
+                
                 window.show();
+            }
+        };
+        
+        eventoFimAcerto = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
                 try {
                     gerarOpcaoAleatoria();
-
-                } catch (InterruptedException | IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class
-                            .getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
         //animação que exibe as cenas e volta para a interface principal do jogo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(10), eventoVoltar)).play();
+                new KeyFrame(Duration.seconds(10), eventoVoltar),
+                new KeyFrame(Duration.seconds(13), eventoFimAcerto)).play();
         System.out.println("Opção aleatoria gerada");
 
     }
@@ -2125,7 +2131,7 @@ public class ModelJogoPrincipal {
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoAcerto),
                 new KeyFrame(Duration.seconds(1), eventoCorOriginal),
-                new KeyFrame(Duration.millis(1000), eventoFimAcerto)).play();
+                new KeyFrame(Duration.millis(1300), eventoFimAcerto)).play();
 
     }
 
@@ -2377,9 +2383,15 @@ public class ModelJogoPrincipal {
                 //Button btemp = opcaoCorreta(null);
 
                 window.show();
+            }
+        };
+        eventoFimAcerto = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
                 try {
                     gerarOpcaoAleatoria();
-                } catch (IOException | InterruptedException ex) {
+                } catch (InterruptedException | IOException ex) {
                     Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -2393,7 +2405,8 @@ public class ModelJogoPrincipal {
          */
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(10), eventoVoltar)).play();
+                new KeyFrame(Duration.seconds(10), eventoVoltar),
+                new KeyFrame(Duration.millis(500), eventoFimAcerto)).play();
 
     }
 
