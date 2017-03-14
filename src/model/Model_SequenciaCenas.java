@@ -73,7 +73,7 @@ public class Model_SequenciaCenas {
                 System.out.println("Unidade 2");
                 caminho1 = "fase2/img1";
                 caminho2 = "fase2/img2";
-                caminho3 = "fase2/im3";
+                caminho3 = "fase2/img3";
                 caminho4 = "fase2/img4";
                 caminho5 = "fase2/img5";
                 break;
@@ -86,12 +86,32 @@ public class Model_SequenciaCenas {
                 caminho5 = "fase3/img5";
                 break;
             case 4:
+                caminho1 = "fase4/img1";
+                caminho2 = "fase4/img2";
+                caminho3 = "fase4/img3";
+                caminho4 = "fase4/img4";
+                caminho5 = "fase4/img5";
                 break;
             case 5:
+                caminho1 = "fase5/img1";
+                caminho2 = "fase5/img2";
+                caminho3 = "fase5/img3";
+                caminho4 = "fase5/img4";
+                caminho5 = "fase5/img5";
                 break;
             case 6:
+                caminho1 = "fase5/img1";
+                caminho2 = "fase5/img2";
+                caminho3 = "fase5/img3";
+                caminho4 = "fase5/img4";
+                caminho5 = "fase5/img5";
                 break;
             case 7:
+                caminho1 = "fase5/img1";
+                caminho2 = "fase5/img2";
+                caminho3 = "fase5/img3";
+                caminho4 = "fase5/img4";
+                caminho5 = "fase5/img5";
                 break;
         }
 
@@ -194,6 +214,9 @@ public class Model_SequenciaCenas {
                 caminho3 = "audios_vogais/frase1";
                 break;
             case 3:
+                caminho1 = "fase3/inicioFase3";
+                caminho2 = "fase3/inicioFase3pb";
+                caminho3 = "audios_vogais/frase1";
                 break;
             default:
                 break;
@@ -258,9 +281,10 @@ public class Model_SequenciaCenas {
                 caminho1 = "fase1/fim";
                 caminho3 = "src/audios_vogais/frase1.mp3";
                 setFaseAtual(2);
-                valorRetorno = 2;
                 break;
             case 2:
+                caminho1 = "fase2/fim";
+                caminho3 = "src/audios_vogais/frase1.mp3";
                 setFaseAtual(3);
                 break;
             case 3:
@@ -292,9 +316,29 @@ public class Model_SequenciaCenas {
                 caminho3 = "audios_vogais/frase1";
                 break;
             case 3:
+                caminho1 = "fase3/inicioFase03";
+                caminho2 = "fase3/inicioFase03pb";
+                caminho3 = "audios_vogais/frase1";
                 break;
-            default:
+            case 4:
+                caminho1 = "fase4/inicioFase04";
+                caminho2 = "fase4/inicioFase04pb";
+                caminho3 = "audios_vogais/frase1";                
                 break;
+            case 5:
+                caminho1 = "fase5/inicioFase05";
+                caminho2 = "fase5/inicioFase05pb";
+                caminho3 = "audios_vogais/frase1";
+                break;
+            case 6:
+                caminho1 = "fase6/inicioFase06";
+                caminho2 = "fase6/inicioFase06pb";
+                caminho3 = "audios_vogais/frase1";
+                break;
+            case 7:
+                caminho1 = "fase7/inicioFase07";
+                caminho2 = "fase7/inicioFase07pb";
+                caminho3 = "audios_vogais/frase1";
         }
 
         c1 = (ActionEvent event) -> {

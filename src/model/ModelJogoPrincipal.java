@@ -372,6 +372,7 @@ public class ModelJogoPrincipal {
      * @throws java.io.IOException
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
+        System.out.println("Nova opção aleatória");
 
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
@@ -386,7 +387,6 @@ public class ModelJogoPrincipal {
             mostrarCenaFinalFase();
 //            jogador.setFaseAtual(faseAtualTemp);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
-            System.out.print("Voltou da cena ");
             //          gerarOpcaoAudio();
             //chamar a cena de inicio da proxima fase
             /**
@@ -394,7 +394,6 @@ public class ModelJogoPrincipal {
              */
 
         } else {
-            System.out.println("final");
             gerarOpcaoAudio();
         }
     }
@@ -463,41 +462,40 @@ public class ModelJogoPrincipal {
 
         int y = 0;
         //verifica qual a fase atual do jogador
-        System.out.println("faseAtual " + jogador.getFaseAtual());
         switch (jogador.getFaseAtual()) {
             case 1:
-                i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4 
-                System.out.println("fase 1: o som gerado foi o som: " + audioSilabasSimples[i]);
+                i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4
+                try {
+                    System.out.println(mediaPlayer.getStatus().toString());
+                    System.out.println("fase 1: o som gerado foi o som: " + audioVogais[i]);               
+
+                } catch (Exception ex) {
+
+                }
                 tocarAudio(audioVogais[i]);
                 break;
             case 2:
                 i = indiceAudio.nextInt(29);
-                System.out.println("fase 2: o som gerado foi o som: " + audioSilabasSimples[i]);
                 tocarAudio(audioSilabasSimples[i]);
                 y = i;
                 break;
             case 3:
                 i = indiceAudio.nextInt(80);
-                System.out.println("fase 3: o som gerado foi o som: " + audioSilabasSimplesB[i]);
                 tocarAudio(audioSilabasSimplesB[i]);
                 y = i;
                 break;
             case 4:
                 i = indiceAudio.nextInt(93);
-                System.out.println("fase 4: o som gerado foi o som: " + palavrasSimples[i]);
                 tocarAudio(audiosPalavrasSimples[i]);
-
                 y = i;
                 break;
             case 5:
                 i = indiceAudio.nextInt(111);
-                System.out.println("fase 5: o som gerado foi o som: " + audiosSilabasComplexas[i]);
                 tocarAudio(audiosSilabasComplexas[i]);
                 y = i;
                 break;
             case 6:
                 i = indiceAudio.nextInt(80);
-                System.out.println("fase 6: o som gerado foi o som: " + audiosSilabasComplexas2[i]);
                 tocarAudio(audiosSilabasComplexas2[i]);
                 y = i;
                 break;
@@ -527,9 +525,11 @@ public class ModelJogoPrincipal {
         boolean resultado = false;
         switch (jogador.getFaseAtual()) {
             case 1:
+                System.out.println("FASE UM!!!!");
                 resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 2:
+                System.out.println("FASE DOIS");
                 resultado = ((getKeyByValue(matrizSilabasSimples, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 3:
@@ -1568,7 +1568,7 @@ public class ModelJogoPrincipal {
     public void incrementarAcerto() {
         setIndicacaoPular(true);
         jogador.setAcertosTotal(jogador.getAcertosTotal() + 1);
-        System.out.println("Acertos " + jogador.getAcertosTotal());
+
     }
 
     /**
@@ -1774,7 +1774,7 @@ public class ModelJogoPrincipal {
      * @param n nome do áudio
      */
     private void setNomeAudioAtual(String n) {
-        nomeAudioAtual = n;
+        this.nomeAudioAtual = n;
     }
 
     /**
@@ -1783,7 +1783,7 @@ public class ModelJogoPrincipal {
      * @return string contendo o nome áudio atual
      */
     public String getAudioAtual() {
-        return nomeAudioAtual;
+        return this.nomeAudioAtual;
     }
 
     /**
@@ -2186,6 +2186,7 @@ public class ModelJogoPrincipal {
         //evento que representa a ação a ser feita depois da 
         //animação de acerto
         eventoFimAcerto = (ActionEvent event) -> {
+            setIndicacaoPular(true);
             try {
                 gerarOpcaoAleatoria();
 
@@ -2194,13 +2195,13 @@ public class ModelJogoPrincipal {
                         .getName()).log(Level.SEVERE, null, ex);
             }
             //indicacaoPular = true;
-            setIndicacaoPular(true);
+
         };
 
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoAcerto),
                 new KeyFrame(Duration.seconds(1), eventoCorOriginal),
-                new KeyFrame(Duration.seconds(2), eventoFimAcerto)).play();
+                new KeyFrame(Duration.millis(1000), eventoFimAcerto)).play();
 
     }
 
@@ -2419,6 +2420,7 @@ public class ModelJogoPrincipal {
 
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Mostrando cena final fase");
                 //armazena a cena em que o botão 'btn_1' se encontra atualmente
                 window = (Stage) btn_1.getScene().getWindow();
                 Parent cenaPrincipal = null;

@@ -8,6 +8,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_IntroducaoController">
    <children>
-      <Button fx:id="avancar" layoutX="727.0" layoutY="510.0" mnemonicParsing="false" onAction="#handleAvancar" text="Avançar" />
+      <Button fx:id="avancar" layoutX="1044.0" layoutY="586.0" mnemonicParsing="false" onAction="#handleAvancar" text="Avançar" />
    </children>
 </AnchorPane>
