@@ -378,7 +378,7 @@ public class ModelJogoPrincipal {
             jogador.setBonus(true);
         }
 
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 11) {
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 5) {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
@@ -396,7 +396,7 @@ public class ModelJogoPrincipal {
         } else {
             System.out.println("final");
             gerarOpcaoAudio();
-        }       
+        }
     }
 
     /*função para preencher as opções na tela inserindo 
@@ -2070,6 +2070,7 @@ public class ModelJogoPrincipal {
                 break;
 
             case 3:
+
                 eventoAcerto = (ActionEvent event) -> {
                     Button btemp = opcaoCorreta(event);
                     //(btemp).setText("X");
@@ -2103,6 +2104,81 @@ public class ModelJogoPrincipal {
                             + "    -fx-pref-height: 70px;\n"
                     );
                 };
+                break;
+
+            case 4:
+
+                eventoAcerto = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#97ff5b, #54e600),\n"
+                            + "    linear-gradient(#b1ff83, #83f143),\n"
+                            + "    linear-gradient(#a0ff69, #6def22),\n"
+                            + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 158px;\n"
+                            + "    -fx-pref-height: 78px;\n");
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "     linear-gradient(#ffd65b, #e68400)\n"
+                            + "     linear-gradient(#ffef84, #f2ba44),\n"
+                            + "     linear-gradient(#ffea6a, #efaa22),\n"
+                            + "     linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "     linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-weight: bold;\n"
+                            + "    -fx-padding: 10 20 10 20;"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 150px;\n"
+                            + "    -fx-pref-height: 70px;\n"
+                    );
+                };
+                break;
+
+            case 5:
+
+                eventoAcerto = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#97ff5b, #54e600),\n"
+                            + "    linear-gradient(#b1ff83, #83f143),\n"
+                            + "    linear-gradient(#a0ff69, #6def22),\n"
+                            + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 108px;\n"
+                            + "    -fx-pref-height: 78px;\n");
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "     linear-gradient(#ffd65b, #e68400)\n"
+                            + "     linear-gradient(#ffef84, #f2ba44),\n"
+                            + "     linear-gradient(#ffea6a, #efaa22),\n"
+                            + "     linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "     linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-weight: bold;\n"
+                            + "    -fx-padding: 10 20 10 20;"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 100px;\n"
+                            + "    -fx-pref-height: 70px;\n"
+                    );
+                };
+                
                 break;
 
         }
@@ -2212,6 +2288,82 @@ public class ModelJogoPrincipal {
 
             case 3:
 
+                eventoErro = (ActionEvent event) -> {
+                    //MUDA A COR DO BOTÃO
+                    Button btemp = (Button) ev.getSource();
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#ff0000, #ff0000),\n"
+                            + "    linear-gradient(#ff0000, #7B68EE),\n"
+                            + "    linear-gradient(#483D8B, #ff0000),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 100px;\n"
+                            + "    -fx-pref-height: 70px;\n");
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = (Button) ev.getSource();
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#ffd65b, #e68400),\n"
+                            + "    linear-gradient(#ffef84, #f2ba44),\n"
+                            + "    linear-gradient(#ffea6a, #efaa22),\n"
+                            + "    linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 100px;\n"
+                            + "    -fx-pref-height: 70px;\n"
+                    //                    //+ "    -fx-font-weight: bold;\n"
+                    //                    + "    -fx-padding: 10 20 10 20;"
+                    );
+                };
+
+                break;
+
+            case 4:
+
+                eventoErro = (ActionEvent event) -> {
+                    //MUDA A COR DO BOTÃO
+                    Button btemp = (Button) ev.getSource();
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#ff0000, #ff0000),\n"
+                            + "    linear-gradient(#ff0000, #7B68EE),\n"
+                            + "    linear-gradient(#483D8B, #ff0000),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 150px;\n"
+                            + "    -fx-pref-height: 70px;\n");
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = (Button) ev.getSource();
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#ffd65b, #e68400),\n"
+                            + "    linear-gradient(#ffef84, #f2ba44),\n"
+                            + "    linear-gradient(#ffea6a, #efaa22),\n"
+                            + "    linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 150px;\n"
+                            + "    -fx-pref-height: 70px;\n"
+                    //                    //+ "    -fx-font-weight: bold;\n"
+                    //                    + "    -fx-padding: 10 20 10 20;"
+                    );
+                };
+
+                break;
+                
+            case 5:
+                
                 eventoErro = (ActionEvent event) -> {
                     //MUDA A COR DO BOTÃO
                     Button btemp = (Button) ev.getSource();
@@ -2404,6 +2556,7 @@ public class ModelJogoPrincipal {
         Random indice = new Random();//gerador de índices aleatorios
         switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
             case 1: //FASE 1
+
                 btn_1.setStyle("-fx-font-size: 35px; \n-fx-pref-width: 88px;\n -fx-pref-height: 80px;");
                 btn_2.setStyle("-fx-font-size: 35px; \n -fx-pref-width: 88px;\n -fx-pref-height: 80px;");
                 btn_3.setStyle("-fx-font-size: 35px; \n -fx-pref-width: 88px;\n -fx-pref-height: 80px;");
@@ -2458,15 +2611,15 @@ public class ModelJogoPrincipal {
                 preencherOpcoes(silabasSimples, som, novasOpcoes);
 
                 break;
-                
+
             case 3:
-                
+
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
                 btn_3.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
                 btn_4.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
                 btn_5.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
-                
+
                 i = 0;
                 som = 0;
                 if (!isGameOver()) {
@@ -2488,6 +2641,13 @@ public class ModelJogoPrincipal {
                 break;
 
             case 4:
+
+                btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px;  \n -fx-pref-height: 70px;");
+                btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
+                btn_3.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
+                btn_4.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
+                btn_5.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
+
                 i = 0;
                 som = 0;
                 if (!isGameOver()) {
@@ -2507,6 +2667,13 @@ public class ModelJogoPrincipal {
 
                 break;
             case 5:
+
+                btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
+                btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
+                btn_3.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
+                btn_4.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
+                btn_5.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
+
                 i = 0;
                 som = 0;
                 if (!isGameOver()) {
