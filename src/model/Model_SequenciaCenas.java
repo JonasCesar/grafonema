@@ -288,6 +288,29 @@ public class Model_SequenciaCenas {
                 setFaseAtual(3);
                 break;
             case 3:
+                caminho1 = "fase3/fim";
+                caminho3 = "src/audios_vogais/frase1.mp3";
+                setFaseAtual(3);
+                break;
+            case 4:
+                caminho1 = "fase4/fim";
+                caminho3 = "src/audios_vogais/frase1.mp3";
+                setFaseAtual(3);
+                break;
+            case 5:
+                caminho1 = "fase5/fim";
+                caminho3 = "src/audios_vogais/frase1.mp3";
+                setFaseAtual(3);
+                break;
+            case 6:
+                caminho1 = "fase6/fim";
+                caminho3 = "src/audios_vogais/frase1.mp3";
+                setFaseAtual(3);
+                break;
+            case 7:
+                caminho1 = "fase2/fim";
+                caminho3 = "src/audios_vogais/frase1.mp3";
+                setFaseAtual(3);
                 break;
             default:
                 break;

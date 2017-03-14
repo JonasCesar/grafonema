@@ -21,6 +21,8 @@ public class Gui_InicialController implements Initializable {
     private Button iniciar;
     
     private Model_Inicial modelInical = new Model_Inicial();
+    @FXML
+    private ImageView imagemFundo;
     /**
      * Initializes the controller class.
      * @param url
@@ -30,6 +32,7 @@ public class Gui_InicialController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Image image = new Image(getClass().getResourceAsStream("play.png"));
         iniciar.setGraphic(new ImageView(image));
+        imagemFundo.toBack();
     }
     /**
      * Começa o jogo
@@ -38,6 +41,7 @@ public class Gui_InicialController implements Initializable {
      */
     @FXML
     private void handleComecar(ActionEvent event) throws IOException {       
-        modelInical.iniciar(event);    
+        modelInical.iniciar(event);
+        
     }
 }

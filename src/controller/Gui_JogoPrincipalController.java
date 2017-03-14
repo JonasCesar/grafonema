@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -36,8 +37,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private Button btn_5;
     @FXML
-    private Button btn_6;
-    @FXML
     private Button pular;
 
     @FXML
@@ -52,6 +51,8 @@ public class Gui_JogoPrincipalController implements Initializable {
 
     private Stage window;
     boolean indicacaoPular, pularErro;//indica que o jogador acionou o botão pular
+    @FXML
+    private ImageView imagemFundo;
 
     public Gui_JogoPrincipalController() {
 
@@ -65,6 +66,7 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        imagemFundo.toBack();
         String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
         modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo);
@@ -75,6 +77,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         modelJogoPrincipal.iniciarMatrizSilabasComplexas3();
         modelJogoPrincipal.iniciarMatrizPalavrasSimples();
         modelJogoPrincipal.iniciarMatrizSilabasComplexas();
+        
 
     }
 

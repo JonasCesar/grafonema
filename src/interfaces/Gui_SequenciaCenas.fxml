@@ -10,6 +10,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_SequenciaCenasController">
    <children>
+      <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1262.0" layoutX="-22.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagens/fundo.jpg" />
+         </image>
+      </ImageView>
       <StackPane layoutX="175.0" prefHeight="700.0" prefWidth="900.0">
          <children>
             <ImageView fx:id="imgView" fitHeight="726.0" fitWidth="710.0" pickOnBounds="true" preserveRatio="true">
