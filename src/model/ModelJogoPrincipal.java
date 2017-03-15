@@ -467,7 +467,7 @@ public class ModelJogoPrincipal {
                 i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4
                 try {
                     System.out.println(mediaPlayer.getStatus().toString());
-                    System.out.println("fase 1: o som gerado foi o som: " + audioVogais[i]);               
+                    System.out.println("fase 1: o som gerado foi o som: " + audioVogais[i]);
 
                 } catch (Exception ex) {
 
@@ -1854,11 +1854,11 @@ public class ModelJogoPrincipal {
                 //mostrandoCena = false;
                 setMostrandoCena(false);
                 //eventoAcerto.handle(null);
-                
+
                 window.show();
             }
         };
-        
+
         eventoFimAcerto = new EventHandler<ActionEvent>() {
 
             @Override
@@ -2184,7 +2184,7 @@ public class ModelJogoPrincipal {
                             + "    -fx-pref-height: 70px;\n"
                     );
                 };
-                
+
                 break;
 
         }
@@ -2368,9 +2368,9 @@ public class ModelJogoPrincipal {
                 };
 
                 break;
-                
+
             case 5:
-                
+
                 eventoErro = (ActionEvent event) -> {
                     //MUDA A COR DO BOTÃO
                     Button btemp = (Button) ev.getSource();
@@ -2764,6 +2764,221 @@ public class ModelJogoPrincipal {
                 break;
 
         }
+    }
+
+    public void mostrarAnimacaoDecimoAcerto() throws InterruptedException, IOException {
+        //evento que represanta a ação do acerto
+        //MUDA A COR DO BOTÃO
+
+        switch (jogador.getFaseAtual()) {
+            case 1:
+                eventoAcerto = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#97ff5b, #54e600),\n"
+                            + "    linear-gradient(#b1ff83, #83f143),\n"
+                            + "    linear-gradient(#a0ff69, #6def22),\n"
+                            + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 35px;\n"
+                            + "    -fx-pref-height: 88px;\n"
+                            + "    -fx-pref-width: 96px;\n");
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "     linear-gradient(#ffd65b, #e68400)\n"
+                            + "     linear-gradient(#ffef84, #f2ba44),\n"
+                            + "     linear-gradient(#ffea6a, #efaa22),\n"
+                            + "     linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "     linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-weight: bold;\n"
+                            + "    -fx-padding: 10 20 10 20;"
+                            + "    -fx-font-size: 35px;\n"
+                            + "    -fx-pref-height: 80px;\n"
+                            + "    -fx-pref-width: 88px;\n"
+                    );
+                };
+
+                //evento para voltar para o jogo pós exibição da cena
+                eventoVoltar = new EventHandler<ActionEvent>() {
+
+                    public void handle(ActionEvent event) {
+                        try{
+                            mostrarCenas();
+                        }catch(Exception ex){
+                            
+                        }
+                        
+                    }
+                };
+
+                break;
+
+            case 2:
+                eventoAcerto = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#97ff5b, #54e600),\n"
+                            + "    linear-gradient(#b1ff83, #83f143),\n"
+                            + "    linear-gradient(#a0ff69, #6def22),\n"
+                            + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 108px;\n"
+                            + "    -fx-pref-height: 78px;\n");
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "     linear-gradient(#ffd65b, #e68400)\n"
+                            + "     linear-gradient(#ffef84, #f2ba44),\n"
+                            + "     linear-gradient(#ffea6a, #efaa22),\n"
+                            + "     linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "     linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-weight: bold;\n"
+                            + "    -fx-padding: 10 20 10 20;"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 100px;\n"
+                            + "    -fx-pref-height: 70px;\n"
+                    );
+                };
+                break;
+
+            case 3:
+
+                eventoAcerto = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#97ff5b, #54e600),\n"
+                            + "    linear-gradient(#b1ff83, #83f143),\n"
+                            + "    linear-gradient(#a0ff69, #6def22),\n"
+                            + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 108px;\n"
+                            + "    -fx-pref-height: 78px;\n");
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "     linear-gradient(#ffd65b, #e68400)\n"
+                            + "     linear-gradient(#ffef84, #f2ba44),\n"
+                            + "     linear-gradient(#ffea6a, #efaa22),\n"
+                            + "     linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "     linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-weight: bold;\n"
+                            + "    -fx-padding: 10 20 10 20;"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 100px;\n"
+                            + "    -fx-pref-height: 70px;\n"
+                    );
+                };
+                break;
+
+            case 4:
+
+                eventoAcerto = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#97ff5b, #54e600),\n"
+                            + "    linear-gradient(#b1ff83, #83f143),\n"
+                            + "    linear-gradient(#a0ff69, #6def22),\n"
+                            + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 158px;\n"
+                            + "    -fx-pref-height: 78px;\n");
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "     linear-gradient(#ffd65b, #e68400)\n"
+                            + "     linear-gradient(#ffef84, #f2ba44),\n"
+                            + "     linear-gradient(#ffea6a, #efaa22),\n"
+                            + "     linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "     linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-weight: bold;\n"
+                            + "    -fx-padding: 10 20 10 20;"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 150px;\n"
+                            + "    -fx-pref-height: 70px;\n"
+                    );
+                };
+                break;
+
+            case 5:
+
+                eventoAcerto = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#97ff5b, #54e600),\n"
+                            + "    linear-gradient(#b1ff83, #83f143),\n"
+                            + "    linear-gradient(#a0ff69, #6def22),\n"
+                            + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 108px;\n"
+                            + "    -fx-pref-height: 78px;\n");
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "     linear-gradient(#ffd65b, #e68400)\n"
+                            + "     linear-gradient(#ffef84, #f2ba44),\n"
+                            + "     linear-gradient(#ffea6a, #efaa22),\n"
+                            + "     linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "     linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-weight: bold;\n"
+                            + "    -fx-padding: 10 20 10 20;"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 100px;\n"
+                            + "    -fx-pref-height: 70px;\n"
+                    );
+                };
+
+                break;
+
+        }
+
+        //evento que representa a ação a ser feita depois da 
+        //animação de acerto
+        //evento para voltar para o jogo pós exibição da cena
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoAcerto),
+                new KeyFrame(Duration.seconds(1), eventoCorOriginal),
+                new KeyFrame(Duration.millis(1300), eventoVoltar)).play();
+
     }
 
 }

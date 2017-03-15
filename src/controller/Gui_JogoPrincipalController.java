@@ -77,7 +77,11 @@ public class Gui_JogoPrincipalController implements Initializable {
         modelJogoPrincipal.iniciarMatrizSilabasComplexas3();
         modelJogoPrincipal.iniciarMatrizPalavrasSimples();
         modelJogoPrincipal.iniciarMatrizSilabasComplexas();
-        
+        btn_1.setStyle("-fx-font-size: 30px; \n-fx-pref-width: 80px;\n -fx-pref-height: 80px;");
+        btn_2.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
+        btn_3.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
+        btn_4.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
+        btn_5.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
 
     }
 
@@ -86,11 +90,6 @@ public class Gui_JogoPrincipalController implements Initializable {
         modelJogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
         modelJogoPrincipal.iniciarTimer();//inicia o relógio
 
-        btn_1.setStyle("-fx-font-size: 30px; \n-fx-pref-width: 80px;\n -fx-pref-height: 80px;");
-        btn_2.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
-        btn_3.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
-        btn_4.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
-        btn_5.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
     }
 
     /**
@@ -135,7 +134,7 @@ public class Gui_JogoPrincipalController implements Initializable {
             if (modelJogoPrincipal.jogador.getAcertosTotal() == 10) {
                 modelJogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
                 System.out.println("mostrando cena = true");
-                modelJogoPrincipal.mostrarCenas();//mostra as cenas depois que o jogador acerta 10 vezes
+                modelJogoPrincipal.mostrarAnimacaoDecimoAcerto();
 
 //
             } else {

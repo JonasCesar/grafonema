@@ -51,6 +51,8 @@ public class Model_SequenciaCenas {
     String caminho1, caminho2, caminho3, caminho4, caminho5 = "";
     private File arquivoImagemPB;
     int faseTempAtual = 0;
+    
+    Gui_JogoPrincipalController jogoPrincipalController = null;
 
     public Model_SequenciaCenas(ImageView imagem) {
         imgView = imagem;
@@ -198,6 +200,7 @@ public class Model_SequenciaCenas {
     }
 
     public void executarCenaInicial() {
+        
         caminho1 = caminho2 = caminho3 = "";
 
         switch (getFaseAtual()) {
@@ -255,8 +258,8 @@ public class Model_SequenciaCenas {
             } catch (IOException ex) {
                 Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Gui_JogoPrincipalController jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
-            jogoPrincipalController.iniciarJogo();
+            jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
+            
 
             Scene scene = new Scene(cenaPrincipal, 1200, 700);
             window.setTitle("Grafonema");
@@ -264,10 +267,16 @@ public class Model_SequenciaCenas {
             window.show();
 
         };
+        
+        c4 = (ActionEvent event) -> {
+            jogoPrincipalController.iniciarJogo();
+        };
+        
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
                 new KeyFrame(Duration.seconds(10), c2),
-                new KeyFrame(Duration.seconds(20), c3)).play();
+                new KeyFrame(Duration.seconds(20), c3),
+                new KeyFrame(Duration.seconds(21), c4)).play();
 
     }
 
