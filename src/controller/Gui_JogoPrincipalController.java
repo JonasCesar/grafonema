@@ -6,10 +6,13 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import model.ModelJogoPrincipal;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * FXML Controller class
@@ -53,6 +58,8 @@ public class Gui_JogoPrincipalController implements Initializable {
     boolean indicacaoPular, pularErro;//indica que o jogador acionou o botão pular
     @FXML
     private ImageView imagemFundo;
+    @FXML
+    private Button ouvirAudio;
 
     public Gui_JogoPrincipalController() {
 
@@ -69,7 +76,11 @@ public class Gui_JogoPrincipalController implements Initializable {
         imagemFundo.toBack();
         String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
-        modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo);
+        try {
+            modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo, ouvirAudio);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         modelJogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
         modelJogoPrincipal.iniciarMatrizAudioSilabas();
         modelJogoPrincipal.iniciarMatrizSilabasSimplesB();
@@ -85,7 +96,7 @@ public class Gui_JogoPrincipalController implements Initializable {
 
     }
 
-    public void iniciarJogo() {
+    public void iniciarJogo() throws IOException {
 
         modelJogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
         modelJogoPrincipal.iniciarTimer();//inicia o relógio
@@ -98,7 +109,7 @@ public class Gui_JogoPrincipalController implements Initializable {
      * @param event
      */
     @FXML
-    private void handlePular(ActionEvent event) throws InterruptedException, IOException {
+    private void handlePular(ActionEvent event) throws InterruptedException, IOException, ClassNotFoundException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException {
         int qntPulosAtual = modelJogoPrincipal.jogador.getQntPulos();
         //se o jogador já pulou 3 vezes
         //(pois a quantidade de pulos é iniciada com 0
@@ -140,6 +151,7 @@ public class Gui_JogoPrincipalController implements Initializable {
             } else {
                 //mostra a animação de acerto
                 modelJogoPrincipal.mostrarAnimacaoAcerto();
+                
             }
 
         } else {
@@ -168,8 +180,8 @@ public class Gui_JogoPrincipalController implements Initializable {
      * @param event botão ouvirAudio
      */
     @FXML
-    private void handleOuvirAudio(ActionEvent event) {
+    private void handleOuvirAudio(ActionEvent event) throws ClassNotFoundException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException, IOException {
         String audio = modelJogoPrincipal.getAudioAtual();
-        modelJogoPrincipal.tocarAudio(audio);//chama o método que toca o áudio
+        modelJogoPrincipal.tocarAudio(audio);
     }
 }
