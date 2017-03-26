@@ -33,7 +33,8 @@ public class Gui_SequenciaCenasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
          modelSeqCenas = new Model_SequenciaCenas(imgView);
-         imagemFundo.toBack();
+         //imagemFundo.();
+         imgView.toFront();
             
     }
     

@@ -478,8 +478,6 @@ public class ModelJogoPrincipal {
                 } catch (Exception ex) {
 
                 }
-                setNomeAudioAtual(audioVogais[i]);//define o nome atual do áudio que está sendo utilizado
-                //ouvirAudio.fire();
                 tocarAudio(audioVogais[i]);
                 //tocarAudio.teste();
                 break;
