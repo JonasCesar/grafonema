@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -28,9 +29,12 @@ public class Gui_GameOverController implements Initializable {
     private Model_gameOver gameOver = new Model_gameOver();
     
     private Stage window;
+    @FXML
+    private ImageView imagemFundo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        imagemFundo.toBack();
         // TODO
     }
     /**
