@@ -407,7 +407,6 @@ public class ModelJogoPrincipal {
      */
     public void preencherOpcoes(String categoria[], int s, ArrayList no) {
 
-        System.out.println("Categoria " + categoria.length);
         Random ind = new Random();
         int valor = ind.nextInt(5);
         if (valor == 0) {
@@ -457,9 +456,6 @@ public class ModelJogoPrincipal {
      * Gera o som aleatório que o jogador deverá relacionar com uma das opções
      *
      * @return a posicao do array referente ao áudio que deve ser reproduzido
-     * @throws javax.sound.sampled.LineUnavailableException
-     * @throws javax.sound.sampled.UnsupportedAudioFileException
-     * @throws java.io.IOException
      */
     public int gerarSomAleatorio() {
         //objeto que será utilizado para gera um número aleatório
@@ -2633,7 +2629,7 @@ public class ModelJogoPrincipal {
 
                     proxValor = indice.nextInt(29);
 
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -3026,5 +3022,19 @@ public class ModelJogoPrincipal {
                 new KeyFrame(Duration.seconds(1), eventoCorOriginal),
                 new KeyFrame(Duration.millis(1300), eventoVoltar)).play();
 
+    }
+
+    public boolean possuiSemelhante(ArrayList indicesUtilizados, int novaOpcao) {
+        int iterador = 0;
+        boolean retorno = false;
+        if (!indicesUtilizados.isEmpty()) {
+            for (iterador = 0; iterador < indicesUtilizados.size(); iterador++) {
+                int valor = (int) indicesUtilizados.get(iterador);
+                if (((valor - novaOpcao) == 1) || (novaOpcao - valor) == 1) {
+                    retorno = true;
+                }
+            }
+        }
+        return retorno;
     }
 }
