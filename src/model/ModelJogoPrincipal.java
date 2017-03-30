@@ -2804,13 +2804,24 @@ public class ModelJogoPrincipal {
         }
     }
 
-//     public boolean cliquePermitido(boolean permissao) {
-//        if (permissao) {
-//            System.out.println("CLIQUE PERMITIDO");
-//            return true;
-//        } else {
-//            System.out.println("CLIQUE NÃÃÃO PERMITIDO");
-//            return false;
-//        }
-//    }
+
+    /**
+     * Verifica se o próximo valor das novas opções possui algum fonema semelhante
+     * @param indicesUtilizados
+     * @param novaOpcao
+     * @return 
+     */
+    public boolean possuiSemelhante(ArrayList indicesUtilizados, int novaOpcao) {
+        int iterador = 0;
+        boolean retorno = false;
+        if (!indicesUtilizados.isEmpty()) {
+            for (iterador = 0; iterador < indicesUtilizados.size(); iterador++) {
+                int valor = (int) indicesUtilizados.get(iterador);
+                if (((valor - novaOpcao) == 1) || (novaOpcao - valor) == 1) {
+                    retorno = true;
+                }
+            }
+        }
+        return retorno;
+    }
 }

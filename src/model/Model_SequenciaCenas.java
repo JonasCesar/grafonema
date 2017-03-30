@@ -282,11 +282,7 @@ public class Model_SequenciaCenas {
         };
         
         c4 = (ActionEvent event) -> {
-            try {
-                jogoPrincipalController.iniciarJogo();
-            } catch (IOException ex) {
-                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            jogoPrincipalController.iniciarJogo();
         };
         
         new Timeline(
