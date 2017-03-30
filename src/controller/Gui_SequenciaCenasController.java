@@ -62,5 +62,9 @@ public class Gui_SequenciaCenasController implements Initializable {
     public void executarCenaMeioFase(){
         modelSeqCenas.executarCenaMeioFase();
     }
+
+    public void executarCenaInicioJogo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

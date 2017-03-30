@@ -2658,7 +2658,7 @@ public class ModelJogoPrincipal {
 
                     proxValor = indice.nextInt(80);
 
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2685,7 +2685,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(93);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2711,7 +2711,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(110);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2730,7 +2730,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(80);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2749,7 +2749,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(264);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2767,7 +2767,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(50);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -3023,7 +3023,12 @@ public class ModelJogoPrincipal {
                 new KeyFrame(Duration.millis(1300), eventoVoltar)).play();
 
     }
-
+    /**
+     * Verifica se o próximo valor das novas opções possui algum fonema semelhante
+     * @param indicesUtilizados
+     * @param novaOpcao
+     * @return 
+     */
     public boolean possuiSemelhante(ArrayList indicesUtilizados, int novaOpcao) {
         int iterador = 0;
         boolean retorno = false;

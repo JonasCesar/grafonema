@@ -71,6 +71,7 @@ public class Model_Introducao {
         window.setTitle("Grafonema");//título da cena
         window.setScene(cena);
         window.show();//exibe a cena
+        sequenciaCenas.executarCenaInicioJogo();
         sequenciaCenas.executarCenaInicial();
         
     }
