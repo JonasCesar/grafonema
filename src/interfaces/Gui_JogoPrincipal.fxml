@@ -28,6 +28,10 @@
             <Image url="@../controller/warrior-icon-23.png" />
          </image>
       </ImageView>
-      <Button layoutX="600.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleOuvirAudio" text="Ouvir" />
+      <Button fx:id="ouvirAudio" layoutX="600.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleOuvirAudio" text="Ouvir" />
+      <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1262.0" layoutX="-22.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagens/fundo.jpg" />
+         </image></ImageView>
    </children>
 </AnchorPane>

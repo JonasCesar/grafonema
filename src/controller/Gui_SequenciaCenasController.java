@@ -18,6 +18,8 @@ public class Gui_SequenciaCenasController implements Initializable {
     private ImageView imgView;
     private Model_SequenciaCenas modelSeqCenas;
     private int unidadeAtual;
+    @FXML
+    private ImageView imagemFundo;
 
     public Gui_SequenciaCenasController() {
        unidadeAtual = 0;
@@ -31,6 +33,8 @@ public class Gui_SequenciaCenasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
          modelSeqCenas = new Model_SequenciaCenas(imgView);
+         //imagemFundo.();
+         imgView.toFront();
             
     }
     
@@ -57,6 +61,10 @@ public class Gui_SequenciaCenasController implements Initializable {
     
     public void executarCenaMeioFase(){
         modelSeqCenas.executarCenaMeioFase();
+    }
+
+    public void executarCenaInicioJogo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

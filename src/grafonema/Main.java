@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grafonema;
 import java.io.IOException;
+import java.util.Optional;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -12,6 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -33,13 +33,18 @@ public class Main extends Application {
         janela.show();
         
         //função para encerrar todos os processos quando o usuário clicar no "X"
-        janela.setOnCloseRequest(new EventHandler<WindowEvent>() {
-
-            @Override
-            public void handle(WindowEvent event) {
-
-                Platform.exit();
-                System.exit(0);
+        janela.setOnCloseRequest((WindowEvent event) -> {
+            Alert confirmacaoSaida = new Alert(Alert.AlertType.CONFIRMATION,
+                    "Você tem certeza que quer sair do jogo?");
+            Button exitButton = (Button) confirmacaoSaida.getDialogPane().lookupButton(ButtonType.OK);
+            exitButton.setText("Sair");
+            confirmacaoSaida.setHeaderText("Confirmação de Saída");
+            confirmacaoSaida.initModality(Modality.APPLICATION_MODAL);
+            confirmacaoSaida.initOwner(janela);
+            
+            Optional<ButtonType> resposta = confirmacaoSaida.showAndWait();
+            if (!ButtonType.OK.equals(resposta.get())) {
+                event.consume();
             }
         });
 

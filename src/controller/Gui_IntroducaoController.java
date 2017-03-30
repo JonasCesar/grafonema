@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -29,10 +30,13 @@ public class Gui_IntroducaoController implements Initializable {
     
     @FXML
     private Button avancar;
+    @FXML
+    private ImageView imagemFundo;
     
     //@Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        imagemFundo.toBack();
+        
     }
     
     /**

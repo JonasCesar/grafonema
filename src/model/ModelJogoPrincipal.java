@@ -2,10 +2,10 @@ package model;
 
 import controller.Gui_SequenciaCenasController;
 import controller.Gui_JogoPrincipalController;
-import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +34,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -63,6 +65,7 @@ public class ModelJogoPrincipal {
     @FXML
     private Label tempo;
 
+    private URL url;
     @FXML
     private ProgressBar lifeBar;
     private String vogais[] = {"A", "E", "I", "O", "U"};
@@ -336,7 +339,7 @@ public class ModelJogoPrincipal {
     FuncaoBotao funcao = new FuncaoBotao();
 
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
-            Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
+            Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo, Button ouvirAudio) throws ClassNotFoundException {
 
         this.btn_1 = b1;
         this.btn_2 = b2;
@@ -355,7 +358,6 @@ public class ModelJogoPrincipal {
         this.matrizSilabasComplexas = new HashMap<String, String>();
         this.matrizPalavrasSimples = new HashMap<String, String>();
         this.matrizFrasesSimples = new HashMap<String, String>();
-
         this.mostrandoCena = false;
         this.indicacaoPular = false;
         this.pularErro = false;
@@ -363,6 +365,7 @@ public class ModelJogoPrincipal {
         nomeAudioAtual = "";
         window = null;
         cenaTemporaria = null;
+        url = null;
 
     }
 
@@ -383,11 +386,11 @@ public class ModelJogoPrincipal {
             jogador.setBonus(true);
         }
 
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 5) {
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 13) {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
-            jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());
+            //jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());
             mostrarCenaFinalFase();
 //            jogador.setFaseAtual(faseAtualTemp);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
@@ -408,7 +411,6 @@ public class ModelJogoPrincipal {
      */
     public void preencherOpcoes(String categoria[], int s, ArrayList no) {
 
-        System.out.println("Categoria " + categoria.length);
         Random ind = new Random();
         int valor = ind.nextInt(5);
         if (valor == 0) {
@@ -477,6 +479,7 @@ public class ModelJogoPrincipal {
 
                 }
                 tocarAudio(audioVogais[i]);
+                //tocarAudio.teste();
                 break;
             case 2:
                 i = indiceAudio.nextInt(29);
@@ -1664,13 +1667,13 @@ public class ModelJogoPrincipal {
         gerarProximaRodada = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
+
                 try {
                     gerarOpcaoAleatoria();
-
                 } catch (InterruptedException | IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class
-                            .getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
             }
         };
         //evento que reinicia seta o valor boleano que indica que o relógio deve ser reiniciado
@@ -1733,43 +1736,33 @@ public class ModelJogoPrincipal {
         setNomeAudioAtual(n);//define o nome atual do áudio que está sendo utilizado
         switch (jogador.getFaseAtual()) {//pega a fase atual do jogador
             case 1:
-                caminhoAudio = "src/audios_vogais/" + n + ".mp3";
+                caminhoAudio = "audios_vogais/" + n + ".mp3";
                 break;
             case 2:
-                caminhoAudio = "src/audios_silabas_simples/" + n + ".mp3";
+                caminhoAudio = "audios_silabas_simples/" + n + ".mp3";
                 break;
             case 3:
-                caminhoAudio = "src/audios_silabas_simplesB/" + n + ".mp3";
+                caminhoAudio = "audios_silabas_simplesB/" + n + ".mp3";
                 break;
             case 4:
-                caminhoAudio = "src/audios_palavras_simples/" + n + ".mp3";
+                caminhoAudio = "audios_palavras_simples/" + n + ".mp3";
                 break;
             case 5:
-                caminhoAudio = "src/audios_silabas_complexas/" + n + ".mp3";
+                caminhoAudio = "audios_silabas_complexas/" + n + ".mp3";
                 break;
             case 6:
-                caminhoAudio = "src/audios_silabas_complexas2/" + n + ".mp3";
+                caminhoAudio = "audios_silabas_complexas2/" + n + ".mp3";
                 break;
             case 7:
-                caminhoAudio = "src/audios_silabas_complexas3/" + n + ".mp3";
+                caminhoAudio = "audios_silabas_complexas3/" + n + ".mp3";
                 break;
             default:
                 break;
         }
-        //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
-        arquivo = new File(caminhoAudio);
-        //pega todo do caminho referente ao objeto File criado
-        caminhoAudio = arquivo.getAbsolutePath();
-        //troca todas as barras invertidas duplas ('\\') por '/'
-        caminhoAudio = caminhoAudio.replace("\\", "/");
-        //cria um objeto Media que recebe o objeto 'arquivo' como parâmetro
-        media = new Media(new File(caminhoAudio).toURI().toString());
-        //cria um objeto mediaPlayer que permite qua uma media possa ser reproduzida
+        URL file = getClass().getResource(caminhoAudio);
+        media = new Media(file.toString());
         mediaPlayer = new MediaPlayer(media);
-        //toca o audio automaticamente
-        mediaPlayer.setAutoPlay(true);
-        mediaView.setMediaPlayer(mediaPlayer);
-
+        mediaPlayer.play();
     }
 
     /**
@@ -1831,8 +1824,10 @@ public class ModelJogoPrincipal {
                 Parent proximaCena = null;
                 try {
                     proximaCena = (Parent) fxmloader.load();
+
                 } catch (IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModelJogoPrincipal.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
                 Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
                 //cria uma cena 
@@ -1843,8 +1838,10 @@ public class ModelJogoPrincipal {
                 try {
                     sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
                     sequenciaCenas.iniciarCena();
+
                 } catch (MalformedURLException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModelJogoPrincipal.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -1858,10 +1855,15 @@ public class ModelJogoPrincipal {
                 //mostrandoCena = false;
                 setMostrandoCena(false);
                 //eventoAcerto.handle(null);
-                Button btemp = opcaoCorreta(null);
-                (btemp).setText("X");
 
                 window.show();
+            }
+        };
+
+        eventoFimAcerto = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
                 try {
                     gerarOpcaoAleatoria();
 
@@ -1874,7 +1876,8 @@ public class ModelJogoPrincipal {
         //animação que exibe as cenas e volta para a interface principal do jogo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(10), eventoVoltar)).play();
+                new KeyFrame(Duration.seconds(10), eventoVoltar),
+                new KeyFrame(Duration.seconds(13), eventoFimAcerto)).play();
         System.out.println("Opção aleatoria gerada");
 
     }
@@ -2211,12 +2214,13 @@ public class ModelJogoPrincipal {
             }
             // = true;
 
+            //indicacaoPular = true;
         };
 
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoAcerto),
                 new KeyFrame(Duration.seconds(1), eventoCorOriginal),
-                new KeyFrame(Duration.millis(1000), eventoFimAcerto)).play();
+                new KeyFrame(Duration.millis(1300), eventoFimAcerto)).play();
 
     }
 
@@ -2458,8 +2462,10 @@ public class ModelJogoPrincipal {
                 Parent proximaCena = null;
                 try {
                     proximaCena = (Parent) fxmloader.load();
+
                 } catch (IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModelJogoPrincipal.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
                 sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
                 //cria uma cena 
@@ -2471,8 +2477,10 @@ public class ModelJogoPrincipal {
                 try {
                     //funcionando
                     sequenciaCenas.executarCenaFimFase();
+
                 } catch (MalformedURLException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModelJogoPrincipal.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -2496,7 +2504,11 @@ public class ModelJogoPrincipal {
                 Button btemp = opcaoCorreta(null);
                 window.show();
                 jogador.setFaseAtual(jogador.getFaseAtual() + 1);
-                gerarOpcaoAudio();
+                try {
+                    gerarOpcaoAudio();
+                } catch (IOException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             }
         };
@@ -2525,8 +2537,10 @@ public class ModelJogoPrincipal {
                 Parent proximaCena = null;
                 try {
                     proximaCena = (Parent) fxmloader.load();
+
                 } catch (IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModelJogoPrincipal.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
                 Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
                 //cria uma cena 
@@ -2554,10 +2568,19 @@ public class ModelJogoPrincipal {
                 //Button btemp = opcaoCorreta(null);
 
                 window.show();
+            }
+        };
+        eventoFimAcerto = new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+
                 try {
                     gerarOpcaoAleatoria();
-                } catch (IOException | InterruptedException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+
+                } catch (InterruptedException | IOException ex) {
+                    Logger.getLogger(ModelJogoPrincipal.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -2570,11 +2593,12 @@ public class ModelJogoPrincipal {
          */
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(10), eventoVoltar)).play();
+                new KeyFrame(Duration.seconds(10), eventoVoltar),
+                new KeyFrame(Duration.millis(500), eventoFimAcerto)).play();
 
     }
 
-    private void gerarOpcaoAudio() {
+    private void gerarOpcaoAudio() throws IOException {
         System.out.println("Chamou audio aqui");
         int i = 0;
         int proxValor = 0;
@@ -2628,7 +2652,7 @@ public class ModelJogoPrincipal {
 
                     proxValor = indice.nextInt(29);
 
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2657,7 +2681,7 @@ public class ModelJogoPrincipal {
 
                     proxValor = indice.nextInt(80);
 
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2684,7 +2708,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(93);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2710,7 +2734,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(110);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2729,7 +2753,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(80);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2748,7 +2772,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(264);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2766,7 +2790,7 @@ public class ModelJogoPrincipal {
                 while (indiceUtilizados.size() <= 5) {
 
                     proxValor = indice.nextInt(50);
-                    if (!indiceUtilizados.contains(proxValor)) {//se o índice ainda não foi utilizado
+                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
                         i++;
@@ -2776,6 +2800,28 @@ public class ModelJogoPrincipal {
                 break;
 
         }
+    }
+
+    /**
+     * Verifica se o próximo valor das novas opções possui algum fonema
+     * semelhante
+     *
+     * @param indicesUtilizados
+     * @param novaOpcao
+     * @return
+     */
+    public boolean possuiSemelhante(ArrayList indicesUtilizados, int novaOpcao) {
+        int iterador = 0;
+        boolean retorno = false;
+        if (!indicesUtilizados.isEmpty()) {
+            for (iterador = 0; iterador < indicesUtilizados.size(); iterador++) {
+                int valor = (int) indicesUtilizados.get(iterador);
+                if (((valor - novaOpcao) == 1) || (novaOpcao - valor) == 1) {
+                    retorno = true;
+                }
+            }
+        }
+        return retorno;
     }
 
 //     public boolean cliquePermitido(boolean permissao) {
