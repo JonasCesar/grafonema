@@ -2823,14 +2823,4 @@ public class ModelJogoPrincipal {
         }
         return retorno;
     }
-
-//     public boolean cliquePermitido(boolean permissao) {
-//        if (permissao) {
-//            System.out.println("CLIQUE PERMITIDO");
-//            return true;
-//        } else {
-//            System.out.println("CLIQUE NÃÃÃO PERMITIDO");
-//            return false;
-//        }
-//    }
 }
