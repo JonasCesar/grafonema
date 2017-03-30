@@ -6,17 +6,20 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import model.ModelJogoPrincipal;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.FuncaoBotao;
 
@@ -38,8 +41,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private Button btn_5;
     @FXML
-    private Button btn_6;
-    @FXML
     private Button pular;
 
     @FXML
@@ -54,6 +55,10 @@ public class Gui_JogoPrincipalController implements Initializable {
 
     private Stage window;
     boolean indicacaoPular, pularErro;//indica que o jogador acionou o botão pular
+    @FXML
+    private ImageView imagemFundo;
+    @FXML
+    private Button ouvirAudio;
 
     public Gui_JogoPrincipalController() {
 
@@ -67,9 +72,14 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        imagemFundo.toBack();
         String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
-        modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo);
+        try {
+            modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo, ouvirAudio);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         modelJogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
         modelJogoPrincipal.iniciarMatrizAudioSilabas();
         modelJogoPrincipal.iniciarMatrizSilabasSimplesB();
@@ -91,10 +101,14 @@ public class Gui_JogoPrincipalController implements Initializable {
         btn_3.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
         btn_4.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
         btn_5.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
-        
-        //a variável clique é setado como 1 para que o clique seja permitido no 
-        //coneço do jogo
-        funcao.setClique1();
+
+    }
+
+    public void iniciarJogo() throws IOException {
+
+        modelJogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
+        modelJogoPrincipal.iniciarTimer();//inicia o relógio
+
     }
 
     /**
@@ -103,8 +117,7 @@ public class Gui_JogoPrincipalController implements Initializable {
      * @param event
      */
     @FXML
-    private void handlePular(ActionEvent event) throws InterruptedException, IOException {
-
+    private void handlePular(ActionEvent event) throws InterruptedException, IOException, ClassNotFoundException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException {
         int qntPulosAtual = modelJogoPrincipal.jogador.getQntPulos();
         //se o jogador já pulou 3 vezes
         //(pois a quantidade de pulos é iniciada com 0
@@ -186,8 +199,8 @@ public class Gui_JogoPrincipalController implements Initializable {
      * @param event botão ouvirAudio
      */
     @FXML
-    private void handleOuvirAudio(ActionEvent event) {
+    private void handleOuvirAudio(ActionEvent event) throws ClassNotFoundException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException, IOException {
         String audio = modelJogoPrincipal.getAudioAtual();
-        modelJogoPrincipal.tocarAudio(audio);//chama o método que toca o áudio
+        modelJogoPrincipal.tocarAudio(audio);
     }
 }

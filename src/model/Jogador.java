@@ -161,6 +161,7 @@ public class Jogador {
      */
     public void setAcertosPorFase(int fase, int valor) {
         int posicao = fase-1;
+        System.out.println(posicao);
         this.acertosPorFase.add(posicao, valor);
     }
     /**
