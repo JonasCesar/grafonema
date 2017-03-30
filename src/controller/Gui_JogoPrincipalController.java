@@ -16,7 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import model.FuncaoBotao;
 
 /**
  * FXML Controller class
@@ -75,8 +77,9 @@ public class Gui_JogoPrincipalController implements Initializable {
         modelJogoPrincipal.iniciarMatrizSilabasComplexas3();
         modelJogoPrincipal.iniciarMatrizPalavrasSimples();
         modelJogoPrincipal.iniciarMatrizSilabasComplexas();
-
     }
+
+    FuncaoBotao funcao = new FuncaoBotao();
 
     public void iniciarJogo() {
 
@@ -88,6 +91,10 @@ public class Gui_JogoPrincipalController implements Initializable {
         btn_3.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
         btn_4.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
         btn_5.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
+        
+        //a variável clique é setado como 1 para que o clique seja permitido no 
+        //coneço do jogo
+        funcao.setClique1();
     }
 
     /**
@@ -97,6 +104,7 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @FXML
     private void handlePular(ActionEvent event) throws InterruptedException, IOException {
+
         int qntPulosAtual = modelJogoPrincipal.jogador.getQntPulos();
         //se o jogador já pulou 3 vezes
         //(pois a quantidade de pulos é iniciada com 0
@@ -121,43 +129,55 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @FXML
     //método referente aos botões de opção
+
     private void handleBotoes(ActionEvent event) throws InterruptedException, IOException {
-        //Se a opção escolhida está certa
-        if (modelJogoPrincipal.verificarRelacaoGaFonema(event)) {
 
-            //MUDAR A APARENCIA DO BOTAO EM CASO DE ACERTO
-            modelJogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
-            modelJogoPrincipal.incrementarAcerto();//incrementar o acerto
+        //se o clique está permitido realizar as tarefas
+        if (funcao.getClique() == 1) {
 
-            if (modelJogoPrincipal.jogador.getAcertosTotal() == 10) {
-                modelJogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
-                System.out.println("mostrando cena = true");
-                modelJogoPrincipal.mostrarCenas();//mostra as cenas depois que o jogador acerta 10 vezes
+            funcao.setClique0();//após o primeiro clique, bloquar os botões
+            if (modelJogoPrincipal.verificarRelacaoGaFonema(event)) {
+                //((Button) event.getSource()).setDisable(true);
+
+                //MUDAR A APARENCIA DO BOTAO EM CASO DE ACERTO
+                modelJogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
+                modelJogoPrincipal.incrementarAcerto();//incrementar o acerto
+
+                if (modelJogoPrincipal.jogador.getAcertosTotal() == 10) {
+                    modelJogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
+                    System.out.println("mostrando cena = true");
+                    modelJogoPrincipal.mostrarCenas();//mostra as cenas depois que o jogador acerta 10 vezes
 
 //
-            } else {
-                //mostra a animação de acerto
-                modelJogoPrincipal.mostrarAnimacaoAcerto();
-            }
+                } else {
+                    //mostra a animação de acerto
+                    modelJogoPrincipal.mostrarAnimacaoAcerto();
+                }
 
+            } else {
+                //reduzir barra de vidas
+                modelJogoPrincipal.mostrarAnimacaoErro(event);
+                modelJogoPrincipal.reduzirLifeBar();
+                modelJogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
+                Button temp = modelJogoPrincipal.opcaoCorreta(event);
+
+                //mostrar a animaçao de erro
+                //animação da opção correta            
+                if (modelJogoPrincipal.isGameOver()) {//se for o fim do jogo
+                    temp = modelJogoPrincipal.opcaoCorreta(event);
+                    //animação do fim de jogo
+                    modelJogoPrincipal.mostraFimDeJogo(temp);
+                } else {
+                    //animação da opção correta
+                    modelJogoPrincipal.mostrarOpcaoCorreta(temp);
+                }
+            }
         } else {
-            //reduzir barra de vidas
-            modelJogoPrincipal.mostrarAnimacaoErro(event);
-            modelJogoPrincipal.reduzirLifeBar();
-            modelJogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
-            Button temp = modelJogoPrincipal.opcaoCorreta(event);
 
-            //mostrar a animaçao de erro
-            //animação da opção correta            
-            if (modelJogoPrincipal.isGameOver()) {//se for o fim do jogo
-                temp = modelJogoPrincipal.opcaoCorreta(event);
-                //animação do fim de jogo
-                modelJogoPrincipal.mostraFimDeJogo(temp);
-            } else {
-                //animação da opção correta
-                modelJogoPrincipal.mostrarOpcaoCorreta(temp);
-            }
+            System.out.println("NÃO FAZ NADA" + " valor cliq: " + funcao.getClique());
         }
+
+
     }
 
     /**

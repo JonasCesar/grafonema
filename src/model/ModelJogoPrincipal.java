@@ -329,7 +329,11 @@ public class ModelJogoPrincipal {
 
     private Timer timer;
 
+    int numClique2;
+
     Gui_SequenciaCenasController sequenciaCenas = new Gui_SequenciaCenasController();
+
+    FuncaoBotao funcao = new FuncaoBotao();
 
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo) {
@@ -467,7 +471,7 @@ public class ModelJogoPrincipal {
                 i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4
                 try {
                     System.out.println(mediaPlayer.getStatus().toString());
-                    System.out.println("fase 1: o som gerado foi o som: " + audioVogais[i]);               
+                    System.out.println("fase 1: o som gerado foi o som: " + audioVogais[i]);
 
                 } catch (Exception ex) {
 
@@ -2009,6 +2013,7 @@ public class ModelJogoPrincipal {
                             + "    -fx-font-size: 35px;\n"
                             + "    -fx-pref-height: 88px;\n"
                             + "    -fx-pref-width: 96px;\n");
+
                 };
 
                 eventoCorOriginal = (ActionEvent event) -> {
@@ -2029,6 +2034,8 @@ public class ModelJogoPrincipal {
                             + "    -fx-pref-height: 80px;\n"
                             + "    -fx-pref-width: 88px;\n"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
 
                 break;
@@ -2066,6 +2073,8 @@ public class ModelJogoPrincipal {
                             + "    -fx-pref-width: 100px;\n"
                             + "    -fx-pref-height: 70px;\n"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
                 break;
 
@@ -2103,6 +2112,8 @@ public class ModelJogoPrincipal {
                             + "    -fx-pref-width: 100px;\n"
                             + "    -fx-pref-height: 70px;\n"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
                 break;
 
@@ -2140,6 +2151,8 @@ public class ModelJogoPrincipal {
                             + "    -fx-pref-width: 150px;\n"
                             + "    -fx-pref-height: 70px;\n"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
                 break;
 
@@ -2177,8 +2190,10 @@ public class ModelJogoPrincipal {
                             + "    -fx-pref-width: 100px;\n"
                             + "    -fx-pref-height: 70px;\n"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
-                
+
                 break;
 
         }
@@ -2194,7 +2209,7 @@ public class ModelJogoPrincipal {
                 Logger.getLogger(Gui_JogoPrincipalController.class
                         .getName()).log(Level.SEVERE, null, ex);
             }
-            //indicacaoPular = true;
+            // = true;
 
         };
 
@@ -2216,7 +2231,7 @@ public class ModelJogoPrincipal {
                 eventoErro = (ActionEvent event) -> {
                     //MUDA A COR DO BOTÃO
                     Button btemp = (Button) ev.getSource();
-                    System.out.println("OLHA AÍ EU EXIBINDO O ERRO OOHHH");
+                    //System.out.println("OLHA AÍ EU EXIBINDO O ERRO OOHHH");
                     //(btemp).setText("X");
                     btemp.setStyle("-fx-background-color: \n"
                             + "    linear-gradient(#ff0000, #ff0000),\n"
@@ -2246,6 +2261,8 @@ public class ModelJogoPrincipal {
                     //                    //+ "    -fx-font-weight: bold;\n"
                     //                    + "    -fx-padding: 10 20 10 20;"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
 
                 break;
@@ -2283,6 +2300,8 @@ public class ModelJogoPrincipal {
                     //                    //+ "    -fx-font-weight: bold;\n"
                     //                    + "    -fx-padding: 10 20 10 20;"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
 
                 break;
@@ -2321,6 +2340,8 @@ public class ModelJogoPrincipal {
                     //                    //+ "    -fx-font-weight: bold;\n"
                     //                    + "    -fx-padding: 10 20 10 20;"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
 
                 break;
@@ -2359,12 +2380,14 @@ public class ModelJogoPrincipal {
                     //                    //+ "    -fx-font-weight: bold;\n"
                     //                    + "    -fx-padding: 10 20 10 20;"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
 
                 break;
-                
+
             case 5:
-                
+
                 eventoErro = (ActionEvent event) -> {
                     //MUDA A COR DO BOTÃO
                     Button btemp = (Button) ev.getSource();
@@ -2397,6 +2420,8 @@ public class ModelJogoPrincipal {
                     //                    //+ "    -fx-font-weight: bold;\n"
                     //                    + "    -fx-padding: 10 20 10 20;"
                     );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
                 };
 
                 break;
@@ -2753,4 +2778,13 @@ public class ModelJogoPrincipal {
         }
     }
 
+//     public boolean cliquePermitido(boolean permissao) {
+//        if (permissao) {
+//            System.out.println("CLIQUE PERMITIDO");
+//            return true;
+//        } else {
+//            System.out.println("CLIQUE NÃÃÃO PERMITIDO");
+//            return false;
+//        }
+//    }
 }
