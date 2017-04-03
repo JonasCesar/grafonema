@@ -15,19 +15,22 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- *@author iran
+ * @author iran
  */
-public class Model_Inicial {    
+public class Model_Inicial {
+
     private Stage janela;
+
     public Model_Inicial() {
     }
+
     /**
      * Exibe a tela dos avatares
-     * 
+     *
      * @param event o usuário clica no botão iniciar
-     * @throws IOException 
+     * @throws IOException
      */
-    public void iniciar(ActionEvent event) throws IOException{
+    public void iniciar(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         //cria a próxima cena chamando a inteface dos avatares
         Parent proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Introducao.fxml"));
@@ -37,8 +40,8 @@ public class Model_Inicial {
         janela.show();//exibe a interface
 
     }
-    
-    public void iniciar(ImageView imgView) throws IOException{
+
+    public void iniciar(ImageView imgView) throws IOException {
         janela = (Stage) ((ImageView) imgView).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         //cria a próxima cena chamando a inteface dos avatares
         Parent proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Introducao.fxml"));
@@ -52,19 +55,19 @@ public class Model_Inicial {
         System.out.println("Entrou aqui");
         janela = (Stage) ((ImageView) imgSair).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         //função para encerrar todos os processos quando o usuário clicar no "X"
-        janela.setOnCloseRequest((WindowEvent event) -> {
-            Alert confirmacaoSaida = new Alert(Alert.AlertType.CONFIRMATION,
-                    "Você tem certeza que quer sair do jogo?");
-            Button botaoSair = (Button) confirmacaoSaida.getDialogPane().lookupButton(ButtonType.OK);
-            botaoSair.setText("Sair");
-            confirmacaoSaida.setHeaderText("Confirmação de Saída");
-            confirmacaoSaida.initModality(Modality.APPLICATION_MODAL);
-            confirmacaoSaida.initOwner(janela);
 
-            Optional<ButtonType> resposta = confirmacaoSaida.showAndWait();
-            if (!ButtonType.OK.equals(resposta.get())) {
-                event.consume();
-            }
-        });
+        Alert confirmacaoSaida = new Alert(Alert.AlertType.CONFIRMATION,
+                "Você tem certeza que quer sair do jogo?");
+        Button botaoSair = (Button) confirmacaoSaida.getDialogPane().lookupButton(ButtonType.OK);
+        botaoSair.setText("Sair");
+        confirmacaoSaida.setHeaderText("Confirmação de Saída");
+        confirmacaoSaida.initModality(Modality.APPLICATION_MODAL);
+        confirmacaoSaida.initOwner(janela);
+
+        Optional<ButtonType> resposta = confirmacaoSaida.showAndWait();
+        if (ButtonType.OK.equals(resposta.get())) {
+            janela.close();
+            System.exit(0);
+        }
     }
 }

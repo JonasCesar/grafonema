@@ -1,0 +1,17 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 04/04/2017, 14:47:08
+    Author     : shadows
+*/
+
+#reiniciar {
+  -fx-graphic: url('model/Imagens/Icones/reiniciar');
+}
+
+.toggle-button:selected {
+  -fx-graphic: url('http://icons.iconarchive.com/icons/aha-soft/desktop-buffet/128/Piece-of-cake-icon.png');
+}
