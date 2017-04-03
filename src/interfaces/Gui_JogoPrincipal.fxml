@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.media.*?>
 <?import java.lang.*?>
@@ -14,9 +15,29 @@
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
    <children>
+      <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1262.0" layoutX="-22.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagens/fundo.jpg" />
+         </image></ImageView>
       <ProgressBar fx:id="lifeBar" layoutX="152.0" layoutY="29.0" prefWidth="200.0" progress="1.0" />
-      <Label fx:id="pontuacao" layoutX="82.0" layoutY="193.0" text="0" />
-      <Label fx:id="tempo" layoutX="468.0" layoutY="31.0" text="30s" />
+      <ImageView fitHeight="98.0" fitWidth="139.0" layoutX="26.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Área%20de%20trabalho/sealenda.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="pontuacao" layoutX="71.0" layoutY="193.0" text="0">
+         <font>
+            <Font size="53.0" />
+         </font></Label>
+      <ImageView fitHeight="112.0" fitWidth="173.0" layoutX="599.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Área%20de%20trabalho/redondo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="tempo" layoutX="620.0" layoutY="29.0" text="30s" textAlignment="CENTER">
+         <font>
+            <Font size="60.0" />
+         </font></Label>
       <Button fx:id="btn_1" alignment="CENTER" contentDisplay="CENTER" layoutX="143.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="A" />
       <Button fx:id="btn_2" alignment="CENTER" contentDisplay="CENTER" layoutX="337.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="E" />
       <Button fx:id="btn_3" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="I" />
@@ -29,9 +50,5 @@
          </image>
       </ImageView>
       <Button fx:id="ouvirAudio" layoutX="600.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleOuvirAudio" text="Ouvir" />
-      <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1262.0" layoutX="-22.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Imagens/fundo.jpg" />
-         </image></ImageView>
    </children>
 </AnchorPane>
