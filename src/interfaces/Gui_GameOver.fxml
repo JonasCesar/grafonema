@@ -12,7 +12,7 @@
    <children>
        <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1262.0" layoutX="-22.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Imagens/fundopb.jpg" />
+            <Image url="@../model/Imagens/Gerais/fundopb.jpg" />
          </image>
       </ImageView>
       <Label layoutX="585.0" layoutY="222.0" prefHeight="30.0" prefWidth="152.0" text="Fim do Jogo">

@@ -34,6 +34,7 @@ public class Gui_IntroducaoController implements Initializable {
     private ImageView imagemFundo;
     
     //@Override
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         imagemFundo.toBack();
         

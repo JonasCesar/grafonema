@@ -12,7 +12,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 /**
  * @author iran
@@ -52,7 +51,7 @@ public class Model_Inicial {
     }
 
     public void sairDoJogo(ImageView imgSair) {
-        System.out.println("Entrou aqui");
+        System.out.println("Entrou sair do jogo");
         janela = (Stage) ((ImageView) imgSair).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         //função para encerrar todos os processos quando o usuário clicar no "X"
 

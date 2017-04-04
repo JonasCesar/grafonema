@@ -12,7 +12,7 @@
       <Button fx:id="avancar" layoutX="1044.0" layoutY="586.0" mnemonicParsing="false" onAction="#handleAvancar" text="Avançar" />
       <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1262.0" layoutX="-22.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Imagens/fundo.jpg" />
+            <Image url="@../model/Imagens/Gerais/fundo.jpg" />
          </image>
       </ImageView>
    </children>

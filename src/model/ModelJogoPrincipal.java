@@ -34,8 +34,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -386,12 +384,13 @@ public class ModelJogoPrincipal {
             jogador.setBonus(true);
         }
 
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 13) {
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
             //jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());
-            mostrarCenaFinalFase();
+            mostrarCenas();
+            //mostrarCenaFinalFase();
 //            jogador.setFaseAtual(faseAtualTemp);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
             //          gerarOpcaoAudio();
@@ -471,13 +470,6 @@ public class ModelJogoPrincipal {
         switch (jogador.getFaseAtual()) {
             case 1:
                 i = indiceAudio.nextInt(5);//gera um índice entre 0 - 4
-                try {
-                    System.out.println(mediaPlayer.getStatus().toString());
-                    System.out.println("fase 1: o som gerado foi o som: " + audioVogais[i]);
-
-                } catch (Exception ex) {
-
-                }
                 tocarAudio(audioVogais[i]);
                 //tocarAudio.teste();
                 break;
@@ -508,7 +500,6 @@ public class ModelJogoPrincipal {
                 break;
             case 7:
                 i = indiceAudio.nextInt(266);
-                System.out.println("fase 7: o som gerado foi o som: " + audiosSilabasComplexas3[i]);
                 tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
                 break;
@@ -532,30 +523,24 @@ public class ModelJogoPrincipal {
         boolean resultado = false;
         switch (jogador.getFaseAtual()) {
             case 1:
-                System.out.println("FASE UM!!!!");
                 resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 2:
-                System.out.println("FASE DOIS");
                 resultado = ((getKeyByValue(matrizSilabasSimples, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 3:
                 resultado = ((getKeyByValue(matrizSilabasSimplesB, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 4:
-                System.out.println("FASE QUATRO!!!");
                 resultado = ((getKeyByValue(matrizPalavrasSimples, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 5:
-                System.out.println("FASE CINCO!!!");
                 resultado = ((getKeyByValue(matrizSilabasComplexas, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 6:
-                System.out.println("FASE SEIS!!!");
                 resultado = ((getKeyByValue(matrizSilabasComplexas2, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 7:
-                System.out.println("FASE SETE");
                 resultado = ((getKeyByValue(matrizSilabasComplexas3, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 9:
@@ -1664,25 +1649,17 @@ public class ModelJogoPrincipal {
      */
     public void mostrarOpcaoCorreta(Button temp) {
         //evento final que realiza uma chamada ao método que gera uma opcao aleatoria
-        gerarProximaRodada = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent arg0) {
-
-                try {
-                    gerarOpcaoAleatoria();
-                } catch (InterruptedException | IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
+        gerarProximaRodada = (ActionEvent arg0) -> {
+            try {
+                gerarOpcaoAleatoria();
+            } catch (InterruptedException | IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
         };
         //evento que reinicia seta o valor boleano que indica que o relógio deve ser reiniciado
-        reiniciarRelogio = new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                setIndicacaoPular(true);
-            }
+        reiniciarRelogio = (ActionEvent event) -> {
+            setIndicacaoPular(true);
+            funcao.setClique1();
         };
         //animação
         new Timeline(
@@ -1702,24 +1679,20 @@ public class ModelJogoPrincipal {
     public void mostraFimDeJogo(Button temp) {
 
         //evento responsável por exibir a janela de GAME OVER 
-        eventoGameOver = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                window = (Stage) btn_1.getScene().getWindow();
-                Parent cenaPrincipal = null;
-                try {
-                    cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Gui_JogoPrincipalController.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-                Scene scene = new Scene(cenaPrincipal, 1200, 700);
-                window.setTitle("Grafonema");
-                window.setScene(scene);
-                window.show();
+        eventoGameOver = (ActionEvent event) -> {
+            window = (Stage) btn_1.getScene().getWindow();
+            Parent cenaPrincipal = null;
+            try {
+                cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
+                
+            } catch (IOException ex) {
+                Logger.getLogger(Gui_JogoPrincipalController.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
-
+            Scene scene = new Scene(cenaPrincipal, 1200, 700);
+            window.setTitle("Grafonema");
+            window.setScene(scene);
+            window.show();
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
@@ -1802,7 +1775,7 @@ public class ModelJogoPrincipal {
     }
 
     /**
-     * Mostra as cenas após o jogador acertar 10 vezes
+     * Mostra as cenas após o jogador acertar 15 vezes
      *
      * @throws InterruptedException
      * @throws IOException
@@ -1810,68 +1783,44 @@ public class ModelJogoPrincipal {
     public void mostrarCenas() throws InterruptedException, IOException {
 
         //evento responsável por exibir as cenas de progresso na história
-        eventoCenas = new EventHandler<ActionEvent>() {
+        eventoCenas = (ActionEvent event) -> {
+            //armazena a cena em que o botão 'btn_1' se encontra atualmente
+            window = (Stage) btn_1.getScene().getWindow();
+            //armeza a cena do botão 'btn_1' em uma variável temporária
+            cenaTemporaria = btn_1.getScene();
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+            Parent proximaCena = null;
+            try {
+                proximaCena = (Parent) fxmloader.load();
 
-            @Override
-            public void handle(ActionEvent event) {
-                //armazena a cena em que o botão 'btn_1' se encontra atualmente
-                window = (Stage) btn_1.getScene().getWindow();
-                Parent cenaPrincipal = null;
-                //armeza a cena do botão 'btn_1' em uma variável temporária
-                cenaTemporaria = btn_1.getScene();
-
-                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
-                Parent proximaCena = null;
-                try {
-                    proximaCena = (Parent) fxmloader.load();
-
-                } catch (IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-                Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
-                //cria uma cena 
-                Scene cena = new Scene(proximaCena, 1200, 700);
-                window.setTitle("Grafonema");//título da cena
-                window.setScene(cena);
-                window.show();//exibe a cena
-                try {
-                    sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
-                    sequenciaCenas.iniciarCena();
-
-                } catch (MalformedURLException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
+            Gui_SequenciaCenasController sequenciaCenas1 = fxmloader.<Gui_SequenciaCenasController>getController();
+            //cria uma cena
+            Scene cena = new Scene(proximaCena, 1200, 700);
+            window.setTitle("Grafonema");//título da cena
+            window.setScene(cena);
+            window.show();//exibe a cena
+            sequenciaCenas1.setFaseAtual(jogador.getFaseAtual());
+            sequenciaCenas1.iniciarCena();
         };
 
         //evento para voltar para o jogo pós exibição da cena
-        eventoVoltar = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                window.setTitle("Grafonema");
-                window.setScene(cenaTemporaria);
-                //mostrandoCena = false;
-                setMostrandoCena(false);
-                //eventoAcerto.handle(null);
+        eventoVoltar = (ActionEvent event) -> {
+            jogador.setFaseAtual(jogador.getFaseAtual() + 1);
+            window.setTitle("Grafonema");
+            window.setScene(cenaTemporaria);
+            //mostrandoCena = false;
+            setMostrandoCena(true);
+            //eventoAcerto.handle(null);
 
-                window.show();
-            }
+            window.show();
         };
 
-        eventoFimAcerto = new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    gerarOpcaoAleatoria();
-
-                } catch (InterruptedException | IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        eventoFimAcerto = (ActionEvent event) -> {
+            mostrarCenaInicialFase();
         };
         //animação que exibe as cenas e volta para a interface principal do jogo
         new Timeline(
@@ -2427,10 +2376,7 @@ public class ModelJogoPrincipal {
                     //ao terminar a animação desbloquear os botões
                     funcao.setClique1();
                 };
-
-                break;
-
-        };
+                break;        }
 
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoErro),
@@ -2445,71 +2391,54 @@ public class ModelJogoPrincipal {
      */
     public void mostrarCenaFinalFase() throws MalformedURLException {
         //evento responsável por exibir as cenas de progresso na história
-        eventoCenas = new EventHandler<ActionEvent>() {
+        eventoCenas = (ActionEvent event) -> {
+            System.out.println("Mostrando cena final fase");
+            //armazena a cena em que o botão 'btn_1' se encontra atualmente
+            window = (Stage) btn_1.getScene().getWindow();
+            Parent cenaPrincipal = null;
+            //armeza a cena do botão 'btn_1' em uma variável temporária
+            cenaTemporaria = btn_1.getScene();
+            //mostrandoCena = false;
+            setMostrandoCena(true);
 
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Mostrando cena final fase");
-                //armazena a cena em que o botão 'btn_1' se encontra atualmente
-                window = (Stage) btn_1.getScene().getWindow();
-                Parent cenaPrincipal = null;
-                //armeza a cena do botão 'btn_1' em uma variável temporária
-                cenaTemporaria = btn_1.getScene();
-                //mostrandoCena = false;
-                setMostrandoCena(true);
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+            Parent proximaCena = null;
+            try {
+                proximaCena = (Parent) fxmloader.load();
 
-                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
-                Parent proximaCena = null;
-                try {
-                    proximaCena = (Parent) fxmloader.load();
-
-                } catch (IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-                sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
-                //cria uma cena 
-                Scene cena = new Scene(proximaCena, 1200, 700);
-                window.setTitle("Grafonema");//título da cena
-                window.setScene(cena);
-                window.show();//exibe a cena
-                sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
-                try {
-                    //funcionando
-                    sequenciaCenas.executarCenaFimFase();
-
-                } catch (MalformedURLException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
+            sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+            //cria uma cena
+            Scene cena = new Scene(proximaCena, 1200, 700);
+            window.setTitle("Grafonema");//título da cena
+            window.setScene(cena);
+            window.show();//exibe a cena
+            sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+            //funcionando
+            sequenciaCenas.executarCenaFimFase();
+
         };
         //evento que mostra a cena do início da fase
-        eventoInicioFase = new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                sequenciaCenas.executarCenaMeioFase();
-            }
+        eventoInicioFase = (ActionEvent event) -> {
+            sequenciaCenas.executarCenaMeioFase();
         };
 
-        eventoVoltar = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                window.setTitle("Grafonema");
-                window.setScene(cenaTemporaria);
-                //mostrandoCena = false;
-                setMostrandoCena(false);
-                //eventoAcerto.handle(null);
-                Button btemp = opcaoCorreta(null);
-                window.show();
-                jogador.setFaseAtual(jogador.getFaseAtual() + 1);
-                try {
-                    gerarOpcaoAudio();
-                } catch (IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
+        eventoVoltar = (ActionEvent event) -> {
+            window.setTitle("Grafonema");
+            window.setScene(cenaTemporaria);
+            //mostrandoCena = false;
+            setMostrandoCena(false);
+            //eventoAcerto.handle(null);
+            Button btemp = opcaoCorreta(null);
+            window.show();
+            jogador.setFaseAtual(jogador.getFaseAtual() + 1);
+            try {
+                gerarOpcaoAudio();
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
         };
 
@@ -2520,68 +2449,54 @@ public class ModelJogoPrincipal {
 
     }
 
+    /**
+     * Mostra a cena inicial antes de cada fase
+     */
     public void mostrarCenaInicialFase() {
         //evento responsável por exibir as cenas de progresso na história
-        eventoCenas = new EventHandler<ActionEvent>() {
+        eventoCenas = (ActionEvent event) -> {
+            //armazena a cena em que o botão 'btn_1' se encontra atualmente
+            window = (Stage) btn_1.getScene().getWindow();
+            Parent cenaPrincipal = null;
+            //armeza a cena do botão 'btn_1' em uma variável temporária
+            cenaTemporaria = btn_1.getScene();
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+            Parent proximaCena = null;
+            try {
+                proximaCena = (Parent) fxmloader.load();
 
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println(" public void mostrarCenaInicialFase() {");
-                //armazena a cena em que o botão 'btn_1' se encontra atualmente
-                window = (Stage) btn_1.getScene().getWindow();
-                Parent cenaPrincipal = null;
-                //armeza a cena do botão 'btn_1' em uma variável temporária
-                cenaTemporaria = btn_1.getScene();
-
-                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
-                Parent proximaCena = null;
-                try {
-                    proximaCena = (Parent) fxmloader.load();
-
-                } catch (IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-                Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
-                //cria uma cena 
-                Scene cena = new Scene(proximaCena, 1200, 700);
-                window.setTitle("Grafonema");//título da cena
-                window.setScene(cena);
-                window.show();//exibe a cena
-                sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
-
-                sequenciaCenas.executarCenaInicial();
-
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
+            Gui_SequenciaCenasController sequenciaCenas1 = fxmloader.<Gui_SequenciaCenasController>getController();
+            //cria uma cena
+            Scene cena = new Scene(proximaCena, 1200, 700);
+            window.setTitle("Grafonema");//título da cena
+            window.setScene(cena);
+            window.show();//exibe a cena
+            sequenciaCenas1.setFaseAtual(jogador.getFaseAtual());
+            sequenciaCenas1.executarCenaIntermediariaFase();
         };
 
         //evento para voltar para o jogo pós exibição da cena
-        eventoVoltar = new EventHandler<ActionEvent>() {
+        eventoVoltar = (ActionEvent event) -> {
+            window.setTitle("Grafonema");
+            window.setScene(cenaTemporaria);
+            //mostrandoCena = false;
+            setMostrandoCena(false);
+            //eventoAcerto.handle(null);
+            //Button btemp = opcaoCorreta(null);
 
-            public void handle(ActionEvent event) {
-                System.out.println("evntVoltar mostrarCenaInicialFase");
-                window.setTitle("Grafonema");
-                window.setScene(cenaTemporaria);
-                //mostrandoCena = false;
-                setMostrandoCena(false);
-                //eventoAcerto.handle(null);
-                //Button btemp = opcaoCorreta(null);
-
-                window.show();
-            }
+            window.show();
         };
-        eventoFimAcerto = new EventHandler<ActionEvent>() {
+        eventoFimAcerto = (ActionEvent event) -> {
+            try {
+                gerarOpcaoAleatoria();
 
-            @Override
-            public void handle(ActionEvent event) {
-
-                try {
-                    gerarOpcaoAleatoria();
-
-                } catch (InterruptedException | IOException ex) {
-                    Logger.getLogger(ModelJogoPrincipal.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
+            } catch (InterruptedException | IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         };
         /**
@@ -2594,12 +2509,11 @@ public class ModelJogoPrincipal {
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
                 new KeyFrame(Duration.seconds(10), eventoVoltar),
-                new KeyFrame(Duration.millis(500), eventoFimAcerto)).play();
+                new KeyFrame(Duration.seconds(11), eventoFimAcerto)).play();
 
     }
 
     private void gerarOpcaoAudio() throws IOException {
-        System.out.println("Chamou audio aqui");
         int i = 0;
         int proxValor = 0;
         ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase

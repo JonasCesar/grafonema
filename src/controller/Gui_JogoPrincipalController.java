@@ -92,6 +92,7 @@ public class Gui_JogoPrincipalController implements Initializable {
     FuncaoBotao funcao = new FuncaoBotao();
 
     public void iniciarJogo() {
+        System.out.println("INICIOU JOGO");
 
         modelJogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
         modelJogoPrincipal.iniciarTimer();//inicia o relógio
@@ -101,7 +102,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         btn_3.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
         btn_4.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
         btn_5.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
-        
+
         funcao.setClique1();
 
     }
@@ -150,18 +151,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                 //MUDAR A APARENCIA DO BOTAO EM CASO DE ACERTO
                 modelJogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
                 modelJogoPrincipal.incrementarAcerto();//incrementar o acerto
-
-                if (modelJogoPrincipal.jogador.getAcertosTotal() == 10) {
-                    modelJogoPrincipal.setMostrandoCena(true);//usado para setar como 30 o contador de segundos
-                    System.out.println("mostrando cena = true");
-                    modelJogoPrincipal.mostrarCenas();//mostra as cenas depois que o jogador acerta 10 vezes
-
-//
-                } else {
-                    //mostra a animação de acerto
-                    modelJogoPrincipal.mostrarAnimacaoAcerto();
-                }
-
+                modelJogoPrincipal.mostrarAnimacaoAcerto();
             } else {
                 //reduzir barra de vidas
                 modelJogoPrincipal.mostrarAnimacaoErro(event);
@@ -184,7 +174,6 @@ public class Gui_JogoPrincipalController implements Initializable {
 
             System.out.println("NÃO FAZ NADA" + " valor cliq: " + funcao.getClique());
         }
-
 
     }
 
