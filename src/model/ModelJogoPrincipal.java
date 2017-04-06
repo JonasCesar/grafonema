@@ -378,7 +378,7 @@ public class ModelJogoPrincipal {
      * @throws java.lang.InterruptedException
      * @throws java.io.IOException
      */
-    public void gerarOpcaoAleatoria() throws InterruptedException, IOException, LineUnavailableException, UnsupportedAudioFileException {
+    public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
         System.out.println("Nova opção aleatória");
 
         //se o jogador acertar pelo menos 10 vezes
@@ -1670,7 +1670,7 @@ public class ModelJogoPrincipal {
 
                 try {
                     gerarOpcaoAleatoria();
-                } catch (InterruptedException | IOException | LineUnavailableException | UnsupportedAudioFileException ex) {
+                } catch (InterruptedException | IOException ex) {
                     Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -1867,7 +1867,7 @@ public class ModelJogoPrincipal {
                 try {
                     gerarOpcaoAleatoria();
 
-                } catch (InterruptedException | IOException | LineUnavailableException | UnsupportedAudioFileException ex) {
+                } catch (InterruptedException | IOException ex) {
                     Logger.getLogger(ModelJogoPrincipal.class
                             .getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2211,8 +2211,6 @@ public class ModelJogoPrincipal {
             } catch (InterruptedException | IOException ex) {
                 Logger.getLogger(Gui_JogoPrincipalController.class
                         .getName()).log(Level.SEVERE, null, ex);
-            } catch (LineUnavailableException | UnsupportedAudioFileException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
             // = true;
 
@@ -2508,7 +2506,7 @@ public class ModelJogoPrincipal {
                 jogador.setFaseAtual(jogador.getFaseAtual() + 1);
                 try {
                     gerarOpcaoAudio();
-                } catch (LineUnavailableException | UnsupportedAudioFileException | IOException ex) {
+                } catch (IOException ex) {
                     Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -2580,7 +2578,7 @@ public class ModelJogoPrincipal {
                 try {
                     gerarOpcaoAleatoria();
 
-                } catch (InterruptedException | IOException | LineUnavailableException | UnsupportedAudioFileException ex) {
+                } catch (InterruptedException | IOException ex) {
                     Logger.getLogger(ModelJogoPrincipal.class
                             .getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2600,7 +2598,7 @@ public class ModelJogoPrincipal {
 
     }
 
-    private void gerarOpcaoAudio() throws LineUnavailableException, UnsupportedAudioFileException, IOException {
+    private void gerarOpcaoAudio() throws IOException {
         System.out.println("Chamou audio aqui");
         int i = 0;
         int proxValor = 0;
@@ -2804,12 +2802,13 @@ public class ModelJogoPrincipal {
         }
     }
 
-
     /**
-     * Verifica se o próximo valor das novas opções possui algum fonema semelhante
+     * Verifica se o próximo valor das novas opções possui algum fonema
+     * semelhante
+     *
      * @param indicesUtilizados
      * @param novaOpcao
-     * @return 
+     * @return
      */
     public boolean possuiSemelhante(ArrayList indicesUtilizados, int novaOpcao) {
         int iterador = 0;

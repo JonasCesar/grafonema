@@ -21,8 +21,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import model.FuncaoBotao;
 
 /**
@@ -114,7 +112,7 @@ public class Gui_JogoPrincipalController implements Initializable {
      * @param event
      */
     @FXML
-    private void handlePular(ActionEvent event) throws InterruptedException, IOException, ClassNotFoundException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException {
+    private void handlePular(ActionEvent event) throws InterruptedException, IOException, ClassNotFoundException, URISyntaxException {
         int qntPulosAtual = modelJogoPrincipal.jogador.getQntPulos();
         //se o jogador já pulou 3 vezes
         //(pois a quantidade de pulos é iniciada com 0
@@ -196,7 +194,7 @@ public class Gui_JogoPrincipalController implements Initializable {
      * @param event botão ouvirAudio
      */
     @FXML
-    private void handleOuvirAudio(ActionEvent event) throws ClassNotFoundException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException, IOException {
+    private void handleOuvirAudio(ActionEvent event) throws ClassNotFoundException, URISyntaxException, IOException {
         String audio = modelJogoPrincipal.getAudioAtual();
         modelJogoPrincipal.tocarAudio(audio);
     }

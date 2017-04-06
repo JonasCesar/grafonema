@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
@@ -13,7 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -24,17 +21,24 @@ import javafx.stage.Stage;
 public class Gui_GameOverController implements Initializable {
 
     @FXML
-    private Button reiniciar, sair;
+    private Button sair;
 
     private Model_gameOver gameOver = new Model_gameOver();
     
     private Stage window;
     @FXML
     private ImageView imagemFundo;
-
+    @FXML
+    private ImageView imgReiniciar;
+    @FXML
+    private ImageView imgSair;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         imagemFundo.toBack();
+        URL imageReiniciar = getClass().getResource("Imagens/Icones/reiniciar.png");
+        URL imageSair = getClass().getResource("Imagens/Icones/sair.png");
+       
         // TODO
     }
     /**
@@ -42,9 +46,8 @@ public class Gui_GameOverController implements Initializable {
      * @param event botão reiniciar
      * @throws IOException 
      */
-    @FXML
     private void handleReiniciar(ActionEvent event) throws IOException {
-        gameOver.reiniciarJogo(event);
+        //gameOver.reiniciarJogo(event);
     }
     /**
      * Sai do jogo
@@ -56,5 +59,15 @@ public class Gui_GameOverController implements Initializable {
         window = (Stage) ((Button) event.getSource()).getScene().getWindow();        
         window.close();
         System.exit(0);
+    }
+
+    @FXML
+    private void reiniciarJogo(MouseEvent event) throws IOException {
+        gameOver.reiniciarJogo(imgReiniciar);
+    }
+
+    @FXML
+    private void sairJogo(MouseEvent event) {
+        gameOver.sairJogo(imgSair);
     }
 }
