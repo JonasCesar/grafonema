@@ -2,8 +2,6 @@ package grafonema;
 import java.io.IOException;
 import java.util.Optional;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,6 +28,7 @@ public class Main extends Application {
         Scene scene = new Scene(cenaInicial, 1200, 700);        
         janela.setTitle("Grafonema");
         janela.setScene(scene);
+        janela.setResizable(false);
         janela.show();
         
         //função para encerrar todos os processos quando o usuário clicar no "X"
@@ -45,7 +44,8 @@ public class Main extends Application {
             Optional<ButtonType> resposta = confirmacaoSaida.showAndWait();
             if (ButtonType.OK.equals(resposta.get())) {
                 System.out.println("Sair");
-                event.consume();            
+                event.consume();
+                System.exit(0);
             }
         });
 

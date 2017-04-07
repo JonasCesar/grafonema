@@ -1,5 +1,6 @@
 package model;
 
+import controller.Gui_SequenciaCenasController;
 import java.io.IOException;
 import java.util.Optional;
 import javafx.event.ActionEvent;
@@ -30,24 +31,32 @@ public class Model_Inicial {
      * @throws IOException
      */
     public void iniciar(ActionEvent event) throws IOException {
-        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        //cria a próxima cena chamando a inteface dos avatares
-        Parent proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Introducao.fxml"));
-        Scene cena = new Scene(proximaCena, 1200, 700);//tamanho
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow();       
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+        Parent proximaCena = (Parent) fxmloader.load();        
+        Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+        //cria uma cena 
+        Scene cena = new Scene(proximaCena, 1200, 700);
         janela.setTitle("Grafonema");//título da cena
         janela.setScene(cena);
-        janela.show();//exibe a interface
+        janela.show();//exibe a cena
+        //sequenciaCenas.executarCenaInicioJogo();
+        sequenciaCenas.executarCenaInicial();
 
     }
 
     public void iniciar(ImageView imgView) throws IOException {
         janela = (Stage) ((ImageView) imgView).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        //cria a próxima cena chamando a inteface dos avatares
-        Parent proximaCena = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Introducao.fxml"));
-        Scene cena = new Scene(proximaCena, 1200, 700);//tamanho
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
+        Parent proximaCena = (Parent) fxmloader.load();        
+        Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+        //cria uma cena 
+        Scene cena = new Scene(proximaCena, 1200, 700);
         janela.setTitle("Grafonema");//título da cena
         janela.setScene(cena);
-        janela.show();//exibe a interface
+        janela.show();//exibe a cena
+        //sequenciaCenas.executarCenaInicioJogo();
+        sequenciaCenas.executarCenaInicial();
     }
 
     public void sairDoJogo(ImageView imgSair) {

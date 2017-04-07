@@ -32,6 +32,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -315,7 +316,7 @@ public class ModelJogoPrincipal {
 
     private Random indiceAudio;
 
-    private Stage window;
+    private Stage janela;
     private String caminhoAudio, nomeAudioAtual;
     private File arquivo;
     private Media media;
@@ -361,7 +362,7 @@ public class ModelJogoPrincipal {
         this.pularErro = false;
         this.tempo = tempo;
         nomeAudioAtual = "";
-        window = null;
+        janela = null;
         cenaTemporaria = null;
         url = null;
 
@@ -1680,7 +1681,7 @@ public class ModelJogoPrincipal {
 
         //evento responsável por exibir a janela de GAME OVER 
         eventoGameOver = (ActionEvent event) -> {
-            window = (Stage) btn_1.getScene().getWindow();
+            janela = (Stage) btn_1.getScene().getWindow();
             Parent cenaPrincipal = null;
             try {
                 cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
@@ -1690,9 +1691,10 @@ public class ModelJogoPrincipal {
                         .getName()).log(Level.SEVERE, null, ex);
             }
             Scene scene = new Scene(cenaPrincipal, 1200, 700);
-            window.setTitle("Grafonema");
-            window.setScene(scene);
-            window.show();
+            janela.setTitle("Grafonema");
+            janela.setScene(scene);
+            janela.setResizable(false);
+            janela.show();
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), new KeyValue(temp.opacityProperty(), .1)),
@@ -1785,7 +1787,7 @@ public class ModelJogoPrincipal {
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = (ActionEvent event) -> {
             //armazena a cena em que o botão 'btn_1' se encontra atualmente
-            window = (Stage) btn_1.getScene().getWindow();
+            janela = (Stage) btn_1.getScene().getWindow();
             //armeza a cena do botão 'btn_1' em uma variável temporária
             cenaTemporaria = btn_1.getScene();
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
@@ -1800,9 +1802,10 @@ public class ModelJogoPrincipal {
             Gui_SequenciaCenasController sequenciaCenas1 = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
             Scene cena = new Scene(proximaCena, 1200, 700);
-            window.setTitle("Grafonema");//título da cena
-            window.setScene(cena);
-            window.show();//exibe a cena
+            janela.setTitle("Grafonema");//título da cena
+            janela.setScene(cena);
+            janela.setResizable(false);
+            janela.show();//exibe a cena
             sequenciaCenas1.setFaseAtual(jogador.getFaseAtual());
             sequenciaCenas1.iniciarCena();
         };
@@ -1810,14 +1813,13 @@ public class ModelJogoPrincipal {
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
-            window.setTitle("Grafonema");
-            window.setScene(cenaTemporaria);
+            janela.setTitle("Grafonema");
+            janela.setScene(cenaTemporaria);
             //mostrandoCena = false;
             setMostrandoCena(true);
             //eventoAcerto.handle(null);
-            
-
-            window.show();
+            janela.setResizable(false);
+            janela.show();
         };
 
         eventoFimAcerto = (ActionEvent event) -> {
@@ -1907,6 +1909,7 @@ public class ModelJogoPrincipal {
                         }, 0, 50);
 
                         tempo.setText("" + i);
+                        tempo.setTextAlignment(TextAlignment.CENTER);
                         i--;
 
                         if (i == -1) {
@@ -2395,7 +2398,7 @@ public class ModelJogoPrincipal {
         eventoCenas = (ActionEvent event) -> {
             System.out.println("Mostrando cena final fase");
             //armazena a cena em que o botão 'btn_1' se encontra atualmente
-            window = (Stage) btn_1.getScene().getWindow();
+            janela = (Stage) btn_1.getScene().getWindow();
             Parent cenaPrincipal = null;
             //armeza a cena do botão 'btn_1' em uma variável temporária
             cenaTemporaria = btn_1.getScene();
@@ -2414,9 +2417,10 @@ public class ModelJogoPrincipal {
             sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
             Scene cena = new Scene(proximaCena, 1200, 700);
-            window.setTitle("Grafonema");//título da cena
-            window.setScene(cena);
-            window.show();//exibe a cena
+            janela.setTitle("Grafonema");//título da cena
+            janela.setScene(cena);
+            janela.setResizable(false);
+            janela.show();//exibe a cena
             sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
             //funcionando
             sequenciaCenas.executarCenaFimFase();
@@ -2428,13 +2432,13 @@ public class ModelJogoPrincipal {
         };
 
         eventoVoltar = (ActionEvent event) -> {
-            window.setTitle("Grafonema");
-            window.setScene(cenaTemporaria);
+            janela.setTitle("Grafonema");
+            janela.setScene(cenaTemporaria);
             //mostrandoCena = false;
             setMostrandoCena(false);
             //eventoAcerto.handle(null);
             Button btemp = opcaoCorreta(null);
-            window.show();
+            janela.show();
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
             try {
                 gerarOpcaoAudio();
@@ -2457,7 +2461,7 @@ public class ModelJogoPrincipal {
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = (ActionEvent event) -> {
             //armazena a cena em que o botão 'btn_1' se encontra atualmente
-            window = (Stage) btn_1.getScene().getWindow();
+            janela = (Stage) btn_1.getScene().getWindow();
             Parent cenaPrincipal = null;
             //armeza a cena do botão 'btn_1' em uma variável temporária
             cenaTemporaria = btn_1.getScene();
@@ -2473,23 +2477,24 @@ public class ModelJogoPrincipal {
             Gui_SequenciaCenasController sequenciaCenas1 = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
             Scene cena = new Scene(proximaCena, 1200, 700);
-            window.setTitle("Grafonema");//título da cena
-            window.setScene(cena);
-            window.show();//exibe a cena
+            janela.setTitle("Grafonema");//título da cena
+            janela.setScene(cena);
+            janela.setResizable(false);
+            janela.show();//exibe a cena
             sequenciaCenas1.setFaseAtual(jogador.getFaseAtual());
             sequenciaCenas1.executarCenaIntermediariaFase();
         };
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
-            window.setTitle("Grafonema");
-            window.setScene(cenaTemporaria);
+            janela.setTitle("Grafonema");
+            janela.setScene(cenaTemporaria);
             //mostrandoCena = false;
             setMostrandoCena(false);
             //eventoAcerto.handle(null);
-            //Button btemp = opcaoCorreta(null);
-
-            window.show();
+            //Button btemp = op caoCorreta(null);             
+            janela.setResizable(false);
+            janela.show();
         };
         eventoFimAcerto = (ActionEvent event) -> {
             try {
