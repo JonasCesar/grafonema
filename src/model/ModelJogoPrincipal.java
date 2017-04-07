@@ -1829,7 +1829,7 @@ public class ModelJogoPrincipal {
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
                 new KeyFrame(Duration.seconds(10), eventoVoltar),
-                new KeyFrame(Duration.seconds(13), eventoFimAcerto)).play();
+                new KeyFrame(Duration.seconds(10), eventoFimAcerto)).play();
         System.out.println("Opção aleatoria gerada");
 
     }
