@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import controller.Gui_JogoPrincipalController;
@@ -54,11 +49,13 @@ public class Model_SequenciaCenas {
     Gui_JogoPrincipalController jogoPrincipalController = null;
     private File soundFile;
     private Clip clip;
+    private ImageView imagemFundo;
 
-    public Model_SequenciaCenas(ImageView imagem) {
+    public Model_SequenciaCenas(ImageView imagem, ImageView imagemFundo) {
         imgView = imagem;
         faseAtual = 1;
         faseTempAtual = 0;
+        this.imagemFundo = imagemFundo;
     }
 
     public void iniciarCenas() {
@@ -239,7 +236,7 @@ public class Model_SequenciaCenas {
                 Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
             }
             jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
-            
+            jogoPrincipalController.definirImagemFundo();
 
             Scene scene = new Scene(cenaPrincipal, 1200, 700);
             window.setTitle("Grafonema");
@@ -407,28 +404,28 @@ public class Model_SequenciaCenas {
                 caminho3 = "audios_vogais/frase1";
                 break;
             case 3:
-                caminho1 = "Imagens/fase3/inicioFase3";
-                caminho2 = "Imagens/fase3/inicioFase3pb";
+                caminho1 = "Imagens/fase3/inicioFase03";
+                caminho2 = "Imagens/fase3/inicioFase03pb";
                 caminho3 = "audios_vogais/frase1";
                 break;
             case 4:
-                caminho1 = "Imagens/fase4/inicioFase3";
-                caminho2 = "Imagens/fase4/inicioFase3pb";
+                caminho1 = "Imagens/fase4/inicioFase04";
+                caminho2 = "Imagens/fase4/inicioFase04pb";
                 caminho3 = "audios_vogais/frase1";
                 break;
             case 5:
-                caminho1 = "Imagens/fase5/inicioFase3";
-                caminho2 = "Imagens/fase5/inicioFase3pb";
+                caminho1 = "Imagens/fase5/inicioFase05";
+                caminho2 = "Imagens/fase5/inicioFase05pb";
                 caminho3 = "audios_vogais/frase1";
                 break;
             case 6:
-                caminho1 = "Imagens/fase6/inicioFase3";
-                caminho2 = "Imagens/fase6/inicioFase3pb";
+                caminho1 = "Imagens/fase6/inicioFase06";
+                caminho2 = "Imagens/fase6/inicioFase06pb";
                 caminho3 = "audios_vogais/frase1";
                 break;
             case 7:
-                caminho1 = "Imagens/fase7/inicioFase3";
-                caminho2 = "Imagens/fase7/inicioFase3pb";
+                caminho1 = "Imagens/fase7/inicioFase07";
+                caminho2 = "Imagens/fase7/inicioFase07pb";
                 caminho3 = "audios_vogais/frase1";
                 break;
             default:
@@ -461,6 +458,7 @@ public class Model_SequenciaCenas {
                 Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
             }
             jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
+            jogoPrincipalController.definirImagemFundo();
             
 
             Scene scene = new Scene(cenaPrincipal, 1200, 700);
@@ -472,5 +470,22 @@ public class Model_SequenciaCenas {
                 new KeyFrame(Duration.seconds(10), c2),
                 new KeyFrame(Duration.seconds(15), c3)).play();
 
+    }
+
+    public void definirImagemFundo() {
+        URL arqImg;
+        switch(getFaseAtual()){
+            case 1:
+                System.out.println("Entrou aqui case 1");
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase1.jpg");
+                imagemFundo.setImage(new Image(arqImg.toString()));
+                break;
+            case 2:
+                break;
+            case 3:
+                break;                
+            default:
+                break;
+        }
     }
 }

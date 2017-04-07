@@ -13,7 +13,8 @@ import javafx.scene.image.ImageView;
  * @author jonas
  */
 public class Gui_SequenciaCenasController implements Initializable {
-    @FXML    
+
+    @FXML
     private ImageView imgView;
     private Model_SequenciaCenas modelSeqCenas;
     private int unidadeAtual;
@@ -21,56 +22,69 @@ public class Gui_SequenciaCenasController implements Initializable {
     private ImageView imagemFundo;
 
     public Gui_SequenciaCenasController() {
-       unidadeAtual = 0;
-    }   
-    
+        unidadeAtual = 0;
+    }
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         modelSeqCenas = new Model_SequenciaCenas(imgView);
-         //imagemFundo.();
-         imgView.toFront();
-            
+        modelSeqCenas = new Model_SequenciaCenas(imgView,imagemFundo);
+        //imagemFundo.();
+        imgView.toFront();
+
     }
+
     /**
      * Inicia as cenas
      */
-    public void iniciarCena(){
+    public void iniciarCena() {
         modelSeqCenas.iniciarCenas();
     }
-    
-    public void executarCenaInicial(){
+
+    public void executarCenaInicial() {
         modelSeqCenas.executarCenaInicial();
     }
+
     /**
      * Define a fase atual do jogo
+     *
      * @param faseAtual fase atualizada
      */
     public void setFaseAtual(int faseAtual) {
         modelSeqCenas.setFaseAtual(faseAtual);
     }
+
     /**
-     * Esse método apenas chama uma imagem 
+     * Esse método apenas chama uma imagem
      */
-    public void executarCenaFimFase(){
+    public void executarCenaFimFase() {
         modelSeqCenas.executarCenaFimDaFase();
     }
-    
-    public void executarCenaMeioFase(){
+
+    public void executarCenaMeioFase() {
         modelSeqCenas.executarCenaMeioFase();
     }
-    
-    public void executarCenaIntermediariaFase(){
+
+    public void executarCenaIntermediariaFase() {
         modelSeqCenas.executarCenaIntermediaria();
-                
+
     }
 
     public void executarCenaInicioJogo() {
         ////throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    public int getFaseAtual() {
+        return modelSeqCenas.getFaseAtual();
+    }
+
+    public void definirImagemFundo() {
+        modelSeqCenas.definirImagemFundo();
+    }
+
 }

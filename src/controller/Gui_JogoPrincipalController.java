@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import java.io.IOException;
@@ -77,11 +73,9 @@ public class Gui_JogoPrincipalController implements Initializable {
         imagemFundo.toBack();
         String vogais[] = {"letra_a", "letra_e", "letra_i", "letra_o", "letra_u"};
         Random indiceVogal = new Random();
-        try {
-            modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular, pontuacao, lifeBar, tempo, ouvirAudio);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Gui_JogoPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular,
+                pontuacao, lifeBar, tempo, ouvirAudio,
+                imagemFundo);
         modelJogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
         modelJogoPrincipal.iniciarMatrizAudioSilabas();
         modelJogoPrincipal.iniciarMatrizSilabasSimplesB();
@@ -199,5 +193,10 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private void sombrearBotao(MouseEvent event) {
         ((Button)event.getSource()).setEffect(null);
+    }
+    
+    public void definirImagemFundo() {
+        System.out.println("Entrou aqui imagem de fundo");
+        modelJogoPrincipal.definirImagemFundo();
     }
 }
