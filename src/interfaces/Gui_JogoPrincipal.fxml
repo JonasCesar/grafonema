@@ -34,12 +34,12 @@
          <font>
             <Font size="60.0" />
          </font></Label>
-      <Button fx:id="btn_1" alignment="CENTER" contentDisplay="CENTER" layoutX="143.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="A" />
-      <Button fx:id="btn_2" alignment="CENTER" contentDisplay="CENTER" layoutX="337.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="E" />
-      <Button fx:id="btn_3" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="I" />
-      <Button fx:id="btn_5" alignment="CENTER" contentDisplay="CENTER" layoutX="920.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="U" />
-      <Button fx:id="btn_4" alignment="CENTER" contentDisplay="CENTER" layoutX="716.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" text="O" />
-      <Button fx:id="pular" layoutX="1050.0" layoutY="608.0" mnemonicParsing="false" onAction="#handlePular" text="Pular" />
+      <Button fx:id="btn_1" alignment="CENTER" contentDisplay="CENTER" layoutX="143.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="A" />
+      <Button fx:id="btn_2" alignment="CENTER" contentDisplay="CENTER" layoutX="337.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="E" />
+      <Button fx:id="btn_3" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="I" />
+      <Button fx:id="btn_5" alignment="CENTER" contentDisplay="CENTER" layoutX="920.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="U" />
+      <Button fx:id="btn_4" alignment="CENTER" contentDisplay="CENTER" layoutX="716.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="O" />
+      <Button fx:id="pular" layoutX="1050.0" layoutY="608.0" mnemonicParsing="false" onAction="#handlePular" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="Pular" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../controller/warrior-icon-23.png" />

@@ -1819,17 +1819,17 @@ public class ModelJogoPrincipal {
             setMostrandoCena(true);
             //eventoAcerto.handle(null);
             janela.setResizable(false);
-            janela.show();
+            
         };
-
         eventoFimAcerto = (ActionEvent event) -> {
+            janela.show();
             mostrarCenaInicialFase();
         };
         //animação que exibe as cenas e volta para a interface principal do jogo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
                 new KeyFrame(Duration.seconds(10), eventoVoltar),
-                new KeyFrame(Duration.seconds(10), eventoFimAcerto)).play();
+                new KeyFrame(Duration.millis(10100), eventoFimAcerto)).play();
         System.out.println("Opção aleatoria gerada");
 
     }
