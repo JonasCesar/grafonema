@@ -1,6 +1,5 @@
 package controller;
 
-import java.net.MalformedURLException;
 import model.Model_SequenciaCenas;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,30 +36,37 @@ public class Gui_SequenciaCenasController implements Initializable {
          imgView.toFront();
             
     }
-    
-    public void iniciarCena() throws MalformedURLException{
+    /**
+     * Inicia as cenas
+     */
+    public void iniciarCena(){
         modelSeqCenas.iniciarCenas();
     }
     
     public void executarCenaInicial(){
         modelSeqCenas.executarCenaInicial();
     }
-
+    /**
+     * Define a fase atual do jogo
+     * @param faseAtual fase atualizada
+     */
     public void setFaseAtual(int faseAtual) {
-        System.out.println("Fase atual "+faseAtual);
         modelSeqCenas.setFaseAtual(faseAtual);
     }
     /**
-     * Esse método apenas chama uma imagem
-     * @return 
-     * @throws MalformedURLException 
+     * Esse método apenas chama uma imagem 
      */
-    public void executarCenaFimFase() throws MalformedURLException{
+    public void executarCenaFimFase(){
         modelSeqCenas.executarCenaFimDaFase();
     }
     
     public void executarCenaMeioFase(){
         modelSeqCenas.executarCenaMeioFase();
+    }
+    
+    public void executarCenaIntermediariaFase(){
+        modelSeqCenas.executarCenaIntermediaria();
+                
     }
 
     public void executarCenaInicioJogo() {

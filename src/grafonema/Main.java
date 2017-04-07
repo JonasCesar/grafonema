@@ -43,8 +43,9 @@ public class Main extends Application {
             confirmacaoSaida.initOwner(janela);
             
             Optional<ButtonType> resposta = confirmacaoSaida.showAndWait();
-            if (!ButtonType.OK.equals(resposta.get())) {
-                event.consume();
+            if (ButtonType.OK.equals(resposta.get())) {
+                System.out.println("Sair");
+                event.consume();            
             }
         });
 

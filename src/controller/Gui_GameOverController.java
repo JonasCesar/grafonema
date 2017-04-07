@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -20,8 +20,6 @@ import javafx.stage.Stage;
  */
 public class Gui_GameOverController implements Initializable {
 
-    @FXML
-    private Button sair;
 
     private Model_gameOver gameOver = new Model_gameOver();
     
@@ -54,7 +52,6 @@ public class Gui_GameOverController implements Initializable {
      * @param event botão sair
      * @throws IOException 
      */
-    @FXML
     private void handleSair(ActionEvent event) throws IOException {        
         window = (Stage) ((Button) event.getSource()).getScene().getWindow();        
         window.close();
@@ -69,5 +66,22 @@ public class Gui_GameOverController implements Initializable {
     @FXML
     private void sairJogo(MouseEvent event) {
         gameOver.sairJogo(imgSair);
+    }
+    /**
+     * Remove a sombra da imagem
+     * @param event mouse posicionado sobre a imagem
+     */
+    @FXML
+    private void sombrearImagem(MouseEvent event) {
+        DropShadow sombra = new DropShadow();
+        ((ImageView) event.getSource()).setEffect(sombra);
+    }
+    /**
+     * Remove o efeito de sombra da imagem
+     * @param event mouse retirado de cima da imagem
+     */
+    @FXML
+    private void removerSombraImagem(MouseEvent event) {
+        ((ImageView) event.getSource()).setEffect(null);
     }
 }
