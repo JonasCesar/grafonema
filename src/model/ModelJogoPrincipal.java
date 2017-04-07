@@ -33,6 +33,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.text.TextAlignment;
+import static javafx.scene.text.TextAlignment.CENTER;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -1685,7 +1686,7 @@ public class ModelJogoPrincipal {
             Parent cenaPrincipal = null;
             try {
                 cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
-                
+
             } catch (IOException ex) {
                 Logger.getLogger(Gui_JogoPrincipalController.class
                         .getName()).log(Level.SEVERE, null, ex);
@@ -1908,8 +1909,12 @@ public class ModelJogoPrincipal {
                             }
                         }, 0, 50);
 
-                        tempo.setText("" + i);
-                        tempo.setTextAlignment(TextAlignment.CENTER);
+                        if (i >= 10) {
+                            tempo.setText("" + i);
+                        } else {
+                            tempo.setText(" " + i);
+                        }
+
                         i--;
 
                         if (i == -1) {
@@ -2380,7 +2385,8 @@ public class ModelJogoPrincipal {
                     //ao terminar a animação desbloquear os botões
                     funcao.setClique1();
                 };
-                break;        }
+                break;
+        }
 
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoErro),
