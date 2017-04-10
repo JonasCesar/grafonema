@@ -584,6 +584,7 @@ public class ModelJogoPrincipal {
      */
     public void desabilitarPulo() {
         pular.setDisable(true);
+        System.out.println("ficou inativo o pular");
     }
 
     /**
