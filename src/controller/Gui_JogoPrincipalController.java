@@ -110,17 +110,18 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @FXML
     private void handlePular(ActionEvent event) throws InterruptedException, IOException, ClassNotFoundException, URISyntaxException {
+      
         int qntPulosAtual = modelJogoPrincipal.jogador.getQntPulos();
-        //se o jogador já pulou 3 vezes
-        //(pois a quantidade de pulos é iniciada com 0
-        if (qntPulosAtual == 2) {
-            //desabilita o botão de pular
-            modelJogoPrincipal.desabilitarPulo();
-        } else {
+
+            //EH ESSE O CERTO
             //gera uma opção aleatória
             modelJogoPrincipal.gerarOpcaoAleatoria();
             modelJogoPrincipal.jogador.setQntPulos(qntPulosAtual);//incrementa quantidade de pulos do jogador
-        }
+            System.out.println("quantidade de pulos: " + qntPulosAtual);
+            if(qntPulosAtual == 2){
+                modelJogoPrincipal.desabilitarPulo();
+            }
+//        }
         //seta indicacaoPular como true
         modelJogoPrincipal.setIndicacaoPular(true);
     }

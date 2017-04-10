@@ -473,19 +473,33 @@ public class Model_SequenciaCenas {
     }
 
     public void definirImagemFundo() {
-        URL arqImg;
+        URL arqImg = null;
         switch(getFaseAtual()){
             case 1:
                 System.out.println("Entrou aqui case 1");
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase1.jpg");
-                imagemFundo.setImage(new Image(arqImg.toString()));
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase1.jpg");                
                 break;
             case 2:
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase2.jpg");                
                 break;
             case 3:
-                break;                
-            default:
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase3.jpg");                
+                break;
+            case 4:
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase4.jpg");                
+                break;
+            case 5:
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase5.jpg");
+                break;
+            case 6:
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase6.jpg");
+                break;
+            case 7:
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase7.jpg");
+                break;
+            default:  
                 break;
         }
+        imagemFundo.setImage(new Image(arqImg.toString()));
     }
 }
