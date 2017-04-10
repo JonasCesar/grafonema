@@ -19,7 +19,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.FuncaoBotao;
 
@@ -187,5 +189,16 @@ public class Gui_JogoPrincipalController implements Initializable {
     private void handleOuvirAudio(ActionEvent event) throws ClassNotFoundException, URISyntaxException, IOException {
         String audio = modelJogoPrincipal.getAudioAtual();
         modelJogoPrincipal.tocarAudio(audio);
+    }
+
+    @FXML
+    private void removerSombraBotao(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        ((Button)event.getSource()).setEffect(sombras);
+    }
+
+    @FXML
+    private void sombrearBotao(MouseEvent event) {
+        ((Button)event.getSource()).setEffect(null);
     }
 }
