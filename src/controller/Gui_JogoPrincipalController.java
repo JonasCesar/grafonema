@@ -57,6 +57,8 @@ public class Gui_JogoPrincipalController implements Initializable {
     private ImageView imagemFundo;
     @FXML
     private Button ouvirAudio;
+    
+    private int faseAtual;
 
     public Gui_JogoPrincipalController() {
 
@@ -197,7 +199,15 @@ public class Gui_JogoPrincipalController implements Initializable {
     }
     
     public void definirImagemFundo() {
-        System.out.println("Entrou aqui imagem de fundo");
         modelJogoPrincipal.definirImagemFundo();
     }
+    
+    public void setFaseAtual(int faseAtual){
+        modelJogoPrincipal.setFaseAtual(faseAtual);
+    }
+    
+    public int getFaseAtual(){
+        return modelJogoPrincipal.getFaseAtual();
+    }
+    
 }
