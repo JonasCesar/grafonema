@@ -41,7 +41,9 @@ public class Model_Inicial {
         janela.setScene(cena);
         janela.show();//exibe a cena
         //sequenciaCenas.executarCenaInicioJogo();
+        sequenciaCenas.definirImagemFundo();
         sequenciaCenas.executarCenaInicial();
+        
 
     }
 
