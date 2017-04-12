@@ -40,7 +40,7 @@ public class Model_SequenciaCenas {
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
-    private Stage window;
+    private Stage janela;
     private int faseAtual;
     String caminho1, caminho2, caminho3, caminho4, caminho5 = "";
     private File arquivoImagemPB;
@@ -226,7 +226,7 @@ public class Model_SequenciaCenas {
         };
 
         c3 = (ActionEvent event) -> {
-            window = (Stage) imgView.getScene().getWindow();
+            janela = (Stage) imgView.getScene().getWindow();
             Parent cenaPrincipal = null;
 
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
@@ -239,14 +239,14 @@ public class Model_SequenciaCenas {
             jogoPrincipalController.definirImagemFundo();
 
             Scene scene = new Scene(cenaPrincipal, 1200, 700);
-            window.setTitle("Grafonema");
-            window.setScene(scene);
-            window.show();
+            janela.setTitle("Grafonema");
+            janela.setScene(scene);
+            janela.show();
 
         };
         
         c4 = (ActionEvent event) -> {
-            
+            System.out.println("O metodo vem aqui");
             jogoPrincipalController.iniciarJogo();
         };
         
@@ -448,7 +448,7 @@ public class Model_SequenciaCenas {
         };
 
         c3 = (ActionEvent event) -> {
-            window = (Stage) imgView.getScene().getWindow();
+            janela = (Stage) imgView.getScene().getWindow();
             Parent cenaPrincipal = null;
 
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
@@ -458,10 +458,14 @@ public class Model_SequenciaCenas {
                 Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
             }
             jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
+            jogoPrincipalController.setFaseAtual(getFaseAtual());
+            System.out.println("Chamando doutor Has Chucrute");
             jogoPrincipalController.definirImagemFundo();
             
 
             Scene scene = new Scene(cenaPrincipal, 1200, 700);
+            janela.setScene(scene);
+            janela.show();
 
         };
         

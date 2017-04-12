@@ -338,8 +338,10 @@ public class ModelJogoPrincipal {
 
     Gui_SequenciaCenasController sequenciaCenas = new Gui_SequenciaCenasController();
 
+    Gui_JogoPrincipalController jogoPrincipal = new Gui_JogoPrincipalController();
+
     FuncaoBotao funcao = new FuncaoBotao();
-    
+
     private ImageView imagemFundo;
 
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
@@ -398,8 +400,6 @@ public class ModelJogoPrincipal {
             jogador.setBonus(false);//retira o bônus do jogador
             //jogador.setAcertosPorFase(jogador.getFaseAtual(), jogador.getAcertosTotal());
             mostrarCenas();
-            //mostrarCenaFinalFase();
-//            jogador.setFaseAtual(faseAtualTemp);//atualiza a fase do jogador
             jogador.setAcertosTotal(0);
             //          gerarOpcaoAudio();
             //chamar a cena de inicio da proxima fase
@@ -408,7 +408,7 @@ public class ModelJogoPrincipal {
              */
 
         } else {
-            gerarOpcaoAudio();
+            gerarOpcaoAudio(0);
         }
     }
 
@@ -1807,15 +1807,17 @@ public class ModelJogoPrincipal {
                 Logger.getLogger(ModelJogoPrincipal.class
                         .getName()).log(Level.SEVERE, null, ex);
             }
-            Gui_SequenciaCenasController sequenciaCenas1 = fxmloader.<Gui_SequenciaCenasController>getController();
+            sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
             Scene cena = new Scene(proximaCena, 1200, 700);
             janela.setTitle("Grafonema");//título da cena
             janela.setScene(cena);
             janela.setResizable(false);
             janela.show();//exibe a cena
-            sequenciaCenas1.setFaseAtual(jogador.getFaseAtual());
-            sequenciaCenas1.iniciarCena();
+            sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+            sequenciaCenas.definirImagemFundo();
+            sequenciaCenas.iniciarCena();
+
         };
 
         //evento para voltar para o jogo pós exibição da cena
@@ -1827,7 +1829,7 @@ public class ModelJogoPrincipal {
             setMostrandoCena(true);
             //eventoAcerto.handle(null);
             janela.setResizable(false);
-            
+
         };
         eventoFimAcerto = (ActionEvent event) -> {
             janela.show();
@@ -2435,6 +2437,7 @@ public class ModelJogoPrincipal {
             janela.setResizable(false);
             janela.show();//exibe a cena
             sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+            sequenciaCenas.definirImagemFundo();
             //funcionando
             sequenciaCenas.executarCenaFimFase();
 
@@ -2454,7 +2457,7 @@ public class ModelJogoPrincipal {
             janela.show();
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
             try {
-                gerarOpcaoAudio();
+                gerarOpcaoAudio(1);
             } catch (IOException ex) {
                 Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2487,19 +2490,35 @@ public class ModelJogoPrincipal {
                 Logger.getLogger(ModelJogoPrincipal.class
                         .getName()).log(Level.SEVERE, null, ex);
             }
-            Gui_SequenciaCenasController sequenciaCenas1 = fxmloader.<Gui_SequenciaCenasController>getController();
+            sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
             Scene cena = new Scene(proximaCena, 1200, 700);
             janela.setTitle("Grafonema");//título da cena
             janela.setScene(cena);
             janela.setResizable(false);
             janela.show();//exibe a cena
-            sequenciaCenas1.setFaseAtual(jogador.getFaseAtual());
-            sequenciaCenas1.executarCenaIntermediariaFase();
+            sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+            sequenciaCenas.definirImagemFundo();
+            sequenciaCenas.executarCenaIntermediariaFase();
+
         };
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
+
+            Parent cenaPrincipal = null;
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+            try {
+                cenaPrincipal = (Parent) fxmloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
+            jogoPrincipal.setFaseAtual(getFaseAtual());
+            System.out.println("Chamando doutor Has Chucrute");
+            jogoPrincipal.definirImagemFundo();
+
+            System.out.println("VOLTOU!!!!");
             janela.setTitle("Grafonema");
             janela.setScene(cenaTemporaria);
             //mostrandoCena = false;
@@ -2507,10 +2526,12 @@ public class ModelJogoPrincipal {
             //eventoAcerto.handle(null);
             //Button btemp = op caoCorreta(null);             
             janela.setResizable(false);
+            definirImagemFundo();
             janela.show();
         };
         eventoFimAcerto = (ActionEvent event) -> {
             try {
+
                 gerarOpcaoAleatoria();
 
             } catch (InterruptedException | IOException ex) {
@@ -2527,12 +2548,13 @@ public class ModelJogoPrincipal {
          */
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(10), eventoVoltar),
-                new KeyFrame(Duration.seconds(11), eventoFimAcerto)).play();
+                new KeyFrame(Duration.seconds(16), eventoVoltar),
+                new KeyFrame(Duration.seconds(17), eventoFimAcerto)).play();
 
     }
 
-    private void gerarOpcaoAudio() throws IOException {
+    private void gerarOpcaoAudio(int chaveImagemFundo) throws IOException {
+        definirImagemFundo();
         int i = 0;
         int proxValor = 0;
         ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
@@ -2759,19 +2781,23 @@ public class ModelJogoPrincipal {
 
     public void definirImagemFundo() {
         URL arqImg = null;
-        switch(jogador.getFaseAtual()){
+        System.out.println(jogador.getFaseAtual());
+        switch (jogador.getFaseAtual()) {
             case 1:
-                System.out.println("Entrou aqui case 1");
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase1.jpg");                
+                System.out.println("Entrou case 1 definir imagem ModelPrincipal");
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase1.jpg");
+
                 break;
             case 2:
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase2.jpg");                
+                System.out.println("Entrou aqui jogoPrincipal");
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase2.jpg");
+                imagemFundo.setImage(new Image(arqImg.toString()));
                 break;
             case 3:
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase3.jpg");                
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase3.jpg");
                 break;
             case 4:
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase4.jpg");                
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase4.jpg");
                 break;
             case 5:
                 arqImg = getClass().getResource("Imagens/Gerais/fundo_fase5.jpg");
@@ -2782,9 +2808,18 @@ public class ModelJogoPrincipal {
             case 7:
                 arqImg = getClass().getResource("Imagens/Gerais/fundo_fase7.jpg");
                 break;
-            default:  
+            default:
                 break;
         }
+
         imagemFundo.setImage(new Image(arqImg.toString()));
+    }
+
+    public void setFaseAtual(int faseAtual) {
+        jogador.setFaseAtual(faseAtual);
+    }
+
+    public int getFaseAtual() {
+        return jogador.getFaseAtual();
     }
 }
