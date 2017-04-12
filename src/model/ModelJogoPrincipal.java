@@ -1,5 +1,6 @@
 package model;
 
+import controller.Gui_GameOverController;
 import controller.Gui_SequenciaCenasController;
 import controller.Gui_JogoPrincipalController;
 import java.io.File;
@@ -388,7 +389,7 @@ public class ModelJogoPrincipal {
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
         System.out.println("Nova opção aleatória");
-
+        System.out.println("qnt erros  "+jogador.getQntErros());
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
@@ -408,7 +409,7 @@ public class ModelJogoPrincipal {
              */
 
         } else {
-            gerarOpcaoAudio(0);
+            gerarOpcaoAudio();
         }
     }
 
@@ -1691,13 +1692,15 @@ public class ModelJogoPrincipal {
         eventoGameOver = (ActionEvent event) -> {
             janela = (Stage) btn_1.getScene().getWindow();
             Parent cenaPrincipal = null;
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
             try {
-                cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
-
+                cenaPrincipal = (Parent) fxmloader.load();
             } catch (IOException ex) {
-                Logger.getLogger(Gui_JogoPrincipalController.class
-                        .getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
             }
+            Gui_GameOverController gameOver = fxmloader.<Gui_GameOverController>getController();
+            gameOver.definirPontuacaoFinal(jogador.getPontuacaoTotal());
+
             Scene scene = new Scene(cenaPrincipal, 1200, 700);
             janela.setTitle("Grafonema");
             janela.setScene(scene);
@@ -2457,7 +2460,7 @@ public class ModelJogoPrincipal {
             janela.show();
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
             try {
-                gerarOpcaoAudio(1);
+                gerarOpcaoAudio();
             } catch (IOException ex) {
                 Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2553,8 +2556,7 @@ public class ModelJogoPrincipal {
 
     }
 
-    private void gerarOpcaoAudio(int chaveImagemFundo) throws IOException {
-        definirImagemFundo();
+    private void gerarOpcaoAudio() throws IOException {
         int i = 0;
         int proxValor = 0;
         ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase

@@ -459,14 +459,6 @@ public class Model_SequenciaCenas {
             }
             jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
             jogoPrincipalController.setFaseAtual(getFaseAtual());
-            System.out.println("Chamando doutor Has Chucrute");
-            jogoPrincipalController.definirImagemFundo();
-            
-
-            Scene scene = new Scene(cenaPrincipal, 1200, 700);
-            janela.setScene(scene);
-            janela.show();
-
         };
         
         new Timeline(

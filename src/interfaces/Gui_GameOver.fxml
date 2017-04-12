@@ -15,20 +15,21 @@
             <Image url="@../model/Imagens/Gerais/fundopb.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="585.0" layoutY="222.0" prefHeight="30.0" prefWidth="152.0" text="Fim do Jogo">
+      <Label layoutX="585.0" layoutY="186.0" prefHeight="30.0" prefWidth="152.0" text="Fim do Jogo">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fx:id="imgReiniciar" fitHeight="119.0" fitWidth="150.0" layoutX="443.0" layoutY="341.0" onMouseClicked="#reiniciarJogo" onMouseEntered="#sombrearImagem" onMouseExited="#removerSombraImagem" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgReiniciar" fitHeight="119.0" fitWidth="150.0" layoutX="443.0" layoutY="508.0" onMouseClicked="#reiniciarJogo" onMouseEntered="#sombrearImagem" onMouseExited="#removerSombraImagem" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../model/Imagens/Icones/reiniciar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgSair" fitHeight="112.0" fitWidth="119.0" layoutX="747.0" layoutY="345.0" onMouseClicked="#sairJogo" onMouseEntered="#sombrearImagem" onMouseExited="#removerSombraImagem" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgSair" fitHeight="112.0" fitWidth="119.0" layoutX="747.0" layoutY="512.0" onMouseClicked="#sairJogo" onMouseEntered="#sombrearImagem" onMouseExited="#removerSombraImagem" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../model/Imagens/Icones/sair.png" />
          </image>
       </ImageView>
+      <Label fx:id="pontuacao" layoutX="643.0" layoutY="350.0" />
    </children>
 </AnchorPane>
