@@ -53,9 +53,9 @@
          <font>
             <Font size="29.0" />
          </font></Button>
-      <ImageView fitHeight="49.0" fitWidth="192.0" layoutX="25.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="42.0" fitWidth="173.0" layoutX="32.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../model/Imagens/Icones/pontuacao.png" />
+            <Image url="@../model/Imagens/Icones/potuacao3.png" />
          </image>
       </ImageView>
    </children>
