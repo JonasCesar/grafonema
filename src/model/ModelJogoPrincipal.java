@@ -35,8 +35,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.scene.text.TextAlignment;
-import static javafx.scene.text.TextAlignment.CENTER;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -344,7 +342,7 @@ public class ModelJogoPrincipal {
     FuncaoBotao funcao = new FuncaoBotao();
 
     private ImageView imagemFundo;
-
+    
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo, Button ouvirAudio,
             ImageView imagemFundo) {
@@ -1835,15 +1833,13 @@ public class ModelJogoPrincipal {
 
         };
         eventoFimAcerto = (ActionEvent event) -> {
-            janela.show();
-            mostrarCenaInicialFase();
+            mostrarCenaInicialFase(janela);
         };
         //animação que exibe as cenas e volta para a interface principal do jogo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(10), eventoVoltar),
-                new KeyFrame(Duration.millis(10100), eventoFimAcerto)).play();
-        System.out.println("Opção aleatoria gerada");
+                new KeyFrame(Duration.seconds(12), eventoVoltar),
+                new KeyFrame(Duration.seconds(12), eventoFimAcerto)).play();
 
     }
 
@@ -2476,11 +2472,11 @@ public class ModelJogoPrincipal {
     /**
      * Mostra a cena inicial antes de cada fase
      */
-    public void mostrarCenaInicialFase() {
+    public void mostrarCenaInicialFase(Stage jan) {
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = (ActionEvent event) -> {
             //armazena a cena em que o botão 'btn_1' se encontra atualmente
-            janela = (Stage) btn_1.getScene().getWindow();
+            janela = jan;
             Parent cenaPrincipal = null;
             //armeza a cena do botão 'btn_1' em uma variável temporária
             cenaTemporaria = btn_1.getScene();

@@ -33,6 +33,8 @@ public class Gui_GameOverController implements Initializable {
     private ImageView imgSair;
     @FXML
     private Label pontuacao;
+    @FXML
+    private ImageView tv;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -89,6 +91,7 @@ public class Gui_GameOverController implements Initializable {
     }
 
     public void definirPontuacaoFinal(int pontuacaoTotal) {
+        System.out.println("Pontuacao "+pontuacaoTotal);
         pontuacao.setText(""+pontuacaoTotal);
     }
 }

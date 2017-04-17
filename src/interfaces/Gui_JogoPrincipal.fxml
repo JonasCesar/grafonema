@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_JogoPrincipalController">
+<AnchorPane id="AnchorPane" fx:id="achorPane" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_JogoPrincipalController">
     <stylesheets>
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
@@ -19,19 +19,19 @@
          <image>
             <Image url="@../model/Imagens/Gerais/fundo.jpg" />
          </image></ImageView>
-      <ProgressBar fx:id="lifeBar" layoutX="179.0" layoutY="29.0" prefWidth="200.0" progress="1.0" />
-      <ImageView fitHeight="98.0" fitWidth="139.0" layoutX="45.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+      <ProgressBar fx:id="lifeBar" layoutX="190.0" layoutY="29.0" prefWidth="200.0" progress="1.0" />
+      <ImageView fitHeight="129.0" fitWidth="189.0" layoutX="26.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../model/Imagens/Icones/sealenda2.png" />
+            <Image url="@../model/Imagens/Icones/tv.png" />
          </image>
       </ImageView>
-      <Label fx:id="pontuacao" layoutX="71.0" layoutY="193.0" text="0">
+      <Label fx:id="pontuacao" layoutX="59.0" layoutY="193.0" text="0">
          <font>
             <Font size="53.0" />
          </font></Label>
       <ImageView fitHeight="112.0" fitWidth="173.0" layoutX="582.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../model/Imagens/Icones/redondo.png" />
+            <Image url="@../model/Imagens/Icones/redondo3.png" />
          </image>
       </ImageView>
       <Label fx:id="tempo" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="29.0" text="30s" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
@@ -44,7 +44,7 @@
       <Button fx:id="btn_5" alignment="CENTER" contentDisplay="CENTER" layoutX="920.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="U" />
       <Button fx:id="btn_4" alignment="CENTER" contentDisplay="CENTER" layoutX="716.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="O" />
       <Button fx:id="pular" layoutX="1050.0" layoutY="608.0" mnemonicParsing="false" onAction="#handlePular" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="Pular" />
-      <ImageView fitHeight="150.0" fitWidth="119.0" layoutX="39.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="119.0" layoutX="50.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../model/Imagens/Icones/avatar.png" />
          </image>
@@ -53,5 +53,10 @@
          <font>
             <Font size="29.0" />
          </font></Button>
+      <ImageView fitHeight="49.0" fitWidth="192.0" layoutX="25.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/Imagens/Icones/pontuacao.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
