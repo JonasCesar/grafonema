@@ -25,28 +25,30 @@ public class Main extends Application {
     public void start(Stage janela) throws IOException {
         this.janela = janela;
         Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Inicial.fxml"));        
-        Scene scene = new Scene(cenaInicial, 1200, 700);        
+        Scene cena = new Scene(cenaInicial, 1200, 700);        
         janela.setTitle("Grafonema");
-        janela.setScene(scene);
+        janela.setScene(cena);
         janela.setResizable(false);
         janela.show();
+        janela.centerOnScreen();
         
         //função para encerrar todos os processos quando o usuário clicar no "X"
         janela.setOnCloseRequest((WindowEvent event) -> {
             Alert confirmacaoSaida = new Alert(Alert.AlertType.CONFIRMATION,
                     "Você tem certeza que quer sair do jogo?");
-            Button exitButton = (Button) confirmacaoSaida.getDialogPane().lookupButton(ButtonType.OK);
-            exitButton.setText("Sair");
+            Button botaoSair = (Button) confirmacaoSaida.getDialogPane().lookupButton(ButtonType.OK);
+            Button botaoCancelar = (Button) confirmacaoSaida.getDialogPane().lookupButton(ButtonType.CANCEL);
+            botaoSair.setText("Sair");
             confirmacaoSaida.setHeaderText("Confirmação de Saída");
             confirmacaoSaida.initModality(Modality.APPLICATION_MODAL);
             confirmacaoSaida.initOwner(janela);
             
             Optional<ButtonType> resposta = confirmacaoSaida.showAndWait();
-            if (ButtonType.OK.equals(resposta.get())) {
-                System.out.println("Sair");
+            if (!ButtonType.OK.equals(resposta.get())) {            
                 event.consume();
-                System.exit(0);
+                //System.exit(0);
             }
+            
         });
 
     }
