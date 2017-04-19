@@ -66,6 +66,9 @@ public class ModelJogoPrincipal {
     @FXML
     private Label tempo;
 
+    @FXML
+    private Label numFase;
+    
     private URL url;
     @FXML
     private ProgressBar lifeBar;
@@ -345,7 +348,7 @@ public class ModelJogoPrincipal {
     
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo, Button ouvirAudio,
-            ImageView imagemFundo) {
+            ImageView imagemFundo, Label numFase) {
 
         this.btn_1 = b1;
         this.btn_2 = b2;
@@ -373,6 +376,7 @@ public class ModelJogoPrincipal {
         cenaTemporaria = null;
         url = null;
         this.imagemFundo = imagemFundo;
+        this.numFase = numFase;
 
     }
 
@@ -1830,6 +1834,8 @@ public class ModelJogoPrincipal {
             setMostrandoCena(true);
             //eventoAcerto.handle(null);
             janela.setResizable(false);
+            
+            numFase.setText("Fase: " + jogador.getFaseAtual()+"/7");
 
         };
         eventoFimAcerto = (ActionEvent event) -> {

@@ -58,5 +58,10 @@
             <Image url="@../model/Imagens/Icones/potuacao3.png" />
          </image>
       </ImageView>
+      <Label fx:id="numFase" layoutX="876.0" layoutY="42.0" prefHeight="45.0" prefWidth="230.0" text="Label">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
