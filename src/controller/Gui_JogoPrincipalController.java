@@ -60,6 +60,10 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Button ouvirAudio;
     
     private int faseAtual;
+    @FXML
+    private AnchorPane achorPane;
+    @FXML
+    private Label numFase;
 
     public Gui_JogoPrincipalController() {
 
@@ -78,7 +82,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         Random indiceVogal = new Random();
         modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular,
                 pontuacao, lifeBar, tempo, ouvirAudio,
-                imagemFundo);
+                imagemFundo, numFase);
         modelJogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
         modelJogoPrincipal.iniciarMatrizAudioSilabas();
         modelJogoPrincipal.iniciarMatrizSilabasSimplesB();
@@ -103,7 +107,7 @@ public class Gui_JogoPrincipalController implements Initializable {
         btn_5.setStyle("-fx-font-size: 30px; \n -fx-pref-width: 80px;\n -fx-pref-height: 80px;");
 
         funcao.setClique1();
-
+        numFase.setText("Fase: 1/7");
     }
 
     /**
