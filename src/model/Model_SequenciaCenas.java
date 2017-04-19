@@ -139,7 +139,7 @@ public class Model_SequenciaCenas {
 
         c3 = (ActionEvent event) -> {
             System.out.println("Terceiro");
-            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e3.mp3";
+            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e3.wav";
             tocarAudio(caminhoAudio);
             URL arquivoImg = getClass().getResource("Imagens/"+caminho3+".png");
             imgView.setImage(new Image(arquivoImg.toString()));
@@ -149,7 +149,7 @@ public class Model_SequenciaCenas {
             System.out.println("quarto");
             URL arquivoImg = getClass().getResource("Imagens/"+caminho4+".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e4.mp3";
+            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e4.wav";
             tocarAudio(caminhoAudio);
             
         };
@@ -158,7 +158,7 @@ public class Model_SequenciaCenas {
             System.out.println("Quinto");
             URL arquivoImg = getClass().getResource("Imagens/"+caminho5+".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e5.mp3";
+            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e5.wav";
             tocarAudio(caminhoAudio);            
         };
         new Timeline(

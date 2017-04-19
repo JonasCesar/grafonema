@@ -1824,8 +1824,8 @@ public class ModelJogoPrincipal {
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
-            janela.setTitle("Grafonema");
-            janela.setScene(cenaTemporaria);
+            //janela.setTitle("Grafonema");
+            //janela.setScene(cenaTemporaria);
             //mostrandoCena = false;
             setMostrandoCena(true);
             //eventoAcerto.handle(null);
@@ -2473,10 +2473,11 @@ public class ModelJogoPrincipal {
      * Mostra a cena inicial antes de cada fase
      */
     public void mostrarCenaInicialFase(Stage jan) {
+        System.out.println("Entrou mostrarCenaInicialFase ");
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = (ActionEvent event) -> {
             //armazena a cena em que o botão 'btn_1' se encontra atualmente
-            janela = jan;
+            this.janela = jan;
             Parent cenaPrincipal = null;
             //armeza a cena do botão 'btn_1' em uma variável temporária
             cenaTemporaria = btn_1.getScene();
@@ -2795,7 +2796,7 @@ public class ModelJogoPrincipal {
                 arqImg = getClass().getResource("Imagens/Gerais/fundo_fase3.jpg");
                 break;
             case 4:
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase4.jpg");
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase4.png");
                 break;
             case 5:
                 arqImg = getClass().getResource("Imagens/Gerais/fundo_fase5.jpg");
