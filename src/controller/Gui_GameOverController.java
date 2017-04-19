@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +31,10 @@ public class Gui_GameOverController implements Initializable {
     private ImageView imgReiniciar;
     @FXML
     private ImageView imgSair;
+    @FXML
+    private Label pontuacao;
+    @FXML
+    private ImageView tv;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -83,5 +88,10 @@ public class Gui_GameOverController implements Initializable {
     @FXML
     private void removerSombraImagem(MouseEvent event) {
         ((ImageView) event.getSource()).setEffect(null);
+    }
+
+    public void definirPontuacaoFinal(int pontuacaoTotal) {
+        System.out.println("Pontuacao "+pontuacaoTotal);
+        pontuacao.setText(""+pontuacaoTotal);
     }
 }

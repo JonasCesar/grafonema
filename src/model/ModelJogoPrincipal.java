@@ -1,5 +1,6 @@
 package model;
 
+import controller.Gui_GameOverController;
 import controller.Gui_SequenciaCenasController;
 import controller.Gui_JogoPrincipalController;
 import java.io.File;
@@ -34,8 +35,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.scene.text.TextAlignment;
-import static javafx.scene.text.TextAlignment.CENTER;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -343,7 +342,7 @@ public class ModelJogoPrincipal {
     FuncaoBotao funcao = new FuncaoBotao();
 
     private ImageView imagemFundo;
-
+    
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo, Button ouvirAudio,
             ImageView imagemFundo) {
@@ -388,7 +387,7 @@ public class ModelJogoPrincipal {
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
         System.out.println("Nova opção aleatória");
-
+        System.out.println("qnt erros  "+jogador.getQntErros());
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
@@ -408,7 +407,7 @@ public class ModelJogoPrincipal {
              */
 
         } else {
-            gerarOpcaoAudio(0);
+            gerarOpcaoAudio();
         }
     }
 
@@ -1691,13 +1690,15 @@ public class ModelJogoPrincipal {
         eventoGameOver = (ActionEvent event) -> {
             janela = (Stage) btn_1.getScene().getWindow();
             Parent cenaPrincipal = null;
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
             try {
-                cenaPrincipal = FXMLLoader.load(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
-
+                cenaPrincipal = (Parent) fxmloader.load();
             } catch (IOException ex) {
-                Logger.getLogger(Gui_JogoPrincipalController.class
-                        .getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
             }
+            Gui_GameOverController gameOver = fxmloader.<Gui_GameOverController>getController();
+            gameOver.definirPontuacaoFinal(jogador.getPontuacaoTotal());
+
             Scene scene = new Scene(cenaPrincipal, 1200, 700);
             janela.setTitle("Grafonema");
             janela.setScene(scene);
@@ -1832,15 +1833,13 @@ public class ModelJogoPrincipal {
 
         };
         eventoFimAcerto = (ActionEvent event) -> {
-            janela.show();
-            mostrarCenaInicialFase();
+            mostrarCenaInicialFase(janela);
         };
         //animação que exibe as cenas e volta para a interface principal do jogo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(10), eventoVoltar),
-                new KeyFrame(Duration.millis(10100), eventoFimAcerto)).play();
-        System.out.println("Opção aleatoria gerada");
+                new KeyFrame(Duration.seconds(12), eventoVoltar),
+                new KeyFrame(Duration.seconds(12), eventoFimAcerto)).play();
 
     }
 
@@ -2457,7 +2456,7 @@ public class ModelJogoPrincipal {
             janela.show();
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
             try {
-                gerarOpcaoAudio(1);
+                gerarOpcaoAudio();
             } catch (IOException ex) {
                 Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2473,11 +2472,11 @@ public class ModelJogoPrincipal {
     /**
      * Mostra a cena inicial antes de cada fase
      */
-    public void mostrarCenaInicialFase() {
+    public void mostrarCenaInicialFase(Stage jan) {
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = (ActionEvent event) -> {
             //armazena a cena em que o botão 'btn_1' se encontra atualmente
-            janela = (Stage) btn_1.getScene().getWindow();
+            janela = jan;
             Parent cenaPrincipal = null;
             //armeza a cena do botão 'btn_1' em uma variável temporária
             cenaTemporaria = btn_1.getScene();
@@ -2553,8 +2552,7 @@ public class ModelJogoPrincipal {
 
     }
 
-    private void gerarOpcaoAudio(int chaveImagemFundo) throws IOException {
-        definirImagemFundo();
+    private void gerarOpcaoAudio() throws IOException {
         int i = 0;
         int proxValor = 0;
         ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase

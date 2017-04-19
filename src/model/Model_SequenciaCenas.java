@@ -42,7 +42,7 @@ public class Model_SequenciaCenas {
     private MediaView mediaView = new MediaView();
     private Stage janela;
     private int faseAtual;
-    String caminho1, caminho2, caminho3, caminho4, caminho5 = "";
+    String caminho1, caminho2, caminho3, caminho4, caminho5 , faseEfeito= "";
     private File arquivoImagemPB;
     int faseTempAtual = 0;
     
@@ -59,7 +59,7 @@ public class Model_SequenciaCenas {
     }
 
     public void iniciarCenas() {
-        caminho1 = caminho2 = caminho3 = caminho4 = caminho5 = "";
+        caminho1 = caminho2 = caminho3 = caminho4 = caminho5 = faseEfeito= "";
         switch (getFaseAtual()) {
             case 1:
                 System.out.println("Unidade 1");
@@ -68,6 +68,8 @@ public class Model_SequenciaCenas {
                 caminho3 = "fase1/img3";
                 caminho4 = "fase1/img4";
                 caminho5 = "fase1/img5";
+                faseEfeito = "fase1";
+                
                 break;
             case 2:
                 System.out.println("Unidade 2");
@@ -76,6 +78,7 @@ public class Model_SequenciaCenas {
                 caminho3 = "fase2/img3";
                 caminho4 = "fase2/img4";
                 caminho5 = "fase2/img5";
+                faseEfeito = "fase2";
                 break;
             case 3:
                 System.out.println("Unidade 3");
@@ -84,6 +87,7 @@ public class Model_SequenciaCenas {
                 caminho3 = "fase3/img3";
                 caminho4 = "fase3/img4";
                 caminho5 = "fase3/img5";
+                faseEfeito = "fase3";
                 break;
             case 4:
                 caminho1 = "fase4/img1";
@@ -91,6 +95,7 @@ public class Model_SequenciaCenas {
                 caminho3 = "fase4/img3";
                 caminho4 = "fase4/img4";
                 caminho5 = "fase4/img5";
+                faseEfeito = "fase4";
                 break;
             case 5:
                 caminho1 = "fase5/img1";
@@ -119,7 +124,7 @@ public class Model_SequenciaCenas {
         c1 = (ActionEvent event) -> {
             URL arquivoImg = getClass().getResource("Imagens/"+caminho1+".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/espada.mp3";
+            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e1.wav";
             tocarAudio(caminhoAudio);
         };
 
@@ -128,13 +133,13 @@ public class Model_SequenciaCenas {
         c2 = (ActionEvent event) -> {
             URL arquivoImg = getClass().getResource("Imagens/"+caminho2+".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/espada2.mp3";
+            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e2.wav";
             tocarAudio(caminhoAudio);            
         };
 
         c3 = (ActionEvent event) -> {
             System.out.println("Terceiro");
-            caminhoAudio = "audiosEfeitosSonoros/espada2.mp3";
+            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e3.mp3";
             tocarAudio(caminhoAudio);
             URL arquivoImg = getClass().getResource("Imagens/"+caminho3+".png");
             imgView.setImage(new Image(arquivoImg.toString()));
@@ -144,7 +149,7 @@ public class Model_SequenciaCenas {
             System.out.println("quarto");
             URL arquivoImg = getClass().getResource("Imagens/"+caminho4+".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/espada.mp3";
+            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e4.mp3";
             tocarAudio(caminhoAudio);
             
         };
@@ -153,15 +158,15 @@ public class Model_SequenciaCenas {
             System.out.println("Quinto");
             URL arquivoImg = getClass().getResource("Imagens/"+caminho5+".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/espada.mp3";
+            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e5.mp3";
             tocarAudio(caminhoAudio);            
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
-                new KeyFrame(Duration.seconds(2), c2),
-                new KeyFrame(Duration.seconds(4), c3),
-                new KeyFrame(Duration.seconds(6), c4),
-                new KeyFrame(Duration.seconds(8), c5)).play();
+                new KeyFrame(Duration.seconds(3), c2),
+                new KeyFrame(Duration.seconds(5), c3),
+                new KeyFrame(Duration.seconds(7), c4),
+                new KeyFrame(Duration.seconds(9), c5)).play();
 
     }
 
@@ -459,14 +464,6 @@ public class Model_SequenciaCenas {
             }
             jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
             jogoPrincipalController.setFaseAtual(getFaseAtual());
-            System.out.println("Chamando doutor Has Chucrute");
-            jogoPrincipalController.definirImagemFundo();
-            
-
-            Scene scene = new Scene(cenaPrincipal, 1200, 700);
-            janela.setScene(scene);
-            janela.show();
-
         };
         
         new Timeline(
@@ -490,7 +487,7 @@ public class Model_SequenciaCenas {
                 arqImg = getClass().getResource("Imagens/Gerais/fundo_fase3.jpg");                
                 break;
             case 4:
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase4.jpg");                
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase4.png");                
                 break;
             case 5:
                 arqImg = getClass().getResource("Imagens/Gerais/fundo_fase5.jpg");
