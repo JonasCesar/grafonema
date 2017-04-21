@@ -46,8 +46,8 @@ public class Gui_SequenciaCenasController implements Initializable {
         modelSeqCenas.iniciarCenas();
     }
 
-    public void executarCenaInicial() {
-        modelSeqCenas.executarCenaInicial();
+    public void executarCenaInicialFase() {
+        modelSeqCenas.executarCenaInicialFase();
     }
 
     /**
@@ -85,6 +85,14 @@ public class Gui_SequenciaCenasController implements Initializable {
 
     public void definirImagemFundo() {
         modelSeqCenas.definirImagemFundo();
+    }
+    
+    public void executarCenaInicial(){
+        modelSeqCenas.executarCenaInicial();
+    }
+    
+    public void executarPrimeiraCena(){
+        modelSeqCenas.executarPrimeiraCena();
     }
 
 }

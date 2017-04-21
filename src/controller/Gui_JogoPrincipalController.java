@@ -7,8 +7,6 @@ import model.ModelJogoPrincipal;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -64,6 +62,10 @@ public class Gui_JogoPrincipalController implements Initializable {
     private AnchorPane achorPane;
     @FXML
     private Label numFase;
+    @FXML
+    private ImageView imgReiniciar;
+    
+    
 
     public Gui_JogoPrincipalController() {
 
@@ -213,6 +215,22 @@ public class Gui_JogoPrincipalController implements Initializable {
     
     public int getFaseAtual(){
         return modelJogoPrincipal.getFaseAtual();
+    }
+
+    @FXML
+    private void removerSombraImagem(MouseEvent event) {
+        ((ImageView) event.getSource()).setEffect(null);
+    }
+
+    @FXML
+    private void sombrearImagem(MouseEvent event) {
+        DropShadow sombra = new DropShadow();
+        ((ImageView) event.getSource()).setEffect(sombra);
+    }
+
+    @FXML
+    private void reiniciarJogo(MouseEvent event) throws IOException {
+        modelJogoPrincipal.reiniciarJogo(imgReiniciar);
     }
     
 }

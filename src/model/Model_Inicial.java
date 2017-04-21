@@ -42,7 +42,7 @@ public class Model_Inicial {
         janela.show();//exibe a cena
         //sequenciaCenas.executarCenaInicioJogo();
         sequenciaCenas.definirImagemFundo();
-        sequenciaCenas.executarCenaInicial();
+        sequenciaCenas.executarCenaInicialFase();
         
 
     }
@@ -58,7 +58,7 @@ public class Model_Inicial {
         janela.setScene(cena);
         janela.show();//exibe a cena
         //sequenciaCenas.executarCenaInicioJogo();
-        sequenciaCenas.executarCenaInicial();
+        sequenciaCenas.executarCenaInicialFase();
     }
 
     public void sairDoJogo(ImageView imgSair) {

@@ -63,5 +63,10 @@
             <Font size="38.0" />
          </font>
       </Label>
+      <ImageView fx:id="imgReiniciar" fitHeight="76.0" fitWidth="97.0" layoutX="910.0" layoutY="171.0" onMouseClicked="#reiniciarJogo" onMouseEntered="#sombrearImagem" onMouseExited="#removerSombraImagem" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/Imagens/Icones/reiniciar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

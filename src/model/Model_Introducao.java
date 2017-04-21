@@ -72,7 +72,7 @@ public class Model_Introducao {
         window.setScene(cena);
         window.show();//exibe a cena
         //sequenciaCenas.executarCenaInicioJogo();
-        sequenciaCenas.executarCenaInicial();
+        sequenciaCenas.executarCenaInicialFase();
         
     }
 }
