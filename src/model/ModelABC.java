@@ -53,29 +53,29 @@ public class ModelABC {
     }
 
     public void tocarAudio(MouseEvent event) throws IOException {
-        mCC.play("src/ABCAudio/resposta_certa.mp3");
+        mCC.play("ABCAudio/resposta_certa.mp3");
     }
 
     //função responsável por tocar o som das letras
     public void tocarAudioUnicoLetras(String letra) {
         switch (letra) {
             case "A":
-                mCC.play("src/ABCAudioUnico/a.mp3");
+                mCC.play("ABCAudioUnico/a.mp3");
                 break;
             case "B":
-                mCC.play("src/ABCAudioUnico/b.mp3");
+                mCC.play("ABCAudioUnico/b.mp3");
                 break;
 //            case "C":
-//                mCC.play("src/ABCAudio/resposta_certa.mp3");
+//                mCC.play("ABCAudio/resposta_certa.mp3");
 //                break;
 //            case "D":
-//                mCC.play("src/ABCAudio/resposta_certa.mp3");
+//                mCC.play("ABCAudio/resposta_certa.mp3");
 //                break;
 //            case "E":
-//                mCC.play("src/ABCAudio/resposta_certa.mp3");
+//                mCC.play("ABCAudio/resposta_certa.mp3");
 //                break;
 //            case "F":
-//                mCC.play("src/ABCAudio/resposta_certa.mp3");
+//                mCC.play("ABCAudio/resposta_certa.mp3");
 //                break;
         }
     }
@@ -84,22 +84,22 @@ public class ModelABC {
     public void tocarSomLetra(String letra) {
         switch (letra) {
             case "A":
-                mCC.play("src/ABCAudioEPalavras/a.MP3");
+                mCC.play("ABCAudioEPalavras/a.MP3");
                 break;
             case "B":
-                mCC.play("src/ABCAudioEPalavras/b.MP3");
+                mCC.play("ABCAudioEPalavras/b.MP3");
                 break;
 //            case "C":
-//                mCC.play("src/ABCAudio/resposta_certa.mp3");
+//                mCC.play("ABCAudio/resposta_certa.mp3");
 //                break;
 //            case "D":
-//                mCC.play("src/ABCAudio/resposta_certa.mp3");
+//                mCC.play("ABCAudio/resposta_certa.mp3");
 //                break;
 //            case "E":
-//                mCC.play("src/ABCAudio/resposta_certa.mp3");
+//                mCC.play("ABCAudio/resposta_certa.mp3");
 //                break;
 //            case "F":
-//                mCC.play("src/ABCAudio/resposta_certa.mp3");
+//                mCC.play("ABCAudio/resposta_certa.mp3");
 //                break;
         }
     }
@@ -109,7 +109,7 @@ public class ModelABC {
 //        switch (letra) {
 //            case "A":
 //                System.out.println("entrou no case a");
-//                imagemArquivo = new File("src/ABCAudio/aaaa.png");
+//                imagemArquivo = new File("ABCAudio/aaaa.png");
 //                String caminho = imagemArquivo.toURI().toURL().toString();
 //                System.out.println("caminho coisado " + caminho);
 //                img = new Image(imagemArquivo.toURI().toURL().toString());

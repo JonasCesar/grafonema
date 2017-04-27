@@ -54,7 +54,7 @@ public class ModelPag01 {
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p1.mp3";
+                caminhoAudio = "audios/u01/l1p1.mp3";
                 break;
             default:
                 break;

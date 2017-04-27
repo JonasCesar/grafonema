@@ -31,7 +31,7 @@
          </font></Label>
         <Button layoutX="781.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
         <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
-      <ImageView fx:id="iconeOuvir" fitHeight="32.0" fitWidth="32.0" layoutX="164.0" layoutY="148.0" onMouseEntered="#dicaOuvirPalavras" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="iconeOuvir" fitHeight="32.0" fitWidth="32.0" layoutX="164.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagens/icones/speaker.png" />
          </image>

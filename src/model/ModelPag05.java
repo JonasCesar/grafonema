@@ -199,7 +199,7 @@ public class ModelPag05 {
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p5.mp3";
+                caminhoAudio = "audios/u01/l1p5.mp3";
                 break;
             default:
 
@@ -248,7 +248,7 @@ public class ModelPag05 {
     public void executarPalavra() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/polvo.mp3";
+                caminhoAudio = "audios/u01/polvo.mp3";
                 break;
             default:
                 break;
@@ -342,7 +342,7 @@ public class ModelPag05 {
     private void tocarAudioParabens() throws InterruptedException {
         Random indiceParabens = new Random();
         int numeroAudio = indiceParabens.nextInt(3);
-        caminhoAudio = "src/audios/acerto/"+numeroAudio+".mp3";
+        caminhoAudio = "audios/acerto/"+numeroAudio+".mp3";
         mCC.play(caminhoAudio);
         
     }
@@ -376,7 +376,7 @@ public class ModelPag05 {
     private void audioErro() {
         Random indiceErro = new Random();
         int numeroAudio = indiceErro.nextInt(3);
-        caminhoAudio = "src/audios/erro/"+numeroAudio+".mp3";
+        caminhoAudio = "audios/erro/"+numeroAudio+".mp3";
         mCC.play(caminhoAudio);
     }
     

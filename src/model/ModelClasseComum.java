@@ -8,6 +8,7 @@ import controller.ManualController;
 import controller.MenuInicialController;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -43,17 +44,9 @@ public class ModelClasseComum {
      * @param caminhoAudio caminho do arquivo que deve ser executado
      */
     public void play(String caminhoAudio) {
-        //cria um objeto arquivo que recebe o nome do arquivo como parâmetro
-        arquivo = new File(caminhoAudio);
-        //pega todo do caminho referente ao objeto File criado
-        caminhoAudio = arquivo.getAbsolutePath();
-        //troca todas as barras invertidas duplas ('\\') por '/'
-        caminhoAudio = caminhoAudio.replace("\\", "/");
-        //cria um objeto Media que recebe o objeto 'arquivo' como parâmetro
-        media = new Media(new File(caminhoAudio).toURI().toString());
-        //cria um objeto mediaPlayer que permite qua uma media possa ser reproduzida
+      URL file = getClass().getResource(caminhoAudio);
+        media = new Media(file.toString());
         mediaPlayer = new MediaPlayer(media);
-        //toca o audio automaticamente
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
@@ -89,7 +82,7 @@ public class ModelClasseComum {
         pararAudio();
         switch(palavraSelecionada){
             case "VOVÔ":
-                caminhoAudio = "src/AudiosPalavrasEstudadas/vovo.mp3";
+                caminhoAudio = "AudiosPalavrasEstudadas/vovo.mp3";
                 break;
             default:
                 break;

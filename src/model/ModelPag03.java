@@ -149,7 +149,7 @@ public class ModelPag03 {
     public void tocarAudioInicial() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p3.mp3";
+                caminhoAudio = "audios/u01/l1p3.mp3";
                 break;
             default:
                 break;
@@ -228,7 +228,7 @@ public class ModelPag03 {
         String nomeImagem = idImagem.substring(3, 4);
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/" + nomeImagem + ".mp3";
+                caminhoAudio = "audios/u01/" + nomeImagem + ".mp3";
                 break;
         }
         mCC.play(caminhoAudio);
