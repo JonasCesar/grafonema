@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -56,7 +55,7 @@ public class Gui_JogoPrincipalController implements Initializable {
     private ImageView imagemFundo;
     @FXML
     private Button ouvirAudio;
-    
+
     private int faseAtual;
     @FXML
     private AnchorPane achorPane;
@@ -64,8 +63,6 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Label numFase;
     @FXML
     private ImageView imgReiniciar;
-    
-    
 
     public Gui_JogoPrincipalController() {
 
@@ -86,12 +83,6 @@ public class Gui_JogoPrincipalController implements Initializable {
                 pontuacao, lifeBar, tempo, ouvirAudio,
                 imagemFundo, numFase);
         modelJogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
-        modelJogoPrincipal.iniciarMatrizAudioSilabas();
-        modelJogoPrincipal.iniciarMatrizSilabasSimplesB();
-        modelJogoPrincipal.iniciarMatrizSilabasComplexas2();
-        modelJogoPrincipal.iniciarMatrizSilabasComplexas3();
-        modelJogoPrincipal.iniciarMatrizPalavrasSimples();
-        modelJogoPrincipal.iniciarMatrizSilabasComplexas();
     }
 
     FuncaoBotao funcao = new FuncaoBotao();
@@ -119,17 +110,17 @@ public class Gui_JogoPrincipalController implements Initializable {
      */
     @FXML
     private void handlePular(ActionEvent event) throws InterruptedException, IOException, ClassNotFoundException, URISyntaxException {
-      
+
         int qntPulosAtual = modelJogoPrincipal.jogador.getQntPulos();
 
             //EH ESSE O CERTO
-            //gera uma opção aleatória
-            modelJogoPrincipal.gerarOpcaoAleatoria();
-            modelJogoPrincipal.jogador.setQntPulos(qntPulosAtual);//incrementa quantidade de pulos do jogador
-            System.out.println("quantidade de pulos: " + qntPulosAtual);
-            if(qntPulosAtual == 2){
-                modelJogoPrincipal.desabilitarPulo();
-            }
+        //gera uma opção aleatória
+        modelJogoPrincipal.gerarOpcaoAleatoria();
+        modelJogoPrincipal.jogador.setQntPulos(qntPulosAtual);//incrementa quantidade de pulos do jogador
+        System.out.println("quantidade de pulos: " + qntPulosAtual);
+        if (qntPulosAtual == 2) {
+            modelJogoPrincipal.desabilitarPulo();
+        }
 //        }
         //seta indicacaoPular como true
         modelJogoPrincipal.setIndicacaoPular(true);
@@ -157,7 +148,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                 //MUDAR A APARENCIA DO BOTAO EM CASO DE ACERTO
                 modelJogoPrincipal.incrementarPontuacao();//incrementa a pontuação do jogador
                 modelJogoPrincipal.incrementarAcerto();//incrementar o acerto
-                modelJogoPrincipal.mostrarAnimacaoAcerto();
+                modelJogoPrincipal.mostrarAnimacaoAcerto(event);
             } else {
                 //reduzir barra de vidas
                 modelJogoPrincipal.mostrarAnimacaoErro(event);
@@ -197,23 +188,23 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private void removerSombraBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
-        ((Button)event.getSource()).setEffect(sombras);
+        ((Button) event.getSource()).setEffect(sombras);
     }
 
     @FXML
     private void sombrearBotao(MouseEvent event) {
-        ((Button)event.getSource()).setEffect(null);
+        ((Button) event.getSource()).setEffect(null);
     }
-    
+
     public void definirImagemFundo() {
         modelJogoPrincipal.definirImagemFundo();
     }
-    
-    public void setFaseAtual(int faseAtual){
+
+    public void setFaseAtual(int faseAtual) {
         modelJogoPrincipal.setFaseAtual(faseAtual);
     }
-    
-    public int getFaseAtual(){
+
+    public int getFaseAtual() {
         return modelJogoPrincipal.getFaseAtual();
     }
 
@@ -232,5 +223,5 @@ public class Gui_JogoPrincipalController implements Initializable {
     private void reiniciarJogo(MouseEvent event) throws IOException {
         modelJogoPrincipal.reiniciarJogo(imgReiniciar);
     }
-    
+
 }

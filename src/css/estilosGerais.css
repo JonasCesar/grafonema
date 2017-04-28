@@ -18,7 +18,7 @@ and open the template in the editor.
 }
 
 #btn_1, #btn_2, #btn_3, #btn_4, #btn_5{
-    
+
     -fx-background-color: 
         linear-gradient(#ffd65b, #e68400),
         linear-gradient(#ffef84, #f2ba44),
@@ -31,6 +31,169 @@ and open the template in the editor.
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     //-fx-padding: 10 20 10 20;
-    
+
+}
+#btemp_fa1{
+    -fx-background-color: 
+        linear-gradient(#97ff5b, #54e600),
+        linear-gradient(#b1ff83, #83f143),
+        linear-gradient(#a0ff69, #6def22),
+        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-font-size: 35px;
+    -fx-pref-height: 88px;
+    -fx-pref-width: 96px;
 }
 
+#btemp_fa11{
+    -fx-background-color:
+        linear-gradient(#ffd65b, #e68400),
+        linear-gradient(#ffef84, #f2ba44),
+        linear-gradient(#ffea6a, #efaa22),
+        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20 10 20;
+    -fx-font-size: 35px;
+    -fx-pref-height: 80px;
+    -fx-pref-width: 88px;
+}
+
+#btemp_fa2{
+    -fx-background-color: 
+        linear-gradient(#97ff5b, #54e600),
+        linear-gradient(#b1ff83, #83f143),
+        linear-gradient(#a0ff69, #6def22),
+        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-font-size: 17px;
+    -fx-pref-height: 108px;
+    -fx-pref-width: 78px;
+}
+
+#btemp_fa21{
+    -fx-background-color:
+        linear-gradient(#ffd65b, #e68400),
+        linear-gradient(#ffef84, #f2ba44),
+        linear-gradient(#ffea6a, #efaa22),
+        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20 10 20;
+    -fx-font-size: 17px;
+    -fx-pref-height: 100px;
+    -fx-pref-width: 70px;
+}
+;;
+#btemp_fa4{
+    -fx-background-color: 
+        linear-gradient(#97ff5b, #54e600),
+        linear-gradient(#b1ff83, #83f143),
+        linear-gradient(#a0ff69, #6def22),
+        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-font-size: 17px;
+    -fx-pref-height: 158px;
+    -fx-pref-width: 78px;
+}
+
+#btemp_fa41{
+    -fx-background-color:
+        linear-gradient(#ffd65b, #e68400),
+        linear-gradient(#ffef84, #f2ba44),
+        linear-gradient(#ffea6a, #efaa22),
+        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20 10 20;
+    -fx-font-size: 17px;
+    -fx-pref-height: 150px;
+    -fx-pref-width: 70px;
+}
+
+
+#btemp_fe1{
+    -fx-background-color: 
+        linear-gradient(#ff0000, #ff0000),
+        linear-gradient(#ff0000, #7B68EE),
+        linear-gradient(#483D8B, #ff0000),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));
+    -fx-font-size: 35px;
+    -fx-pref-width: 88px;
+    -fx-pref-height: 80px;
+}
+
+#btemp_fe11{
+    -fx-background-color: 
+        linear-gradient(#ffd65b, #e68400),
+        linear-gradient(#ffef84, #f2ba44),
+        linear-gradient(#ffea6a, #efaa22),
+        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-size: 35px;
+    -fx-pref-width: 88px;
+    -fx-pref-height: 80px;
+}
+
+#btemp_fe2{
+    -fx-background-color: 
+        linear-gradient(#ff0000, #ff0000),
+        linear-gradient(#ff0000, #7B68EE),
+        linear-gradient(#483D8B, #ff0000),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));
+    -fx-font-size: 17px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 70px;
+}
+
+#btemp_fe21{
+    -fx-background-color: 
+        linear-gradient(#ffd65b, #e68400),
+        linear-gradient(#ffef84, #f2ba44),
+        linear-gradient(#ffea6a, #efaa22),
+        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-size: 17px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 70px;
+}
+#btemp_fe4{
+    -fx-background-color: 
+        linear-gradient(#ff0000, #ff0000),
+        linear-gradient(#ff0000, #7B68EE),
+        linear-gradient(#483D8B, #ff0000),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));
+    -fx-font-size: 17px;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 70px;
+}
+
+#btemp_fe41{
+    -fx-background-color: 
+        linear-gradient(#ffd65b, #e68400),
+        linear-gradient(#ffef84, #f2ba44),
+        linear-gradient(#ffea6a, #efaa22),
+        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-size: 17px;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 70p;
+}
