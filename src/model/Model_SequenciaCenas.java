@@ -42,10 +42,10 @@ public class Model_SequenciaCenas {
     private MediaView mediaView = new MediaView();
     private Stage janela;
     private int faseAtual;
-    String caminho1, caminho2, caminho3, caminho4, caminho5 , faseEfeito= "";
+    String caminho1, caminho2, caminho3, caminho4, caminho5, faseEfeito = "";
     private File arquivoImagemPB;
     int faseTempAtual = 0;
-    
+
     Gui_JogoPrincipalController jogoPrincipalController = null;
     private File soundFile;
     private Clip clip;
@@ -59,7 +59,7 @@ public class Model_SequenciaCenas {
     }
 
     public void iniciarCenas() {
-        caminho1 = caminho2 = caminho3 = caminho4 = caminho5 = faseEfeito= "";
+        caminho1 = caminho2 = caminho3 = caminho4 = caminho5 = faseEfeito = "";
         switch (getFaseAtual()) {
             case 1:
                 System.out.println("Unidade 1");
@@ -69,7 +69,7 @@ public class Model_SequenciaCenas {
                 caminho4 = "fase1/img4";
                 caminho5 = "fase1/img5";
                 faseEfeito = "fase1";
-                
+
                 break;
             case 2:
                 System.out.println("Unidade 2");
@@ -122,44 +122,44 @@ public class Model_SequenciaCenas {
 
         //evento que represanta a primeira cena do acerto
         c1 = (ActionEvent event) -> {
-            URL arquivoImg = getClass().getResource("Imagens/"+caminho1+".png");
+            URL arquivoImg = getClass().getResource("Imagens/" + caminho1 + ".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e1.wav";
+            caminhoAudio = "audiosEfeitosSonoros/" + faseEfeito + "/e1.wav";
             tocarAudio(caminhoAudio);
         };
 
         //evento que representa a ação a ser feita depois da 
         //animação de acerto
         c2 = (ActionEvent event) -> {
-            URL arquivoImg = getClass().getResource("Imagens/"+caminho2+".png");
+            URL arquivoImg = getClass().getResource("Imagens/" + caminho2 + ".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e2.wav";
-            tocarAudio(caminhoAudio);            
+            caminhoAudio = "audiosEfeitosSonoros/" + faseEfeito + "/e2.wav";
+            tocarAudio(caminhoAudio);
         };
 
         c3 = (ActionEvent event) -> {
             System.out.println("Terceiro");
-            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e3.wav";
+            caminhoAudio = "audiosEfeitosSonoros/" + faseEfeito + "/e3.wav";
             tocarAudio(caminhoAudio);
-            URL arquivoImg = getClass().getResource("Imagens/"+caminho3+".png");
+            URL arquivoImg = getClass().getResource("Imagens/" + caminho3 + ".png");
             imgView.setImage(new Image(arquivoImg.toString()));
         };
 
         c4 = (ActionEvent event) -> {
             System.out.println("quarto");
-            URL arquivoImg = getClass().getResource("Imagens/"+caminho4+".png");
+            URL arquivoImg = getClass().getResource("Imagens/" + caminho4 + ".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e4.wav";
+            caminhoAudio = "audiosEfeitosSonoros/" + faseEfeito + "/e4.wav";
             tocarAudio(caminhoAudio);
-            
+
         };
 
         c5 = (ActionEvent event) -> {
             System.out.println("Quinto");
-            URL arquivoImg = getClass().getResource("Imagens/"+caminho5+".png");
+            URL arquivoImg = getClass().getResource("Imagens/" + caminho5 + ".png");
             imgView.setImage(new Image(arquivoImg.toString()));
-            caminhoAudio = "audiosEfeitosSonoros/"+faseEfeito+"/e5.wav";
-            tocarAudio(caminhoAudio);            
+            caminhoAudio = "audiosEfeitosSonoros/" + faseEfeito + "/e5.wav";
+            tocarAudio(caminhoAudio);
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
@@ -170,8 +170,8 @@ public class Model_SequenciaCenas {
 
     }
 
-    public void executarCenaInicial() {
-        
+    public void executarCenaInicialFase() {
+
         caminho1 = caminho2 = caminho3 = "";
 
         switch (getFaseAtual()) {
@@ -217,7 +217,7 @@ public class Model_SequenciaCenas {
         }
 
         c1 = (ActionEvent event) -> {
-            URL arquivoImg = getClass().getResource(caminho1+".jpg");
+            URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
             imgView.setImage(new Image(arquivoImg.toString()));
             caminhoAudio = caminho3 + ".mp3";
             tocarAudio(caminhoAudio);
@@ -225,7 +225,7 @@ public class Model_SequenciaCenas {
         };
 
         c2 = (ActionEvent event) -> {
-            URL arquivoImgPB = getClass().getResource(caminho2+".jpg");
+            URL arquivoImgPB = getClass().getResource(caminho2 + ".jpg");
             imgView.setImage(new Image(arquivoImgPB.toString()));
 
         };
@@ -249,12 +249,12 @@ public class Model_SequenciaCenas {
             janela.show();
 
         };
-        
+
         c4 = (ActionEvent event) -> {
             System.out.println("O metodo vem aqui");
             jogoPrincipalController.iniciarJogo();
         };
-        
+
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
                 new KeyFrame(Duration.seconds(10), c2),
@@ -308,13 +308,13 @@ public class Model_SequenciaCenas {
                 break;
 
         }
-        URL arquivoImg = getClass().getResource(caminho1+".jpg");
+        URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
         imgView.setImage(new Image(arquivoImg.toString()));
         tocarAudio(caminho3);
 
     }
 
-    public void executarCenaMeioFase(){
+    public void executarCenaMeioFase() {
         caminho1 = caminho2 = caminho3 = "";
         System.out.println("Executando cena meio fase ");
 
@@ -338,7 +338,7 @@ public class Model_SequenciaCenas {
             case 4:
                 caminho1 = "Imagens/fase4/inicioFase04";
                 caminho2 = "Imagens/fase4/inicioFase04pb";
-                caminho3 = "audios_vogais/frase1";                
+                caminho3 = "audios_vogais/frase1";
                 break;
             case 5:
                 caminho1 = "Imagens/fase5/inicioFase05";
@@ -357,7 +357,7 @@ public class Model_SequenciaCenas {
         }
 
         c1 = (ActionEvent event) -> {
-            URL arquivoImg = getClass().getResource(caminho1+".jpg");
+            URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
             imgView.setImage(new Image(arquivoImg.toString()));
             caminhoAudio = caminho3 + ".mp3";
             tocarAudio(caminhoAudio);
@@ -365,18 +365,17 @@ public class Model_SequenciaCenas {
         };
 
         c2 = (ActionEvent event) -> {
-            URL arquivoImgPB = getClass().getResource(caminho2+".jpg");
+            URL arquivoImgPB = getClass().getResource(caminho2 + ".jpg");
             imgView.setImage(new Image(arquivoImgPB.toString()));
 
         };
 
-        
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
                 new KeyFrame(Duration.seconds(10), c2)).play();
     }
-    
-    public void tocarAudio(String caminhoAudio) {        
+
+    public void tocarAudio(String caminhoAudio) {
         URL file = getClass().getResource(caminhoAudio);
         media = new Media(file.toString());
         mediaPlayer = new MediaPlayer(media);
@@ -390,9 +389,9 @@ public class Model_SequenciaCenas {
     public int getFaseAtual() {
         return faseAtual;
     }
-    
+
     public void executarCenaIntermediaria() {
-        
+
         caminho1 = caminho2 = caminho3 = "";
 
         switch (getFaseAtual()) {
@@ -438,16 +437,15 @@ public class Model_SequenciaCenas {
         }
 
         c1 = (ActionEvent event) -> {
-            URL arquivoImg = getClass().getResource(caminho1+".jpg");
+            URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
             imgView.setImage(new Image(arquivoImg.toString()));
             caminhoAudio = caminho3 + ".mp3";
             tocarAudio(caminhoAudio);
-            
 
         };
 
         c2 = (ActionEvent event) -> {
-            URL arquivoImgPB = getClass().getResource(caminho2+".jpg");
+            URL arquivoImgPB = getClass().getResource(caminho2 + ".jpg");
             imgView.setImage(new Image(arquivoImgPB.toString()));
 
         };
@@ -465,7 +463,7 @@ public class Model_SequenciaCenas {
             jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
             jogoPrincipalController.setFaseAtual(getFaseAtual());
         };
-        
+
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
                 new KeyFrame(Duration.seconds(10), c2),
@@ -475,19 +473,19 @@ public class Model_SequenciaCenas {
 
     public void definirImagemFundo() {
         URL arqImg = null;
-        switch(getFaseAtual()){
+        switch (getFaseAtual()) {
             case 1:
                 System.out.println("Entrou aqui case 1");
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase1.jpg");                
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase1.jpg");
                 break;
             case 2:
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase2.jpg");                
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase2.jpg");
                 break;
             case 3:
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase3.jpg");                
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase3.jpg");
                 break;
             case 4:
-                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase4.png");                
+                arqImg = getClass().getResource("Imagens/Gerais/fundo_fase4.png");
                 break;
             case 5:
                 arqImg = getClass().getResource("Imagens/Gerais/fundo_fase5.jpg");
@@ -498,9 +496,30 @@ public class Model_SequenciaCenas {
             case 7:
                 arqImg = getClass().getResource("Imagens/Gerais/fundo_fase7.jpg");
                 break;
-            default:  
+            default:
                 break;
         }
         imagemFundo.setImage(new Image(arqImg.toString()));
     }
+
+    public void executarCenaInicial() {
+        caminho1 = caminho3 = "";
+        caminho1 = "Imagens/fase1/inicio";
+        caminho3 = "audios_vogais/frase1";
+        URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
+        imgView.setImage(new Image(arquivoImg.toString()));
+        caminhoAudio = caminho3 + ".mp3";
+        tocarAudio(caminhoAudio);
+    }
+
+    public void executarPrimeiraCena() {
+        
+        
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), c1),
+                new KeyFrame(Duration.seconds(10), c2),
+                new KeyFrame(Duration.seconds(15), c3)).play();
+
+    }
+
 }

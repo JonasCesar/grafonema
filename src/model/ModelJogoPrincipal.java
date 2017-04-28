@@ -346,6 +346,8 @@ public class ModelJogoPrincipal {
 
     private ImageView imagemFundo;
     
+    private Model_Inicial modelInicial;
+    
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo, Button ouvirAudio,
             ImageView imagemFundo, Label numFase) {
@@ -377,6 +379,7 @@ public class ModelJogoPrincipal {
         url = null;
         this.imagemFundo = imagemFundo;
         this.numFase = numFase;
+        modelInicial = new Model_Inicial();
 
     }
 
@@ -2826,5 +2829,9 @@ public class ModelJogoPrincipal {
 
     public int getFaseAtual() {
         return jogador.getFaseAtual();
+    }
+
+    public void reiniciarJogo(ImageView imgReiniciar) throws IOException {
+        modelInicial.iniciar(imgReiniciar);
     }
 }
