@@ -58,9 +58,14 @@
             <Image url="@../model/Imagens/Icones/potuacao3.png" />
          </image>
       </ImageView>
-      <Label fx:id="numFase" layoutX="876.0" layoutY="42.0" prefHeight="45.0" prefWidth="230.0" text="Label">
+      <ImageView fitHeight="80.0" fitWidth="220.0" layoutX="957.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/Imagens/Icones/arrow.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="numFase" layoutX="988.0" layoutY="51.0" prefHeight="20.0" prefWidth="189.0" text="Label">
          <font>
-            <Font size="38.0" />
+            <Font size="25.0" />
          </font>
       </Label>
       <ImageView fx:id="imgReiniciar" fitHeight="76.0" fitWidth="97.0" layoutX="910.0" layoutY="171.0" onMouseClicked="#reiniciarJogo" onMouseEntered="#sombrearImagem" onMouseExited="#removerSombraImagem" pickOnBounds="true" preserveRatio="true">
