@@ -458,31 +458,43 @@ public class ModelJogoPrincipal {
                 //tocarAudio.teste();
                 break;
             case 2:
+                
+                iniciarMatrizAudioSilabas();
                 i = indiceAudio.nextInt(29);
                 tocarAudio(audioSilabasSimples[i]);
                 y = i;
                 break;
             case 3:
+                matrizSilabasSimples.clear();
+                iniciarMatrizSilabasSimplesB();
                 i = indiceAudio.nextInt(80);
                 tocarAudio(audioSilabasSimplesB[i]);
                 y = i;
                 break;
             case 4:
+                matrizSilabasSimplesB.clear();
+                iniciarMatrizPalavrasSimples();
                 i = indiceAudio.nextInt(93);
                 tocarAudio(audiosPalavrasSimples[i]);
                 y = i;
                 break;
             case 5:
+                matrizPalavrasSimples.clear();
+                iniciarMatrizSilabasComplexas();
                 i = indiceAudio.nextInt(111);
                 tocarAudio(audiosSilabasComplexas[i]);
                 y = i;
                 break;
             case 6:
+                matrizSilabasComplexas.clear();
+                iniciarMatrizSilabasComplexas2();
                 i = indiceAudio.nextInt(80);
                 tocarAudio(audiosSilabasComplexas2[i]);
                 y = i;
                 break;
             case 7:
+                matrizSilabasComplexas2.clear();
+                iniciarMatrizSilabasComplexas3();                
                 i = indiceAudio.nextInt(266);
                 tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
@@ -490,7 +502,6 @@ public class ModelJogoPrincipal {
             default:
                 break;
         }
-
         return y;
 
     }
@@ -1854,7 +1865,7 @@ public class ModelJogoPrincipal {
      * Inicia o timer
      */
     public void iniciarTimer() {
-        Timer timer = new Timer();
+        timer = new Timer();
         //criação da tarefa que vai executar durante 1 segundo
         timer.scheduleAtFixedRate(new TimerTask() {
 
@@ -2778,6 +2789,7 @@ public class ModelJogoPrincipal {
      * @throws IOException
      */
     public void reiniciarJogo(ImageView imgReiniciar) throws IOException {
+        timer.cancel();
         modelInicial.iniciar(imgReiniciar);
     }
 }
