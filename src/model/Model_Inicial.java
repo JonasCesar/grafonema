@@ -25,7 +25,7 @@ public class Model_Inicial {
     }
 
     /**
-     * Exibe a tela dos avatares
+     * Inicia o jogo
      *
      * @param event o usuário clica no botão iniciar
      * @throws IOException
@@ -47,6 +47,11 @@ public class Model_Inicial {
 
     }
 
+    /**
+     * Método utilizado para iniciar o jogo na interface de Game Over
+     * @param imgView imageView de onde o o clic veio
+     * @throws IOException 
+     */
     public void iniciar(ImageView imgView) throws IOException {
         janela = (Stage) ((ImageView) imgView).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
@@ -60,7 +65,10 @@ public class Model_Inicial {
         //sequenciaCenas.executarCenaInicioJogo();
         sequenciaCenas.executarCenaInicialFase();
     }
-
+    /**
+     * Fecha o jogo
+     * @param imgSair 
+     */
     public void sairDoJogo(ImageView imgSair) {
         System.out.println("Entrou sair do jogo");
         janela = (Stage) ((ImageView) imgSair).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava

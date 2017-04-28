@@ -2,12 +2,11 @@ package model;
 
 import java.io.IOException;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
  *
- * @author valdir
+ * @author Iran Ribeiro
  */
 public class Model_gameOver {
 
@@ -19,19 +18,17 @@ public class Model_gameOver {
     }
 
     /**
-     * Reinicia o jogo
-     *
-     * @param event disparado quando o botão de "Reiniciar" é pressionado
-     * @throws IOException
+     * Reinicia o jogo 
+     * @param imgReiniciar disparado quando a imagem é clicada
+     * @throws IOException 
      */
-    public void reiniciarJogo(MouseEvent event) throws IOException {
-        //modelInicial.iniciar(event); //inicia o jogo novamente
-    }
-
     public void reiniciarJogo(ImageView imgReiniciar) throws IOException {
         modelInicial.iniciar(imgReiniciar); //inicia o jogo novamente
     }
-
+    /**
+     *  Sai do jogo
+     * @param imgSair 
+     */
     public void sairJogo(ImageView imgSair) {
         modelInicial.sairDoJogo(imgSair);        
     }
