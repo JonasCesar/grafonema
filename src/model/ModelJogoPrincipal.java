@@ -1927,9 +1927,9 @@ public class ModelJogoPrincipal {
                         }, 0, 50);
 
                         if (i >= 10) {
-                            tempo.setText("" + i);
+                            tempo.setText(i + "s");
                         } else {
-                            tempo.setText(" " + i);
+                            tempo.setText(" " + i + "s");
                         }
 
                         i--;

@@ -34,7 +34,7 @@
             <Image url="@../model/Imagens/Icones/redondo3.png" />
          </image>
       </ImageView>
-      <Label fx:id="tempo" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="29.0" text="30s" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+      <Label fx:id="tempo" alignment="CENTER" contentDisplay="CENTER" layoutX="602.0" layoutY="29.0" text="30s" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font size="60.0" />
          </font></Label>
