@@ -16,9 +16,8 @@ public class Gui_SequenciaCenasController implements Initializable {
 
     @FXML
     private ImageView imgView;
-    private Model_SequenciaCenas modelSeqCenas;
+    private Model_SequenciaCenas modelSequenciaCenas;
     private int unidadeAtual;
-    @FXML
     private ImageView imagemFundo;
 
     public Gui_SequenciaCenasController() {
@@ -33,8 +32,7 @@ public class Gui_SequenciaCenasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelSeqCenas = new Model_SequenciaCenas(imgView,imagemFundo);
-        //imagemFundo.();
+        modelSequenciaCenas = new Model_SequenciaCenas(imgView,imagemFundo);        
         imgView.toFront();
 
     }
@@ -43,11 +41,11 @@ public class Gui_SequenciaCenasController implements Initializable {
      * Inicia as cenas
      */
     public void iniciarCena() {
-        modelSeqCenas.iniciarCenas();
+        modelSequenciaCenas.iniciarCenas();
     }
 
     public void executarCenaInicialFase() {
-        modelSeqCenas.executarCenaInicialFase();
+        modelSequenciaCenas.executarCenaInicialFase();
     }
 
     /**
@@ -56,22 +54,22 @@ public class Gui_SequenciaCenasController implements Initializable {
      * @param faseAtual fase atualizada
      */
     public void setFaseAtual(int faseAtual) {
-        modelSeqCenas.setFaseAtual(faseAtual);
+        modelSequenciaCenas.setFaseAtual(faseAtual);
     }
 
     /**
      * Esse método apenas chama uma imagem
      */
     public void executarCenaFimFase() {
-        modelSeqCenas.executarCenaFimDaFase();
+        modelSequenciaCenas.executarCenaFimDaFase();
     }
 
     public void executarCenaMeioFase() {
-        modelSeqCenas.executarCenaMeioFase();
+        modelSequenciaCenas.executarCenaMeioFase();
     }
 
     public void executarCenaIntermediariaFase() {
-        modelSeqCenas.executarCenaIntermediaria();
+        modelSequenciaCenas.executarCenaIntermediaria();
 
     }
 
@@ -80,19 +78,19 @@ public class Gui_SequenciaCenasController implements Initializable {
     }
 
     public int getFaseAtual() {
-        return modelSeqCenas.getFaseAtual();
+        return modelSequenciaCenas.getFaseAtual();
     }
 
     public void definirImagemFundo() {
-        modelSeqCenas.definirImagemFundo();
+        modelSequenciaCenas.definirImagemFundo();
     }
     
     public void executarCenaInicial(){
-        modelSeqCenas.executarCenaInicial();
+        modelSequenciaCenas.executarCenaInicial();
     }
-    
-    public void executarPrimeiraCena(){
-        modelSeqCenas.executarPrimeiraCena();
+
+    public Double getTempoFase(int fase) {
+        return modelSequenciaCenas.getTempoFase(fase);
     }
 
 }

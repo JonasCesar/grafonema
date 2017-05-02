@@ -7,8 +7,12 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_InicialController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_InicialController">
+   <stylesheets>
+        <URL value="@/css/estilosGerais.css" />
+    </stylesheets>
    <children>
       <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1262.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
