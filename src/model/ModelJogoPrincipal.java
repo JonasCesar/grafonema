@@ -68,7 +68,7 @@ public class ModelJogoPrincipal {
 
     @FXML
     private Label numFase;
-    
+
     private URL url;
     @FXML
     private ProgressBar lifeBar;
@@ -160,34 +160,6 @@ public class ModelJogoPrincipal {
         "VLES", "VLIM", "VLIS", "VLOM", "VLON", "VLOS", "VLUM", "VLUN", "VLUS", "VRAM",
         "VRAN", "VRAS", "VREM", "VREN", "VRES", "VRIM", "VRIN", "VRIS", "VROM", "VRON",
         "VROS", "VRUM", "VRUN", "VRUS"
-    };
-
-    private String frasesSimples[] = {
-        "A BONECA É BONITA", "A BRUXA É FEIA", "A CASA É AZUL", "ALINE GOSTA DE MAÇÃ",
-        "A MELANCIA É GOSTOSA", "A NEVE É BRANCA", "A PORTA ESTÁ ABERTA", "A TV ESTÁ LIGADA",
-        "BETO GOSTA DE CORRER", "BIA ESTÁ ESTUDANDO", "BIBI COMPROU UMA BOLSA", "EU ADORO LER",
-        "EU AMO VOCÊ", "HOJE VAI CHOVER", "HUGO JOGA FUTEBOL", "JOANA CAIU DA CAMA", "JOÃO USA BONÉ",
-        "JOSÉ É QUERIDO", "MAGALI ADORA COMER", "MALU ADORA NOVELAS", "MAMÃE FEZ UM BOLO",
-        "MARIA ESTÁ NA ESCOLA", "MÁRIO USA GRAVATA", "MEU CABELO É PRETO", "MEU VESTIDO É ROSA",
-        "MINHA MÃE É LINDA", "O BEBÊ ESTÁ CHORANDO", "O CARRO É VERMELHO", "O CAVALO É MARRON",
-        "O DIA ESTÁ NUBLADO", "O ELEFANTE É GRANDE", "O GATO PULOU DA ÁRVORE", "O LIVRO É PEQUENO",
-        "O MACACO É SAPECA", "O PATO ESTÁ ANDANDO", "O PINTINHO CISCA NO CHÃO", "O RATO É DENTUÇO",
-        "O REI É BONDOSO", "O SAPATO É AMARELO", "O SAPO ESTÁ NO LAGO", "O TELEFONE ESTÁ TOCANDO",
-        "O URSO É PELUDO", "PAPAI CHEGOU EM CASA"};
-
-    private String audiosFrasesSimples[] = {
-        "a_boneca_eh_bonita", "a_bruxa_eh_feia", "a_casa_eh_azul",
-        "aline_gosta_de_maca", "a_melancia_eh_gostosa", "a_neve_eh_branca",
-        "a_porta_esta_aberta", "a_tv_esta_ligada", "beto_gosta_de_correr",
-        "bia_esta_estudando", "bibi_comprou_uma_bolsa", "eu_adoro_ler",
-        "eu_amo_vc", "hoje_vai_chover", "hugo_joga_futebol", "joana_caiu_da_cama",
-        "joao_usa_bone", "josé_eh_querido", "magali_adora_comer", "malu_adora_novelas",
-        "mamae_fez_um_bolo", "maria_está_na_escola", "mario_usa_gravata", "meu_cabelo_eh_preto",
-        "meu_vestido_eh_rosa", "minha_mae_eh_linda", "o_bebe_esta_chorando", "o_carro_eh_vermelho",
-        "o_cavalo_eh_marrom", "o_dia_esta_nublado", "o_elefante_eh_grande", "o_gato_pulou_da_arvore",
-        "o_livro_eh_pequeno", "o_macaco_eh_sapeca", "o_pato_esta_andando", "o_pintinho_cisca_no_chao",
-        "o_rato_eh_dentuco", "o_rei_eh_bondoso", "o_sapato_eh_amarelo", "o_sapo_esta_no_lago",
-        "o_telefone_esta_tocando", "o_urso_eh_peludo", "papai_chegou_em_casa"
     };
 
     private String palavrasSimples[] = {
@@ -317,7 +289,7 @@ public class ModelJogoPrincipal {
 
     private final Map<String, String> matrizVogais, matrizSilabasSimples,
             matrizSilabasSimplesB, matrizSilabasComplexas2, matrizPalavrasSimples,
-            matrizSilabasComplexas, matrizSilabasComplexas3, matrizFrasesSimples;
+            matrizSilabasComplexas, matrizSilabasComplexas3;
 
     private Random indiceAudio;
 
@@ -345,9 +317,9 @@ public class ModelJogoPrincipal {
     FuncaoBotao funcao = new FuncaoBotao();
 
     private ImageView imagemFundo;
-    
+
     private Model_Inicial modelInicial;
-    
+
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo, Button ouvirAudio,
             ImageView imagemFundo, Label numFase) {
@@ -361,14 +333,13 @@ public class ModelJogoPrincipal {
         this.lifeBar = lifeBar;
         this.pontuacao = pontuacao;
         this.indiceAudio = new Random();
-        this.matrizVogais = new HashMap<String, String>();
-        this.matrizSilabasSimples = new HashMap<String, String>();
-        this.matrizSilabasSimplesB = new HashMap<String, String>();
-        this.matrizSilabasComplexas2 = new HashMap<String, String>();
-        this.matrizSilabasComplexas3 = new HashMap<String, String>();
-        this.matrizSilabasComplexas = new HashMap<String, String>();
-        this.matrizPalavrasSimples = new HashMap<String, String>();
-        this.matrizFrasesSimples = new HashMap<String, String>();
+        this.matrizVogais = new HashMap<>();
+        this.matrizSilabasSimples = new HashMap<>();
+        this.matrizSilabasSimplesB = new HashMap<>();
+        this.matrizSilabasComplexas2 = new HashMap<>();
+        this.matrizSilabasComplexas3 = new HashMap<>();
+        this.matrizSilabasComplexas = new HashMap<>();
+        this.matrizPalavrasSimples = new HashMap<>();
         this.mostrandoCena = false;
         this.indicacaoPular = false;
         this.pularErro = false;
@@ -394,13 +365,16 @@ public class ModelJogoPrincipal {
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
         System.out.println("Nova opção aleatória");
-        System.out.println("qnt erros  "+jogador.getQntErros());
+        System.out.println("qnt erros  " + jogador.getQntErros());
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
         }
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
+            if(pular.isDisable()){
+                pular.setDisable(false);
+            }
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
@@ -420,7 +394,6 @@ public class ModelJogoPrincipal {
 
     /*função para preencher as opções na tela inserindo 
      em um local aleatório a opção correspondente ao áudio
-     (USADA A PARTIR DA FASE DAS SÍLABAS)
      */
     public void preencherOpcoes(String categoria[], int s, ArrayList no) {
 
@@ -488,31 +461,43 @@ public class ModelJogoPrincipal {
                 //tocarAudio.teste();
                 break;
             case 2:
+                
+                iniciarMatrizAudioSilabas();
                 i = indiceAudio.nextInt(29);
                 tocarAudio(audioSilabasSimples[i]);
                 y = i;
                 break;
             case 3:
+                matrizSilabasSimples.clear();
+                iniciarMatrizSilabasSimplesB();
                 i = indiceAudio.nextInt(80);
                 tocarAudio(audioSilabasSimplesB[i]);
                 y = i;
                 break;
             case 4:
+                matrizSilabasSimplesB.clear();
+                iniciarMatrizPalavrasSimples();
                 i = indiceAudio.nextInt(93);
                 tocarAudio(audiosPalavrasSimples[i]);
                 y = i;
                 break;
             case 5:
+                matrizPalavrasSimples.clear();
+                iniciarMatrizSilabasComplexas();
                 i = indiceAudio.nextInt(111);
                 tocarAudio(audiosSilabasComplexas[i]);
                 y = i;
                 break;
             case 6:
+                matrizSilabasComplexas.clear();
+                iniciarMatrizSilabasComplexas2();
                 i = indiceAudio.nextInt(80);
                 tocarAudio(audiosSilabasComplexas2[i]);
                 y = i;
                 break;
             case 7:
+                matrizSilabasComplexas2.clear();
+                iniciarMatrizSilabasComplexas3();                
                 i = indiceAudio.nextInt(266);
                 tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
@@ -520,7 +505,6 @@ public class ModelJogoPrincipal {
             default:
                 break;
         }
-
         return y;
 
     }
@@ -557,26 +541,11 @@ public class ModelJogoPrincipal {
             case 7:
                 resultado = ((getKeyByValue(matrizSilabasComplexas3, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
-            case 9:
-                resultado = ((getKeyByValue(matrizFrasesSimples, opcaoEscolhida)).equals(getAudioAtual()));
-                break;
             default:
                 break;
         }
 
         return resultado;
-    }
-
-    public void atualizarRelogioJogo() {
-
-    }
-
-    public void selecionarProxRodada(int fase) {
-
-    }
-
-    public void refazerFase() {
-
     }
 
     /**
@@ -592,11 +561,10 @@ public class ModelJogoPrincipal {
     }
 
     /**
-     *
+     * Desabilita a função pular
      */
     public void desabilitarPulo() {
         pular.setDisable(true);
-        System.out.println("ficou inativo o pular");
     }
 
     /**
@@ -648,7 +616,9 @@ public class ModelJogoPrincipal {
         matrizSilabasSimples.put("us", "US");
 
     }
-
+    /**
+     * Inicia a matriz de silabas simples b
+     */
     public void iniciarMatrizSilabasSimplesB() {
         matrizSilabasSimplesB.put("ba", "BA");
         matrizSilabasSimplesB.put("be", "BE");
@@ -731,7 +701,9 @@ public class ModelJogoPrincipal {
         matrizSilabasSimplesB.put("zo", "ZO");
         matrizSilabasSimplesB.put("zu", "ZU");
     }
-
+    /**
+     * Inicia a matriz de silibas complexas 2
+     */
     public void iniciarMatrizSilabasComplexas2() {
         matrizSilabasComplexas2.put("bla", "BLA");
         matrizSilabasComplexas2.put("ble", "BLE");
@@ -815,7 +787,9 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("vro", "VRO");
         matrizSilabasComplexas2.put("vru", "VRU");
     }
-
+    /**
+     * inicia a matriz de Palavras Simples
+     */
     public void iniciarMatrizPalavrasSimples() {
         matrizPalavrasSimples.put("amarelo", "AMARELO");
         matrizPalavrasSimples.put("amo", "AMO");
@@ -915,7 +889,7 @@ public class ModelJogoPrincipal {
     }
 
     /**
-     *
+     * Inicia a matriz de silabas complexas
      */
     public void iniciarMatrizSilabasComplexas() {
         matrizSilabasComplexas.put("bal", "BAL");
@@ -1258,7 +1232,9 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("raz", "RAZ");
         matrizSilabasComplexas.put("rel", "REL");
     }
-
+    /**
+     * Inicia a matriz  de silabas complexas 3
+     */
     public void iniciarMatrizSilabasComplexas3() {
         matrizSilabasComplexas3.put("blam", "BLAM");
         matrizSilabasComplexas3.put("blan", "BLAN");
@@ -1837,8 +1813,8 @@ public class ModelJogoPrincipal {
             setMostrandoCena(true);
             //eventoAcerto.handle(null);
             janela.setResizable(false);
-            
-            numFase.setText("Fase: " + jogador.getFaseAtual()+"/7");
+
+            numFase.setText("Fase: " + jogador.getFaseAtual() + "/7");
 
         };
         eventoFimAcerto = (ActionEvent event) -> {
@@ -1892,7 +1868,7 @@ public class ModelJogoPrincipal {
      * Inicia o timer
      */
     public void iniciarTimer() {
-        Timer timer = new Timer();
+        timer = new Timer();
         //criação da tarefa que vai executar durante 1 segundo
         timer.scheduleAtFixedRate(new TimerTask() {
 
@@ -1973,7 +1949,7 @@ public class ModelJogoPrincipal {
     /**
      * Mostra a animação de acerto
      */
-    public void mostrarAnimacaoAcerto() {
+    public void mostrarAnimacaoAcerto(ActionEvent ev) {
         //evento que represanta a ação do acerto
         //MUDA A COR DO BOTÃO
 
@@ -1993,7 +1969,6 @@ public class ModelJogoPrincipal {
                             + "    -fx-pref-width: 96px;\n");
 
                 };
-
                 eventoCorOriginal = (ActionEvent event) -> {
                     Button btemp = opcaoCorreta(event);
                     //(btemp).setText("X");
@@ -2015,7 +1990,6 @@ public class ModelJogoPrincipal {
                     //ao terminar a animação desbloquear os botões
                     funcao.setClique1();
                 };
-
                 break;
 
             case 2:
@@ -2096,7 +2070,6 @@ public class ModelJogoPrincipal {
                 break;
 
             case 4:
-
                 eventoAcerto = (ActionEvent event) -> {
                     Button btemp = opcaoCorreta(event);
                     //(btemp).setText("X");
@@ -2133,9 +2106,7 @@ public class ModelJogoPrincipal {
                     funcao.setClique1();
                 };
                 break;
-
             case 5:
-
                 eventoAcerto = (ActionEvent event) -> {
                     Button btemp = opcaoCorreta(event);
                     //(btemp).setText("X");
@@ -2175,7 +2146,6 @@ public class ModelJogoPrincipal {
                 break;
 
         }
-
         //evento que representa a ação a ser feita depois da 
         //animação de acerto
         eventoFimAcerto = (ActionEvent event) -> {
@@ -2186,10 +2156,7 @@ public class ModelJogoPrincipal {
             } catch (InterruptedException | IOException ex) {
                 Logger.getLogger(Gui_JogoPrincipalController.class
                         .getName()).log(Level.SEVERE, null, ex);
-            }
-            // = true;
-
-            //indicacaoPular = true;
+            }           
         };
 
         new Timeline(
@@ -2198,49 +2165,22 @@ public class ModelJogoPrincipal {
                 new KeyFrame(Duration.millis(1300), eventoFimAcerto)).play();
 
     }
-
-    //ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    /**
+     * Exibe a animação que deve acontecer quando o jogador errar
+     * @param ev 
+     */
     public void mostrarAnimacaoErro(ActionEvent ev) {
-        //evento que represanta a ação do acerto
-
         switch (jogador.getFaseAtual()) {
-
             case 1:
-
                 eventoErro = (ActionEvent event) -> {
                     //MUDA A COR DO BOTÃO
-                    Button btemp = (Button) ev.getSource();
-                    //System.out.println("OLHA AÍ EU EXIBINDO O ERRO OOHHH");
-                    //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ff0000, #ff0000),\n"
-                            + "    linear-gradient(#ff0000, #7B68EE),\n"
-                            + "    linear-gradient(#483D8B, #ff0000),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));"
-                            + "    -fx-font-size: 35px;\n"
-                            + "    -fx-pref-width: 88px;\n"
-                            + "    -fx-pref-height: 80px;\n");
+                    Button btemp = (Button) ev.getSource();                   
+                    btemp.setId("btemp_fe1");   
                 };
 
                 eventoCorOriginal = (ActionEvent event) -> {
                     Button btemp = (Button) ev.getSource();
-                    //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ffd65b, #e68400),\n"
-                            + "    linear-gradient(#ffef84, #f2ba44),\n"
-                            + "    linear-gradient(#ffea6a, #efaa22),\n"
-                            + "    linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
-                            + "    -fx-background-radius: 30;\n"
-                            + "    -fx-background-insets: 0,1,2,3,0;\n"
-                            + "    -fx-text-fill: #654b00;\n"
-                            + "    -fx-font-size: 35px;\n"
-                            + "    -fx-pref-width: 88px;\n"
-                            + "    -fx-pref-height: 80px;\n"
-                    //                    //+ "    -fx-font-weight: bold;\n"
-                    //                    + "    -fx-padding: 10 20 10 20;"
-                    );
-                    //ao terminar a animação desbloquear os botões
+                    btemp.setId("btemp_fe11");
                     funcao.setClique1();
                 };
 
@@ -2250,35 +2190,12 @@ public class ModelJogoPrincipal {
                 eventoErro = (ActionEvent event) -> {
                     //MUDA A COR DO BOTÃO
                     Button btemp = (Button) ev.getSource();
-                    //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ff0000, #ff0000),\n"
-                            + "    linear-gradient(#ff0000, #7B68EE),\n"
-                            + "    linear-gradient(#483D8B, #ff0000),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));"
-                            + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 100px;\n"
-                            + "    -fx-pref-height: 70px;\n");
+                    btemp.setId("btemp_fe2");                    
                 };
 
                 eventoCorOriginal = (ActionEvent event) -> {
                     Button btemp = (Button) ev.getSource();
-                    //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ffd65b, #e68400),\n"
-                            + "    linear-gradient(#ffef84, #f2ba44),\n"
-                            + "    linear-gradient(#ffea6a, #efaa22),\n"
-                            + "    linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
-                            + "    -fx-background-radius: 30;\n"
-                            + "    -fx-background-insets: 0,1,2,3,0;\n"
-                            + "    -fx-text-fill: #654b00;\n"
-                            + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 100px;\n"
-                            + "    -fx-pref-height: 70px;\n"
-                    //                    //+ "    -fx-font-weight: bold;\n"
-                    //                    + "    -fx-padding: 10 20 10 20;"
-                    );
+                    btemp.setId("btemp_fe21");                    
                     //ao terminar a animação desbloquear os botões
                     funcao.setClique1();
                 };
@@ -2291,114 +2208,69 @@ public class ModelJogoPrincipal {
                     //MUDA A COR DO BOTÃO
                     Button btemp = (Button) ev.getSource();
                     //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ff0000, #ff0000),\n"
-                            + "    linear-gradient(#ff0000, #7B68EE),\n"
-                            + "    linear-gradient(#483D8B, #ff0000),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));"
-                            + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 100px;\n"
-                            + "    -fx-pref-height: 70px;\n");
+                    btemp.setId("btemp_fe2");                    
                 };
 
                 eventoCorOriginal = (ActionEvent event) -> {
                     Button btemp = (Button) ev.getSource();
                     //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ffd65b, #e68400),\n"
-                            + "    linear-gradient(#ffef84, #f2ba44),\n"
-                            + "    linear-gradient(#ffea6a, #efaa22),\n"
-                            + "    linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
-                            + "    -fx-background-radius: 30;\n"
-                            + "    -fx-background-insets: 0,1,2,3,0;\n"
-                            + "    -fx-text-fill: #654b00;\n"
-                            + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 100px;\n"
-                            + "    -fx-pref-height: 70px;\n"
-                    //                    //+ "    -fx-font-weight: bold;\n"
-                    //                    + "    -fx-padding: 10 20 10 20;"
-                    );
+                    btemp.setId("btemp_fe21");                    
                     //ao terminar a animação desbloquear os botões
                     funcao.setClique1();
                 };
-
                 break;
 
             case 4:
-
                 eventoErro = (ActionEvent event) -> {
                     //MUDA A COR DO BOTÃO
                     Button btemp = (Button) ev.getSource();
-                    //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ff0000, #ff0000),\n"
-                            + "    linear-gradient(#ff0000, #7B68EE),\n"
-                            + "    linear-gradient(#483D8B, #ff0000),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));"
-                            + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 150px;\n"
-                            + "    -fx-pref-height: 70px;\n");
+                    btemp.setId("btemp_fe4");                   
                 };
-
                 eventoCorOriginal = (ActionEvent event) -> {
                     Button btemp = (Button) ev.getSource();
-                    //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ffd65b, #e68400),\n"
-                            + "    linear-gradient(#ffef84, #f2ba44),\n"
-                            + "    linear-gradient(#ffea6a, #efaa22),\n"
-                            + "    linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
-                            + "    -fx-background-radius: 30;\n"
-                            + "    -fx-background-insets: 0,1,2,3,0;\n"
-                            + "    -fx-text-fill: #654b00;\n"
-                            + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 150px;\n"
-                            + "    -fx-pref-height: 70px;\n"
-                    //                    //+ "    -fx-font-weight: bold;\n"
-                    //                    + "    -fx-padding: 10 20 10 20;"
-                    );
+                    btemp.setId("btemp_fe41");
                     //ao terminar a animação desbloquear os botões
                     funcao.setClique1();
                 };
-
                 break;
 
             case 5:
-
                 eventoErro = (ActionEvent event) -> {
                     //MUDA A COR DO BOTÃO
                     Button btemp = (Button) ev.getSource();
-                    //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ff0000, #ff0000),\n"
-                            + "    linear-gradient(#ff0000, #7B68EE),\n"
-                            + "    linear-gradient(#483D8B, #ff0000),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(230,230,230,0.9), rgba(255,255,255,0));"
-                            + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 100px;\n"
-                            + "    -fx-pref-height: 70px;\n");
+                    btemp.setId("btemp_fe2");                    
                 };
 
                 eventoCorOriginal = (ActionEvent event) -> {
                     Button btemp = (Button) ev.getSource();
-                    //(btemp).setText("X");
-                    btemp.setStyle("-fx-background-color: \n"
-                            + "    linear-gradient(#ffd65b, #e68400),\n"
-                            + "    linear-gradient(#ffef84, #f2ba44),\n"
-                            + "    linear-gradient(#ffea6a, #efaa22),\n"
-                            + "    linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
-                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
-                            + "    -fx-background-radius: 30;\n"
-                            + "    -fx-background-insets: 0,1,2,3,0;\n"
-                            + "    -fx-text-fill: #654b00;\n"
-                            + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 100px;\n"
-                            + "    -fx-pref-height: 70px;\n"
-                    //                    //+ "    -fx-font-weight: bold;\n"
-                    //                    + "    -fx-padding: 10 20 10 20;"
-                    );
+                    btemp.setId("btemp_fe21");                    
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
+                };
+                break;
+            case 6:
+                eventoErro = (ActionEvent event) -> {
+                    //MUDA A COR DO BOTÃO
+                    Button btemp = (Button) ev.getSource();
+                    btemp.setId("btemp_fe2");                    
+                };
+
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = (Button) ev.getSource();
+                    btemp.setId("btemp_fe21");                    
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
+                };
+                break;
+            case 7:
+                eventoErro = (ActionEvent event) -> {
+                    //MUDA A COR DO BOTÃO
+                    Button btemp = (Button) ev.getSource();
+                    btemp.setId("btemp_fe2");                    
+                };
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = (Button) ev.getSource();
+                    btemp.setId("btemp_fe21");                    
                     //ao terminar a animação desbloquear os botões
                     funcao.setClique1();
                 };
@@ -2482,7 +2354,6 @@ public class ModelJogoPrincipal {
      * Mostra a cena inicial antes de cada fase
      */
     public void mostrarCenaInicialFase(Stage jan) {
-        System.out.println("Entrou mostrarCenaInicialFase ");
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = (ActionEvent event) -> {
             //armazena a cena em que o botão 'btn_1' se encontra atualmente
@@ -2524,16 +2395,10 @@ public class ModelJogoPrincipal {
             }
             jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
             jogoPrincipal.setFaseAtual(getFaseAtual());
-            System.out.println("Chamando doutor Has Chucrute");
             jogoPrincipal.definirImagemFundo();
-
-            System.out.println("VOLTOU!!!!");
             janela.setTitle("Grafonema");
             janela.setScene(cenaTemporaria);
-            //mostrandoCena = false;
             setMostrandoCena(false);
-            //eventoAcerto.handle(null);
-            //Button btemp = op caoCorreta(null);             
             janela.setResizable(false);
             definirImagemFundo();
             janela.show();
@@ -2548,20 +2413,16 @@ public class ModelJogoPrincipal {
                         .getName()).log(Level.SEVERE, null, ex);
             }
         };
-        /**
-         * OBSERVAÇÃO:
-         *
-         *
-         * OS TEMPOS ENTRE O PRIMEIRO KEYFRAME E O SEGUNDO DEVE SER COMPATÍVEL
-         * COM O TEMPO DENTRO DO EVENTO "eventoCenas"
-         */
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
                 new KeyFrame(Duration.seconds(16), eventoVoltar),
                 new KeyFrame(Duration.seconds(17), eventoFimAcerto)).play();
 
     }
-
+    /**
+     * Gera um novo áudio
+     * @throws IOException 
+     */
     private void gerarOpcaoAudio() throws IOException {
         int i = 0;
         int proxValor = 0;
@@ -2743,25 +2604,6 @@ public class ModelJogoPrincipal {
                 }
                 preencherOpcoes(silabasComplexas3, som, novasOpcoes);
                 break;
-            case 9:
-                i = 0;
-                som = 0;
-                if (!isGameOver()) {
-                    som = gerarSomAleatorio();
-                }
-                indiceUtilizados.add(som);
-                while (indiceUtilizados.size() <= 5) {
-
-                    proxValor = indice.nextInt(50);
-                    if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
-                        novasOpcoes.add(proxValor);//adiciona o indice no array
-                        indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
-                        i++;
-                    }
-                }
-                preencherOpcoes(frasesSimples, som, novasOpcoes);
-                break;
-
         }
     }
 
@@ -2769,8 +2611,8 @@ public class ModelJogoPrincipal {
      * Verifica se o próximo valor das novas opções possui algum fonema
      * semelhante
      *
-     * @param indicesUtilizados
-     * @param novaOpcao
+     * @param indicesUtilizados lista com os valores utilizados
+     * @param novaOpcao opção candidata a ser inserida na lista
      * @return
      */
     public boolean possuiSemelhante(ArrayList indicesUtilizados, int novaOpcao) {
@@ -2787,6 +2629,9 @@ public class ModelJogoPrincipal {
         return retorno;
     }
 
+    /**
+     * Define a imagem de fundo de cada fase
+     */
     public void definirImagemFundo() {
         URL arqImg = null;
         System.out.println(jogador.getFaseAtual());
@@ -2823,15 +2668,32 @@ public class ModelJogoPrincipal {
         imagemFundo.setImage(new Image(arqImg.toString()));
     }
 
+    /**
+     * Define a fase atual
+     *
+     * @param faseAtual
+     */
     public void setFaseAtual(int faseAtual) {
         jogador.setFaseAtual(faseAtual);
     }
 
+    /**
+     * Retorna o valor da fase atual
+     *
+     * @return
+     */
     public int getFaseAtual() {
         return jogador.getFaseAtual();
     }
 
+    /**
+     * Reinicia o jogo
+     *
+     * @param imgReiniciar imageView de onde ocorreu o click
+     * @throws IOException
+     */
     public void reiniciarJogo(ImageView imgReiniciar) throws IOException {
+        timer.cancel();
         modelInicial.iniciar(imgReiniciar);
     }
 }

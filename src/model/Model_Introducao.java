@@ -60,7 +60,11 @@ public class Model_Introducao {
     public String getSelecionado() {
         return selecionado;
     }
-
+    /**
+     * Executa a cena inicial do jogo
+     * @param event disparado quando o botão de play inicial é clicado
+     * @throws IOException 
+     */
     public void getCenaInicial(ActionEvent event) throws IOException {
         window = (Stage) ((Button) event.getSource()).getScene().getWindow();       
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));

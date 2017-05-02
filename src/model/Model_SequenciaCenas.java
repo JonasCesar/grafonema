@@ -57,7 +57,9 @@ public class Model_SequenciaCenas {
         faseTempAtual = 0;
         this.imagemFundo = imagemFundo;
     }
-
+    /**
+     * Inicia as cenas caso o jogador tenha conseguido o mínimo de 10 acertos
+     */
     public void iniciarCenas() {
         caminho1 = caminho2 = caminho3 = caminho4 = caminho5 = faseEfeito = "";
         switch (getFaseAtual()) {
@@ -169,7 +171,9 @@ public class Model_SequenciaCenas {
                 new KeyFrame(Duration.seconds(9), c5)).play();
 
     }
-
+    /**
+     * Executa a cena inicial da fase
+     */
     public void executarCenaInicialFase() {
 
         caminho1 = caminho2 = caminho3 = "";
@@ -262,7 +266,9 @@ public class Model_SequenciaCenas {
                 new KeyFrame(Duration.seconds(21), c4)).play();
 
     }
-
+    /**
+     * Executa a cena do fim da fase
+     */
     public void executarCenaFimDaFase() {
         int valorRetorno = 0;
         //System.out.println("ExecutarCenaFimDaFase");
@@ -313,10 +319,11 @@ public class Model_SequenciaCenas {
         tocarAudio(caminho3);
 
     }
-
+    /**
+     * Executa a cena no meio da fase
+     */
     public void executarCenaMeioFase() {
-        caminho1 = caminho2 = caminho3 = "";
-        System.out.println("Executando cena meio fase ");
+        caminho1 = caminho2 = caminho3 = "";       
 
         switch (getFaseAtual()) {
             case 1:
@@ -374,22 +381,33 @@ public class Model_SequenciaCenas {
                 new KeyFrame(Duration.seconds(0), c1),
                 new KeyFrame(Duration.seconds(10), c2)).play();
     }
-
+    /**
+     * Executa o áudio
+     * @param caminhoAudio  caminho do áudio a ser tocado
+     */
     public void tocarAudio(String caminhoAudio) {
         URL file = getClass().getResource(caminhoAudio);
         media = new Media(file.toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
     }
-
+    /**
+     * Define a fase atual do jogo
+     * @param faseAtual novo valor da fase
+     */
     public void setFaseAtual(int faseAtual) {
         this.faseAtual = faseAtual;
     }
-
+    /**
+     * Retorna a fase atual do jogo
+     * @return fase atual
+     */
     public int getFaseAtual() {
         return faseAtual;
     }
-
+    /**
+     * Executa a cena intermediária do jogo
+     */
     public void executarCenaIntermediaria() {
 
         caminho1 = caminho2 = caminho3 = "";
@@ -470,7 +488,9 @@ public class Model_SequenciaCenas {
                 new KeyFrame(Duration.seconds(15), c3)).play();
 
     }
-
+    /**
+     * Define a imagem de fundo de cada fase
+     */
     public void definirImagemFundo() {
         URL arqImg = null;
         switch (getFaseAtual()) {
@@ -501,7 +521,9 @@ public class Model_SequenciaCenas {
         }
         imagemFundo.setImage(new Image(arqImg.toString()));
     }
-
+    /**
+     * Executa a cena inicial
+     */
     public void executarCenaInicial() {
         caminho1 = caminho3 = "";
         caminho1 = "Imagens/fase1/inicio";
@@ -511,10 +533,10 @@ public class Model_SequenciaCenas {
         caminhoAudio = caminho3 + ".mp3";
         tocarAudio(caminhoAudio);
     }
-
-    public void executarPrimeiraCena() {
-        
-        
+    /**
+     * Executa a primeira cena do jogo
+     */
+    public void executarPrimeiraCena() {       
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
                 new KeyFrame(Duration.seconds(10), c2),
