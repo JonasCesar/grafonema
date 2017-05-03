@@ -44,8 +44,7 @@ public class Pag03Controller implements Initializable {
     
     private ModelPag03 modelPag03;
     @FXML
-    private ListView<String> listaPalavras;
-    private ControllerClasseComum controlerComum;
+    private ListView<String> listaPalavras;   
     ObservableList<String> items = FXCollections.observableArrayList();
     @FXML
     private Button abc;
@@ -65,8 +64,7 @@ public class Pag03Controller implements Initializable {
     private Button atividades;
     
     public Pag03Controller() {
-        listaPalavras = new ListView<String>();
-        controlerComum = new ControllerClasseComum(listaPalavras);
+        listaPalavras = new ListView<String>();       
     }
        
     /**
@@ -76,7 +74,7 @@ public class Pag03Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag03 = new ModelPag03(img1,img2,img3,img4,img5,img6,instrucao);
+        modelPag03 = new ModelPag03(img1,img2,img3,img4,img5,img6,instrucao,listaPalavras);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -93,7 +91,7 @@ public class Pag03Controller implements Initializable {
      * @throws IOException 
      */
     public void setUnidadeAtual(String unidade) throws IOException {
-        atualizarListaPalavras();
+        atualizarListView();
         modelPag03.setUnidadeAtual(unidade);
     }
     /**
@@ -156,7 +154,7 @@ public class Pag03Controller implements Initializable {
      * @throws IOException 
      */
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-        controlerComum.atualizarListaPalavras(listaPalavras);
+        //controlerComum.atualizarListaPalavras(listaPalavras);
 
     }
     /**
@@ -203,5 +201,8 @@ public class Pag03Controller implements Initializable {
 
     @FXML
     private void sugestaoAtividades(ActionEvent event) {
+    }
+    private void atualizarListView() {
+        modelPag03.atualizarListView();
     }
 }

@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 /**
@@ -26,9 +27,10 @@ public class ModelManual {
     private ModelClasseComum mCC;
     private Stage janela;
     private String unidadeAtual;
+    private ListView<String> listaPalavras;
 
     public ModelManual() {
-        mCC = new ModelClasseComum(janela);
+        mCC = new ModelClasseComum(janela,listaPalavras);
         unidadeAtual = "u00";
     }
     /**

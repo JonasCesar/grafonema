@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -42,8 +43,9 @@ public class ModelABC {
     public Image img;
 
     //String botaoEscolhido = "";
+    private ListView<String> listaPalavras;
     public ModelABC() {
-        mCC = new ModelClasseComum(janela);
+        mCC = new ModelClasseComum(janela, listaPalavras);
         unidadeAtual = "u00";
 
     }

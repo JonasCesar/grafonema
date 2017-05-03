@@ -21,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -72,6 +73,10 @@ public class ModelPag05 {
     private double newTranslateY;
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
+    private URL imagemUrl;
+    
+    @FXML
+    private ListView<String> listaPalavras;
 
     @FXML
     private Text instrucao;
@@ -89,7 +94,8 @@ public class ModelPag05 {
      * @param imagemAudio
      * @param janelaPrograma
      */
-    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1) {
+    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, 
+            Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1, ListView<String> listaPalavras) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -99,7 +105,8 @@ public class ModelPag05 {
         this.f2 = f2;
         this.espaco = espaco;
         this.unidadeAtual = "u00";
-        mCC = new ModelClasseComum(janela);
+        this.listaPalavras = listaPalavras;
+        mCC = new ModelClasseComum(janela,this.listaPalavras);
         this.imagemAudio = imagemAudio;
         this.janelaPrograma = janelaPrograma;
         this.instrucao = instrucao1;
@@ -180,19 +187,20 @@ public class ModelPag05 {
      */
     public boolean verificarEscolhaSilaba(MouseEvent event) {
         String silabaEscolhida = ((Label) event.getSource()).getText();
-        URL imgUrl = null;
+        imagemUrl = null;
         boolean opcaoCorreta = false;
         switch (getUnidadeAtual()) {
             case "u01":
                 if (silabaEscolhida.equals("VO")) {
                     opcaoCorreta = true;                    
-                     imgUrl = getClass().getResource("imagens/licao01/polvocor.png");                    
+                     imagemUrl = getClass().getResource("imagens/licao01/polvocor.png");
+                      imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
             default:
                 break;
         }
-        imagemAudio.setImage(new Image(imgUrl.toString()));
+        
         return opcaoCorreta;
     }
 
@@ -383,12 +391,16 @@ public class ModelPag05 {
         mCC.play(caminhoAudio);
     }
     
-    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
+    public void definirInstrucao(String unidadeAtual) {
         switch (unidadeAtual) {
             case "u01":
                 instrucao.setText("Complete com a parte que está faltando:\"POLVO\"");
             break;
         }
 
+    }
+
+    public void atualizarListView() {
+        mCC.atualizarListView(listaPalavras);
     }
 }

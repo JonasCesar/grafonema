@@ -37,7 +37,6 @@ public class Pag06Controller implements Initializable {
     @FXML
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
-    private ControllerClasseComum controlerComum;
     @FXML
     private Button abc;
     @FXML
@@ -61,8 +60,7 @@ public class Pag06Controller implements Initializable {
     private Button atividades;
     
     public Pag06Controller() {
-        listaPalavras = new ListView<String>();
-        controlerComum = new ControllerClasseComum(listaPalavras);
+        listaPalavras = new ListView<String>();        
     }
     
     
@@ -72,7 +70,7 @@ public class Pag06Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag06 = new ModelPag06(p1,p2, instrucao);
+        modelPag06 = new ModelPag06(p1,p2, instrucao,listaPalavras);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -85,7 +83,7 @@ public class Pag06Controller implements Initializable {
      * @throws IOException 
      */
     public void setUnidadeAtual(String unidade) throws IOException {
-        atualizarListaPalavras();//atualiza a lista de palavras estudadas
+        atualizarListView();//atualiza a lista de palavras estudadas
         modelPag06.setUnidadeAtual(unidade);
         switch(getUnidadeAtual()){
             case "u01":
@@ -173,7 +171,7 @@ public class Pag06Controller implements Initializable {
      * @throws IOException 
      */
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-        controlerComum.atualizarListaPalavras(listaPalavras);
+        //controlerComum.atualizarListaPalavras(listaPalavras);
     }
     /**
      * Realiza o efeito de sombrear o botão quando o mouse passar por cima dele
@@ -253,5 +251,9 @@ public class Pag06Controller implements Initializable {
 
     @FXML
     private void sugestaoAtividades(ActionEvent event) {
+    }
+    
+    private void atualizarListView() {
+        modelPag06.atualizarListView();
     }
 }

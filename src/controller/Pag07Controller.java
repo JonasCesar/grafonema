@@ -30,8 +30,7 @@ public class Pag07Controller implements Initializable {
     private ModelPag07 modelPag07;
     @FXML
     private ListView<String> listaPalavras;
-    ObservableList<String> items = FXCollections.observableArrayList();
-    private ControllerClasseComum controlerComum;
+    ObservableList<String> items = FXCollections.observableArrayList();    
     @FXML
     private Button abc;
     @FXML
@@ -48,7 +47,7 @@ public class Pag07Controller implements Initializable {
     private Button atividades;
     public Pag07Controller() {
         listaPalavras = new ListView<String>();
-        controlerComum = new ControllerClasseComum(listaPalavras);
+        
     }
 
     /**
@@ -77,7 +76,7 @@ public class Pag07Controller implements Initializable {
      * @throws IOException 
      */
     public void setUnidadeAtual(String unidadeAtual) throws IOException {
-        atualizarListaPalavras();
+        atualizarListView();
         modelPag07.setUnidadeAtual(unidadeAtual, tituloUnidade);
     }
     /**
@@ -125,7 +124,8 @@ public class Pag07Controller implements Initializable {
      * @throws IOException 
      */
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-        controlerComum.atualizarListaPalavras(listaPalavras);
+        modelPag07.salvarPalavraEstudadas(getUnidadeAtual());
+        //controlerComum.atualizarListaPalavras(listaPalavras);
     }
     /**
      * Realiza o efeito de sombrear o botão quando o mouse passar por cima dele
@@ -163,5 +163,7 @@ public class Pag07Controller implements Initializable {
     private void sugestaoAtividades(ActionEvent event) {
     }
     
-    
+    private void atualizarListView() {
+        modelPag07.atualizarListView();
+    }
 }

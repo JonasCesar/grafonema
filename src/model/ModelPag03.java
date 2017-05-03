@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -49,20 +50,23 @@ public class ModelPag03 {
     private URL imgf1,  imgf2, imgf3, imgf4 , imgf5, imgf6;
     private Stage janela;
     private ModelClasseComum mCC;
-
-    public ModelPag03(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1) {
+    @FXML
+    ListView<String> listaPalavras;
+    public ModelPag03(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
+    ListView<String> listaPalavras) {
         img1 = i1;
         img2 = i2;
         img3 = i3;
         img4 = i4;
         img5 = i5;
         img6 = i6;
-        
+        this.listaPalavras = listaPalavras;
         this.instrucao = instrucao1;
         
         unidadeAtual = "u00";
         caminhoAudio = "";
-        mCC = new ModelClasseComum(janela);        
+        
+        mCC = new ModelClasseComum(janela, this.listaPalavras);        
     }
 
     /**
@@ -273,5 +277,9 @@ public class ModelPag03 {
             break;
         }
 
+    }
+
+    public void atualizarListView() {
+        mCC.atualizarListView(listaPalavras);
     }
 }

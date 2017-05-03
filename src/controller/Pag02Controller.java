@@ -30,14 +30,14 @@ public class Pag02Controller implements Initializable {
     @FXML
     private Label palavraAtual;
 
-    private ModelPag02 modelPag02 = new ModelPag02();
+    private ModelPag02 modelPag02;
 
     private String unidadeAtual;
     @FXML
     private ListView<String> listaPalavras;
 
     ObservableList<String> items = FXCollections.observableArrayList();
-    private ControllerClasseComum controlerComum;
+
     @FXML
     private Button abc;
     @FXML
@@ -62,7 +62,7 @@ public class Pag02Controller implements Initializable {
     public Pag02Controller() {
         unidadeAtual = "u00";
         listaPalavras = new ListView<>();
-        controlerComum = new ControllerClasseComum(listaPalavras);
+
     }
 
     /**
@@ -73,6 +73,7 @@ public class Pag02Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        modelPag02 = new ModelPag02(listaPalavras);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -102,15 +103,15 @@ public class Pag02Controller implements Initializable {
      */
     @FXML
     private void audio1(ActionEvent event) {
-        String verde = "-fx-background-color: \n" +
-"        linear-gradient(#97ff5b, #54e600),\n" +
-"        linear-gradient(#b1ff83, #83f143),\n" +
-"        linear-gradient(#a0ff69, #6def22),\n" +
-"        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n" +
-"        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));";
+        String verde = "-fx-background-color: \n"
+                + "        linear-gradient(#97ff5b, #54e600),\n"
+                + "        linear-gradient(#b1ff83, #83f143),\n"
+                + "        linear-gradient(#a0ff69, #6def22),\n"
+                + "        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                + "        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));";
         modelPag02.pararAudio();
         modelPag02.tocarAudio1();
-        ((Button)event.getSource()).setStyle(verde);
+        ((Button) event.getSource()).setStyle(verde);
     }
 
     /**
@@ -120,15 +121,15 @@ public class Pag02Controller implements Initializable {
      */
     @FXML
     private void audio2(ActionEvent event) {
-        String verde = "-fx-background-color: \n" +
-"        linear-gradient(#97ff5b, #54e600),\n" +
-"        linear-gradient(#b1ff83, #83f143),\n" +
-"        linear-gradient(#a0ff69, #6def22),\n" +
-"        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n" +
-"        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));";
+        String verde = "-fx-background-color: \n"
+                + "        linear-gradient(#97ff5b, #54e600),\n"
+                + "        linear-gradient(#b1ff83, #83f143),\n"
+                + "        linear-gradient(#a0ff69, #6def22),\n"
+                + "        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                + "        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));";
         modelPag02.pararAudio();
         modelPag02.tocarAudio2();
-        ((Button)event.getSource()).setStyle(verde);
+        ((Button) event.getSource()).setStyle(verde);
     }
 
     /**
@@ -138,15 +139,15 @@ public class Pag02Controller implements Initializable {
      */
     @FXML
     private void audio3(ActionEvent event) {
-        String verde = "-fx-background-color: \n" +
-"        linear-gradient(#97ff5b, #54e600),\n" +
-"        linear-gradient(#b1ff83, #83f143),\n" +
-"        linear-gradient(#a0ff69, #6def22),\n" +
-"        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n" +
-"        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));";
+        String verde = "-fx-background-color: \n"
+                + "        linear-gradient(#97ff5b, #54e600),\n"
+                + "        linear-gradient(#b1ff83, #83f143),\n"
+                + "        linear-gradient(#a0ff69, #6def22),\n"
+                + "        linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                + "        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));";
         modelPag02.pararAudio();
         modelPag02.tocarAudio3();
-        ((Button)event.getSource()).setStyle(verde);
+        ((Button) event.getSource()).setStyle(verde);
     }
 
     /**
@@ -189,7 +190,7 @@ public class Pag02Controller implements Initializable {
      * @throws IOException
      */
     public void setUnidadeAtual(String unidade) throws IOException {
-        atualizarListaPalavras();
+        atualizarListView();
         switch (unidade) {
             case "u01":
                 palavraAtual.setText("VOVÔ");
@@ -199,9 +200,11 @@ public class Pag02Controller implements Initializable {
         }
         modelPag02.setUnidadeAtual(unidade);
 
-    }    
+    }
+
     /**
      * Trata o evento de quando o mouse é clicado na lista de palavras
+     *
      * @param event mouse é pressionado
      */
     @FXML
@@ -217,8 +220,7 @@ public class Pag02Controller implements Initializable {
      * @throws IOException
      */
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-        controlerComum.atualizarListaPalavras(listaPalavras);
-
+        //controlerComum.atualizarListaPalavras(listaPalavras);
     }
 
     /**
@@ -267,5 +269,9 @@ public class Pag02Controller implements Initializable {
 
     @FXML
     private void sugestaoAtividades(ActionEvent event) {
+    }
+
+    private void atualizarListView() {
+        modelPag02.atualizarListView();
     }
 }

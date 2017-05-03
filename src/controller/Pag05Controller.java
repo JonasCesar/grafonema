@@ -58,7 +58,6 @@ public class Pag05Controller implements Initializable {
     @FXML
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
-    private ControllerClasseComum controlerComum;
     @FXML
     private Button abc;
     @FXML
@@ -85,8 +84,7 @@ public class Pag05Controller implements Initializable {
     private Button atividades;
     
     public Pag05Controller() {
-        listaPalavras = new ListView<String>();
-        controlerComum = new ControllerClasseComum(listaPalavras);
+        listaPalavras = new ListView<String>();        
     }
 
     /**
@@ -96,7 +94,7 @@ public class Pag05Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco,imagemAudio, janelaPrograma, instrucao);
+        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco,imagemAudio, janelaPrograma, instrucao, listaPalavras);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -109,7 +107,7 @@ public class Pag05Controller implements Initializable {
      * @throws IOException 
      */
     public void setUnidadeAtual(String unidadeAtual) throws IOException {
-        atualizarListaPalavras();
+        atualizarListView();
         modelPag05.setUnidadeAtual(unidadeAtual);
     }
 
@@ -200,7 +198,7 @@ public class Pag05Controller implements Initializable {
      * @throws IOException
      */
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-        controlerComum.atualizarListaPalavras(listaPalavras);
+        //controlerComum.atualizarListaPalavras(listaPalavras);
 
     }
 
@@ -276,11 +274,15 @@ public class Pag05Controller implements Initializable {
         modelPag05.tocarAudio();
     }
     
-    public void setInstrucao(String unidadeAtual) throws MalformedURLException    {
+    public void setInstrucao(String unidadeAtual)    {
         modelPag05.definirInstrucao(unidadeAtual);
     }
 
     @FXML
     private void sugestaoAtividades(ActionEvent event) {
+    }
+    
+    private void atualizarListView() {
+        modelPag05.atualizarListView();
     }
 }

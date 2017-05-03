@@ -6,6 +6,8 @@ package model;
 
 import java.io.IOException;
 import controller.Pag01Controller;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,8 +23,7 @@ public class ModelmenuInicial {
     
     private Stage janela;
     private String unidade;
-    private ModelPag01 modelPag01;
-    
+    private ModelPag01 modelPag01;    
     public ModelmenuInicial() {
         
         
@@ -47,6 +48,7 @@ public class ModelmenuInicial {
         janela.show();//exibe a interface
         pg01Cont.setImagemTexto();
         pg01Cont.tocarAudio();
+        
         
     }
 }

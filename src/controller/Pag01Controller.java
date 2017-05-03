@@ -36,7 +36,6 @@ public class Pag01Controller implements Initializable {
     @FXML
     private ListView<String> listaPalavras;
     ObservableList<String> items = FXCollections.observableArrayList();
-    private ControllerClasseComum controlerComum;
     @FXML
     private Button abc;
     @FXML
@@ -57,8 +56,7 @@ public class Pag01Controller implements Initializable {
     public Pag01Controller() {
         unidadeAtual = "u00";
         
-        listaPalavras = new ListView<String>();
-        controlerComum = new ControllerClasseComum(listaPalavras);
+        listaPalavras = new ListView<String>();        
         iconeOuvir = new ImageView();
     }
 
@@ -70,7 +68,7 @@ public class Pag01Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag01 = new ModelPag01(imagemTexto);
+        modelPag01 = new ModelPag01(imagemTexto, listaPalavras);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -99,7 +97,7 @@ public class Pag01Controller implements Initializable {
      * @throws IOException 
      */
     public void setUnidadeAtual(String unidade) throws FileNotFoundException, IOException {
-        atualizarListaPalavras();
+        atualizarListView();
         modelPag01.setUnidadeAtual(unidade, tituloUnidade);
     }
     /**
@@ -137,7 +135,7 @@ public class Pag01Controller implements Initializable {
      * @throws IOException 
      */
     private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-        controlerComum.atualizarListaPalavras(listaPalavras);
+        //modelPag01.atualizarListaPalavras(listaPalavras);
     }
     /**
      * Realiza o efeito de sombrear o botão quando o mouse passar por cima dele
@@ -184,6 +182,10 @@ public class Pag01Controller implements Initializable {
      */
     public void setImagemTexto() {
         modelPag01.setImagemTexto(getUnidadeAtual());
+    }
+
+    private void atualizarListView() {
+        modelPag01.atualizarListView();
     }
     
     

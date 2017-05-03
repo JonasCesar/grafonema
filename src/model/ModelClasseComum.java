@@ -9,11 +9,15 @@ import controller.MenuInicialController;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -33,23 +37,31 @@ public class ModelClasseComum {
     private String caminhoAudio;
     private String unidadeAtual;
     private ActionEvent eventoTemporario;
+    public static ObservableList<String> items = FXCollections.observableArrayList();
+    
+    @FXML
+    private ListView<String> listaPalavras;
 
-    public ModelClasseComum(Stage janela) {
+    public ModelClasseComum(Stage janela, ListView<String> listaPalavras) {
         this.janela = janela;
         eventoTemporario = null;
         unidadeAtual = "u00";
+        this.listaPalavras = listaPalavras;
     }
+
     /**
      * Executa um arquivo de audio
+     *
      * @param caminhoAudio caminho do arquivo que deve ser executado
      */
     public void play(String caminhoAudio) {
-      URL file = getClass().getResource(caminhoAudio);
+        URL file = getClass().getResource(caminhoAudio);
         media = new Media(file.toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
+
     /**
      * Parar o audio em execução atualmente
      */
@@ -60,8 +72,10 @@ public class ModelClasseComum {
 
         }
     }
+
     /**
      * Carrega uma cena
+     *
      * @param proximaCena a cena a ser carregada
      * @param janela janela onde será carregada a cena
      */
@@ -69,18 +83,20 @@ public class ModelClasseComum {
         this.janela = janela;
         Scene cena = new Scene(proximaCena, 950, 700);
         janela.setTitle("Projeto 2");//título da cena
-        
+
         janela.setScene(cena);
         janela.show();//exibe a interface  
         System.out.println("exibiu a cena certinho");
     }
+
     /**
      * Executa o audio da palavra selecionada na listView
-     * @param palavraSelecionada 
+     *
+     * @param palavraSelecionada
      */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         pararAudio();
-        switch(palavraSelecionada){
+        switch (palavraSelecionada) {
             case "VOVÔ":
                 caminhoAudio = "AudiosPalavrasEstudadas/vovo.mp3";
                 break;
@@ -89,10 +105,13 @@ public class ModelClasseComum {
         }
         play(caminhoAudio);
     }
+
     /**
      * Carrega o menu inicial do jogo
-     * @param event disparado pelo método "menuInicial" presente em todos os controllers
-     * @throws IOException 
+     *
+     * @param event disparado pelo método "menuInicial" presente em todos os
+     * controllers
+     * @throws IOException
      */
     public void menuInicial(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -103,11 +122,14 @@ public class ModelClasseComum {
 
         exibirCena(proximaCena, janela);
     }
+
     /**
      * Carrega a janela do ABC
-     * @param event disparado pelo método abrirABC presente em todos os controllers
+     *
+     * @param event disparado pelo método abrirABC presente em todos os
+     * controllers
      * @param pagina pagina de onde o método foi chamado
-     * @throws IOException 
+     * @throws IOException
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -115,41 +137,71 @@ public class ModelClasseComum {
         Parent proximaCena = (Parent) fxmloader.load();
         ABCController ABCCont = fxmloader.<ABCController>getController();
         exibirCena(proximaCena, janela);
-        
+
         System.out.println(getUnidadeAtual());
         ABCCont.setUnidadeAtual(getUnidadeAtual());
         ABCCont.setPaginaTemporaria(pagina);
 
     }
+
     /**
      * Abre o manual do software
-     * @param event disparado pelo método abrirManual presente em todas as classes
+     *
+     * @param event disparado pelo método abrirManual presente em todas as
+     * classes
      * @param pagina pagina de onde o método foi chamado
-     * @throws IOException 
+     * @throws IOException
      */
     void abrirManual(ActionEvent event, int pagina) throws IOException {
-        
+
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/manual.fxml"));
         Parent proximaCena = (Parent) fxmloader.load();
-        ManualController manualController = fxmloader.<ManualController>getController();        
+        ManualController manualController = fxmloader.<ManualController>getController();
         exibirCena(proximaCena, janela);
         manualController.setUnidadeAtual(getUnidadeAtual());
         manualController.setPaginaTemporaria(pagina);
     }
+
     /**
      * Define a unidade atual que será necessária em algumas funções
+     *
      * @param unidadeAtual unidade em que o usuário se encontra
      */
-    public void setUnidadeAtual(String unidadeAtual){
-        
+    public void setUnidadeAtual(String unidadeAtual) {
+
         this.unidadeAtual = unidadeAtual;
     }
+
     /**
      * Retorna a unidade atual
-     * @return 
+     *
+     * @return
      */
-    public String getUnidadeAtual(){
+    public String getUnidadeAtual() {
         return this.unidadeAtual;
+    }
+
+    void atualizarListaPalavras(ListView<String> listaPalavras) {
+        //listaPalavras.setItems(items);
+    }
+
+    void salvarPalavraEstudada(String novaPalavra) {
+        if(!items.contains(novaPalavra)){
+            items.add(novaPalavra);       
+        }
+        
+    }
+
+    public void atualizarListView(ListView<String> listaPalavras) {
+        this.listaPalavras = listaPalavras;
+        try{            
+            listaPalavras.setItems(items);
+        }catch(IndexOutOfBoundsException e){
+            System.out.println("Não adicionou nada");
+        }catch(NullPointerException e){
+            System.out.println("item não encontrado ");
+        }
+        
     }
 }

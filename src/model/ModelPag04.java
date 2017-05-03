@@ -9,6 +9,7 @@ import controller.Pag05Controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -83,6 +85,10 @@ public class ModelPag04 {
     private double newTranslateY;
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
+    private URL imagemUrl;
+    
+    @FXML
+    private ListView<String> listaPalavras;
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
      *
@@ -96,9 +102,10 @@ public class ModelPag04 {
      * @param espaco
      * @param imagemAudio
      * @param janelaPrograma
+     * @param instrucao1
      */
     public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
-            Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1) {
+            Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1, ListView<String> listaPalavras) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -108,7 +115,8 @@ public class ModelPag04 {
         this.f2 = f2;
         this.espaco = espaco;
         this.instrucao = instrucao1;
-        mCC = new ModelClasseComum(janela);
+        this.listaPalavras = listaPalavras;
+        mCC = new ModelClasseComum(janela, this.listaPalavras);
         this.imagemAudio = imagemAudio;
         this.janelaPrograma = janelaPrograma;
         this.instrucao = instrucao1;
@@ -118,10 +126,10 @@ public class ModelPag04 {
      *Define a unidade em que o software se encontra
      * @param unidadeAtual unidade atual da execução
      */
-    public void setUnidadeAtual(String unidadeAtual) throws MalformedURLException {
+    public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
         //define o conteúdo das labels da pag 4
-         
+        URL imgUrl = null;
         switch (unidadeAtual) {
             case "u01":
                 p1.setText("VA");
@@ -130,13 +138,13 @@ public class ModelPag04 {
                 p4.setText("VO");
                 p5.setText("VU");
                 f1.setText("ÁR");
-                f2.setText("RE");
-                imagem = new File("imagens/licao01/arvorepb.png");
+                f2.setText("RE");                
+                imgUrl = getClass().getResource("imagens/licao01/arvorepb.png");
                 break;
             default:
                 break;
         }
-        imagemAudio.setImage(new Image(imagem.toURI().toURL().toString()));
+        imagemAudio.setImage(new Image(imgUrl.toString()));
     }
 
     /**
@@ -194,18 +202,20 @@ public class ModelPag04 {
         //converte conteudo do evento para string
         String silabaEscolhida = ((Label) event.getSource()).getText();
         boolean opcaoCorreta = false;
+        imagemUrl = null;
         //verifica a unidade atual
         switch (getUnidadeAtual()) {
             case "u01":
                 if (silabaEscolhida.equals("VO")) {
-                    opcaoCorreta = true;
-                    imagem = new File("imagens/licao01/arvorecor.png");
-                    imagemAudio.setImage(new Image(imagem.toURI().toURL().toString()));
+                    opcaoCorreta = true;                    
+                    imagemUrl = getClass().getResource("imagens/licao01/arvorecor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
             default:
                 break;
         }
+        
         //retorna o valor booleano
         return opcaoCorreta;
     }
@@ -291,7 +301,12 @@ public class ModelPag04 {
      * @throws IOException 
      */
     
-
+    /**
+     * Carrega a interface do ABC
+     * @param event disparado pelo método ABCJanela do controller
+     * @param pagina
+     * @throws IOException
+     */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
@@ -327,7 +342,7 @@ public class ModelPag04 {
      * @throws MalformedURLException 
      * @throws java.lang.InterruptedException 
      */
-    public void mouseLiberado(MouseEvent event) throws MalformedURLException, InterruptedException {
+    public void mouseLiberado(MouseEvent event) throws InterruptedException, MalformedURLException {
         if ((verificarColisao(event))) {
             //se for a opcao correta
             if (verificarEscolhaSilaba(event)) {
@@ -370,23 +385,17 @@ public class ModelPag04 {
     public void audioAcerto(){
         
         //evento que represanta a ação do acerto
-        primeiroAudio = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    tocarAudioParabens();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        primeiroAudio = (ActionEvent event) -> {
+            try {
+                tocarAudioParabens();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
             }
         };
 
         //evento que representa o audio a ser executado depois o
-        segundoAudio = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-               executarPalavra();
-            }
+        segundoAudio = (ActionEvent event) -> {
+            executarPalavra();
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), primeiroAudio),
@@ -410,5 +419,9 @@ public class ModelPag04 {
             break;
         }
 
+    }
+
+    public void atualizarListView() {
+        mCC.atualizarListView(listaPalavras);
     }
 }

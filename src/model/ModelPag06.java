@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -40,12 +41,13 @@ public class ModelPag06 {
     private Text instrucao;
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
-
-    public ModelPag06(Label p1, Label p2, Text instrucao1) {
+    private ListView<String> listaPalavras;
+    public ModelPag06(Label p1, Label p2, Text instrucao1, ListView<String> listaPalavras) {
         this.p1 = p1;
         this.p2 = p2;
         this.unidadeAtual = "u00";
-        mCC = new ModelClasseComum(janela);
+        this.listaPalavras = listaPalavras;
+        mCC = new ModelClasseComum(janela, this.listaPalavras);
         this.instrucao = instrucao1;
     }
 
@@ -271,6 +273,10 @@ public class ModelPag06 {
         int numeroAudio = indiceErro.nextInt(3);
         caminhoAudio = "audios/erro/"+numeroAudio+".mp3";
         mCC.play(caminhoAudio);
+    }
+
+    public void atualizarListView() {
+       mCC.atualizarListView(listaPalavras);
     }
 
 }

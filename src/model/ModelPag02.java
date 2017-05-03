@@ -9,9 +9,11 @@ import controller.Pag03Controller;
 import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 /**
@@ -28,10 +30,14 @@ public class ModelPag02 {
     private ModelClasseComum mCC;
 
     private Stage janela;
+    
+    @FXML
+    private ListView<String> listaPalavras;
 
-    public ModelPag02() {
+    public ModelPag02(ListView<String> listaPalavras) {
         this.unidadeAtual = "u00";
-        mCC = new ModelClasseComum(janela);
+        this.listaPalavras = listaPalavras;
+        mCC = new ModelClasseComum(janela, this.listaPalavras);
     }
 
     /**
@@ -186,5 +192,9 @@ public class ModelPag02 {
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
+    }
+
+    public void atualizarListView() {
+        mCC.atualizarListView(listaPalavras);
     }
 }

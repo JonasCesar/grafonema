@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -25,16 +26,18 @@ public class ModelPag01 {
 
     private String unidadeAtual;
     private String caminhoAudio;
-
+    @FXML
+    private ListView<String> listaPalavras;
     private File arquivo;
     private ModelClasseComum mCC;
     private Stage janela;
     @FXML
     private ImageView imagemTexto;
     private URL imagemURL;
-    public ModelPag01(ImageView imgView) {
+    public ModelPag01(ImageView imgView, ListView listaPalavras) {
         this.unidadeAtual = "u00";
-        mCC = new ModelClasseComum(janela);
+        this.listaPalavras = listaPalavras;
+        mCC = new ModelClasseComum(janela,this.listaPalavras);
         imagemTexto = imgView;
         
     }
@@ -145,6 +148,14 @@ public class ModelPag01 {
                 break;
         }
         imagemTexto.setImage(new Image(imagemURL.toString()));
+    }
+
+    public void atualizarListaPalavras(ListView<String> listaPalavras) {
+        mCC.atualizarListaPalavras(listaPalavras);
+    }
+
+    public void atualizarListView() {      
+        mCC.atualizarListView(listaPalavras);
     }
     
 }

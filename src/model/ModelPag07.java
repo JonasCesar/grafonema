@@ -7,16 +7,17 @@ import controller.MenuInicialController;
 import controller.Pag06Controller;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import static java.lang.Thread.currentThread;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 /**
@@ -30,10 +31,11 @@ public class ModelPag07 {
     private String unidadeAtual;
     private ModelClasseComum mCC;
     private final int pagina = 7;
+    private ListView<String> listaPalavras;
 
     public ModelPag07() {
         this.unidadeAtual = "u00";
-        mCC = new ModelClasseComum(janela);
+        mCC = new ModelClasseComum(janela,listaPalavras);
     }
 
     /**
@@ -45,7 +47,6 @@ public class ModelPag07 {
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
-
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
         MenuInicialController menuInicialCont = fxmloader.<MenuInicialController>getController();
@@ -129,7 +130,7 @@ public class ModelPag07 {
         BufferedReader lerArq = null;
         switch (unidade) {
             case "u01":
-                novaPalavra = "\nVOVÔ";
+                novaPalavra = "VOVÔ";
                 break;
             default:
                 break;
@@ -138,30 +139,54 @@ public class ModelPag07 {
          * O código abaixo verifica se a nova palavra a ser adicionada já existe
          * no arquivo
          */
-        File arquivoEscrita = new File("audios/AudiosPalavrasEstudadas/texto.txt"); // se já existir, será sobreescrito
-        FileWriter escreverArquivo = new FileWriter(arquivoEscrita, true);
-        try (BufferedWriter bufferDeEscrita = new BufferedWriter(escreverArquivo)) {
-
-            FileReader arquivoLeitura = new FileReader("audios/AudiosPalavrasEstudadas/texto.txt");
-            lerArq = new BufferedReader(arquivoLeitura);
-
-            String linha = lerArq.readLine();
-            if (linha == null) {//ocorre quando for
-                bufferDeEscrita.write(novaPalavra);
-                encontrado = true;
-            } else {
-                Scanner textoNoArquivo = new Scanner(arquivoEscrita);
-                String palavra = textoNoArquivo.findWithinHorizon(novaPalavra, 0);
-                boolean jaFoiAdicionada = palavra.length() != 0;
-                if (!jaFoiAdicionada) {
-                    bufferDeEscrita.write(novaPalavra);
-                    bufferDeEscrita.flush();
-                }
+        mCC.salvarPalavraEstudada(novaPalavra);
+        
+        /**
+        String inputLine;
+        ClassLoader loader = currentThread().getContextClassLoader();
+        InputStream arquivoInput = loader.getClass().getResourceAsStream("texto.txt");        
+        try {
+            FileWriter fstream = new FileWriter("texto.txt");
+            BufferedWriter out = new BufferedWriter(fstream);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(arquivoInput));
+            System.out.println("Antes do while");
+            while ((inputLine = reader.readLine()) != null) {
+                System.out.println("Oi "+inputLine);
+                /**
+                 * String[] str = inputLine.split("\t"); if (/* IF WHAT YOU WANT
+                 * IS IN THE FILE ADD IT ) { // DO SOMETHING OR ADD WHAT YOU
+                 * WANT out.append(str); out.newLine();
+                }*
+                 
+                out.append(novaPalavra);
+                out.newLine();
             }
-            lerArq.close();
+            reader.close();
+            out.close();
         } catch (Exception e) {
-
+            e.getMessage();
         }
+        //File arquivoEscrita = new File(arquivoInput.toString());
+        
+         * FileWriter escreverArquivo = new FileWriter(arquivoEscrita, true);
+         * try (BufferedWriter bufferDeEscrita = new
+         * BufferedWriter(escreverArquivo)) {
+         *
+         * FileReader arquivoLeitura = new
+         * FileReader("audios/AudiosPalavrasEstudadas/texto.txt"); lerArq = new
+         * BufferedReader(arquivoLeitura);
+         *
+         * String linha = lerArq.readLine(); if (linha == null) {//ocorre quando
+         * for bufferDeEscrita.write(novaPalavra); encontrado = true; } else {
+         * Scanner textoNoArquivo = new Scanner(arquivoEscrita); String palavra
+         * = textoNoArquivo.findWithinHorizon(novaPalavra, 0); boolean
+         * jaFoiAdicionada = palavra.length() != 0; if (!jaFoiAdicionada) {
+         * bufferDeEscrita.write(novaPalavra); bufferDeEscrita.flush(); } }
+         * lerArq.close(); } catch (Exception e) {
+         *
+         * }
+         * **/
+         
     }
 
     /**
@@ -198,6 +223,10 @@ public class ModelPag07 {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
+    }
+
+    public void atualizarListView() {
+        mCC.atualizarListView(listaPalavras);
     }
 
 }
