@@ -30,6 +30,7 @@ public class ModelPag07 {
     private String unidadeAtual;
     private ModelClasseComum mCC;
     private final int pagina = 7;
+
     public ModelPag07() {
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
@@ -52,8 +53,9 @@ public class ModelPag07 {
         salvarPalavraEstudadas(getUnidadeAtual());
         mCC.exibirCena(proximaCena, janela);
     }
+
     /**
-     *Define a unidade em que o software se encontra
+     * Define a unidade em que o software se encontra
      */
     public void setUnidadeAtual(String unidade, Label tituloUnidade) {
         this.unidadeAtual = unidade;
@@ -61,6 +63,7 @@ public class ModelPag07 {
         System.out.println(tituloUnidade + " " + unidade);
         tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));
     }
+
     /**
      * Executra o audio que deve ser executado nessa pagina
      */
@@ -113,10 +116,12 @@ public class ModelPag07 {
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
+
     /**
      * Salva as palavras estudadas
+     *
      * @param unidade
-     * @throws IOException 
+     * @throws IOException
      */
     public void salvarPalavraEstudadas(String unidade) throws IOException {
         String novaPalavra = "";
@@ -130,13 +135,14 @@ public class ModelPag07 {
                 break;
         }
         /**
-         * O código abaixo verifica se a nova palavra a ser adicionada já existe no arquivo
+         * O código abaixo verifica se a nova palavra a ser adicionada já existe
+         * no arquivo
          */
-        File arquivoEscrita = new File("src/AudiosPalavrasEstudadas/texto.txt"); // se já existir, será sobreescrito
+        File arquivoEscrita = new File("audios/AudiosPalavrasEstudadas/texto.txt"); // se já existir, será sobreescrito
         FileWriter escreverArquivo = new FileWriter(arquivoEscrita, true);
-        BufferedWriter bufferDeEscrita = new BufferedWriter(escreverArquivo);
-        try {
-            FileReader arquivoLeitura = new FileReader("src/AudiosPalavrasEstudadas/texto.txt");
+        try (BufferedWriter bufferDeEscrita = new BufferedWriter(escreverArquivo)) {
+
+            FileReader arquivoLeitura = new FileReader("audios/AudiosPalavrasEstudadas/texto.txt");
             lerArq = new BufferedReader(arquivoLeitura);
 
             String linha = lerArq.readLine();
@@ -154,12 +160,13 @@ public class ModelPag07 {
             }
             lerArq.close();
         } catch (Exception e) {
-        }
 
-        bufferDeEscrita.close();
+        }
     }
-/**
+
+    /**
      * Carrega a página anterior
+     *
      * @param event disparado pelo método voltar do controller
      * @throws IOException
      */
@@ -179,6 +186,7 @@ public class ModelPag07 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
     }
+
     /**
      * Carrega a interface do manual do software
      *

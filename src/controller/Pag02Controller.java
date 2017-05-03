@@ -61,7 +61,7 @@ public class Pag02Controller implements Initializable {
 
     public Pag02Controller() {
         unidadeAtual = "u00";
-        listaPalavras = new ListView<String>();
+        listaPalavras = new ListView<>();
         controlerComum = new ControllerClasseComum(listaPalavras);
     }
 
@@ -78,6 +78,9 @@ public class Pag02Controller implements Initializable {
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
         atividades.setTooltip(new Tooltip("Clique para ver as atividades para imprimir"));
         manual.setTooltip(new Tooltip("Clique para ler o manual do programa "));
+        audio1.setTooltip(new Tooltip("Clique para ouvir o áudio 1"));
+        audio2.setTooltip(new Tooltip("Clique para ouvir o áudio 2"));
+        audio3.setTooltip(new Tooltip("Clique para ouvir o áudio 3"));
     }
 
     /**

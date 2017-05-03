@@ -131,7 +131,7 @@ public class ModelPag04 {
                 p5.setText("VU");
                 f1.setText("ÁR");
                 f2.setText("RE");
-                imagem = new File("src/imagens/licao01/arvorepb.jpg");
+                imagem = new File("imagens/licao01/arvorepb.png");
                 break;
             default:
                 break;
@@ -199,7 +199,7 @@ public class ModelPag04 {
             case "u01":
                 if (silabaEscolhida.equals("VO")) {
                     opcaoCorreta = true;
-                    imagem = new File("src/imagens/licao01/arvorecor.jpg");
+                    imagem = new File("imagens/licao01/arvorecor.png");
                     imagemAudio.setImage(new Image(imagem.toURI().toURL().toString()));
                 }
                 break;

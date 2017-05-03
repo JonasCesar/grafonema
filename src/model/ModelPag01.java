@@ -6,11 +6,15 @@ package model;
 import controller.Pag02Controller;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -25,10 +29,14 @@ public class ModelPag01 {
     private File arquivo;
     private ModelClasseComum mCC;
     private Stage janela;
-
-    public ModelPag01() {
+    @FXML
+    private ImageView imagemTexto;
+    private URL imagemURL;
+    public ModelPag01(ImageView imgView) {
         this.unidadeAtual = "u00";
         mCC = new ModelClasseComum(janela);
+        imagemTexto = imgView;
+        
     }
     /**
      * Pega a unidade atual em execução
@@ -120,6 +128,23 @@ public class ModelPag01 {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
+    }
+    /**
+     * Define a imagem texto que será apresentada na imageView
+     * @param unidadeAtual 
+     */
+    public void setImagemTexto(String unidadeAtual) {
+        imagemURL = null;
+        System.out.println("Unidade atualk "+unidadeAtual);
+        switch(unidadeAtual){
+            case "u01":
+                System.out.println("entrou aqui");
+                 imagemURL = getClass().getResource("imagens/licao01/imagemTexto.png");                
+                break;
+            default:
+                break;
+        }
+        imagemTexto.setImage(new Image(imagemURL.toString()));
     }
     
 }

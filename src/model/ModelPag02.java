@@ -73,7 +73,7 @@ public class ModelPag02 {
     public void tocarAudio2() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p2a2.mp3";
+                caminhoAudio = "audios/u01/l1p2a2.mp3";
                 break;
             default:
 
@@ -89,7 +89,7 @@ public class ModelPag02 {
     public void tocarAudio3() {
         switch (getUnidadeAtual()) {
             case "u01":
-                caminhoAudio = "src/audios/u01/l1p2a3.mp3";
+                caminhoAudio = "audios/u01/l1p2a3.mp3";
                 break;
             default:
 
@@ -133,6 +133,7 @@ public class ModelPag02 {
 
         mCC.exibirCena(proximaCena, janela);
         pg01Cont.setUnidadeAtual(getUnidadeAtual());
+        pg01Cont.setImagemTexto();
         pg01Cont.tocarAudio();
     }
 

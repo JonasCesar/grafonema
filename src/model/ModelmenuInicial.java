@@ -45,6 +45,7 @@ public class ModelmenuInicial {
         janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface
+        pg01Cont.setImagemTexto();
         pg01Cont.tocarAudio();
         
     }

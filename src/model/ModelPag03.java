@@ -8,6 +8,7 @@ import controller.Pag04Controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,17 +45,18 @@ public class ModelPag03 {
     @FXML
     private Text instrucao;
     
-    private File f1, f2, f3, f4, f5, f6;
+    private File f1,f2, f3, f4, f5, f6;
+    private URL imgf1,  imgf2, imgf3, imgf4 , imgf5, imgf6;
     private Stage janela;
     private ModelClasseComum mCC;
 
     public ModelPag03(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1) {
-        this.img1 = i1;
-        this.img2 = i2;
-        this.img3 = i3;
-        this.img4 = i4;
-        this.img5 = i5;
-        this.img6 = i6;
+        img1 = i1;
+        img2 = i2;
+        img3 = i3;
+        img4 = i4;
+        img5 = i5;
+        img6 = i6;
         
         this.instrucao = instrucao1;
         
@@ -66,7 +68,7 @@ public class ModelPag03 {
     /**
      * Define a unidade em que o software se encontra
      *
-     * @param unidadeAtual unidade atual da execução
+     * @param unidade
      */
     public void setUnidadeAtual(String unidade) {
         this.unidadeAtual = unidade;
@@ -131,12 +133,12 @@ public class ModelPag03 {
         switch (getUnidadeAtual()) {
             //acertos img1, img3, img5
             case "u01":
-                if (imgClicada.equals("img1") || imgClicada.equals("img3") || imgClicada.equals("img5")) {
-                    f1 = new File("src/imagens/licao01/" + nomeImagem + "c.jpg");
-                    ((ImageView) event.getSource()).setImage(new Image(f1.toURI().toURL().toString()));
-                } else {
-                    f1 = new File("src/imagens/licao01/" + nomeImagem + "e.jpg");
-                    ((ImageView) event.getSource()).setImage(new Image(f1.toURI().toURL().toString()));
+                if (imgClicada.equals("img1") || imgClicada.equals("img3") || imgClicada.equals("img5")) {                    
+                     imgf1 = getClass().getResource("imagens/licao01/"+ nomeImagem + "c.png");
+                     ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
+                } else {                    
+                    imgf1 = getClass().getResource("imagens/licao01/"+ nomeImagem + "e.png");
+                    ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
                 }
                 break;
             default:
@@ -165,18 +167,18 @@ public class ModelPag03 {
     
     public void definirImagens(String unidadeAtual) throws MalformedURLException {
         String caminho = "";
+        imgf1 = imgf2 = imgf3 = imgf4 = imgf5 = imgf6 = null;
         /**
-         * Criar arquivos que chamam as imagens e pegar a URL desses arquivos
+         * Cria arquivos que chamam as imagens e pegar a URL desses arquivos
          */
         switch (unidadeAtual) {
             case "u01":
-                f1 = new File("src/imagens/licao01/1.jpg");
-                f2 = new File("src/imagens/licao01/2.jpg");
-                f3 = new File("src/imagens/licao01/3.jpg");
-                f4 = new File("src/imagens/licao01/4.jpg");
-                f5 = new File("src/imagens/licao01/5.jpg");
-                f6 = new File("src/imagens/licao01/6.jpg");
-
+                imgf1 = getClass().getResource("imagens/licao01/1.png");
+                imgf2 = getClass().getResource("imagens/licao01/2.png");
+                imgf3 = getClass().getResource("imagens/licao01/3.png");
+                imgf4 = getClass().getResource("imagens/licao01/4.png");
+                imgf5 = getClass().getResource("imagens/licao01/5.png");
+                imgf6 = getClass().getResource("imagens/licao01/6.png");
                 break;
             default:
                 break;
@@ -184,12 +186,13 @@ public class ModelPag03 {
         /**
          * Seta as imagens nos imageViews 
          */
-        img1.setImage(new Image(f1.toURI().toURL().toString()));
-        img2.setImage(new Image(f2.toURI().toURL().toString()));
-        img3.setImage(new Image(f3.toURI().toURL().toString()));
-        img4.setImage(new Image(f4.toURI().toURL().toString()));
-        img5.setImage(new Image(f5.toURI().toURL().toString()));
-        img6.setImage(new Image(f6.toURI().toURL().toString()));
+        
+        img1.setImage(new Image(imgf1.toString()));
+        img2.setImage(new Image(imgf2.toString()));
+        img3.setImage(new Image(imgf3.toString()));
+        img4.setImage(new Image(imgf4.toString()));
+        img5.setImage(new Image(imgf5.toString()));
+        img6.setImage(new Image(imgf6.toString()));
 
     }
 

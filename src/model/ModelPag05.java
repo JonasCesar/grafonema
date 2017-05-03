@@ -8,6 +8,7 @@ import controller.Pag06Controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -109,8 +110,9 @@ public class ModelPag05 {
      * Define a unidade atual e as labels referentes a essa pagina
      * @param unidadeAtual 
      */
-    public void setUnidadeAtual(String unidadeAtual) throws MalformedURLException {
+    public void setUnidadeAtual(String unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
+        URL imgUrl = null;
         switch (unidadeAtual) {
             case "u01":
                 p1.setText("VA");
@@ -120,12 +122,13 @@ public class ModelPag05 {
                 p5.setText("VU");
                 f1.setText("POL");
                 espaco.setText("");
-                imagem = new File("src/imagens/licao01/polvopb.jpg");
-                imagemAudio.setImage(new Image(imagem.toURI().toURL().toString()));
+                imgUrl = getClass().getResource("imagens/licao01/polvopb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             default:
                 break;
         }
+        imagemAudio.setImage(new Image(imgUrl.toString()));
     }
     
     /**
@@ -175,21 +178,21 @@ public class ModelPag05 {
      * @param event mouse liberado
      * @return true ou false
      */
-    public boolean verificarEscolhaSilaba(MouseEvent event) throws MalformedURLException {
+    public boolean verificarEscolhaSilaba(MouseEvent event) {
         String silabaEscolhida = ((Label) event.getSource()).getText();
+        URL imgUrl = null;
         boolean opcaoCorreta = false;
         switch (getUnidadeAtual()) {
             case "u01":
                 if (silabaEscolhida.equals("VO")) {
-                    opcaoCorreta = true;
-                    imagem = new File("src/imagens/licao01/polvocor.jpg");
-                    imagemAudio.setImage(new Image(imagem.toURI().toURL().toString()));
+                    opcaoCorreta = true;                    
+                     imgUrl = getClass().getResource("imagens/licao01/polvocor.png");                    
                 }
                 break;
             default:
                 break;
         }
-
+        imagemAudio.setImage(new Image(imgUrl.toString()));
         return opcaoCorreta;
     }
 

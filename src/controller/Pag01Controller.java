@@ -51,10 +51,12 @@ public class Pag01Controller implements Initializable {
     private ImageView iconeOuvir;
     @FXML
     private Button atividades;
+    @FXML
+    private ImageView imagemTexto;
 
     public Pag01Controller() {
         unidadeAtual = "u00";
-        modelPag01 = new ModelPag01();
+        
         listaPalavras = new ListView<String>();
         controlerComum = new ControllerClasseComum(listaPalavras);
         iconeOuvir = new ImageView();
@@ -68,6 +70,7 @@ public class Pag01Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        modelPag01 = new ModelPag01(imagemTexto);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -176,4 +179,12 @@ public class Pag01Controller implements Initializable {
     @FXML
     private void sugestaoAtividades(ActionEvent event) {
     }
+    /**
+     * Define a imagem que representa o texto do áudio
+     */
+    public void setImagemTexto() {
+        modelPag01.setImagemTexto(getUnidadeAtual());
+    }
+    
+    
 }
