@@ -24,6 +24,8 @@ public class MenuInicialController implements Initializable {
     private Button u01;
     
     private ModelmenuInicial menuInicial; 
+    @FXML
+    private Button u02;
 
     /**
      * Initializes the controller class.
@@ -44,7 +46,11 @@ public class MenuInicialController implements Initializable {
         //verifica qual botão foi clicado
         switch(unidade){
             case "u01":
-                menuInicial.iniciar(event, unidade);
+                menuInicial.iniciar(event, 1);
+                break;
+            case "u02":
+                System.out.println("Entrou aqui");
+                menuInicial.iniciar(event, 2);
                 break;
             default:
                 break;

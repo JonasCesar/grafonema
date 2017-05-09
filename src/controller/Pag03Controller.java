@@ -90,7 +90,7 @@ public class Pag03Controller implements Initializable {
      * @param unidade valor da unidade atual
      * @throws IOException 
      */
-    public void setUnidadeAtual(String unidade) throws IOException {
+    public void setUnidadeAtual(int unidade) throws IOException {
         atualizarListView();
         modelPag03.setUnidadeAtual(unidade);
     }
@@ -117,11 +117,11 @@ public class Pag03Controller implements Initializable {
     }
 
     //redireciona para o método definir instrução do model que irá imprimir a instrução na tela
-    public void setInstrucao(String unidadeAtual) throws MalformedURLException    {
+    public void setInstrucao(int unidadeAtual) throws MalformedURLException    {
         modelPag03.definirInstrucao(unidadeAtual);
     }
     
-    public void setImagens(String unidadeAtual) throws MalformedURLException {
+    public void setImagens(int unidadeAtual) throws MalformedURLException {
         modelPag03.definirImagens(unidadeAtual);
     }
 

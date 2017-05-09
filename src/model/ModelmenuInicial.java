@@ -6,8 +6,6 @@ package model;
 
 import java.io.IOException;
 import controller.Pag01Controller;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,7 +32,7 @@ public class ModelmenuInicial {
      * @param unidade unidade escolhida
      * @throws IOException 
      */
-    public void iniciar(ActionEvent event, String unidade) throws IOException{
+    public void iniciar(ActionEvent event, int unidade) throws IOException{
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));  
         

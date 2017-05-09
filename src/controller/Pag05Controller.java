@@ -106,7 +106,7 @@ public class Pag05Controller implements Initializable {
      * @param unidadeAtual
      * @throws IOException 
      */
-    public void setUnidadeAtual(String unidadeAtual) throws IOException {
+    public void setUnidadeAtual(int unidadeAtual) throws IOException {
         atualizarListView();
         modelPag05.setUnidadeAtual(unidadeAtual);
     }
@@ -274,7 +274,7 @@ public class Pag05Controller implements Initializable {
         modelPag05.tocarAudio();
     }
     
-    public void setInstrucao(String unidadeAtual)    {
+    public void setInstrucao(int unidadeAtual)    {
         modelPag05.definirInstrucao(unidadeAtual);
     }
 

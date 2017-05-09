@@ -87,7 +87,7 @@ public class Pag01Controller implements Initializable {
      * Retorna o valor da unidade atual
      * @return 
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return modelPag01.getUnidadeAtual();
     }
     /**
@@ -96,7 +96,7 @@ public class Pag01Controller implements Initializable {
      * @throws FileNotFoundException
      * @throws IOException 
      */
-    public void setUnidadeAtual(String unidade) throws FileNotFoundException, IOException {
+    public void setUnidadeAtual(int unidade) throws FileNotFoundException, IOException {
         atualizarListView();
         modelPag01.setUnidadeAtual(unidade, tituloUnidade);
     }

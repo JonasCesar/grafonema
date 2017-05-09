@@ -30,22 +30,23 @@ import javafx.util.Duration;
  */
 public class ModelPag06 {
 
-    private String unidadeAtual;
+    private int unidadeAtual;
     private Stage janela;
     private String caminhoAudio;
 
     private Label p1, p2;
     private ModelClasseComum mCC;
-    
+
     @FXML
     private Text instrucao;
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
     private ListView<String> listaPalavras;
+
     public ModelPag06(Label p1, Label p2, Text instrucao1, ListView<String> listaPalavras) {
         this.p1 = p1;
         this.p2 = p2;
-        this.unidadeAtual = "u00";
+        this.unidadeAtual = 0;
         this.listaPalavras = listaPalavras;
         mCC = new ModelClasseComum(janela, this.listaPalavras);
         this.instrucao = instrucao1;
@@ -53,9 +54,10 @@ public class ModelPag06 {
 
     /**
      * Define a unidade em que o software se encontra
+     *
      * @param unidade
      */
-    public void setUnidadeAtual(String unidade) {
+    public void setUnidadeAtual(int unidade) {
         this.unidadeAtual = unidade;
     }
 
@@ -102,7 +104,7 @@ public class ModelPag06 {
      *
      * @return string com o valor da unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return this.unidadeAtual;
     }
 
@@ -112,12 +114,17 @@ public class ModelPag06 {
      * @param resposta string digitada pela pessoa
      * @return
      */
-    public boolean verificarResposta(String resposta) throws InterruptedException {
+    public boolean verificarResposta(String resposta) {
         boolean respostaCorreta = false;
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 if (resposta.toUpperCase().equals("VOVÔ")) {
-                    respostaCorreta = true;                    
+                    respostaCorreta = true;
+                }
+                break;
+            case 2:
+                if (resposta.toUpperCase().equals("POVO")) {
+                    respostaCorreta = true;
                 }
                 break;
             default:
@@ -125,27 +132,37 @@ public class ModelPag06 {
         }
         return respostaCorreta;
     }
+
     /**
      * Executa o áudio da página
      */
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/l1p6.mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios/u02/l2p6.mp3";
                 break;
             default:
                 break;
         }
         mCC.play(caminhoAudio);
     }
+
     /**
      * Define as labels que serão utilizadas na página baseado na unidade atual
      */
     public void definirLabels() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 p1.setText("O");
                 p2.setText("É MEU AMIGO");
+                break;
+            case 2:
+                System.out.println("Entrou sdfdsdf");
+                p1.setText("O");
+                p2.setText("DA FESTA ESTÁ ANIMADO");
                 break;
             default:
                 break;
@@ -188,11 +205,13 @@ public class ModelPag06 {
 //            mCC.play(caminhoAudio);
 //        }
 //    }
-
     public void executarAudioFrase() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/frase.mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios/u02/frase.mp3";
                 break;
             default:
                 break;
@@ -212,56 +231,52 @@ public class ModelPag06 {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
+
     /**
      * Abre o função "ABC" do programa
+     *
      * @param event disparado quando o botão "ABC" é clicado
      * @param pagina pagina de onde a função "ABC" foi chamada
-     * @throws IOException 
+     * @throws IOException
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
     }
-    
+
     //faz exibir a instrução da atividade atual na tela
-    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
-
+    public void definirInstrucao(int unidadeAtual) {
         switch (unidadeAtual) {
-
-            case "u01":
+            case 1:
                 instrucao.setText("Digite a palavra que você aprendeu para formar a frase:\n \"o vovô é meu amigo\"");
-            break;
+                break;
+            case 2:
+                instrucao.setText("Digite a palavra que você aprendeu para formar a frase:\n \"o povo da festa está animado\"");
+                break;       
         }
-
     }
-    
+
     private void tocarAudioParabens() throws InterruptedException {
         Random indiceParabens = new Random();
         int numeroAudio = indiceParabens.nextInt(3);
-        caminhoAudio = "audios/acerto/"+numeroAudio+".mp3";
+        caminhoAudio = "audios/acerto/" + numeroAudio + ".mp3";
         mCC.play(caminhoAudio);
-        
+
     }
-    
-    public void audioAcerto(){        
+
+    public void audioAcerto() {
         //evento que represanta a ação do acerto
-        primeiroAudio = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    tocarAudioParabens();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        primeiroAudio = (ActionEvent event) -> {
+            try {
+                tocarAudioParabens();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
             }
         };
 
         //evento que representa o audio a ser executado depois o
-        segundoAudio = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-               executarAudioFrase();
-            }
+        segundoAudio = (ActionEvent event) -> {
+            executarAudioFrase();
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), primeiroAudio),
@@ -271,12 +286,12 @@ public class ModelPag06 {
     public void audioErro() {
         Random indiceErro = new Random();
         int numeroAudio = indiceErro.nextInt(3);
-        caminhoAudio = "audios/erro/"+numeroAudio+".mp3";
+        caminhoAudio = "audios/erro/" + numeroAudio + ".mp3";
         mCC.play(caminhoAudio);
     }
 
     public void atualizarListView() {
-       mCC.atualizarListView(listaPalavras);
+        mCC.atualizarListView(listaPalavras);
     }
 
 }

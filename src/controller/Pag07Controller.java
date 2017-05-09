@@ -67,7 +67,7 @@ public class Pag07Controller implements Initializable {
         modelPag07.tocarAudio();
     }
 
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return modelPag07.getUnidadeAtual();
     }
     /**
@@ -75,7 +75,7 @@ public class Pag07Controller implements Initializable {
      * @param unidadeAtual o novo valor da unidade
      * @throws IOException 
      */
-    public void setUnidadeAtual(String unidadeAtual) throws IOException {
+    public void setUnidadeAtual(int unidadeAtual) throws IOException {
         atualizarListView();
         modelPag07.setUnidadeAtual(unidadeAtual, tituloUnidade);
     }

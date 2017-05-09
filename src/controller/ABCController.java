@@ -62,7 +62,7 @@ public class ABCController implements Initializable {
 
     }
 
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(int unidadeAtual) {
         modelABC.setUnidadeAtual(unidadeAtual);
     }
 

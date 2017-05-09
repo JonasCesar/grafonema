@@ -27,7 +27,8 @@ import javafx.stage.Stage;
  */
 public class ModelPag03 {
 
-    private String unidadeAtual, caminhoAudio;
+    private String caminhoAudio;
+    private int unidadeAtual;
     private File arquivo;
     private Image i1, i2, i3, i4, i5, i6;
     @FXML
@@ -63,7 +64,7 @@ public class ModelPag03 {
         this.listaPalavras = listaPalavras;
         this.instrucao = instrucao1;
         
-        unidadeAtual = "u00";
+        unidadeAtual = 0;
         caminhoAudio = "";
         
         mCC = new ModelClasseComum(janela, this.listaPalavras);        
@@ -74,7 +75,7 @@ public class ModelPag03 {
      *
      * @param unidade
      */
-    public void setUnidadeAtual(String unidade) {
+    public void setUnidadeAtual(int unidade) {
         this.unidadeAtual = unidade;
     }
 
@@ -83,7 +84,7 @@ public class ModelPag03 {
      *
      * @return string com o valor da unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return unidadeAtual;
     }
 
@@ -136,26 +137,39 @@ public class ModelPag03 {
 
         switch (getUnidadeAtual()) {
             //acertos img1, img3, img5
-            case "u01":
+            case 1:
                 if (imgClicada.equals("img1") || imgClicada.equals("img3") || imgClicada.equals("img5")) {                    
                      imgf1 = getClass().getResource("imagens/licao01/"+ nomeImagem + "c.png");
-                     ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
+                    // ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
                 } else {                    
                     imgf1 = getClass().getResource("imagens/licao01/"+ nomeImagem + "e.png");
-                    ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
+                   // ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
+                }
+                break;
+            case 2:
+                if (imgClicada.equals("img1") || imgClicada.equals("img4") || imgClicada.equals("img6")) {                    
+                     imgf1 = getClass().getResource("imagens/licao02/"+ nomeImagem + "c.png");
+                    // ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
+                } else {                    
+                    imgf1 = getClass().getResource("imagens/licao02/"+ nomeImagem + "e.png");
+                    //((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
                 }
                 break;
             default:
                 break;
         }
+        ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
     }
     /**
      * Executa o audio inicial da página
      */
     public void tocarAudioInicial() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/l1p3.mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios/u02/l2p3.mp3";
                 break;
             default:
                 break;
@@ -169,20 +183,28 @@ public class ModelPag03 {
      * @throws MalformedURLException 
      */
     
-    public void definirImagens(String unidadeAtual) throws MalformedURLException {
+    public void definirImagens(int unidadeAtual) throws MalformedURLException {
         String caminho = "";
         imgf1 = imgf2 = imgf3 = imgf4 = imgf5 = imgf6 = null;
         /**
          * Cria arquivos que chamam as imagens e pegar a URL desses arquivos
          */
         switch (unidadeAtual) {
-            case "u01":
+            case 1:
                 imgf1 = getClass().getResource("imagens/licao01/1.png");
                 imgf2 = getClass().getResource("imagens/licao01/2.png");
                 imgf3 = getClass().getResource("imagens/licao01/3.png");
                 imgf4 = getClass().getResource("imagens/licao01/4.png");
                 imgf5 = getClass().getResource("imagens/licao01/5.png");
                 imgf6 = getClass().getResource("imagens/licao01/6.png");
+                break;
+            case 2:
+                imgf1 = getClass().getResource("imagens/licao02/1.png");
+                imgf2 = getClass().getResource("imagens/licao02/2.png");
+                imgf3 = getClass().getResource("imagens/licao02/3.png");
+                imgf4 = getClass().getResource("imagens/licao02/4.png");
+                imgf5 = getClass().getResource("imagens/licao02/5.png");
+                imgf6 = getClass().getResource("imagens/licao02/6.png");
                 break;
             default:
                 break;
@@ -234,8 +256,11 @@ public class ModelPag03 {
         String idImagem = ((ImageView) event.getSource()).getId();
         String nomeImagem = idImagem.substring(3, 4);
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/" + nomeImagem + ".mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios/u02/" + nomeImagem + ".mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -268,13 +293,14 @@ public class ModelPag03 {
     }
     
     //faz exibir a instrução da atividade atual na tela
-    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
+    public void definirInstrucao(int unidadeAtual) throws MalformedURLException {
 
         switch (unidadeAtual) {
-
-            case "u01":
+            case 1:
                 instrucao.setText("Clique nas imagens que tem o som \"vô\"");
-            break;
+                break;
+            case 2:
+                break;            
         }
 
     }

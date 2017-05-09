@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -22,7 +23,7 @@ import javafx.stage.Stage;
  */
 public class ModelPag02 {
 
-    private String unidadeAtual;
+    private int unidadeAtual;
     private Pag02Controller pg02;
     private String caminhoAudio;
 
@@ -33,10 +34,15 @@ public class ModelPag02 {
     
     @FXML
     private ListView<String> listaPalavras;
+    
+    @FXML
+    private Label palavraAtual;
+    
 
-    public ModelPag02(ListView<String> listaPalavras) {
-        this.unidadeAtual = "u00";
+    public ModelPag02(ListView<String> listaPalavras, Label palavraAtual) {
+        this.unidadeAtual = 0;
         this.listaPalavras = listaPalavras;
+        this.palavraAtual = palavraAtual;
         mCC = new ModelClasseComum(janela, this.listaPalavras);
     }
 
@@ -45,7 +51,7 @@ public class ModelPag02 {
      *
      * @return string com o valor da unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return unidadeAtual;
     }
 
@@ -54,7 +60,17 @@ public class ModelPag02 {
      *
      * @param unidadeAtual unidade atual da execução
      */
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(int unidadeAtual) {
+        switch (unidadeAtual) {
+            case 1:
+                palavraAtual.setText("VOVÔ");
+                break;
+            case 2:
+                palavraAtual.setText("POVO");
+                break;
+            default:
+                break;
+        }
         this.unidadeAtual = unidadeAtual;
     }
 
@@ -63,8 +79,11 @@ public class ModelPag02 {
      */
     public void tocarAudio1() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/l1p2a1.mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios/u02/l2p2a1.mp3";
                 break;
             default:
                 break;
@@ -78,11 +97,13 @@ public class ModelPag02 {
      */
     public void tocarAudio2() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/l1p2a2.mp3";
                 break;
+            case 2:
+                caminhoAudio = "audios/u02/l2p2a2.mp3";
+                break;
             default:
-
                 break;
         }
 
@@ -94,11 +115,13 @@ public class ModelPag02 {
      */
     public void tocarAudio3() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/l1p2a3.mp3";
                 break;
+            case 2:
+                caminhoAudio = "audios/u02/l2p2a3.mp3";
+                break;
             default:
-
                 break;
         }
 

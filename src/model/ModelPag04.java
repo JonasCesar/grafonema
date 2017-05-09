@@ -37,8 +37,8 @@ import javafx.util.Duration;
  */
 public class ModelPag04 {
 
-    //String que armazena o valor da unidade atual
-    private String unidadeAtual;
+    //inteiro que armazena o valor da unidade atual
+    private int unidadeAtual;
     //Janela ondo programa
     private Stage janela;
 
@@ -103,6 +103,7 @@ public class ModelPag04 {
      * @param imagemAudio
      * @param janelaPrograma
      * @param instrucao1
+     * @param listaPalavras
      */
     public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
             Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1, ListView<String> listaPalavras) {
@@ -126,12 +127,12 @@ public class ModelPag04 {
      *Define a unidade em que o software se encontra
      * @param unidadeAtual unidade atual da execução
      */
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(int unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
         //define o conteúdo das labels da pag 4
         URL imgUrl = null;
         switch (unidadeAtual) {
-            case "u01":
+            case 1:
                 p1.setText("VA");
                 p2.setText("VE");
                 p3.setText("VI");
@@ -140,6 +141,16 @@ public class ModelPag04 {
                 f1.setText("ÁR");
                 f2.setText("RE");                
                 imgUrl = getClass().getResource("imagens/licao01/arvorepb.png");
+                break;
+            case 2:
+                p1.setText("PA");
+                p2.setText("PE");
+                p3.setText("PI");
+                p4.setText("PO");
+                p5.setText("PU");
+                f1.setText("PI");
+                f2.setText("CA");
+                imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
                 break;
             default:
                 break;
@@ -151,7 +162,7 @@ public class ModelPag04 {
      * Pega a unidade atual em execução
      * @return string com o valor da unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return this.unidadeAtual;
     }
 
@@ -205,10 +216,17 @@ public class ModelPag04 {
         imagemUrl = null;
         //verifica a unidade atual
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 if (silabaEscolhida.equals("VO")) {
                     opcaoCorreta = true;                    
                     imagemUrl = getClass().getResource("imagens/licao01/arvorecor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
+                }
+                break;
+            case 2:
+                if (silabaEscolhida.equals("PO")) {
+                    opcaoCorreta = true;                    
+                    imagemUrl = getClass().getResource("imagens/licao02/pipocacor.png");
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
@@ -226,9 +244,12 @@ public class ModelPag04 {
     public void tocarAudio() {
         //verifica a unidade atual
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 //diretório do audio
                 caminhoAudio = "audios/u01/l1p4.mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios/u02/l2p4.mp3";
                 break;
             default:
                 break;
@@ -276,8 +297,11 @@ public class ModelPag04 {
      */
     public void executarPalavra() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/arvore.mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios/u02/pipoca.mp3";
                 break;
             default:
                 break;
@@ -410,13 +434,15 @@ public class ModelPag04 {
     }
     
     //faz exibir a instrução da atividade atual na tela
-    public void definirInstrucao(String unidadeAtual) throws MalformedURLException {
+    public void definirInstrucao(int unidadeAtual) {
 
         switch (unidadeAtual) {
-
-            case "u01":
-                instrucao.setText("“Complete com a parte que está faltando: \"ÁRVORE\"");
-            break;
+            case 1:
+                instrucao.setText("“Complete com a parte que está faltando: \"ÁRVORE\"");                
+                break;
+            case 2:
+                instrucao.setText("“Complete com a parte que está faltando: \"PIPOCA\"");                
+                break;               
         }
 
     }

@@ -35,7 +35,7 @@ public class ModelABC {
 
     private ModelClasseComum mCC;
     private Stage janela;
-    private String unidadeAtual;
+    private int unidadeAtual;
 
     @FXML
     public ImageView imgLetra;
@@ -46,7 +46,7 @@ public class ModelABC {
     private ListView<String> listaPalavras;
     public ModelABC() {
         mCC = new ModelClasseComum(janela, listaPalavras);
-        unidadeAtual = "u00";
+        unidadeAtual = 0;
 
     }
 
@@ -199,11 +199,11 @@ public class ModelABC {
         }
     }
 
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(int unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
     }
 
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return unidadeAtual;
     }
 

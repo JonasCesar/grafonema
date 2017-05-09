@@ -3,15 +3,10 @@
  */
 package model;
 
-import controller.MenuInicialController;
+import controller.Pag01Controller;
 import controller.Pag06Controller;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import static java.lang.Thread.currentThread;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,14 +23,14 @@ public class ModelPag07 {
 
     private Stage janela;
     private String caminhoAudio;
-    private String unidadeAtual;
+    private int unidadeAtual;
     private ModelClasseComum mCC;
     private final int pagina = 7;
     private ListView<String> listaPalavras;
 
     public ModelPag07() {
-        this.unidadeAtual = "u00";
-        mCC = new ModelClasseComum(janela,listaPalavras);
+        this.unidadeAtual = 0;
+        mCC = new ModelClasseComum(janela, listaPalavras);
     }
 
     /**
@@ -46,36 +41,66 @@ public class ModelPag07 {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
-        MenuInicialController menuInicialCont = fxmloader.<MenuInicialController>getController();
-        //menuInicialCont.setUnidadeAtual(getUnidadeAtual());
+        Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
+        pg01Cont.setUnidadeAtual(getUnidadeAtual() + 1);
         salvarPalavraEstudadas(getUnidadeAtual());
         mCC.exibirCena(proximaCena, janela);
+        pg01Cont.setImagemTexto();
+        pg01Cont.tocarAudio();
     }
 
     /**
      * Define a unidade em que o software se encontra
+     *
+     * @param unidade
+     * @param tituloUnidade
      */
-    public void setUnidadeAtual(String unidade, Label tituloUnidade) {
+    public void setUnidadeAtual(int unidade, Label tituloUnidade) {
         this.unidadeAtual = unidade;
 
         System.out.println(tituloUnidade + " " + unidade);
-        tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));
+        //tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));
     }
 
     /**
      * Executra o audio que deve ser executado nessa pagina
      */
-    public void tocarAudio() {
+    public void tocarAudio() { 
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/l1p1.mp3";
                 break;
-            default:
-
+            case 2:
+                caminhoAudio = "audios/u02/l2p1.mp3";
                 break;
+            case 3:
+                caminhoAudio = "audios/u03/l3p1.mp3";
+                break;
+            case 4:
+                caminhoAudio = "audios/u04/l4p1.mp3";
+                break;
+            case 5:
+                caminhoAudio = "audios/u05/l5p1.mp3";
+                break;
+            case 6:
+                caminhoAudio = "audios/u06/l6p1.mp3";
+                break;
+            case 7:
+                caminhoAudio = "audios/u07/l7p1.mp3";
+                break;
+            case 8:
+                caminhoAudio = "audios/u08/l8p1.mp3";
+                break;
+            case 9:
+                caminhoAudio = "audios/u09/l9p1.mp3";
+                break;
+            default:
+                caminhoAudio = "audios/u" + getUnidadeAtual() + "/l" + getUnidadeAtual() + "p1.mp3";
+                break;
+                
         }
 
         mCC.play(caminhoAudio);
@@ -86,9 +111,8 @@ public class ModelPag07 {
      *
      * @return string com o valor da unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return this.unidadeAtual;
-
     }
 
     /**
@@ -124,12 +148,12 @@ public class ModelPag07 {
      * @param unidade
      * @throws IOException
      */
-    public void salvarPalavraEstudadas(String unidade) throws IOException {
+    public void salvarPalavraEstudadas(int unidade) throws IOException {
         String novaPalavra = "";
         boolean encontrado = false;
         BufferedReader lerArq = null;
         switch (unidade) {
-            case "u01":
+            case 1:
                 novaPalavra = "VOVÔ";
                 break;
             default:
@@ -140,34 +164,24 @@ public class ModelPag07 {
          * no arquivo
          */
         mCC.salvarPalavraEstudada(novaPalavra);
-        
+
         /**
-        String inputLine;
-        ClassLoader loader = currentThread().getContextClassLoader();
-        InputStream arquivoInput = loader.getClass().getResourceAsStream("texto.txt");        
-        try {
-            FileWriter fstream = new FileWriter("texto.txt");
-            BufferedWriter out = new BufferedWriter(fstream);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(arquivoInput));
-            System.out.println("Antes do while");
-            while ((inputLine = reader.readLine()) != null) {
-                System.out.println("Oi "+inputLine);
-                /**
-                 * String[] str = inputLine.split("\t"); if (/* IF WHAT YOU WANT
-                 * IS IN THE FILE ADD IT ) { // DO SOMETHING OR ADD WHAT YOU
-                 * WANT out.append(str); out.newLine();
-                }*
-                 
-                out.append(novaPalavra);
-                out.newLine();
-            }
-            reader.close();
-            out.close();
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        //File arquivoEscrita = new File(arquivoInput.toString());
-        
+         * String inputLine; ClassLoader loader =
+         * currentThread().getContextClassLoader(); InputStream arquivoInput =
+         * loader.getClass().getResourceAsStream("texto.txt"); try { FileWriter
+         * fstream = new FileWriter("texto.txt"); BufferedWriter out = new
+         * BufferedWriter(fstream); BufferedReader reader = new
+         * BufferedReader(new InputStreamReader(arquivoInput));
+         * System.out.println("Antes do while"); while ((inputLine =
+         * reader.readLine()) != null) { System.out.println("Oi "+inputLine);
+         * /** String[] str = inputLine.split("\t"); if (/* IF WHAT YOU WANT IS
+         * IN THE FILE ADD IT ) { // DO SOMETHING OR ADD WHAT YOU WANT
+         * out.append(str); out.newLine(); }*
+         *
+         * out.append(novaPalavra); out.newLine(); } reader.close();
+         * out.close(); } catch (Exception e) { e.getMessage(); } //File
+         * arquivoEscrita = new File(arquivoInput.toString());
+         *
          * FileWriter escreverArquivo = new FileWriter(arquivoEscrita, true);
          * try (BufferedWriter bufferDeEscrita = new
          * BufferedWriter(escreverArquivo)) {
@@ -185,8 +199,8 @@ public class ModelPag07 {
          * lerArq.close(); } catch (Exception e) {
          *
          * }
-         * **/
-         
+         * *
+         */
     }
 
     /**
@@ -227,6 +241,10 @@ public class ModelPag07 {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras);
+    }
+
+    public void incrementarUnidade(int valor) {
+        System.out.println("Unidade atual " + getUnidadeAtual());
     }
 
 }

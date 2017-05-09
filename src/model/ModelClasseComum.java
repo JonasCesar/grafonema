@@ -35,7 +35,7 @@ public class ModelClasseComum {
     private MediaView mediaView = new MediaView();
     private Stage janela;
     private String caminhoAudio;
-    private String unidadeAtual;
+    private int unidadeAtual;
     private ActionEvent eventoTemporario;
     public static ObservableList<String> items = FXCollections.observableArrayList();
     
@@ -45,7 +45,7 @@ public class ModelClasseComum {
     public ModelClasseComum(Stage janela, ListView<String> listaPalavras) {
         this.janela = janela;
         eventoTemporario = null;
-        unidadeAtual = "u00";
+        unidadeAtual = 0;
         this.listaPalavras = listaPalavras;
     }
 
@@ -168,7 +168,7 @@ public class ModelClasseComum {
      *
      * @param unidadeAtual unidade em que o usuário se encontra
      */
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(int unidadeAtual) {
 
         this.unidadeAtual = unidadeAtual;
     }
@@ -178,7 +178,7 @@ public class ModelClasseComum {
      *
      * @return
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return this.unidadeAtual;
     }
 

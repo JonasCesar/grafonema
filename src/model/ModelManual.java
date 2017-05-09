@@ -26,12 +26,12 @@ public class ModelManual {
 
     private ModelClasseComum mCC;
     private Stage janela;
-    private String unidadeAtual;
+    private int unidadeAtual;
     private ListView<String> listaPalavras;
 
     public ModelManual() {
         mCC = new ModelClasseComum(janela,listaPalavras);
-        unidadeAtual = "u00";
+        unidadeAtual = 0;
     }
     /**
      * Chama o menu inicial
@@ -121,14 +121,14 @@ public class ModelManual {
      * Define a unidade atual
      * @param unidadeAtual unidade atual
      */
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(int unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
     }
     /**
      * Retorna a unidade atual
      * @return string referente à unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return unidadeAtual;
     }
 

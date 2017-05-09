@@ -79,7 +79,7 @@ public class ManualController implements Initializable {
      *
      * @param unidadeAtual
      */
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(int unidadeAtual) {
         modelManual.setUnidadeAtual(unidadeAtual);
     }
 
@@ -88,7 +88,7 @@ public class ManualController implements Initializable {
      *
      * @return string da unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return modelManual.getUnidadeAtual();
     }
 

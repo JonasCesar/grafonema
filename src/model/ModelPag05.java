@@ -37,7 +37,7 @@ import javafx.util.Duration;
 public class ModelPag05 {
 
     private Stage janela;
-    private String unidadeAtual;
+    private int unidadeAtual;
     //Declaração das labels utilizadas
     @FXML
     private Label p1;
@@ -74,12 +74,13 @@ public class ModelPag05 {
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
     private URL imagemUrl;
-    
+
     @FXML
     private ListView<String> listaPalavras;
 
     @FXML
     private Text instrucao;
+
     /**
      * Construtor da classe Labels utilzadas nas paginas:
      *
@@ -93,8 +94,11 @@ public class ModelPag05 {
      * @param espaco
      * @param imagemAudio
      * @param janelaPrograma
+     * @param instrucao1
+     * @param listaPalavras
+     * 
      */
-    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1, 
+    public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
             Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1, ListView<String> listaPalavras) {
         this.p1 = p1;
         this.p2 = p2;
@@ -104,24 +108,26 @@ public class ModelPag05 {
         this.f1 = f1;
         this.f2 = f2;
         this.espaco = espaco;
-        this.unidadeAtual = "u00";
+        this.unidadeAtual = 0;
         this.listaPalavras = listaPalavras;
-        mCC = new ModelClasseComum(janela,this.listaPalavras);
+        mCC = new ModelClasseComum(janela, this.listaPalavras);
         this.imagemAudio = imagemAudio;
         this.janelaPrograma = janelaPrograma;
         this.instrucao = instrucao1;
-                
+
     }
 
     /**
      * Define a unidade atual e as labels referentes a essa pagina
-     * @param unidadeAtual 
+     *
+     * @param unidadeAtual
      */
-    public void setUnidadeAtual(String unidadeAtual) {
+    public void setUnidadeAtual(int unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
+        double xf1, yf1, xespaco, yespaco, z = 0;
         URL imgUrl = null;
         switch (unidadeAtual) {
-            case "u01":
+            case 1:
                 p1.setText("VA");
                 p2.setText("VE");
                 p3.setText("VI");
@@ -132,16 +138,31 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao01/polvopb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
+            case 2:
+                p1.setText("PA");
+                p2.setText("PE");
+                p3.setText("PI");
+                p4.setText("PO");
+                p5.setText("PU");    
+                                //double f1setX = event.getSceneX() - orgSceneX;
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");               
+                f1.setText("ÇO");                
+                espaco.setText("");
+                imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
+                break;
             default:
                 break;
         }
         imagemAudio.setImage(new Image(imgUrl.toString()));
     }
-    
+
     /**
      * Carrega a próxima página na tela
+     *
      * @param event disparado pelo método avancar do controller
-     * @throws IOException 
+     * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -153,10 +174,13 @@ public class ModelPag05 {
 
         mCC.exibirCena(proximaCena, janela);
         pg06Cont.tocarAudio();
+        f1.setId("f1");
+        espaco.setId("espaco");
     }
 
     /**
      * Carrega a página anterior
+     *
      * @param event disparado pelo método voltar do controller
      * @throws IOException
      */
@@ -171,11 +195,13 @@ public class ModelPag05 {
         pg04Cont.setUnidadeAtual(getUnidadeAtual());
         pg04Cont.tocarAudio();
     }
-   /**
+
+    /**
      * Pega a unidade atual em execução
+     *
      * @return string com o valor da unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return this.unidadeAtual;
     }
 
@@ -190,17 +216,23 @@ public class ModelPag05 {
         imagemUrl = null;
         boolean opcaoCorreta = false;
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 if (silabaEscolhida.equals("VO")) {
-                    opcaoCorreta = true;                    
-                     imagemUrl = getClass().getResource("imagens/licao01/polvocor.png");
-                      imagemAudio.setImage(new Image(imagemUrl.toString()));
+                    opcaoCorreta = true;
+                    imagemUrl = getClass().getResource("imagens/licao01/polvocor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
+                }
+                break;
+            case 2:
+                if (silabaEscolhida.equals("PO")) {
+                    opcaoCorreta = true;
+                    imagemUrl = getClass().getResource("imagens/licao02/poçocor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
             default:
                 break;
         }
-        
         return opcaoCorreta;
     }
 
@@ -209,11 +241,13 @@ public class ModelPag05 {
      */
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/l1p5.mp3";
                 break;
+            case 2:
+                caminhoAudio = "audios/u02/l2p5.mp3";
+                break;
             default:
-
                 break;
         }
         mCC.play(caminhoAudio);
@@ -239,14 +273,17 @@ public class ModelPag05 {
 
     /**
      * Carrega o menu inicial
+     *
      * @param event disparado pelo método "menuInicial" do controller
-     * @throws IOException 
+     * @throws IOException
      */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
-   /**
+
+    /**
      * Executa o audio da palavra clicada
+     *
      * @param palavraSelecionada string que representa a palavra selecionada
      */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
@@ -258,41 +295,49 @@ public class ModelPag05 {
      */
     public void executarPalavra() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/polvo.mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios/u02/poço.mp3";
                 break;
             default:
                 break;
         }
         mCC.play(caminhoAudio);
     }
+
     /**
      * Abre o ABC do software
+     *
      * @param event botão "ABC" clicado
      * @param pagina pagina de onde o botão "ABC" foi clicado
-     * @throws IOException 
+     * @throws IOException
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
     }
 
-/**
+    /**
      * Carrega a interface do manual do software
+     *
      * @param event disparado pelo método
      * @param pagina pagina de onde o manual foi chamado
-     * @throws IOException 
+     * @throws IOException
      */
     public void abrirManual(ActionEvent event, int pagina) throws IOException {
-         mCC.pararAudio();
+        mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
+
     /**
      * Trata o evento em que o mouse é arrastado depois de ser pressionado
+     *
      * @param event mouse arrastado pela janela
      */
-    
+
     public void mouseArrastado(MouseEvent event) {
         double offsetX = event.getSceneX() - orgSceneX;
         double offsetY = event.getSceneY() - orgSceneY;
@@ -304,20 +349,24 @@ public class ModelPag05 {
         verificarColisao(event);
         janelaPrograma.setStyle("-fx-cursor: move;");
     }
+
     /**
      * Verifica se a label solta dentro do espaço em branco
+     *
      * @param evento label é solta
      * @return true se sim, do contrário false
      */
-    
+
     public boolean verificarColisao(MouseEvent evento) {
         boolean colidiu = (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent()));
         return colidiu;
     }
+
     /**
      * Trata o evento de quando o mouse é liberado
+     *
      * @param event label é solta
-     * @throws MalformedURLException 
+     * @throws MalformedURLException
      */
     public void mouseLiberado(MouseEvent event) throws MalformedURLException {
         if ((verificarColisao(event))) {
@@ -334,12 +383,14 @@ public class ModelPag05 {
         } else {
             ((Label) (event.getSource())).setTranslateX(orgTranslateX);
             ((Label) (event.getSource())).setTranslateY(orgTranslateY);
-            
+
         }
         janelaPrograma.setStyle("-fx-cursor: none;");
     }
+
     /**
      * Trata o evento de quando uma das labels é selecionada
+     *
      * @param event label pressionada
      */
     public void mousePressionado(MouseEvent event) {
@@ -349,26 +400,23 @@ public class ModelPag05 {
         orgTranslateY = ((Label) (event.getSource())).getTranslateY();
         janelaPrograma.setStyle("-fx-cursor: hand;");
     }
-    
+
     private void tocarAudioParabens() throws InterruptedException {
         Random indiceParabens = new Random();
         int numeroAudio = indiceParabens.nextInt(3);
-        caminhoAudio = "audios/acerto/"+numeroAudio+".mp3";
+        caminhoAudio = "audios/acerto/" + numeroAudio + ".mp3";
         mCC.play(caminhoAudio);
-        
+
     }
-    
-    public void audioAcerto(){
-        
+
+    public void audioAcerto() {
+
         //evento que represanta a ação do acerto
-        primeiroAudio = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    tocarAudioParabens();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        primeiroAudio = (ActionEvent event) -> {
+            try {
+                tocarAudioParabens();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
             }
         };
 
@@ -376,7 +424,7 @@ public class ModelPag05 {
         segundoAudio = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               executarPalavra();
+                executarPalavra();
             }
         };
         new Timeline(
@@ -387,15 +435,18 @@ public class ModelPag05 {
     private void audioErro() {
         Random indiceErro = new Random();
         int numeroAudio = indiceErro.nextInt(3);
-        caminhoAudio = "audios/erro/"+numeroAudio+".mp3";
+        caminhoAudio = "audios/erro/" + numeroAudio + ".mp3";
         mCC.play(caminhoAudio);
     }
-    
-    public void definirInstrucao(String unidadeAtual) {
+
+    public void definirInstrucao(int unidadeAtual) {
         switch (unidadeAtual) {
-            case "u01":
+            case 1:
                 instrucao.setText("Complete com a parte que está faltando:\"POLVO\"");
-            break;
+                break;
+            case 2:
+                instrucao.setText("Complete com a parte que está faltando:\"POÇO\"");
+                break;
         }
 
     }

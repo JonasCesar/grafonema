@@ -104,7 +104,7 @@ public class Pag04Controller implements Initializable {
      * Define a unidade atual
      * @throws IOException 
      */
-    public void setUnidadeAtual(String unidadeAtual) throws IOException {
+    public void setUnidadeAtual(int unidadeAtual) throws IOException {
         atualizarListView();
         modelPag04.setUnidadeAtual(unidadeAtual);
     }
@@ -233,7 +233,7 @@ public class Pag04Controller implements Initializable {
     }
     
     //redireciona para o método definir instrução do model que irá imprimir a instrução na tela
-    public void setInstrucao(String unidadeAtual) throws MalformedURLException    {
+    public void setInstrucao(int unidadeAtual) throws MalformedURLException    {
         modelPag04.definirInstrucao(unidadeAtual);
     }
 

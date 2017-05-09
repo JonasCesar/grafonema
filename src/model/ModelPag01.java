@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  */
 public class ModelPag01 {
 
-    private String unidadeAtual;
+    private int unidadeAtual;
     private String caminhoAudio;
     @FXML
     private ListView<String> listaPalavras;
@@ -34,38 +34,46 @@ public class ModelPag01 {
     @FXML
     private ImageView imagemTexto;
     private URL imagemURL;
+
     public ModelPag01(ImageView imgView, ListView listaPalavras) {
-        this.unidadeAtual = "u00";
+        this.unidadeAtual = 1;
         this.listaPalavras = listaPalavras;
-        mCC = new ModelClasseComum(janela,this.listaPalavras);
+        mCC = new ModelClasseComum(janela, this.listaPalavras);
         imagemTexto = imgView;
-        
+
     }
+
     /**
      * Pega a unidade atual em execução
+     *
      * @return string com o valor da unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return this.unidadeAtual;
     }
 
     /**
-     *Define a unidade em que o software se encontra
+     * Define a unidade em que o software se encontra
+     *
      * @param unidadeAtual unidade atual da execução
      * @param tituloUnidade titulo a ser utilizado na unidade atual
      */
-    public void setUnidadeAtual(String unidadeAtual, Label tituloUnidade) {
-
+    public void setUnidadeAtual(int unidadeAtual, Label tituloUnidade) {
+        System.out.println(" Unidade atual pag01 " + unidadeAtual);
         this.unidadeAtual = unidadeAtual;
-        tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));
     }
+
+    //tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));
     /**
      * Toca o audio inicial da pagina
      */
     public void tocarAudio() {
         switch (getUnidadeAtual()) {
-            case "u01":
+            case 1:
                 caminhoAudio = "audios/u01/l1p1.mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios/u02/l2p1.mp3";
                 break;
             default:
                 break;
@@ -73,10 +81,12 @@ public class ModelPag01 {
         mCC.play(caminhoAudio);
 
     }
+
     /**
      * Carrega a próxima página na tela
+     *
      * @param event disparado pelo método avancar do controller
-     * @throws IOException 
+     * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -89,60 +99,71 @@ public class ModelPag01 {
 
         mCC.exibirCena(proximaCena, janela);
     }
+
     /**
      * Para o audio em execução
      */
     public void pararAudio() {
         mCC.pararAudio();
     }
+
     /**
      * Carrega o menu inicial
+     *
      * @param event disparado pelo método "menuInicial" do controller
-     * @throws IOException 
+     * @throws IOException
      */
     public void menuInicial(ActionEvent event) throws IOException {
         mCC.menuInicial(event);
     }
+
     /**
      * Executa o audio da palavra clicada
+     *
      * @param palavraSelecionada string que representa a palavra selecionada
      */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
+
     /**
      * Carrega a interface do ABC
+     *
      * @param event disparado pelo método ABCJanela do controller
-     * @throws IOException 
+     * @throws IOException
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirABC(event, pagina);
     }
-    
-    
+
     /**
      * Carrega a interface do manual do software
+     *
      * @param event disparado pelo método
      * @param pagina pagina de onde o manual foi chamado
-     * @throws IOException 
+     * @throws IOException
      */
     public void abrirManual(ActionEvent event, int pagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
         mCC.abrirManual(event, pagina);
     }
+
     /**
      * Define a imagem texto que será apresentada na imageView
-     * @param unidadeAtual 
+     *
+     * @param unidadeAtual
      */
-    public void setImagemTexto(String unidadeAtual) {
+    public void setImagemTexto(int unidadeAtual) {
         imagemURL = null;
-        System.out.println("Unidade atualk "+unidadeAtual);
-        switch(unidadeAtual){
-            case "u01":
+        switch (unidadeAtual) {
+            case 1:
                 System.out.println("entrou aqui");
-                 imagemURL = getClass().getResource("imagens/licao01/imagemTexto.png");                
+                imagemURL = getClass().getResource("imagens/licao01/imagemTexto.png");
+                break;
+            case 2:
+                imagemURL = getClass().getResource("imagens/licao02/imagemTexto.png");
                 break;
             default:
                 break;
@@ -154,8 +175,8 @@ public class ModelPag01 {
         mCC.atualizarListaPalavras(listaPalavras);
     }
 
-    public void atualizarListView() {      
+    public void atualizarListView() {
         mCC.atualizarListView(listaPalavras);
     }
-    
+
 }

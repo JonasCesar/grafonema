@@ -73,7 +73,7 @@ public class Pag02Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag02 = new ModelPag02(listaPalavras);
+        modelPag02 = new ModelPag02(listaPalavras, palavraAtual);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -179,7 +179,7 @@ public class Pag02Controller implements Initializable {
      *
      * @return string com o valor da unidade atual
      */
-    public String getUnidadeAtual() {
+    public int getUnidadeAtual() {
         return modelPag02.getUnidadeAtual();
     }
 
@@ -189,17 +189,9 @@ public class Pag02Controller implements Initializable {
      * @param unidade valor da unidade atual
      * @throws IOException
      */
-    public void setUnidadeAtual(String unidade) throws IOException {
-        atualizarListView();
-        switch (unidade) {
-            case "u01":
-                palavraAtual.setText("VOVÔ");
-                break;
-            default:
-                break;
-        }
+    public void setUnidadeAtual(int unidade) throws IOException {
+        atualizarListView();        
         modelPag02.setUnidadeAtual(unidade);
-
     }
 
     /**

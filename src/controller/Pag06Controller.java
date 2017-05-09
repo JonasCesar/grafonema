@@ -82,11 +82,14 @@ public class Pag06Controller implements Initializable {
      * @param unidade valor da unidade atual
      * @throws IOException 
      */
-    public void setUnidadeAtual(String unidade) throws IOException {
+    public void setUnidadeAtual(int unidade) throws IOException {
         atualizarListView();//atualiza a lista de palavras estudadas
         modelPag06.setUnidadeAtual(unidade);
         switch(getUnidadeAtual()){
-            case "u01":
+            case 1:
+                modelPag06.definirLabels();
+                break;
+            case 2:
                 modelPag06.definirLabels();
                 break;
             default:
@@ -97,7 +100,7 @@ public class Pag06Controller implements Initializable {
      * Pega a unidade atual
      * @return string com o valor da unidade atual
      */
-    public String getUnidadeAtual(){
+    public int getUnidadeAtual(){
         return modelPag06.getUnidadeAtual();
     }
     /**
@@ -152,7 +155,7 @@ public class Pag06Controller implements Initializable {
     /**
      * Executa automaticamente o audio da pagina 
      */
-    public void tocarAudio() throws MalformedURLException {
+    public void tocarAudio() {
         modelPag06.tocarAudio();
         setInstrucao(modelPag06.getUnidadeAtual());
     }
@@ -218,7 +221,7 @@ public class Pag06Controller implements Initializable {
     }
     
     //redireciona para o método definir instrução do model que irá imprimir a instrução na tela
-    public void setInstrucao(String unidadeAtual) throws MalformedURLException {
+    public void setInstrucao(int unidadeAtual) {
         modelPag06.definirInstrucao(unidadeAtual);
     }
     /**
