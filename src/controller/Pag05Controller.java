@@ -230,6 +230,7 @@ public class Pag05Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException
      */
+    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag05.abrirManual(event, pagina);
     }

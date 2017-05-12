@@ -75,6 +75,9 @@ public class ModelPag01 {
             case 2:
                 caminhoAudio = "audios/u02/l2p1.mp3";
                 break;
+            case 3:
+                caminhoAudio = "audios/u03/l3p1.mp3";
+                break;
             default:
                 break;
         }
@@ -165,6 +168,9 @@ public class ModelPag01 {
             case 2:
                 imagemURL = getClass().getResource("imagens/licao02/imagemTexto.png");
                 break;
+            case 3:
+                imagemURL = getClass().getResource("imagens/licao03/imagemTexto.png");
+                break;                
             default:
                 break;
         }

@@ -3,7 +3,7 @@ package controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import model.ModelPag03;
+import model.ModelPag03a;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -25,7 +25,7 @@ import javafx.scene.text.Text;
  *
  * @author shadows
  */
-public class Pag03Controller implements Initializable {
+public class Pag03aController implements Initializable {
 
     
     
@@ -42,7 +42,7 @@ public class Pag03Controller implements Initializable {
     @FXML
     private ImageView img4;
     
-    private ModelPag03 modelPag03;
+    private ModelPag03a modelPag03a;
     @FXML
     private ListView<String> listaPalavras;   
     ObservableList<String> items = FXCollections.observableArrayList();
@@ -63,8 +63,8 @@ public class Pag03Controller implements Initializable {
     @FXML
     private Button atividades;
     
-    public Pag03Controller() {
-        listaPalavras = new ListView<String>();       
+    public Pag03aController() {
+        listaPalavras = new ListView<>();       
     }
        
     /**
@@ -74,7 +74,7 @@ public class Pag03Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag03 = new ModelPag03(img1,img2,img3,img4,img5,img6,instrucao,listaPalavras);
+        modelPag03a = new ModelPag03a(img1,img2,img3,img4,img5,img6,instrucao,listaPalavras);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -82,8 +82,8 @@ public class Pag03Controller implements Initializable {
         manual.setTooltip(new Tooltip("Clique para ler o manual do programa "));
     }    
     public void audioInicial() throws MalformedURLException{
-        modelPag03.tocarAudioInicial();
-        setInstrucao(modelPag03.getUnidadeAtual());
+        modelPag03a.tocarAudioInicial();
+        setInstrucao(modelPag03a.getUnidadeAtual());
     }
     /**
      * Define a unidade atual
@@ -92,7 +92,7 @@ public class Pag03Controller implements Initializable {
      */
     public void setUnidadeAtual(int unidade) throws IOException {
         atualizarListView();
-        modelPag03.setUnidadeAtual(unidade);
+        modelPag03a.setUnidadeAtual(unidade);
     }
     /**
      * Avança para a proxima pagina
@@ -101,8 +101,8 @@ public class Pag03Controller implements Initializable {
      */
     @FXML
     private void avancar(ActionEvent event) throws IOException {
-        modelPag03.pararAudio();
-        modelPag03.proximaPagina(event);    
+        modelPag03a.pararAudio();
+        modelPag03a.proximaPagina(event);    
         
     }
     /**
@@ -112,22 +112,22 @@ public class Pag03Controller implements Initializable {
      */
     @FXML
     private void voltar(ActionEvent event) throws IOException {
-        modelPag03.pararAudio();
-        modelPag03.paginaAnterior(event);
+        modelPag03a.pararAudio();
+        modelPag03a.paginaAnterior(event);
     }
 
     //redireciona para o método definir instrução do model que irá imprimir a instrução na tela
     public void setInstrucao(int unidadeAtual) throws MalformedURLException    {
-        modelPag03.definirInstrucao(unidadeAtual);
+        modelPag03a.definirInstrucao(unidadeAtual);
     }
     
     public void setImagens(int unidadeAtual) throws MalformedURLException {
-        modelPag03.definirImagens(unidadeAtual);
+        modelPag03a.definirImagens(unidadeAtual);
     }
 
     @FXML
     private void verificarImagem(MouseEvent event) throws MalformedURLException {
-        modelPag03.verificarImagem(event);
+        modelPag03a.verificarImagem(event);
     }
     /**
      * Leva o usuário para o menu inicial
@@ -136,8 +136,8 @@ public class Pag03Controller implements Initializable {
      */
     @FXML
     private void menuInicial(ActionEvent event) throws IOException{
-        modelPag03.menuInicial(event);
-        modelPag03.pararAudio();
+        modelPag03a.menuInicial(event);
+        modelPag03a.pararAudio();
     }
     /**
      * Trata o evento de quando o mouse é clicado na lista de palavras
@@ -146,7 +146,7 @@ public class Pag03Controller implements Initializable {
     @FXML
     private void mouseClicado(MouseEvent event) {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
-        modelPag03.tocarAudioPalavraSelecionada(palavraSelecionada);
+        modelPag03a.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
     /**
      * Atualiza a lista de palavras estudadas
@@ -177,7 +177,7 @@ public class Pag03Controller implements Initializable {
 
     @FXML
     private void executarAudioImagem(MouseEvent event) {
-        modelPag03.executarAudioImagem(event);
+        modelPag03a.executarAudioImagem(event);
         
     }
     /**
@@ -187,7 +187,7 @@ public class Pag03Controller implements Initializable {
      */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
-        modelPag03.abrirManual(event, pagina);
+        modelPag03a.abrirManual(event, pagina);
     }
     /**
      * Abre a função ABC do software
@@ -196,14 +196,14 @@ public class Pag03Controller implements Initializable {
      */
     @FXML
     private void abrirABC(ActionEvent event) throws IOException {
-        modelPag03.abrirABC(event, pagina);
-        modelPag03.pararAudio();
+        modelPag03a.abrirABC(event, pagina);
+        modelPag03a.pararAudio();
     }
 
     @FXML
     private void sugestaoAtividades(ActionEvent event) {
     }
     private void atualizarListView() {
-        modelPag03.atualizarListView();
+        modelPag03a.atualizarListView();
     }
 }

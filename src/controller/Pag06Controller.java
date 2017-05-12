@@ -85,16 +85,7 @@ public class Pag06Controller implements Initializable {
     public void setUnidadeAtual(int unidade) throws IOException {
         atualizarListView();//atualiza a lista de palavras estudadas
         modelPag06.setUnidadeAtual(unidade);
-        switch(getUnidadeAtual()){
-            case 1:
-                modelPag06.definirLabels();
-                break;
-            case 2:
-                modelPag06.definirLabels();
-                break;
-            default:
-                break;
-        }  
+        modelPag06.definirLabels();
     }
     /**
      * Pega a unidade atual
@@ -205,6 +196,7 @@ public class Pag06Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException 
      */
+    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag06.abrirManual(event, pagina);
     }

@@ -26,9 +26,13 @@ public class MenuInicialController implements Initializable {
     private ModelmenuInicial menuInicial; 
     @FXML
     private Button u02;
+    @FXML
+    private Button u03;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,6 +55,9 @@ public class MenuInicialController implements Initializable {
             case "u02":
                 System.out.println("Entrou aqui");
                 menuInicial.iniciar(event, 2);
+                break;
+            case "u03":
+                menuInicial.iniciar(event, 3);
                 break;
             default:
                 break;

@@ -7,12 +7,15 @@ import controller.Pag01Controller;
 import controller.Pag06Controller;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -27,8 +30,11 @@ public class ModelPag07 {
     private ModelClasseComum mCC;
     private final int pagina = 7;
     private ListView<String> listaPalavras;
+    private URL imagemURL;
+    private ImageView imagemTexto;
 
-    public ModelPag07() {
+    public ModelPag07(ImageView imagemTexto) {
+        this.imagemTexto = imagemTexto;
         this.unidadeAtual = 0;
         mCC = new ModelClasseComum(janela, listaPalavras);
     }
@@ -156,6 +162,12 @@ public class ModelPag07 {
             case 1:
                 novaPalavra = "VOVÔ";
                 break;
+            case 2:
+                novaPalavra = "POVO";
+                break;
+            case 3:
+                novaPalavra = "TATO";
+                break;
             default:
                 break;
         }
@@ -163,44 +175,7 @@ public class ModelPag07 {
          * O código abaixo verifica se a nova palavra a ser adicionada já existe
          * no arquivo
          */
-        mCC.salvarPalavraEstudada(novaPalavra);
-
-        /**
-         * String inputLine; ClassLoader loader =
-         * currentThread().getContextClassLoader(); InputStream arquivoInput =
-         * loader.getClass().getResourceAsStream("texto.txt"); try { FileWriter
-         * fstream = new FileWriter("texto.txt"); BufferedWriter out = new
-         * BufferedWriter(fstream); BufferedReader reader = new
-         * BufferedReader(new InputStreamReader(arquivoInput));
-         * System.out.println("Antes do while"); while ((inputLine =
-         * reader.readLine()) != null) { System.out.println("Oi "+inputLine);
-         * /** String[] str = inputLine.split("\t"); if (/* IF WHAT YOU WANT IS
-         * IN THE FILE ADD IT ) { // DO SOMETHING OR ADD WHAT YOU WANT
-         * out.append(str); out.newLine(); }*
-         *
-         * out.append(novaPalavra); out.newLine(); } reader.close();
-         * out.close(); } catch (Exception e) { e.getMessage(); } //File
-         * arquivoEscrita = new File(arquivoInput.toString());
-         *
-         * FileWriter escreverArquivo = new FileWriter(arquivoEscrita, true);
-         * try (BufferedWriter bufferDeEscrita = new
-         * BufferedWriter(escreverArquivo)) {
-         *
-         * FileReader arquivoLeitura = new
-         * FileReader("audios/AudiosPalavrasEstudadas/texto.txt"); lerArq = new
-         * BufferedReader(arquivoLeitura);
-         *
-         * String linha = lerArq.readLine(); if (linha == null) {//ocorre quando
-         * for bufferDeEscrita.write(novaPalavra); encontrado = true; } else {
-         * Scanner textoNoArquivo = new Scanner(arquivoEscrita); String palavra
-         * = textoNoArquivo.findWithinHorizon(novaPalavra, 0); boolean
-         * jaFoiAdicionada = palavra.length() != 0; if (!jaFoiAdicionada) {
-         * bufferDeEscrita.write(novaPalavra); bufferDeEscrita.flush(); } }
-         * lerArq.close(); } catch (Exception e) {
-         *
-         * }
-         * *
-         */
+        mCC.salvarPalavraEstudada(novaPalavra);       
     }
 
     /**
@@ -245,6 +220,30 @@ public class ModelPag07 {
 
     public void incrementarUnidade(int valor) {
         System.out.println("Unidade atual " + getUnidadeAtual());
+    }
+    
+    /**
+     * Define a imagem texto que será apresentada na imageView
+     *
+     * @param unidadeAtual
+     */
+    public void setImagemTexto(int unidadeAtual) {
+        imagemURL = null;
+        switch (unidadeAtual) {
+            case 1:
+                System.out.println("entrou aqui");
+                imagemURL = getClass().getResource("imagens/licao01/imagemTexto.png");
+                break;
+            case 2:
+                imagemURL = getClass().getResource("imagens/licao02/imagemTexto.png");
+                break;
+            case 3:
+                imagemURL = getClass().getResource("imagens/licao03/imagemTexto.png");
+                break;                
+            default:
+                break;
+        }
+        imagemTexto.setImage(new Image(imagemURL.toString()));
     }
 
 }

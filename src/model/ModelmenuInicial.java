@@ -40,7 +40,7 @@ public class ModelmenuInicial {
         Parent proximaCena = (Parent) fxmloader.load();
         Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
         pg01Cont.setUnidadeAtual(unidade);        
-        Scene cena = new Scene(proximaCena, 950, 700);//tamanho
+        Scene cena = new Scene(proximaCena, 1200, 700);//tamanho
         janela.setTitle("Projeto 2");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface

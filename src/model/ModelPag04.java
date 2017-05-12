@@ -152,6 +152,16 @@ public class ModelPag04 {
                 f2.setText("CA");
                 imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
                 break;
+            case 3:
+                p1.setText("TA");
+                p2.setText("TE");
+                p3.setText("TI");
+                p4.setText("TO");
+                p5.setText("TU");
+                f1.setText("BO");
+                f2.setText("");
+                imgUrl = getClass().getResource("imagens/licao03/botapb.png");
+                break;
             default:
                 break;
         }
@@ -230,8 +240,22 @@ public class ModelPag04 {
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
+            case 3:
+                if (silabaEscolhida.equals("TA")) {
+                    opcaoCorreta = true;                    
+                    imagemUrl = getClass().getResource("imagens/licao03/botacor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
+                }
+                break;
             default:
                 break;
+        }
+        if(opcaoCorreta){
+            p1.setDisable(true);
+            p2.setDisable(true);
+            p3.setDisable(true);
+            p4.setDisable(true);
+            p5.setDisable(true);
         }
         
         //retorna o valor booleano
@@ -251,7 +275,11 @@ public class ModelPag04 {
             case 2:
                 caminhoAudio = "audios/u02/l2p4.mp3";
                 break;
-            default:
+            case 3:
+                caminhoAudio = "audios/u03/l3p4.mp3";
+                break;
+            default://para valores acima de 9
+                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p4.mp3";
                 break;
         }
         //executa o audio
@@ -303,7 +331,11 @@ public class ModelPag04 {
             case 2:
                 caminhoAudio = "audios/u02/pipoca.mp3";
                 break;
+            case 3:
+                caminhoAudio = "audios/u03/palpg4.mp3";
+                break;
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/palavra.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -442,7 +474,10 @@ public class ModelPag04 {
                 break;
             case 2:
                 instrucao.setText("“Complete com a parte que está faltando: \"PIPOCA\"");                
-                break;               
+                break;
+            case 3:
+                instrucao.setText("“Complete com a parte que está faltando: \"BOTA\"");                
+                break;
         }
 
     }

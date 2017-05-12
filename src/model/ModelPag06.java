@@ -6,7 +6,6 @@ package model;
 import controller.Pag05Controller;
 import controller.Pag07Controller;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,6 +58,17 @@ public class ModelPag06 {
      */
     public void setUnidadeAtual(int unidade) {
         this.unidadeAtual = unidade;
+        switch(getUnidadeAtual()){
+            case 1:
+                definirLabels();
+                break;
+            case 2:
+                definirLabels();
+                break;
+            default:
+                break;
+        }  
+        
     }
 
     /**
@@ -79,6 +89,8 @@ public class ModelPag06 {
 
         mCC.exibirCena(proximaCena, janela);
         pg07Cont.tocarAudio();
+        pg07Cont.setImagemTexto(getUnidadeAtual());
+        
     }
 
     /**
@@ -127,6 +139,9 @@ public class ModelPag06 {
                     respostaCorreta = true;
                 }
                 break;
+            case 3:
+                respostaCorreta = resposta.toUpperCase().equals("TATO");
+                break;
             default:
                 break;
         }
@@ -144,7 +159,11 @@ public class ModelPag06 {
             case 2:
                 caminhoAudio = "audios/u02/l2p6.mp3";
                 break;
+            case 3:
+                caminhoAudio = "audios/u03/l3p6.mp3";
+                break;
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p6.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -163,6 +182,10 @@ public class ModelPag06 {
                 System.out.println("Entrou sdfdsdf");
                 p1.setText("O");
                 p2.setText("DA FESTA ESTÁ ANIMADO");
+                break;
+            case 3:
+                p1.setText("O");
+                p2.setText("SERVE PARA NOS PROTEGER");
                 break;
             default:
                 break;
@@ -195,16 +218,6 @@ public class ModelPag06 {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
 
-//    áudios de zoeira só pra teste    
-//    public void tocarAudioAcerto(boolean acerto) {
-//        caminhoAudio = "src/audios/u01/resposta_certa.mp3";
-//        if (acerto) {
-//            mCC.play(caminhoAudio);
-//        } else {
-//            caminhoAudio = "src/audios/u01/errou.mp3";
-//            mCC.play(caminhoAudio);
-//        }
-//    }
     public void executarAudioFrase() {
         switch (getUnidadeAtual()) {
             case 1:
@@ -213,7 +226,11 @@ public class ModelPag06 {
             case 2:
                 caminhoAudio = "audios/u02/frase.mp3";
                 break;
+            case 3:
+                caminhoAudio = "audios/u03/frase.mp3";
+                break;
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/frase.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -252,7 +269,10 @@ public class ModelPag06 {
                 break;
             case 2:
                 instrucao.setText("Digite a palavra que você aprendeu para formar a frase:\n \"o povo da festa está animado\"");
-                break;       
+                break;
+            case 3:
+                instrucao.setText("Digite a palavra que você aprendeu para formar a frase:\n \"o tato serve para nos proteger\"");
+                break;
         }
     }
 

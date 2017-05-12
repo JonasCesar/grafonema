@@ -10,21 +10,21 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" fx:id="janelaPrograma" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag05Controller">    
+<AnchorPane id="AnchorPane" fx:id="janelaPrograma" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag05Controller">    
     <stylesheets>
         <URL value="@/css/estilosPag05.css" />
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
     <children>
         <Button fx:id="abc" layoutX="299.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
-        <Button fx:id="atividades" layoutX="452.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades" />
-        <Button fx:id="manual" layoutX="646.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
+        <Button fx:id="atividades" layoutX="603.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades" />
+        <Button fx:id="manual" layoutX="872.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
         <Label fx:id="palavrasEstudadas" layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
-        <Button fx:id="avancar" layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
+        <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
         <Button fx:id="voltar" layoutX="203.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
-      <Button layoutX="781.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
+      <Button layoutX="991.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
       <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
-      <FlowPane layoutX="152.0" layoutY="297.0" prefHeight="185.0" prefWidth="462.0">
+      <FlowPane layoutX="177.0" layoutY="297.0" prefHeight="185.0" prefWidth="629.0">
          <children>
             <Label fx:id="p1" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P1">
                <font>
@@ -39,7 +39,7 @@
                   <Font size="25.0" />
                </font>
                <FlowPane.margin>
-                  <Insets bottom="50.0" right="30.0" />
+                  <Insets bottom="50.0" left="30.0" right="30.0" />
                </FlowPane.margin>
             </Label>
             <Label fx:id="p3" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P3">
@@ -47,7 +47,7 @@
                   <Font size="25.0" />
                </font>
                <FlowPane.margin>
-                  <Insets bottom="50.0" right="30.0" />
+                  <Insets bottom="50.0" left="30.0" right="30.0" />
                </FlowPane.margin>
             </Label>
             <Label fx:id="p4" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P4">
@@ -55,7 +55,7 @@
                   <Font size="25.0" />
                </font>
                <FlowPane.margin>
-                  <Insets bottom="50.0" right="30.0" />
+                  <Insets bottom="50.0" left="30.0" right="30.0" />
                </FlowPane.margin>
             </Label>
             <Label fx:id="p5" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P5">
@@ -63,10 +63,10 @@
                   <Font size="25.0" />
                </font>
                <FlowPane.margin>
-                  <Insets bottom="50.0" right="30.0" />
+                  <Insets bottom="50.0" left="30.0" right="30.0" />
                </FlowPane.margin>
             </Label>
-              <Label fx:id="f1" contentDisplay="RIGHT" text="Ar">
+              <Label fx:id="f1" contentDisplay="RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="31.0" text="Ar">
                   <font>
                       <Font size="25.0" />
                   </font>
@@ -85,7 +85,7 @@
                   <Insets right="5.0" top="70.0" />
                </FlowPane.margin>
               </Label>
-              <Label fx:id="f2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="45.0" text="">
+              <Label fx:id="f2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="31.0" text="">
                   <font>
                       <Font size="25.0" />
                   </font>
@@ -100,7 +100,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <ImageView fx:id="imagemAudio" fitHeight="200.0" fitWidth="200.0" layoutX="650.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagemAudio" fitHeight="200.0" fitWidth="200.0" layoutX="836.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="repetir" fitHeight="32.0" fitWidth="32.0" layoutX="370.0" layoutY="94.0" onMouseClicked="#replayAudio" onMouseEntered="#sombrearImagem" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagens/icones/replay.png" />

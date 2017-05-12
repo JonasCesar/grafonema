@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -45,17 +46,21 @@ public class Pag07Controller implements Initializable {
     private final int pagina = 7;
     @FXML
     private Button atividades;
+    
+    @FXML
+    private ImageView imagemTexto;
     public Pag07Controller() {
-        listaPalavras = new ListView<String>();
-        
+        listaPalavras = new ListView<>();        
     }
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag07 = new ModelPag07();
+        modelPag07 = new ModelPag07(imagemTexto);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -155,6 +160,7 @@ public class Pag07Controller implements Initializable {
      * @param event clique no botão
      * @throws IOException 
      */
+    @FXML
     private void abrirManual(ActionEvent event) throws IOException {
         modelPag07.abrirManual(event, pagina);
     }
@@ -166,4 +172,9 @@ public class Pag07Controller implements Initializable {
     private void atualizarListView() {
         modelPag07.atualizarListView();
     }
+    
+    public void setImagemTexto(int unidadeAtual){
+        modelPag07.setImagemTexto(unidadeAtual);
+    }
+        
 }

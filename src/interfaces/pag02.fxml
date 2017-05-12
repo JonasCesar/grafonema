@@ -8,23 +8,23 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag02Controller">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag02Controller">
     <stylesheets>
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
     <children>
          
         <Button fx:id="abc" layoutX="299.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
-        <Button fx:id="atividades" layoutX="452.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades" />
-        <Button fx:id="manual" layoutX="646.0" layoutY="598.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
+        <Button fx:id="atividades" layoutX="603.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades" />
+        <Button fx:id="manual" layoutX="872.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
+        <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
         <Label fx:id="palavrasEstudadas" layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
-        <Label fx:id="palavraAtual" layoutX="511.0" layoutY="228.0" text="PALAVRA" />
-        <Button fx:id="avancar" layoutX="793.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
-        <Button fx:id="audio1" layoutX="406.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio1" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="1" />
-        <Button fx:id="audio2" layoutX="527.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio2" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="2" />
-        <Button fx:id="audio3" layoutX="650.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio3" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="3" />
+        <Label fx:id="palavraAtual" layoutX="632.0" layoutY="230.0" text="PALAVRA" />
+        <Button fx:id="audio1" layoutX="451.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio1" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="1" />
+        <Button fx:id="audio2" layoutX="648.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio2" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="2" />
+        <Button fx:id="audio3" layoutX="855.0" layoutY="331.0" mnemonicParsing="false" onAction="#audio3" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="3" />
         <Button fx:id="voltar" layoutX="203.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
-        <Button layoutX="781.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
+        <Button layoutX="991.0" layoutY="34.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
       <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="164.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
          <image>

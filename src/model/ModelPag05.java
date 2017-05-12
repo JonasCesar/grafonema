@@ -144,12 +144,24 @@ public class ModelPag05 {
                 p3.setText("PI");
                 p4.setText("PO");
                 p5.setText("PU");    
-                                //double f1setX = event.getSceneX() - orgSceneX;
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");               
                 f1.setText("ÇO");                
                 espaco.setText("");
                 imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
+                break;
+            case 3:
+                p1.setText("TÁ");
+                p2.setText("TE");
+                p3.setText("TI");
+                p4.setText("TO");
+                p5.setText("TU");    
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");               
+                f1.setText("BUA");                
+                espaco.setText("");
+                imgUrl = getClass().getResource("imagens/licao03/tabuapb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             default:
@@ -171,11 +183,11 @@ public class ModelPag05 {
         Parent proximaCena = (Parent) fxmloader.load();
         Pag06Controller pg06Cont = fxmloader.<Pag06Controller>getController();
         pg06Cont.setUnidadeAtual(getUnidadeAtual());
-
-        mCC.exibirCena(proximaCena, janela);
-        pg06Cont.tocarAudio();
         f1.setId("f1");
         espaco.setId("espaco");
+        mCC.exibirCena(proximaCena, janela);
+        pg06Cont.tocarAudio();
+        
     }
 
     /**
@@ -230,6 +242,13 @@ public class ModelPag05 {
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
+            case 3:
+                if (silabaEscolhida.equals("TÁ")) {
+                    opcaoCorreta = true;
+                    imagemUrl = getClass().getResource("imagens/licao03/tabuacor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
+                }
+                break;
             default:
                 break;
         }
@@ -247,7 +266,11 @@ public class ModelPag05 {
             case 2:
                 caminhoAudio = "audios/u02/l2p5.mp3";
                 break;
+            case 3:
+                caminhoAudio = "audios/u03/l3p5.mp3";
+                break;
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p5.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -301,7 +324,11 @@ public class ModelPag05 {
             case 2:
                 caminhoAudio = "audios/u02/poço.mp3";
                 break;
+            case 3:
+                caminhoAudio = "audios/u03/palPag5.mp3";
+                break;
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/palPg5.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -421,11 +448,8 @@ public class ModelPag05 {
         };
 
         //evento que representa o audio a ser executado depois o
-        segundoAudio = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                executarPalavra();
-            }
+        segundoAudio = (ActionEvent event) -> {
+            executarPalavra();
         };
         new Timeline(
                 new KeyFrame(Duration.seconds(0), primeiroAudio),
@@ -439,13 +463,16 @@ public class ModelPag05 {
         mCC.play(caminhoAudio);
     }
 
-    public void definirInstrucao(int unidadeAtual) {
+    public void definirInstrucao(int unidadeAtual) {              
         switch (unidadeAtual) {
             case 1:
                 instrucao.setText("Complete com a parte que está faltando:\"POLVO\"");
                 break;
             case 2:
                 instrucao.setText("Complete com a parte que está faltando:\"POÇO\"");
+                break;
+            case 3:
+                instrucao.setText("Complete com a parte que está faltando:\"TÁBUA\"");
                 break;
         }
 

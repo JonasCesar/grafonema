@@ -31,7 +31,7 @@ public class Principal extends Application {
     public void start(Stage janela) throws Exception {
         this.janela = janela;
         Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/menuInicial.fxml"));
-        Scene cena = new Scene(cenaInicial, 950, 700);
+        Scene cena = new Scene(cenaInicial, 1200, 700);
         janela.setTitle("Projeto 2");
         janela.setScene(cena);
         janela.show();

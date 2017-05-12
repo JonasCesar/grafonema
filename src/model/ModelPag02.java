@@ -68,6 +68,9 @@ public class ModelPag02 {
             case 2:
                 palavraAtual.setText("POVO");
                 break;
+            case 3:
+                palavraAtual.setText("TATO");
+                break;
             default:
                 break;
         }
@@ -84,6 +87,9 @@ public class ModelPag02 {
                 break;
             case 2:
                 caminhoAudio = "audios/u02/l2p2a1.mp3";
+                break;
+            case 3:
+                caminhoAudio = "audios/u03/l3p2a1.mp3";
                 break;
             default:
                 break;
@@ -103,6 +109,9 @@ public class ModelPag02 {
             case 2:
                 caminhoAudio = "audios/u02/l2p2a2.mp3";
                 break;
+            case 3:
+                caminhoAudio = "audios/u03/l3p2a2.mp3";
+                break;
             default:
                 break;
         }
@@ -120,6 +129,9 @@ public class ModelPag02 {
                 break;
             case 2:
                 caminhoAudio = "audios/u02/l2p2a3.mp3";
+                break;
+            case 3:
+                caminhoAudio = "audios/u03/l3p2a3.mp3";
                 break;
             default:
                 break;
