@@ -97,15 +97,31 @@ public class ModelPag03a {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
-        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02.fxml"));
+        if (getUnidadeAtual() == 3) {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
 
-        //cria a próxima cena chamando a inteface dos avatares        
-        Parent proximaCena = (Parent) fxmloader.load();
-        Pag02Controller pag02Cont = fxmloader.<Pag02Controller>getController();
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag03Controller pag03Cont = fxmloader.<Pag03Controller>getController();
 
-        mCC.exibirCena(proximaCena, janela);
-        pag02Cont.setUnidadeAtual(getUnidadeAtual());
+            mCC.exibirCena(proximaCena, janela);
+            pag03Cont.setUnidadeAtual(getUnidadeAtual());
+            pag03Cont.setUnidadeAtual(getUnidadeAtual());
+            pag03Cont.audioInicial();
+            pag03Cont.setImagens(getUnidadeAtual());
+        } else {
+
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02.fxml"));
+
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag02Controller pag02Cont = fxmloader.<Pag02Controller>getController();
+
+            mCC.exibirCena(proximaCena, janela);
+            pag02Cont.setUnidadeAtual(getUnidadeAtual());
+        }
 
     }
 
@@ -340,7 +356,7 @@ public class ModelPag03a {
                 instrucao.setText("Clique nas imagens que tem o som \"vô\"");
                 break;
             case 3:
-                instrucao.setText("Clique nas imagens que tem o som \"vô\"");
+                instrucao.setText("Clique nas imagens que tem o som \"to\"");
                 break;
         }
 

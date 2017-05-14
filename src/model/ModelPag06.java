@@ -4,6 +4,7 @@
 package model;
 
 import controller.Pag05Controller;
+import controller.Pag05aController;
 import controller.Pag07Controller;
 import java.io.IOException;
 import java.util.Random;
@@ -58,7 +59,7 @@ public class ModelPag06 {
      */
     public void setUnidadeAtual(int unidade) {
         this.unidadeAtual = unidade;
-        switch(getUnidadeAtual()){
+        switch (getUnidadeAtual()) {
             case 1:
                 definirLabels();
                 break;
@@ -67,8 +68,8 @@ public class ModelPag06 {
                 break;
             default:
                 break;
-        }  
-        
+        }
+
     }
 
     /**
@@ -90,7 +91,7 @@ public class ModelPag06 {
         mCC.exibirCena(proximaCena, janela);
         pg07Cont.tocarAudio();
         pg07Cont.setImagemTexto(getUnidadeAtual());
-        
+
     }
 
     /**
@@ -100,15 +101,28 @@ public class ModelPag06 {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
-        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
-        //cria a próxima cena chamando a inteface dos avatares        
-        Parent proximaCena = (Parent) fxmloader.load();
-        Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
+        if (getUnidadeAtual() == 3) {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05a.fxml"));
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag05aController pg05aCont = fxmloader.<Pag05aController>getController();
 
-        mCC.exibirCena(proximaCena, janela);
-        pg05Cont.setUnidadeAtual(getUnidadeAtual());
-        pg05Cont.tocarAudio();
+            mCC.exibirCena(proximaCena, janela);
+            pg05aCont.setUnidadeAtual(getUnidadeAtual());
+            pg05aCont.tocarAudio();
+            pg05aCont.setInstrucao(getUnidadeAtual());
+        } else {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
+
+            mCC.exibirCena(proximaCena, janela);
+            pg05Cont.setUnidadeAtual(getUnidadeAtual());
+            pg05Cont.tocarAudio();
+        }
     }
 
     /**
@@ -163,7 +177,7 @@ public class ModelPag06 {
                 caminhoAudio = "audios/u03/l3p6.mp3";
                 break;
             default:
-                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p6.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "/l" + unidadeAtual + "p6.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -230,7 +244,7 @@ public class ModelPag06 {
                 caminhoAudio = "audios/u03/frase.mp3";
                 break;
             default:
-                caminhoAudio = "audios/u"+unidadeAtual+"/frase.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "/frase.mp3";
                 break;
         }
         mCC.play(caminhoAudio);

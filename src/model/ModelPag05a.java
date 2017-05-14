@@ -1,12 +1,11 @@
-/**
- * Model da página 4
+/*
+ * Model da página 5a
  */
 package model;
 
-import controller.Pag03Controller;
-import controller.Pag03aController;
-import controller.Pag04aController;
+import controller.Pag04Controller;
 import controller.Pag05Controller;
+import controller.Pag06Controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -36,14 +35,11 @@ import javafx.util.Duration;
  *
  * @author shadows
  */
-public class ModelPag04 {
+public class ModelPag05a {
 
-    //inteiro que armazena o valor da unidade atual
-    private int unidadeAtual;
-    //Janela ondo programa
     private Stage janela;
-
-    //Labels utilizadas na pagina
+    private int unidadeAtual;
+    //Declaração das labels utilizadas
     @FXML
     private Label p1;
     @FXML
@@ -61,22 +57,14 @@ public class ModelPag04 {
     private Label f1;
 
     @FXML
-    private Text instrucao;
-
-    //String utilizada nos diretórios dos audios
-    private String caminhoAudio;
-    //arquivo de audio que deve ser criado
-    private File arquivo;
-
-    //label que terá seu conteúdo substituído
     private Label espaco;
+    //diretório do arquivo de audio
+    private String caminhoAudio;
+    private File arquivo;
     //classe com métodos com a mesma estrutura das outras classes
     private ModelClasseComum mCC;
-
-    private ImageView imagemAudio;
-
     private File imagem;
-
+    private ImageView imagemAudio;
     private AnchorPane janelaPrograma;
     private double orgSceneX;
     private double orgSceneY;
@@ -91,8 +79,11 @@ public class ModelPag04 {
     @FXML
     private ListView<String> listaPalavras;
 
+    @FXML
+    private Text instrucao;
+
     /**
-     * Construtor da classe Labels que são referenciadas do controlador:
+     * Construtor da classe Labels utilzadas nas paginas:
      *
      * @param p1
      * @param p2
@@ -106,8 +97,9 @@ public class ModelPag04 {
      * @param janelaPrograma
      * @param instrucao1
      * @param listaPalavras
+     *
      */
-    public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
+    public ModelPag05a(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
             Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1, ListView<String> listaPalavras) {
         this.p1 = p1;
         this.p2 = p2;
@@ -117,22 +109,23 @@ public class ModelPag04 {
         this.f1 = f1;
         this.f2 = f2;
         this.espaco = espaco;
-        this.instrucao = instrucao1;
+        this.unidadeAtual = 0;
         this.listaPalavras = listaPalavras;
         mCC = new ModelClasseComum(janela, this.listaPalavras);
         this.imagemAudio = imagemAudio;
         this.janelaPrograma = janelaPrograma;
         this.instrucao = instrucao1;
+
     }
 
     /**
-     * Define a unidade em que o software se encontra
+     * Define a unidade atual e as labels referentes a essa pagina
      *
-     * @param unidadeAtual unidade atual da execução
+     * @param unidadeAtual
      */
     public void setUnidadeAtual(int unidadeAtual) {
         this.unidadeAtual = unidadeAtual;
-        //define o conteúdo das labels da pag 4
+        double xf1, yf1, xespaco, yespaco, z = 0;
         URL imgUrl = null;
         switch (unidadeAtual) {
             case 1:
@@ -141,9 +134,10 @@ public class ModelPag04 {
                 p3.setText("VI");
                 p4.setText("VO");
                 p5.setText("VU");
-                f1.setText("ÁR");
-                f2.setText("RE");
-                imgUrl = getClass().getResource("imagens/licao01/arvorepb.png");
+                f1.setText("POL");
+                espaco.setText("");
+                imgUrl = getClass().getResource("imagens/licao01/polvopb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 2:
                 p1.setText("PA");
@@ -151,33 +145,31 @@ public class ModelPag04 {
                 p3.setText("PI");
                 p4.setText("PO");
                 p5.setText("PU");
-                f1.setText("PI");
-                f2.setText("CA");
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("ÇO");
+                espaco.setText("");
                 imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 3:
-                p1.setText("TA");
+                p1.setText("TÁ");
                 p2.setText("TE");
                 p3.setText("TI");
                 p4.setText("TO");
                 p5.setText("TU");
-                f1.setText("BO");
-                f2.setText("");
-                imgUrl = getClass().getResource("imagens/licao03/botapb.png");
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("MATE");
+                
+                espaco.setText("");
+                imgUrl = getClass().getResource("imagens/licao03a/tomatepb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             default:
                 break;
         }
         imagemAudio.setImage(new Image(imgUrl.toString()));
-    }
-
-    /**
-     * Pega a unidade atual em execução
-     *
-     * @return string com o valor da unidade atual
-     */
-    public int getUnidadeAtual() {
-        return this.unidadeAtual;
     }
 
     /**
@@ -187,29 +179,16 @@ public class ModelPag04 {
      * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
-        if (getUnidadeAtual() == 3) {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04a.fxml"));
-
-            //cria a próxima cena     
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag04aController pg04aCont = fxmloader.<Pag04aController>getController();
-            pg04aCont.setUnidadeAtual(getUnidadeAtual());
-            pg04aCont.setInstrucao(getUnidadeAtual());
-            pg04aCont.tocarAudio();
-            mCC.exibirCena(proximaCena, janela);
-        } else {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
-
-            //cria a próxima cena     
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
-            pg05Cont.setUnidadeAtual(getUnidadeAtual());
-
-            mCC.exibirCena(proximaCena, janela);
-            pg05Cont.tocarAudio();
-        }
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06.fxml"));
+        //cria a próxima cena chamando a inteface dos avatares        
+        Parent proximaCena = (Parent) fxmloader.load();
+        Pag06Controller pg06Cont = fxmloader.<Pag06Controller>getController();
+        pg06Cont.setUnidadeAtual(getUnidadeAtual());
+        f1.setId("f1");
+        espaco.setId("espaco");
+        mCC.exibirCena(proximaCena, janela);
+        pg06Cont.tocarAudio();
 
     }
 
@@ -222,101 +201,93 @@ public class ModelPag04 {
     public void paginaAnterior(ActionEvent event) throws IOException {
         if (getUnidadeAtual() == 3) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
-            //cria a próxima cena     
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
+            //cria a próxima cena
             Parent proximaCena = (Parent) fxmloader.load();
-            Pag03aController pg03aCont = fxmloader.<Pag03aController>getController();
+            Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
 
             mCC.exibirCena(proximaCena, janela);
-            pg03aCont.setUnidadeAtual(getUnidadeAtual());
-            pg03aCont.audioInicial();
-            pg03aCont.setImagens(getUnidadeAtual());
+            pg05Cont.setUnidadeAtual(getUnidadeAtual());
+            pg05Cont.tocarAudio();
+            pg05Cont.setInstrucao(getUnidadeAtual());
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
-            //cria a próxima cena     
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
+            //cria a próxima cena
             Parent proximaCena = (Parent) fxmloader.load();
-            Pag03Controller pg03Cont = fxmloader.<Pag03Controller>getController();
+            Pag04Controller pg04Cont = fxmloader.<Pag04Controller>getController();
 
             mCC.exibirCena(proximaCena, janela);
-            pg03Cont.setUnidadeAtual(getUnidadeAtual());
-            pg03Cont.audioInicial();
-            pg03Cont.setImagens(getUnidadeAtual());
+            pg04Cont.setUnidadeAtual(getUnidadeAtual());
+            pg04Cont.tocarAudio();
         }
-
     }
 
     /**
-     * Verifica se se a sílaba escolhida é a correta
+     * Pega a unidade atual em execução
+     *
+     * @return string com o valor da unidade atual
+     */
+    public int getUnidadeAtual() {
+        return this.unidadeAtual;
+    }
+
+    /**
+     * Verifica se a palavra escolhida é a correta
      *
      * @param event mouse liberado
      * @return true ou false
-     * @throws java.net.MalformedURLException
      */
-    public boolean verificarEscolhaSilaba(MouseEvent event) throws MalformedURLException {
-        //converte conteudo do evento para string
+    public boolean verificarEscolhaSilaba(MouseEvent event) {
         String silabaEscolhida = ((Label) event.getSource()).getText();
-        boolean opcaoCorreta = false;
         imagemUrl = null;
-        //verifica a unidade atual
+        boolean opcaoCorreta = false;
         switch (getUnidadeAtual()) {
             case 1:
                 if (silabaEscolhida.equals("VO")) {
                     opcaoCorreta = true;
-                    imagemUrl = getClass().getResource("imagens/licao01/arvorecor.png");
+                    imagemUrl = getClass().getResource("imagens/licao01/polvocor.png");
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
             case 2:
                 if (silabaEscolhida.equals("PO")) {
                     opcaoCorreta = true;
-                    imagemUrl = getClass().getResource("imagens/licao02/pipocacor.png");
+                    imagemUrl = getClass().getResource("imagens/licao02/poçocor.png");
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
             case 3:
-                if (silabaEscolhida.equals("TA")) {
+                if (silabaEscolhida.equals("TO")) {
                     opcaoCorreta = true;
-                    imagemUrl = getClass().getResource("imagens/licao03/botacor.png");
+                    imagemUrl = getClass().getResource("imagens/licao03a/tomatecor.png");
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
             default:
                 break;
         }
-        if (opcaoCorreta) {
-            p1.setDisable(true);
-            p2.setDisable(true);
-            p3.setDisable(true);
-            p4.setDisable(true);
-            p5.setDisable(true);
-        }
-
-        //retorna o valor booleano
         return opcaoCorreta;
     }
 
     /**
-     * Audio executado automaticamente quando a interface é iniciada
+     * Executa o audio automatico quando a interface é iniciada
      */
     public void tocarAudio() {
-        //verifica a unidade atual
         switch (getUnidadeAtual()) {
             case 1:
-                //diretório do audio
-                caminhoAudio = "audios/u01/l1p4.mp3";
+                caminhoAudio = "audios/u01/l1p5.mp3";
                 break;
             case 2:
-                caminhoAudio = "audios/u02/l2p4.mp3";
+                caminhoAudio = "audios/u02/l2p5.mp3";
                 break;
             case 3:
-                caminhoAudio = "audios/u03/l3p4.mp3";
+                caminhoAudio = "audios/u03a/l3p5a.mp3";
                 break;
-            default://para valores acima de 9
-                caminhoAudio = "audios/u" + unidadeAtual + "/l" + unidadeAtual + "p4.mp3";
+            default:
+                caminhoAudio = "audios/u" + unidadeAtual + "/l" + unidadeAtual + "p5.mp3";
                 break;
         }
-        //executa o audio
         mCC.play(caminhoAudio);
     }
 
@@ -328,14 +299,13 @@ public class ModelPag04 {
     }
 
     /**
-     * Altera o conteúdo da label espaço vazia
+     * Altera o valor do espaço
      *
      * @param evento
      */
     public void alterarLabelEspaco(MouseEvent evento) {
-        //pega o conteúdo da label selecionada
+
         espaco.setText(((Label) evento.getSource()).getText());
-        //esconde a label que havia sido selecionada
         ((Label) evento.getSource()).setVisible(false);
     }
 
@@ -364,19 +334,31 @@ public class ModelPag04 {
     public void executarPalavra() {
         switch (getUnidadeAtual()) {
             case 1:
-                caminhoAudio = "audios/u01/arvore.mp3";
+                caminhoAudio = "audios/u01/polvo.mp3";
                 break;
             case 2:
-                caminhoAudio = "audios/u02/pipoca.mp3";
+                caminhoAudio = "audios/u02/poço.mp3";
                 break;
             case 3:
-                caminhoAudio = "audios/u03/palpg4.mp3";
+                caminhoAudio = "audios/u03a/palPag5.mp3";
                 break;
             default:
-                caminhoAudio = "audios/u" + unidadeAtual + "/palavra.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "/palPg5.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
+    }
+
+    /**
+     * Abre o ABC do software
+     *
+     * @param event botão "ABC" clicado
+     * @param pagina pagina de onde o botão "ABC" foi clicado
+     * @throws IOException
+     */
+    public void abrirABC(ActionEvent event, int pagina) throws IOException {
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.abrirABC(event, pagina);
     }
 
     /**
@@ -393,28 +375,63 @@ public class ModelPag04 {
     }
 
     /**
-     * Carrega a interface do ABC
+     * Trata o evento em que o mouse é arrastado depois de ser pressionado
      *
-     * @param event disparado pelo método ABCJanela do controller
-     * @throws IOException
+     * @param event mouse arrastado pela janela
      */
-    /**
-     * Carrega a interface do ABC
-     *
-     * @param event disparado pelo método ABCJanela do controller
-     * @param pagina
-     * @throws IOException
-     */
-    public void abrirABC(ActionEvent event, int pagina) throws IOException {
-        mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina);
+    public void mouseArrastado(MouseEvent event) {
+        double offsetX = event.getSceneX() - orgSceneX;
+        double offsetY = event.getSceneY() - orgSceneY;
+        newTranslateX = orgTranslateX + offsetX;
+        newTranslateY = orgTranslateY + offsetY;
+
+        ((Label) (event.getSource())).setTranslateX(newTranslateX);
+        ((Label) (event.getSource())).setTranslateY(newTranslateY);
+        verificarColisao(event);
+        janelaPrograma.setStyle("-fx-cursor: move;");
     }
 
     /**
-     * Trata o evento de quando o mouse é pressionado
+     * Verifica se a label solta dentro do espaço em branco
      *
-     * @param event disparado quando uma das labels contendo as sílabas é
-     * pressionada
+     * @param evento label é solta
+     * @return true se sim, do contrário false
+     */
+    public boolean verificarColisao(MouseEvent evento) {
+        boolean colidiu = (((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent()));
+        return colidiu;
+    }
+
+    /**
+     * Trata o evento de quando o mouse é liberado
+     *
+     * @param event label é solta
+     * @throws MalformedURLException
+     */
+    public void mouseLiberado(MouseEvent event) throws MalformedURLException {
+        if ((verificarColisao(event))) {
+            //se for a opcao correta
+            if (verificarEscolhaSilaba(event)) {
+                alterarLabelEspaco(event);
+                audioAcerto();
+            } else {
+                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+                audioErro();
+            }
+
+        } else {
+            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
+            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
+
+        }
+        janelaPrograma.setStyle("-fx-cursor: none;");
+    }
+
+    /**
+     * Trata o evento de quando uma das labels é selecionada
+     *
+     * @param event label pressionada
      */
     public void mousePressionado(MouseEvent event) {
         orgSceneX = event.getSceneX();
@@ -422,60 +439,6 @@ public class ModelPag04 {
         orgTranslateX = ((Label) (event.getSource())).getTranslateX();
         orgTranslateY = ((Label) (event.getSource())).getTranslateY();
         janelaPrograma.setStyle("-fx-cursor: hand;");
-    }
-
-    /**
-     * Trata o evento de quando a label pressionada é arrastada pela tela
-     *
-     * @param event disparado quando mouse é arrastado pela tela
-     */
-    public void mouseArrastado(MouseEvent event) {
-        double offsetX = event.getSceneX() - orgSceneX;
-        double offsetY = event.getSceneY() - orgSceneY;
-        newTranslateX = orgTranslateX + offsetX;
-        newTranslateY = orgTranslateY + offsetY;
-        ((Label) (event.getSource())).setTranslateX(newTranslateX);
-        ((Label) (event.getSource())).setTranslateY(newTranslateY);
-        janelaPrograma.setStyle("-fx-cursor: move;");
-    }
-
-    /**
-     * Trata o evento de quando o mouse, que estava pressionado, é solto
-     *
-     * @param event mouse é liberado (label é solta)
-     * @throws MalformedURLException
-     * @throws java.lang.InterruptedException
-     */
-    public void mouseLiberado(MouseEvent event) throws InterruptedException, MalformedURLException {
-        if ((verificarColisao(event))) {
-            //se for a opcao correta
-            if (verificarEscolhaSilaba(event)) {
-                alterarLabelEspaco(event);
-                audioAcerto();
-
-            } else {
-                ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-                ((Label) (event.getSource())).setTranslateY(orgTranslateY);
-                audioErro();
-                //modelPag04.tocarAudioAcerto(false);
-            }
-
-        } else {
-            ((Label) (event.getSource())).setTranslateX(orgTranslateX);
-            ((Label) (event.getSource())).setTranslateY(orgTranslateY);
-        }
-        janelaPrograma.setStyle("-fx-cursor: none");
-    }
-
-    /**
-     * Verifica se a label solta é a label correta que deveria ter sido
-     * arrastada
-     *
-     * @param evento o botão do mouse é solto
-     * @return true ou false
-     */
-    private boolean verificarColisao(MouseEvent evento) {
-        return ((Label) (evento.getSource())).getBoundsInParent().intersects(espaco.getBoundsInParent());
     }
 
     private void tocarAudioParabens() throws InterruptedException {
@@ -513,18 +476,16 @@ public class ModelPag04 {
         mCC.play(caminhoAudio);
     }
 
-    //faz exibir a instrução da atividade atual na tela
     public void definirInstrucao(int unidadeAtual) {
-
         switch (unidadeAtual) {
             case 1:
-                instrucao.setText("“Complete com a parte que está faltando: \"ÁRVORE\"");
+                instrucao.setText("Complete com a parte que está faltando:\"POLVO\"");
                 break;
             case 2:
-                instrucao.setText("“Complete com a parte que está faltando: \"PIPOCA\"");
+                instrucao.setText("Complete com a parte que está faltando:\"POÇO\"");
                 break;
             case 3:
-                instrucao.setText("“Complete com a parte que está faltando: \"BOTA\"");
+                instrucao.setText("Complete com a parte que está faltando:\"TOMATE\"");
                 break;
         }
 

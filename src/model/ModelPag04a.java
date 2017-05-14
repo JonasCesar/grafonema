@@ -4,8 +4,7 @@
 package model;
 
 import controller.Pag03Controller;
-import controller.Pag03aController;
-import controller.Pag04aController;
+import controller.Pag04Controller;
 import controller.Pag05Controller;
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +35,7 @@ import javafx.util.Duration;
  *
  * @author shadows
  */
-public class ModelPag04 {
+public class ModelPag04a {
 
     //inteiro que armazena o valor da unidade atual
     private int unidadeAtual;
@@ -107,7 +106,7 @@ public class ModelPag04 {
      * @param instrucao1
      * @param listaPalavras
      */
-    public ModelPag04(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
+    public ModelPag04a(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
             Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1, ListView<String> listaPalavras) {
         this.p1 = p1;
         this.p2 = p2;
@@ -134,8 +133,10 @@ public class ModelPag04 {
         this.unidadeAtual = unidadeAtual;
         //define o conteúdo das labels da pag 4
         URL imgUrl = null;
+        String silabas[][] = new String[2][1];
         switch (unidadeAtual) {
             case 1:
+                //silabas[0][1] = ["VA","VE"];
                 p1.setText("VA");
                 p2.setText("VE");
                 p3.setText("VI");
@@ -161,9 +162,9 @@ public class ModelPag04 {
                 p3.setText("TI");
                 p4.setText("TO");
                 p5.setText("TU");
-                f1.setText("BO");
+                f1.setText("PA");
                 f2.setText("");
-                imgUrl = getClass().getResource("imagens/licao03/botapb.png");
+                imgUrl = getClass().getResource("imagens/licao03a/patopb.png");
                 break;
             default:
                 break;
@@ -187,30 +188,16 @@ public class ModelPag04 {
      * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
-        if (getUnidadeAtual() == 3) {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04a.fxml"));
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
 
-            //cria a próxima cena     
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag04aController pg04aCont = fxmloader.<Pag04aController>getController();
-            pg04aCont.setUnidadeAtual(getUnidadeAtual());
-            pg04aCont.setInstrucao(getUnidadeAtual());
-            pg04aCont.tocarAudio();
-            mCC.exibirCena(proximaCena, janela);
-        } else {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
+        //cria a próxima cena     
+        Parent proximaCena = (Parent) fxmloader.load();
+        Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
+        pg05Cont.setUnidadeAtual(getUnidadeAtual());
 
-            //cria a próxima cena     
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
-            pg05Cont.setUnidadeAtual(getUnidadeAtual());
-
-            mCC.exibirCena(proximaCena, janela);
-            pg05Cont.tocarAudio();
-        }
-
+        mCC.exibirCena(proximaCena, janela);
+        pg05Cont.tocarAudio();
     }
 
     /**
@@ -220,30 +207,15 @@ public class ModelPag04 {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
-        if (getUnidadeAtual() == 3) {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
-            //cria a próxima cena     
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag03aController pg03aCont = fxmloader.<Pag03aController>getController();
-
-            mCC.exibirCena(proximaCena, janela);
-            pg03aCont.setUnidadeAtual(getUnidadeAtual());
-            pg03aCont.audioInicial();
-            pg03aCont.setImagens(getUnidadeAtual());
-        } else {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
-            //cria a próxima cena     
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag03Controller pg03Cont = fxmloader.<Pag03Controller>getController();
-
-            mCC.exibirCena(proximaCena, janela);
-            pg03Cont.setUnidadeAtual(getUnidadeAtual());
-            pg03Cont.audioInicial();
-            pg03Cont.setImagens(getUnidadeAtual());
-        }
-
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
+        //cria a próxima cena     
+        Parent proximaCena = (Parent) fxmloader.load();
+        Pag04Controller pg04Cont = fxmloader.<Pag04Controller>getController();
+        pg04Cont.setUnidadeAtual(getUnidadeAtual());
+        mCC.exibirCena(proximaCena, janela);
+        pg04Cont.setInstrucao(getUnidadeAtual());
+        pg04Cont.tocarAudio();       
     }
 
     /**
@@ -275,9 +247,9 @@ public class ModelPag04 {
                 }
                 break;
             case 3:
-                if (silabaEscolhida.equals("TA")) {
+                if (silabaEscolhida.equals("TO")) {
                     opcaoCorreta = true;
-                    imagemUrl = getClass().getResource("imagens/licao03/botacor.png");
+                    imagemUrl = getClass().getResource("imagens/licao03a/patocor.png");
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
@@ -310,7 +282,7 @@ public class ModelPag04 {
                 caminhoAudio = "audios/u02/l2p4.mp3";
                 break;
             case 3:
-                caminhoAudio = "audios/u03/l3p4.mp3";
+                caminhoAudio = "audios/u03a/l3p4a.mp3";
                 break;
             default://para valores acima de 9
                 caminhoAudio = "audios/u" + unidadeAtual + "/l" + unidadeAtual + "p4.mp3";
@@ -370,7 +342,7 @@ public class ModelPag04 {
                 caminhoAudio = "audios/u02/pipoca.mp3";
                 break;
             case 3:
-                caminhoAudio = "audios/u03/palpg4.mp3";
+                caminhoAudio = "audios/u03a/palavra.mp3";//pato
                 break;
             default:
                 caminhoAudio = "audios/u" + unidadeAtual + "/palavra.mp3";
@@ -398,6 +370,7 @@ public class ModelPag04 {
      * @param event disparado pelo método ABCJanela do controller
      * @throws IOException
      */
+
     /**
      * Carrega a interface do ABC
      *
@@ -515,18 +488,19 @@ public class ModelPag04 {
 
     //faz exibir a instrução da atividade atual na tela
     public void definirInstrucao(int unidadeAtual) {
-
+        String palavra = "";
         switch (unidadeAtual) {
             case 1:
-                instrucao.setText("“Complete com a parte que está faltando: \"ÁRVORE\"");
+                palavra = "\"ÁRVORE\"";
                 break;
             case 2:
-                instrucao.setText("“Complete com a parte que está faltando: \"PIPOCA\"");
+                palavra = "\"PIPOCA\"";
                 break;
             case 3:
-                instrucao.setText("“Complete com a parte que está faltando: \"BOTA\"");
+                palavra = "\"PATO\"";
                 break;
         }
+        instrucao.setText("“Complete com a parte que está faltando: "+palavra);
 
     }
 
