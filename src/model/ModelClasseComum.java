@@ -38,7 +38,9 @@ public class ModelClasseComum {
     private int unidadeAtual;
     private ActionEvent eventoTemporario;
     public static ObservableList<String> items = FXCollections.observableArrayList();
-    
+
+    public static String listaPalavrasEstudadas[] = {"VOVÔ", "POVO", "TATO", "UVA"};
+
     @FXML
     private ListView<String> listaPalavras;
 
@@ -98,7 +100,17 @@ public class ModelClasseComum {
         pararAudio();
         switch (palavraSelecionada) {
             case "VOVÔ":
-                caminhoAudio = "AudiosPalavrasEstudadas/vovo.mp3";
+                System.out.println("Entrou aqui palavras estudadas");
+                caminhoAudio = "audios/AudiosPalavrasEstudadas/vovo.mp3";
+                break;
+            case "POVO":
+                caminhoAudio = "audios/AudiosPalavrasEstudadas/povo.mp3";
+                break;
+            case "TATO":
+                caminhoAudio = "audios/AudiosPalavrasEstudadas/tato.mp3";
+                break;
+            case "UVA":
+                caminhoAudio = "audios/AudiosPalavrasEstudadas/uva.mp3";
                 break;
             default:
                 break;
@@ -186,22 +198,27 @@ public class ModelClasseComum {
         //listaPalavras.setItems(items);
     }
 
-    void salvarPalavraEstudada(String novaPalavra) {
-        if(!items.contains(novaPalavra)){
-            items.add(novaPalavra);       
-        }
-        
-    }
-
-    public void atualizarListView(ListView<String> listaPalavras) {
+    public void atualizarListView(ListView<String> listaPalavras, int unidade) {
         this.listaPalavras = listaPalavras;
-        try{            
+        System.out.println("Entrou aqui "+unidade);
+        try {
+            if (unidade > 1) {
+                if(!items.isEmpty()){
+                    for (int i = 0; i <= items.size(); i++) {
+                        items.remove(listaPalavrasEstudadas[i]);
+                    }
+                }
+                for (int i = 0; i < unidade-1; i++) {
+                    items.add(listaPalavrasEstudadas[i]);
+                }
+            }
+
             listaPalavras.setItems(items);
-        }catch(IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Não adicionou nada");
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("item não encontrado ");
         }
-        
+
     }
 }

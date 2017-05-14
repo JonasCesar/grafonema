@@ -14,12 +14,21 @@
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
     <children>
-        <Button fx:id="abc" layoutX="299.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
-        <Button fx:id="atividades" layoutX="603.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades" />
-        <Button fx:id="manual" layoutX="872.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
+        <Button fx:id="abc" layoutX="349.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font></Button>
+        <Button fx:id="atividades" layoutX="580.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font></Button>
+        <Button fx:id="manual" layoutX="822.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
         <Label fx:id="palavrasEstudadas" layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
         <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
-        <Button fx:id="voltar" layoutX="203.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
+        <Button fx:id="voltar" layoutX="203.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font></Button>
         <ImageView fx:id="img1" fitHeight="150.0" fitWidth="200.0" layoutX="221.0" layoutY="122.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagens/licao01/.png" />
@@ -46,11 +55,14 @@
             </image>
         </ImageView>
         <ImageView fx:id="img4" fitHeight="150.0" fitWidth="200.0" layoutX="221.0" layoutY="356.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true" />
-        <Button layoutX="991.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial" />
-        <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
-      <Text fx:id="instrucao" layoutX="92.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="590.697265625">
+        <Button layoutX="991.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Menu Inicial">
          <font>
-            <Font size="28.0" />
+            <Font name="Verdana" size="20.0" />
+         </font></Button>
+        <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
+      <Text fx:id="instrucao" layoutX="366.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="590.697265625">
+         <font>
+            <Font name="Verdana" size="25.0" />
          </font>
       </Text>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="164.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">

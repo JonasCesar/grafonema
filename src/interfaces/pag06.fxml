@@ -16,9 +16,9 @@
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>     
     <children>
-        <Button fx:id="abc" layoutX="299.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
-        <Button fx:id="atividades" layoutX="603.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades" />
-        <Button fx:id="manual" layoutX="872.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
+        <Button fx:id="abc" layoutX="349.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
+        <Button fx:id="atividades" layoutX="580.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades" />
+        <Button fx:id="manual" layoutX="822.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
         <Label fx:id="palavrasEstudadas" layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
         <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
         <Button fx:id="voltar" layoutX="203.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
@@ -28,7 +28,7 @@
             <children>
                 <Label fx:id="p1" alignment="CENTER_RIGHT" graphicTextGap="8.0">
                     <font>
-                        <Font size="20.0" />
+                        <Font name="Verdana" size="20.0" />
                     </font>
                     <opaqueInsets>
                         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -39,7 +39,7 @@
                 </Label>
                 <TextField fx:id="resposta" alignment="CENTER" prefHeight="38.0" prefWidth="111.0">
                     <font>
-                        <Font size="18.0" />
+                        <Font name="Verdana" size="18.0" />
                     </font>
                     <FlowPane.margin>
                         <Insets right="5.0" />
@@ -47,7 +47,7 @@
                 </TextField>
                 <Label fx:id="p2">
                     <font>
-                        <Font size="20.0" />
+                        <Font name="Verdana" size="20.0" />
                     </font>
                     <FlowPane.margin>
                         <Insets right="55.0" />
@@ -55,17 +55,17 @@
                 </Label>
                 <Button fx:id="confirmar" mnemonicParsing="false" onAction="#verificarTexto" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="OK">
                     <font>
-                        <Font size="18.0" />
+                        <Font name="Verdana" size="18.0" />
                     </font>
                 </Button>
             </children>
         </FlowPane>
-      <Text fx:id="instrucao" layoutX="255.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="408.7294921875">
+      <Text fx:id="instrucao" layoutX="255.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="633.7294921876">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <ImageView fx:id="repetir" fitHeight="32.0" fitWidth="32.0" layoutX="395.0" layoutY="95.0" onMouseClicked="#replayAudio" onMouseEntered="#sombrearImagem" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="repetir" fitHeight="32.0" fitWidth="32.0" layoutX="532.0" layoutY="95.0" onMouseClicked="#replayAudio" onMouseEntered="#sombrearImagem" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagens/icones/replay.png" />
          </image>

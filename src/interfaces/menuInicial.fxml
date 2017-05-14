@@ -38,7 +38,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="732.0" layoutY="178.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 4">
+      <Button fx:id="u04" layoutX="732.0" layoutY="178.0" mnemonicParsing="false" onAction="#iniciarUnidade" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 4">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>
@@ -70,7 +70,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="951.0" layoutY="178.0" mnemonicParsing="false" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 5">
+      <Button fx:id="u05" layoutX="951.0" layoutY="178.0" mnemonicParsing="false" onAction="#iniciarUnidade" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Unidade 5">
          <padding>
             <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
          </padding>

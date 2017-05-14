@@ -76,9 +76,10 @@ public class ModelPag01 {
                 caminhoAudio = "audios/u02/l2p1.mp3";
                 break;
             case 3:
-                caminhoAudio = "audios/u03/l3p1.mp3";
+                caminhoAudio = "audios/u03/l3p1.mp3";     
                 break;
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p1.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -133,6 +134,7 @@ public class ModelPag01 {
      * Carrega a interface do ABC
      *
      * @param event disparado pelo método ABCJanela do controller
+     * @param pagina
      * @throws IOException
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
@@ -161,8 +163,7 @@ public class ModelPag01 {
     public void setImagemTexto(int unidadeAtual) {
         imagemURL = null;
         switch (unidadeAtual) {
-            case 1:
-                System.out.println("entrou aqui");
+            case 1:                
                 imagemURL = getClass().getResource("imagens/licao01/imagemTexto.png");
                 break;
             case 2:
@@ -170,19 +171,18 @@ public class ModelPag01 {
                 break;
             case 3:
                 imagemURL = getClass().getResource("imagens/licao03/imagemTexto.png");
-                break;                
+                break;
+            case 4:
+                imagemURL = getClass().getResource("imagens/licao4/imagemTexto.png");
+                break;
             default:
+                imagemURL = getClass().getResource("imagens/licao"+unidadeAtual+"/imagemTexto.png");
                 break;
         }
         imagemTexto.setImage(new Image(imagemURL.toString()));
     }
-
-    public void atualizarListaPalavras(ListView<String> listaPalavras) {
-        mCC.atualizarListaPalavras(listaPalavras);
-    }
-
-    public void atualizarListView() {
-        mCC.atualizarListView(listaPalavras);
+    public void atualizarListView(int unidade) {        
+        mCC.atualizarListView(listaPalavras,unidade);
     }
 
 }

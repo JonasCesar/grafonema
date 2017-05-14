@@ -97,7 +97,7 @@ public class Pag01Controller implements Initializable {
      * @throws IOException 
      */
     public void setUnidadeAtual(int unidade) throws FileNotFoundException, IOException {
-        atualizarListView();
+        atualizarListView(unidade);
         modelPag01.setUnidadeAtual(unidade, tituloUnidade);
     }
     /**
@@ -184,8 +184,8 @@ public class Pag01Controller implements Initializable {
         modelPag01.setImagemTexto(getUnidadeAtual());
     }
 
-    private void atualizarListView() {
-        modelPag01.atualizarListView();
+    private void atualizarListView(int unidade) {
+        modelPag01.atualizarListView(unidade);
     }
     
     

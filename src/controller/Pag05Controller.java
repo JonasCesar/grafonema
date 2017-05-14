@@ -82,9 +82,11 @@ public class Pag05Controller implements Initializable {
     ImageView repetir;
     @FXML
     private Button atividades;
+    @FXML
+    private Label f3;
     
     public Pag05Controller() {
-        listaPalavras = new ListView<String>();        
+        listaPalavras = new ListView<>();        
     }
 
     /**
@@ -94,7 +96,8 @@ public class Pag05Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco,imagemAudio, janelaPrograma, instrucao, listaPalavras);
+        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco,
+                imagemAudio, janelaPrograma, instrucao, listaPalavras,f3);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));

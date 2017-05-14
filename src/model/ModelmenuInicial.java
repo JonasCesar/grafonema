@@ -34,8 +34,7 @@ public class ModelmenuInicial {
      */
     public void iniciar(ActionEvent event, int unidade) throws IOException{
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));  
-        
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));        
         //cria a próxima cena   
         Parent proximaCena = (Parent) fxmloader.load();
         Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();

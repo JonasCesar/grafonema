@@ -7,6 +7,7 @@
 }
 
 .button{
+    -fx-font-family: "Verdana";
     -fx-background-radius: 30;
     -fx-background-insets: 0,1,2,3,0;
     -fx-text-fill: black;
@@ -17,6 +18,7 @@
 
 //estilos dos botões inferiores
 #som, #abc, #manual, #a, #b, #c, #d, #e,  #f, #g, #h, #i, #j, #k, #l, #m, #n, #o, #p, #q, #r, #s, #t, #u, #v, #w, #y, #x, #z {
+    -fx-font-family: "Verdana";
     -fx-background-color: 
         linear-gradient(#ffd65b, #e68400),
         linear-gradient(#ffef84, #f2ba44),
@@ -69,14 +71,14 @@
 
 #palavraAtual{
     -fx-font-size: 32px;
-    -fx-font-family: "Arial Black";
+    -fx-font-family: "Verdana";
     -fx-fill: #818181;
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
 
 #tituloUnidade{
     -fx-font-size: 32px;
-    -fx-font-family: "Droid Sans";
+    -fx-font-family: "Verdana";
     -fx-text-fill: black;
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }

@@ -5,7 +5,6 @@ package model;
 
 import controller.Pag01Controller;
 import controller.Pag06Controller;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URL;
 import javafx.event.ActionEvent;
@@ -52,7 +51,6 @@ public class ModelPag07 {
         Parent proximaCena = (Parent) fxmloader.load();
         Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
         pg01Cont.setUnidadeAtual(getUnidadeAtual() + 1);
-        salvarPalavraEstudadas(getUnidadeAtual());
         mCC.exibirCena(proximaCena, janela);
         pg01Cont.setImagemTexto();
         pg01Cont.tocarAudio();
@@ -86,10 +84,10 @@ public class ModelPag07 {
                 caminhoAudio = "audios/u03/l3p1.mp3";
                 break;
             case 4:
-                caminhoAudio = "audios/u04/l4p1.mp3";
+                caminhoAudio = "audios/u4/l4p1.mp3";
                 break;
             case 5:
-                caminhoAudio = "audios/u05/l5p1.mp3";
+                caminhoAudio = "audios/u5/l5p1.mp3";
                 break;
             case 6:
                 caminhoAudio = "audios/u06/l6p1.mp3";
@@ -149,36 +147,6 @@ public class ModelPag07 {
     }
 
     /**
-     * Salva as palavras estudadas
-     *
-     * @param unidade
-     * @throws IOException
-     */
-    public void salvarPalavraEstudadas(int unidade) throws IOException {
-        String novaPalavra = "";
-        boolean encontrado = false;
-        BufferedReader lerArq = null;
-        switch (unidade) {
-            case 1:
-                novaPalavra = "VOVÔ";
-                break;
-            case 2:
-                novaPalavra = "POVO";
-                break;
-            case 3:
-                novaPalavra = "TATO";
-                break;
-            default:
-                break;
-        }
-        /**
-         * O código abaixo verifica se a nova palavra a ser adicionada já existe
-         * no arquivo
-         */
-        mCC.salvarPalavraEstudada(novaPalavra);       
-    }
-
-    /**
      * Carrega a página anterior
      *
      * @param event disparado pelo método voltar do controller
@@ -215,7 +183,7 @@ public class ModelPag07 {
     }
 
     public void atualizarListView() {
-        mCC.atualizarListView(listaPalavras);
+        mCC.atualizarListView(listaPalavras,getUnidadeAtual());
     }
 
     public void incrementarUnidade(int valor) {
@@ -241,7 +209,9 @@ public class ModelPag07 {
                 imagemURL = getClass().getResource("imagens/licao03/imagemTexto.png");
                 break;                
             default:
-                break;
+                imagemURL = getClass().getResource("imagens/licao"+unidadeAtual+"/imagemTexto.png");
+                break;                
+                
         }
         imagemTexto.setImage(new Image(imagemURL.toString()));
     }

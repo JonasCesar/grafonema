@@ -123,15 +123,7 @@ public class Pag07Controller implements Initializable {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag07.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-    /**
-     * Atualiza a lista de palavras estudadas
-     * @throws FileNotFoundException
-     * @throws IOException 
-     */
-    private void atualizarListaPalavras() throws FileNotFoundException, IOException {
-        modelPag07.salvarPalavraEstudadas(getUnidadeAtual());
-        //controlerComum.atualizarListaPalavras(listaPalavras);
-    }
+   
     /**
      * Realiza o efeito de sombrear o botão quando o mouse passar por cima dele
      * @param event movimentação do mouse sobre os componentes

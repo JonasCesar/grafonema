@@ -116,7 +116,7 @@ public class ModelPag03 {
      * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
-        if (getUnidadeAtual() == 3) {
+        if (getUnidadeAtual() == 3 || getUnidadeAtual()== 4) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -174,6 +174,21 @@ public class ModelPag03 {
                 } else {
                     imgf1 = getClass().getResource("imagens/licao03/" + nomeImagem + "e.png");
                 }
+                
+                break;
+            case 4:
+                if (imgClicada.equals("img2") || imgClicada.equals("img4") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao4/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao4/" + nomeImagem + "e.png");
+                }
+                break;
+            case 5:
+                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao5/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao5/" + nomeImagem + "e.png");
+                }
                 break;
             default:
                 break;
@@ -195,7 +210,11 @@ public class ModelPag03 {
             case 3:
                 caminhoAudio = "audios/u03/l3p3a1.mp3";
                 break;
+            case 4:
+                caminhoAudio = "audios/u4/l4p3a1.mp3";
+                break;
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p3.mp3";
                 break;
         }
 
@@ -238,7 +257,7 @@ public class ModelPag03 {
                 imgf4 = getClass().getResource("imagens/licao03/4.png");
                 imgf5 = getClass().getResource("imagens/licao03/5.png");
                 imgf6 = getClass().getResource("imagens/licao03/6.png");
-                break;
+                break;            
             default:
                 imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/1.png");
                 imgf2 = getClass().getResource("imagens/licao" + unidadeAtual + "/2.png");
@@ -305,7 +324,7 @@ public class ModelPag03 {
                 break;
             case 3:
                 caminhoAudio = "audios/u03/" + nomeImagem + ".mp3";
-                break;
+                break;            
             default:
                 caminhoAudio = "audios/u" + unidadeAtual + "/" + nomeImagem + ".mp3";
                 break;
@@ -332,6 +351,7 @@ public class ModelPag03 {
      * Carrega a interface do ABC
      *
      * @param event disparado pelo método ABCJanela do controller
+     * @param pagina
      * @throws IOException
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
@@ -341,22 +361,29 @@ public class ModelPag03 {
 
     //faz exibir a instrução da atividade atual na tela
     public void definirInstrucao(int unidadeAtual) throws MalformedURLException {
-
+        String textoInstrucao = "";
         switch (unidadeAtual) {
             case 1:
-                instrucao.setText("Clique nas imagens que tem o som \"VÔ\"");
+                textoInstrucao = "\"VÔ\"";
                 break;
             case 2:
-                instrucao.setText("Clique nas imagens que tem o som \"PO\"");
+                textoInstrucao = "\"PO\"";
                 break;
             case 3:
-                instrucao.setText("Clique nas imagens que tem o som \"TA\"");
+                textoInstrucao ="\"TA\"";
+                break;
+            case 4:
+                textoInstrucao ="\"U\"";
+                break;
+            case 5:
+                textoInstrucao ="\"VI\"";
                 break;
         }
+        instrucao.setText("Clique nas figuras que tem o som "+textoInstrucao);
 
     }
 
     public void atualizarListView() {
-        mCC.atualizarListView(listaPalavras);
+        mCC.atualizarListView(listaPalavras,getUnidadeAtual());
     }
 }

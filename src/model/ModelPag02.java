@@ -71,6 +71,12 @@ public class ModelPag02 {
             case 3:
                 palavraAtual.setText("TATO");
                 break;
+            case 4:
+                palavraAtual.setText("UVA");
+                break;
+            case 5:
+                palavraAtual.setText("VIVA");
+                break;
             default:
                 break;
         }
@@ -91,7 +97,11 @@ public class ModelPag02 {
             case 3:
                 caminhoAudio = "audios/u03/l3p2a1.mp3";
                 break;
+            case 4:
+                caminhoAudio = "audios/u4/l4p2a1.mp3";
+                break;                      
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p2a1.mp3";
                 break;
         }
 
@@ -112,7 +122,11 @@ public class ModelPag02 {
             case 3:
                 caminhoAudio = "audios/u03/l3p2a2.mp3";
                 break;
+            case 4:
+                caminhoAudio = "audios/u4/l4p2a2.mp3";
+                break;
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p2a2.mp3";
                 break;
         }
 
@@ -133,7 +147,11 @@ public class ModelPag02 {
             case 3:
                 caminhoAudio = "audios/u03/l3p2a3.mp3";
                 break;
+            case 4:
+                caminhoAudio = "audios/u4/l4p2a3.mp3";
+                break;
             default:
+                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p3a3.mp3";
                 break;
         }
 
@@ -230,6 +248,6 @@ public class ModelPag02 {
     }
 
     public void atualizarListView() {
-        mCC.atualizarListView(listaPalavras);
+        mCC.atualizarListView(listaPalavras,getUnidadeAtual());
     }
 }
