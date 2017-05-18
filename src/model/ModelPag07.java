@@ -86,27 +86,10 @@ public class ModelPag07 {
             case 4:
                 caminhoAudio = "audios/u4/l4p1.mp3";
                 break;
-            case 5:
-                caminhoAudio = "audios/u5/l5p1.mp3";
-                break;
-            case 6:
-                caminhoAudio = "audios/u06/l6p1.mp3";
-                break;
-            case 7:
-                caminhoAudio = "audios/u07/l7p1.mp3";
-                break;
-            case 8:
-                caminhoAudio = "audios/u08/l8p1.mp3";
-                break;
-            case 9:
-                caminhoAudio = "audios/u09/l9p1.mp3";
-                break;
             default:
                 caminhoAudio = "audios/u" + getUnidadeAtual() + "/l" + getUnidadeAtual() + "p1.mp3";
-                break;
-                
+                break;                
         }
-
         mCC.play(caminhoAudio);
     }
 

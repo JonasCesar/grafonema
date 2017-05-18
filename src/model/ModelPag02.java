@@ -38,6 +38,7 @@ public class ModelPag02 {
     @FXML
     private Label palavraAtual;
     
+    private String textoDaUnidade[] = {"VOVÔ","POVO","TATO","UVA","VIVA","LUVA"};
 
     public ModelPag02(ListView<String> listaPalavras, Label palavraAtual) {
         this.unidadeAtual = 0;
@@ -61,25 +62,7 @@ public class ModelPag02 {
      * @param unidadeAtual unidade atual da execução
      */
     public void setUnidadeAtual(int unidadeAtual) {
-        switch (unidadeAtual) {
-            case 1:
-                palavraAtual.setText("VOVÔ");
-                break;
-            case 2:
-                palavraAtual.setText("POVO");
-                break;
-            case 3:
-                palavraAtual.setText("TATO");
-                break;
-            case 4:
-                palavraAtual.setText("UVA");
-                break;
-            case 5:
-                palavraAtual.setText("VIVA");
-                break;
-            default:
-                break;
-        }
+        palavraAtual.setText(textoDaUnidade[unidadeAtual-1]);        
         this.unidadeAtual = unidadeAtual;
     }
 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package principal;
 
 import java.util.Optional;
@@ -34,8 +29,7 @@ public class Principal extends Application {
         Scene cena = new Scene(cenaInicial, 1200, 700);
         janela.setTitle("Projeto 2");
         janela.setScene(cena);
-        janela.show();
-
+        janela.show();        
         //função para encerrar todos os processos quando o usuário clicar no "X"
         janela.setOnCloseRequest((WindowEvent event) -> {
             Alert confirmacaoSaida = new Alert(Alert.AlertType.CONFIRMATION,

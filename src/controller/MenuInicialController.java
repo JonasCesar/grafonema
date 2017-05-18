@@ -65,6 +65,9 @@ public class MenuInicialController implements Initializable {
             case "u05":
                 menuInicial.iniciar(event, 5);
                 break;
+            case "u06":
+                menuInicial.iniciar(event, 6);
+                break;
             default:
                 break;
         }

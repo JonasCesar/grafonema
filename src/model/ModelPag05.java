@@ -187,6 +187,11 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao5/violetapb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
+            case 6:
+                f2.setText("TA");
+                f1.setVisible(false);
+                f3.setVisible(false);                
+                break;
             default:
                 break;
         }

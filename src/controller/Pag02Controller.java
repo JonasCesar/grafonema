@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -58,6 +59,8 @@ public class Pag02Controller implements Initializable {
     private final int pagina = 2;
     @FXML
     private Button atividades;
+    @FXML
+    private ImageView imgAudio1;
 
     public Pag02Controller() {
         unidadeAtual = "u00";

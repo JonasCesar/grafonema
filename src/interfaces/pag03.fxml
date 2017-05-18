@@ -14,60 +14,78 @@
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
     <children>
-        <Button fx:id="abc" layoutX="349.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC">
+      <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1200.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/imagens/imagemDeFundo/imagemFundo3.png" />
+         </image>
+      </ImageView>
+        <Button fx:id="abc" layoutX="379.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC">
          <font>
-            <Font name="Verdana" size="13.0" />
+            <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-        <Button fx:id="atividades" layoutX="580.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades">
+        <Button fx:id="atividades" layoutX="610.0" layoutY="590.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades">
          <font>
-            <Font name="Verdana" size="13.0" />
+            <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-        <Button fx:id="manual" layoutX="822.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
-        <Label fx:id="palavrasEstudadas" layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
-        <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
-        <Button fx:id="voltar" layoutX="203.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar">
+        <Button fx:id="manual" layoutX="852.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual">
          <font>
-            <Font name="Verdana" size="13.0" />
+            <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-        <ImageView fx:id="img1" fitHeight="150.0" fitWidth="200.0" layoutX="221.0" layoutY="122.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
+        <Label fx:id="palavrasEstudadas" layoutX="44.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
+        <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font></Button>
+        <Button fx:id="voltar" layoutX="233.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font></Button>
+        <ImageView fx:id="img1" fitHeight="150.0" fitWidth="200.0" layoutX="251.0" layoutY="122.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagens/licao01/.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="img2" fitHeight="150.0" fitWidth="200.0" layoutX="527.0" layoutY="122.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="img2" fitHeight="150.0" fitWidth="200.0" layoutX="557.0" layoutY="122.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagens/licao01/.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="img3" fitHeight="150.0" fitWidth="200.0" layoutX="853.0" layoutY="122.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="img3" fitHeight="150.0" fitWidth="200.0" layoutX="883.0" layoutY="122.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagens/licao01/.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="img6" fitHeight="150.0" fitWidth="200.0" layoutX="853.0" layoutY="356.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="img6" fitHeight="150.0" fitWidth="200.0" layoutX="883.0" layoutY="356.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagens/licao01/.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="img5" fitHeight="150.0" fitWidth="200.0" layoutX="527.0" layoutY="356.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="img5" fitHeight="150.0" fitWidth="200.0" layoutX="557.0" layoutY="356.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagens/licao01/.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="img4" fitHeight="150.0" fitWidth="200.0" layoutX="221.0" layoutY="356.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true" />
-        <Button layoutX="991.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Menu Inicial">
+        <ImageView fx:id="img4" fitHeight="150.0" fitWidth="200.0" layoutX="251.0" layoutY="356.0" onMouseClicked="#verificarImagem" onMouseEntered="#executarAudioImagem" pickOnBounds="true" preserveRatio="true" />
+        <Button layoutX="1014.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao">
          <font>
             <Font name="Verdana" size="20.0" />
-         </font></Button>
-        <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
-      <Text fx:id="instrucao" layoutX="366.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="590.697265625">
+         </font>
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../model/imagens/icones/house-309113_640.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+        <ListView fx:id="listaPalavras" layoutX="44.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
+      <Text fx:id="instrucao" layoutX="396.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="590.697265625">
          <font>
             <Font name="Verdana" size="25.0" />
          </font>
       </Text>
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="164.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="194.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../imagens/icones/speaker.png" />
+            <Image url="@../model/imagens/icones/speaker.png" />
          </image>
       </ImageView>
     </children>

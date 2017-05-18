@@ -8,7 +8,7 @@
 
 .button{
     -fx-font-family: "Verdana";
-    -fx-background-radius: 30;
+    -fx-background-radius: 50;
     -fx-background-insets: 0,1,2,3,0;
     -fx-text-fill: black;
     -fx-font-weight: bold;
@@ -63,22 +63,31 @@
     -fx-padding: 10 20 10 20;
 }
 #palavrasEstudadas {
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+    -fx-font-weight: regular;
     -fx-text-fill: #333333;
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
 #palavraAtual{
-    -fx-font-size: 32px;
+    -fx-font-size: 20px;
     -fx-font-family: "Verdana";
     -fx-fill: #818181;
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
 
 #tituloUnidade{
-    -fx-font-size: 32px;
+    -fx-font-size: 20px;
     -fx-font-family: "Verdana";
     -fx-text-fill: black;
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+#imgAudio1{
+    -fx-background-radius: 100;
+}
+
+#menuInicial{
+    -fx-background-radius: 100;
 }

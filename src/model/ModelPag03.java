@@ -54,6 +54,8 @@ public class ModelPag03 {
     private ModelClasseComum mCC;
     @FXML
     ListView<String> listaPalavras;
+    
+    private String listaInstrucao[] = {"\"VÔ\"","\"PO\"","\"TA\"","\"U\"","\"VI\"","\"LU\"","\"VÔ\""};
 
     public ModelPag03(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -188,6 +190,13 @@ public class ModelPag03 {
                     imgf1 = getClass().getResource("imagens/licao5/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao5/" + nomeImagem + "e.png");
+                }
+                break;
+            case 6:
+                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao6/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao6/" + nomeImagem + "e.png");
                 }
                 break;
             default:
@@ -330,8 +339,7 @@ public class ModelPag03 {
                 break;
 
         }
-        mCC.play(caminhoAudio);
-        System.out.println("Tocar " + caminhoAudio);
+        mCC.play(caminhoAudio);        
     }
 
     /**
@@ -361,25 +369,8 @@ public class ModelPag03 {
 
     //faz exibir a instrução da atividade atual na tela
     public void definirInstrucao(int unidadeAtual) throws MalformedURLException {
-        String textoInstrucao = "";
-        switch (unidadeAtual) {
-            case 1:
-                textoInstrucao = "\"VÔ\"";
-                break;
-            case 2:
-                textoInstrucao = "\"PO\"";
-                break;
-            case 3:
-                textoInstrucao ="\"TA\"";
-                break;
-            case 4:
-                textoInstrucao ="\"U\"";
-                break;
-            case 5:
-                textoInstrucao ="\"VI\"";
-                break;
-        }
-        instrucao.setText("Clique nas figuras que tem o som "+textoInstrucao);
+        String textoInstrucao = "";        
+        instrucao.setText("Clique nas figuras que tem o som "+listaInstrucao[unidadeAtual-1]);
 
     }
 

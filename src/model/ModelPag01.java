@@ -34,6 +34,8 @@ public class ModelPag01 {
     @FXML
     private ImageView imagemTexto;
     private URL imagemURL;
+    private String tituloUnidades[]={"1: VOVÔ","2: POVO(OVO, UVA)","3: TATO",
+            "4: UVA","5: VIVA"};
 
     public ModelPag01(ImageView imgView, ListView listaPalavras) {
         this.unidadeAtual = 1;
@@ -61,6 +63,7 @@ public class ModelPag01 {
     public void setUnidadeAtual(int unidadeAtual, Label tituloUnidade) {
         System.out.println(" Unidade atual pag01 " + unidadeAtual);
         this.unidadeAtual = unidadeAtual;
+        tituloUnidade.setText(tituloUnidade.getText()+" "+tituloUnidades[unidadeAtual-1]);
     }
 
     //tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));

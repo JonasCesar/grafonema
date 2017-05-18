@@ -87,10 +87,12 @@ public class ModelPag04 {
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
     private URL imagemUrl;
-
+    
     @FXML
     private ListView<String> listaPalavras;
-
+    
+    private String textoInstrucao[] ={"\"ÁRVORE\"","\"PIPOCA\"","\"BOTA\"","\"URUBU\"","\"VINHO\"","\"LUTA\""};
+    
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
      *
@@ -134,59 +136,47 @@ public class ModelPag04 {
         this.unidadeAtual = unidadeAtual;
         //define o conteúdo das labels da pag 4
         URL imgUrl = null;
+        String matrizSilabas[][] = {{"VA","VE","VI","VO","VU"},{"PA","PE","PI","PO","PU"},{"TA","TE","TI","TO","TU"},
+            {"A","E","I","O","U"},{"VA","VE","VI","VO","VU"},{"LA","LE","LI","LO","LU"}};
+        p1.setText(matrizSilabas[unidadeAtual-1][0]);
+        p2.setText(matrizSilabas[unidadeAtual-1][1]);
+        p3.setText(matrizSilabas[unidadeAtual-1][2]);
+        p4.setText(matrizSilabas[unidadeAtual-1][3]);
+        p5.setText(matrizSilabas[unidadeAtual-1][4]);
         switch (unidadeAtual) {
-            case 1:
-                p1.setText("VA");
-                p2.setText("VE");
-                p3.setText("VI");
-                p4.setText("VO");
-                p5.setText("VU");
+            case 1:                
                 f1.setText("ÁR");
                 f2.setText("RE");
                 imgUrl = getClass().getResource("imagens/licao01/arvorepb.png");
                 break;
-            case 2:
-                p1.setText("PA");
-                p2.setText("PE");
-                p3.setText("PI");
-                p4.setText("PO");
-                p5.setText("PU");
+            case 2:                
                 f1.setText("PI");
                 f2.setText("CA");
                 imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
                 break;
-            case 3:
-                p1.setText("TA");
-                p2.setText("TE");
-                p3.setText("TI");
-                p4.setText("TO");
-                p5.setText("TU");
+            case 3:                
                 f1.setText("BO");
                 f2.setText("");
                 imgUrl = getClass().getResource("imagens/licao03/botapb.png");
                 break;
-            case 4:
-                p1.setText("A");
-                p2.setText("E");
-                p3.setText("I");
-                p4.setText("O");
-                p5.setText("U");
+            case 4:               
                 f1.setId("pg4f1");
                 espaco.setId("pg4espaco");
                 f1.setText("RU");
                 f2.setText("BU");
                 imgUrl = getClass().getResource("imagens/licao4/urubupb.png");
                 break;
-            default:
-                p1.setText("VA");
-                p2.setText("VE");
-                p3.setText("VI");
-                p4.setText("VO");
-                p5.setText("VU");
+            case 5:                
                 f1.setText("");
                 f2.setText("NHO");
                 imgUrl = getClass().getResource("imagens/licao5/vinhopb.png");
                 break;
+            case 6:
+                f1.setText("");
+                f2.setText("VA");
+                imgUrl = getClass().getResource("imagens/licao5/luvacor.png");
+                break;
+                
         }
         imagemAudio.setImage(new Image(imgUrl.toString()));
     }
@@ -308,6 +298,12 @@ public class ModelPag04 {
                 if (silabaEscolhida.equals("VI")) {
                     opcaoCorreta = true;
                     imagemUrl = getClass().getResource("imagens/licao5/vinhocor.png");                    
+                }
+                break;
+            case 6:
+                if (silabaEscolhida.equals("LU")) {
+                    opcaoCorreta = true;
+                    imagemUrl = getClass().getResource("imagens/licao6/luvacor.png");                    
                 }
                 break;
             default:
@@ -544,30 +540,9 @@ public class ModelPag04 {
     }
 
     //faz exibir a instrução da atividade atual na tela
-    public void definirInstrucao(int unidadeAtual) {
-        String textoInstrucao = "";
-        switch (unidadeAtual) {
-            case 1:
-                textoInstrucao = "\"ÁRVORE\"";
-                break;
-            case 2:
-                textoInstrucao = "\"PIPOCA\"";
-                break;
-            case 3:
-                textoInstrucao = "\"BOTA\"";
-                break;
-            case 4:
-                textoInstrucao = "\"URUBU\"";
-                break;
-            case 5:
-                textoInstrucao = "\"VINHO\"";
-                break;
-        }
-        instrucao.setText("“Complete com a parte que está faltando: "+textoInstrucao);
-        
-
+    public void definirInstrucao(int unidadeAtual) {        
+        instrucao.setText("“Complete com a parte que está faltando: "+textoInstrucao[unidadeAtual-1]);        
     }
-
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras,getUnidadeAtual());
     }

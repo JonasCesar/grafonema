@@ -15,36 +15,48 @@
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
     <children>
-        <Button fx:id="abc" layoutX="349.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC">
+      <ImageView fitHeight="700.0" fitWidth="1200.0" layoutX="1.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/imagens/imagemDeFundo/imagemFundo3.png" />
+         </image>
+      </ImageView>
+        <Button fx:id="abc" layoutX="379.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC">
          <font>
             <Font name="Verdana" size="13.0" />
          </font></Button>
-        <Button fx:id="atividades" layoutX="580.0" layoutY="598.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades">
+        <Button fx:id="atividades" layoutX="610.0" layoutY="590.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades">
          <font>
             <Font name="Verdana" size="13.0" />
          </font></Button>
-        <Button fx:id="manual" layoutX="822.0" layoutY="598.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual">
+        <Button fx:id="manual" layoutX="852.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual">
          <font>
             <Font name="Verdana" size="13.0" />
          </font></Button>
         <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
         <ImageView fx:id="imagemTexto" fitHeight="392.0" fitWidth="400.0" layoutX="490.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
-        <Label fx:id="palavrasEstudadas" layoutX="14.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER">
+        <Label fx:id="palavrasEstudadas" layoutX="44.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER">
          <font>
             <Font name="Verdana" size="13.0" />
          </font></Label>
-        <Label fx:id="tituloUnidade" layoutX="633.0" layoutY="67.0" text="Unidade">
+        <Label fx:id="tituloUnidade" layoutX="540.0" layoutY="67.0" text="Unidade">
          <font>
-            <Font name="Verdana Bold" size="13.0" />
+            <Font name="Verdana Bold" size="32.0" />
          </font></Label>
-        <Button layoutX="981.0" layoutY="28.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" prefHeight="39.0" prefWidth="138.0" text="Menu Inicial">
+        <Button layoutX="1014.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao">
          <font>
-            <Font name="Verdana" size="13.0" />
-         </font></Button>
-        <ListView fx:id="listaPalavras" layoutX="14.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
-      <ImageView fx:id="iconeOuvir" fitHeight="32.0" fitWidth="32.0" layoutX="164.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+            <Font name="Verdana" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../model/imagens/icones/house-309113_640.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+        <ListView fx:id="listaPalavras" layoutX="44.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
+      <ImageView fx:id="iconeOuvir" fitHeight="32.0" fitWidth="32.0" layoutX="204.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../imagens/icones/speaker.png" />
+            <Image url="@../model/imagens/icones/speaker.png" />
          </image>
       </ImageView>
     </children>

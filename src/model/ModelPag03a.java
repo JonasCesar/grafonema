@@ -54,6 +54,8 @@ public class ModelPag03a {
     private ModelClasseComum mCC;
     @FXML
     ListView<String> listaPalavras;
+    
+     private String listaInstrucao[] = {"\"VÔ\"","\"PO\"","\"TA\"","\"VA\"","\"VI\"","\"LU\"","\"VÔ\""};
 
     public ModelPag03a(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -367,19 +369,8 @@ public class ModelPag03a {
 
     //faz exibir a instrução da atividade atual na tela
     public void definirInstrucao(int unidadeAtual) throws MalformedURLException {
-        String textoInstrucao = "";
-        switch (unidadeAtual) {
-            case 1:
-                textoInstrucao = "\"vô\"";
-                break;
-            case 3:
-                textoInstrucao = "\"to\"";
-                break;
-            case 4:
-                textoInstrucao = "\"va\"";
-                break;
-        }
-        instrucao.setText("Clique nas imagens que tem o som "+textoInstrucao);
+        String textoInstrucao = "";        
+        instrucao.setText("Clique nas imagens que tem o som "+listaInstrucao[unidadeAtual-1]);
 
     }
 
