@@ -46,10 +46,17 @@
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-        <Button layoutX="991.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Menu Inicial">
+        <Button layoutX="1014.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao">
          <font>
             <Font name="Verdana" size="20.0" />
-         </font></Button>
+         </font>
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../model/imagens/icones/house-309113_640.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
         <ListView fx:id="listaPalavras" layoutX="44.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
       <FlowPane layoutX="207.0" layoutY="297.0" prefHeight="185.0" prefWidth="629.0">
          <children>

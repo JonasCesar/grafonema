@@ -31,7 +31,10 @@ public class ModelPag07 {
     private ListView<String> listaPalavras;
     private URL imagemURL;
     private ImageView imagemTexto;
-
+    private String tituloUnidades[]={"1: VOVÔ","2: POVO(OVO, UVA)","3: TATO",
+            "4: UVA","5: VIVA", "6: LUVA", "7: LATA", "8: BEBÊ", "9: BOLA/DOCE",
+            "10: BOCA", "11: BALA(Baba)", "12: HOJE", "13: PIPA", "14: FURO", 
+            "15: FITA", "16: JOGOS", "17: ROXO", "18: GATO e RATO", "19: BONECA"};
     public ModelPag07(ImageView imagemTexto) {
         this.imagemTexto = imagemTexto;
         this.unidadeAtual = 0;
@@ -66,7 +69,7 @@ public class ModelPag07 {
         this.unidadeAtual = unidade;
 
         System.out.println(tituloUnidade + " " + unidade);
-        //tituloUnidade.setText(tituloUnidade.getText() + " " + unidadeAtual.substring(1));
+        tituloUnidade.setText(tituloUnidade.getText() + " "+tituloUnidades[unidade-1]);
     }
 
     /**
@@ -181,8 +184,7 @@ public class ModelPag07 {
     public void setImagemTexto(int unidadeAtual) {
         imagemURL = null;
         switch (unidadeAtual) {
-            case 1:
-                System.out.println("entrou aqui");
+            case 1:                
                 imagemURL = getClass().getResource("imagens/licao01/imagemTexto.png");
                 break;
             case 2:

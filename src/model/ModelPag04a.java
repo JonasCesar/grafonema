@@ -3,7 +3,9 @@
  */
 package model;
 
+import controller.Pag03Controller;
 import controller.Pag04Controller;
+import controller.Pag04bController;
 import controller.Pag05Controller;
 import java.io.File;
 import java.io.IOException;
@@ -89,6 +91,8 @@ public class ModelPag04a {
     @FXML
     private ListView<String> listaPalavras;
 
+    private String textoInstrucao[] = {"\"ÁRVORE\"", "\"PIPOCA\"", "\"BOTA\"", "\"URUBU\"",
+        "\"VINHO\"", "\"LUVA\"", "\"LAÇO\"", "\"CABELO\"","\"DEDO\""};
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
      *
@@ -132,38 +136,34 @@ public class ModelPag04a {
         this.unidadeAtual = unidadeAtual;
         //define o conteúdo das labels da pag 4
         URL imgUrl = null;
-        String silabas[][] = new String[2][1];
+        String matrizSilabas[][] = {{"VA", "VE", "VI", "VO", "VU"}, {"PA", "PE", "PI", "PO", "PU"}, {"TA", "TE", "TI", "TO", "TU"},
+        {"A", "E", "I", "O", "U"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
+        {"BA", "BE", "BI", "BO", "BU"}, {"DA", "DE", "DI", "DO", "DU"}};
+        p1.setText(matrizSilabas[unidadeAtual - 1][0]);
+        p2.setText(matrizSilabas[unidadeAtual - 1][1]);
+        p3.setText(matrizSilabas[unidadeAtual - 1][2]);
+        p4.setText(matrizSilabas[unidadeAtual - 1][3]);
+        p5.setText(matrizSilabas[unidadeAtual - 1][4]);
         switch (unidadeAtual) {
             case 1:
-                //silabas[0][1] = ["VA","VE"];
-                p1.setText("VA");
-                p2.setText("VE");
-                p3.setText("VI");
-                p4.setText("VO");
-                p5.setText("VU");
                 f1.setText("ÁR");
                 f2.setText("RE");
                 imgUrl = getClass().getResource("imagens/licao01/arvorepb.png");
                 break;
             case 2:
-                p1.setText("PA");
-                p2.setText("PE");
-                p3.setText("PI");
-                p4.setText("PO");
-                p5.setText("PU");
                 f1.setText("PI");
                 f2.setText("CA");
                 imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
                 break;
             case 3:
-                p1.setText("TA");
-                p2.setText("TE");
-                p3.setText("TI");
-                p4.setText("TO");
-                p5.setText("TU");
                 f1.setText("PA");
                 f2.setText("");
                 imgUrl = getClass().getResource("imagens/licao03a/patopb.png");
+                break;
+            case 9:
+                f1.setVisible(false);
+                f2.setText("DO");
+                imgUrl = getClass().getResource("imagens/licao9a/dedopb.png");
                 break;
             default:
                 break;
@@ -187,16 +187,32 @@ public class ModelPag04a {
      * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
-        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
+        int u = getUnidadeAtual();
+        if (u == 9) {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04b.fxml"));
 
-        //cria a próxima cena     
-        Parent proximaCena = (Parent) fxmloader.load();
-        Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
-        pg05Cont.setUnidadeAtual(getUnidadeAtual());
+            //cria a próxima cena     
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag04bController pg04bCont = fxmloader.<Pag04bController>getController();
+            pg04bCont.setUnidadeAtual(getUnidadeAtual());
+            pg04bCont.setInstrucao(u);
+            pg04bCont.tocarAudio();
+            mCC.exibirCena(proximaCena, janela);
 
-        mCC.exibirCena(proximaCena, janela);
-        pg05Cont.tocarAudio();
+        } else {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
+
+            //cria a próxima cena     
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
+            pg05Cont.setUnidadeAtual(getUnidadeAtual());
+
+            mCC.exibirCena(proximaCena, janela);
+            pg05Cont.tocarAudio();
+        }
+
     }
 
     /**
@@ -206,6 +222,7 @@ public class ModelPag04a {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
+
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
         //cria a próxima cena     
@@ -214,7 +231,8 @@ public class ModelPag04a {
         pg04Cont.setUnidadeAtual(getUnidadeAtual());
         mCC.exibirCena(proximaCena, janela);
         pg04Cont.setInstrucao(getUnidadeAtual());
-        pg04Cont.tocarAudio();       
+        pg04Cont.tocarAudio();
+
     }
 
     /**
@@ -252,6 +270,13 @@ public class ModelPag04a {
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
+            case 9:
+                if (silabaEscolhida.equals("DE")) {
+                    opcaoCorreta = true;
+                    imagemUrl = getClass().getResource("imagens/licao9a/dedocor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
+                }
+                break;                
             default:
                 break;
         }
@@ -284,7 +309,7 @@ public class ModelPag04a {
                 caminhoAudio = "audios/u03a/l3p4a.mp3";
                 break;
             default://para valores acima de 9
-                caminhoAudio = "audios/u" + unidadeAtual + "/l" + unidadeAtual + "p4.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "a/l" + unidadeAtual + "p4.mp3";
                 break;
         }
         //executa o audio
@@ -344,7 +369,7 @@ public class ModelPag04a {
                 caminhoAudio = "audios/u03a/palavra.mp3";//pato
                 break;
             default:
-                caminhoAudio = "audios/u" + unidadeAtual + "/palavra.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "a/palPg4a.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -369,7 +394,6 @@ public class ModelPag04a {
      * @param event disparado pelo método ABCJanela do controller
      * @throws IOException
      */
-
     /**
      * Carrega a interface do ABC
      *
@@ -486,24 +510,12 @@ public class ModelPag04a {
     }
 
     //faz exibir a instrução da atividade atual na tela
-    public void definirInstrucao(int unidadeAtual) {
-        String palavra = "";
-        switch (unidadeAtual) {
-            case 1:
-                palavra = "\"ÁRVORE\"";
-                break;
-            case 2:
-                palavra = "\"PIPOCA\"";
-                break;
-            case 3:
-                palavra = "\"PATO\"";
-                break;
-        }
-        instrucao.setText("“Complete com a parte que está faltando: "+palavra);
+    public void definirInstrucao(int unidadeAtual) {        
+        instrucao.setText("“Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
 
     }
 
     public void atualizarListView() {
-        mCC.atualizarListView(listaPalavras,getUnidadeAtual());
+        mCC.atualizarListView(listaPalavras, getUnidadeAtual());
     }
 }

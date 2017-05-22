@@ -161,7 +161,7 @@ public class Pag07Controller implements Initializable {
     private void sugestaoAtividades(ActionEvent event) {
     }
     
-    private void atualizarListView() {
+    public void atualizarListView() {
         modelPag07.atualizarListView();
     }
     

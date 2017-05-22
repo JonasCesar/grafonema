@@ -35,7 +35,9 @@ public class ModelPag01 {
     private ImageView imagemTexto;
     private URL imagemURL;
     private String tituloUnidades[]={"1: VOVÔ","2: POVO(OVO, UVA)","3: TATO",
-            "4: UVA","5: VIVA"};
+            "4: UVA","5: VIVA", "6: LUVA", "7: LATA", "8: BEBÊ", "9: BOLA/DOCE",
+            "10: BOCA", "11: BALA(Baba)", "12: HOJE", "13: PIPA", "14: FURO", 
+            "15: FITA", "16: JOGOS", "17: ROXO", "18: GATO e RATO", "19: BONECA"};
 
     public ModelPag01(ImageView imgView, ListView listaPalavras) {
         this.unidadeAtual = 1;
@@ -85,7 +87,7 @@ public class ModelPag01 {
                 caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p1.mp3";
                 break;
         }
-        mCC.play(caminhoAudio);
+            mCC.play(caminhoAudio);
 
     }
 

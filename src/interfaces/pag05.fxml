@@ -42,10 +42,16 @@
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font></Button>
-      <Button layoutX="991.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Menu Inicial">
+      <Button layoutX="1014.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao">
          <font>
             <Font name="Verdana" size="20.0" />
-         </font></Button>
+         </font>
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../model/imagens/icones/house-309113_640.png" />
+               </image></ImageView>
+         </graphic></Button>
       <ListView fx:id="listaPalavras" layoutX="44.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
       <FlowPane layoutX="177.0" layoutY="297.0" prefHeight="185.0" prefWidth="629.0">
          <children>
@@ -129,11 +135,6 @@
          </font>
       </Text>
       <ImageView fx:id="imagemAudio" fitHeight="200.0" fitWidth="200.0" layoutX="836.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="repetir" fitHeight="32.0" fitWidth="32.0" layoutX="370.0" layoutY="94.0" onMouseClicked="#replayAudio" onMouseEntered="#sombrearImagem" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../model/imagens/icones/replay.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="194.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../model/imagens/icones/speaker.png" />

@@ -14,6 +14,7 @@ import controller.Pag06Controller;
 import controller.Pag07Controller;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,10 +45,27 @@ public class ModelABC {
 
     //String botaoEscolhido = "";
     private ListView<String> listaPalavras;
-    public ModelABC() {
+    private URL imgMaiusculaForma;
+    private URL imgMinusculaForma;
+    private URL imgMaiusculaCursiva = null;
+    private URL imgMinusculaCursiva = null;
+
+    @FXML
+    private ImageView img1;
+    @FXML
+    private ImageView img2;
+    @FXML
+    private ImageView img3;
+    @FXML
+    private ImageView img4;
+
+    public ModelABC(ImageView img1, ImageView img2, ImageView img3, ImageView img4) {
         mCC = new ModelClasseComum(janela, listaPalavras);
         unidadeAtual = 0;
-
+        this.img1 = img1;
+        this.img2 = img2;
+        this.img3 = img3;
+        this.img4 = img4;
     }
 
     public void menuInicial(ActionEvent event) throws IOException {
@@ -84,54 +102,14 @@ public class ModelABC {
 
     //função responsável por fazer um discurso sobre a letra
     public void tocarSomLetra(String letra) {
-        switch (letra) {
-            case "A":
-                mCC.play("ABCAudioEPalavras/a.MP3");
-                break;
-            case "B":
-                mCC.play("ABCAudioEPalavras/b.MP3");
-                break;
-//            case "C":
-//                mCC.play("ABCAudio/resposta_certa.mp3");
-//                break;
-//            case "D":
-//                mCC.play("ABCAudio/resposta_certa.mp3");
-//                break;
-//            case "E":
-//                mCC.play("ABCAudio/resposta_certa.mp3");
-//                break;
-//            case "F":
-//                mCC.play("ABCAudio/resposta_certa.mp3");
-//                break;
-        }
+        mCC.play("audios/ABCAudioEPalavras/" + letra + ".mp3");
     }
 
-//    public void desenharLetra(String letra) throws MalformedURLException {
-//        System.out.println("entrou no desenha letra");
-//        switch (letra) {
-//            case "A":
-//                System.out.println("entrou no case a");
-//                imagemArquivo = new File("ABCAudio/aaaa.png");
-//                String caminho = imagemArquivo.toURI().toURL().toString();
-//                System.out.println("caminho coisado " + caminho);
-//                img = new Image(imagemArquivo.toURI().toURL().toString());
-//                imgLetra.setImage(img);
-//                System.out.println("setou o imgviu");
-//                botaoEscolhido = "A";
-//
-//                break;
-//            case "B":
-//                img = new Image("src/ABCimg/bbbb.png");
-//                imgLetra.setImage(img);
-//                botaoEscolhido = "B";
-//                break;
-//        }
-//    }
     public void executarAudio(String letra) {
 
     }
-    
-    public void voltar(ActionEvent evento, int pagina) throws IOException{
+
+    public void voltar(ActionEvent evento, int pagina) throws IOException {
         mCC.pararAudio();
         janela = (Stage) ((Button) evento.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = null;
@@ -195,7 +173,7 @@ public class ModelABC {
                 mCC.exibirCena(proximaCena, janela);
                 pag07Cont.setUnidadeAtual(getUnidadeAtual());
                 break;
-                
+
         }
     }
 
@@ -209,6 +187,25 @@ public class ModelABC {
 
     public void pararAudio() {
         mCC.pararAudio();
+    }
+
+    public void desenharLetra(String letra) {
+        System.out.println("LEtra " + letra);
+        //imgMaiusculaForma = null;
+        imgMaiusculaForma = getClass().getResource("imagens/ABCimg/maiuscula/" + letra + ".png");
+        imgMinusculaForma = getClass().getResource("imagens/ABCimg/minuscula/" + letra + ".png");
+        imgMaiusculaCursiva = getClass().getResource("imagens/ABCimg/maiuscula/cursiva/" + letra + ".png");
+        imgMinusculaCursiva = getClass().getResource("imagens/ABCimg/minuscula/cursiva/" + letra + ".png");
+        //System.out.println(imgMaiusculaForma.getPath());
+        try {
+            img1.setImage(new Image(imgMaiusculaForma.toString()));
+            img2.setImage(new Image(imgMinusculaForma.toString()));
+            img3.setImage(new Image(imgMaiusculaCursiva.toString()));
+            img4.setImage(new Image(imgMinusculaCursiva.toString()));
+        }catch(Exception e){
+            
+        }
+
     }
 
 }

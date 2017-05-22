@@ -19,7 +19,7 @@
          <image>
             <Image url="@../model/imagens/imagemDeFundo/imagemFundo3.png" />
          </image></ImageView>
-        <ImageView fx:id="imgLetra" fitHeight="330.0" fitWidth="700.0" layoutX="164.0" layoutY="54.0" onMouseEntered="#passouRato" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="img1" fitHeight="200.0" fitWidth="200.0" layoutX="120.0" layoutY="150.0" onMouseClicked="#tocarLetra" onMouseEntered="#passouRato" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true" />
         <Button fx:id="a" layoutX="62.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="A">
          <font>
             <Font size="20.0" />
@@ -128,5 +128,8 @@
          <font>
             <Font name="Verdana" size="13.0" />
          </font></Button>
+      <ImageView fx:id="img2" fitHeight="200.0" fitWidth="200.0" layoutX="325.0" layoutY="180.0" onMouseClicked="#tocarLetra" onMouseEntered="#passouRato" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img3" fitHeight="200.0" fitWidth="200.0" layoutX="530.0" layoutY="150.0" onMouseClicked="#tocarLetra" onMouseEntered="#passouRato" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img4" fitHeight="200.0" fitWidth="200.0" layoutX="736.0" layoutY="180.0" onMouseClicked="#tocarLetra" onMouseEntered="#passouRato" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

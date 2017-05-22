@@ -39,7 +39,7 @@ public class ModelClasseComum {
     private ActionEvent eventoTemporario;
     public static ObservableList<String> items = FXCollections.observableArrayList();
 
-    public static String listaPalavrasEstudadas[] = {"VOVÔ", "POVO", "TATO", "UVA"};
+    public static String listaPalavrasEstudadas[] = {"VOVÔ", "POVO", "TATO", "UVA", "VIVA", "LUVA"};
 
     @FXML
     private ListView<String> listaPalavras;

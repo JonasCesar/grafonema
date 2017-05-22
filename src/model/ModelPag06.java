@@ -5,6 +5,7 @@ package model;
 
 import controller.Pag05Controller;
 import controller.Pag05aController;
+import controller.Pag06aController;
 import controller.Pag07Controller;
 import java.io.IOException;
 import java.util.Random;
@@ -42,9 +43,26 @@ public class ModelPag06 {
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
     private ListView<String> listaPalavras;
-    private String respostasCorretas[] = {" ", "VOVÔ", "POVO", "TATO", "UVA", "VIVA", "LUVA"};
-    private String listaFrases[] = {"\"o vovô é meu amigo\"", "\"o povo da festa está animado\"", "\"o tato serve para nos proteger\"",
-            "\"Meu pai gosta de uva\"", "\"Meu pai gosta de uva\"", "\"viva a vida com amor\"","\"Está frio, vou usar minha luva\"" };
+    private String respostasCorretas[] = {" ", "VOVÔ", "POVO", "TATO", "UVA", "VIVA", 
+        "LUVA", "LATA", "BEBÊ","BOLA","BOCA", "BALA","HOJE","PIPA","FURO","FITA","JOGOS",
+    "ROXO","GATO/RATO","BONECA","DOCES","SINOS","RUA","DUAS","ESSA","SETE","MOTIBOS","ACUMULAR",
+    "PIJAMA","ESPUMA","SOPRANDO","PERNAMBUCO","ÁRVORES","FAMOSO","ESCOLA","LIXINHO","MENINA",
+    "MACARRÃO","BICICLETA","MENINO","BRAVURA","FELIZES"};
+    
+    private String listaFrases[] = {"\"o vovô é meu amigo\"", "\"o povo da festa está animado\"",
+        "\"o tato serve para nos proteger\"", "\"Meu pai gosta de uva\"", "\"viva a vida com amor\"",
+        "\"Está frio, vou usar minha luva\"", "\"Comprei uma lata de tinta\"", "\"O bebê está dormindo\"",
+        "\"Ganhei uma bola\"","\"Estou com a boca cheia\"","\"Comprei um pacote de bala\"", "\"Hoje é um grande dia\"",
+        "\"A pipa do menino está no céu\"","\"Fizeram um furo na parede\"", "\"A menina do laço de fita\"", 
+        "\"A família se reuniu para assistr aos jogos \"", "\"A minha cor predileta é roxo\"", "\"Ganhei uma bola\"", 
+        "\"O gato e o rato são amigos\"","\"Ganhei uma linda boneca\"", "\"Minha vovó faz doces deliciosos\"",
+        "\"Os sinos da igreja estão tocando.\"", "\"As crianças estão brincando na rua\"", "\"A moça comprou duas sandálias\"",
+        "\"Essa escola é muito divertido\"","\"Vou completar sete anos\"", "\"Tenho motivos para sorrir.\"","\"Não vale a pena acumular tarefas\"",
+        "\"Coloquei o meu pijama quentinha para dormir\"","\"Vou tomar um banho com muita espuma.\"","\"O vento está soprando forte.\"",
+        "\"Vou viajar para Pernambuco nas férias\"", "\"Gosto de subir em árvores\"","\"Meu tio é famoso\"",
+        "\"Não fui para a escola hoje\"","\"Joguei o lixinho no lixo\"", "\"Aquela menina é linda\"",
+        "\"Minha comida predileta é macarrão\"","\"Ganhei uma bicicleta do meu pai\"","\"Sou amiga daquele menino\"",
+        "\"Tenho medo da bravura do mar\"","\"Todos pareciam felizes\""};
 
     public ModelPag06(Label p1, Label p2, Text instrucao1, ListView<String> listaPalavras) {
         this.p1 = p1;
@@ -82,18 +100,33 @@ public class ModelPag06 {
      * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
-        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag07.fxml"));
+        int u = getUnidadeAtual();
+        if (u == 9) {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06a.fxml"));
 
-        //cria a próxima cena chamando a inteface dos avatares        
-        Parent proximaCena = (Parent) fxmloader.load();
-        Pag07Controller pg07Cont = fxmloader.<Pag07Controller>getController();
-        System.out.println("Pag 6 " + getUnidadeAtual());
-        pg07Cont.setUnidadeAtual(getUnidadeAtual());
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag06aController pg06aCont = fxmloader.<Pag06aController>getController();
+            pg06aCont.setUnidadeAtual(getUnidadeAtual());
+            pg06aCont.setInstrucao(getUnidadeAtual());
+            pg06aCont.tocarAudio();
+            mCC.exibirCena(proximaCena, janela);            
 
-        mCC.exibirCena(proximaCena, janela);
-        pg07Cont.tocarAudio();
-        pg07Cont.setImagemTexto(getUnidadeAtual());
+        } else {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag07.fxml"));
+
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag07Controller pg07Cont = fxmloader.<Pag07Controller>getController();
+            pg07Cont.setUnidadeAtual(getUnidadeAtual());
+            pg07Cont.atualizarListView();
+            mCC.exibirCena(proximaCena, janela);
+            pg07Cont.tocarAudio();
+            pg07Cont.setImagemTexto(getUnidadeAtual());
+
+        }
 
     }
 
@@ -146,16 +179,6 @@ public class ModelPag06 {
     public boolean verificarResposta(String resposta) {
         boolean respostaCorreta = false;
         respostaCorreta = resposta.toUpperCase().equals(respostasCorretas[getUnidadeAtual()]);
-        /**
-         * switch (getUnidadeAtual()) { case 1: if
-         * (resposta.toUpperCase().equals("VOVÔ")) { respostaCorreta = true; }
-         * break; case 2: if (resposta.toUpperCase().equals("POVO")) {
-         * respostaCorreta = true; } break; case 3: respostaCorreta =
-         * resposta.toUpperCase().equals("TATO"); break; case 4: respostaCorreta
-         * = resposta.toUpperCase().equals("UVA"); default: respostaCorreta =
-         * resposta.toUpperCase().equals(respostasCorretas[getUnidadeAtual()]);
-         * break; } *
-         */
         return respostaCorreta;
     }
 
@@ -206,6 +229,26 @@ public class ModelPag06 {
             case 6:
                 p1.setText("ESTÁ FRIO, VOU USAR MINHA");
                 p2.setText(".");
+                break;
+            case 7:
+                p1.setText("Comprei uma");
+                p2.setText("de tinta");
+                break;
+            case 8:
+                p1.setText("O");
+                p2.setText("está dormindo");
+                break;
+            case 9:
+                p1.setText("Ganhei uma");
+                p2.setVisible(false);
+                break;
+            case 10:
+                p1.setText("Estou com a");
+                p2.setText("cheia");
+                break;
+            case 11:
+                p1.setText("Comprei um pacote de");
+                p2.setVisible(false);
                 break;
             default:
                 break;
@@ -283,7 +326,7 @@ public class ModelPag06 {
 
     //faz exibir a instrução da atividade atual na tela
     public void definirInstrucao(int unidadeAtual) {
-        String instrucaoTexto = "";  
+        String instrucaoTexto = "";
         instrucao.setText("Digite a palavra que você aprendeu para formar a frase:\n " + listaFrases[unidadeAtual - 1]);
     }
 

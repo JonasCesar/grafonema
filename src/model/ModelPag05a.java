@@ -81,6 +81,9 @@ public class ModelPag05a {
 
     @FXML
     private Text instrucao;
+    @FXML
+    private Label f3;
+    private String[] silabaCorreta = {"","","","","","","","","","","","JE"};
 
     /**
      * Construtor da classe Labels utilzadas nas paginas:
@@ -100,7 +103,7 @@ public class ModelPag05a {
      *
      */
     public ModelPag05a(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
-            Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1, ListView<String> listaPalavras) {
+            Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma, Text instrucao1, ListView<String> listaPalavras, Label f3) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -115,6 +118,7 @@ public class ModelPag05a {
         this.imagemAudio = imagemAudio;
         this.janelaPrograma = janelaPrograma;
         this.instrucao = instrucao1;
+        this.f3 = f3;
 
     }
 
@@ -127,24 +131,22 @@ public class ModelPag05a {
         this.unidadeAtual = unidadeAtual;
         double xf1, yf1, xespaco, yespaco, z = 0;
         URL imgUrl = null;
+        String matrizSilabas[][] = {{"VA", "VE", "VI", "VO", "VU"}, {"PA", "PE", "PI", "PO", "PU"}, {"TÁ", "TE", "TI", "TO", "TU"},
+        {"VA", "VE", "VI", "VO", "VU"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
+        {"BA", "BE", "BI", "BO", "BU"}, {"DA", "DE", "DI", "DO", "DU"}};
+        p1.setText(matrizSilabas[unidadeAtual - 1][0]);
+        p2.setText(matrizSilabas[unidadeAtual - 1][1]);
+        p3.setText(matrizSilabas[unidadeAtual - 1][2]);
+        p4.setText(matrizSilabas[unidadeAtual - 1][3]);
+        p5.setText(matrizSilabas[unidadeAtual - 1][4]);
         switch (unidadeAtual) {
             case 1:
-                p1.setText("VA");
-                p2.setText("VE");
-                p3.setText("VI");
-                p4.setText("VO");
-                p5.setText("VU");
-                f1.setText("POL");
                 espaco.setText("");
                 imgUrl = getClass().getResource("imagens/licao01/polvopb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 2:
-                p1.setText("PA");
-                p2.setText("PE");
-                p3.setText("PI");
-                p4.setText("PO");
-                p5.setText("PU");
+
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("ÇO");
@@ -153,18 +155,27 @@ public class ModelPag05a {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 3:
-                p1.setText("TÁ");
-                p2.setText("TE");
-                p3.setText("TI");
-                p4.setText("TO");
-                p5.setText("TU");
+
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
-                f1.setText("MATE");
-                
+                f1.setText("MA");
+                f2.setText("TE");
+
                 espaco.setText("");
                 imgUrl = getClass().getResource("imagens/licao03a/tomatepb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
+                break;
+            case 9:
+                f1.setVisible(false);
+                f2.setText("MI");
+                f3.setText("NÓ");
+                imgUrl = getClass().getResource("imagens/licao9a/dominopb.png");
+                break;
+            case 12:
+                f1.setVisible(false);
+                f2.setText("RI");
+                f3.setText("MUM");
+                imgUrl = getClass().getResource("imagens/licao12a/JE5pb.png");
                 break;
             default:
                 break;
@@ -199,28 +210,19 @@ public class ModelPag05a {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
-        if (getUnidadeAtual() == 3) {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
-            //cria a próxima cena
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
+        int u = getUnidadeAtual();
 
-            mCC.exibirCena(proximaCena, janela);
-            pg05Cont.setUnidadeAtual(getUnidadeAtual());
-            pg05Cont.tocarAudio();
-            pg05Cont.setInstrucao(getUnidadeAtual());
-        } else {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
-            //cria a próxima cena
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag04Controller pg04Cont = fxmloader.<Pag04Controller>getController();
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
+        //cria a próxima cena
+        Parent proximaCena = (Parent) fxmloader.load();
+        Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
 
-            mCC.exibirCena(proximaCena, janela);
-            pg04Cont.setUnidadeAtual(getUnidadeAtual());
-            pg04Cont.tocarAudio();
-        }
+        mCC.exibirCena(proximaCena, janela);
+        pg05Cont.setUnidadeAtual(getUnidadeAtual());
+        pg05Cont.tocarAudio();
+        pg05Cont.setInstrucao(getUnidadeAtual());
+
     }
 
     /**
@@ -264,7 +266,19 @@ public class ModelPag05a {
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
+            case 9:
+                if (silabaEscolhida.equals("DO")) {
+                    opcaoCorreta = true;
+                    imagemUrl = getClass().getResource("imagens/licao9a/dominocor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
+                }
+                break;
             default:
+                String fonema = silabaCorreta[getUnidadeAtual()-1];
+                if (silabaEscolhida.equals(fonema)) {
+                    opcaoCorreta = true;
+                    imagemUrl = getClass().getResource("imagens/licao"+getUnidadeAtual()+"a/"+fonema+"5cor.png");
+                }
                 break;
         }
         return opcaoCorreta;
@@ -285,7 +299,7 @@ public class ModelPag05a {
                 caminhoAudio = "audios/u03a/l3p5a.mp3";
                 break;
             default:
-                caminhoAudio = "audios/u" + unidadeAtual + "/l" + unidadeAtual + "p5.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "a/l" + unidadeAtual + "p5.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -343,7 +357,7 @@ public class ModelPag05a {
                 caminhoAudio = "audios/u03a/palPag5.mp3";
                 break;
             default:
-                caminhoAudio = "audios/u" + unidadeAtual + "/palPg5.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "a/palPg5a.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -455,8 +469,10 @@ public class ModelPag05a {
         primeiroAudio = (ActionEvent event) -> {
             try {
                 tocarAudioParabens();
+
             } catch (InterruptedException ex) {
-                Logger.getLogger(ModelPag04.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModelPag04.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         };
 
@@ -477,21 +493,12 @@ public class ModelPag05a {
     }
 
     public void definirInstrucao(int unidadeAtual) {
-        switch (unidadeAtual) {
-            case 1:
-                instrucao.setText("Complete com a parte que está faltando:\"POLVO\"");
-                break;
-            case 2:
-                instrucao.setText("Complete com a parte que está faltando:\"POÇO\"");
-                break;
-            case 3:
-                instrucao.setText("Complete com a parte que está faltando:\"TOMATE\"");
-                break;
-        }
+        String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"", "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"DOMINÓ\""};
+        instrucao.setText("Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
 
     }
 
     public void atualizarListView() {
-        mCC.atualizarListView(listaPalavras,getUnidadeAtual());
+        mCC.atualizarListView(listaPalavras, getUnidadeAtual());
     }
 }

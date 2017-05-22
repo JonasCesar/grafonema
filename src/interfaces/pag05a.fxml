@@ -21,16 +21,37 @@
             <Image url="@../model/imagens/imagemDeFundo/imagemFundo3.png" />
          </image>
       </ImageView>
-        <Button fx:id="abc" layoutX="349.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
-        <Button fx:id="atividades" layoutX="580.0" layoutY="590.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades" />
-        <Button fx:id="manual" layoutX="822.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
+        <Button fx:id="abc" layoutX="349.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font></Button>
+        <Button fx:id="atividades" layoutX="580.0" layoutY="590.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font></Button>
+        <Button fx:id="manual" layoutX="822.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font></Button>
         <Label fx:id="palavrasEstudadas" layoutX="44.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
-        <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
-        <Button fx:id="voltar" layoutX="233.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
-      <Button layoutX="991.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Menu Inicial">
+        <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font></Button>
+        <Button fx:id="voltar" layoutX="233.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="1014.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao">
          <font>
             <Font name="Verdana" size="20.0" />
-         </font></Button>
+         </font>
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../model/imagens/icones/house-309113_640.png" />
+               </image></ImageView>
+         </graphic></Button>
       <ListView fx:id="listaPalavras" layoutX="44.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
       <FlowPane layoutX="177.0" layoutY="297.0" prefHeight="185.0" prefWidth="629.0">
          <children>
@@ -74,15 +95,15 @@
                   <Insets bottom="50.0" left="30.0" right="30.0" />
                </FlowPane.margin>
             </Label>
-              <Label fx:id="f1" contentDisplay="RIGHT" maxWidth="100.0" minWidth="40.0" text="Ar">
+              <Label fx:id="f1" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" minWidth="40.0" text="Ar">
                   <font>
                       <Font size="25.0" />
                   </font>
                <FlowPane.margin>
-                  <Insets left="210.0" right="10.0" top="70.0" />
+                  <Insets left="200.0" right="2.0" top="70.0" />
                </FlowPane.margin>
               </Label>
-              <Label fx:id="espaco" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="-Infinity" maxWidth="80.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="45.0">
+              <Label fx:id="espaco" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxWidth="80.0" minHeight="33.0" minWidth="45.0">
                   <font>
                       <Font size="25.0" />
                   </font>
@@ -90,30 +111,30 @@
                       <Insets />
                   </opaqueInsets>
                <FlowPane.margin>
-                  <Insets right="20.0" top="70.0" />
+                  <Insets top="70.0" />
                </FlowPane.margin>
               </Label>
-              <Label fx:id="f2" maxWidth="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="70.0" text="">
+              <Label fx:id="f2" maxWidth="200.0" minWidth="40.0" text="">
                   <font>
                       <Font size="25.0" />
                   </font>
                <FlowPane.margin>
-                  <Insets left="10.0" top="70.0" />
+                  <Insets left="2.0" right="2.0" top="70.0" />
                </FlowPane.margin>
               </Label>
+            <Label fx:id="f3" maxWidth="100.0" minWidth="40.0">
+               <FlowPane.margin>
+                  <Insets left="2.0" right="2.0" top="70.0" />
+               </FlowPane.margin>
+            </Label>
          </children>
       </FlowPane>
-      <Text fx:id="instrucao" layoutX="221.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="332.7294921875">
+      <Text fx:id="instrucao" layoutX="221.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="632.7294921875">
          <font>
-            <Font size="24.0" />
+            <Font name="Verdana" size="25.0" />
          </font>
       </Text>
       <ImageView fx:id="imagemAudio" fitHeight="200.0" fitWidth="200.0" layoutX="836.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="repetir" fitHeight="32.0" fitWidth="32.0" layoutX="370.0" layoutY="94.0" onMouseClicked="#replayAudio" onMouseEntered="#sombrearImagem" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../model/imagens/icones/replay.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="194.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../model/imagens/icones/speaker.png" />

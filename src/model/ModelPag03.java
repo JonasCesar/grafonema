@@ -4,6 +4,7 @@
 package model;
 
 import controller.Pag02Controller;
+import controller.Pag02aController;
 import controller.Pag04Controller;
 import controller.Pag03aController;
 import java.io.File;
@@ -54,8 +55,10 @@ public class ModelPag03 {
     private ModelClasseComum mCC;
     @FXML
     ListView<String> listaPalavras;
-    
-    private String listaInstrucao[] = {"\"VÔ\"","\"PO\"","\"TA\"","\"U\"","\"VI\"","\"LU\"","\"VÔ\""};
+    //10/BA
+    private String listaInstrucao[] = {"\"VÔ\"", "\"PO\"", "\"TA\"", "\"U\"", "\"VI\"",
+        "\"LU\"", "\"VÔ\"", "\"LU\"", "\"BO\"","\"CA\"","\"BA\"","\"HO\"","\"PI\"",
+        "\"FU\"","\"FI\"","\"JO\"","\"XO\"","\"GA\"","\"NE\""};
 
     public ModelPag03(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -99,15 +102,29 @@ public class ModelPag03 {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
-        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02.fxml"));
+        int u = getUnidadeAtual();
+        if (u == 9) {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02a.fxml"));
 
-        //cria a próxima cena chamando a inteface dos avatares        
-        Parent proximaCena = (Parent) fxmloader.load();
-        Pag02Controller pag02Cont = fxmloader.<Pag02Controller>getController();
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag02aController pag02aCont = fxmloader.<Pag02aController>getController();
 
-        mCC.exibirCena(proximaCena, janela);
-        pag02Cont.setUnidadeAtual(getUnidadeAtual());
+            mCC.exibirCena(proximaCena, janela);
+            pag02aCont.setUnidadeAtual(getUnidadeAtual());
+        } else {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02.fxml"));
+
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag02Controller pag02Cont = fxmloader.<Pag02Controller>getController();
+
+            mCC.exibirCena(proximaCena, janela);
+            pag02Cont.setUnidadeAtual(getUnidadeAtual());
+
+        }
 
     }
 
@@ -118,7 +135,8 @@ public class ModelPag03 {
      * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
-        if (getUnidadeAtual() == 3 || getUnidadeAtual()== 4) {
+        int u = getUnidadeAtual();
+        if (u == 3 || u == 4 || u == 9) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -128,7 +146,6 @@ public class ModelPag03 {
             mCC.exibirCena(proximaCena, janela);
             pg03aCont.audioInicial();
             pg03aCont.setImagens(getUnidadeAtual());
-            
 
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -150,9 +167,10 @@ public class ModelPag03 {
      * @param event disparado quando uma das 6 imagens é clicada
      * @throws MalformedURLException
      */
-    public void verificarImagem(MouseEvent event) throws MalformedURLException {
+    public void verificarImagem(MouseEvent event) {
         String imgClicada = ((ImageView) event.getSource()).getId();
         String nomeImagem = imgClicada.substring(3, 4);
+        System.out.println(((ImageView) event.getSource()));
 
         switch (getUnidadeAtual()) {
             //acertos img1, img3, img5
@@ -176,7 +194,7 @@ public class ModelPag03 {
                 } else {
                     imgf1 = getClass().getResource("imagens/licao03/" + nomeImagem + "e.png");
                 }
-                
+
                 break;
             case 4:
                 if (imgClicada.equals("img2") || imgClicada.equals("img4") || imgClicada.equals("img6")) {
@@ -193,10 +211,45 @@ public class ModelPag03 {
                 }
                 break;
             case 6:
-                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img6")) {
+                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img5")) {
                     imgf1 = getClass().getResource("imagens/licao6/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao6/" + nomeImagem + "e.png");
+                }
+                break;
+            case 7:
+                if (imgClicada.equals("img2") || imgClicada.equals("img4") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao7/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao7/" + nomeImagem + "e.png");
+                }
+                break;
+            case 8:
+                if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao8/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao8/" + nomeImagem + "e.png");
+                }
+                break;
+            case 9:
+                if (imgClicada.equals("img1") || imgClicada.equals("img4") || imgClicada.equals("img5")) {
+                    imgf1 = getClass().getResource("imagens/licao9/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao9/" + nomeImagem + "e.png");
+                }
+                break;
+            case 10:
+                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img4")) {
+                    imgf1 = getClass().getResource("imagens/licao10/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao10/" + nomeImagem + "e.png");
+                }
+                break;
+            case 11:
+                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img3")) {
+                    imgf1 = getClass().getResource("imagens/licao11/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao11/" + nomeImagem + "e.png");
                 }
                 break;
             default:
@@ -223,7 +276,7 @@ public class ModelPag03 {
                 caminhoAudio = "audios/u4/l4p3a1.mp3";
                 break;
             default:
-                caminhoAudio = "audios/u"+unidadeAtual+"/l"+unidadeAtual+"p3.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "/l" + unidadeAtual + "p3.mp3";
                 break;
         }
 
@@ -266,7 +319,7 @@ public class ModelPag03 {
                 imgf4 = getClass().getResource("imagens/licao03/4.png");
                 imgf5 = getClass().getResource("imagens/licao03/5.png");
                 imgf6 = getClass().getResource("imagens/licao03/6.png");
-                break;            
+                break;
             default:
                 imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/1.png");
                 imgf2 = getClass().getResource("imagens/licao" + unidadeAtual + "/2.png");
@@ -333,13 +386,13 @@ public class ModelPag03 {
                 break;
             case 3:
                 caminhoAudio = "audios/u03/" + nomeImagem + ".mp3";
-                break;            
+                break;
             default:
                 caminhoAudio = "audios/u" + unidadeAtual + "/" + nomeImagem + ".mp3";
                 break;
 
         }
-        mCC.play(caminhoAudio);        
+        mCC.play(caminhoAudio);
     }
 
     /**
@@ -368,13 +421,15 @@ public class ModelPag03 {
     }
 
     //faz exibir a instrução da atividade atual na tela
-    public void definirInstrucao(int unidadeAtual) throws MalformedURLException {
-        String textoInstrucao = "";        
-        instrucao.setText("Clique nas figuras que tem o som "+listaInstrucao[unidadeAtual-1]);
+    public void definirInstrucao(int unidadeAtual){
+        String textoInstrucao = "";
+        System.out.println("ModelPag03");
+        System.out.println("Unidade "+unidadeAtual);
+        instrucao.setText("Clique nas figuras que tem o som " + listaInstrucao[unidadeAtual - 1]);
 
     }
 
     public void atualizarListView() {
-        mCC.atualizarListView(listaPalavras,getUnidadeAtual());
+        mCC.atualizarListView(listaPalavras, getUnidadeAtual());
     }
 }

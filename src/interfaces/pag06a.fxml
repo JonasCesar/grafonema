@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag06aController">
+    <stylesheets>
+        <URL value="@/css/estilosPag06.css" />        
+        <URL value="@/css/estilosGerais.css" />
+    </stylesheets>     
+    <children>
+      <ImageView fitHeight="700.0" fitWidth="1200.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/imagens/imagemDeFundo/imagemFundo3.png" />
+         </image>
+      </ImageView>
+        <Button fx:id="abc" layoutX="349.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirABC" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="ABC" />
+        <Button fx:id="atividades" layoutX="580.0" layoutY="590.0" mnemonicParsing="false" onAction="#sugestaoAtividades" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Atividades" />
+        <Button fx:id="manual" layoutX="822.0" layoutY="590.0" mnemonicParsing="false" onAction="#abrirManual" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Manual" />
+        <Label fx:id="palavrasEstudadas" layoutX="44.0" layoutY="127.0" prefHeight="15.0" prefWidth="138.0" text="Palavras Estudadas" textAlignment="CENTER" />
+        <Button fx:id="avancar" layoutX="1014.0" layoutY="544.0" mnemonicParsing="false" onAction="#avancar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Avançar" />
+        <Button fx:id="voltar" layoutX="233.0" layoutY="544.0" mnemonicParsing="false" onAction="#voltar" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="Voltar" />
+        <Button layoutX="1014.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao">
+         <font>
+            <Font name="Verdana" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../model/imagens/icones/house-309113_640.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+        <ListView fx:id="listaPalavras" layoutX="44.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
+        <FlowPane layoutX="281.0" layoutY="298.0" prefHeight="179.0" prefWidth="855.0">
+            <children>
+                <Label fx:id="p1" alignment="CENTER_RIGHT" graphicTextGap="8.0">
+                    <font>
+                        <Font name="Verdana" size="20.0" />
+                    </font>
+                    <opaqueInsets>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                    </opaqueInsets>
+                    <FlowPane.margin>
+                        <Insets right="5.0" />
+                    </FlowPane.margin>
+                </Label>
+                <TextField fx:id="resposta" alignment="CENTER" prefHeight="38.0" prefWidth="111.0">
+                    <font>
+                        <Font name="Verdana" size="18.0" />
+                    </font>
+                    <FlowPane.margin>
+                        <Insets right="5.0" />
+                    </FlowPane.margin>
+                </TextField>
+                <Label fx:id="p2">
+                    <font>
+                        <Font name="Verdana" size="20.0" />
+                    </font>
+                    <FlowPane.margin>
+                        <Insets right="55.0" />
+                    </FlowPane.margin>
+                </Label>
+                <Button fx:id="confirmar" mnemonicParsing="false" onAction="#verificarTexto" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="OK">
+                    <font>
+                        <Font name="Verdana" size="18.0" />
+                    </font>
+                </Button>
+            </children>
+        </FlowPane>
+      <Text fx:id="instrucao" layoutX="255.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="633.7294921876">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="repetir" fitHeight="32.0" fitWidth="32.0" layoutX="901.0" layoutY="36.0" onMouseClicked="#replayAudio" onMouseEntered="#sombrearImagem" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/imagens/icones/replay.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="194.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/imagens/icones/speaker.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

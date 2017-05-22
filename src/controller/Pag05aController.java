@@ -78,10 +78,11 @@ public class Pag05aController implements Initializable {
     @FXML
     AnchorPane janelaPrograma;
 
-    @FXML
     ImageView repetir;
     @FXML
     private Button atividades;
+    @FXML
+    private Label f3;
     
     public Pag05aController() {
         listaPalavras = new ListView<>();        
@@ -94,7 +95,8 @@ public class Pag05aController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05a = new ModelPag05a(p1, p2, p3, p4, p5, f1, f2,espaco,imagemAudio, janelaPrograma, instrucao, listaPalavras);
+        modelPag05a = new ModelPag05a(p1, p2, p3, p4, p5, f1, f2,espaco,
+                imagemAudio, janelaPrograma, instrucao, listaPalavras, f3);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
@@ -251,7 +253,6 @@ public class Pag05aController implements Initializable {
      * Retira a sombra do icone de "replay"
      * @param event mouse passado por cima do icone
      */
-    @FXML
     private void dessombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(null);
@@ -260,7 +261,6 @@ public class Pag05aController implements Initializable {
      * Adiciona uma sobra ao icone de "Replay"
      * @param event 
      */
-    @FXML
     private void sombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(sombras);
@@ -269,7 +269,6 @@ public class Pag05aController implements Initializable {
      * Executa o áudio da classe novamente
      * @param event 
      */
-    @FXML
     private void replayAudio(MouseEvent event) {
         modelPag05a.pararAudio();
         modelPag05a.tocarAudio();
