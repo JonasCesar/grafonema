@@ -86,7 +86,7 @@ public class ModelPag05 {
 
     @FXML
     private Label f3;
-    //11/BA
+    //13/PI
     private String silabaCorreta[] = {"VO","PO","TÁ","VA","VI","LU","LA","BE","BO",
     "CA","BA","JÉ","PI","RO","FI","GOS","XO","GA","NE","DOS",
     "NOS","RU","DU","SA","SU","MO","CU","JÁ","PU","SO","PER",
@@ -256,7 +256,55 @@ public class ModelPag05 {
                 f1.setText("A");
                 f2.setText("CA");
                 f3.setText("XI");
-                imgUrl = getClass().getResource("imagens/licao11/BA5pb.png");                
+                imgUrl = getClass().getResource("imagens/licao11/BA5pb.png");
+                break;
+            case 12:
+                f1.setText("PA");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao12/JÉ5pb.png");
+                break;
+            case 13:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("PO");
+                f2.setText("CA");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao13/PI5pb.png");                
+                break;
+            case 14:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("DO");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/RO5pb.png");
+                break;
+            case 15:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("GO");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/FI5pb.png");
+                break;
+            case 16:                
+                f1.setText("PRE");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/GOS5pb.png");
+                break;
+            case 17:
+                f1.setText("CAI");
+                f2.setText("TE");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/XO5pb.png");
+                break;
+            case 18:
+                f1.setVisible(false);
+                f2.setText("TO");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/GA5pb.png");
                 break;
         }
         imagemAudio.setImage(new Image(imgUrl.toString()));
@@ -270,7 +318,7 @@ public class ModelPag05 {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 3 || u == 9 || u == 12) {
+        if (u == 3 || u == 9 || u == 12 || u == 13 || u == 18) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05a.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -642,7 +690,8 @@ public class ModelPag05 {
 
     public void definirInstrucao(int unidadeAtual) {
         String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"", 
-            "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"BOTÃO\"","\"CARACOL\"","\"ABACAXI\""};
+            "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"BOTÃO\"","\"CARACOL\"",
+            "\"ABACAXI\"","\"PAJÉ\"","\"PIPOCA\"","\"RODO\"","\"FIGO\"","\"PREGOS\"","\"CAIXOTE\"","\"GATO\""};
         instrucao.setText("Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
     }
 

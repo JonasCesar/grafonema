@@ -65,9 +65,25 @@
                         <Font name="Verdana" size="20.0" />
                     </font>
                     <FlowPane.margin>
-                        <Insets right="55.0" />
+                        <Insets right="5.0" />
                     </FlowPane.margin>
                 </Label>
+            <TextField fx:id="segundaResposta" prefHeight="38.0" prefWidth="111.0">
+               <FlowPane.margin>
+                  <Insets right="5.0" />
+               </FlowPane.margin>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </TextField>
+            <Label fx:id="p3">
+               <font>
+                  <Font name="Verdana" size="20.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets right="5.0" />
+               </FlowPane.margin>
+            </Label>
                 <Button fx:id="confirmar" mnemonicParsing="false" onAction="#verificarTexto" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao" text="OK">
                     <font>
                         <Font name="Verdana" size="18.0" />

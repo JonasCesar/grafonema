@@ -27,6 +27,7 @@ import javafx.scene.text.Text;
  * @author shadows
  */
 public class Pag06Controller implements Initializable {
+
     @FXML
     private Label p1;
     @FXML
@@ -49,97 +50,125 @@ public class Pag06Controller implements Initializable {
     private Button confirmar;
     @FXML
     private Label palavrasEstudadas;
-    
+
     private final int pagina = 6;
-    
+
     @FXML
     private Text instrucao;
     @FXML
     private ImageView repetir;
     @FXML
     private Button atividades;
-    
+    @FXML
+    private TextField segundaResposta;
+    @FXML
+    private Label p3;
+
     public Pag06Controller() {
-        listaPalavras = new ListView<String>();        
+        listaPalavras = new ListView<String>();
     }
-    
-    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag06 = new ModelPag06(p1,p2, instrucao,listaPalavras);
+        modelPag06 = new ModelPag06(p1, p2, instrucao, listaPalavras, p3, segundaResposta);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
         atividades.setTooltip(new Tooltip("Clique para ver as atividades para imprimir"));
         manual.setTooltip(new Tooltip("Clique para ler o manual do programa "));
-    }    
+    }
+
     /**
      * Define a unidade atual
+     *
      * @param unidade valor da unidade atual
-     * @throws IOException 
+     * @throws IOException
      */
     public void setUnidadeAtual(int unidade) throws IOException {
         atualizarListView();//atualiza a lista de palavras estudadas
         modelPag06.setUnidadeAtual(unidade);
         modelPag06.definirLabels();
     }
+
     /**
      * Pega a unidade atual
+     *
      * @return string com o valor da unidade atual
      */
-    public int getUnidadeAtual(){
+    public int getUnidadeAtual() {
         return modelPag06.getUnidadeAtual();
     }
+
     /**
      * Avança para a proxima pagina
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag06.pararAudio();
         modelPag06.proximaPagina(event);
     }
+
     /**
      * Volta para a pagina anterior
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void voltar(ActionEvent event) throws IOException {
         modelPag06.pararAudio();
         modelPag06.paginaAnterior(event);
-    }    
+    }
+
     /**
      * Verifica se o texto digitado está correto
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void verificarTexto(ActionEvent event) throws InterruptedException {
         modelPag06.pararAudio();
-        if(modelPag06.verificarResposta(resposta.getText())){
-            resposta.setText(resposta.getText().toUpperCase());
-            resposta.setStyle("-fx-background-color: grey; -fx-font-weight: bold; fx-color: black;");
-            resposta.setDisable(true);
-            modelPag06.audioAcerto();
-        }else{
-            modelPag06.audioErro();
-            resposta.setText("");
-            
-        }
-    }
+        if (getUnidadeAtual() == 18) {
+            if (modelPag06.verificarResposta(resposta.getText(), segundaResposta.getText())) {
+                resposta.setText(resposta.getText().toUpperCase());
+                resposta.setStyle("-fx-background-color: grey; -fx-font-weight: bold; fx-color: black;");
+                segundaResposta.setText(resposta.getText().toUpperCase());
+                segundaResposta.setStyle("-fx-background-color: grey; -fx-font-weight: bold; fx-color: black;");
+                resposta.setDisable(true);
+                segundaResposta.setDisable(false);
+                modelPag06.audioAcerto();
+            } else {
+                modelPag06.audioErro();
+                resposta.setText("");
+            }
+        } else {
+            if (modelPag06.verificarResposta(resposta.getText())) {
+                resposta.setText(resposta.getText().toUpperCase());
+                resposta.setStyle("-fx-background-color: grey; -fx-font-weight: bold; fx-color: black;");
+                resposta.setDisable(true);
+                modelPag06.audioAcerto();
+            } else {
+                modelPag06.audioErro();
+                resposta.setText("");
 
-    /**
-     * Leva o usuário para o menu inicial
-     * @param event clique no botão "Menu Inicial"
-     * @throws IOException 
-     */
-    @FXML
-    private void menuInicial(ActionEvent event) throws IOException{
+            }
+        }   
+}
+
+/**
+ * Leva o usuário para o menu inicial
+ *
+ * @param event clique no botão "Menu Inicial"
+ * @throws IOException
+ */
+@FXML
+        private void menuInicial(ActionEvent event) throws IOException{
         modelPag06.menuInicial(event);
         modelPag06.pararAudio();
     }
@@ -155,7 +184,7 @@ public class Pag06Controller implements Initializable {
      * @param event mouse é pressionado
      */
     @FXML
-    private void mouseClicado(MouseEvent event) {
+        private void mouseClicado(MouseEvent event) {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag06.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
@@ -172,7 +201,7 @@ public class Pag06Controller implements Initializable {
      * @param event movimentação do mouse sobre os componentes
      */
     @FXML
-    private void sombrearBotao(MouseEvent event) {
+        private void sombrearBotao(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         ((Button)((event)).getSource()).setEffect(sombras);
     }
@@ -181,7 +210,7 @@ public class Pag06Controller implements Initializable {
      * @param event movimentação do mouse para fora do botão
      */
     @FXML
-    private void retirarSombraBotao(MouseEvent event) {        
+        private void retirarSombraBotao(MouseEvent event) {        
         ((Button)((event)).getSource()).setEffect(null);
     }
     /**
@@ -197,7 +226,7 @@ public class Pag06Controller implements Initializable {
      * @throws IOException 
      */
     @FXML
-    private void abrirManual(ActionEvent event) throws IOException {
+        private void abrirManual(ActionEvent event) throws IOException {
         modelPag06.abrirManual(event, pagina);
     }
     /**
@@ -207,7 +236,7 @@ public class Pag06Controller implements Initializable {
      */
     
     @FXML
-    private void abrirABC(ActionEvent event) throws IOException {
+        private void abrirABC(ActionEvent event) throws IOException {
         modelPag06.abrirABC(event, pagina);
         modelPag06.pararAudio();
     }
@@ -221,7 +250,7 @@ public class Pag06Controller implements Initializable {
      * @param event mouse passado por cima do icone
      */
     @FXML
-    private void dessombrearImagem(MouseEvent event) {
+        private void dessombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(null);
     }
@@ -230,7 +259,7 @@ public class Pag06Controller implements Initializable {
      * @param event 
      */
     @FXML
-    private void sombrearImagem(MouseEvent event) {
+        private void sombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(sombras);
     }
@@ -239,13 +268,13 @@ public class Pag06Controller implements Initializable {
      * @param event 
      */
     @FXML
-    private void replayAudio(MouseEvent event) {
+        private void replayAudio(MouseEvent event) {
         modelPag06.pararAudio();
         modelPag06.tocarAudio();
     }
 
     @FXML
-    private void sugestaoAtividades(ActionEvent event) {
+        private void sugestaoAtividades(ActionEvent event) {
     }
     
     private void atualizarListView() {

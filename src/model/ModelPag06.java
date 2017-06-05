@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -30,47 +31,55 @@ import javafx.util.Duration;
  * @author shadows
  */
 public class ModelPag06 {
-
+    
     private int unidadeAtual;
     private Stage janela;
     private String caminhoAudio;
-
+    
     private Label p1, p2;
     private ModelClasseComum mCC;
-
+    
     @FXML
     private Text instrucao;
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
     private ListView<String> listaPalavras;
-    private String respostasCorretas[] = {" ", "VOVÔ", "POVO", "TATO", "UVA", "VIVA", 
-        "LUVA", "LATA", "BEBÊ","BOLA","BOCA", "BALA","HOJE","PIPA","FURO","FITA","JOGOS",
-    "ROXO","GATO/RATO","BONECA","DOCES","SINOS","RUA","DUAS","ESSA","SETE","MOTIBOS","ACUMULAR",
-    "PIJAMA","ESPUMA","SOPRANDO","PERNAMBUCO","ÁRVORES","FAMOSO","ESCOLA","LIXINHO","MENINA",
-    "MACARRÃO","BICICLETA","MENINO","BRAVURA","FELIZES"};
+    private String respostasCorretas[] = {" ", "VOVÔ", "POVO", "TATO", "UVA", "VIVA",
+        "LUVA", "LATA", "BEBÊ", "BOLA", "BOCA", "BALA", "HOJE", "PIPA", "FURO", "FITA", "JOGOS",
+        "ROXO", "GATO/RATO", "BONECA", "DOCES", "SINOS", "RUA", "DUAS", "ESSA", "SETE", "MOTIBOS", "ACUMULAR",
+        "PIJAMA", "ESPUMA", "SOPRANDO", "PERNAMBUCO", "ÁRVORES", "FAMOSO", "ESCOLA", "LIXINHO", "MENINA",
+        "MACARRÃO", "BICICLETA", "MENINO", "BRAVURA", "FELIZES"};
     
     private String listaFrases[] = {"\"o vovô é meu amigo\"", "\"o povo da festa está animado\"",
         "\"o tato serve para nos proteger\"", "\"Meu pai gosta de uva\"", "\"viva a vida com amor\"",
         "\"Está frio, vou usar minha luva\"", "\"Comprei uma lata de tinta\"", "\"O bebê está dormindo\"",
-        "\"Ganhei uma bola\"","\"Estou com a boca cheia\"","\"Comprei um pacote de bala\"", "\"Hoje é um grande dia\"",
-        "\"A pipa do menino está no céu\"","\"Fizeram um furo na parede\"", "\"A menina do laço de fita\"", 
-        "\"A família se reuniu para assistr aos jogos \"", "\"A minha cor predileta é roxo\"", "\"Ganhei uma bola\"", 
-        "\"O gato e o rato são amigos\"","\"Ganhei uma linda boneca\"", "\"Minha vovó faz doces deliciosos\"",
+        "\"Ganhei uma bola\"", "\"Estou com a boca cheia\"", "\"Comprei um pacote de bala\"", "\"Hoje é um grande dia\"",
+        "\"A pipa do menino está no céu\"", "\"Fizeram um furo na parede\"", "\"A menina do laço de fita\"",
+        "\"A família se reuniu para assistr aos jogos \"", "\"A minha cor predileta é roxo\"", "\"Ganhei uma bola\"",
+        "\"O gato e o rato são amigos\"", "\"Ganhei uma linda boneca\"", "\"Minha vovó faz doces deliciosos\"",
         "\"Os sinos da igreja estão tocando.\"", "\"As crianças estão brincando na rua\"", "\"A moça comprou duas sandálias\"",
-        "\"Essa escola é muito divertido\"","\"Vou completar sete anos\"", "\"Tenho motivos para sorrir.\"","\"Não vale a pena acumular tarefas\"",
-        "\"Coloquei o meu pijama quentinha para dormir\"","\"Vou tomar um banho com muita espuma.\"","\"O vento está soprando forte.\"",
-        "\"Vou viajar para Pernambuco nas férias\"", "\"Gosto de subir em árvores\"","\"Meu tio é famoso\"",
-        "\"Não fui para a escola hoje\"","\"Joguei o lixinho no lixo\"", "\"Aquela menina é linda\"",
-        "\"Minha comida predileta é macarrão\"","\"Ganhei uma bicicleta do meu pai\"","\"Sou amiga daquele menino\"",
-        "\"Tenho medo da bravura do mar\"","\"Todos pareciam felizes\""};
+        "\"Essa escola é muito divertido\"", "\"Vou completar sete anos\"", "\"Tenho motivos para sorrir.\"", "\"Não vale a pena acumular tarefas\"",
+        "\"Coloquei o meu pijama quentinha para dormir\"", "\"Vou tomar um banho com muita espuma.\"", "\"O vento está soprando forte.\"",
+        "\"Vou viajar para Pernambuco nas férias\"", "\"Gosto de subir em árvores\"", "\"Meu tio é famoso\"",
+        "\"Não fui para a escola hoje\"", "\"Joguei o lixinho no lixo\"", "\"Aquela menina é linda\"",
+        "\"Minha comida predileta é macarrão\"", "\"Ganhei uma bicicleta do meu pai\"", "\"Sou amiga daquele menino\"",
+        "\"Tenho medo da bravura do mar\"", "\"Todos pareciam felizes\""};
+    
+    @FXML
+    private Label p3;
+    
+    @FXML    
+    private TextField segundaResposta;
 
-    public ModelPag06(Label p1, Label p2, Text instrucao1, ListView<String> listaPalavras) {
+    public ModelPag06(Label p1, Label p2, Text instrucao1, ListView<String> listaPalavras, Label p3, TextField segundaResposta) {
         this.p1 = p1;
         this.p2 = p2;
         this.unidadeAtual = 0;
         this.listaPalavras = listaPalavras;
         mCC = new ModelClasseComum(janela, this.listaPalavras);
         this.instrucao = instrucao1;
+        this.p3 = p3;
+        this.segundaResposta = segundaResposta;
     }
 
     /**
@@ -90,7 +99,7 @@ public class ModelPag06 {
             default:
                 break;
         }
-
+        
     }
 
     /**
@@ -112,7 +121,7 @@ public class ModelPag06 {
             pg06aCont.setInstrucao(getUnidadeAtual());
             pg06aCont.tocarAudio();
             mCC.exibirCena(proximaCena, janela);            
-
+            
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag07.fxml"));
@@ -125,9 +134,9 @@ public class ModelPag06 {
             mCC.exibirCena(proximaCena, janela);
             pg07Cont.tocarAudio();
             pg07Cont.setImagemTexto(getUnidadeAtual());
-
+            
         }
-
+        
     }
 
     /**
@@ -143,7 +152,7 @@ public class ModelPag06 {
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
             Pag05aController pg05aCont = fxmloader.<Pag05aController>getController();
-
+            
             mCC.exibirCena(proximaCena, janela);
             pg05aCont.setUnidadeAtual(getUnidadeAtual());
             pg05aCont.tocarAudio();
@@ -154,7 +163,7 @@ public class ModelPag06 {
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
             Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
-
+            
             mCC.exibirCena(proximaCena, janela);
             pg05Cont.setUnidadeAtual(getUnidadeAtual());
             pg05Cont.tocarAudio();
@@ -207,6 +216,8 @@ public class ModelPag06 {
      * Define as labels que serão utilizadas na página baseado na unidade atual
      */
     public void definirLabels() {
+        segundaResposta.setVisible(false);
+        p3.setVisible(false);
         switch (getUnidadeAtual()) {
             case 1:
                 p1.setText("O");
@@ -250,6 +261,32 @@ public class ModelPag06 {
                 p1.setText("Comprei um pacote de");
                 p2.setVisible(false);
                 break;
+            case 12:                
+                p2.setText("é um grande dia");
+                break;
+            case 13:
+                p1.setText("A");
+                p2.setText("do menino está no céu.");
+                break;
+            case 14:
+                p1.setText("Fizeram um");
+                p2.setText("na parede");
+                break;
+            case 15:
+                p1.setText("A menina do laço de");
+                break;
+            case 16:
+                p1.setText("A família se reuniu para assistir aos");
+                break;
+            case 17:
+                p1.setText("A minha cor predileta é");
+                break;
+            case 18:
+                segundaResposta.setVisible(true);
+                p3.setVisible(true);
+                p1.setText("O");
+                p2.setText("e o");
+                p3.setText("são amigos.");            
             default:
                 break;
         }
@@ -280,7 +317,7 @@ public class ModelPag06 {
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-
+    
     public void executarAudioFrase() {
         switch (getUnidadeAtual()) {
             case 1:
@@ -329,15 +366,15 @@ public class ModelPag06 {
         String instrucaoTexto = "";
         instrucao.setText("Digite a palavra que você aprendeu para formar a frase:\n " + listaFrases[unidadeAtual - 1]);
     }
-
+    
     private void tocarAudioParabens() throws InterruptedException {
         Random indiceParabens = new Random();
         int numeroAudio = indiceParabens.nextInt(3);
         caminhoAudio = "audios/acerto/" + numeroAudio + ".mp3";
         mCC.play(caminhoAudio);
-
+        
     }
-
+    
     public void audioAcerto() {
         //evento que represanta a ação do acerto
         primeiroAudio = (ActionEvent event) -> {
@@ -356,15 +393,21 @@ public class ModelPag06 {
                 new KeyFrame(Duration.seconds(0), primeiroAudio),
                 new KeyFrame(Duration.seconds(3), segundoAudio)).play();
     }
-
+    
     public void audioErro() {
         Random indiceErro = new Random();
         int numeroAudio = indiceErro.nextInt(3);
         caminhoAudio = "audios/erro/" + numeroAudio + ".mp3";
         mCC.play(caminhoAudio);
     }
-
+    
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+    
+    public boolean verificarResposta(String resposta, String segundaResposta) {
+        boolean respostaCorreta = false;
+        respostaCorreta = resposta.toUpperCase().equals("GATO") && (segundaResposta.toUpperCase().equals("RATO"));
+        return respostaCorreta;
     }
 }

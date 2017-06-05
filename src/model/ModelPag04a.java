@@ -3,7 +3,6 @@
  */
 package model;
 
-import controller.Pag03Controller;
 import controller.Pag04Controller;
 import controller.Pag04bController;
 import controller.Pag05Controller;
@@ -92,7 +91,11 @@ public class ModelPag04a {
     private ListView<String> listaPalavras;
 
     private String textoInstrucao[] = {"\"ÁRVORE\"", "\"PIPOCA\"", "\"BOTA\"", "\"URUBU\"",
-        "\"VINHO\"", "\"LUVA\"", "\"LAÇO\"", "\"CABELO\"","\"DEDO\""};
+        "\"VINHO\"", "\"LUVA\"", "\"LAÇO\"", "\"CABELO\"", "\"DEDO\"", "\"DEDO\"", "\"DEDO\"",
+        "\"DEDO\"", "\"SAPATO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"BARATA\""};
+    private String silabaCorreta[] = {"VO","PO","TA","U","VI","LU","LA","BE","BO",
+        "CA", "BA", "HO","PA", "FU", "FI", "JO","","RA"};
+
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
      *
@@ -138,7 +141,9 @@ public class ModelPag04a {
         URL imgUrl = null;
         String matrizSilabas[][] = {{"VA", "VE", "VI", "VO", "VU"}, {"PA", "PE", "PI", "PO", "PU"}, {"TA", "TE", "TI", "TO", "TU"},
         {"A", "E", "I", "O", "U"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
-        {"BA", "BE", "BI", "BO", "BU"}, {"DA", "DE", "DI", "DO", "DU"}};
+        {"BA", "BE", "BI", "BO", "BU"}, {"DA", "DE", "DI", "DO", "DU"},{"DA", "DE", "DI", "DO", "DU"},{"DA", "DE", "DI", "DO", "DU"},
+        {"DA", "DE", "DI", "DO", "DU"},{"PA", "PE", "PI", "PO", "PU"},{"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},
+        {"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"}};
         p1.setText(matrizSilabas[unidadeAtual - 1][0]);
         p2.setText(matrizSilabas[unidadeAtual - 1][1]);
         p3.setText(matrizSilabas[unidadeAtual - 1][2]);
@@ -164,6 +169,16 @@ public class ModelPag04a {
                 f1.setVisible(false);
                 f2.setText("DO");
                 imgUrl = getClass().getResource("imagens/licao9a/dedopb.png");
+                break;
+            case 13:
+                f1.setText("SA");
+                f2.setText("TO");
+                imgUrl = getClass().getResource("imagens/licao13a/PA4pb.png");
+                break;
+            case 18:
+                f1.setText("BA");
+                f2.setText("TA");
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"a/RA4pb.png");
                 break;
             default:
                 break;
@@ -200,6 +215,17 @@ public class ModelPag04a {
             pg04bCont.tocarAudio();
             mCC.exibirCena(proximaCena, janela);
 
+        } else if (u == 13) {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
+
+            //cria a próxima cena     
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
+            pg05Cont.setUnidadeAtual(getUnidadeAtual());
+
+            mCC.exibirCena(proximaCena, janela);
+            pg05Cont.tocarAudio();
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05.fxml"));
@@ -276,8 +302,14 @@ public class ModelPag04a {
                     imagemUrl = getClass().getResource("imagens/licao9a/dedocor.png");
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
-                break;                
+                break;
             default:
+                String fonema = silabaCorreta[getUnidadeAtual()-1];
+                if(silabaEscolhida.equals(fonema)){                              
+                    opcaoCorreta = true;
+                    imagemUrl = getClass().getResource("imagens/licao"+getUnidadeAtual()+"a/"+fonema+"4cor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
+                }
                 break;
         }
         if (opcaoCorreta) {
@@ -510,7 +542,7 @@ public class ModelPag04a {
     }
 
     //faz exibir a instrução da atividade atual na tela
-    public void definirInstrucao(int unidadeAtual) {        
+    public void definirInstrucao(int unidadeAtual) {
         instrucao.setText("“Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
 
     }

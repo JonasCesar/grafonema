@@ -3,7 +3,6 @@
  */
 package model;
 
-import controller.Pag04Controller;
 import controller.Pag05Controller;
 import controller.Pag06Controller;
 import java.io.File;
@@ -83,7 +82,7 @@ public class ModelPag05a {
     private Text instrucao;
     @FXML
     private Label f3;
-    private String[] silabaCorreta = {"","","","","","","","","","","","JE"};
+    private String[] silabaCorreta = {"","","","","","","","","","","","JE","PA","","","","","GA"};
 
     /**
      * Construtor da classe Labels utilzadas nas paginas:
@@ -133,7 +132,9 @@ public class ModelPag05a {
         URL imgUrl = null;
         String matrizSilabas[][] = {{"VA", "VE", "VI", "VO", "VU"}, {"PA", "PE", "PI", "PO", "PU"}, {"TÁ", "TE", "TI", "TO", "TU"},
         {"VA", "VE", "VI", "VO", "VU"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
-        {"BA", "BE", "BI", "BO", "BU"}, {"DA", "DE", "DI", "DO", "DU"}};
+        {"BA", "BE", "BI", "BO", "BU"}, {"DA", "DE", "DI", "DO", "DU"},{"DA", "DE", "DI", "DO", "DU"},{"DA", "DE", "DI", "DO", "DU"},
+        {"JA", "JE", "JI", "JO", "JU"},{"PA", "PE", "PI", "PO", "PU"},{"PA", "PE", "PI", "PO", "PU"},{"PA", "PE", "PI", "PO", "PU"},
+        {"PA", "PE", "PI", "PO", "PU"},{"PA", "PE", "PI", "PO", "PU"},{"GA", "GE", "GI", "GO", "GU"}};
         p1.setText(matrizSilabas[unidadeAtual - 1][0]);
         p2.setText(matrizSilabas[unidadeAtual - 1][1]);
         p3.setText(matrizSilabas[unidadeAtual - 1][2]);
@@ -176,6 +177,17 @@ public class ModelPag05a {
                 f2.setText("RI");
                 f3.setText("MUM");
                 imgUrl = getClass().getResource("imagens/licao12a/JE5pb.png");
+                break;
+            case 13:
+                f1.setVisible(false);
+                f2.setText("TINS");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao13a/PA5pb.png");
+                break;
+            case 18:
+                f1.setText("GA");
+                f2.setText("GEM");
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"a/RA5pb.png");
                 break;
             default:
                 break;
@@ -493,7 +505,10 @@ public class ModelPag05a {
     }
 
     public void definirInstrucao(int unidadeAtual) {
-        String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"", "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"DOMINÓ\""};
+        String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"",
+            "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"DOMINÓ\"","\"DOMINÓ\"",
+            "\"DOMINÓ\"","\"DOMINÓ\"","\"JERIMUM\"","\"JERIMUM\"","\"JERIMUM\"","\"JERIMUM\"",
+            "\"JERIMUM\"","\"GARAGEM\"",};
         instrucao.setText("Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
 
     }

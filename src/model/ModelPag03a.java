@@ -57,7 +57,8 @@ public class ModelPag03a {
     ListView<String> listaPalavras;
     //
     private String listaInstrucao[] = {"\"VÔ\"", "\"PO\"", "\"TA\"", "\"VA\"", "\"VI\"",
-        "\"LU\"", "\"VÔ\"", "\"LU\"", "\"DO\""};
+        "\"LU\"", "\"VÔ\"", "\"LU\"", "\"DO\"", "\"DO\"", "\"DO\"", "\"DO\"", "\"DO\"", 
+        "\"RO\"", "\"RO\"", "GOS", "GOS","RA"};
 
     public ModelPag03a(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -175,9 +176,8 @@ public class ModelPag03a {
      * Verifica se a imagem clicada contem o fonema
      *
      * @param event disparado quando uma das 6 imagens é clicada
-     * @throws MalformedURLException
      */
-    public void verificarImagem(MouseEvent event) throws MalformedURLException {
+    public void verificarImagem(MouseEvent event) {
         String imgClicada = ((ImageView) event.getSource()).getId();
         String nomeImagem = imgClicada.substring(3, 4);
 
@@ -224,7 +224,29 @@ public class ModelPag03a {
                     imgf1 = getClass().getResource("imagens/licao4a/" + nomeImagem + "e.png");
                 }
                 break;
+            case 14:
+                if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao14a/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao14a/" + nomeImagem + "e.png");
+                }
+                break;
+            case 16:
+                if (imgClicada.equals("img4") || imgClicada.equals("img3") || imgClicada.equals("img5")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
+                }
+                break;
+            case 18:
+                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
+                }
+                break;                
             default:
+
                 break;
         }
         ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
