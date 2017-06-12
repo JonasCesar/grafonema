@@ -53,14 +53,14 @@
                </image></ImageView>
          </graphic></Button>
       <ListView fx:id="listaPalavras" layoutX="44.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
-      <FlowPane layoutX="177.0" layoutY="297.0" prefHeight="185.0" prefWidth="629.0">
+      <FlowPane layoutX="177.0" layoutY="297.0" prefHeight="185.0" prefWidth="667.0">
          <children>
             <Label fx:id="p1" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P1">
                <font>
                   <Font size="25.0" />
                </font>
                <FlowPane.margin>
-                  <Insets bottom="50.0" left="110.0" right="30.0" />
+                  <Insets bottom="50.0" left="90.0" right="30.0" />
                </FlowPane.margin>
             </Label>
             <Label fx:id="p2" onMouseDragged="#mouseArrastado" onMousePressed="#mousePressionado" onMouseReleased="#mouseLiberado" text="P2">

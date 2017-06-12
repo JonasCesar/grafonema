@@ -39,7 +39,8 @@ public class ModelPag02a {
     private Label palavraAtual;
 
     private String textoDaUnidade[] = {"VOVÔ", "POVO", "TATO", "UVA", "VIVA", "LUVA",
-        "LATA", "BEBÊ", "DOCE","","","","","","","","","RATO"};
+        "LATA", "BEBÊ", "DOCE","","","","","","","","","RATO","","","","","","","SUCESSO",
+        "", "","",""};//29
 
     public ModelPag02a(ListView<String> listaPalavras, Label palavraAtual) {
         this.unidadeAtual = 0;
@@ -248,7 +249,7 @@ public class ModelPag02a {
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina);
+        mCC.abrirABC(event, pagina,"a");
     }
 
     public void atualizarListView() {

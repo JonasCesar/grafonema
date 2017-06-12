@@ -481,7 +481,7 @@ public class ModelPag04b {
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina);
+        mCC.abrirABC(event, pagina,"b");
     }
 
     /**

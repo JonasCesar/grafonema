@@ -34,7 +34,9 @@ public class ModelPag07 {
     private String tituloUnidades[]={"1: VOVÔ","2: POVO(OVO, UVA)","3: TATO",
             "4: UVA","5: VIVA", "6: LUVA", "7: LATA", "8: BEBÊ", "9: BOLA/DOCE",
             "10: BOCA", "11: BALA(Baba)", "12: HOJE", "13: PIPA", "14: FURO", 
-            "15: FITA", "16: JOGOS", "17: ROXO", "18: GATO e RATO", "19: BONECA"};
+            "15: FITA", "16: JOGOS", "17: ROXO", "18: GATO e RATO", "19: BONECA",
+            "20: DEDOS","21: SINOS","22: RUA", "23: DUAS", "24: ESSA", "25: SETE",
+            "26: MOTIVO","27: ACUMULAR","28: PIJAMA","29: ESPUMA"};
     public ModelPag07(ImageView imagemTexto) {
         this.imagemTexto = imagemTexto;
         this.unidadeAtual = 0;
@@ -152,7 +154,7 @@ public class ModelPag07 {
 
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina);
+        mCC.abrirABC(event, pagina,"");
     }
 
     /**

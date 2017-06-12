@@ -3,8 +3,6 @@
  */
 package model;
 
-import controller.Pag05Controller;
-import controller.Pag05aController;
 import controller.Pag06Controller;
 import controller.Pag07Controller;
 import java.io.IOException;
@@ -268,7 +266,7 @@ public class ModelPag06a {
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina);
+        mCC.abrirABC(event, pagina,"a");
     }
 
     //faz exibir a instrução da atividade atual na tela

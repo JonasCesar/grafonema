@@ -151,17 +151,7 @@ public class MenuInicialController implements Initializable {
             case "u20":
                 menuInicial.iniciar(event, 20);
                 break;
-            case "u21":
-                menuInicial.iniciar(event, 21);
-                break;
-            case "u22":
-                menuInicial.iniciar(event, 22);
-                break;
-            case "u23":
-                menuInicial.iniciar(event, 23);
-                break;
-            default:
-                break;
+            
         }
     }
 
@@ -189,5 +179,10 @@ public class MenuInicialController implements Initializable {
     @FXML
     private void retirarSombraBotao(MouseEvent event) {
         ((Button) ((event)).getSource()).setEffect(null);
+    }
+
+    @FXML
+    private void proximoMenu(ActionEvent event) throws IOException {
+        menuInicial.proximoMenu(event);
     }
 }

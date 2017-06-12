@@ -41,7 +41,8 @@ public class ModelPag02 {
     //9
     private String textoDaUnidade[] = {"VOVÔ", "POVO", "TATO", "UVA", "VIVA", 
             "LUVA", "LATA", "BEBÊ", "BOLA", "BOCA","BALA", "HOJE","PIPA", "FURO",
-            "FITA","JOGOS","ROXO","GATO","BONECA"};
+            "FITA","JOGOS","ROXO","GATO","BONECA", "DEDOS", "SINOS", "RUA", "DUAS",
+            "ESSA", "SETE", "MOTIVO", "ACUMULAR", "PIJAMA", "ESPUMA"};
 
     public ModelPag02(ListView<String> listaPalavras, Label palavraAtual) {
         this.unidadeAtual = 0;
@@ -152,7 +153,7 @@ public class ModelPag02 {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 9 || u == 18) {
+        if (u == 9 || u == 18 || u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02a.fxml"));
 
@@ -242,9 +243,14 @@ public class ModelPag02 {
      * @param pagina
      * @throws IOException
      */
-    public void abrirABC(ActionEvent event, int pagina) throws IOException {
+    public void abrirABC(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina);
+        switch(pagina){
+            case 25:
+                mCC.abrirABC(event, pagina, subPagina);
+                break;
+        }
+        
     }
 
     public void atualizarListView() {

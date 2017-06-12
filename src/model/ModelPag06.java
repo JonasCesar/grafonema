@@ -31,14 +31,14 @@ import javafx.util.Duration;
  * @author shadows
  */
 public class ModelPag06 {
-    
+
     private int unidadeAtual;
     private Stage janela;
     private String caminhoAudio;
-    
+
     private Label p1, p2;
     private ModelClasseComum mCC;
-    
+
     @FXML
     private Text instrucao;
     private EventHandler<ActionEvent> primeiroAudio;
@@ -49,13 +49,13 @@ public class ModelPag06 {
         "ROXO", "GATO/RATO", "BONECA", "DOCES", "SINOS", "RUA", "DUAS", "ESSA", "SETE", "MOTIBOS", "ACUMULAR",
         "PIJAMA", "ESPUMA", "SOPRANDO", "PERNAMBUCO", "ÁRVORES", "FAMOSO", "ESCOLA", "LIXINHO", "MENINA",
         "MACARRÃO", "BICICLETA", "MENINO", "BRAVURA", "FELIZES"};
-    
+
     private String listaFrases[] = {"\"o vovô é meu amigo\"", "\"o povo da festa está animado\"",
         "\"o tato serve para nos proteger\"", "\"Meu pai gosta de uva\"", "\"viva a vida com amor\"",
         "\"Está frio, vou usar minha luva\"", "\"Comprei uma lata de tinta\"", "\"O bebê está dormindo\"",
         "\"Ganhei uma bola\"", "\"Estou com a boca cheia\"", "\"Comprei um pacote de bala\"", "\"Hoje é um grande dia\"",
         "\"A pipa do menino está no céu\"", "\"Fizeram um furo na parede\"", "\"A menina do laço de fita\"",
-        "\"A família se reuniu para assistr aos jogos \"", "\"A minha cor predileta é roxo\"", "\"Ganhei uma bola\"",
+        "\"A família se reuniu para assistr aos jogos \"", "\"A minha cor predileta é roxo\"",
         "\"O gato e o rato são amigos\"", "\"Ganhei uma linda boneca\"", "\"Minha vovó faz doces deliciosos\"",
         "\"Os sinos da igreja estão tocando.\"", "\"As crianças estão brincando na rua\"", "\"A moça comprou duas sandálias\"",
         "\"Essa escola é muito divertido\"", "\"Vou completar sete anos\"", "\"Tenho motivos para sorrir.\"", "\"Não vale a pena acumular tarefas\"",
@@ -64,11 +64,11 @@ public class ModelPag06 {
         "\"Não fui para a escola hoje\"", "\"Joguei o lixinho no lixo\"", "\"Aquela menina é linda\"",
         "\"Minha comida predileta é macarrão\"", "\"Ganhei uma bicicleta do meu pai\"", "\"Sou amiga daquele menino\"",
         "\"Tenho medo da bravura do mar\"", "\"Todos pareciam felizes\""};
-    
+
     @FXML
     private Label p3;
-    
-    @FXML    
+
+    @FXML
     private TextField segundaResposta;
 
     public ModelPag06(Label p1, Label p2, Text instrucao1, ListView<String> listaPalavras, Label p3, TextField segundaResposta) {
@@ -99,7 +99,7 @@ public class ModelPag06 {
             default:
                 break;
         }
-        
+
     }
 
     /**
@@ -120,8 +120,8 @@ public class ModelPag06 {
             pg06aCont.setUnidadeAtual(getUnidadeAtual());
             pg06aCont.setInstrucao(getUnidadeAtual());
             pg06aCont.tocarAudio();
-            mCC.exibirCena(proximaCena, janela);            
-            
+            mCC.exibirCena(proximaCena, janela);
+
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag07.fxml"));
@@ -134,9 +134,9 @@ public class ModelPag06 {
             mCC.exibirCena(proximaCena, janela);
             pg07Cont.tocarAudio();
             pg07Cont.setImagemTexto(getUnidadeAtual());
-            
+
         }
-        
+
     }
 
     /**
@@ -152,7 +152,7 @@ public class ModelPag06 {
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
             Pag05aController pg05aCont = fxmloader.<Pag05aController>getController();
-            
+
             mCC.exibirCena(proximaCena, janela);
             pg05aCont.setUnidadeAtual(getUnidadeAtual());
             pg05aCont.tocarAudio();
@@ -163,7 +163,7 @@ public class ModelPag06 {
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
             Pag05Controller pg05Cont = fxmloader.<Pag05Controller>getController();
-            
+
             mCC.exibirCena(proximaCena, janela);
             pg05Cont.setUnidadeAtual(getUnidadeAtual());
             pg05Cont.tocarAudio();
@@ -261,7 +261,7 @@ public class ModelPag06 {
                 p1.setText("Comprei um pacote de");
                 p2.setVisible(false);
                 break;
-            case 12:                
+            case 12:
                 p2.setText("é um grande dia");
                 break;
             case 13:
@@ -286,7 +286,50 @@ public class ModelPag06 {
                 p3.setVisible(true);
                 p1.setText("O");
                 p2.setText("e o");
-                p3.setText("são amigos.");            
+                p3.setText("são amigos.");
+                break;
+            case 19:
+                p1.setText("Ganhei uma linda");
+                p2.setVisible(false);
+                break;
+            case 20:
+                p1.setText("Minha vovó faz");
+                p2.setText("deliciosos.");
+                break;
+            case 21:
+                p1.setText("Os");
+                p2.setText("da igreja estão tocando.");
+                break;
+            case 22:
+                p1.setText("As crianças estão brincando na");
+                p2.setVisible(false);
+                break;
+            case 23:                
+                p1.setText("A moça comprou");
+                p2.setText("sandálias.");                
+                break;
+            case 24:
+                p2.setText("escola é muita divertida");                
+                break;
+            case 25:
+                p1.setText("Vou completar");
+                p2.setText("anos.");                
+                break;
+            case 26:
+                p1.setText("Tenho");
+                p2.setText("para sorrir.");                
+                break;
+            case 27:
+                p1.setText("Não vale a pena");
+                p2.setText("tarefas.");
+                break;
+            case 28:
+                p1.setText("Coloquei o meu");
+                p2.setText("quentinho para dormir.");                
+                break;
+            case 29:
+                p1.setText("Vou tomar um banho com muita");                               
+                break;
             default:
                 break;
         }
@@ -317,7 +360,7 @@ public class ModelPag06 {
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         mCC.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-    
+
     public void executarAudioFrase() {
         switch (getUnidadeAtual()) {
             case 1:
@@ -358,7 +401,7 @@ public class ModelPag06 {
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina);
+        mCC.abrirABC(event, pagina, "");
     }
 
     //faz exibir a instrução da atividade atual na tela
@@ -366,15 +409,15 @@ public class ModelPag06 {
         String instrucaoTexto = "";
         instrucao.setText("Digite a palavra que você aprendeu para formar a frase:\n " + listaFrases[unidadeAtual - 1]);
     }
-    
+
     private void tocarAudioParabens() throws InterruptedException {
         Random indiceParabens = new Random();
         int numeroAudio = indiceParabens.nextInt(3);
         caminhoAudio = "audios/acerto/" + numeroAudio + ".mp3";
         mCC.play(caminhoAudio);
-        
+
     }
-    
+
     public void audioAcerto() {
         //evento que represanta a ação do acerto
         primeiroAudio = (ActionEvent event) -> {
@@ -393,18 +436,18 @@ public class ModelPag06 {
                 new KeyFrame(Duration.seconds(0), primeiroAudio),
                 new KeyFrame(Duration.seconds(3), segundoAudio)).play();
     }
-    
+
     public void audioErro() {
         Random indiceErro = new Random();
         int numeroAudio = indiceErro.nextInt(3);
         caminhoAudio = "audios/erro/" + numeroAudio + ".mp3";
         mCC.play(caminhoAudio);
     }
-    
+
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
     }
-    
+
     public boolean verificarResposta(String resposta, String segundaResposta) {
         boolean respostaCorreta = false;
         respostaCorreta = resposta.toUpperCase().equals("GATO") && (segundaResposta.toUpperCase().equals("RATO"));

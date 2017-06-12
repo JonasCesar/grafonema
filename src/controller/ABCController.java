@@ -89,11 +89,13 @@ public class ABCController implements Initializable {
     private ImageView img3;
     @FXML
     private ImageView img4;
+    private String subPagina;
 
     public ABCController() {
         //modelABC = new ModelABC(imgLetra, img);
         
         paginaTemporaria = 0;
+        subPagina = "";
     }
 
     public String botaoEscolhido = "";
@@ -125,9 +127,8 @@ public class ABCController implements Initializable {
     }
 
     @FXML
-    public void voltar(ActionEvent event) throws IOException {
-        System.out.println(" Temp" + paginaTemporaria);
-        modelABC.voltar(event, paginaTemporaria);
+    public void voltar(ActionEvent event) throws IOException {        
+        modelABC.voltar(event, paginaTemporaria,subPagina);
     }
 
     @FXML
@@ -180,7 +181,8 @@ public class ABCController implements Initializable {
         //imagemTexto.setImage(new Image(imagemURL.toString()));
     }
 
-    public void setPaginaTemporaria(int pagina) {
+    public void setPaginaTemporaria(int pagina, String subPagina) {
+        this.subPagina = subPagina;
         paginaTemporaria = pagina;
     }
 

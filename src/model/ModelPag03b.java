@@ -55,8 +55,8 @@ public class ModelPag03b {
     @FXML
     ListView<String> listaPalavras;
     //9
-    private String listaInstrucao[] = {"\"VÔ\"", "\"PO\"", "\"TA\"", "\"U\"", "\"VI\"",
-        "\"LU\"", "\"VÔ\"", "\"LU\"", "\"CE\""};
+        private String listaInstrucao[] = {"","","","","","","","","CE","","",
+            "","","","","","","","","","","","","","\"SU\""};
 
     public ModelPag03b(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -101,7 +101,7 @@ public class ModelPag03b {
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 9) {
+        if (u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
 
@@ -137,9 +137,9 @@ public class ModelPag03b {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 3 || u == 4 || u == 9) {
+        if (u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03c.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
             Pag04Controller pg04Cont = fxmloader.<Pag04Controller>getController();
@@ -238,6 +238,13 @@ public class ModelPag03b {
                     imgf1 = getClass().getResource("imagens/licao9b/" + nomeImagem + "e.png");
                 }
                 break;
+            case 25:
+                if (imgClicada.equals("img2") || imgClicada.equals("img3") || imgClicada.equals("img4")) {
+                    imgf1 = getClass().getResource("imagens/licao9b/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao9b/" + nomeImagem + "e.png");
+                }
+                break;            
             default:
                 break;
         }
@@ -403,7 +410,7 @@ public class ModelPag03b {
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina);
+        mCC.abrirABC(event, pagina,"b");
     }
 
     //faz exibir a instrução da atividade atual na tela

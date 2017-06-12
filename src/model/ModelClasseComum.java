@@ -39,7 +39,9 @@ public class ModelClasseComum {
     private ActionEvent eventoTemporario;
     public static ObservableList<String> items = FXCollections.observableArrayList();
 
-    public static String listaPalavrasEstudadas[] = {"VOVÔ", "POVO", "TATO", "UVA", "VIVA", "LUVA"};
+    public String listaPalavrasEstudadas[] = {"VOVÔ", "POVO", "TATO", "UVA", "VIVA", "LUVA", "LATA",
+        "BEBÊ", "BOLA", "DOCE", "BOCA", "BALA", "HOJE", "PIPA", "FURO", "FITA", "JOGOS", "ROXO", "GATO", "RATO", "BONECA",
+        "DEDOS", "SINOS", "RUA", "DUAS", "ESSA", "SETE", "SUCESSO", "MOTIVO", "ACUMULAR", "PIJAMA", "ESPUMA"};
 
     @FXML
     private ListView<String> listaPalavras;
@@ -141,18 +143,17 @@ public class ModelClasseComum {
      * @param event disparado pelo método abrirABC presente em todos os
      * controllers
      * @param pagina pagina de onde o método foi chamado
+     * @param subPagina
      * @throws IOException
      */
-    public void abrirABC(ActionEvent event, int pagina) throws IOException {
+    public void abrirABC(ActionEvent event, int pagina, String subPagina) throws IOException {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/ABC.fxml"));
         Parent proximaCena = (Parent) fxmloader.load();
         ABCController ABCCont = fxmloader.<ABCController>getController();
         exibirCena(proximaCena, janela);
-
-        System.out.println(getUnidadeAtual());
         ABCCont.setUnidadeAtual(getUnidadeAtual());
-        ABCCont.setPaginaTemporaria(pagina);
+        ABCCont.setPaginaTemporaria(pagina, subPagina);
 
     }
 
@@ -200,17 +201,16 @@ public class ModelClasseComum {
 
     public void atualizarListView(ListView<String> listaPalavras, int unidade) {
         this.listaPalavras = listaPalavras;
-        System.out.println("Entrou aqui "+unidade);
+        System.out.println("Entrou aqui " + unidade);
         try {
             if (unidade > 1) {
-                if(!items.isEmpty()){
-                    for (int i = 0; i <= items.size(); i++) {
-                        items.remove(listaPalavrasEstudadas[i]);
-                    }
+                if (!items.isEmpty()) {
+                    items.remove(0, items.size());
                 }
-                for (int i = 0; i < unidade-1; i++) {
+                for (int i = 0; i < unidade - 1; i++) {
                     items.add(listaPalavrasEstudadas[i]);
                 }
+
             }
 
             listaPalavras.setItems(items);

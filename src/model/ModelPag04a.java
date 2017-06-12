@@ -94,7 +94,7 @@ public class ModelPag04a {
         "\"VINHO\"", "\"LUVA\"", "\"LAÇO\"", "\"CABELO\"", "\"DEDO\"", "\"DEDO\"", "\"DEDO\"",
         "\"DEDO\"", "\"SAPATO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"BARATA\""};
     private String silabaCorreta[] = {"VO","PO","TA","U","VI","LU","LA","BE","BO",
-        "CA", "BA", "HO","PA", "FU", "FI", "JO","","RA"};
+        "CA", "BA", "HO","PA", "FU", "FI", "JO","","RA","","","","","","","TE"};
 
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
@@ -435,7 +435,7 @@ public class ModelPag04a {
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina);
+        mCC.abrirABC(event, pagina,"a");
     }
 
     /**
