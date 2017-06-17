@@ -197,6 +197,7 @@ public class ModelPag05a {
                 espaco.setId("pg5espaco");
                 f1.setText("TI");
                 f2.setText("NHA");
+                f3.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/CES5pb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
@@ -205,6 +206,7 @@ public class ModelPag05a {
                 espaco.setId("pg5espaco");
                 f1.setText("JO");
                 f2.setText("LO");
+                f3.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/TI5pb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
@@ -545,7 +547,7 @@ public class ModelPag05a {
         String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"",
             "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"DOMINÓ\"", "\"DOMINÓ\"",
             "\"DOMINÓ\"", "\"JERIMUM\"", "\"PATINS\"", "\"JERIMUM\"", "\"JERIMUM\"", "\"JERIMUM\"",
-            "\"JERIMUM\"", "\"GARAGEM\"",};
+            "\"JERIMUM\"", "\"GARAGEM\"","","","","","","","CESTINHA","TIJOLO"};
         instrucao.setText("Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
 
     }

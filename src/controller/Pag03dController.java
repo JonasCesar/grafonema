@@ -120,16 +120,16 @@ public class Pag03dController implements Initializable {
     }
 
     //redireciona para o método definir instrução do model que irá imprimir a instrução na tela
-    public void setInstrucao(int unidadeAtual) throws MalformedURLException    {
+    public void setInstrucao(int unidadeAtual)    {
         modelPag03d.definirInstrucao(unidadeAtual);
     }
     
-    public void setImagens(int unidadeAtual) throws MalformedURLException {
+    public void setImagens(int unidadeAtual) {
         modelPag03d.definirImagens(unidadeAtual);
     }
 
     @FXML
-    private void verificarImagem(MouseEvent event) throws MalformedURLException {
+    private void verificarImagem(MouseEvent event) {
         modelPag03d.verificarImagem(event);
     }
     /**

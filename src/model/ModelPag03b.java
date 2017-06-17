@@ -6,6 +6,7 @@ package model;
 import controller.Pag02Controller;
 import controller.Pag04Controller;
 import controller.Pag03aController;
+import controller.Pag03cController;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -142,11 +143,13 @@ public class ModelPag03b {
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03c.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
-            Pag04Controller pg04Cont = fxmloader.<Pag04Controller>getController();
-            pg04Cont.setUnidadeAtual(getUnidadeAtual());
-            pg04Cont.setInstrucao(getUnidadeAtual());            
+            Pag03cController pg03cCont = fxmloader.<Pag03cController>getController();
+            pg03cCont.setUnidadeAtual(getUnidadeAtual());
+            pg03cCont.setInstrucao(getUnidadeAtual());            
+            pg03cCont.setImagens(unidadeAtual);
             mCC.exibirCena(proximaCena, janela);
-            pg04Cont.tocarAudio();
+            pg03cCont.audioInicial();
+            
 
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -240,9 +243,9 @@ public class ModelPag03b {
                 break;
             case 25:
                 if (imgClicada.equals("img2") || imgClicada.equals("img3") || imgClicada.equals("img4")) {
-                    imgf1 = getClass().getResource("imagens/licao9b/" + nomeImagem + "c.png");
+                    imgf1 = getClass().getResource("imagens/licao"+unidadeAtual+"b/" + nomeImagem + "c.png");
                 } else {
-                    imgf1 = getClass().getResource("imagens/licao9b/" + nomeImagem + "e.png");
+                    imgf1 = getClass().getResource("imagens/licao"+unidadeAtual+"b/" + nomeImagem + "e.png");
                 }
                 break;            
             default:

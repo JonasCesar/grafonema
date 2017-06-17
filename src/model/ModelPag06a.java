@@ -41,10 +41,12 @@ public class ModelPag06a {
     private EventHandler<ActionEvent> primeiroAudio;
     private EventHandler<ActionEvent> segundoAudio;
     private ListView<String> listaPalavras;
-    private String respostasCorretas[] = {" ", "VOVÔ", "POVO", "TATO", "UVA", "VIVA", "LUVA", "LATA","BEBÊ", "DOCE"};
+    private String respostasCorretas[] = {" ", "VOVÔ", "POVO", "TATO", "UVA", "VIVA", 
+        "LUVA", "LATA","BEBÊ", "DOCE","","","","","","","","","","","","","","","","SUCESSO"};
     private String listaFrases[] = {"\"o vovô é meu amigo\"", "\"o povo da festa está animado\"", 
             "\"o tato serve para nos proteger\"", "\"Meu pai gosta de uva\"", "\"viva a vida com amor\"",
-            "\"Está frio, vou usar minha luva\"","\"Comprei uma lata de tinta\"", "\"O bebê está dormindo\"","\"Minha mãe fez doce de leite\""};
+            "\"Está frio, vou usar minha luva\"","\"Comprei uma lata de tinta\"", "\"O bebê está dormindo\"",
+            "\"Minha mãe fez doce de leite\"","","","","","","","","","","","","","","","","João é um cantor de sucesso"};
 
     public ModelPag06a(Label p1, Label p2, Text instrucao1, ListView<String> listaPalavras) {
         this.p1 = p1;
@@ -194,6 +196,9 @@ public class ModelPag06a {
             case 9:
                 p1.setText("Minha mãe fez");
                 p2.setText("de leite.");
+                break;
+            case 25:
+                p1.setText("João é um cantor de");
                 break;
             default:
                 break;

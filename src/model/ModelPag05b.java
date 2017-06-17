@@ -89,7 +89,7 @@ public class ModelPag05b {
     //13/PI
     private String silabaCorreta[] = {"VO","PO","TÁ","VA","VI","LU","LA","BE","BO",
     "CA","BA","JÉ","PI","RO","FI","GOS","XO","GA","NE","DOS",
-    "NOS","RU","DU","SA","SU","MO","CU","JÁ","PU","SO","PER",
+    "NOS","RU","DU","SA","SO","MO","CU","JÁ","PU","SO","PER",
     "AR","FA","LA","LI","ME","CAR","CI","NO","BRA","ZES","VO",//SÓ FIZ ATÉ AQUI
     "VO","VO","VO","VO","VO","VO","VO","VO","VO","VO","VO",
     "VO","VO","VO","VO","VO","VO","VO","VO","VO","VO","VO",
@@ -353,10 +353,10 @@ public class ModelPag05b {
             case 25:
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
-                f1.setText("JO");
+                f1.setText("FÁ");
                 f2.setVisible(false);
                 f3.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SU5pb.png");
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"b/SO5pb.png");
                 break;
             case 26:
                 f1.setId("pg5f1");
@@ -402,18 +402,18 @@ public class ModelPag05b {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 3 || u == 9 || u == 12 || u == 13 || u == 18 || u == 25 || u == 26) {
+        if (u == 25 || u == 26) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05a.fxml"));
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
-            Pag05aController pg05aCont = fxmloader.<Pag05aController>getController();
-            pg05aCont.setUnidadeAtual(getUnidadeAtual());
+            Pag06Controller pg06Cont = fxmloader.<Pag06Controller>getController();
+            pg06Cont.setUnidadeAtual(getUnidadeAtual());
             f1.setId("f1");
             espaco.setId("espaco");
             mCC.exibirCena(proximaCena, janela);
-            pg05aCont.tocarAudio();
-            pg05aCont.setInstrucao(getUnidadeAtual());
+            pg06Cont.tocarAudio();
+            pg06Cont.setInstrucao(getUnidadeAtual());
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06.fxml"));
@@ -569,7 +569,7 @@ public class ModelPag05b {
                 String fonema = silabaCorreta[getUnidadeAtual()-1];
                 if (silabaEscolhida.equals(fonema)) {
                     opcaoCorreta = true;
-                    imagemUrl = getClass().getResource("imagens/licao"+getUnidadeAtual()+"/"+fonema+"5cor.png");
+                    imagemUrl = getClass().getResource("imagens/licao"+getUnidadeAtual()+"b/"+fonema+"5cor.png");
                 }
                 break;
         }
@@ -591,7 +591,7 @@ public class ModelPag05b {
                 caminhoAudio = "audios/u03/l3p5.mp3";
                 break;
             default:
-                caminhoAudio = "audios/u" + unidadeAtual + "/l" + unidadeAtual + "p5.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "b/l" + unidadeAtual + "p5.mp3";
                 break;
         }
         mCC.play(caminhoAudio);
@@ -649,7 +649,7 @@ public class ModelPag05b {
                 caminhoAudio = "audios/u03/palPag5.mp3";
                 break;
             default:
-                caminhoAudio = "audios/u" + unidadeAtual + "/palPg5.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "b/palPg5.mp3";
                 break;
         }
         mCC.play(caminhoAudio);

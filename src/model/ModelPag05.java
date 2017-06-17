@@ -5,6 +5,7 @@ package model;
 
 import controller.Pag03aController;
 import controller.Pag04Controller;
+import controller.Pag04aController;
 import controller.Pag04bController;
 import controller.Pag05aController;
 import controller.Pag06Controller;
@@ -460,13 +461,13 @@ public class ModelPag05 {
 
         } else if(u == 25){
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04d.fxml"));
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04a.fxml"));
             //cria a próxima cena
             Parent proximaCena = (Parent) fxmloader.load();
-            Pag04bController pg04bCont = fxmloader.<Pag04bController>getController();
+            Pag04aController pg04aCont = fxmloader.<Pag04aController>getController();
 
             mCC.exibirCena(proximaCena, janela);
-            pg04bCont.setUnidadeAtual(getUnidadeAtual());
+            pg04aCont.setUnidadeAtual(getUnidadeAtual());
         }
         else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava

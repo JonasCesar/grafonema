@@ -104,7 +104,7 @@ public class ModelPag03a {
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 3 || u == 4 || u == 9) {
+        if (u == 3 || u == 4 || u == 9 || u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
 

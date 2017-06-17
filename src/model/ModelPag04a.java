@@ -92,7 +92,8 @@ public class ModelPag04a {
 
     private String textoInstrucao[] = {"\"ÁRVORE\"", "\"PIPOCA\"", "\"BOTA\"", "\"URUBU\"",
         "\"VINHO\"", "\"LUVA\"", "\"LAÇO\"", "\"CABELO\"", "\"DEDO\"", "\"DEDO\"", "\"DEDO\"",
-        "\"DEDO\"", "\"SAPATO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"BARATA\""};
+        "\"DEDO\"", "\"SAPATO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"BARATA\"","","",
+        "","","","","TELHA"};
     private String silabaCorreta[] = {"VO","PO","TA","U","VI","LU","LA","BE","BO",
         "CA", "BA", "HO","PA", "FU", "FI", "JO","","RA","","","","","","","TE"};
 
@@ -143,7 +144,8 @@ public class ModelPag04a {
         {"A", "E", "I", "O", "U"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
         {"BA", "BE", "BI", "BO", "BU"}, {"DA", "DE", "DI", "DO", "DU"},{"DA", "DE", "DI", "DO", "DU"},{"DA", "DE", "DI", "DO", "DU"},
         {"DA", "DE", "DI", "DO", "DU"},{"PA", "PE", "PI", "PO", "PU"},{"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},
-        {"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"}};
+        {"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},{},{},{},{},{},{},{"TA", "TE", "TI", "TO", "TU"}};
+        
         p1.setText(matrizSilabas[unidadeAtual - 1][0]);
         p2.setText(matrizSilabas[unidadeAtual - 1][1]);
         p3.setText(matrizSilabas[unidadeAtual - 1][2]);
@@ -179,6 +181,11 @@ public class ModelPag04a {
                 f1.setText("BA");
                 f2.setText("TA");
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"a/RA4pb.png");
+                break;
+            case 25:
+                f1.setVisible(false);
+                f2.setText("LHA");
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"a/TE4pb.png");
                 break;
             default:
                 break;

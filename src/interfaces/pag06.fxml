@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import java.net.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag06Controller">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Pag06Controller">
     <stylesheets>
         <URL value="@/css/estilosPag06.css" />        
         <URL value="@/css/estilosGerais.css" />
@@ -39,7 +42,7 @@
             </ImageView>
          </graphic></Button>
         <ListView fx:id="listaPalavras" layoutX="44.0" layoutY="147.0" onMouseClicked="#mouseClicado" prefHeight="458.0" prefWidth="138.0" />
-        <FlowPane layoutX="281.0" layoutY="298.0" prefHeight="179.0" prefWidth="855.0">
+        <FlowPane layoutX="211.0" layoutY="298.0" prefHeight="179.0" prefWidth="925.0">
             <children>
                 <Label fx:id="p1" alignment="CENTER_RIGHT" graphicTextGap="8.0">
                     <font>
@@ -52,7 +55,7 @@
                         <Insets right="5.0" />
                     </FlowPane.margin>
                 </Label>
-                <TextField fx:id="resposta" alignment="CENTER" prefHeight="38.0" prefWidth="111.0">
+                <TextField fx:id="resposta" alignment="CENTER" minHeight="38.0" minWidth="50.0" prefHeight="38.0" prefWidth="130.0">
                     <font>
                         <Font name="Verdana" size="18.0" />
                     </font>
@@ -68,7 +71,7 @@
                         <Insets right="5.0" />
                     </FlowPane.margin>
                 </Label>
-            <TextField fx:id="segundaResposta" prefHeight="38.0" prefWidth="111.0">
+            <TextField fx:id="segundaResposta" prefHeight="38.0" prefWidth="120.0">
                <FlowPane.margin>
                   <Insets right="5.0" />
                </FlowPane.margin>

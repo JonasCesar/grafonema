@@ -5,6 +5,7 @@ package model;
 
 import controller.Pag03Controller;
 import controller.Pag03aController;
+import controller.Pag03dController;
 import controller.Pag04aController;
 import controller.Pag05Controller;
 import java.io.File;
@@ -98,7 +99,7 @@ public class ModelPag04 {
         "\"VINHO\"", "\"LUVA\"", "\"LAÇO\"", "\"CABELO\"", "\"BONECA\"", "\"CARANGUEIJO\"",
         "\"BAÚ\"", "\"HOMEM\"", "\"PIRANHA\"", "\"FUBÁ\"", "\"FILHO\"", "\"JOANINHA\"", "\"LIXO\"",
         "\"GAFANHOTO\"", "\"CORNETA\"", "\"DEGRAU\"", "\"MÚSICA\"", "\"RUGAS\"", "\"ASNO\"",
-        "\"ESFERA\"", "\"SETA\"", "\"MODELO\"", "\"CURATIVO\"", "\"JACARÉ\"", "\"PUXAR\"",
+        "\"ESFERA\"", "\"SETA\"", "\"ÁRVORE\"", "\"CURATIVO\"", "\"JACARÉ\"", "\"PUXAR\"",
         "\"SOLA\"", "\"PERNIL\"", "\"ARBUSTO\"", "\"FADA\"", "\"LARANJA\"", "\"LIMA\"",
         "\"MEDO\"", "\"CARTA\"", "\"BICO\"", "\"NOVE\"", "\"BRAVO\"", "\"RAPAZES\""};
 
@@ -369,7 +370,7 @@ public class ModelPag04 {
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/JA4pb.png");
                 break;
             case 29:
-                f1.setId("pg4f1");
+                f1.setId("pg4f1_3");
                 espaco.setId("pg4espaco");
                 f1.setText("XAR");
                 f2.setVisible(false);
@@ -432,7 +433,8 @@ public class ModelPag04 {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
-        if (getUnidadeAtual() == 3 || getUnidadeAtual() == 4) {
+        int u = getUnidadeAtual();
+        if (u == 3 || u == 4) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
             //cria a próxima cena     
@@ -443,7 +445,20 @@ public class ModelPag04 {
             pg03aCont.setUnidadeAtual(getUnidadeAtual());
             pg03aCont.audioInicial();
             pg03aCont.setImagens(getUnidadeAtual());
-        } else {
+        } else if(u == 25){
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03d.fxml"));
+            //cria a próxima cena     
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag03dController pg03dCont = fxmloader.<Pag03dController>getController();
+
+            mCC.exibirCena(proximaCena, janela);
+            pg03dCont.setUnidadeAtual(getUnidadeAtual());
+            pg03dCont.audioInicial();
+            pg03dCont.setImagens(getUnidadeAtual());
+        }
+        
+        else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
             //cria a próxima cena     

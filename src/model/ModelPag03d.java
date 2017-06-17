@@ -6,6 +6,7 @@ package model;
 import controller.Pag02Controller;
 import controller.Pag03Controller;
 import controller.Pag03bController;
+import controller.Pag03cController;
 import controller.Pag04Controller;
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author shadows
  */
-public class ModelPag03d{
+public class ModelPag03d {
 
     private String caminhoAudio;
     private int unidadeAtual;
@@ -56,8 +57,8 @@ public class ModelPag03d{
     @FXML
     ListView<String> listaPalavras;
     //
-    private String listaInstrucao[] = {"","","","","","","","","","","",
-        "","","","","","","","","","","","","","\"SE\""};
+    private String listaInstrucao[] = {"", "", "", "", "", "", "", "", "", "", "",
+        "", "", "", "", "", "", "", "", "", "", "", "", "", "\"SO\""};
 
     public ModelPag03d(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -108,13 +109,12 @@ public class ModelPag03d{
 
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
-            Pag03Controller pag03Cont = fxmloader.<Pag03Controller>getController();
-
+            Pag03cController pag03cCont = fxmloader.<Pag03cController>getController();
+            pag03cCont.setUnidadeAtual(getUnidadeAtual());
+            pag03cCont.audioInicial();
+            pag03cCont.setImagens(getUnidadeAtual());
             mCC.exibirCena(proximaCena, janela);
-            pag03Cont.setUnidadeAtual(getUnidadeAtual());
-            pag03Cont.setUnidadeAtual(getUnidadeAtual());
-            pag03Cont.audioInicial();
-            pag03Cont.setImagens(getUnidadeAtual());
+            
         } else {
 
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -138,7 +138,7 @@ public class ModelPag03d{
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 3 || u == 4) {
+        if (u == 3 || u == 4 || u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -147,17 +147,6 @@ public class ModelPag03d{
             pg04Cont.setUnidadeAtual(getUnidadeAtual());
             mCC.exibirCena(proximaCena, janela);
             pg04Cont.tocarAudio();
-        } else if (u == 9 || u == 25) {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03b.fxml"));
-            //cria a próxima cena chamando a inteface dos avatares        
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag03bController pg03bCont = fxmloader.<Pag03bController>getController();
-            pg03bCont.setUnidadeAtual(getUnidadeAtual());
-            mCC.exibirCena(proximaCena, janela);
-            pg03bCont.audioInicial();
-            pg03bCont.setImagens(getUnidadeAtual());
-            pg03bCont.setInstrucao(getUnidadeAtual());
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
@@ -188,7 +177,7 @@ public class ModelPag03d{
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "d/" + nomeImagem + "e.png");
                 }
-                break;            
+                break;
             default:
 
                 break;
@@ -226,7 +215,7 @@ public class ModelPag03d{
      * @param unidadeAtual unidade atual em execução
      * @throws MalformedURLException
      */
-    public void definirImagens(int unidadeAtual) throws MalformedURLException {
+    public void definirImagens(int unidadeAtual) {
         String caminho = "";
         imgf1 = imgf2 = imgf3 = imgf4 = imgf5 = imgf6 = null;
         /**
@@ -314,20 +303,7 @@ public class ModelPag03d{
         mCC.pararAudio();
         String idImagem = ((ImageView) event.getSource()).getId();
         String nomeImagem = idImagem.substring(3, 4);
-        switch (getUnidadeAtual()) {
-            case 1:
-                caminhoAudio = "audios/u01/" + nomeImagem + ".mp3";
-                break;
-            case 2:
-                caminhoAudio = "audios/u02/" + nomeImagem + ".mp3";
-                break;
-            case 3:
-                caminhoAudio = "audios/u03a/" + nomeImagem + ".mp3";
-                break;
-            default:
-                caminhoAudio = "audios/u" + unidadeAtual + "a/" + nomeImagem + ".mp3";
-                break;
-        }
+        caminhoAudio = "audios/u" + unidadeAtual + "d/" + nomeImagem + ".mp3";
         mCC.play(caminhoAudio);
     }
 
@@ -353,11 +329,11 @@ public class ModelPag03d{
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina,"d");
+        mCC.abrirABC(event, pagina, "d");
     }
 
     //faz exibir a instrução da atividade atual na tela
-    public void definirInstrucao(int unidadeAtual) throws MalformedURLException {
+    public void definirInstrucao(int unidadeAtual) {
         String textoInstrucao = "";
         instrucao.setText("Clique nas imagens que tem o som " + listaInstrucao[unidadeAtual - 1]);
 

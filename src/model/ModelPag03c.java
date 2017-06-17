@@ -6,6 +6,7 @@ package model;
 import controller.Pag02Controller;
 import controller.Pag03Controller;
 import controller.Pag03bController;
+import controller.Pag03dController;
 import controller.Pag04Controller;
 import java.io.File;
 import java.io.IOException;
@@ -56,8 +57,9 @@ public class ModelPag03c {
     @FXML
     ListView<String> listaPalavras;
     //
-    private String listaInstrucao[] = {"","","","","","","","","","","",
-        "","","","","","","","","","","","","","\"CES\""};
+    private String listaInstrucao[] = {"", "", "", "", "", "", "", "", "", "", "",
+        "", "", "", "", "", "", "", "", "", "", "", "", "", "\"CES\""};
+
     public ModelPag03c(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
         img1 = i1;
@@ -107,13 +109,13 @@ public class ModelPag03c {
 
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
-            Pag03Controller pag03Cont = fxmloader.<Pag03Controller>getController();
+            Pag03bController pag03bCont = fxmloader.<Pag03bController>getController();
 
             mCC.exibirCena(proximaCena, janela);
-            pag03Cont.setUnidadeAtual(getUnidadeAtual());
-            pag03Cont.setUnidadeAtual(getUnidadeAtual());
-            pag03Cont.audioInicial();
-            pag03Cont.setImagens(getUnidadeAtual());
+            pag03bCont.setUnidadeAtual(getUnidadeAtual());
+            pag03bCont.setUnidadeAtual(getUnidadeAtual());
+            pag03bCont.audioInicial();
+            pag03bCont.setImagens(getUnidadeAtual());
         } else {
 
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -142,10 +144,13 @@ public class ModelPag03c {
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03d.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
-            Pag04Controller pg04Cont = fxmloader.<Pag04Controller>getController();
-            pg04Cont.setUnidadeAtual(getUnidadeAtual());
+            Pag03dController pg03dCont = fxmloader.<Pag03dController>getController();
+            pg03dCont.setUnidadeAtual(getUnidadeAtual());
+            pg03dCont.setInstrucao(unidadeAtual);
+            pg03dCont.setImagens(unidadeAtual);
             mCC.exibirCena(proximaCena, janela);
-            pg04Cont.tocarAudio();
+            pg03dCont.audioInicial();
+
         } else if (u == 9) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03b.fxml"));
@@ -187,7 +192,7 @@ public class ModelPag03c {
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "c/" + nomeImagem + "e.png");
                 }
-                break;            
+                break;
             default:
 
                 break;
@@ -313,20 +318,7 @@ public class ModelPag03c {
         mCC.pararAudio();
         String idImagem = ((ImageView) event.getSource()).getId();
         String nomeImagem = idImagem.substring(3, 4);
-        switch (getUnidadeAtual()) {
-            case 1:
-                caminhoAudio = "audios/u01/" + nomeImagem + ".mp3";
-                break;
-            case 2:
-                caminhoAudio = "audios/u02/" + nomeImagem + ".mp3";
-                break;
-            case 3:
-                caminhoAudio = "audios/u03a/" + nomeImagem + ".mp3";
-                break;
-            default:
-                caminhoAudio = "audios/u" + unidadeAtual + "c/" + nomeImagem + ".mp3";
-                break;
-        }
+        caminhoAudio = "audios/u" + unidadeAtual + "c/" + nomeImagem + ".mp3";
         mCC.play(caminhoAudio);
     }
 
@@ -352,7 +344,7 @@ public class ModelPag03c {
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina,"c");
+        mCC.abrirABC(event, pagina, "c");
     }
 
     //faz exibir a instrução da atividade atual na tela

@@ -104,7 +104,7 @@ public class ModelPag03 {
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 9) {
+        if (u == 9 || u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02a.fxml"));
 
@@ -374,7 +374,7 @@ public class ModelPag03 {
                 }
                 break;
             case 29:
-                if (imgClicada.equals("img4") || imgClicada.equals("img4") || imgClicada.equals("img6")) {
+                if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img6")) {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");

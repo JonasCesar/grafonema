@@ -46,7 +46,7 @@ public class ModelPag06 {
     private ListView<String> listaPalavras;
     private String respostasCorretas[] = {" ", "VOVÔ", "POVO", "TATO", "UVA", "VIVA",
         "LUVA", "LATA", "BEBÊ", "BOLA", "BOCA", "BALA", "HOJE", "PIPA", "FURO", "FITA", "JOGOS",
-        "ROXO", "GATO/RATO", "BONECA", "DOCES", "SINOS", "RUA", "DUAS", "ESSA", "SETE", "MOTIBOS", "ACUMULAR",
+        "ROXO", "GATO/RATO", "BONECA", "DOCES", "SINOS", "RUA", "DUAS", "ESSA", "SETE", "MOTIVOS", "ACUMULAR",
         "PIJAMA", "ESPUMA", "SOPRANDO", "PERNAMBUCO", "ÁRVORES", "FAMOSO", "ESCOLA", "LIXINHO", "MENINA",
         "MACARRÃO", "BICICLETA", "MENINO", "BRAVURA", "FELIZES"};
 
@@ -110,7 +110,7 @@ public class ModelPag06 {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 9) {
+        if (u == 9 || u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06a.fxml"));
 
