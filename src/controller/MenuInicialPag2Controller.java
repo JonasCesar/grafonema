@@ -4,7 +4,6 @@
 package controller;
 
 import java.io.IOException;
-import model.ModelmenuInicial;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -185,5 +184,10 @@ public class MenuInicialPag2Controller implements Initializable {
     @FXML
     private void voltarMenuAnterior(ActionEvent event) throws IOException {
         menuInicialPag2.voltarMenuInicial(event);
+    }
+
+    @FXML
+    private void proximoMenu(ActionEvent event) throws IOException {
+        menuInicialPag2.proximoMenu(event);
     }
 }

@@ -57,9 +57,9 @@ public class ModelPag03a {
     ListView<String> listaPalavras;
     //
     private String listaInstrucao[] = {"\"VÔ\"", "\"PO\"", "\"TO\"", "\"VA\"", "\"VI\"",
-        "\"LU\"", "\"VÔ\"", "\"LU\"", "\"DO\"", "\"DO\"", "\"DO\"", "\"DO\"", "\"DO\"", 
-        "\"RO\"", "\"RO\"", "\"GOS\"","\"GOS\"","\"RA\"", "", "\"DOS\"", "\"NOS\"",
-        "","\"AS\"", "\"SA\"", "\"TE\"", "\"TI\"", "", "", ""};
+        "\"LU\"", "\"VÔ\"", "\"LU\"", "\"DO\"", "\"DO\"", "\"DO\"", "\"DO\"", "\"DO\"",
+        "\"RO\"", "\"RO\"", "\"GOS\"", "\"GOS\"", "\"RA\"", "", "\"DOS\"", "\"NOS\"",
+        "", "\"AS\"", "\"SA\"", "\"TE\"", "\"TI\"", "", "", "", "","\"BU\"","","","","","","","\"CI\""};
 
     public ModelPag03a(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -104,7 +104,7 @@ public class ModelPag03a {
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 3 || u == 4 || u == 9 || u == 25) {
+        if (u == 3 || u == 4 || u == 9 || u == 25 || u == 31) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
 
@@ -149,7 +149,7 @@ public class ModelPag03a {
             pg04Cont.setUnidadeAtual(getUnidadeAtual());
             mCC.exibirCena(proximaCena, janela);
             pg04Cont.tocarAudio();
-        } else if (u == 9 || u == 25) {
+        } else if (u == 9 || u == 25 || u == 31) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03b.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -287,9 +287,50 @@ public class ModelPag03a {
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
                 }
-                break;                
+                break;
+            case 31:
+                if (imgClicada.equals("img1") || imgClicada.equals("img3") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
+                }
+                break;
+            case 32:
+                if (imgClicada.equals("img5") || imgClicada.equals("img4") || imgClicada.equals("img5")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
+                }
+                break;
+            case 38:
+                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img3")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
+                }
+                break;
+            case 41:
+                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img3")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
+                }
+                break;
+            case 45:
+                if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
+                }
+                break;
+            case 47:
+                if (imgClicada.equals("img3") || imgClicada.equals("img5") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
+                }
+                break;
             default:
-
                 break;
         }
         ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
@@ -452,7 +493,7 @@ public class ModelPag03a {
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina,"a");
+        mCC.abrirABC(event, pagina, "a");
     }
 
     //faz exibir a instrução da atividade atual na tela

@@ -58,12 +58,15 @@ public class ModelPag06 {
         "\"A família se reuniu para assistr aos jogos \"", "\"A minha cor predileta é roxo\"",
         "\"O gato e o rato são amigos\"", "\"Ganhei uma linda boneca\"", "\"Minha vovó faz doces deliciosos\"",
         "\"Os sinos da igreja estão tocando.\"", "\"As crianças estão brincando na rua\"", "\"A moça comprou duas sandálias\"",
-        "\"Essa escola é muito divertido\"", "\"Vou completar sete anos\"", "\"Tenho motivos para sorrir.\"", "\"Não vale a pena acumular tarefas\"",
+        "\"Essa escola é muito divertida\"", "\"Vou completar sete anos\"", "\"Tenho motivos para sorrir.\"", "\"Não vale a pena acumular tarefas\"",
         "\"Coloquei o meu pijama quentinha para dormir\"", "\"Vou tomar um banho com muita espuma.\"", "\"O vento está soprando forte.\"",
         "\"Vou viajar para Pernambuco nas férias\"", "\"Gosto de subir em árvores\"", "\"Meu tio é famoso\"",
         "\"Não fui para a escola hoje\"", "\"Joguei o lixinho no lixo\"", "\"Aquela menina é linda\"",
         "\"Minha comida predileta é macarrão\"", "\"Ganhei uma bicicleta do meu pai\"", "\"Sou amiga daquele menino\"",
-        "\"Tenho medo da bravura do mar\"", "\"Todos pareciam felizes\""};
+        "\"Tenho medo da bravura do mar\"", "\"Todos pareciam felizes\"", "\"Felicidade é se sentir amado.\"",
+        "\"O avião é rápido\"", "\"Ana ama comer jujuba\"", "\"Meu avô frequenta duas padarias.\"",
+        "\"Estou com moleza.\"", "\"Quando chega as férias eu fico muito feliz\"", "\"Eu vou te explicar tudo.\"",
+        "\"Tenho muitos companheiros na escola.\"", "\"Todos pareciam felizes\""};
 
     @FXML
     private Label p3;
@@ -243,11 +246,11 @@ public class ModelPag06 {
                 break;
             case 7:
                 p1.setText("Comprei uma");
-                p2.setText("de tinta");
+                p2.setText("de tinta.");
                 break;
             case 8:
                 p1.setText("O");
-                p2.setText("está dormindo");
+                p2.setText("está dormindo.");
                 break;
             case 9:
                 p1.setText("Ganhei uma");
@@ -255,14 +258,14 @@ public class ModelPag06 {
                 break;
             case 10:
                 p1.setText("Estou com a");
-                p2.setText("cheia");
+                p2.setText("cheia.");
                 break;
             case 11:
                 p1.setText("Comprei um pacote de");
                 p2.setVisible(false);
                 break;
             case 12:
-                p2.setText("é um grande dia");
+                p2.setText("é um grande dia.");
                 break;
             case 13:
                 p1.setText("A");
@@ -270,7 +273,7 @@ public class ModelPag06 {
                 break;
             case 14:
                 p1.setText("Fizeram um");
-                p2.setText("na parede");
+                p2.setText("na parede.");
                 break;
             case 15:
                 p1.setText("A menina do laço de");
@@ -304,20 +307,20 @@ public class ModelPag06 {
                 p1.setText("As crianças estão brincando na");
                 p2.setVisible(false);
                 break;
-            case 23:                
+            case 23:
                 p1.setText("A moça comprou");
-                p2.setText("sandálias.");                
+                p2.setText("sandálias.");
                 break;
             case 24:
-                p2.setText("escola é muita divertida");                
+                p2.setText("escola é muita divertida.");
                 break;
             case 25:
                 p1.setText("Vou completar");
-                p2.setText("anos.");                
+                p2.setText("anos.");
                 break;
             case 26:
                 p1.setText("Tenho");
-                p2.setText("para sorrir.");                
+                p2.setText("para sorrir.");
                 break;
             case 27:
                 p1.setText("Não vale a pena");
@@ -325,10 +328,89 @@ public class ModelPag06 {
                 break;
             case 28:
                 p1.setText("Coloquei o meu");
-                p2.setText("quentinho para dormir.");                
+                p2.setText("quentinho para dormir.");
                 break;
             case 29:
-                p1.setText("Vou tomar um banho com muita");                               
+                p1.setText("Vou tomar um banho com muita");
+                break;
+            case 30:
+                p1.setText("O vento está");
+                p2.setText("forte.");
+                break;
+            case 31:
+                p1.setText("Vou viajar para");
+                p2.setText("nas férias.");
+                break;
+            case 32:
+                p1.setText("Gosto de subir em");
+                p2.setText(".");
+                break;
+            case 33:
+                p1.setText("Meu tio é");
+                p2.setText(".");
+                break;
+            case 34:
+                p1.setText("Não fui para a");
+                p2.setText("hoje.");
+                break;
+            case 35:
+                p1.setText("Joguei o");
+                p2.setText("no lixo.");
+                break;
+            case 36:
+                p1.setText("Aquela");
+                p2.setText("é linda.");
+                break;
+            case 37:
+                p1.setText("Minha comida predileta é");
+                p2.setText(".");
+                break;
+            case 38:
+                p1.setText("Ganhei uma");
+                p2.setText("do meu pai.");
+                break;
+            case 39:
+                p1.setText("Sou amiga daquele");
+                p2.setText(".");
+                break;
+            case 40:
+                p1.setText("Tenho medo da");
+                p2.setText("do mar.");
+                break;
+            case 41:
+                p1.setText("Todos pareciam");
+                p2.setText(".");
+                break;
+            case 42:
+                p2.setText("é se sentir amado.");
+                break;
+            case 43:
+                p1.setText("O avião é");
+                p2.setText(".");
+                break;
+            case 44:
+                p1.setText("Ana ama comer");
+                p2.setText(".");
+                break;
+            case 45:
+                p1.setText("Meu avô frequenta duas");
+                p2.setText(".");
+                break;
+            case 46:
+                p1.setText("Estou com");
+                p2.setText(".");
+                break;
+            case 47:
+                p1.setText("Quando chega as");
+                p2.setText("fico muito feliz.");
+                break;
+            case 48:
+                p1.setText("Eu vou te");
+                p2.setText("tudo.");
+                break;
+            case 49:
+                p1.setText("Tenho muitos");
+                p2.setText("na escola.");
                 break;
             default:
                 break;

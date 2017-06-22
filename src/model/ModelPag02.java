@@ -42,7 +42,10 @@ public class ModelPag02 {
     private String textoDaUnidade[] = {"VOVÔ", "POVO", "TATO", "UVA", "VIVA", 
             "LUVA", "LATA", "BEBÊ", "BOLA", "BOCA","BALA", "HOJE","PIPA", "FURO",
             "FITA","JOGOS","ROXO","GATO","BONECA", "DEDOS", "SINOS", "RUA", "DUAS",
-            "ESSA", "SETE", "MOTIVO", "ACUMULAR", "PIJAMA", "ESPUMA"};
+            "ESSA", "SETE", "MOTIVO", "ACUMULAR", "PIJAMA", "ESPUMA","SOPRANDO",
+            "PERNAMBUCO","ÁRVORE","FAMOSO","ESCOLA","LIXINHO","MENINA","MACARRÃO",
+            "BICICLETA","MENINO","BRAVURA","FELIZES","FELICIDADE","RÁPIDO","JUJUBA",
+            "PADARIAS","MOLEZA","CHEGA","EXPLICAR","COMPANHEIROS"};
 
     public ModelPag02(ListView<String> listaPalavras, Label palavraAtual) {
         this.unidadeAtual = 0;
@@ -153,7 +156,7 @@ public class ModelPag02 {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 9 || u == 18 || u == 25) {
+        if (u == 9 || u == 18 || u == 25 || u == 47) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02a.fxml"));
 

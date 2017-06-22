@@ -84,7 +84,8 @@ public class ModelPag05a {
     @FXML
     private Label f3;
     private String[] silabaCorreta = {"", "", "", "", "", "", "", "", "", "", "", "JE", "PA", "", "", "", "", "GA", "",
-        "", "", "", "", "", "CES", "TI", "", "", ""};//29
+        "", "", "", "", "", "CES", "TI", "", "", "","","CO","RE","","","","","","","",
+    "","FÉ","","","","","","GA","",""};//49
 
     /**
      * Construtor da classe Labels utilzadas nas paginas:
@@ -137,7 +138,9 @@ public class ModelPag05a {
         {"BA", "BE", "BI", "BO", "BU"}, {"DA", "DE", "DI", "DO", "DU"}, {"DA", "DE", "DI", "DO", "DU"}, {"DA", "DE", "DI", "DO", "DU"},
         {"JA", "JE", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"PA", "PE", "PI", "PO", "PU"}, {"PA", "PE", "PI", "PO", "PU"},
         {"PA", "PE", "PI", "PO", "PU"}, {"PA", "PE", "PI", "PO", "PU"}, {"RA", "RE", "RI", "RO", "RU"}, {}, {}, {}, {}, {}, {},
-        {"CES", "CES", "CIS", "COS", "CUS"}, {"TA", "TE", "TI", "TO", "TU"}, {}, {}, {}};//29
+        {"CES", "CES", "CIS", "COS", "CUS"}, {"TA", "TE", "TI", "TO", "TU"}, {}, {}, {},{},{"CA", "CE", "CI", "CO", "CU"},
+        {"RA", "RE", "RI", "RO", "RU"},{},{},{},{},{},{},{},{},{"FA", "FÉ", "FI", "FO", "FU"},{},{},{},
+        {},{},{"GA","GE","GI","GO","GU"},{},{}};//29
         p1.setText(matrizSilabas[unidadeAtual - 1][0]);
         p2.setText(matrizSilabas[unidadeAtual - 1][1]);
         p3.setText(matrizSilabas[unidadeAtual - 1][2]);
@@ -208,6 +211,41 @@ public class ModelPag05a {
                 f2.setText("LO");
                 f3.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/TI5pb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
+                break;
+                
+            case 31:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("LE");
+                f2.setText("GA");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/CO5pb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
+                break;
+            case 32:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("MÉ");
+                f2.setText("DIO");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/RE5pb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
+                break;
+            case 41:                
+                f1.setText("CA");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/FÉ5pb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
+                break;
+            case 47:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("LI");
+                f2.setText("NHA");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/GA5pb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             default:

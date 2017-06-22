@@ -91,8 +91,8 @@ public class ModelPag05 {
     private String silabaCorreta[] = {"VO","PO","TÁ","VA","VI","LU","LA","BE","BO",
     "CA","BA","JÉ","PI","RO","FI","GOS","XO","GA","NE","DOS",
     "NOZ","RU","DU","SA","SU","MO","CU","JÁ","PU","SO","PER",
-    "AR","FA","LA","LI","ME","CAR","CI","NO","BRA","ZES","VO",//SÓ FIZ ATÉ AQUI
-    "VO","VO","VO","VO","VO","VO","VO","VO","VO","VO","VO",
+    "AR","FA","LA","LI","ME","CAR","CI","NO","BRA","ZES","DA",//SÓ FIZ ATÉ AQUI
+    "PI","JU","RI","LE","CHE","EX","ROS","VO","VO","VO","VO",
     "VO","VO","VO","VO","VO","VO","VO","VO","VO","VO","VO",
     "VO","VO","VO","VO","VO","VO","VO","VO","VO","VO","VO",};
     
@@ -106,7 +106,9 @@ public class ModelPag05 {
         {"JÁ", "JÉ", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"SA", "SE", "SI", "SO", "SU"}, {"PAR", "PER", "PIR", "POR", "PUR"},
         {"AR", "ER", "IR", "OR", "UR"}, {"FA", "FE", "FI", "FO", "FU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
         {"MA", "ME", "MI", "MO", "MU"}, {"CAR", "CER", "CIR", "COR", "CUR"}, {"CA", "CE", "CI", "CO", "CU"}, {"NA", "NE", "NI", "NO", "NU"},
-        {"BRA", "BRE", "BRI", "BRO", "BRU"}, {"ZAS", "ZES", "ZIS", "ZOS", "ZUS"}};
+        {"BRA", "BRE", "BRI", "BRO", "BRU"}, {"ZAS", "ZES", "ZIS", "ZOS", "ZUS"},{"DA", "DE", "DI", "DO", "DU"},{"PA", "PE", "PI", "PO", "PU"},
+        {"JA", "JE", "JI", "JO", "JU"},{"RA", "RE", "RI", "RO", "RU"},{"LA", "LE", "LI", "LO", "LU"},{"CHA", "CHE", "CHI", "CHO", "CHU"},
+        {"AX", "EX", "IX", "OX", "UX"},{"RAS", "RES", "RIS", "ROS", "RUS"}};
 
     /**
      * Construtor da classe Labels utilzadas nas paginas:
@@ -314,7 +316,7 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/NE5pb.png");
                 break;
             case 20:
-                f3.setId("pg5f3Esquerda");
+                f2.setId("pg5f2Esquerda");
                 espaco.setId("pg5espacoDireita");
                 f1.setText("CAL");
                 f2.setText("ÇA");
@@ -391,6 +393,84 @@ public class ModelPag05 {
                 f3.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PU5pb.png");
                 break;
+            case 30:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("FÁ");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SO5pb.png");
+                break;
+            case 31:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("GA");
+                f2.setText("MI");
+                f3.setText("NHO");
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PER5pb.png");
+                break;
+            case 32:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("TE");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/AR5pb.png");
+                break;
+            case 33:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("ZEN");
+                f2.setText("DA");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/FA5pb.png");
+                break;
+            case 34:
+                f1.setId("pg5f1_3");
+                espaco.setId("pg5espaco");
+                f1.setText("GOS");
+                f2.setText("TA");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/LA5pb.png");
+                break;
+            case 35:
+                f1.setText("PA");
+                f2.setText("TO");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/LI5pb.png");
+                break;
+            case 36:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("DA");
+                f2.setText("LHA");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ME5pb.png");
+                break;
+            case 37:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("TEI");
+                f2.setText("RA");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CAR5pb.png");
+                break;
+            case 38:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("NE");
+                f2.setText("MA");
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CI5pb.png");
+                break;
+            case 39:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("JO");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/NO5pb.png");
+                break;
         }
         imagemAudio.setImage(new Image(imgUrl.toString()));
     }
@@ -403,7 +483,8 @@ public class ModelPag05 {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 3 || u == 9 || u == 12 || u == 13 || u == 18 || u == 25 || u == 26) {
+        if (u == 3 || u == 9 || u == 12 || u == 13 || u == 18 || u == 25 || u == 26
+                || u == 31 || u == 32 || u == 41 || u == 47) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05a.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -788,7 +869,11 @@ public class ModelPag05 {
             "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"BOTÃO\"","\"CARACOL\"",
             "\"ABACAXI\"","\"PAJÉ\"","\"PIPOCA\"","\"RODO\"","\"FIGO\"","\"PREGOS\"","\"CAIXOTE\"","\"GATO\"",
             "\"CORNETA\"", "\"CALÇADOS\"", "\"BOVINOS\"", "\"PERU\"","\"DUZENTOS\"","\"SAPO\"","\"SUJO\"",
-            "\"MODELO\"","\"CURURU\"","\"JABUTI\"","\"PUDIM\"","\"\""};
+            "\"MODELO\"","\"CURURU\"","\"JABUTI\"","\"PUDIM\"","\"SOFÁ\"","\"PERGAMINHO\"",
+            "\"ARTE\"","\"FAZENDA\"","\"LAGOSTA\"","\"PALITO\"","\"MEDALHA\"","\"CARTEIRA\"",
+            "\"CINEMA\"","\"NOJO\"","\"BRACELETE\"","\"CARTAZES\"","\"LÂMPADA\"","\"PIÃO\"",
+            "\"JUIZ\"","\"RINOCERONTE\"","\"LEGAL\"","\"CACHECOL\"","\"EXPOSIÇÃO\"","\"FUROS\"",
+            "\"SOFÁ\""};
         instrucao.setText("Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
     }
 

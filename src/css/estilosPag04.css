@@ -8,14 +8,14 @@ and open the template in the editor.
     Author     : shadows
 */
 
-#espaco, #f1, #f2, #pg4espaco,#pg4f1, #f3, #pg4f1_3{
+#espaco, #f1, #f2, #pg4espaco,#pg4f1, #f3, #pg4f1_3,#pg4f1_4{
     -fx-border-style: hidden hidden solid hidden;
     -fx-border-color: black;
    
    
 }
 
-#p1, #p2, #p3, #p4, #p5, #p6, #f1, #f2, #espaco, #pg4espaco,#pg4f1, #f3, #pg4f1_3{
+#p1, #p2, #p3, #p4, #p5, #p6, #f1, #f2, #espaco, #pg4espaco,#pg4f1, #f3, #pg4f1_3,#pg4f1_4{
     -fx-font-size: 25px;
     -fx-font-family: "Verdana";
     -fx-font-weight: bold;
@@ -39,4 +39,8 @@ and open the template in the editor.
 
 #pg4f1_3{
     -fx-translate-x: 65;
+}
+
+#pg4f1_4{
+    -fx-translate-x: 85;
 }

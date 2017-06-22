@@ -93,9 +93,11 @@ public class ModelPag04a {
     private String textoInstrucao[] = {"\"ÁRVORE\"", "\"PIPOCA\"", "\"BOTA\"", "\"URUBU\"",
         "\"VINHO\"", "\"LUVA\"", "\"LAÇO\"", "\"CABELO\"", "\"DEDO\"", "\"DEDO\"", "\"DEDO\"",
         "\"DEDO\"", "\"SAPATO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"DEDO\"","\"BARATA\"","","",
-        "","","","","TELHA"};
+        "","","","","TELHA","","","","","","\"BURACO\"","\"JACARÉ\"","","","","","","","","",
+        "\"CHEFE\"","","","","\"RIACHO\"","","","",""};
     private String silabaCorreta[] = {"VO","PO","TA","U","VI","LU","LA","BE","BO",
-        "CA", "BA", "HO","PA", "FU", "FI", "JO","","RA","","","","","","","TE"};
+        "CA", "BA", "HO","PA", "FU", "FI", "JO","","RA","","","","","","","TE","",
+        "","","","","BU","RÉ","","","","","","","","","FE","","","","RI","","","",""};
 
     /**
      * Construtor da classe Labels que são referenciadas do controlador:
@@ -144,7 +146,9 @@ public class ModelPag04a {
         {"A", "E", "I", "O", "U"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
         {"BA", "BE", "BI", "BO", "BU"}, {"DA", "DE", "DI", "DO", "DU"},{"DA", "DE", "DI", "DO", "DU"},{"DA", "DE", "DI", "DO", "DU"},
         {"DA", "DE", "DI", "DO", "DU"},{"PA", "PE", "PI", "PO", "PU"},{"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},
-        {"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},{},{},{},{},{},{},{"TA", "TE", "TI", "TO", "TU"}};
+        {"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},{"RA", "RE", "RI", "RO", "RU"},{},{},{},{},{},{},{"TA", "TE", "TI", "TO", "TU"},
+        {},{},{},{},{},{"BA", "BE", "BI", "BO", "BU"},{"RA", "RÉ", "RI", "RO", "RU"},{},{},{},{},{},{},{},{},{"FA", "FE", "FI", "FO", "FU"},{},{},{},{"RA", "RE", "RI", "RO", "RU"},
+        {},{},{},{}};
         
         p1.setText(matrizSilabas[unidadeAtual - 1][0]);
         p2.setText(matrizSilabas[unidadeAtual - 1][1]);
@@ -187,6 +191,32 @@ public class ModelPag04a {
                 f2.setText("LHA");
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"a/TE4pb.png");
                 break;
+            case 31:
+                f1.setId("pg4f1");
+                espaco.setId("pg4espaco");
+                f1.setText("RA");
+                f2.setText("CO");
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"a/BU4pb.png");
+                break;
+            case 32:
+                f1.setId("pg4f1");
+                espaco.setId("pg4espaco");
+                f1.setText("JA");
+                f2.setText("CA");
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"a/RÉ4pb.png");
+                break;
+            case 41:
+                f1.setText("CHE");
+                f2.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"a/FE4pb.png");
+                break;
+            case 45:
+                f1.setId("pg4f1");
+                espaco.setId("pg4espaco");
+                f1.setText("A");
+                f2.setText("CHO");
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"a/RI4pb.png");
+                break;            
             default:
                 break;
         }

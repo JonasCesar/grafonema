@@ -40,7 +40,7 @@ public class ModelPag02a {
 
     private String textoDaUnidade[] = {"VOVÔ", "POVO", "TATO", "UVA", "VIVA", "LUVA",
         "LATA", "BEBÊ", "DOCE","","","","","","","","","RATO","","","","","","","SUCESSO",
-        "", "","",""};//29
+        "", "","","","","","","","","","","","","","","","","","","","","TOQUES"};//29
 
     public ModelPag02a(ListView<String> listaPalavras, Label palavraAtual) {
         this.unidadeAtual = 0;

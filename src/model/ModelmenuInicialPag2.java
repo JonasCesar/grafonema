@@ -57,4 +57,13 @@ public class ModelmenuInicialPag2 {
         janela.setScene(cena);
         janela.show();    
     }
+
+    public void proximoMenu(ActionEvent event) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/menuInicialPag3.fxml"));
+        Scene cena = new Scene(cenaInicial, 1200, 700);
+        janela.setTitle("Projeto 2");
+        janela.setScene(cena);
+        janela.show();
+    }
 }

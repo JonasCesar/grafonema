@@ -3,13 +3,13 @@
     Author     : shadows
 */
 
-#espaco, #f1, #f2, #f3, #pg5espaco, #pg5f1, #pg5f1_3{
+#espaco, #f1, #f2, #f3, #pg5espaco, #pg5f1, #pg5f1_3,#pg5f2Esquerda, #pg5espacoDireita{
     -fx-border-style: hidden hidden solid hidden;
     -fx-border-color: black;
    
 }
 
-#p1, #p2, #p3, #p4, #p5, #p6, #f1, #f2, #f3, #espaco, #pg5espaco, #pg5f1,#pg5f1_3{
+#p1, #p2, #p3, #p4, #p5, #p6, #f1, #f2, #f3, #espaco, #pg5espaco, #pg5f1,#pg5f1_3,#pg5f2Esquerda, #pg5espacoDireita{
     -fx-font-size: 25px;
     -fx-font-family: "Verdana";
     -fx-font-weight: bold;
@@ -33,4 +33,12 @@
 
 #pg5f1_3{
     -fx-translate-x: 55;
+}
+
+#pg5f2Esquerda{
+    -fx-translate-x: -55;
+}
+
+#pg5espacoDireita{
+    -fx-translate-x: 43;
 }
