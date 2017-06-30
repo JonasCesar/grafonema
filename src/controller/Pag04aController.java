@@ -82,6 +82,8 @@ public class Pag04aController implements Initializable {
     private Text instrucao;
     @FXML
     private Button atividades;
+    @FXML
+    private Label f3;
 
     public Pag04aController() {
         listaPalavras = new ListView<>();
@@ -93,7 +95,7 @@ public class Pag04aController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag04a = new ModelPag04a(p1, p2, p3, p4, p5, f1, f2, espaco, imagemAudio, janelaPrograma, instrucao, listaPalavras);
+        modelPag04a = new ModelPag04a(p1, p2, p3, p4, p5, f1, f2, espaco, imagemAudio, janelaPrograma, instrucao, listaPalavras,f3);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));

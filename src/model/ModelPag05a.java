@@ -85,7 +85,8 @@ public class ModelPag05a {
     private Label f3;
     private String[] silabaCorreta = {"", "", "", "", "", "", "", "", "", "", "", "JE", "PA", "", "", "", "", "GA", "",
         "", "", "", "", "", "CES", "TI", "", "", "","","CO","RE","","","","","","","",
-    "","FÉ","","","","","","GA","",""};//49
+        "","FÉ","","","","","","GA","","","NHAS","NHA", "", "GOTA"
+};//49
 
     /**
      * Construtor da classe Labels utilzadas nas paginas:
@@ -140,7 +141,8 @@ public class ModelPag05a {
         {"PA", "PE", "PI", "PO", "PU"}, {"PA", "PE", "PI", "PO", "PU"}, {"RA", "RE", "RI", "RO", "RU"}, {}, {}, {}, {}, {}, {},
         {"CES", "CES", "CIS", "COS", "CUS"}, {"TA", "TE", "TI", "TO", "TU"}, {}, {}, {},{},{"CA", "CE", "CI", "CO", "CU"},
         {"RA", "RE", "RI", "RO", "RU"},{},{},{},{},{},{},{},{},{"FA", "FÉ", "FI", "FO", "FU"},{},{},{},
-        {},{},{"GA","GE","GI","GO","GU"},{},{}};//29
+        {},{},{"GA","GE","GI","GO","GU"},{},{}, {"NHAS", "NHES", "NHIS", "NHOS", ""},
+        {"NHA", "NHE", "NHI", "NHO", ""}, {}, {"GA", "GE", "GI", "GO", "GU"}};//29
         p1.setText(matrizSilabas[unidadeAtual - 1][0]);
         p2.setText(matrizSilabas[unidadeAtual - 1][1]);
         p3.setText(matrizSilabas[unidadeAtual - 1][2]);
@@ -248,6 +250,29 @@ public class ModelPag05a {
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/GA5pb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
+            case 50:               
+                f1.setText("LE");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/NHAS5pb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
+                break;
+            case 51:
+                f1.setText("U");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/NHA5pb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
+                break;
+            case 53:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("TA");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/GO5pb.png");
+                imagemAudio.setImage(new Image(imgUrl.toString()));
+                break; 
             default:
                 break;
         }
@@ -585,7 +610,9 @@ public class ModelPag05a {
         String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"",
             "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"DOMINÓ\"", "\"DOMINÓ\"",
             "\"DOMINÓ\"", "\"JERIMUM\"", "\"PATINS\"", "\"JERIMUM\"", "\"JERIMUM\"", "\"JERIMUM\"",
-            "\"JERIMUM\"", "\"GARAGEM\"","","","","","","","CESTINHA","TIJOLO"};
+            "\"JERIMUM\"", "\"GARAGEM\"","","","","","","","\"CESTINHA\"","\"TIJOLO\"","\"LENHAS\"",
+            "\"UNHA\"", "","","","","","","","","","","","","","","","","","","","","",
+            "","","","\"GOTA\""};
         instrucao.setText("Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
 
     }

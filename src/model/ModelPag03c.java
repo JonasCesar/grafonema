@@ -4,7 +4,6 @@
 package model;
 
 import controller.Pag02Controller;
-import controller.Pag03Controller;
 import controller.Pag03bController;
 import controller.Pag03dController;
 import controller.Pag04Controller;
@@ -58,7 +57,9 @@ public class ModelPag03c {
     ListView<String> listaPalavras;
     //
     private String listaInstrucao[] = {"", "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "", "", "", "", "\"CES\""};
+        "", "", "", "", "", "", "", "", "", "", "", "", "", "\"CES\"", "","","","",
+        "","","","","","","","","","","","","","","","","","","","","","","","","","",
+        "","","","","","","","","","","","\"NHA\""};
 
     public ModelPag03c(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -102,8 +103,6 @@ public class ModelPag03c {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
-        int u = getUnidadeAtual();
-        if (u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03b.fxml"));
 
@@ -116,19 +115,6 @@ public class ModelPag03c {
             pag03bCont.setUnidadeAtual(getUnidadeAtual());
             pag03bCont.audioInicial();
             pag03bCont.setImagens(getUnidadeAtual());
-        } else {
-
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02.fxml"));
-
-            //cria a próxima cena chamando a inteface dos avatares        
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag02Controller pag02Cont = fxmloader.<Pag02Controller>getController();
-
-            mCC.exibirCena(proximaCena, janela);
-            pag02Cont.setUnidadeAtual(getUnidadeAtual());
-        }
-
     }
 
     /**
@@ -188,6 +174,13 @@ public class ModelPag03c {
             //acertos img1, img3, img5
             case 25:
                 if (imgClicada.equals("img5") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "c/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "c/" + nomeImagem + "e.png");
+                }
+                break;
+            case 51:
+                if (imgClicada.equals("img3") || imgClicada.equals("img5") || imgClicada.equals("img6")) {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "c/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "c/" + nomeImagem + "e.png");

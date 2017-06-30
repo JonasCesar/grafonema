@@ -3,7 +3,6 @@
  */
 package model;
 
-import controller.Pag02Controller;
 import controller.Pag04Controller;
 import controller.Pag03aController;
 import controller.Pag03cController;
@@ -58,7 +57,8 @@ public class ModelPag03b {
     //9
     private String listaInstrucao[] = {"", "", "", "", "", "", "", "", "CE", "", "",
         "", "", "", "", "", "", "", "", "", "", "", "", "", "\"SU\"", "", "", "", "", "", "\"CO\"",
-        "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};//49
+        "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+        "ZA", "", "", "", "", "", "", "ÇÃO", "", "MAR"};//49
 
     public ModelPag03b(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -125,7 +125,7 @@ public class ModelPag03b {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 25) {
+        if (u == 25 || u == 51) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03c.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -241,8 +241,21 @@ public class ModelPag03b {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "b/" + nomeImagem + "e.png");
                 }
                 break;
-            default:
+            case 51:
+                if (imgClicada.equals("img2") || imgClicada.equals("img3") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "b/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "b/" + nomeImagem + "e.png");
+                }
                 break;
+            case 60:
+                if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "b/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "b/" + nomeImagem + "e.png");
+                }
+                break;
+            
         }
         ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
     }

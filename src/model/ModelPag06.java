@@ -48,10 +48,14 @@ public class ModelPag06 {
         "LUVA", "LATA", "BEBÊ", "BOLA", "BOCA", "BALA", "HOJE", "PIPA", "FURO", "FITA", "JOGOS",
         "ROXO", "GATO/RATO", "BONECA", "DOCES", "SINOS", "RUA", "DUAS", "ESSA", "SETE", "MOTIVOS", "ACUMULAR",
         "PIJAMA", "ESPUMA", "SOPRANDO", "PERNAMBUCO", "ÁRVORES", "FAMOSO", "ESCOLA", "LIXINHO", "MENINA",
-        "MACARRÃO", "BICICLETA", "MENINO", "BRAVURA", "FELIZES"};
+        "MACARRÃO", "BICICLETA", "MENINO", "BRAVURA", "FELIZES", "FELICIDADE", "RÁPIDO",
+        "JUJUBA", "PADARIAS", "MOLEZA", "CHEGA", "EXPLICAR", "COMPANHEIROS", "ESTRELINHAS",
+        "RIQUEZA", "LEMBRANDO", "ALGODÃO", "PRINCESA", "PROFESSOR", "CRIANÇA", "CORDEL",
+        "ATENÇÃO", "FLORESTAS", "TRANSFORMAR"
+};
 
-    private String listaFrases[] = {"\"o vovô é meu amigo\"", "\"o povo da festa está animado\"",
-        "\"o tato serve para nos proteger\"", "\"Meu pai gosta de uva\"", "\"viva a vida com amor\"",
+    private String listaFrases[] = {"\"O vovô é meu amigo\"", "\"O povo da festa está animado\"",
+        "\"O tato serve para nos proteger\"", "\"Meu pai gosta de uva\"", "\"Viva a vida com amor\"",
         "\"Está frio, vou usar minha luva\"", "\"Comprei uma lata de tinta\"", "\"O bebê está dormindo\"",
         "\"Ganhei uma bola\"", "\"Estou com a boca cheia\"", "\"Comprei um pacote de bala\"", "\"Hoje é um grande dia\"",
         "\"A pipa do menino está no céu\"", "\"Fizeram um furo na parede\"", "\"A menina do laço de fita\"",
@@ -66,7 +70,11 @@ public class ModelPag06 {
         "\"Tenho medo da bravura do mar\"", "\"Todos pareciam felizes\"", "\"Felicidade é se sentir amado.\"",
         "\"O avião é rápido\"", "\"Ana ama comer jujuba\"", "\"Meu avô frequenta duas padarias.\"",
         "\"Estou com moleza.\"", "\"Quando chega as férias eu fico muito feliz\"", "\"Eu vou te explicar tudo.\"",
-        "\"Tenho muitos companheiros na escola.\"", "\"Todos pareciam felizes\""};
+        "\"Tenho muitos companheiros na escola.\"","\"Tem muita estrelinhas no céu\"", "\"A riqueza traz alegrias mas não a felicidade\"",
+        "\"Estou lembrando do meu tempo de criança\"", "\"Amo algodão doce\"", "\"Me fantasiei de princesa no meu aniversário\"",
+        "\"O professor é muito inteligente\"", "\"Ser criança é muito bom\"", "\"A literatura de cordel é maravilhosa\"",
+        "\"Prestem muita atenção!\"", "\"Os homens estão desmatando as florestas\"", "\"Vamos transformar o mundo?"
+};
 
     @FXML
     private Label p3;
@@ -113,7 +121,7 @@ public class ModelPag06 {
      */
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 9 || u == 25) {
+        if (u == 9 || u == 25 || u == 47) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06a.fxml"));
 
@@ -132,8 +140,7 @@ public class ModelPag06 {
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
             Pag07Controller pg07Cont = fxmloader.<Pag07Controller>getController();
-            pg07Cont.setUnidadeAtual(getUnidadeAtual());
-            pg07Cont.atualizarListView();
+            pg07Cont.setUnidadeAtual(getUnidadeAtual());           
             mCC.exibirCena(proximaCena, janela);
             pg07Cont.tocarAudio();
             pg07Cont.setImagemTexto(getUnidadeAtual());
@@ -149,7 +156,8 @@ public class ModelPag06 {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
-        if (getUnidadeAtual() == 3) {
+        int u = getUnidadeAtual();
+        if ( u == 3 || u == 47 || u == 51 || u == 41 || u == 32 || u == 31 || u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05a.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -401,8 +409,8 @@ public class ModelPag06 {
                 p2.setText(".");
                 break;
             case 47:
-                p1.setText("Quando chega as");
-                p2.setText("fico muito feliz.");
+                p1.setText("Quando");
+                p2.setText("as férias fico muito feliz.");
                 break;
             case 48:
                 p1.setText("Eu vou te");
@@ -411,6 +419,50 @@ public class ModelPag06 {
             case 49:
                 p1.setText("Tenho muitos");
                 p2.setText("na escola.");
+                break;
+            case 50:
+                p1.setText("Tem muitas");
+                p2.setText("no céu.");
+                break;
+            case 51:
+                p1.setText("A");
+                p2.setText("traz alegrias mas não a felicidade.");
+                break;
+            case 52:
+                p1.setText("Estou");
+                p2.setText("do meu tempo de criança.");
+                break;
+            case 53:
+                p1.setText("Amo");
+                p2.setText("doce.");
+                break;
+            case 54:
+                p1.setText("Me fantasiei de");
+                p2.setText("no meu aniversário.");
+                break;
+            case 55:
+                p1.setText("O");
+                p2.setText("é muito inteligente.");
+                break;
+            case 56:
+                p1.setText("Ser");
+                p2.setText("é muito bom.");
+                break;
+            case 57:
+                p1.setText("A literatura de");
+                p2.setText("é maravilhosa.");
+                break;
+            case 58:
+                p1.setText("Prestem muita");
+                p2.setText("!");
+                break;
+            case 59:
+                p1.setText("Os homens estão desmatando as");
+                p2.setText(".");
+                break;
+            case 60:
+                p1.setText("Vamos");
+                p2.setText("o mundo?");
                 break;
             default:
                 break;

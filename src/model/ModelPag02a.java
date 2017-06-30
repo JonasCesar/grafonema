@@ -5,6 +5,7 @@ package model;
 
 import controller.Pag01Controller;
 import controller.Pag02Controller;
+import controller.Pag02bController;
 import controller.Pag03Controller;
 import java.io.File;
 import java.io.IOException;
@@ -40,7 +41,9 @@ public class ModelPag02a {
 
     private String textoDaUnidade[] = {"VOVÔ", "POVO", "TATO", "UVA", "VIVA", "LUVA",
         "LATA", "BEBÊ", "DOCE","","","","","","","","","RATO","","","","","","","SUCESSO",
-        "", "","","","","","","","","","","","","","","","","","","","","TOQUES"};//29
+        "", "","","","","","","","","","","","","","","","","","","","","TOQUES", "",
+        "", "", "QUE"
+};//29
 
     public ModelPag02a(ListView<String> listaPalavras, Label palavraAtual) {
         this.unidadeAtual = 0;
@@ -164,8 +167,16 @@ public class ModelPag02a {
             pg03Cont.setImagens(getUnidadeAtual());
             mCC.exibirCena(proximaCena, janela);
 
-        } else {
-            System.out.println("ModelPag02a");
+        }else if(u == 51){
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag02b.fxml"));
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag02bController pg02bCont = fxmloader.<Pag02bController>getController();
+            pg02bCont.setUnidadeAtual(getUnidadeAtual());            
+            mCC.exibirCena(proximaCena, janela);
+        }        
+        else {            
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
 

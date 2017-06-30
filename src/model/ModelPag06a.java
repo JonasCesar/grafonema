@@ -1,4 +1,4 @@
-/*
+    /*
  * Model da página 6
  */
 package model;
@@ -92,8 +92,7 @@ public class ModelPag06a {
         //cria a próxima cena chamando a inteface dos avatares        
         Parent proximaCena = (Parent) fxmloader.load();
         Pag07Controller pg07Cont = fxmloader.<Pag07Controller>getController();        
-        pg07Cont.setUnidadeAtual(getUnidadeAtual());
-        pg07Cont.atualizarListView();
+        pg07Cont.setUnidadeAtual(getUnidadeAtual());        
         mCC.exibirCena(proximaCena, janela);
         pg07Cont.tocarAudio();
         pg07Cont.setImagemTexto(getUnidadeAtual());
@@ -202,7 +201,9 @@ public class ModelPag06a {
             case 25:
                 p1.setText("João é um cantor de");
                 break;
-            default:
+            case 47:
+                p1.setText("O cafuné de minha mãe são");
+                p2.setText("de amor.");
                 break;
         }
     }

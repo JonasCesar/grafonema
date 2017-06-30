@@ -41,7 +41,12 @@ public class ModelClasseComum {
 
     public String listaPalavrasEstudadas[] = {"VOVÔ", "POVO", "TATO", "UVA", "VIVA", "LUVA", "LATA",
         "BEBÊ", "BOLA", "DOCE", "BOCA", "BALA", "HOJE", "PIPA", "FURO", "FITA", "JOGOS", "ROXO", "GATO", "RATO", "BONECA",
-        "DEDOS", "SINOS", "RUA", "DUAS", "ESSA", "SETE", "SUCESSO", "MOTIVO", "ACUMULAR", "PIJAMA", "ESPUMA"};
+        "DEDOS", "SINOS", "RUA", "DUAS", "ESSA", "SETE", "SUCESSO", "MOTIVO", "ACUMULAR", "PIJAMA", "ESPUMA",
+        "SOPRANDO", "PERNAMBUCO", "ÁRVORE", "FAMOSO", "ESCOLA", "LIXINHO", "MENINA", "MACARRÃO", "BICICLETA",
+        "MENINO", "BRAVURA", "FELIZES", "FELICIDADE", "RÁPIDO", "JUJUBA", "PADARIAS", "MOLEZA", "CHEGA", "TOQUES",
+        "EXPLICAR", "COMPANHEIROS", "ESTRELINHAS", "ÁGUA", "QUE", "RIQUEZA", "TAMANHA", "LEMBRANDO",
+        "ALGODÃO", "PRINCESA", "PROFESSOR", "CRIANÇA", "CORDEL", "ATENÇÃO", "FLORESTA", "TRANSFORMAR"
+    };
 
     @FXML
     private ListView<String> listaPalavras;
@@ -100,23 +105,7 @@ public class ModelClasseComum {
      */
     public void tocarAudioPalavraSelecionada(String palavraSelecionada) {
         pararAudio();
-        switch (palavraSelecionada) {
-            case "VOVÔ":
-                System.out.println("Entrou aqui palavras estudadas");
-                caminhoAudio = "audios/AudiosPalavrasEstudadas/vovo.mp3";
-                break;
-            case "POVO":
-                caminhoAudio = "audios/AudiosPalavrasEstudadas/povo.mp3";
-                break;
-            case "TATO":
-                caminhoAudio = "audios/AudiosPalavrasEstudadas/tato.mp3";
-                break;
-            case "UVA":
-                caminhoAudio = "audios/AudiosPalavrasEstudadas/uva.mp3";
-                break;
-            default:
-                break;
-        }
+        caminhoAudio = "audios/AudiosPalavrasEstudadas/" + palavraSelecionada + ".mp3";
         play(caminhoAudio);
     }
 
@@ -204,21 +193,21 @@ public class ModelClasseComum {
         System.out.println("Entrou aqui " + unidade);
         try {
             if (unidade > 1) {
-                if (!items.isEmpty()) {
-                    items.remove(0, items.size());
+                if (!items.isEmpty()) {//se já houver elementos na lista de palavras
+                    System.out.println("Apagou todos os itens");
+                    items.remove(0, items.size());//remove todos os elementos
                 }
                 for (int i = 0; i < unidade - 1; i++) {
+                    
                     items.add(listaPalavrasEstudadas[i]);
                 }
-
             }
-
             listaPalavras.setItems(items);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Não adicionou nada");
-        } catch (NullPointerException e) {
-            System.out.println("item não encontrado ");
+        } catch (IndexOutOfBoundsException | NullPointerException e) {
+            //System.out.println("Não adicionou nada");
         }
+        //System.out.println("item não encontrado ");
+        
 
     }
 }

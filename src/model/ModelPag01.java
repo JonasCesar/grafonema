@@ -43,7 +43,11 @@ public class ModelPag01 {
             "31: PERBAMBUCO","32: ÁRVORE","33: FAMOSO","34: ESCOLA","35: LIXINHO",
             "36: MENINA","37: MACARRÃO","38: BICICLETA", "39: MENINO","40: BRAVURA",
             "41: FELIZES","42: FELICIDADE","43: RÁPIDO","44: JUJUBA","45: PADARIAS",
-            "46: MOLEZA","47: CHEGA/TOQUES","48: EXPLICAR","49: COMPANHEIROS"};
+            "46: MOLEZA","47: CHEGA/TOQUES","48: EXPLICAR","49: COMPANHEIROS",
+            "50: ESTRELINHA", "51: ÁGUA/QUE/RIQUEZA/TAMANHA", "52: LEMBRANDO",
+            "53: ALGODÃO", "54: PRINCESA", "55: PROFESSOR", "56: CRIANÇA", "57: CORDEL",
+            "58: ATENÇÃO", "59: FLORESTA", "60: TRANSFORMA"
+};
 
     public ModelPag01(ImageView imgView, ListView listaPalavras) {
         this.unidadeAtual = 1;

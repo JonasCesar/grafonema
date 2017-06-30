@@ -6,7 +6,6 @@ package model;
 import controller.Pag03aController;
 import controller.Pag04Controller;
 import controller.Pag04bController;
-import controller.Pag05aController;
 import controller.Pag06Controller;
 import java.io.File;
 import java.io.IOException;
@@ -649,7 +648,7 @@ public class ModelPag05b {
                 caminhoAudio = "audios/u03/palPag5.mp3";
                 break;
             default:
-                caminhoAudio = "audios/u" + unidadeAtual + "b/palPg5.mp3";
+                caminhoAudio = "audios/u" + unidadeAtual + "b/palPg5b.mp3";
                 break;
         }
         mCC.play(caminhoAudio);

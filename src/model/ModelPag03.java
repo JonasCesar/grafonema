@@ -38,7 +38,7 @@ public class ModelPag03 {
     @FXML
     private ImageView img2;
     @FXML
-    private ImageView img3;
+    private ImageView img3; 
     @FXML
     private ImageView img6;
     @FXML
@@ -61,7 +61,10 @@ public class ModelPag03 {
         "\"FU\"", "\"FI\"", "\"JO\"", "\"XO\"", "\"GA\"", "\"NE\"", "\"DE\"", "\"SI\"", "\"RU\"",
         "\"DU\"", "\"ES\"", "\"SE\"", "\"MO\"", "\"CU\"", "\"JA\"", "\"PU\"", "\"SO\"", "\"PER\"", "\"AR\"",
         "\"FA\"", "\"LA\"", "\"LI\"", "\"ME\"", "\"CAR\"", "\"BI\"", "\"NO\"", "\"BRA\"", "\"FE\"",
-        "\"DA\"", "\"PI\"", "\"JU\"", "\"PA\"", "\"LE\"", "\"CHE\"", "\"EX\"", "\"COM\""};
+        "\"DA\"", "\"PI\"", "\"JU\"", "\"PA\"", "\"LE\"", "\"CHE\"", "\"EX\"", "\"COM\"","\"TRE\"",
+        "\"GUA\"", "\"LEM\"", "\"AL\"", "\"PRIN\"", "\"PRO\"", "\"CRI\"", "\"COR\"", "\"ÇÃO\"", "\"FLO\"",
+        "\"TRANS\""
+};
 
     public ModelPag03(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -141,7 +144,9 @@ public class ModelPag03 {
         int u = getUnidadeAtual();
         if (u == 3 || u == 4 || u == 9 || u == 14 || u == 16 || u == 18 || u == 20
                 || u == 21 || u == 23 || u == 24 || u == 25 || u == 26 || u == 31 || u == 32
-                || u == 38 || u == 41 || u == 45 || u == 47 || u == 49) {
+                || u == 38 || u == 45 || u == 47 || u == 49 || u == 50
+                || u == 51 || u == 52 || u == 53 || u == 55 || u == 56 || u == 58
+                || u == 59 || u == 60) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -510,14 +515,91 @@ public class ModelPag03 {
                 }
                 break;
             case 48:
-                if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img6")) {
+                if (imgClicada.equals("img1") || imgClicada.equals("img3")) {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
                 }
                 break;
             case 49:
+                if (imgClicada.equals("img3") || imgClicada.equals("img4") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 50:
+                if (imgClicada.equals("img4") || imgClicada.equals("img6") || imgClicada.equals("img5")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 51:
                 if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 52:
+                if (imgClicada.equals("img4") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 53:
+                if (imgClicada.equals("img2") || imgClicada.equals("img3") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 54:
+                if (imgClicada.equals("img1") || imgClicada.equals("img4")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 55:
+                if (imgClicada.equals("img4") || imgClicada.equals("img3") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 56:
+                if (imgClicada.equals("img1") || imgClicada.equals("img3") || imgClicada.equals("img4")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 57:
+                if (imgClicada.equals("img5") || imgClicada.equals("img6")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 58:
+                if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img5")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 59:
+                if (imgClicada.equals("img4") || imgClicada.equals("img5")) {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
+                } else {
+                    imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
+                }
+                break;
+            case 60:
+                if (imgClicada.equals("img3") || imgClicada.equals("img4")|| imgClicada.equals("img5")) {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");

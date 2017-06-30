@@ -3,11 +3,13 @@
  */
 package model;
 
+import controller.MenuInicialController;
 import controller.Pag01Controller;
 import controller.Pag06Controller;
 import java.io.IOException;
 import java.net.URL;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -28,19 +30,24 @@ public class ModelPag07 {
     private int unidadeAtual;
     private ModelClasseComum mCC;
     private final int pagina = 7;
+    @FXML
     private ListView<String> listaPalavras;
     private URL imagemURL;
     private ImageView imagemTexto;
-    private String tituloUnidades[]={"1: VOVÔ","2: POVO(OVO, UVA)","3: TATO",
-            "4: UVA","5: VIVA", "6: LUVA", "7: LATA", "8: BEBÊ", "9: BOLA/DOCE",
-            "10: BOCA", "11: BALA(Baba)", "12: HOJE", "13: PIPA", "14: FURO", 
-            "15: FITA", "16: JOGOS", "17: ROXO", "18: GATO e RATO", "19: BONECA",
-            "20: DEDOS","21: SINOS","22: RUA", "23: DUAS", "24: ESSA", "25: SETE",
-            "26: MOTIVO","27: ACUMULAR","28: PIJAMA","29: ESPUMA","30: SOPRANDO",
-            "31: PERBAMBUCO","32: ÁRVORE","33: FAMOSO","34: ESCOLA","35: LIXINHO",
-            "36: MENINA","37: MACARRÃO","38: BICICLETA", "39: MENINO","40: BRAVURA",
-            "41: FELIZES","42: FELICIDADE","43: RÁPIDO","44: JUJUBA","45: PADARIAS",
-            "46: MOLEZA","47: CHEGA/TOQUES","48: EXPLICAR","49: COMPANHEIROS"};
+    private String tituloUnidades[] = {"1: VOVÔ", "2: POVO(OVO, UVA)", "3: TATO",
+        "4: UVA", "5: VIVA", "6: LUVA", "7: LATA", "8: BEBÊ", "9: BOLA/DOCE",
+        "10: BOCA", "11: BALA(Baba)", "12: HOJE", "13: PIPA", "14: FURO",
+        "15: FITA", "16: JOGOS", "17: ROXO", "18: GATO e RATO", "19: BONECA",
+        "20: DEDOS", "21: SINOS", "22: RUA", "23: DUAS", "24: ESSA", "25: SETE",
+        "26: MOTIVO", "27: ACUMULAR", "28: PIJAMA", "29: ESPUMA", "30: SOPRANDO",
+        "31: PERBAMBUCO", "32: ÁRVORE", "33: FAMOSO", "34: ESCOLA", "35: LIXINHO",
+        "36: MENINA", "37: MACARRÃO", "38: BICICLETA", "39: MENINO", "40: BRAVURA",
+        "41: FELIZES", "42: FELICIDADE", "43: RÁPIDO", "44: JUJUBA", "45: PADARIAS",
+        "46: MOLEZA", "47: CHEGA/TOQUES", "48: EXPLICAR", "49: COMPANHEIROS",
+        "50: ESTRELINHA", "51: ÁGUA/QUE/RIQUEZA/TAMANHA", "52: LEMBRANDO",
+        "53: ALGODÃO", "54: PRINCESA", "55: PROFESSOR", "56: CRIANÇA", "57: CORDEL",
+        "58: ATENÇÃO", "59: FLORESTA", "60: TRANSFORMA"};
+
     public ModelPag07(ImageView imagemTexto) {
         this.imagemTexto = imagemTexto;
         this.unidadeAtual = 0;
@@ -54,15 +61,26 @@ public class ModelPag07 {
      * @throws IOException
      */
     public void proximaPagina(ActionEvent event) throws IOException {
-        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));
-        //cria a próxima cena chamando a inteface dos avatares        
-        Parent proximaCena = (Parent) fxmloader.load();
-        Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
-        pg01Cont.setUnidadeAtual(getUnidadeAtual() + 1);
-        mCC.exibirCena(proximaCena, janela);
-        pg01Cont.setImagemTexto();
-        pg01Cont.tocarAudio();
+        if (unidadeAtual == 60) {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/menuInicial.fxml"));
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            MenuInicialController menuInicial = fxmloader.<MenuInicialController>getController();            
+            mCC.exibirCena(proximaCena, janela);           
+            
+        } else {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag01.fxml"));
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
+            pg01Cont.setUnidadeAtual(getUnidadeAtual() + 1);
+            mCC.exibirCena(proximaCena, janela);
+            pg01Cont.setImagemTexto();
+            pg01Cont.tocarAudio();
+        }
+
     }
 
     /**
@@ -73,15 +91,14 @@ public class ModelPag07 {
      */
     public void setUnidadeAtual(int unidade, Label tituloUnidade) {
         this.unidadeAtual = unidade;
-
-        System.out.println(tituloUnidade + " " + unidade);
-        tituloUnidade.setText(tituloUnidade.getText() + " "+tituloUnidades[unidade-1]);
+        mCC.atualizarListView(listaPalavras, unidade);
+        tituloUnidade.setText(tituloUnidade.getText() + " " + tituloUnidades[unidade - 1]);
     }
 
     /**
      * Executra o audio que deve ser executado nessa pagina
      */
-    public void tocarAudio() { 
+    public void tocarAudio() {
         switch (getUnidadeAtual()) {
             case 1:
                 caminhoAudio = "audios/u01/l1p1.mp3";
@@ -97,7 +114,7 @@ public class ModelPag07 {
                 break;
             default:
                 caminhoAudio = "audios/u" + getUnidadeAtual() + "/l" + getUnidadeAtual() + "p1.mp3";
-                break;                
+                break;
         }
         mCC.play(caminhoAudio);
     }
@@ -158,7 +175,7 @@ public class ModelPag07 {
 
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina,"");
+        mCC.abrirABC(event, pagina, "");
     }
 
     /**
@@ -174,14 +191,14 @@ public class ModelPag07 {
         mCC.abrirManual(event, pagina);
     }
 
-    public void atualizarListView() {
-        mCC.atualizarListView(listaPalavras,getUnidadeAtual());
+    public void atualizarListView(int unidade) {
+        mCC.atualizarListView(listaPalavras, unidade);
     }
 
     public void incrementarUnidade(int valor) {
         System.out.println("Unidade atual " + getUnidadeAtual());
     }
-    
+
     /**
      * Define a imagem texto que será apresentada na imageView
      *
@@ -190,7 +207,7 @@ public class ModelPag07 {
     public void setImagemTexto(int unidadeAtual) {
         imagemURL = null;
         switch (unidadeAtual) {
-            case 1:                
+            case 1:
                 imagemURL = getClass().getResource("imagens/licao01/imagemTexto.png");
                 break;
             case 2:
@@ -198,11 +215,11 @@ public class ModelPag07 {
                 break;
             case 3:
                 imagemURL = getClass().getResource("imagens/licao03/imagemTexto.png");
-                break;                
+                break;
             default:
-                imagemURL = getClass().getResource("imagens/licao"+unidadeAtual+"/imagemTexto.png");
-                break;                
-                
+                imagemURL = getClass().getResource("imagens/licao" + unidadeAtual + "/imagemTexto.png");
+                break;
+
         }
         imagemTexto.setImage(new Image(imagemURL.toString()));
     }

@@ -3,13 +3,15 @@
     Author     : shadows
 */
 
-#espaco, #f1, #f2, #f3, #pg5espaco, #pg5f1, #pg5f1_3,#pg5f2Esquerda, #pg5espacoDireita{
+#espaco, #f1, #f2, #f3, #pg5espaco, #pg5f1, #pg5f1_3,#pg5f2Esquerda, #pg5espacoDireita,
+#pg5espacoDireita2x, #pg5f3Esquerda, #f4, #pg5f1_4{
     -fx-border-style: hidden hidden solid hidden;
     -fx-border-color: black;
    
 }
 
-#p1, #p2, #p3, #p4, #p5, #p6, #f1, #f2, #f3, #espaco, #pg5espaco, #pg5f1,#pg5f1_3,#pg5f2Esquerda, #pg5espacoDireita{
+#p1, #p2, #p3, #p4, #p5, #p6, #f1, #f2, #f3, #espaco, #pg5espaco, #pg5f1,#pg5f1_3,
+#pg5f2Esquerda, #pg5espacoDireita,#pg5espacoDireita2x, #pg5f3Esquerda, #f4, #pg5f1_4{
     -fx-font-size: 25px;
     -fx-font-family: "Verdana";
     -fx-font-weight: bold;
@@ -34,11 +36,18 @@
 #pg5f1_3{
     -fx-translate-x: 55;
 }
-
+#pg5f1_4{
+    -fx-translate-x: 85;
+}
 #pg5f2Esquerda{
     -fx-translate-x: -55;
 }
-
+#pg5f3Esquerda{
+    -fx-translate-x: -55;
+}
 #pg5espacoDireita{
     -fx-translate-x: 43;
+}
+#pg5espacoDireita2x{
+    -fx-translate-x: 86;
 }

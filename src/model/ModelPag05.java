@@ -5,7 +5,6 @@ package model;
 
 import controller.Pag03aController;
 import controller.Pag04Controller;
-import controller.Pag04aController;
 import controller.Pag04bController;
 import controller.Pag05aController;
 import controller.Pag06Controller;
@@ -87,14 +86,16 @@ public class ModelPag05 {
 
     @FXML
     private Label f3;
+    
+    @FXML
+    private Label f4;
     //13/PI
     private String silabaCorreta[] = {"VO","PO","TÁ","VA","VI","LU","LA","BE","BO",
     "CA","BA","JÉ","PI","RO","FI","GOS","XO","GA","NE","DOS",
     "NOZ","RU","DU","SA","SU","MO","CU","JÁ","PU","SO","PER",
     "AR","FA","LA","LI","ME","CAR","CI","NO","BRA","ZES","DA",//SÓ FIZ ATÉ AQUI
-    "PI","JU","RI","LE","CHE","EX","ROS","VO","VO","VO","VO",
-    "VO","VO","VO","VO","VO","VO","VO","VO","VO","VO","VO",
-    "VO","VO","VO","VO","VO","VO","VO","VO","VO","VO","VO",};
+    "PI","JU","RI","LE","CHE","EX","ROS","ESLAS", "QUE", "BRÂN", "AL", "PRIN",
+    "SOR", "AN", "COR", "ÇÃO", "RES", "FOR"};
     
     private String matrizSilabas[][] = {{"VA", "VE", "VI", "VO", "VU"}, {"PA", "PE", "PI", "PO", "PU"}, {"TÁ", "TE", "TI", "TO", "TU"},
         {"VA", "VE", "VI", "VO", "VU"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
@@ -108,7 +109,11 @@ public class ModelPag05 {
         {"MA", "ME", "MI", "MO", "MU"}, {"CAR", "CER", "CIR", "COR", "CUR"}, {"CA", "CE", "CI", "CO", "CU"}, {"NA", "NE", "NI", "NO", "NU"},
         {"BRA", "BRE", "BRI", "BRO", "BRU"}, {"ZAS", "ZES", "ZIS", "ZOS", "ZUS"},{"DA", "DE", "DI", "DO", "DU"},{"PA", "PE", "PI", "PO", "PU"},
         {"JA", "JE", "JI", "JO", "JU"},{"RA", "RE", "RI", "RO", "RU"},{"LA", "LE", "LI", "LO", "LU"},{"CHA", "CHE", "CHI", "CHO", "CHU"},
-        {"AX", "EX", "IX", "OX", "UX"},{"RAS", "RES", "RIS", "ROS", "RUS"}};
+        {"AX", "EX", "IX", "OX", "UX"},{"RAS", "RES", "RIS", "ROS", "RUS"},{"LAS", "ES", "IS", "OS", "US"},
+        {"QUA","QUE","QUI","QUO",""}, {"BRÂN","BREN","BRIN","BRON","BRUN"}, {"AL","EL","IL","OL","UL"},
+        {"PRAN","PREN","PRIN","PRON","PRUN"}, {"SAR","SER","SIR","SOR","SUR"}, {"AN","EN","IN","ON","UN"},
+        {"CAR","CER","CIR","COR","CUR"}, {"CAU","CEU","CIO","COL","ÇÃO"}, {"RAS","RES","RIS","ROS","RUS"},
+        {"FAR","FER","FIR","FOR","FUR"}};
 
     /**
      * Construtor da classe Labels utilzadas nas paginas:
@@ -130,7 +135,7 @@ public class ModelPag05 {
      */
     public ModelPag05(Label p1, Label p2, Label p3, Label p4, Label p5, Label f1,
             Label f2, Label espaco, ImageView imagemAudio, AnchorPane janelaPrograma,
-            Text instrucao1, ListView<String> listaPalavras, Label f3) {
+            Text instrucao1, ListView<String> listaPalavras, Label f3, Label f4) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -146,6 +151,7 @@ public class ModelPag05 {
         this.imagemAudio = imagemAudio;
         this.janelaPrograma = janelaPrograma;
         this.instrucao = instrucao1;
+        this.f4 = f4;
 
     }
 
@@ -171,6 +177,7 @@ public class ModelPag05 {
                 espaco.setText("");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao01/polvopb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
@@ -180,6 +187,7 @@ public class ModelPag05 {
                 f1.setText("ÇO");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);                
                 espaco.setText("");
                 imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
@@ -190,6 +198,7 @@ public class ModelPag05 {
                 f1.setText("BUA");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 espaco.setText("");
                 imgUrl = getClass().getResource("imagens/licao03/tabuapb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
@@ -201,6 +210,7 @@ public class ModelPag05 {
                 f2.setText("LU");
                 f3.setText("ME");
                 espaco.setText("");
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao4a/vagalumepb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
@@ -210,6 +220,7 @@ public class ModelPag05 {
                 f1.setText("O");
                 f2.setText("LE");
                 f3.setText("TA");
+                f4.setVisible(false);
                 espaco.setText("");
                 imgUrl = getClass().getResource("imagens/licao5/violetapb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
@@ -220,6 +231,7 @@ public class ModelPag05 {
                 f1.setText("NE");
                 f2.setText("TA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao6/lunetapb.jpg");
                 break;
             case 7:
@@ -228,6 +240,7 @@ public class ModelPag05 {
                 f1.setText("GO");
                 f2.setText("A");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao7/lagoapb.png");
                 break;
             case 8:
@@ -236,6 +249,7 @@ public class ModelPag05 {
                 f1.setText("BI");
                 f2.setText("DA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao8/bebidapb.png");
                 break;
             case 9:
@@ -244,6 +258,7 @@ public class ModelPag05 {
                 f1.setText("TÃO");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao9/botaopb.png");
                 break;
             case 10:
@@ -252,6 +267,7 @@ public class ModelPag05 {
                 f1.setText("RA");
                 f2.setText("COL");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao10/CA5pb.png");                
                 break;
             case 11:
@@ -259,12 +275,14 @@ public class ModelPag05 {
                 f1.setText("A");
                 f2.setText("CA");
                 f3.setText("XI");
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao11/BA5pb.png");
                 break;
             case 12:
                 f1.setText("PA");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao12/JÉ5pb.png");
                 break;
             case 13:
@@ -273,6 +291,7 @@ public class ModelPag05 {
                 f1.setText("PO");
                 f2.setText("CA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao13/PI5pb.png");                
                 break;
             case 14:
@@ -281,6 +300,7 @@ public class ModelPag05 {
                 f1.setText("DO");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/RO5pb.png");
                 break;
             case 15:
@@ -289,30 +309,35 @@ public class ModelPag05 {
                 f1.setText("GO");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/FI5pb.png");
                 break;
             case 16:                
                 f1.setText("PRE");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/GOS5pb.png");
                 break;
             case 17:
                 f1.setText("CAI");
                 f2.setText("TE");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/XO5pb.png");
                 break;
             case 18:
                 f1.setVisible(false);
                 f2.setText("TO");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/GA5pb.png");
                 break;
             case 19:
                 f1.setText("COR");
                 f2.setText("TA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/NE5pb.png");
                 break;
             case 20:
@@ -321,6 +346,7 @@ public class ModelPag05 {
                 f1.setText("CAL");
                 f2.setText("ÇA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/DOS5pb.png");
                 break;
             case 21:
@@ -329,12 +355,14 @@ public class ModelPag05 {
                 f1.setText("-MOS");
                 f2.setText("CA");
                 f3.setText("DA");
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/NOZ5pb.png");
                 break;
             case 22:
                 f1.setText("PE");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/RU5pb.png");
                 break;
             case 23:
@@ -343,6 +371,7 @@ public class ModelPag05 {
                 f1.setText("ZEN");
                 f2.setText("TOS");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/DU5pb.png");
                 break;
             case 24:
@@ -351,6 +380,7 @@ public class ModelPag05 {
                 f1.setText("PO");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SA5pb.png");
                 break;
             case 25:
@@ -359,6 +389,7 @@ public class ModelPag05 {
                 f1.setText("JO");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SU5pb.png");
                 break;
             case 26:
@@ -367,6 +398,7 @@ public class ModelPag05 {
                 f1.setText("DE");
                 f2.setText("LO");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/MO5pb.png");
                 break;
             case 27:
@@ -375,6 +407,7 @@ public class ModelPag05 {
                 f1.setText("RU");
                 f2.setText("RU");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CU5pb.png");
                 break;
             case 28:
@@ -383,6 +416,7 @@ public class ModelPag05 {
                 f1.setText("BU");
                 f2.setText("TI");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/JA5pb.png");
                 break;
             case 29:
@@ -391,6 +425,7 @@ public class ModelPag05 {
                 f1.setText("DIM");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PU5pb.png");
                 break;
             case 30:
@@ -399,6 +434,7 @@ public class ModelPag05 {
                 f1.setText("FÁ");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SO5pb.png");
                 break;
             case 31:
@@ -407,6 +443,7 @@ public class ModelPag05 {
                 f1.setText("GA");
                 f2.setText("MI");
                 f3.setText("NHO");
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PER5pb.png");
                 break;
             case 32:
@@ -415,6 +452,7 @@ public class ModelPag05 {
                 f1.setText("TE");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/AR5pb.png");
                 break;
             case 33:
@@ -423,6 +461,7 @@ public class ModelPag05 {
                 f1.setText("ZEN");
                 f2.setText("DA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/FA5pb.png");
                 break;
             case 34:
@@ -431,12 +470,14 @@ public class ModelPag05 {
                 f1.setText("GOS");
                 f2.setText("TA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/LA5pb.png");
                 break;
             case 35:
                 f1.setText("PA");
                 f2.setText("TO");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/LI5pb.png");
                 break;
             case 36:
@@ -445,6 +486,7 @@ public class ModelPag05 {
                 f1.setText("DA");
                 f2.setText("LHA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ME5pb.png");
                 break;
             case 37:
@@ -453,6 +495,7 @@ public class ModelPag05 {
                 f1.setText("TEI");
                 f2.setText("RA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CAR5pb.png");
                 break;
             case 38:
@@ -461,6 +504,7 @@ public class ModelPag05 {
                 f1.setText("NE");
                 f2.setText("MA");
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CI5pb.png");
                 break;
             case 39:
@@ -469,8 +513,191 @@ public class ModelPag05 {
                 f1.setText("JO");
                 f2.setVisible(false);
                 f3.setVisible(false);
+                f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/NO5pb.png");
                 break;
+            case 40:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("CE");
+                f2.setText("LE");
+                f3.setText("TE");
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/BRA5pb.png");
+                break;
+            case 41:
+                f2.setId("pg5f2Esquerda");
+                espaco.setId("pg5espacoDireita");
+                f1.setText("CAR");
+                f2.setText("TA");
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ZES5pb.png");
+                break;
+            case 42:
+                f2.setId("pg5f2Esquerda");
+                espaco.setId("pg5espacoDireita");
+                f1.setText("LÂM");
+                f2.setText("PA");
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/DA5pb.png");
+                break;
+            case 43:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("ÃO");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PI5pb.png");
+                break;
+            case 44:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("IZ");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/JU5pb.png");
+                break;
+            case 45:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("NO");
+                f2.setText("CE");
+                f3.setText("RON");
+                f4.setText("TE");
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/RI5pb.png");
+                break;
+            case 46:
+                f1.setId("pg5f1_3");
+                espaco.setId("pg5espaco");
+                f1.setText("GAL");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/LE5pb.png");
+                break;
+            case 47:
+                f1.setText("CA");
+                f2.setText("COL");
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CHE5pb.png");
+                break;
+            case 48:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("PO");
+                f2.setText("SI");
+                f3.setText("ÇÃO");
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/EX5pb.png");
+                break;
+            case 49:                
+                f1.setText("FU");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ROS5pb.png");
+                break;
+            case 50://CRIAR DUAS LABELS DE ESPAÇO
+                f1.setId("pg5f1_3");
+                espaco.setId("pg5espacoDireita");                
+                f1.setText("TRE");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ESLAS5pb.png");
+                break;
+            case 51:                
+                f1.setText("LE");
+                f2.setVisible(false);
+                f3.setVisible(false);f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/QUE5pb.png");
+                break;
+            case 52:
+                f1.setId("pg5f1_4");
+                espaco.setId("pg5espaco");
+                f1.setText("QUIAS");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/BRÂN5pb.png");
+                break;
+            case 53:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("MO");
+                f2.setText("FA");
+                f3.setText("DA");
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/AL5pb.png");
+                break;
+            case 54:
+                f1.setId("pg5f1_4");
+                espaco.setId("pg5espaco");
+                espaco.setText("- - - -");
+                f1.setText("CE");
+                f2.setText("SA");
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PRIN5pb.png");
+                break;
+            case 55:
+                f1.setId("pg5f1_3");
+                espaco.setId("pg5espaco");
+                f1.setText("RI");
+                f2.setText("SO");
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SOR5pb.png");
+                break;
+            case 56:
+                f1.setId("pg5f1");
+                espaco.setId("pg5espaco");
+                f1.setText("TA");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/AN5pb.png");
+                break;
+            case 57:
+                f1.setId("pg5f1_3");
+                espaco.setId("pg5espaco");
+                f1.setText("NE");
+                f2.setText("TA");
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/COR5pb.png");
+                break;
+            case 58://
+                f3.setId("pg5f3Esquerda");
+                espaco.setId("pg5espacoDireita2x");
+                f1.setText("ME");
+                f2.setText("DI");
+                f3.setText("TA");
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ÇÃO5pb.png");
+                break;
+            case 59:                
+                f1.setText("FLO");
+                f2.setVisible(false);
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/RES5pb.png");
+                break;
+            case 60:                
+                f1.setId("pg5f1_3");
+                espaco.setId("pg5espaco");
+                f1.setText("MI");
+                f2.setText("GAS");
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/FOR5pb.png");
+                break;
+            
         }
         imagemAudio.setImage(new Image(imgUrl.toString()));
     }
@@ -484,7 +711,8 @@ public class ModelPag05 {
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
         if (u == 3 || u == 9 || u == 12 || u == 13 || u == 18 || u == 25 || u == 26
-                || u == 31 || u == 32 || u == 41 || u == 47) {
+                || u == 31 || u == 32 || u == 41 || u == 47 || u == 50 || u == 51 
+                || u == 53) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05a.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -519,7 +747,7 @@ public class ModelPag05 {
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (getUnidadeAtual() == 3) {
+        if (u == 3 || u == 25 || u == 45) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
             //cria a próxima cena
@@ -530,7 +758,7 @@ public class ModelPag05 {
             pg03aCont.setUnidadeAtual(getUnidadeAtual());
             pg03aCont.setImagens(getUnidadeAtual());
             pg03aCont.setInstrucao(getUnidadeAtual());
-        } else if (u == 9) {
+        } else if (u == 9 || u == 51) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04b.fxml"));
             //cria a próxima cena
@@ -540,15 +768,6 @@ public class ModelPag05 {
             mCC.exibirCena(proximaCena, janela);
             pg04bCont.setUnidadeAtual(getUnidadeAtual());
 
-        } else if(u == 25){
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04a.fxml"));
-            //cria a próxima cena
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag04aController pg04aCont = fxmloader.<Pag04aController>getController();
-
-            mCC.exibirCena(proximaCena, janela);
-            pg04aCont.setUnidadeAtual(getUnidadeAtual());
         }
         else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -872,8 +1091,10 @@ public class ModelPag05 {
             "\"MODELO\"","\"CURURU\"","\"JABUTI\"","\"PUDIM\"","\"SOFÁ\"","\"PERGAMINHO\"",
             "\"ARTE\"","\"FAZENDA\"","\"LAGOSTA\"","\"PALITO\"","\"MEDALHA\"","\"CARTEIRA\"",
             "\"CINEMA\"","\"NOJO\"","\"BRACELETE\"","\"CARTAZES\"","\"LÂMPADA\"","\"PIÃO\"",
-            "\"JUIZ\"","\"RINOCERONTE\"","\"LEGAL\"","\"CACHECOL\"","\"EXPOSIÇÃO\"","\"FUROS\"",
-            "\"SOFÁ\""};
+            "\"JUIZ\"","\"RINOCERONTE\"","\"LEGAL\"","\"CACHECOL\"","\"EXPOSIÇÃO\"","\"FUROS\"",            
+            "\"ESTRELAS\"", "\"LEQUE\"", "\"BRÂNQUIAS\"", "\"ALMOFADA\"",
+            "\"PRINCESA\"", "\"SORRISO\"", "\"ANTA\"", "\"CORNETA\"", "\"MEDITAÇÃO\"", "\"FLORES\"",
+            "\"FORMIGA\""};
         instrucao.setText("Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
     }
 

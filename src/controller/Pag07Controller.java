@@ -81,7 +81,7 @@ public class Pag07Controller implements Initializable {
      * @throws IOException 
      */
     public void setUnidadeAtual(int unidadeAtual) throws IOException {
-        atualizarListView();
+        atualizarListView(unidadeAtual);
         modelPag07.setUnidadeAtual(unidadeAtual, tituloUnidade);
     }
     /**
@@ -161,8 +161,8 @@ public class Pag07Controller implements Initializable {
     private void sugestaoAtividades(ActionEvent event) {
     }
     
-    public void atualizarListView() {
-        modelPag07.atualizarListView();
+    public void atualizarListView(int unidade) {
+        modelPag07.atualizarListView(unidade);
     }
     
     public void setImagemTexto(int unidadeAtual){
