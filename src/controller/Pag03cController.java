@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import model.ModelPag03c;
-import model.ModelPag03b;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -190,7 +189,7 @@ public class Pag03cController implements Initializable {
      */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
-        modelPag03c.abrirManual(event, pagina);
+        modelPag03c.abrirManual(event, pagina, "c");
     }
     /**
      * Abre a função ABC do software
@@ -208,6 +207,7 @@ public class Pag03cController implements Initializable {
     }
 
     @FXML
-    private void sugestaoAtividades(ActionEvent event) {
+    private void sugestaoAtividades(ActionEvent event) throws IOException {
+        modelPag03c.sugestaoAtividade(event, pagina);
     }
 }

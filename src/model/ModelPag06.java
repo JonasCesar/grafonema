@@ -52,7 +52,7 @@ public class ModelPag06 {
         "JUJUBA", "PADARIAS", "MOLEZA", "CHEGA", "EXPLICAR", "COMPANHEIROS", "ESTRELINHAS",
         "RIQUEZA", "LEMBRANDO", "ALGODÃO", "PRINCESA", "PROFESSOR", "CRIANÇA", "CORDEL",
         "ATENÇÃO", "FLORESTAS", "TRANSFORMAR"
-};
+    };
 
     private String listaFrases[] = {"\"O vovô é meu amigo\"", "\"O povo da festa está animado\"",
         "\"O tato serve para nos proteger\"", "\"Meu pai gosta de uva\"", "\"Viva a vida com amor\"",
@@ -70,11 +70,11 @@ public class ModelPag06 {
         "\"Tenho medo da bravura do mar\"", "\"Todos pareciam felizes\"", "\"Felicidade é se sentir amado.\"",
         "\"O avião é rápido\"", "\"Ana ama comer jujuba\"", "\"Meu avô frequenta duas padarias.\"",
         "\"Estou com moleza.\"", "\"Quando chega as férias eu fico muito feliz\"", "\"Eu vou te explicar tudo.\"",
-        "\"Tenho muitos companheiros na escola.\"","\"Tem muita estrelinhas no céu\"", "\"A riqueza traz alegrias mas não a felicidade\"",
+        "\"Tenho muitos companheiros na escola.\"", "\"Tem muita estrelinhas no céu\"", "\"A riqueza traz alegrias mas não a felicidade\"",
         "\"Estou lembrando do meu tempo de criança\"", "\"Amo algodão doce\"", "\"Me fantasiei de princesa no meu aniversário\"",
         "\"O professor é muito inteligente\"", "\"Ser criança é muito bom\"", "\"A literatura de cordel é maravilhosa\"",
         "\"Prestem muita atenção!\"", "\"Os homens estão desmatando as florestas\"", "\"Vamos transformar o mundo?"
-};
+    };
 
     @FXML
     private Label p3;
@@ -100,17 +100,6 @@ public class ModelPag06 {
      */
     public void setUnidadeAtual(int unidade) {
         this.unidadeAtual = unidade;
-        switch (getUnidadeAtual()) {
-            case 1:
-                definirLabels();
-                break;
-            case 2:
-                definirLabels();
-                break;
-            default:
-                break;
-        }
-
     }
 
     /**
@@ -124,7 +113,6 @@ public class ModelPag06 {
         if (u == 9 || u == 25 || u == 47) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag06a.fxml"));
-
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
             Pag06aController pg06aCont = fxmloader.<Pag06aController>getController();
@@ -132,21 +120,18 @@ public class ModelPag06 {
             pg06aCont.setInstrucao(getUnidadeAtual());
             pg06aCont.tocarAudio();
             mCC.exibirCena(proximaCena, janela);
-
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag07.fxml"));
-
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
             Pag07Controller pg07Cont = fxmloader.<Pag07Controller>getController();
-            pg07Cont.setUnidadeAtual(getUnidadeAtual());           
+            pg07Cont.setUnidadeAtual(getUnidadeAtual());
             mCC.exibirCena(proximaCena, janela);
+            pg07Cont.atualizarListView(getUnidadeAtual());
             pg07Cont.tocarAudio();
             pg07Cont.setImagemTexto(getUnidadeAtual());
-
         }
-
     }
 
     /**
@@ -157,7 +142,8 @@ public class ModelPag06 {
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if ( u == 3 || u == 47 || u == 51 || u == 41 || u == 32 || u == 31 || u == 25) {
+        if (u == 3 || u == 47 || u == 51 || u == 41 || u == 32 || u == 31 || u == 25
+                || u == 50 || u == 53) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05a.fxml"));
             //cria a próxima cena chamando a inteface dos avatares        
@@ -520,10 +506,10 @@ public class ModelPag06 {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+    public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, subPagina);
     }
 
     /**
@@ -586,5 +572,9 @@ public class ModelPag06 {
         boolean respostaCorreta = false;
         respostaCorreta = resposta.toUpperCase().equals("GATO") && (segundaResposta.toUpperCase().equals("RATO"));
         return respostaCorreta;
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina, "");
     }
 }

@@ -13,9 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import model.ModelABC;
 
 /**
@@ -90,6 +90,8 @@ public class ABCController implements Initializable {
     @FXML
     private ImageView img4;
     private String subPagina;
+    @FXML
+    private AnchorPane janelaPrograma;
 
     public ABCController() {
         //modelABC = new ModelABC(imgLetra, img);
@@ -103,7 +105,12 @@ public class ABCController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        modelABC = new ModelABC(img1, img2, img3, img4);
+        modelABC = new ModelABC(img1, img2, img3, img4, janelaPrograma);
+        Tooltip verLetra = new Tooltip("Clique em um botão para ver a letra");
+        Tooltip.install(img1, verLetra);
+        Tooltip.install(img2, verLetra);
+        Tooltip.install(img3, verLetra);
+        Tooltip.install(img4, verLetra);
     }
 
     /**
@@ -115,8 +122,6 @@ public class ABCController implements Initializable {
     @FXML
     public void handleButton(ActionEvent event) throws IOException {
         String letraEscolhida = ((Button) event.getSource()).getId();
-        System.out.println("botão escolhido = " + letraEscolhida);
-        //modelABC.desenharLetra(letraEscolhida);
         botaoEscolhido = letraEscolhida;
         desenharLetra(letraEscolhida);
         //modelABC.pararAudio();
@@ -144,26 +149,13 @@ public class ABCController implements Initializable {
      */
     @FXML
     private void passouRato(MouseEvent event) throws IOException {
-        DropShadow sombras = new DropShadow();
-        ((ImageView) ((event)).getSource()).setEffect(sombras);
-        
-        /**
-        //modelABC.tocarAudio(event);
-        modelABC.pararAudio();
-        modelABC.tocarAudioUnicoLetras(botaoEscolhido);
-        System.out.println("passou no rato");
-        * **/
+        modelABC.passouRato(event);              
     }
     
     @FXML
     private void dessombrearImagem(MouseEvent event) throws IOException {        
-        ((ImageView) ((event)).getSource()).setEffect(null);        
-        /**
-        //modelABC.tocarAudio(event);
-        modelABC.pararAudio();
-        modelABC.tocarAudioUnicoLetras(botaoEscolhido);
-        System.out.println("passou no rato");
-        * **/
+        
+       modelABC.dessombrearImagem(event);
     }
 
     /**
@@ -172,13 +164,7 @@ public class ABCController implements Initializable {
      * @param letra letra representado
      */
     public void desenharLetra(String letra) {
-        modelABC.desenharLetra(letra);
-        
-       // img1.setImage(new Image(imgMaiusculaForma.toString()));
-        //img2.setImage(new Image(imgMinusculaForma.toString()));
-        //img3.setImage(new Image(imgMaiusculaCursiva.toString()));
-        //img4.setImage(new Image(imgMinusculaCursiva.toString()));
-        //imagemTexto.setImage(new Image(imagemURL.toString()));
+        modelABC.desenharLetra(letra);   
     }
 
     public void setPaginaTemporaria(int pagina, String subPagina) {
@@ -189,5 +175,15 @@ public class ABCController implements Initializable {
     @FXML
     private void tocarLetra(MouseEvent event) {        
         modelABC.tocarSomLetra(botaoEscolhido);
+    }
+
+    @FXML
+    private void retirarMouseESombra(MouseEvent event) {
+        modelABC.retirarMouseESombra(event);
+    }
+
+    @FXML
+    private void adicionarMouseEsombra(MouseEvent event) {
+        modelABC.adicionarMouseESombra(event);
     }
 }

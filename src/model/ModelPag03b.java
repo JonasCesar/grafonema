@@ -407,7 +407,7 @@ public class ModelPag03b {
     public void abrirManual(ActionEvent event, int pagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina,"b");
     }
 
     /**
@@ -431,5 +431,9 @@ public class ModelPag03b {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"b");
     }
 }

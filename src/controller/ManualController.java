@@ -25,11 +25,13 @@ public class ManualController implements Initializable {
     private String unidadeAtual;
     private ActionEvent evento;
     private int paginaTemporaria;
+    private String subPagina;
 
     public ManualController() {
         modelManual = new ModelManual();
         evento = null;
         paginaTemporaria = 0;
+        subPagina = "";
     }
 
     /**
@@ -100,13 +102,14 @@ public class ManualController implements Initializable {
      */
     @FXML
     private void voltar(ActionEvent event) throws IOException {
-        modelManual.voltar(event, paginaTemporaria);
+        modelManual.voltar(event, paginaTemporaria,subPagina);
     }
     /**
      * Armazena temporariamente o valor da unidade atual
      * @param pagina 
      */
-    public void setPaginaTemporaria(int pagina) {
+    public void setPaginaTemporaria(int pagina, String subPagina) {
+        this.subPagina = subPagina;
         paginaTemporaria = pagina;
     }
 }

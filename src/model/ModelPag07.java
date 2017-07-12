@@ -185,10 +185,10 @@ public class ModelPag07 {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+   public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, subPagina);
     }
 
     public void atualizarListView(int unidade) {
@@ -222,6 +222,10 @@ public class ModelPag07 {
 
         }
         imagemTexto.setImage(new Image(imagemURL.toString()));
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"");
     }
 
 }

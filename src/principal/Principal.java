@@ -27,9 +27,10 @@ public class Principal extends Application {
         this.janela = janela;
         Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/menuInicial.fxml"));
         Scene cena = new Scene(cenaInicial, 1200, 700);
-        janela.setTitle("Projeto 2");
+        janela.setTitle("EscreLer");
         janela.setScene(cena);
-        janela.show();        
+        janela.show();
+        janela.setResizable(false);
         //função para encerrar todos os processos quando o usuário clicar no "X"
         janela.setOnCloseRequest((WindowEvent event) -> {
             Alert confirmacaoSaida = new Alert(Alert.AlertType.CONFIRMATION,

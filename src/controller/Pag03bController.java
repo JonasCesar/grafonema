@@ -208,6 +208,7 @@ public class Pag03bController implements Initializable {
     }
 
     @FXML
-    private void sugestaoAtividades(ActionEvent event) {
+    private void sugestaoAtividades(ActionEvent event) throws IOException {
+        modelPag03b.sugestaoAtividade(event, pagina);
     }
 }

@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import model.ModelPag07;
 import java.net.URL;
@@ -31,7 +30,7 @@ public class Pag07Controller implements Initializable {
     private ModelPag07 modelPag07;
     @FXML
     private ListView<String> listaPalavras;
-    ObservableList<String> items = FXCollections.observableArrayList();    
+    ObservableList<String> items = FXCollections.observableArrayList();
     @FXML
     private Button abc;
     @FXML
@@ -42,19 +41,21 @@ public class Pag07Controller implements Initializable {
     private Button avancar;
     @FXML
     private Label palavrasEstudadas;
-    
+
     private final int pagina = 7;
     @FXML
     private Button atividades;
-    
+
     @FXML
     private ImageView imagemTexto;
+
     public Pag07Controller() {
-        listaPalavras = new ListView<>();        
+        listaPalavras = new ListView<>();
     }
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -75,47 +76,57 @@ public class Pag07Controller implements Initializable {
     public int getUnidadeAtual() {
         return modelPag07.getUnidadeAtual();
     }
+
     /**
      * Define a unidade atual
+     *
      * @param unidadeAtual o novo valor da unidade
-     * @throws IOException 
+     * @throws IOException
      */
     public void setUnidadeAtual(int unidadeAtual) throws IOException {
         atualizarListView(unidadeAtual);
         modelPag07.setUnidadeAtual(unidadeAtual, tituloUnidade);
     }
+
     /**
      * Avança para a proxima pagina
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void avancar(ActionEvent event) throws IOException {
         modelPag07.pararAudio();
         modelPag07.proximaPagina(event);
     }
+
     /**
      * Volta para a pagina anterior
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void voltar(ActionEvent event) throws IOException {
         modelPag07.pararAudio();
         modelPag07.paginaAnterior(event);
     }
+
     /**
      * Leva o usuário para o menu inicial
+     *
      * @param event clique no botão "Menu Inicial"
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void menuInicial(ActionEvent event) throws IOException {
         modelPag07.menuInicial(event);
         modelPag07.pararAudio();
     }
+
     /**
      * Trata o evento de quando o mouse é clicado na lista de palavras
+     *
      * @param event mouse é pressionado
      */
     @FXML
@@ -123,9 +134,10 @@ public class Pag07Controller implements Initializable {
         String palavraSelecionada = listaPalavras.getSelectionModel().getSelectedItem();
         modelPag07.tocarAudioPalavraSelecionada(palavraSelecionada);
     }
-   
+
     /**
      * Realiza o efeito de sombrear o botão quando o mouse passar por cima dele
+     *
      * @param event movimentação do mouse sobre os componentes
      */
     @FXML
@@ -133,8 +145,11 @@ public class Pag07Controller implements Initializable {
         DropShadow sombras = new DropShadow();
         ((Button) ((event)).getSource()).setEffect(sombras);
     }
+
     /**
-     * Realiza o efeito de dessombrear o botão quando o mouse for retirado de cima dele
+     * Realiza o efeito de dessombrear o botão quando o mouse for retirado de
+     * cima dele
+     *
      * @param event movimentação do mouse para fora do botão
      */
     @FXML
@@ -147,26 +162,29 @@ public class Pag07Controller implements Initializable {
         modelPag07.abrirABC(event, pagina);
         modelPag07.pararAudio();
     }
+
     /**
      * Abre o manual do software
+     *
      * @param event clique no botão
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
-        modelPag07.abrirManual(event, pagina);
+        modelPag07.abrirManual(event, pagina, "");
     }
 
     @FXML
-    private void sugestaoAtividades(ActionEvent event) {
+    private void sugestaoAtividades(ActionEvent event) throws IOException {
+        modelPag07.sugestaoAtividade(event, pagina);
     }
-    
+
     public void atualizarListView(int unidade) {
         modelPag07.atualizarListView(unidade);
     }
-    
-    public void setImagemTexto(int unidadeAtual){
+
+    public void setImagemTexto(int unidadeAtual) {
         modelPag07.setImagemTexto(unidadeAtual);
     }
-        
+
 }

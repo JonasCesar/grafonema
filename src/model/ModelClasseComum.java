@@ -6,6 +6,7 @@ package model;
 import controller.ABCController;
 import controller.ManualController;
 import controller.MenuInicialController;
+import controller.atividadesController;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -91,11 +92,10 @@ public class ModelClasseComum {
     public void exibirCena(Parent proximaCena, Stage janela) {
         this.janela = janela;
         Scene cena = new Scene(proximaCena, 1200, 700);
-        janela.setTitle("Projeto 2");//título da cena
+        janela.setTitle("EscreLer");//título da cena
 
         janela.setScene(cena);
         janela.show();//exibe a interface  
-        System.out.println("exibiu a cena certinho");
     }
 
     /**
@@ -154,7 +154,7 @@ public class ModelClasseComum {
      * @param pagina pagina de onde o método foi chamado
      * @throws IOException
      */
-    void abrirManual(ActionEvent event, int pagina) throws IOException {
+    void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
 
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow();
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/manual.fxml"));
@@ -162,7 +162,7 @@ public class ModelClasseComum {
         ManualController manualController = fxmloader.<ManualController>getController();
         exibirCena(proximaCena, janela);
         manualController.setUnidadeAtual(getUnidadeAtual());
-        manualController.setPaginaTemporaria(pagina);
+        manualController.setPaginaTemporaria(pagina, subPagina);
     }
 
     /**
@@ -171,7 +171,6 @@ public class ModelClasseComum {
      * @param unidadeAtual unidade em que o usuário se encontra
      */
     public void setUnidadeAtual(int unidadeAtual) {
-
         this.unidadeAtual = unidadeAtual;
     }
 
@@ -198,7 +197,7 @@ public class ModelClasseComum {
                     items.remove(0, items.size());//remove todos os elementos
                 }
                 for (int i = 0; i < unidade - 1; i++) {
-                    
+
                     items.add(listaPalavrasEstudadas[i]);
                 }
             }
@@ -207,7 +206,16 @@ public class ModelClasseComum {
             //System.out.println("Não adicionou nada");
         }
         //System.out.println("item não encontrado ");
-        
 
+    }
+
+    public void sugestaoAtividades(ActionEvent event, int pagina, String subPagina) throws IOException {
+        janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/atividades.fxml"));
+        Parent proximaCena = (Parent) fxmloader.load();
+        atividadesController atividadesController = fxmloader.<atividadesController>getController();
+        exibirCena(proximaCena, janela);
+        atividadesController.setUnidadeAtual(getUnidadeAtual());
+        atividadesController.setPaginaTemporaria(pagina, subPagina);
     }
 }

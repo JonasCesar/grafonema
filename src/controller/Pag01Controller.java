@@ -175,7 +175,8 @@ public class Pag01Controller implements Initializable {
     }
 
     @FXML
-    private void sugestaoAtividades(ActionEvent event) {
+    private void sugestaoAtividades(ActionEvent event) throws IOException {
+        modelPag01.sugestaoAtividade(event, pagina);
     }
     /**
      * Define a imagem que representa o texto do áudio

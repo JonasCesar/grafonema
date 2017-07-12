@@ -14,6 +14,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
 }
 
 //estilos dos botões inferiores
@@ -30,7 +31,7 @@
     -fx-text-fill: #654b00;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 10 20 10 20;    
 }
 
 #a, #b, #c, #d, #e,  #f, #g, #h, #i, #j, #k, #l, #m, #n, #o, #p, #q, #r, #s, #t, #u, #v, #w, #y, #x, #z {
@@ -64,7 +65,7 @@
 }
 #palavrasEstudadas {
     -fx-font-family: "Verdana";
-    -fx-font-size: 14px;
+    -fx-font-size: 13px;
     -fx-font-weight: regular;
     -fx-text-fill: #333333;
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );

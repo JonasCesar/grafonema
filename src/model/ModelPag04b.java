@@ -149,49 +149,8 @@ public class ModelPag04b {
         p4.setText(matrizSilabas[unidadeAtual - 1][3]);
         p5.setText(matrizSilabas[unidadeAtual - 1][4]);
         switch (unidadeAtual) {
-            case 1:
-                f1.setText("ÁR");
-                f2.setText("RE");
-                imgUrl = getClass().getResource("imagens/licao01/arvorepb.png");
-                break;
-            case 2:
-                f1.setText("PI");
-                f2.setText("CA");
-                imgUrl = getClass().getResource("imagens/licao02/pipocapb.png");
-                break;
-            case 3:
-                f1.setText("BO");
-                f2.setText("");
-                imgUrl = getClass().getResource("imagens/licao03/botapb.png");
-                break;
-            case 4:
-                f1.setId("pg4f1");
-                espaco.setId("pg4espaco");
-                f1.setText("RU");
-                f2.setText("BU");
-                imgUrl = getClass().getResource("imagens/licao4/urubupb.png");
-                break;
-            case 5:
-                f1.setVisible(false);
-                f2.setText("NHO");
-                imgUrl = getClass().getResource("imagens/licao5/vinhopb.png");
-                break;
-            case 6:
-                f1.setVisible(false);
-                f2.setText("VA");
-                imgUrl = getClass().getResource("imagens/licao6/luvapb.png");
-                break;
-            case 7:
-                f1.setVisible(false);
-                f2.setText("ÇO");
-                imgUrl = getClass().getResource("imagens/licao7/lacopb.png");
-                break;
-            case 8:
-                f1.setText("CA");
-                f2.setText("LO");
-                imgUrl = getClass().getResource("imagens/licao8/cabelopb.png");
-                break;
             case 9:
+                espaco.setText("- -");
                 f1.setId("pg4f1");
                 espaco.setId("pg4espaco");
                 f1.setText("GO");
@@ -199,13 +158,13 @@ public class ModelPag04b {
                 imgUrl = getClass().getResource("imagens/licao9b/cegonhapb.png");
                 break;
             case 51:
+                espaco.setText("- -");
                 f2.setId("pg4f2Esquerda");
                 espaco.setId("pg4espacoDireita");
                 f1.setText("BE");
                 f2.setText("LE");
                 imgUrl = getClass().getResource("imagens/licao51b/ZA4pb.png");
                 break;
-
         }
         imagemAudio.setImage(new Image(imgUrl.toString()));
     }
@@ -456,10 +415,10 @@ public class ModelPag04b {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+    public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, "b");
     }
 
     /**
@@ -590,5 +549,9 @@ public class ModelPag04b {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"b");
     }
 }

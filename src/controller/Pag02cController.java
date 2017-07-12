@@ -250,7 +250,7 @@ public class Pag02cController implements Initializable {
      */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
-        modelPag02c.abrirManual(event, pagina);
+        modelPag02c.abrirManual(event, pagina, "c");
     }
 
     /**
@@ -265,8 +265,9 @@ public class Pag02cController implements Initializable {
         modelPag02c.pararAudio();
     }
 
-    @FXML
-    private void sugestaoAtividades(ActionEvent event) {
+   @FXML
+    private void sugestaoAtividades(ActionEvent event) throws IOException {
+        modelPag02c.sugestaoAtividade(event, pagina);
     }
 
     private void atualizarListView() {

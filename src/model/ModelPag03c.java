@@ -3,7 +3,7 @@
  */
 package model;
 
-import controller.Pag02Controller;
+import controller.Pag03aController;
 import controller.Pag03bController;
 import controller.Pag03dController;
 import controller.Pag04Controller;
@@ -57,9 +57,9 @@ public class ModelPag03c {
     ListView<String> listaPalavras;
     //
     private String listaInstrucao[] = {"", "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "", "", "", "", "\"CES\"", "","","","",
-        "","","","","","","","","","","","","","","","","","","","","","","","","","",
-        "","","","","","","","","","","","\"NHA\""};
+        "", "", "", "", "", "", "", "", "", "", "", "", "", "\"CES\"", "", "", "", "",
+        "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+        "", "", "", "", "", "", "", "", "", "", "", "\"NHA\""};
 
     public ModelPag03c(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -103,18 +103,31 @@ public class ModelPag03c {
      * @throws IOException
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
+        int u = getUnidadeAtual();
+        if (u == 51 || u == 25) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03b.fxml"));
-
             //cria a próxima cena chamando a inteface dos avatares        
             Parent proximaCena = (Parent) fxmloader.load();
             Pag03bController pag03bCont = fxmloader.<Pag03bController>getController();
-
             mCC.exibirCena(proximaCena, janela);
             pag03bCont.setUnidadeAtual(getUnidadeAtual());
             pag03bCont.setUnidadeAtual(getUnidadeAtual());
             pag03bCont.audioInicial();
             pag03bCont.setImagens(getUnidadeAtual());
+        } else {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
+            //cria a próxima cena chamando a inteface dos avatares        
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag03aController pag03aCont = fxmloader.<Pag03aController>getController();
+            mCC.exibirCena(proximaCena, janela);
+            pag03aCont.setUnidadeAtual(getUnidadeAtual());
+            pag03aCont.setUnidadeAtual(getUnidadeAtual());
+            pag03aCont.audioInicial();
+            pag03aCont.setImagens(getUnidadeAtual());
+
+        }
     }
 
     /**
@@ -137,17 +150,6 @@ public class ModelPag03c {
             mCC.exibirCena(proximaCena, janela);
             pg03dCont.audioInicial();
 
-        } else if (u == 9) {
-            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03b.fxml"));
-            //cria a próxima cena chamando a inteface dos avatares        
-            Parent proximaCena = (Parent) fxmloader.load();
-            Pag03bController pg03bCont = fxmloader.<Pag03bController>getController();
-            pg03bCont.setUnidadeAtual(getUnidadeAtual());
-            mCC.exibirCena(proximaCena, janela);
-            pg03bCont.audioInicial();
-            pg03bCont.setImagens(getUnidadeAtual());
-            pg03bCont.setInstrucao(getUnidadeAtual());
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
@@ -322,10 +324,10 @@ public class ModelPag03c {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+    public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, "c");
     }
 
     /**
@@ -349,5 +351,9 @@ public class ModelPag03c {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"c");
     }
 }

@@ -218,10 +218,10 @@ public class ModelPag02c {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+    public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, "c");
     }
 
     /**
@@ -238,5 +238,9 @@ public class ModelPag02c {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"c");
     }
 }

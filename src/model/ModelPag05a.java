@@ -149,21 +149,8 @@ public class ModelPag05a {
         p4.setText(matrizSilabas[unidadeAtual - 1][3]);
         p5.setText(matrizSilabas[unidadeAtual - 1][4]);
         switch (unidadeAtual) {
-            case 1:
-                espaco.setText("");
-                imgUrl = getClass().getResource("imagens/licao01/polvopb.png");
-                imagemAudio.setImage(new Image(imgUrl.toString()));
-                break;
-            case 2:
-
-                f1.setId("pg5f1");
-                espaco.setId("pg5espaco");
-                f1.setText("ÇO");
-                espaco.setText("");
-                imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
-                imagemAudio.setImage(new Image(imgUrl.toString()));
-                break;
             case 3:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("MA");
@@ -174,30 +161,35 @@ public class ModelPag05a {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 9:
+                espaco.setText("- -");
                 f1.setVisible(false);
                 f2.setText("MI");
                 f3.setText("NÓ");
                 imgUrl = getClass().getResource("imagens/licao9a/dominopb.png");
                 break;
             case 12:
+                espaco.setText("- -");
                 f1.setVisible(false);
                 f2.setText("RI");
                 f3.setText("MUM");
                 imgUrl = getClass().getResource("imagens/licao12a/JE5pb.png");
                 break;
             case 13:
+                espaco.setText("- -");
                 f1.setVisible(false);
                 f2.setText("TINS");
                 f3.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao13a/PA5pb.png");
                 break;
             case 18:
+                espaco.setText("- -");
                 f1.setText("GA");
                 f2.setText("GEM");
                 f3.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/RA5pb.png");
                 break;
             case 25:
+                espaco.setText("- - -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("TI");
@@ -207,6 +199,7 @@ public class ModelPag05a {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 26:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("JO");
@@ -214,9 +207,9 @@ public class ModelPag05a {
                 f3.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/TI5pb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
-                break;
-                
+                break;                
             case 31:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("LE");
@@ -226,6 +219,7 @@ public class ModelPag05a {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 32:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("MÉ");
@@ -234,7 +228,8 @@ public class ModelPag05a {
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/RE5pb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
-            case 41:                
+            case 41:
+                espaco.setText("- -");
                 f1.setText("CA");
                 f2.setVisible(false);
                 f3.setVisible(false);
@@ -242,6 +237,7 @@ public class ModelPag05a {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 47:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("LI");
@@ -250,7 +246,8 @@ public class ModelPag05a {
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/GA5pb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
-            case 50:               
+            case 50:
+                espaco.setText("- - -");
                 f1.setText("LE");
                 f2.setVisible(false);
                 f3.setVisible(false);
@@ -258,6 +255,7 @@ public class ModelPag05a {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 51:
+                espaco.setText("- - -");
                 f1.setText("U");
                 f2.setVisible(false);
                 f3.setVisible(false);
@@ -265,6 +263,7 @@ public class ModelPag05a {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 53:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("TA");
@@ -272,9 +271,7 @@ public class ModelPag05a {
                 f3.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/GO5pb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
-                break; 
-            default:
-                break;
+                break;             
         }
         imagemAudio.setImage(new Image(imgUrl.toString()));
     }
@@ -298,8 +295,7 @@ public class ModelPag05a {
             espaco.setId("espaco");
             mCC.exibirCena(proximaCena, janela);
             pg05bCont.tocarAudio();
-            pg05bCont.setInstrucao(unidadeAtual);
-            
+            pg05bCont.setInstrucao(unidadeAtual);        
 
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -312,7 +308,6 @@ public class ModelPag05a {
             espaco.setId("espaco");
             mCC.exibirCena(proximaCena, janela);
             pg06Cont.tocarAudio();
-
         }
 
     }
@@ -496,10 +491,10 @@ public class ModelPag05a {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+    public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, "a");
     }
 
     /**
@@ -619,5 +614,9 @@ public class ModelPag05a {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"a");
     }
 }

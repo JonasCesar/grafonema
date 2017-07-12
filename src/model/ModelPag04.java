@@ -5,6 +5,8 @@ package model;
 
 import controller.Pag03Controller;
 import controller.Pag03aController;
+import controller.Pag03bController;
+import controller.Pag03cController;
 import controller.Pag03dController;
 import controller.Pag04aController;
 import controller.Pag05Controller;
@@ -169,7 +171,7 @@ public class ModelPag04 {
         {"AR", "ER", "IR", "OR", "UR"}, {"FA", "FE", "FI", "FO", "FU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
         {"MA", "ME", "MI", "MO", "MU"}, {"CAR", "CER", "CIR", "COR", "CUR"}, {"BA", "BE", "BI", "BO", "BU"}, {"NA", "NE", "NI", "NO", "NU"},
         {"BRA", "BRE", "BRI", "BRO", "BRU"}, {"ZAS", "ZES", "ZIS", "ZOS", "ZUS"}, {"DA", "DE", "DI", "DO", "DU"}, {"PA", "PE", "PI", "PO", "PU"},
-        {"JA", "JE", "JI", "JO", "JU"},{"PA", "PE", "PI", "PO", "PU"},{"LA", "LE", "LI", "LO", "LU"}, {"GA", "GE", "GI", "GO", "GU"}, {"AX", "EX", "IX", "OX", "UX"}, {"CAM", "CEM", "CIM", "COM", "CUM"},
+        {"JA", "JE", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"LA", "LE", "LI", "LO", "LU"}, {"GA", "GE", "GI", "GO", "GU"}, {"AX", "EX", "IX", "OX", "UX"}, {"CAM", "CEM", "CIM", "COM", "CUM"},
         {"TRA", "TRE", "TRI", "TRO", "TRU"}, {"GUA", "GUE", "GUI", "GUO", ""}, {"LAM", "LEM", "LIM", "LOM", "LUM"}, {"AL", "EL", "IL", "OL", "UL"},
         {"PRAN", "PREN", "PRÍN", "PRON", "PRUN"}, {"PRA", "PRE", "PRI", "PRÓ", "PRU"}, {"CRA", "CRE", "CRI", "CRO", "CRU"}, {"CAR", "CER", "CIR", "COR", "CUR"},
         {"TAM", "TEM", "TIM", "TOM", "TUM"}, {"FLA", "FLE", "FLI", "FLO", "FLU"}, {"MAR", "MER", "MIR", "MOR", "MUR"}};
@@ -520,7 +522,7 @@ public class ModelPag04 {
             case 41:
                 espaco.setText("- - -");
                 f2.setId("pg4f2Esquerda_3");
-                espaco.setId("pg4espacoDireita");
+                espaco.setId("pg4espacoDireita_3");
                 f1.setText("RA");
                 f2.setText("PA");
                 f3.setVisible(false);
@@ -634,7 +636,7 @@ public class ModelPag04 {
             case 54:
                 espaco.setText("- - - -");
                 f1.setId("pg4f1_4");
-                espaco.setId("pg4espaco");                
+                espaco.setId("pg4espaco");
                 f1.setText("CI");
                 f2.setText("PE");
                 f3.setVisible(false);
@@ -717,7 +719,7 @@ public class ModelPag04 {
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
         if (u == 3 || u == 9 || u == 13 || u == 18 || u == 25 || u == 31 || u == 32
-                || u == 45 || u == 50 || u == 51 || u == 53) {
+                || u == 41 || u == 45 || u == 50 || u == 51 || u == 53) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04a.fxml"));
 
@@ -751,7 +753,10 @@ public class ModelPag04 {
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 3 || u == 4) {
+        if (u == 3 || u == 4 || u == 20 || u == 21 || u == 23 || u == 24 || u == 26
+                || u == 32 || u == 38 || u == 41 || u == 45 || u == 47 || u == 49
+                || u == 50 || u == 52 || u == 53 || u == 55 || u == 56 || u == 58
+                || u == 59) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
             //cria a próxima cena     
@@ -773,6 +778,26 @@ public class ModelPag04 {
             pg03dCont.setUnidadeAtual(getUnidadeAtual());
             pg03dCont.audioInicial();
             pg03dCont.setImagens(getUnidadeAtual());
+        } else if (u == 31 || u == 60) {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03b.fxml"));
+            //cria a próxima cena     
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag03bController pg03bCont = fxmloader.<Pag03bController>getController();
+            mCC.exibirCena(proximaCena, janela);
+            pg03bCont.setUnidadeAtual(getUnidadeAtual());
+            pg03bCont.audioInicial();
+            pg03bCont.setImagens(getUnidadeAtual());
+        } else if (u == 51) {
+            janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03c.fxml"));
+            //cria a próxima cena     
+            Parent proximaCena = (Parent) fxmloader.load();
+            Pag03cController pg03cCont = fxmloader.<Pag03cController>getController();
+            mCC.exibirCena(proximaCena, janela);
+            pg03cCont.setUnidadeAtual(getUnidadeAtual());
+            pg03cCont.audioInicial();
+            pg03cCont.setImagens(getUnidadeAtual());
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03.fxml"));
@@ -978,10 +1003,10 @@ public class ModelPag04 {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+    public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, subPagina);
     }
 
     /**
@@ -1112,5 +1137,9 @@ public class ModelPag04 {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"");
     }
 }

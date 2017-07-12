@@ -9,12 +9,11 @@ and open the template in the editor.
 */
 
 .text-area {
-    
-  -fx-font-family: Consolas;
+  -fx-background-color: seagreen;
+  -fx-font-family: System;
   -fx-highlight-fill: #00ff00;
   -fx-highlight-text-fill: #000000;
   -fx-text-fill: black;
-  
-  
-}
+  -fx-text-alignment: justify;
 
+}

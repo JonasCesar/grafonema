@@ -9,9 +9,10 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ABCController">
+<AnchorPane id="AnchorPane" fx:id="janelaPrograma" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ABCController">
     <stylesheets>
         <URL value="@/css/estilosGerais.css" />
+        <URL value="@/css/estilosABC.css" />
     </stylesheets>
 
     <children>
@@ -20,103 +21,103 @@
             <Image url="@../model/imagens/imagemDeFundo/imagemFundo3.png" />
          </image></ImageView>
         <ImageView fx:id="img1" fitHeight="200.0" fitWidth="200.0" layoutX="120.0" layoutY="150.0" onMouseClicked="#tocarLetra" onMouseEntered="#passouRato" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true" />
-        <Button fx:id="a" layoutX="62.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="A">
+        <Button fx:id="a" layoutX="62.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="A">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="b" layoutX="144.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="B">
+        <Button fx:id="b" layoutX="144.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="B">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="c" layoutX="227.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="C">
+        <Button fx:id="c" layoutX="227.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="C">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="d" layoutX="310.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="D">
+        <Button fx:id="d" layoutX="310.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="D">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="j" layoutX="817.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="J">
+        <Button fx:id="j" layoutX="817.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="J">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="i" layoutX="733.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="I">
+        <Button fx:id="i" layoutX="733.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="I">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="h" layoutX="649.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="H">
+        <Button fx:id="h" layoutX="649.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="H">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="g" layoutX="565.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="G">
+        <Button fx:id="g" layoutX="565.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="G">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="f" layoutX="479.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="F">
+        <Button fx:id="f" layoutX="479.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="F">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="e" layoutX="395.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="E">
+        <Button fx:id="e" layoutX="395.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="E">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="n" layoutX="310.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="N">
+        <Button fx:id="n" layoutX="310.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="N">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="m" layoutX="227.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="M">
+        <Button fx:id="m" layoutX="227.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="M">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="l" layoutX="144.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="L">
+        <Button fx:id="l" layoutX="144.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="L">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="k" layoutX="901.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="K">
+        <Button fx:id="k" layoutX="901.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="K">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button layoutX="565.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="X" fx:id="x">
+        <Button layoutX="565.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="X" fx:id="x">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="w" layoutX="479.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="W">
+        <Button fx:id="w" layoutX="479.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="W">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="v" layoutX="395.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="V">
+        <Button fx:id="v" layoutX="395.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="V">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="u" layoutX="310.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="U">
+        <Button fx:id="u" layoutX="310.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="U">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="t" layoutX="817.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="T">
+        <Button fx:id="t" layoutX="817.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="T">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="s" layoutX="733.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="S">
+        <Button fx:id="s" layoutX="733.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="S">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="r" layoutX="649.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="R">
+        <Button fx:id="r" layoutX="649.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="R">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="q" layoutX="565.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="Q">
+        <Button fx:id="q" layoutX="565.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="Q">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="p" layoutX="479.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="P">
+        <Button fx:id="p" layoutX="479.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="P">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="o" layoutX="395.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="O">
+        <Button fx:id="o" layoutX="395.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="O">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button fx:id="z" layoutX="649.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="70.0" prefWidth="70.0" text="Z">
+        <Button fx:id="z" layoutX="649.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="Z">
          <font>
             <Font size="20.0" />
          </font></Button>

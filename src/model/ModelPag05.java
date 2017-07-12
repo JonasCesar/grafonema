@@ -5,6 +5,7 @@ package model;
 
 import controller.Pag03aController;
 import controller.Pag04Controller;
+import controller.Pag04aController;
 import controller.Pag04bController;
 import controller.Pag05aController;
 import controller.Pag06Controller;
@@ -86,34 +87,34 @@ public class ModelPag05 {
 
     @FXML
     private Label f3;
-    
+
     @FXML
     private Label f4;
     //13/PI
-    private String silabaCorreta[] = {"VO","PO","TÁ","VA","VI","LU","LA","BE","BO",
-    "CA","BA","JÉ","PI","RO","FI","GOS","XO","GA","NE","DOS",
-    "NOZ","RU","DU","SA","SU","MO","CU","JÁ","PU","SO","PER",
-    "AR","FA","LA","LI","ME","CAR","CI","NO","BRA","ZES","DA",//SÓ FIZ ATÉ AQUI
-    "PI","JU","RI","LE","CHE","EX","ROS","ESLAS", "QUE", "BRÂN", "AL", "PRIN",
-    "SOR", "AN", "COR", "ÇÃO", "RES", "FOR"};
-    
+    private String silabaCorreta[] = {"VO", "PO", "TÁ", "VA", "VI", "LU", "LA", "BE", "BO",
+        "CA", "BA", "JÉ", "PI", "RO", "FI", "GOS", "XO", "GA", "NE", "DOS",
+        "NOZ", "RU", "DU", "SA", "SU", "MO", "CU", "JÁ", "PU", "SO", "PER",
+        "AR", "FA", "LA", "LI", "ME", "CAR", "CI", "NO", "BRA", "ZES", "DA",//SÓ FIZ ATÉ AQUI
+        "PI", "JU", "RI", "LE", "CHE", "EX", "ROS", "ESLAS", "QUE", "BRÂN", "AL", "PRIN",
+        "SOR", "AN", "COR", "ÇÃO", "RES", "FOR"};
+
     private String matrizSilabas[][] = {{"VA", "VE", "VI", "VO", "VU"}, {"PA", "PE", "PI", "PO", "PU"}, {"TÁ", "TE", "TI", "TO", "TU"},
-        {"VA", "VE", "VI", "VO", "VU"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
-        {"BA", "BE", "BI", "BO", "BU"}, {"BA", "BE", "BI", "BO", "BU"}, {"CA", "CE", "CI", "CO", "CU"}, {"BA", "BE", "BI", "BO", "BU"},
-        {"JÁ", "JÉ", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"RA", "RE", "RI", "RO", "RU"}, {"FA", "FE", "FI", "FO", "FU"}, 
-        {"GAS", "GES", "GIS", "GOS", "GUS"}, {"XA", "XE", "XI", "XO", "XU"}, {"GA", "GE", "GI", "GO", "GU"}, {"NA", "NE", "NI", "NO", "NU"},
-        {"DAS", "DES", "DIS", "DOS", "DUS"}, {"NAZ", "NEZ", "NIZ", "NOZ", "NUZ"}, {"RA", "RE", "RI", "RO", "RU"}, {"DA", "DE", "DI", "DO", "DU"},
-        {"SA", "SE", "SI", "SO", "SU"}, {"SA", "SE", "SI", "SO", "SU"}, {"MA", "ME", "MI", "MO", "MU"}, {"CA", "CE", "CI", "CO", "CU"},
-        {"JÁ", "JÉ", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"SA", "SE", "SI", "SO", "SU"}, {"PAR", "PER", "PIR", "POR", "PUR"},
-        {"AR", "ER", "IR", "OR", "UR"}, {"FA", "FE", "FI", "FO", "FU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
-        {"MA", "ME", "MI", "MO", "MU"}, {"CAR", "CER", "CIR", "COR", "CUR"}, {"CA", "CE", "CI", "CO", "CU"}, {"NA", "NE", "NI", "NO", "NU"},
-        {"BRA", "BRE", "BRI", "BRO", "BRU"}, {"ZAS", "ZES", "ZIS", "ZOS", "ZUS"},{"DA", "DE", "DI", "DO", "DU"},{"PA", "PE", "PI", "PO", "PU"},
-        {"JA", "JE", "JI", "JO", "JU"},{"RA", "RE", "RI", "RO", "RU"},{"LA", "LE", "LI", "LO", "LU"},{"CHA", "CHE", "CHI", "CHO", "CHU"},
-        {"AX", "EX", "IX", "OX", "UX"},{"RAS", "RES", "RIS", "ROS", "RUS"},{"LAS", "ES", "IS", "OS", "US"},
-        {"QUA","QUE","QUI","QUO",""}, {"BRÂN","BREN","BRIN","BRON","BRUN"}, {"AL","EL","IL","OL","UL"},
-        {"PRAN","PREN","PRIN","PRON","PRUN"}, {"SAR","SER","SIR","SOR","SUR"}, {"AN","EN","IN","ON","UN"},
-        {"CAR","CER","CIR","COR","CUR"}, {"CAU","CEU","CIO","COL","ÇÃO"}, {"RAS","RES","RIS","ROS","RUS"},
-        {"FAR","FER","FIR","FOR","FUR"}};
+    {"VA", "VE", "VI", "VO", "VU"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
+    {"BA", "BE", "BI", "BO", "BU"}, {"BA", "BE", "BI", "BO", "BU"}, {"CA", "CE", "CI", "CO", "CU"}, {"BA", "BE", "BI", "BO", "BU"},
+    {"JÁ", "JÉ", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"RA", "RE", "RI", "RO", "RU"}, {"FA", "FE", "FI", "FO", "FU"},
+    {"GAS", "GES", "GIS", "GOS", "GUS"}, {"XA", "XE", "XI", "XO", "XU"}, {"GA", "GE", "GI", "GO", "GU"}, {"NA", "NE", "NI", "NO", "NU"},
+    {"DAS", "DES", "DIS", "DOS", "DUS"}, {"NAZ", "NEZ", "NIZ", "NOZ", "NUZ"}, {"RA", "RE", "RI", "RO", "RU"}, {"DA", "DE", "DI", "DO", "DU"},
+    {"SA", "SE", "SI", "SO", "SU"}, {"SA", "SE", "SI", "SO", "SU"}, {"MA", "ME", "MI", "MO", "MU"}, {"CA", "CE", "CI", "CO", "CU"},
+    {"JÁ", "JÉ", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"SA", "SE", "SI", "SO", "SU"}, {"PAR", "PER", "PIR", "POR", "PUR"},
+    {"AR", "ER", "IR", "OR", "UR"}, {"FA", "FE", "FI", "FO", "FU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
+    {"MA", "ME", "MI", "MO", "MU"}, {"CAR", "CER", "CIR", "COR", "CUR"}, {"CA", "CE", "CI", "CO", "CU"}, {"NA", "NE", "NI", "NO", "NU"},
+    {"BRA", "BRE", "BRI", "BRO", "BRU"}, {"ZAS", "ZES", "ZIS", "ZOS", "ZUS"}, {"DA", "DE", "DI", "DO", "DU"}, {"PA", "PE", "PI", "PO", "PU"},
+    {"JA", "JE", "JI", "JO", "JU"}, {"RA", "RE", "RI", "RO", "RU"}, {"LA", "LE", "LI", "LO", "LU"}, {"CHA", "CHE", "CHI", "CHO", "CHU"},
+    {"AX", "EX", "IX", "OX", "UX"}, {"RAS", "RES", "RIS", "ROS", "RUS"}, {"LAS", "ES", "IS", "OS", "US"},
+    {"QUA", "QUE", "QUI", "QUO", ""}, {"BRÂN", "BREN", "BRIN", "BRON", "BRUN"}, {"AL", "EL", "IL", "OL", "UL"},
+    {"PRAN", "PREN", "PRIN", "PRON", "PRUN"}, {"SAR", "SER", "SIR", "SOR", "SUR"}, {"AN", "EN", "IN", "ON", "UN"},
+    {"CAR", "CER", "CIR", "COR", "CUR"}, {"CAU", "CEU", "CIO", "COL", "ÇÃO"}, {"RAS", "RES", "RIS", "ROS", "RUS"},
+    {"FAR", "FER", "FIR", "FOR", "FUR"}};
 
     /**
      * Construtor da classe Labels utilzadas nas paginas:
@@ -164,7 +165,7 @@ public class ModelPag05 {
         this.unidadeAtual = unidadeAtual;
         double xf1, yf1, xespaco, yespaco, z = 0;
         URL imgUrl = null;
-        
+
         p1.setText(matrizSilabas[unidadeAtual - 1][0]);
         p2.setText(matrizSilabas[unidadeAtual - 1][1]);
         p3.setText(matrizSilabas[unidadeAtual - 1][2]);
@@ -173,6 +174,7 @@ public class ModelPag05 {
 
         switch (unidadeAtual) {
             case 1:
+                espaco.setText("- -");
                 f1.setText("POL");
                 espaco.setText("");
                 f2.setVisible(false);
@@ -182,17 +184,19 @@ public class ModelPag05 {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 2:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("ÇO");
                 f2.setVisible(false);
                 f3.setVisible(false);
-                f4.setVisible(false);                
+                f4.setVisible(false);
                 espaco.setText("");
                 imgUrl = getClass().getResource("imagens/licao02/poçopb.png");
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 3:
+                espaco.setText("- -");
                 f1.setId("pg5f1_3");//sílaba com 3 letras
                 espaco.setId("pg5espaco");
                 f1.setText("BUA");
@@ -204,6 +208,7 @@ public class ModelPag05 {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 4:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("GA");
@@ -215,6 +220,7 @@ public class ModelPag05 {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 5:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("O");
@@ -226,6 +232,7 @@ public class ModelPag05 {
                 imagemAudio.setImage(new Image(imgUrl.toString()));
                 break;
             case 6:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("NE");
@@ -235,6 +242,7 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao6/lunetapb.jpg");
                 break;
             case 7:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("GO");
@@ -244,6 +252,7 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao7/lagoapb.png");
                 break;
             case 8:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("BI");
@@ -253,6 +262,7 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao8/bebidapb.png");
                 break;
             case 9:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("TÃO");
@@ -262,16 +272,17 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao9/botaopb.png");
                 break;
             case 10:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("RA");
                 f2.setText("COL");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao10/CA5pb.png");                
+                imgUrl = getClass().getResource("imagens/licao10/CA5pb.png");
                 break;
             case 11:
-                
+                espaco.setText("- -");
                 f1.setText("A");
                 f2.setText("CA");
                 f3.setText("XI");
@@ -279,6 +290,7 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao11/BA5pb.png");
                 break;
             case 12:
+                espaco.setText("- -");
                 f1.setText("PA");
                 f2.setVisible(false);
                 f3.setVisible(false);
@@ -286,356 +298,397 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao12/JÉ5pb.png");
                 break;
             case 13:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("PO");
                 f2.setText("CA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao13/PI5pb.png");                
+                imgUrl = getClass().getResource("imagens/licao13/PI5pb.png");
                 break;
             case 14:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("DO");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/RO5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/RO5pb.png");
                 break;
             case 15:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("GO");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/FI5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/FI5pb.png");
                 break;
-            case 16:                
+            case 16:
+                espaco.setText("- -");
                 f1.setText("PRE");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/GOS5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/GOS5pb.png");
                 break;
             case 17:
+                espaco.setText("- -");
                 f1.setText("CAI");
                 f2.setText("TE");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/XO5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/XO5pb.png");
                 break;
             case 18:
+                espaco.setText("- -");
                 f1.setVisible(false);
                 f2.setText("TO");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/GA5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/GA5pb.png");
                 break;
             case 19:
+                espaco.setText("- -");
                 f1.setText("COR");
                 f2.setText("TA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/NE5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/NE5pb.png");
                 break;
             case 20:
+                espaco.setText("- -");
                 f2.setId("pg5f2Esquerda");
                 espaco.setId("pg5espacoDireita");
                 f1.setText("CAL");
                 f2.setText("ÇA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/DOS5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/DOS5pb.png");
                 break;
             case 21:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("-MOS");
                 f2.setText("CA");
                 f3.setText("DA");
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/NOZ5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/NOZ5pb.png");
                 break;
             case 22:
+                espaco.setText("- -");
                 f1.setText("PE");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/RU5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/RU5pb.png");
                 break;
             case 23:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("ZEN");
                 f2.setText("TOS");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/DU5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/DU5pb.png");
                 break;
             case 24:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("PO");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SA5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/SA5pb.png");
                 break;
             case 25:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("JO");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SU5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/SU5pb.png");
                 break;
             case 26:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("DE");
                 f2.setText("LO");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/MO5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/MO5pb.png");
                 break;
             case 27:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("RU");
                 f2.setText("RU");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CU5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/CU5pb.png");
                 break;
             case 28:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("BU");
                 f2.setText("TI");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/JA5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/JA5pb.png");
                 break;
             case 29:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("DIM");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PU5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/PU5pb.png");
                 break;
             case 30:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("FÁ");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SO5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/SO5pb.png");
                 break;
             case 31:
+                espaco.setText("- - -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("GA");
                 f2.setText("MI");
                 f3.setText("NHO");
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PER5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/PER5pb.png");
                 break;
             case 32:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("TE");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/AR5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/AR5pb.png");
                 break;
             case 33:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("ZEN");
                 f2.setText("DA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/FA5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/FA5pb.png");
                 break;
             case 34:
+                espaco.setText("- -");
                 f1.setId("pg5f1_3");
                 espaco.setId("pg5espaco");
                 f1.setText("GOS");
                 f2.setText("TA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/LA5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/LA5pb.png");
                 break;
             case 35:
+                espaco.setText("- -");
                 f1.setText("PA");
                 f2.setText("TO");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/LI5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/LI5pb.png");
                 break;
             case 36:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("DA");
                 f2.setText("LHA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ME5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/ME5pb.png");
                 break;
             case 37:
+                espaco.setText("- - -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("TEI");
                 f2.setText("RA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CAR5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/CAR5pb.png");
                 break;
             case 38:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("NE");
                 f2.setText("MA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CI5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/CI5pb.png");
                 break;
             case 39:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("JO");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/NO5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/NO5pb.png");
                 break;
             case 40:
+                espaco.setText("- - -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("CE");
                 f2.setText("LE");
                 f3.setText("TE");
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/BRA5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/BRA5pb.png");
                 break;
             case 41:
+                espaco.setText("- - -");
                 f2.setId("pg5f2Esquerda");
                 espaco.setId("pg5espacoDireita");
                 f1.setText("CAR");
                 f2.setText("TA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ZES5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/ZES5pb.png");
                 break;
             case 42:
+                espaco.setText("- -");
                 f2.setId("pg5f2Esquerda");
                 espaco.setId("pg5espacoDireita");
                 f1.setText("LÂM");
                 f2.setText("PA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/DA5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/DA5pb.png");
                 break;
             case 43:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("ÃO");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PI5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/PI5pb.png");
                 break;
             case 44:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("IZ");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/JU5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/JU5pb.png");
                 break;
             case 45:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("NO");
                 f2.setText("CE");
                 f3.setText("RON");
                 f4.setText("TE");
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/RI5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/RI5pb.png");
                 break;
             case 46:
+                espaco.setText("- -");
                 f1.setId("pg5f1_3");
                 espaco.setId("pg5espaco");
                 f1.setText("GAL");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/LE5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/LE5pb.png");
                 break;
             case 47:
+                espaco.setText("- - -");
                 f1.setText("CA");
                 f2.setText("COL");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/CHE5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/CHE5pb.png");
                 break;
             case 48:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("PO");
                 f2.setText("SI");
                 f3.setText("ÇÃO");
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/EX5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/EX5pb.png");
                 break;
-            case 49:                
+            case 49:
+                espaco.setText("- - -");
                 f1.setText("FU");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ROS5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/ROS5pb.png");
                 break;
             case 50://CRIAR DUAS LABELS DE ESPAÇO
-                f1.setId("pg5f1_3");
-                espaco.setId("pg5espacoDireita");                
-                f1.setText("TRE");
+                espaco.setText("- - -");
+                f1.setText("ES");
+                f2.setText("LA");
+                f3.setVisible(false);
+                f4.setVisible(false);
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/TRE5pb.png");
+                break;
+            case 51:
+                espaco.setText("- - -");
+                f1.setText("LE");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ESLAS5pb.png");
-                break;
-            case 51:                
-                f1.setText("LE");
-                f2.setVisible(false);
-                f3.setVisible(false);f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/QUE5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/QUE5pb.png");
                 break;
             case 52:
+                espaco.setText("- - - -");
                 f1.setId("pg5f1_4");
                 espaco.setId("pg5espaco");
                 f1.setText("QUIAS");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/BRÂN5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/BRÂN5pb.png");
                 break;
             case 53:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("MO");
                 f2.setText("FA");
                 f3.setText("DA");
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/AL5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/AL5pb.png");
                 break;
             case 54:
+                espaco.setText("- - - -");
                 f1.setId("pg5f1_4");
                 espaco.setId("pg5espaco");
                 espaco.setText("- - - -");
@@ -643,61 +696,67 @@ public class ModelPag05 {
                 f2.setText("SA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/PRIN5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/PRIN5pb.png");
                 break;
             case 55:
+                espaco.setText("- - -");
                 f1.setId("pg5f1_3");
                 espaco.setId("pg5espaco");
                 f1.setText("RI");
                 f2.setText("SO");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/SOR5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/SOR5pb.png");
                 break;
             case 56:
+                espaco.setText("- -");
                 f1.setId("pg5f1");
                 espaco.setId("pg5espaco");
                 f1.setText("TA");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/AN5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/AN5pb.png");
                 break;
             case 57:
+                espaco.setText("- - -");
                 f1.setId("pg5f1_3");
                 espaco.setId("pg5espaco");
                 f1.setText("NE");
                 f2.setText("TA");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/COR5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/COR5pb.png");
                 break;
             case 58://
+                espaco.setText("- - -");
                 f3.setId("pg5f3Esquerda");
                 espaco.setId("pg5espacoDireita2x");
                 f1.setText("ME");
                 f2.setText("DI");
                 f3.setText("TA");
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/ÇÃO5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/ÇÃO5pb.png");
                 break;
-            case 59:                
+            case 59:
+                espaco.setText("- - -");
                 f1.setText("FLO");
                 f2.setVisible(false);
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/RES5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/RES5pb.png");
                 break;
-            case 60:                
+            case 60:
+                espaco.setText("- - -");
                 f1.setId("pg5f1_3");
                 espaco.setId("pg5espaco");
                 f1.setText("MI");
                 f2.setText("GAS");
                 f3.setVisible(false);
                 f4.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao"+unidadeAtual+"/FOR5pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/FOR5pb.png");
                 break;
-            
+
         }
         imagemAudio.setImage(new Image(imgUrl.toString()));
     }
@@ -711,7 +770,7 @@ public class ModelPag05 {
     public void proximaPagina(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
         if (u == 3 || u == 9 || u == 12 || u == 13 || u == 18 || u == 25 || u == 26
-                || u == 31 || u == 32 || u == 41 || u == 47 || u == 50 || u == 51 
+                || u == 31 || u == 32 || u == 41 || u == 47 || u == 50 || u == 51
                 || u == 53) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag05a.fxml"));
@@ -747,29 +806,27 @@ public class ModelPag05 {
      */
     public void paginaAnterior(ActionEvent event) throws IOException {
         int u = getUnidadeAtual();
-        if (u == 3 || u == 25 || u == 45) {
+        if (u == 3 || u == 25 || u == 31 || u == 32 || u == 41 || u == 45 || u == 50
+                || u == 53) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag03a.fxml"));
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04a.fxml"));
             //cria a próxima cena
             Parent proximaCena = (Parent) fxmloader.load();
-            Pag03aController pg03aCont = fxmloader.<Pag03aController>getController();
-
+            Pag04aController pg04aCont = fxmloader.<Pag04aController>getController();
+            pg04aCont.setUnidadeAtual(getUnidadeAtual());
+            pg04aCont.setInstrucao(unidadeAtual);
             mCC.exibirCena(proximaCena, janela);
-            pg03aCont.setUnidadeAtual(getUnidadeAtual());
-            pg03aCont.setImagens(getUnidadeAtual());
-            pg03aCont.setInstrucao(getUnidadeAtual());
+            pg04aCont.tocarAudio();          
         } else if (u == 9 || u == 51) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04b.fxml"));
             //cria a próxima cena
             Parent proximaCena = (Parent) fxmloader.load();
             Pag04bController pg04bCont = fxmloader.<Pag04bController>getController();
-
             mCC.exibirCena(proximaCena, janela);
             pg04bCont.setUnidadeAtual(getUnidadeAtual());
 
-        }
-        else {
+        } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/pag04.fxml"));
             //cria a próxima cena
@@ -867,10 +924,10 @@ public class ModelPag05 {
                 }
                 break;
             default:
-                String fonema = silabaCorreta[getUnidadeAtual()-1];
+                String fonema = silabaCorreta[getUnidadeAtual() - 1];
                 if (silabaEscolhida.equals(fonema)) {
                     opcaoCorreta = true;
-                    imagemUrl = getClass().getResource("imagens/licao"+getUnidadeAtual()+"/"+fonema+"5cor.png");
+                    imagemUrl = getClass().getResource("imagens/licao" + getUnidadeAtual() + "/" + fonema + "5cor.png");
                 }
                 break;
         }
@@ -965,7 +1022,7 @@ public class ModelPag05 {
      */
     public void abrirABC(ActionEvent event, int pagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirABC(event, pagina,"");
+        mCC.abrirABC(event, pagina, "");
     }
 
     /**
@@ -975,10 +1032,10 @@ public class ModelPag05 {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+   public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, subPagina);
     }
 
     /**
@@ -1084,14 +1141,14 @@ public class ModelPag05 {
     }
 
     public void definirInstrucao(int unidadeAtual) {
-        String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"", 
-            "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"BOTÃO\"","\"CARACOL\"",
-            "\"ABACAXI\"","\"PAJÉ\"","\"PIPOCA\"","\"RODO\"","\"FIGO\"","\"PREGOS\"","\"CAIXOTE\"","\"GATO\"",
-            "\"CORNETA\"", "\"CALÇADOS\"", "\"BOVINOS\"", "\"PERU\"","\"DUZENTOS\"","\"SAPO\"","\"SUJO\"",
-            "\"MODELO\"","\"CURURU\"","\"JABUTI\"","\"PUDIM\"","\"SOFÁ\"","\"PERGAMINHO\"",
-            "\"ARTE\"","\"FAZENDA\"","\"LAGOSTA\"","\"PALITO\"","\"MEDALHA\"","\"CARTEIRA\"",
-            "\"CINEMA\"","\"NOJO\"","\"BRACELETE\"","\"CARTAZES\"","\"LÂMPADA\"","\"PIÃO\"",
-            "\"JUIZ\"","\"RINOCERONTE\"","\"LEGAL\"","\"CACHECOL\"","\"EXPOSIÇÃO\"","\"FUROS\"",            
+        String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"",
+            "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"BOTÃO\"", "\"CARACOL\"",
+            "\"ABACAXI\"", "\"PAJÉ\"", "\"PIPOCA\"", "\"RODO\"", "\"FIGO\"", "\"PREGOS\"", "\"CAIXOTE\"", "\"GATO\"",
+            "\"CORNETA\"", "\"CALÇADOS\"", "\"BOVINOS\"", "\"PERU\"", "\"DUZENTOS\"", "\"SAPO\"", "\"SUJO\"",
+            "\"MODELO\"", "\"CURURU\"", "\"JABUTI\"", "\"PUDIM\"", "\"SOFÁ\"", "\"PERGAMINHO\"",
+            "\"ARTE\"", "\"FAZENDA\"", "\"LAGOSTA\"", "\"PALITO\"", "\"MEDALHA\"", "\"CARTEIRA\"",
+            "\"CINEMA\"", "\"NOJO\"", "\"BRACELETE\"", "\"CARTAZES\"", "\"LÂMPADA\"", "\"PIÃO\"",
+            "\"JUIZ\"", "\"RINOCERONTE\"", "\"LEGAL\"", "\"CACHECOL\"", "\"EXPOSIÇÃO\"", "\"FUROS\"",
             "\"ESTRELAS\"", "\"LEQUE\"", "\"BRÂNQUIAS\"", "\"ALMOFADA\"",
             "\"PRINCESA\"", "\"SORRISO\"", "\"ANTA\"", "\"CORNETA\"", "\"MEDITAÇÃO\"", "\"FLORES\"",
             "\"FORMIGA\""};
@@ -1100,5 +1157,9 @@ public class ModelPag05 {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"");
     }
 }

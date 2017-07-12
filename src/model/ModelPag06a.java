@@ -66,17 +66,6 @@ public class ModelPag06a {
      */
     public void setUnidadeAtual(int unidade) {
         this.unidadeAtual = unidade;
-        switch (getUnidadeAtual()) {
-            case 1:
-                definirLabels();
-                break;
-            case 2:
-                definirLabels();
-                break;
-            default:
-                break;
-        }
-
     }
 
     /**
@@ -96,6 +85,7 @@ public class ModelPag06a {
         mCC.exibirCena(proximaCena, janela);
         pg07Cont.tocarAudio();
         pg07Cont.setImagemTexto(getUnidadeAtual());
+        pg07Cont.atualizarListView(getUnidadeAtual());
 
     }
 
@@ -166,24 +156,24 @@ public class ModelPag06a {
         switch (getUnidadeAtual()) {
             case 1:
                 p1.setText("O");
-                p2.setText("É MEU AMIGO");
+                p2.setText("é meu amigo");
                 break;
             case 2:
                 p1.setText("O");
-                p2.setText("DA FESTA ESTÁ ANIMADO");
+                p2.setText("da festa está animado");
                 break;
             case 3:
                 p1.setText("O");
-                p2.setText("SERVE PARA NOS PROTEGER");
+                p2.setText("serve para nos proteger");
                 break;
             case 4:
-                p1.setText("MEU PAI GOSTA DE");
+                p1.setText("Meu pai gosta de");
                 break;
             case 5:
-                p2.setText("A VIDA COM AMOR.");
+                p2.setText("A vida com amor.");
                 break;
             case 6:
-                p1.setText("ESTÁ FRIO, VOU USAR MINHA");
+                p1.setText("Está frio, vou usar minha");
                 p2.setText(".");
                 break;
             case 7:
@@ -259,10 +249,10 @@ public class ModelPag06a {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+   public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, "a");
     }
 
     /**
@@ -319,5 +309,9 @@ public class ModelPag06a {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"a");
     }
 }

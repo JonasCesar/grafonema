@@ -2,7 +2,6 @@ package controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import model.ModelPag06a;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -198,7 +197,7 @@ public class Pag06aController implements Initializable {
      */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
-        modelPag06a.abrirManual(event, pagina);
+        modelPag06a.abrirManual(event, pagina,"a");
     }
     /**
      * Abre a função ABC do software
@@ -244,8 +243,9 @@ public class Pag06aController implements Initializable {
         modelPag06a.tocarAudio();
     }
 
-    @FXML
-    private void sugestaoAtividades(ActionEvent event) {
+     @FXML
+    private void sugestaoAtividades(ActionEvent event) throws IOException {
+        modelPag06a.sugestaoAtividade(event, pagina);
     }
     
     private void atualizarListView() {

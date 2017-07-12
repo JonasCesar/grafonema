@@ -4,8 +4,6 @@
 package model;
 
 import controller.Pag02Controller;
-import controller.Pag03Controller;
-import controller.Pag03bController;
 import controller.Pag03cController;
 import controller.Pag04Controller;
 import java.io.File;
@@ -314,12 +312,11 @@ public class ModelPag03d {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+    public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, "d");
     }
-
     /**
      * Carrega a interface do ABC
      *
@@ -341,5 +338,9 @@ public class ModelPag03d {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"d");
     }
 }

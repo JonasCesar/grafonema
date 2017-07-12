@@ -144,7 +144,7 @@ public class ModelPag03 {
         int u = getUnidadeAtual();
         if (u == 3 || u == 4 || u == 9 || u == 14 || u == 16 || u == 18 || u == 20
                 || u == 21 || u == 23 || u == 24 || u == 25 || u == 26 || u == 31 || u == 32
-                || u == 38 || u == 45 || u == 47 || u == 49 || u == 50
+                || u == 38 || u == 41|| u == 45 || u == 47 || u == 49 || u == 50
                 || u == 51 || u == 52 || u == 53 || u == 55 || u == 56 || u == 58
                 || u == 59 || u == 60) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -754,10 +754,10 @@ public class ModelPag03 {
      * @param pagina pagina de onde o manual foi chamado
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+    public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, subPagina);
     }
 
     /**
@@ -783,5 +783,9 @@ public class ModelPag03 {
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"");
     }
 }

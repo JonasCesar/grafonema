@@ -226,7 +226,7 @@ public class Pag06Controller implements Initializable {
      */
     @FXML
         private void abrirManual(ActionEvent event) throws IOException {
-        modelPag06.abrirManual(event, pagina);
+        modelPag06.abrirManual(event, pagina,"");
     }
     /**
      * Abre a função ABC do software
@@ -272,8 +272,9 @@ public class Pag06Controller implements Initializable {
         modelPag06.tocarAudio();
     }
 
-    @FXML
-        private void sugestaoAtividades(ActionEvent event) {
+     @FXML
+    private void sugestaoAtividades(ActionEvent event) throws IOException {
+        modelPag06.sugestaoAtividade(event, pagina);
     }
     
     private void atualizarListView() {

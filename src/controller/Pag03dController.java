@@ -190,7 +190,7 @@ public class Pag03dController implements Initializable {
      */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
-        modelPag03d.abrirManual(event, pagina);
+        modelPag03d.abrirManual(event, pagina, "d");
     }
     /**
      * Abre a função ABC do software
@@ -208,6 +208,7 @@ public class Pag03dController implements Initializable {
     }
 
     @FXML
-    private void sugestaoAtividades(ActionEvent event) {
+    private void sugestaoAtividades(ActionEvent event) throws IOException {
+        modelPag03d.sugestaoAtividade(event, pagina);
     }
 }

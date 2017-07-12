@@ -71,10 +71,10 @@ public class Pag05Controller implements Initializable {
 
     @FXML
     private Text instrucao;
-    
+
     @FXML
     ImageView imagemAudio;
-    
+
     @FXML
     AnchorPane janelaPrograma;
 
@@ -85,30 +85,33 @@ public class Pag05Controller implements Initializable {
     private Label f3;
     @FXML
     private Label f4;
-    
+
     public Pag05Controller() {
-        listaPalavras = new ListView<>();        
+        listaPalavras = new ListView<>();
     }
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2,espaco,
-                imagemAudio, janelaPrograma, instrucao, listaPalavras,f3,f4);
+        modelPag05 = new ModelPag05(p1, p2, p3, p4, p5, f1, f2, espaco,
+                imagemAudio, janelaPrograma, instrucao, listaPalavras, f3, f4);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));
         atividades.setTooltip(new Tooltip("Clique para ver as atividades para imprimir"));
         manual.setTooltip(new Tooltip("Clique para ler o manual do programa "));
-    }    
+    }
+
     /**
      * Define a unidade atual
+     *
      * @param unidadeAtual
-     * @throws IOException 
+     * @throws IOException
      */
     public void setUnidadeAtual(int unidadeAtual) throws IOException {
         atualizarListView();
@@ -138,32 +141,39 @@ public class Pag05Controller implements Initializable {
         modelPag05.pararAudio();
         modelPag05.paginaAnterior(event);
     }
+
     /**
      * Chama o método do model que trata o evento de quando o mouse é liberado
+     *
      * @param event mouse liberado
-     * @throws MalformedURLException 
+     * @throws MalformedURLException
      */
     @FXML
     private void mouseLiberado(MouseEvent event) throws MalformedURLException {
         modelPag05.mouseLiberado(event);
-        
+
     }
+
     /**
      * Trata o evento de quando o mouse é arrastado
+     *
      * @param event mouse arrastado
      */
     @FXML
     private void mouseArrastado(MouseEvent event) {
-        modelPag05.mouseArrastado(event);        
+        modelPag05.mouseArrastado(event);
     }
+
     /**
      * Trata o evento de quando o mouse é pressionado
+     *
      * @param event mouse pressionado
      */
     @FXML
     private void mousePressionado(MouseEvent event) {
-        modelPag05.mousePressionado(event);        
+        modelPag05.mousePressionado(event);
     }
+
     /**
      * toca o audio da pag 05
      */
@@ -236,7 +246,7 @@ public class Pag05Controller implements Initializable {
      */
     @FXML
     private void abrirManual(ActionEvent event) throws IOException {
-        modelPag05.abrirManual(event, pagina);
+        modelPag05.abrirManual(event, pagina, "");
     }
 
     /**
@@ -245,45 +255,51 @@ public class Pag05Controller implements Initializable {
      * @param event clique no botão "ABC"
      * @throws IOException
      */
-
     @FXML
     private void abrirABC(ActionEvent event) throws IOException {
         modelPag05.abrirABC(event, pagina);
         modelPag05.pararAudio();
     }
+
     /**
      * Retira a sombra do icone de "replay"
+     *
      * @param event mouse passado por cima do icone
      */
     private void dessombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(null);
     }
+
     /**
      * Adiciona uma sobra ao icone de "Replay"
-     * @param event 
+     *
+     * @param event
      */
     private void sombrearImagem(MouseEvent event) {
         DropShadow sombras = new DropShadow();
         repetir.setEffect(sombras);
     }
+
     /**
      * Executa o áudio da classe novamente
-     * @param event 
+     *
+     * @param event
      */
     private void replayAudio(MouseEvent event) {
         modelPag05.pararAudio();
         modelPag05.tocarAudio();
     }
-    
-    public void setInstrucao(int unidadeAtual)    {
+
+    public void setInstrucao(int unidadeAtual) {
         modelPag05.definirInstrucao(unidadeAtual);
     }
 
     @FXML
-    private void sugestaoAtividades(ActionEvent event) {
+    private void sugestaoAtividades(ActionEvent event) throws IOException {
+        modelPag05.sugestaoAtividade(event, pagina);
     }
-    
+
     private void atualizarListView() {
         modelPag05.atualizarListView();
     }

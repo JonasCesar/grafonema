@@ -234,12 +234,13 @@ public class ModelPag02 {
      *
      * @param event disparado pelo método
      * @param pagina pagina de onde o manual foi chamado
+     * @param subPagina
      * @throws IOException
      */
-    public void abrirManual(ActionEvent event, int pagina) throws IOException {
+    public void abrirManual(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina, subPagina);
     }
 
     /**
@@ -247,19 +248,19 @@ public class ModelPag02 {
      *
      * @param event disparado pelo método ABCJanela do controller
      * @param pagina
+     * @param subPagina
      * @throws IOException
      */
     public void abrirABC(ActionEvent event, int pagina, String subPagina) throws IOException {
         mCC.setUnidadeAtual(getUnidadeAtual());
-        switch(pagina){
-            case 25:
-                mCC.abrirABC(event, pagina, subPagina);
-                break;
-        }
-        
+        mCC.abrirABC(event, pagina, subPagina);
     }
 
     public void atualizarListView() {
         mCC.atualizarListView(listaPalavras, getUnidadeAtual());
+    }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.sugestaoAtividades(event, pagina,"");
     }
 }

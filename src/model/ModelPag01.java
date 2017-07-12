@@ -167,7 +167,7 @@ public class ModelPag01 {
     public void abrirManual(ActionEvent event, int pagina) throws IOException {
         mCC.pararAudio();
         mCC.setUnidadeAtual(getUnidadeAtual());
-        mCC.abrirManual(event, pagina);
+        mCC.abrirManual(event, pagina,"");
     }
 
     /**
@@ -199,5 +199,12 @@ public class ModelPag01 {
     public void atualizarListView(int unidade) {        
         mCC.atualizarListView(listaPalavras,unidade);
     }
+
+    public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
+        mCC.pararAudio();
+        mCC.setUnidadeAtual(getUnidadeAtual());
+        mCC.sugestaoAtividades(event, pagina,"");
+    }
+    
 
 }
