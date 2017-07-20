@@ -379,9 +379,13 @@ public class ModelJogoPrincipal {
             }
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
-            jogador.setBonus(false);//retira o bônus do jogador            
-            mostrarCenas();
-            jogador.setAcertosTotal(0);
+            jogador.setBonus(false);//retira o bônus do jogador
+            if (getFaseAtual() != 7) {
+                mostrarCenas();
+                jogador.setAcertosTotal(0);
+            } else {
+                mostrarCenaFinal();
+            }
 
             /**
              * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
@@ -500,8 +504,6 @@ public class ModelJogoPrincipal {
                 tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
                 break;
-            default:
-                break;
         }
         return y;
 
@@ -538,8 +540,6 @@ public class ModelJogoPrincipal {
                 break;
             case 7:
                 resultado = ((getKeyByValue(matrizSilabasComplexas3, opcaoEscolhida)).equals(getAudioAtual()));
-                break;
-            default:
                 break;
         }
 
@@ -1589,8 +1589,6 @@ public class ModelJogoPrincipal {
             case 7:
                 opcaoCorreta = matrizSilabasComplexas3.get(nomeAudioAtual);
                 break;
-            default:
-                break;
         }
 
         try {
@@ -1724,8 +1722,6 @@ public class ModelJogoPrincipal {
                 break;
             case 7:
                 caminhoAudio = "audios_silabas_complexas3/" + n + ".mp3";
-                break;
-            default:
                 break;
         }
         URL file = getClass().getResource(caminhoAudio);
@@ -2137,7 +2133,43 @@ public class ModelJogoPrincipal {
                     //ao terminar a animação desbloquear os botões
                     funcao.setClique1();
                 };
+                break;
+            default:
+                eventoAcerto = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "    linear-gradient(#97ff5b, #54e600),\n"
+                            + "    linear-gradient(#b1ff83, #83f143),\n"
+                            + "    linear-gradient(#a0ff69, #6def22),\n"
+                            + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
+                            + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 108px;\n"
+                            + "    -fx-pref-height: 78px;\n");
+                };
 
+                eventoCorOriginal = (ActionEvent event) -> {
+                    Button btemp = opcaoCorreta(event);
+                    //(btemp).setText("X");
+                    btemp.setStyle("-fx-background-color: \n"
+                            + "     linear-gradient(#ffd65b, #e68400)\n"
+                            + "     linear-gradient(#ffef84, #f2ba44),\n"
+                            + "     linear-gradient(#ffea6a, #efaa22),\n"
+                            + "     linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),\n"
+                            + "     linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));\n"
+                            + "    -fx-background-radius: 30;\n"
+                            + "    -fx-background-insets: 0,1,2,3,0;\n"
+                            + "    -fx-text-fill: #654b00;\n"
+                            + "    -fx-font-weight: bold;\n"
+                            + "    -fx-padding: 10 20 10 20;"
+                            + "    -fx-font-size: 17px;\n"
+                            + "    -fx-pref-width: 100px;\n"
+                            + "    -fx-pref-height: 70px;\n"
+                    );
+                    //ao terminar a animação desbloquear os botões
+                    funcao.setClique1();
+                };
                 break;
 
         }
@@ -2413,7 +2445,7 @@ public class ModelJogoPrincipal {
         //se for add alguma coisa antes do inicio do jogo é só aumentar o tamanho do tempo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(tempoFase+25), eventoVoltar),
+                new KeyFrame(Duration.seconds(tempoFase + 25), eventoVoltar),
                 new KeyFrame(Duration.seconds(tempoFase + 26), eventoFimAcerto)).play();
 
     }
@@ -2687,6 +2719,65 @@ public class ModelJogoPrincipal {
     public void reiniciarJogo(ImageView imgReiniciar) throws IOException {
         timer.cancel();
         modelInicial.iniciar(imgReiniciar);
+    }
+
+    private void mostrarCenaFinal() {
+        //evento responsável por exibir as cenas de progresso na história
+        eventoCenas = (ActionEvent event) -> {
+            //armazena a cena em que o botão 'btn_1' se encontra atualmente
+            janela = (Stage) btn_1.getScene().getWindow();
+            //armeza a cena do botão 'btn_1' em uma variável temporária
+            cenaTemporaria = btn_1.getScene();
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_FimJogo.fxml"));
+            Parent proximaCena = null;
+            try {
+                proximaCena = (Parent) fxmloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+            sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+            //cria uma cena
+            Scene cena = new Scene(proximaCena, 1200, 700);
+            janela.setTitle("Grafonema");//título da cena
+            janela.setScene(cena);
+            janela.setResizable(false);
+            janela.show();//exibe a cena
+            sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+            sequenciaCenas.definirImagemFundo();
+            sequenciaCenas.iniciarCena();
+
+        };
+
+        //evento para voltar para o jogo pós exibição da cena
+        eventoVoltar = (ActionEvent event) -> {
+            //armazena a cena em que o botão 'btn_1' se encontra atualmente
+            janela = (Stage) btn_1.getScene().getWindow();
+            //armeza a cena do botão 'btn_1' em uma variável temporária
+            cenaTemporaria = btn_1.getScene();
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_FimJogo.fxml"));
+            Parent proximaCena = null;
+            try {
+                proximaCena = (Parent) fxmloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+            sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+            //cria uma cena
+            Scene cena = new Scene(proximaCena, 1200, 700);
+            janela.setTitle("Grafonema");//título da cena
+            janela.setScene(cena);
+            janela.setResizable(false);
+            janela.show();//exibe a cena
+            sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+            sequenciaCenas.definirImagemFundo();
+            sequenciaCenas.iniciarCena();
+        };
+        //animação que exibe as cenas e volta para a interface principal do jogo
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), eventoCenas),
+                new KeyFrame(Duration.seconds(12), eventoVoltar)).play();
     }
 
 }

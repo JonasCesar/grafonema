@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_Creditos">
+   <children>
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="85.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagemCreditos" fitHeight="300.0" fitWidth="512.0" layoutX="472.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/Imagens/creditos/i1.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="imagemAnterior" layoutX="326.0" layoutY="436.0" mnemonicParsing="false" onAction="#imagemAnterior" text="Anterior" />
+      <Button fx:id="proximaImagem" layoutX="1054.0" layoutY="436.0" mnemonicParsing="false" onAction="#proximaImagem" text="Proxima" />
+   </children>
+</AnchorPane>

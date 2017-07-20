@@ -523,7 +523,6 @@ public class Model_SequenciaCenas {
                 new KeyFrame(Duration.seconds(tempoAudio), c2),
                 new KeyFrame(Duration.seconds(tempoAudio + 5), c4),
                 new KeyFrame(Duration.seconds(tempoAudio + 10), c3)).play();
-
     }
 
     /**

@@ -12,35 +12,45 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import model.Model_Creditos;
 
 /**
  * FXML Controller class
  *
- * @author iran
+ * @author jonas
  */
-public class Gui_JogoDaMemoriaController implements Initializable {
+public class Gui_Creditos implements Initializable {
     @FXML
     private ImageView imagemCreditos;
     @FXML
     private Button imagemAnterior;
     @FXML
     private Button proximaImagem;
+    
+    private Model_Creditos modelCreditos;
+
+    public Gui_Creditos() {
+        
+    }
+    
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        modelCreditos = new Model_Creditos(imagemCreditos,proximaImagem, imagemAnterior);
     }    
 
     @FXML
     private void imagemAnterior(ActionEvent event) {
-        
+        modelCreditos.imagemAnterior(event);
     }
 
     @FXML
     private void proximaImagem(ActionEvent event) {
+        modelCreditos.proximaImagem(event);
     }
     
 }
