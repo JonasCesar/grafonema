@@ -1,5 +1,6 @@
 package model;
 
+import controller.Gui_FimJogoController;
 import controller.Gui_GameOverController;
 import controller.Gui_SequenciaCenasController;
 import controller.Gui_JogoPrincipalController;
@@ -310,6 +311,7 @@ public class ModelJogoPrincipal {
 
     int numClique2;
 
+    Gui_FimJogoController fimJogo = new Gui_FimJogoController();
     Gui_SequenciaCenasController sequenciaCenas = new Gui_SequenciaCenasController();
 
     Gui_JogoPrincipalController jogoPrincipal = new Gui_JogoPrincipalController();
@@ -380,7 +382,7 @@ public class ModelJogoPrincipal {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
-            if (getFaseAtual() != 7) {
+            if (getFaseAtual() != 5) {
                 mostrarCenas();
                 jogador.setAcertosTotal(0);
             } else {
@@ -2722,6 +2724,7 @@ public class ModelJogoPrincipal {
     }
 
     private void mostrarCenaFinal() {
+        timer.cancel();
         //evento responsável por exibir as cenas de progresso na história
         eventoCenas = (ActionEvent event) -> {
             //armazena a cena em que o botão 'btn_1' se encontra atualmente
@@ -2736,16 +2739,13 @@ public class ModelJogoPrincipal {
                 Logger.getLogger(ModelJogoPrincipal.class
                         .getName()).log(Level.SEVERE, null, ex);
             }
-            sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+            fimJogo = fxmloader.<Gui_FimJogoController>getController();
             //cria uma cena
             Scene cena = new Scene(proximaCena, 1200, 700);
             janela.setTitle("Grafonema");//título da cena
             janela.setScene(cena);
             janela.setResizable(false);
-            janela.show();//exibe a cena
-            sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
-            sequenciaCenas.definirImagemFundo();
-            sequenciaCenas.iniciarCena();
+            janela.show();//exibe a cena       
 
         };
 
@@ -2763,16 +2763,16 @@ public class ModelJogoPrincipal {
                 Logger.getLogger(ModelJogoPrincipal.class
                         .getName()).log(Level.SEVERE, null, ex);
             }
-            sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
+            fimJogo = fxmloader.<Gui_FimJogoController>getController();
             //cria uma cena
             Scene cena = new Scene(proximaCena, 1200, 700);
             janela.setTitle("Grafonema");//título da cena
             janela.setScene(cena);
             janela.setResizable(false);
             janela.show();//exibe a cena
-            sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
-            sequenciaCenas.definirImagemFundo();
-            sequenciaCenas.iniciarCena();
+            //fimJogo.setFaseAtual(jogador.getFaseAtual());
+            //sequenciaCenas.definirImagemFundo();
+            //sequenciaCenas.iniciarCena();
         };
         //animação que exibe as cenas e volta para a interface principal do jogo
         new Timeline(
