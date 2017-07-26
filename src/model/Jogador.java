@@ -20,7 +20,7 @@ public class Jogador {
      * Construtor da classe Jogador
      */
     public Jogador() {
-        this.faseAtual = 5;
+        this.faseAtual = 1;
         this.qntPulos = 0;
         this.pontuacaoTotal = 0;
         this.acertosTotal = 0;

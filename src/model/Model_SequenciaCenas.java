@@ -276,14 +276,22 @@ public class Model_SequenciaCenas {
             caminhoAudio = caminho3 + ".mp3";
             tocarAudio(caminhoAudio);
         };
-
+        //OS TEMPOS SERÃO MODIFICADOS DEPOIS QUE OS AUDIOS FINAIS FOREM ADICIONADOS
+//        new Timeline(
+//                new KeyFrame(Duration.seconds(0), c0),
+//                new KeyFrame(Duration.seconds(tempoAudio), c1),
+//                new KeyFrame(Duration.seconds(tempoAudio + 10), c5),
+//                new KeyFrame(Duration.seconds(tempoAudio + 20), c2),
+//                new KeyFrame(Duration.seconds(tempoAudio + 30), c3),
+//                new KeyFrame(Duration.seconds(tempoAudio + 31), c4)).play();
+        
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c0),
                 new KeyFrame(Duration.seconds(tempoAudio), c1),
-                new KeyFrame(Duration.seconds(tempoAudio + 10), c5),
-                new KeyFrame(Duration.seconds(tempoAudio + 20), c2),
-                new KeyFrame(Duration.seconds(tempoAudio + 30), c3),
-                new KeyFrame(Duration.seconds(tempoAudio + 31), c4)).play();
+                //new KeyFrame(Duration.seconds(tempoAudio), c5),
+                new KeyFrame(Duration.seconds(tempoAudio + 5), c2),
+                new KeyFrame(Duration.seconds(tempoAudio + 15), c3),
+                new KeyFrame(Duration.seconds(tempoAudio + 16), c4)).play();
 
     }
 
@@ -451,34 +459,35 @@ public class Model_SequenciaCenas {
                 break;
             case 2:
                 System.out.println("Entrou aqui");
-                caminho1 = "Imagens/fase2/inicioFase2";
-                caminho2 = "Imagens/fase2/inicioFase2pb";
+                caminho1 = "Imagens/fase2/inicioFase";
+                caminho2 = "Imagens/fase2/inicioFasepb";
                 caminho3 = "audios_silabas_simples/frase1";
-                tempoAudio = 35.48;
+                //tempoAudio = 35.48;
+                tempoAudio = 10.0;
                 break;
             case 3:
-                caminho1 = "Imagens/fase3/inicioFase03";
-                caminho2 = "Imagens/fase3/inicioFase03pb";
+                caminho1 = "Imagens/fase3/inicioFase";
+                caminho2 = "Imagens/fase3/inicioFasepb";
                 caminho3 = "audios_silabas_simplesB/frase1";
                 break;
             case 4:
-                caminho1 = "Imagens/fase4/inicioFase04";
-                caminho2 = "Imagens/fase4/inicioFase04pb";
+                caminho1 = "Imagens/fase4/inicioFase";
+                caminho2 = "Imagens/fase4/inicioFasepb";
                 caminho3 = "audios_palavras_simples/frase1";
                 break;
             case 5:
-                caminho1 = "Imagens/fase5/inicioFase05";
-                caminho2 = "Imagens/fase5/inicioFase05pb";
+                caminho1 = "Imagens/fase5/inicioFase";
+                caminho2 = "Imagens/fase5/inicioFasepb";
                 caminho3 = "audios_silabas_complexas/frase1";
                 break;
             case 6:
-                caminho1 = "Imagens/fase6/inicioFase06";
-                caminho2 = "Imagens/fase6/inicioFase06pb";
+                caminho1 = "Imagens/fase6/inicioFase";
+                caminho2 = "Imagens/fase6/inicioFasepb";
                 caminho3 = "audios_silabas_complexas2/frase1";
                 break;
             case 7:
-                caminho1 = "Imagens/fase7/inicioFase07";
-                caminho2 = "Imagens/fase7/inicioFase07pb";
+                caminho1 = "Imagens/fase7/inicioFase";
+                caminho2 = "Imagens/fase7/inicioFasepb";
                 caminho3 = "audios_silabas_complexas3/frase1";
                 break;
         }
