@@ -19,13 +19,7 @@
     -fx-text-fill: #333333;
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
-#instrucao{
-    -fx-font-size: 20px;
-    -fx-font-family: "Verdana";
-    -fx-font-weight: regular;
-    -fx-text-fill: #333333;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
-}
+
 
 #pg4espaco{
     -fx-translate-x: -55;

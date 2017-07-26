@@ -179,6 +179,6 @@
          </padding>
       </Button>
       <Button layoutX="60.0" layoutY="564.0" mnemonicParsing="false" onAction="#voltarMenuAnterior" text="1 / 20" />
-      <Button layoutX="1050.0" layoutY="564.0" mnemonicParsing="false" onAction="#proximoMenu" text="41 / 60" />
+      <Button layoutX="1040.0" layoutY="564.0" mnemonicParsing="false" onAction="#proximoMenu" text="41 / 60" />
    </children>
 </AnchorPane>

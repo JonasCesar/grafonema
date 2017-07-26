@@ -189,24 +189,29 @@ public class ModelClasseComum {
 
     public void atualizarListView(ListView<String> listaPalavras, int unidade) {
         this.listaPalavras = listaPalavras;
-        System.out.println("Entrou aqui " + unidade);
+        int unidadeTemporaria = unidade;
         try {
-            if (unidade > 1) {
+            if (unidadeTemporaria > 1) {
+                if (unidadeTemporaria >= 26 && unidadeTemporaria < 48) {
+                    unidadeTemporaria = unidadeTemporaria + 1;
+                } else if (unidadeTemporaria >= 48 && unidadeTemporaria < 52) {
+                    unidadeTemporaria = unidadeTemporaria + 4;
+                } else if (unidadeTemporaria >= 52 && unidadeTemporaria < 60) {
+                    unidadeTemporaria = unidadeTemporaria + 7;
+                } else if (unidadeTemporaria == 60) {
+                    unidadeTemporaria = 61;
+                }
                 if (!items.isEmpty()) {//se já houver elementos na lista de palavras
                     System.out.println("Apagou todos os itens");
                     items.remove(0, items.size());//remove todos os elementos
                 }
-                for (int i = 0; i < unidade - 1; i++) {
-
+                for (int i = 0; i < unidadeTemporaria - 1; i++) {
                     items.add(listaPalavrasEstudadas[i]);
                 }
             }
             listaPalavras.setItems(items);
         } catch (IndexOutOfBoundsException | NullPointerException e) {
-            //System.out.println("Não adicionou nada");
         }
-        //System.out.println("item não encontrado ");
-
     }
 
     public void sugestaoAtividades(ActionEvent event, int pagina, String subPagina) throws IOException {

@@ -64,11 +64,10 @@
     -fx-padding: 10 20 10 20;
 }
 #palavrasEstudadas {
+    -fx-font-size: 14px;
     -fx-font-family: "Verdana";
-    -fx-font-size: 13px;
-    -fx-font-weight: regular;
-    -fx-text-fill: #333333;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    -fx-text-fill: black;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
 
 #palavraAtual{
@@ -91,4 +90,15 @@
 
 #menuInicial{
     -fx-background-radius: 100;
+}
+
+#instrução{
+   -fx-font-size: 25px;
+    -fx-font-family: "Verdana";
+    -fx-text-fill: black;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+.list-cell{
+    -fx-text-alignment: center;
 }
