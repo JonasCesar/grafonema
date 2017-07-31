@@ -83,9 +83,9 @@ public class ModelPag05a {
     private Text instrucao;
     @FXML
     private Label f3;
-    private String[] silabaCorreta = {"", "", "", "", "", "", "", "", "", "", "", "JE", "PA", "", "", "", "", "GA", "",
+    private String[] silabaCorreta = {"", "", "", "", "", "", "", "", "", "", "", "JE", "PA", "", "", "", "", "RA", "",
         "", "", "", "", "", "CES", "TI", "", "", "","","CO","RE","","","","","","","",
-        "","FÉ","","","","","","GA","","","NHAS","NHA", "", "GOTA"
+        "","FÉ","","","","","","GA","","","NHAS","NHA", "", "GO"
 };//49
 
     /**
@@ -387,6 +387,7 @@ public class ModelPag05a {
                 if (silabaEscolhida.equals(fonema)) {
                     opcaoCorreta = true;
                     imagemUrl = getClass().getResource("imagens/licao" + getUnidadeAtual() + "a/" + fonema + "5cor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
         }
@@ -602,12 +603,12 @@ public class ModelPag05a {
     }
 
     public void definirInstrucao(int unidadeAtual) {
-        String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"",
+        String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TOMATE\"", "\"VAGALUME\"",
             "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"DOMINÓ\"", "\"DOMINÓ\"",
             "\"DOMINÓ\"", "\"JERIMUM\"", "\"PATINS\"", "\"JERIMUM\"", "\"JERIMUM\"", "\"JERIMUM\"",
             "\"JERIMUM\"", "\"GARAGEM\"","","","","","","","\"CESTINHA\"","\"TIJOLO\"","\"LENHAS\"",
-            "\"UNHA\"", "","","","","","","","","","","","","","","","","","","","","",
-            "","","","\"GOTA\""};
+            "\"UNHA\"", "\"UNHA\"","","","","","","","","","","","","","","","","","","","","",
+            "\"LENHAS\"","\"UNHA\"","","\"GOTA\""};
         instrucao.setText("Complete com a parte que está faltando: " + textoInstrucao[unidadeAtual - 1]);
 
     }

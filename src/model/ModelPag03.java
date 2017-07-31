@@ -38,7 +38,7 @@ public class ModelPag03 {
     @FXML
     private ImageView img2;
     @FXML
-    private ImageView img3; 
+    private ImageView img3;
     @FXML
     private ImageView img6;
     @FXML
@@ -57,14 +57,14 @@ public class ModelPag03 {
     ListView<String> listaPalavras;
     //14/FU
     private String listaInstrucao[] = {"\"VÔ\"", "\"PO\"", "\"TA\"", "\"U\"", "\"VI\"",
-        "\"LU\"", "\"LA\"", "\"BE\"", "\"BO\"", "\"CA\"", "\"BA\"", "\"HO\"", "\"PI\"",
+        "\"LU\"", "\"LA\"", "\"BE\"", "\"BO\"", "\"CA\"", "\"BA\"", "\"JE\"", "\"PI\"",
         "\"FU\"", "\"FI\"", "\"JO\"", "\"XO\"", "\"GA\"", "\"NE\"", "\"DE\"", "\"SI\"", "\"RU\"",
         "\"DU\"", "\"ES\"", "\"SE\"", "\"MO\"", "\"CU\"", "\"JA\"", "\"PU\"", "\"SO\"", "\"PER\"", "\"AR\"",
         "\"FA\"", "\"LA\"", "\"LI\"", "\"ME\"", "\"CAR\"", "\"BI\"", "\"NO\"", "\"BRA\"", "\"FE\"",
-        "\"DA\"", "\"PI\"", "\"JU\"", "\"PA\"", "\"LE\"", "\"CHE\"", "\"EX\"", "\"COM\"","\"TRE\"",
-        "\"GUA\"", "\"LEM\"", "\"AL\"", "\"PRIN\"", "\"PRO\"", "\"CRI\"", "\"COR\"", "\"ÇÃO\"", "\"FLO\"",
+        "\"DA\"", "\"PI\"", "\"JU\"", "\"PA\"", "\"LE\"", "\"CHE\"", "\"EX\"", "\"COM\"", "\"TRE\"",
+        "\"GUA\"", "\"LEM\"", "\"AL\"", "\"PRIN\"", "\"PRO\"", "\"CRI\"", "\"COR\"", "\"TEM\"", "\"FLO\"",
         "\"TRANS\""
-};
+    };
 
     public ModelPag03(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
             ListView<String> listaPalavras) {
@@ -144,7 +144,7 @@ public class ModelPag03 {
         int u = getUnidadeAtual();
         if (u == 3 || u == 4 || u == 9 || u == 14 || u == 16 || u == 18 || u == 20
                 || u == 21 || u == 23 || u == 24 || u == 25 || u == 26 || u == 31 || u == 32
-                || u == 38 || u == 41|| u == 45 || u == 47 || u == 49 || u == 50
+                || u == 38 || u == 41 || u == 45 || u == 47 || u == 49 || u == 50
                 || u == 51 || u == 52 || u == 53 || u == 55 || u == 56 || u == 58
                 || u == 59 || u == 60) {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -153,9 +153,9 @@ public class ModelPag03 {
             Parent proximaCena = (Parent) fxmloader.load();
             Pag03aController pg03aCont = fxmloader.<Pag03aController>getController();
             pg03aCont.setUnidadeAtual(getUnidadeAtual());
-            mCC.exibirCena(proximaCena, janela);
             pg03aCont.audioInicial();
             pg03aCont.setImagens(getUnidadeAtual());
+            mCC.exibirCena(proximaCena, janela);
 
         } else {
             janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
@@ -410,7 +410,7 @@ public class ModelPag03 {
                 }
                 break;
             case 33:
-                if (imgClicada.equals("img3") || imgClicada.equals("img5") || imgClicada.equals("img2")|| imgClicada.equals("img6")) {
+                if (imgClicada.equals("img3") || imgClicada.equals("img5") || imgClicada.equals("img2") || imgClicada.equals("img6")) {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
@@ -585,7 +585,7 @@ public class ModelPag03 {
                 }
                 break;
             case 58:
-                if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img5")) {
+                if (imgClicada.equals("img4") || imgClicada.equals("img5") || imgClicada.equals("img3")) {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
@@ -599,13 +599,13 @@ public class ModelPag03 {
                 }
                 break;
             case 60:
-                if (imgClicada.equals("img3") || imgClicada.equals("img4")|| imgClicada.equals("img5")) {
+                if (imgClicada.equals("img3") || imgClicada.equals("img4") || imgClicada.equals("img5")) {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "/" + nomeImagem + "e.png");
                 }
                 break;
-              
+
         }
         ((ImageView) event.getSource()).setImage(new Image(imgf1.toString()));
     }
@@ -630,14 +630,12 @@ public class ModelPag03 {
             default:
                 caminhoAudio = "audios/u" + unidadeAtual + "/l" + unidadeAtual + "p3.mp3";
                 break;
-        }
-
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
         mCC.play(caminhoAudio);
     }
 
     /**
      * Define as imagens da página
-     *
      * @param unidadeAtual unidade atual em execução
      * @throws MalformedURLException
      */
@@ -786,6 +784,6 @@ public class ModelPag03 {
     }
 
     public void sugestaoAtividade(ActionEvent event, int pagina) throws IOException {
-        mCC.sugestaoAtividades(event, pagina,"");
+        mCC.sugestaoAtividades(event, pagina, "");
     }
 }

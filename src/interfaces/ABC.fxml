@@ -12,7 +12,7 @@
 <AnchorPane id="AnchorPane" fx:id="janelaPrograma" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ABCController">
     <stylesheets>
         <URL value="@/css/estilosGerais.css" />
-        <URL value="@/css/estilosABC.css" />
+        
     </stylesheets>
 
     <children>
@@ -20,7 +20,6 @@
          <image>
             <Image url="@../model/imagens/imagemDeFundo/imagemFundo3.png" />
          </image></ImageView>
-        <ImageView fx:id="img1" fitHeight="200.0" fitWidth="200.0" layoutX="120.0" layoutY="150.0" onMouseClicked="#tocarLetra" onMouseEntered="#passouRato" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true" />
         <Button fx:id="a" layoutX="62.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButton" onMouseEntered="#adicionarMouseEsombra" onMouseExited="#retirarMouseESombra" prefHeight="70.0" prefWidth="70.0" text="A">
          <font>
             <Font size="20.0" />
@@ -129,8 +128,25 @@
          <font>
             <Font name="Verdana" size="13.0" />
          </font></Button>
-      <ImageView fx:id="img2" fitHeight="200.0" fitWidth="200.0" layoutX="325.0" layoutY="180.0" onMouseClicked="#tocarLetra" onMouseEntered="#passouRato" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img3" fitHeight="200.0" fitWidth="200.0" layoutX="530.0" layoutY="150.0" onMouseClicked="#tocarLetra" onMouseEntered="#passouRato" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img4" fitHeight="200.0" fitWidth="200.0" layoutX="736.0" layoutY="180.0" onMouseClicked="#tocarLetra" onMouseEntered="#passouRato" onMouseExited="#dessombrearImagem" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="cursivaMinuscula" layoutX="778.0" layoutY="-40.0" prefHeight="250.0" prefWidth="185.0">
+         <font>
+            <Font name="Satisfy" size="200.0" />
+         </font>
+      </Label>
+      <Label fx:id="cursivaMaiuscula" layoutX="581.0" layoutY="-40.0" prefHeight="250.0" prefWidth="185.0">
+         <font>
+            <Font name="Satisfy" size="200.0" />
+         </font>
+      </Label>
+      <Label fx:id="formaMinuscula" layoutX="314.0" layoutY="55.0" prefHeight="250.0" prefWidth="185.0">
+         <font>
+            <Font name="Satisfy" size="200.0" />
+         </font>
+      </Label>
+      <Label fx:id="formaMaiuscula" layoutX="111.0" layoutY="55.0" prefHeight="250.0" prefWidth="185.0">
+         <font>
+            <Font name="Satisfy" size="200.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

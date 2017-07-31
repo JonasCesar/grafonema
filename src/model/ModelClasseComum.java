@@ -92,7 +92,7 @@ public class ModelClasseComum {
     public void exibirCena(Parent proximaCena, Stage janela) {
         this.janela = janela;
         Scene cena = new Scene(proximaCena, 1200, 700);
-        janela.setTitle("EscreLer");//título da cena
+        janela.setTitle("Mundo da Leitura e da Escrita");//título da cena
 
         janela.setScene(cena);
         janela.show();//exibe a interface  
@@ -200,6 +200,9 @@ public class ModelClasseComum {
                     unidadeTemporaria = unidadeTemporaria + 7;
                 } else if (unidadeTemporaria == 60) {
                     unidadeTemporaria = 61;
+                }
+                else{
+                    unidadeTemporaria = unidade;
                 }
                 if (!items.isEmpty()) {//se já houver elementos na lista de palavras
                     System.out.println("Apagou todos os itens");

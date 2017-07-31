@@ -102,3 +102,13 @@
 .list-cell{
     -fx-text-alignment: center;
 }
+
+#cursivaMaiuscula, #cursivaMinuscula{
+    -fx-font-size: 225px;
+    -fx-font-family: "Satisfy"
+}
+
+#formaMaiuscula, #formaMinuscula{
+    -fx-font-size: 225px;
+    -fx-font-family: "Verdana";
+}

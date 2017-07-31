@@ -190,4 +190,9 @@ public class MenuInicialPag2Controller implements Initializable {
     private void proximoMenu(ActionEvent event) throws IOException {
         menuInicialPag2.proximoMenu(event);
     }
+
+    @FXML
+    private void abrirCreditos(ActionEvent event) {
+        menuInicialPag2.abrirCreditos(event);
+    }
 }

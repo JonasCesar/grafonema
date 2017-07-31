@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<AnchorPane id="AnchorPane" fx:id="janela" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreditosController">
+    <stylesheets>
+        <URL value="@/css/estiloCreditos.css" />    
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="700.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/imagens/imagemDeFundo/imagemFundo3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="150.0" layoutX="140.0" layoutY="520.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/imagens/icones/logoUesb.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="373.0" layoutY="520.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/imagens/icones/cnpq_logo.png" />
+         </image></ImageView>
+      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="605.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/imagens/icones/drowning.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="855.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grupo de Pesquisa em Ensino e Aprendizado Inicial da Leitura e da Escrita" textAlignment="JUSTIFY" wrappingWidth="237.5419921875">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="100.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apoio:">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="140.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jonas César">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="140.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iran Ribeiro">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="100.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Design e Desenvolvimento:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="140.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alzira Ferreira">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="100.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supervisora de Design:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="140.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ronei Guaresi">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Text fx:id="texto" fill="WHITE" layoutX="100.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordenação:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="660.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor dos poemas:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="700.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tárcio Costa">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="660.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voz:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="703.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luciana Guaresi">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="660.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desenvolvimento de Atividades:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="700.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elizama S.D. Oliveira">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Button layoutX="1014.0" layoutY="40.0" mnemonicParsing="false" onAction="#menuInicial" onMouseEntered="#sombrearBotao" onMouseExited="#retirarSombraBotao">
+         <font>
+            <Font name="Verdana" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../model/imagens/icones/house-309113_640.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

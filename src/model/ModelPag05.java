@@ -3,7 +3,6 @@
  */
 package model;
 
-import controller.Pag03aController;
 import controller.Pag04Controller;
 import controller.Pag04aController;
 import controller.Pag04bController;
@@ -93,24 +92,24 @@ public class ModelPag05 {
     //13/PI
     private String silabaCorreta[] = {"VO", "PO", "TÁ", "VA", "VI", "LU", "LA", "BE", "BO",
         "CA", "BA", "JÉ", "PI", "RO", "FI", "GOS", "XO", "GA", "NE", "DOS",
-        "NOZ", "RU", "DU", "SA", "SU", "MO", "CU", "JÁ", "PU", "SO", "PER",
+        "NOZ", "RU", "DU", "SA", "SU", "MO", "CU", "JA", "PU", "SO", "PER",
         "AR", "FA", "LA", "LI", "ME", "CAR", "CI", "NO", "BRA", "ZES", "DA",//SÓ FIZ ATÉ AQUI
-        "PI", "JU", "RI", "LE", "CHE", "EX", "ROS", "ESLAS", "QUE", "BRÂN", "AL", "PRIN",
+        "PI", "JU", "RI", "LE", "CHE", "EX", "ROS", "TRE", "QUE", "BRÂN", "AL", "PRIN",
         "SOR", "AN", "COR", "ÇÃO", "RES", "FOR"};
 
     private String matrizSilabas[][] = {{"VA", "VE", "VI", "VO", "VU"}, {"PA", "PE", "PI", "PO", "PU"}, {"TÁ", "TE", "TI", "TO", "TU"},
     {"VA", "VE", "VI", "VO", "VU"}, {"VA", "VE", "VI", "VO", "VU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
     {"BA", "BE", "BI", "BO", "BU"}, {"BA", "BE", "BI", "BO", "BU"}, {"CA", "CE", "CI", "CO", "CU"}, {"BA", "BE", "BI", "BO", "BU"},
-    {"JÁ", "JÉ", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"RA", "RE", "RI", "RO", "RU"}, {"FA", "FE", "FI", "FO", "FU"},
+    {"JA", "JÉ", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"RA", "RE", "RI", "RO", "RU"}, {"FA", "FE", "FI", "FO", "FU"},
     {"GAS", "GES", "GIS", "GOS", "GUS"}, {"XA", "XE", "XI", "XO", "XU"}, {"GA", "GE", "GI", "GO", "GU"}, {"NA", "NE", "NI", "NO", "NU"},
     {"DAS", "DES", "DIS", "DOS", "DUS"}, {"NAZ", "NEZ", "NIZ", "NOZ", "NUZ"}, {"RA", "RE", "RI", "RO", "RU"}, {"DA", "DE", "DI", "DO", "DU"},
     {"SA", "SE", "SI", "SO", "SU"}, {"SA", "SE", "SI", "SO", "SU"}, {"MA", "ME", "MI", "MO", "MU"}, {"CA", "CE", "CI", "CO", "CU"},
-    {"JÁ", "JÉ", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"SA", "SE", "SI", "SO", "SU"}, {"PAR", "PER", "PIR", "POR", "PUR"},
+    {"JA", "JE", "JI", "JO", "JU"}, {"PA", "PE", "PI", "PO", "PU"}, {"SA", "SE", "SI", "SO", "SU"}, {"PAR", "PER", "PIR", "POR", "PUR"},
     {"AR", "ER", "IR", "OR", "UR"}, {"FA", "FE", "FI", "FO", "FU"}, {"LA", "LE", "LI", "LO", "LU"}, {"LA", "LE", "LI", "LO", "LU"},
     {"MA", "ME", "MI", "MO", "MU"}, {"CAR", "CER", "CIR", "COR", "CUR"}, {"CA", "CE", "CI", "CO", "CU"}, {"NA", "NE", "NI", "NO", "NU"},
     {"BRA", "BRE", "BRI", "BRO", "BRU"}, {"ZAS", "ZES", "ZIS", "ZOS", "ZUS"}, {"DA", "DE", "DI", "DO", "DU"}, {"PA", "PE", "PI", "PO", "PU"},
     {"JA", "JE", "JI", "JO", "JU"}, {"RA", "RE", "RI", "RO", "RU"}, {"LA", "LE", "LI", "LO", "LU"}, {"CHA", "CHE", "CHI", "CHO", "CHU"},
-    {"AX", "EX", "IX", "OX", "UX"}, {"RAS", "RES", "RIS", "ROS", "RUS"}, {"LAS", "ES", "IS", "OS", "US"},
+    {"AX", "EX", "IX", "OX", "UX"}, {"RAS", "RES", "RIS", "ROS", "RUS"}, {"TRA", "TRE", "TRI", "TRO", "TRU"},
     {"QUA", "QUE", "QUI", "QUO", ""}, {"BRÂN", "BREN", "BRIN", "BRON", "BRUN"}, {"AL", "EL", "IL", "OL", "UL"},
     {"PRAN", "PREN", "PRIN", "PRON", "PRUN"}, {"SAR", "SER", "SIR", "SOR", "SUR"}, {"AN", "EN", "IN", "ON", "UN"},
     {"CAR", "CER", "CIR", "COR", "CUR"}, {"CAU", "CEU", "CIO", "COL", "ÇÃO"}, {"RAS", "RES", "RIS", "ROS", "RUS"},
@@ -370,13 +369,11 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/DOS5pb.png");
                 break;
             case 21:
-                espaco.setText("- -");
-                f1.setId("pg5f1");
-                espaco.setId("pg5espaco");
-                f1.setText("-MOS");
-                f2.setText("CA");
-                f3.setText("DA");
-                f4.setVisible(false);
+                espaco.setText("- - -");                
+                f1.setVisible(false);
+                f2.setText("-MOS");
+                f3.setText("CA");
+                f4.setText("DA");
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/NOZ5pb.png");
                 break;
             case 22:
@@ -668,11 +665,9 @@ public class ModelPag05 {
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/QUE5pb.png");
                 break;
             case 52:
-                espaco.setText("- - - -");
-                f1.setId("pg5f1_4");
-                espaco.setId("pg5espaco");
-                f1.setText("QUIAS");
-                f2.setVisible(false);
+                espaco.setText("- - - -");          
+                f1.setVisible(false);
+                f2.setText("QUIAS");
                 f3.setVisible(false);
                 f4.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/BRÂN5pb.png");
@@ -731,6 +726,7 @@ public class ModelPag05 {
             case 58://
                 espaco.setText("- - -");
                 f3.setId("pg5f3Esquerda");
+                f2.setId("pg5f2Esquerda");
                 espaco.setId("pg5espacoDireita2x");
                 f1.setText("ME");
                 f2.setText("DI");
@@ -924,11 +920,14 @@ public class ModelPag05 {
                 }
                 break;
             default:
-                String fonema = silabaCorreta[getUnidadeAtual() - 1];
+                String fonema = silabaCorreta[getUnidadeAtual() - 1];                
                 if (silabaEscolhida.equals(fonema)) {
+                    System.out.println("Fonema: "+fonema);
                     opcaoCorreta = true;
-                    imagemUrl = getClass().getResource("imagens/licao" + getUnidadeAtual() + "/" + fonema + "5cor.png");
+                    imagemUrl = getClass().getResource("imagens/licao" + getUnidadeAtual() + "/" + fonema +"5cor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
+                
                 break;
         }
         return opcaoCorreta;
@@ -1144,7 +1143,7 @@ public class ModelPag05 {
         String textoInstrucao[] = {"\"POLVO\"", "\"POÇO\"", "\"TÁBUA\"", "\"VAGALUME\"",
             "\"VIOLETA\"", "\"LUNETA\"", "\"LAGOA\"", "\"BEBIDA\"", "\"BOTÃO\"", "\"CARACOL\"",
             "\"ABACAXI\"", "\"PAJÉ\"", "\"PIPOCA\"", "\"RODO\"", "\"FIGO\"", "\"PREGOS\"", "\"CAIXOTE\"", "\"GATO\"",
-            "\"CORNETA\"", "\"CALÇADOS\"", "\"BOVINOS\"", "\"PERU\"", "\"DUZENTOS\"", "\"SAPO\"", "\"SUJO\"",
+            "\"CORNETA\"", "\"CALÇADOS\"", "\"NOZ-MOSCADA\"", "\"PERU\"", "\"DUZENTOS\"", "\"SAPO\"", "\"SUJO\"",
             "\"MODELO\"", "\"CURURU\"", "\"JABUTI\"", "\"PUDIM\"", "\"SOFÁ\"", "\"PERGAMINHO\"",
             "\"ARTE\"", "\"FAZENDA\"", "\"LAGOSTA\"", "\"PALITO\"", "\"MEDALHA\"", "\"CARTEIRA\"",
             "\"CINEMA\"", "\"NOJO\"", "\"BRACELETE\"", "\"CARTAZES\"", "\"LÂMPADA\"", "\"PIÃO\"",

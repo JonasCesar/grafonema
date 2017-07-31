@@ -58,7 +58,7 @@ public class ModelPag03a {
     private String listaInstrucao[] = {"\"VÔ\"", "\"PO\"", "\"TO\"", "\"VA\"", "\"VI\"",
         "\"LU\"", "\"VÔ\"", "\"LU\"", "\"DO\"", "\"DO\"", "\"DO\"", "\"DO\"", "\"DO\"",
         "\"RO\"", "\"RO\"", "\"GOS\"", "\"GOS\"", "\"RA\"", "", "\"DOS\"", "\"NOS\"",
-        "", "\"AS\"", "\"SA\"", "\"TE\"", "\"TI\"", "", "", "", "", "\"BU\"", "", "", "", "", "", "", "\"CI\"",
+        "", "\"AS\"", "\"SA\"", "\"TE\"", "\"TI\"", "", "", "", "", "\"BU\"", "\"RE\"", "", "", "", "", "", "\"CI\"",
         "", "", "\"ZES\"", "", "", "", "\"RI\"", "", "\"GA\"", "", "\"ROS\"", "\"NHAS\"", "\"QUE\"",
         "\"BRAN\"", "\"GO\"", "", "\"SOR\"", "\"AN\"", "", "\"ÇÃO\"", "\"RES\"", "\"FOR\""};
 
@@ -284,7 +284,7 @@ public class ModelPag03a {
                 }
                 break;
             case 32:
-                if (imgClicada.equals("img5") || imgClicada.equals("img4") || imgClicada.equals("img5")) {
+                if (imgClicada.equals("img5") || imgClicada.equals("img4") || imgClicada.equals("img6")) {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
@@ -298,7 +298,7 @@ public class ModelPag03a {
                 }
                 break;
             case 41:
-                if (imgClicada.equals("img1") || imgClicada.equals("img2") || imgClicada.equals("img3")) {
+                if (imgClicada.equals("img4") || imgClicada.equals("img2") || imgClicada.equals("img3")) {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "c.png");
                 } else {
                     imgf1 = getClass().getResource("imagens/licao" + unidadeAtual + "a/" + nomeImagem + "e.png");
@@ -414,6 +414,7 @@ public class ModelPag03a {
                 break;
             case 3:
                 caminhoAudio = "audios/u03a/l3p3.mp3";
+                break;
             case 4:
                 caminhoAudio = "audios/u4/l4p3a2.mp3";
                 break;

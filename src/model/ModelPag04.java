@@ -100,7 +100,7 @@ public class ModelPag04 {
     private String textoInstrucao[] = {"\"ÁRVORE\"", "\"PIPOCA\"", "\"BOTA\"", "\"URUBU\"",
         "\"VINHO\"", "\"LUVA\"", "\"LAÇO\"", "\"CABELO\"", "\"BONECA\"", "\"CARANGUEIJO\"",
         "\"BAÚ\"", "\"HOMEM\"", "\"PIRANHA\"", "\"FUBÁ\"", "\"FILHO\"", "\"JOANINHA\"", "\"LIXO\"",
-        "\"GAFANHOTO\"", "\"CORNETA\"", "\"DEGRAU\"", "\"MÚSICA\"", "\"RUGAS\"", "\"ASNO\"",
+        "\"GAFANHOTO\"", "\"JANELA\"", "\"DEGRAU\"", "\"MÚSICA\"", "\"RUGAS\"", "\"ASNO\"",
         "\"ESFERA\"", "\"SETA\"", "\"ÁRVORE\"", "\"CURATIVO\"", "\"JACARÉ\"", "\"PUXAR\"",
         "\"SOLA\"", "\"PERNIL\"", "\"ARBUSTO\"", "\"FADA\"", "\"LARANJA\"", "\"LIMA\"",
         "\"MEDO\"", "\"CARTA\"", "\"BICO\"", "\"NOVE\"", "\"BRAVO\"", "\"RAPAZES\"", "\"DAMASCO\"",
@@ -203,12 +203,10 @@ public class ModelPag04 {
                 imgUrl = getClass().getResource("imagens/licao03/botapb.png");
                 break;
             case 4:
-                espaco.setText("- -");
-                f1.setId("pg4f1_3");
-                espaco.setId("pg4espaco");
-                f1.setText("RU");
-                f2.setText("BU");
-                f3.setVisible(false);
+                espaco.setText("- -");                
+                f2.setText("RU");
+                f3.setText("BU");
+                f1.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao4/urubupb.png");
                 break;
             case 5:
@@ -268,7 +266,7 @@ public class ModelPag04 {
                 break;
             case 12:
                 espaco.setText("- -");
-                f1.setId("pg4f1");
+                f1.setId("pg4f1_3");
                 espaco.setId("pg4espaco");
                 f1.setText("MEM");
                 f2.setVisible(false);
@@ -589,10 +587,8 @@ public class ModelPag04 {
                 break;
             case 49:
                 espaco.setText("- - -");
-                f1.setId("pg4f1_4");
-                espaco.setId("pg4espaco");
-                f1.setText("PRAS");
-                f2.setVisible(false);
+                f1.setVisible(false);                                
+                f2.setText("PRAS");
                 f3.setVisible(false);
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "/COM4pb.png");
                 break;

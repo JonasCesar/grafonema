@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -31,7 +32,6 @@ public class ABCController implements Initializable {
 
 
     private int paginaTemporaria;
-    @FXML
     private ImageView img1;
     @FXML
     private Button a;
@@ -83,15 +83,21 @@ public class ABCController implements Initializable {
     private Button o;
     @FXML
     private Button z;
-    @FXML
     private ImageView img2;
-    @FXML
     private ImageView img3;
-    @FXML
     private ImageView img4;
     private String subPagina;
     @FXML
     private AnchorPane janelaPrograma;
+    private Label cursivaM;
+    @FXML
+    private Label cursivaMinuscula;
+    @FXML
+    private Label cursivaMaiuscula;
+    @FXML
+    private Label formaMinuscula;
+    @FXML
+    private Label formaMaiuscula;
 
     public ABCController() {
         //modelABC = new ModelABC(imgLetra, img);
@@ -105,7 +111,7 @@ public class ABCController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        modelABC = new ModelABC(img1, img2, img3, img4, janelaPrograma);
+        modelABC = new ModelABC(img1, img2, img3, img4, janelaPrograma, formaMaiuscula, formaMinuscula, cursivaMaiuscula, cursivaMinuscula);
         Tooltip verLetra = new Tooltip("Clique em um botão para ver a letra");
         Tooltip.install(img1, verLetra);
         Tooltip.install(img2, verLetra);
@@ -147,12 +153,10 @@ public class ABCController implements Initializable {
      * @param event
      * @throws IOException
      */
-    @FXML
     private void passouRato(MouseEvent event) throws IOException {
         modelABC.passouRato(event);              
     }
     
-    @FXML
     private void dessombrearImagem(MouseEvent event) throws IOException {        
         
        modelABC.dessombrearImagem(event);
@@ -172,7 +176,6 @@ public class ABCController implements Initializable {
         paginaTemporaria = pagina;
     }
 
-    @FXML
     private void tocarLetra(MouseEvent event) {        
         modelABC.tocarSomLetra(botaoEscolhido);
     }

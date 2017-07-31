@@ -40,7 +40,7 @@ public class ModelmenuInicialPag2 {
         Pag01Controller pg01Cont = fxmloader.<Pag01Controller>getController();
         pg01Cont.setUnidadeAtual(unidade);        
         Scene cena = new Scene(proximaCena, 1200, 700);//tamanho
-        janela.setTitle("EscreLer");//título da cena
+        janela.setTitle("Mundo da Leitura e da Escrita");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a interface
         pg01Cont.setImagemTexto();
@@ -53,7 +53,7 @@ public class ModelmenuInicialPag2 {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/menuInicial.fxml"));
         Scene cena = new Scene(cenaInicial, 1200, 700);
-        janela.setTitle("EscreLer");
+        janela.setTitle("Mundo da Leitura e da Escrita");
         janela.setScene(cena);
         janela.show();    
     }
@@ -62,8 +62,12 @@ public class ModelmenuInicialPag2 {
         janela = (Stage) ((Button) event.getSource()).getScene().getWindow(); //pega a cena em que o botão que gerou o evento estava
         Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/menuInicialPag3.fxml"));
         Scene cena = new Scene(cenaInicial, 1200, 700);
-        janela.setTitle("EscreLer");
+        janela.setTitle("Mundo da Leitura e da Escrita");
         janela.setScene(cena);
         janela.show();
+    }
+
+    public void abrirCreditos(ActionEvent event) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

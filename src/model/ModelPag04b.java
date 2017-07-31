@@ -310,8 +310,14 @@ public class ModelPag04b {
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
-            default:
+            case 51:
+                if (silabaEscolhida.equals("ZA")) {
+                    opcaoCorreta = true;
+                    imagemUrl = getClass().getResource("imagens/licao51b/ZA4cor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
+                }
                 break;
+                
         }
         if (opcaoCorreta) {
             p1.setDisable(true);

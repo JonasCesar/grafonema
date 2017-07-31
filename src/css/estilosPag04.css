@@ -4,7 +4,7 @@
 */
 
 #espaco, #f1, #f2, #pg4espaco,#pg4f1, #f3, #pg4f1_3,#pg4f1_4, #pg4f2Esquerda, #pg4espacoDireita,
-#pg4espaco_1, #pg4f1_5, #pg4f2_3, #pg4f2Esquerda_3, #pg4espacoDireita_3{
+#pg4espaco_1, #pg4f1_5, #pg4f2_3, #pg4f2Esquerda_3, #pg4espacoDireita_3, #pg4espacoDireita_4, #pg4f3Esquerda_3{
     -fx-border-style: hidden hidden solid hidden;
     -fx-border-color: black;
    
@@ -12,7 +12,7 @@
 }
 
 #p1, #p2, #p3, #p4, #p5, #p6, #f1, #f2, #espaco, #pg4espaco,#pg4f1, #f3, #pg4f1_3,#pg4f1_4, #pg4f2Esquerda,
-#pg4espacoDireita,#pg4espaco_1, #pg4f1_5, #pg4f2_3, #pg4f2Esquerda_3, #pg4espacoDireita_3{
+#pg4espacoDireita,#pg4espaco_1, #pg4f1_5, #pg4f2_3, #pg4f2Esquerda_3, #pg4espacoDireita_3, #pg4espacoDireita_4, #pg4f3Esquerda_3{
     -fx-font-size: 25px;
     -fx-font-family: "Verdana";
     -fx-font-weight: bold;
@@ -46,10 +46,16 @@
 }
 
 #pg4f2Esquerda_3{
-    -fx-translate-x: -80;
+    -fx-translate-x: -82;
+}
+#pg4f3Esquerda_3{
+    -fx-translate-x: -82;
 }
 #pg4espacoDireita_3{
     -fx-translate-x: 50;
+}
+#pg4espacoDireita_4{
+    -fx-translate-x: 120;
 }
 #pg4espacoDireita{
     -fx-translate-x: 43;

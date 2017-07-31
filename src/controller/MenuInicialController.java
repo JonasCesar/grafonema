@@ -185,4 +185,9 @@ public class MenuInicialController implements Initializable {
     private void proximoMenu(ActionEvent event) throws IOException {
         menuInicial.proximoMenu(event);
     }
+
+    @FXML
+    private void abrirCreditos(ActionEvent event) throws IOException {
+        menuInicial.abrirCreditos(event);
+    }
 }

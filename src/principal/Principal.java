@@ -27,7 +27,7 @@ public class Principal extends Application {
         this.janela = janela;
         Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/menuInicial.fxml"));
         Scene cena = new Scene(cenaInicial, 1200, 700);
-        janela.setTitle("EscreLer");
+        janela.setTitle("Mundo da Leitura e da Escrita");
         janela.setScene(cena);
         janela.show();
         janela.setResizable(false);

@@ -58,7 +58,7 @@ public class ModelPag03c {
     //
     private String listaInstrucao[] = {"", "", "", "", "", "", "", "", "", "", "",
         "", "", "", "", "", "", "", "", "", "", "", "", "", "\"CES\"", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+        "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "\"NHA\"", "", "", "", "",
         "", "", "", "", "", "", "", "", "", "", "", "\"NHA\""};
 
     public ModelPag03c(ImageView i1, ImageView i2, ImageView i3, ImageView i4, ImageView i5, ImageView i6, Text instrucao1,
@@ -345,7 +345,7 @@ public class ModelPag03c {
     //faz exibir a instrução da atividade atual na tela
     public void definirInstrucao(int unidadeAtual) throws MalformedURLException {
         String textoInstrucao = "";
-        instrucao.setText("Clique nas imagens que tem o som " + listaInstrucao[unidadeAtual - 1]);
+        instrucao.setText("Clique nas figuras que tem o som " + listaInstrucao[unidadeAtual - 1]);
 
     }
 

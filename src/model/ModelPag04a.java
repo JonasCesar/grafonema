@@ -93,11 +93,11 @@ public class ModelPag04a {
     @FXML
     private ListView<String> listaPalavras;
 
-    private String textoInstrucao[] = {"\"ÁRVORE\"", "\"PIPOCA\"", "\"BOTA\"", "\"URUBU\"",
+    private String textoInstrucao[] = {"\"ÁRVORE\"", "\"PIPOCA\"", "\"PATO\"", "\"URUBU\"",
         "\"VINHO\"", "\"LUVA\"", "\"LAÇO\"", "\"CABELO\"", "\"DEDO\"", "\"DEDO\"", "\"DEDO\"",
         "\"DEDO\"", "\"SAPATO\"", "\"DEDO\"", "\"DEDO\"", "\"DEDO\"", "\"DEDO\"", "\"BARATA\"", "", "",
-        "", "", "", "", "TELHA", "", "", "", "", "", "\"BURACO\"", "\"JACARÉ\"", "", "", "", "", "", "", "", "",
-        "\"CHEFE\"", "", "", "", "\"RIACHO\"", "", "", "", "", "ABOBRINHAS", "LENHA", "", "BIGODE"};
+        "", "", "", "", "\"TELHA\"", "", "", "", "", "", "\"BURACO\"", "\"JACARÉ\"", "", "", "", "", "", "", "", "",
+        "\"CHEFE\"", "", "", "", "\"RIACHO\"", "", "", "", "", "\"ABOBRINHAS\"", "\"LENHA\"", "", "\"BIGODE\""};
     private String silabaCorreta[] = {"VO", "PO", "TA", "U", "VI", "LU", "LA", "BE", "BO",
         "CA", "BA", "HO", "PA", "FU", "FI", "JO", "", "RA", "", "", "", "", "", "", "TE", "",
         "", "", "", "", "BU", "RÉ", "", "", "", "", "", "", "", "", "FE", "", "", "", "RI", "", "", "", "",
@@ -207,13 +207,13 @@ public class ModelPag04a {
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/BU4pb.png");
                 break;
             case 32:
-                espaco.setText("- -");
-                f1.setId("pg4f1");
-                espaco.setId("pg4espaco");
+                espaco.setText("- -");                
+                espaco.setId("pg4espacoDireita");
+                f2.setId("pg4f2Esquerda");
                 f1.setText("JA");
                 f2.setText("CA");
                 f3.setVisible(false);
-                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/RÉ4pb.png");
+                imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/JA4pb.png");
                 break;
             case 41:
                 espaco.setText("- -");
@@ -232,9 +232,10 @@ public class ModelPag04a {
                 imgUrl = getClass().getResource("imagens/licao" + unidadeAtual + "a/RI4pb.png");
                 break;
             case 50:
-                espaco.setText("- - -");
-                f3.setId("pg4f3Esquerda");
-                espaco.setId("pg4espaco");
+                espaco.setText("- - - - -");
+                f2.setId("pg4f2Esquerda_3");
+                f3.setId("pg4f3Esquerda_3");
+                espaco.setId("pg4espacoDireita_4");
                 f1.setText("A");
                 f2.setText("BO");
                 f3.setText("BRI");
@@ -367,6 +368,7 @@ public class ModelPag04a {
             default:
                 String fonema = silabaCorreta[getUnidadeAtual() - 1];
                 if (silabaEscolhida.equals(fonema)) {
+                    System.out.println("Fonema "+fonema);
                     opcaoCorreta = true;
                     imagemUrl = getClass().getResource("imagens/licao" + getUnidadeAtual() + "a/" + fonema + "4cor.png");
                     imagemAudio.setImage(new Image(imagemUrl.toString()));
@@ -422,6 +424,7 @@ public class ModelPag04a {
      * @param evento
      */
     public void alterarLabelEspaco(MouseEvent evento) {
+        System.out.println("Texto "+ ((Label) evento.getSource()).getText());
         //pega o conteúdo da label selecionada
         espaco.setText(((Label) evento.getSource()).getText());
         //esconde a label que havia sido selecionada

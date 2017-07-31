@@ -33,6 +33,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -76,8 +77,23 @@ public class ModelABC {
 
     @FXML
     private AnchorPane janelaPrograma;
+    
+    @FXML
+    private Label formaMaiuscula;
+    
+    @FXML
+    private Label formaMinuscula;
+    
+    @FXML
+    private Label cursivaMaiuscula;
+    
+    @FXML
+    private Label cursivaMinuscula;
 
-    public ModelABC(ImageView img1, ImageView img2, ImageView img3, ImageView img4, AnchorPane janelaPrograma) {
+    public ModelABC(ImageView img1, ImageView img2, ImageView img3, ImageView img4, 
+            AnchorPane janelaPrograma, Label formaMaiuscula, Label formaMinuscula, 
+            Label cursivaMaiuscula, Label cursivaMinuscula) {
+        
         mCC = new ModelClasseComum(janela, listaPalavras);
         unidadeAtual = 0;
         this.img1 = img1;
@@ -85,6 +101,10 @@ public class ModelABC {
         this.img3 = img3;
         this.img4 = img4;
         this.janelaPrograma = janelaPrograma;
+        this.formaMaiuscula = formaMaiuscula;
+        this.formaMinuscula = formaMinuscula;
+        this.cursivaMinuscula = cursivaMinuscula;
+        this.cursivaMaiuscula = cursivaMaiuscula;
     }
 
     public void menuInicial(ActionEvent event) throws IOException {
@@ -289,10 +309,11 @@ public class ModelABC {
         imgMinusculaCursiva = getClass().getResource("imagens/ABCimg/minuscula/cursiva/" + letra + ".png");
         //System.out.println(imgMaiusculaForma.getPath());
 
-        img1.setImage(new Image(imgMaiusculaForma.toString()));
-        img2.setImage(new Image(imgMinusculaForma.toString()));
-        img3.setImage(new Image(imgMaiusculaCursiva.toString()));
-        img4.setImage(new Image(imgMinusculaCursiva.toString()));
+        
+        formaMaiuscula.setText(letra.toUpperCase());        
+        formaMinuscula.setText(letra);
+        cursivaMaiuscula.setText(letra.toUpperCase());
+        cursivaMinuscula.setText(letra);
 
     }
 

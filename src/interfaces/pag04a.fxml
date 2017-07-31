@@ -117,7 +117,7 @@
                   <Insets left="270.0" right="2.0" top="70.0" />
                </FlowPane.margin>
               </Label>
-              <Label fx:id="espaco" alignment="CENTER" ellipsisString="" maxHeight="-Infinity" maxWidth="80.0" minHeight="33.0" minWidth="45.0">
+              <Label fx:id="espaco" alignment="CENTER" ellipsisString="" maxHeight="-Infinity" maxWidth="120.0" minHeight="33.0" minWidth="45.0">
                   <font>
                       <Font size="25.0" />
                   </font>
@@ -136,7 +136,7 @@
                   <Insets left="5.0" top="70.0" />
                </FlowPane.margin>
               </Label>
-            <Label fx:id="f3" text="f2">
+            <Label fx:id="f3" maxHeight="30.0" maxWidth="-Infinity" text="f2">
                <font>
                   <Font size="25.0" />
                </font>

@@ -48,10 +48,11 @@ public class ModelPag07 {
         "53: ALGODÃO", "54: PRINCESA", "55: PROFESSOR", "56: CRIANÇA", "57: CORDEL",
         "58: ATENÇÃO", "59: FLORESTA", "60: TRANSFORMA"};
 
-    public ModelPag07(ImageView imagemTexto) {
+    public ModelPag07(ImageView imagemTexto, ListView listaPalavras) {
         this.imagemTexto = imagemTexto;
+        this.listaPalavras = listaPalavras;
         this.unidadeAtual = 0;
-        mCC = new ModelClasseComum(janela, listaPalavras);
+        mCC = new ModelClasseComum(janela, this.listaPalavras);
     }
 
     /**
@@ -192,6 +193,7 @@ public class ModelPag07 {
     }
 
     public void atualizarListView(int unidade) {
+        System.out.println("Passou aqui"+ unidade);
         mCC.atualizarListView(listaPalavras, unidade);
     }
 

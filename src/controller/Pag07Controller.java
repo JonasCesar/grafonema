@@ -61,7 +61,7 @@ public class Pag07Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelPag07 = new ModelPag07(imagemTexto);
+        modelPag07 = new ModelPag07(imagemTexto, listaPalavras);
         Tooltip ouvirPalavras = new Tooltip("Clique em uma palavra para ouvir");
         listaPalavras.setTooltip(ouvirPalavras);
         abc.setTooltip(new Tooltip("Clique para ouvir os sons das letras"));

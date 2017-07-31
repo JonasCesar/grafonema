@@ -317,6 +317,7 @@ public class ModelPag05b {
                 if (silabaEscolhida.equals(fonema)) {
                     opcaoCorreta = true;
                     imagemUrl = getClass().getResource("imagens/licao" + getUnidadeAtual() + "b/" + fonema + "5cor.png");
+                    imagemAudio.setImage(new Image(imagemUrl.toString()));
                 }
                 break;
         }

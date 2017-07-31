@@ -450,9 +450,11 @@ public class ModelPag06 {
                 p1.setText("Vamos");
                 p2.setText("o mundo?");
                 break;
-            default:
-                break;
+               
         }
+        p1.setText(p1.getText().toUpperCase());
+        p2.setText(p2.getText().toUpperCase());
+        p3.setText(p3.getText().toUpperCase());
     }
 
     /**
