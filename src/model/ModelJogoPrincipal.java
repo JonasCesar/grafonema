@@ -2447,8 +2447,8 @@ public class ModelJogoPrincipal {
         //se for add alguma coisa antes do inicio do jogo é só aumentar o tamanho do tempo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
-                new KeyFrame(Duration.seconds(tempoFase + 25), eventoVoltar),
-                new KeyFrame(Duration.seconds(tempoFase + 26), eventoFimAcerto)).play();
+                new KeyFrame(Duration.seconds(tempoFase), eventoVoltar),
+                new KeyFrame(Duration.seconds(tempoFase+1), eventoFimAcerto)).play();
 
     }
 
