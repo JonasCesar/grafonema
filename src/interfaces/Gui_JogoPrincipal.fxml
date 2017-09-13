@@ -15,7 +15,7 @@
         <URL value="@/css/estilosGerais.css" />
     </stylesheets>
    <children>
-      <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1262.0" layoutX="-22.0" opacity="0.41" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagemFundo" fitHeight="700.0" fitWidth="1312.0" layoutX="-4.0" opacity="0.41" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../model/Imagens/Gerais/fundo.jpg" />
          </image></ImageView>
@@ -34,7 +34,7 @@
             <Image url="@../model/Imagens/Icones/redondo3.png" />
          </image>
       </ImageView>
-      <Label fx:id="tempo" alignment="CENTER" contentDisplay="CENTER" layoutX="602.0" layoutY="29.0" text="30s" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+      <Label fx:id="tempo" alignment="CENTER" contentDisplay="CENTER" layoutX="603.0" layoutY="29.0" text="30s" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font size="60.0" />
          </font></Label>
