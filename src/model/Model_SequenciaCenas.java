@@ -268,7 +268,11 @@ public class Model_SequenciaCenas {
             janela.setTitle("Grafonema");
             janela.setScene(scene);
             janela.show();
-
+try {
+                cenaPrincipal = (Parent) fxmloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+            }
         };
 
         c4 = (ActionEvent event) -> {
@@ -636,5 +640,26 @@ public class Model_SequenciaCenas {
 
         return valor;
     }
+
+    public void chamarCenaPulo() {
+        
+         janela = (Stage) imgView.getScene().getWindow();
+            Parent cenaPrincipal = null;
+
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+            try {
+                cenaPrincipal = (Parent) fxmloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
+            jogoPrincipalController.definirImagemFundo();
+
+            Scene scene = new Scene(cenaPrincipal, 1200, 700);
+            janela.setTitle("Grafonema");
+            janela.setScene(scene);
+            janela.show();
+    }
+
 
 }

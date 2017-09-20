@@ -1,11 +1,19 @@
 package controller;
 
+import java.io.IOException;
 import model.Model_SequenciaCenas;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -91,6 +99,13 @@ public class Gui_SequenciaCenasController implements Initializable {
 
     public Double getTempoFase(int fase) {
         return modelSequenciaCenas.getTempoFase(fase);
+    }
+
+    @FXML
+    private void handlePular(ActionEvent event) {
+        
+        modelSequenciaCenas.chamarCenaPulo();
+        
     }
 
 }

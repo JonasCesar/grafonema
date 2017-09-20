@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_SequenciaCenasController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_SequenciaCenasController">
    <children>
-      <ImageView fx:id="imgView" fitHeight="700.0" fitWidth="1262.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgView" fitHeight="700.0" fitWidth="1262.0" layoutX="-6.0" layoutY="13.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="1108.0" layoutY="595.0" mnemonicParsing="false" onAction="#handlePular" text="pular" />
       <StackPane layoutX="175.0" prefHeight="700.0" prefWidth="900.0">
          <children>
             <ImageView fitHeight="726.0" fitWidth="710.0" pickOnBounds="true" preserveRatio="true">

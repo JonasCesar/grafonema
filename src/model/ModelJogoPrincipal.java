@@ -382,7 +382,7 @@ public class ModelJogoPrincipal {
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
-            if (getFaseAtual() != 5) {
+            if (getFaseAtual() != 7) {
                 mostrarCenas();
                 jogador.setAcertosTotal(0);
             } else {
@@ -1793,7 +1793,7 @@ public class ModelJogoPrincipal {
             sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
             Scene cena = new Scene(proximaCena, 1200, 700);
-            janela.setTitle("Grafonema");//título da cena
+            janela.setTitle("Legere");//título da cena
             janela.setScene(cena);
             janela.setResizable(false);
             janela.show();//exibe a cena
