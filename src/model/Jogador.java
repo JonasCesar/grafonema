@@ -20,10 +20,10 @@ public class Jogador {
      * Construtor da classe Jogador
      */
     public Jogador() {
-        this.faseAtual = 7;
+        this.faseAtual = 1;
         this.qntPulos = 0;
         this.pontuacaoTotal = 0;
-        this.acertosTotal = 10;
+        this.acertosTotal = 14;
         this.qntErros = 0;
         this.estaComBonus = false;
         this.acertosPorFase = new ArrayList();

@@ -1,19 +1,13 @@
 package controller;
 
-import java.io.IOException;
 import model.Model_SequenciaCenas;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -27,6 +21,8 @@ public class Gui_SequenciaCenasController implements Initializable {
     private Model_SequenciaCenas modelSequenciaCenas;
     private int unidadeAtual;
     private ImageView imagemFundo;
+    @FXML
+    private Button skipIntro;
 
     public Gui_SequenciaCenasController() {
         unidadeAtual = 0;
@@ -40,8 +36,8 @@ public class Gui_SequenciaCenasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modelSequenciaCenas = new Model_SequenciaCenas(imgView,imagemFundo);        
-        imgView.toFront();
+        modelSequenciaCenas = new Model_SequenciaCenas(imgView,imagemFundo,skipIntro);        
+        //imgView.toFront();
 
     }
 
@@ -102,8 +98,7 @@ public class Gui_SequenciaCenasController implements Initializable {
     }
 
     @FXML
-    private void handlePular(ActionEvent event) {
-        
+    private void handlePular(ActionEvent event) {        
         modelSequenciaCenas.chamarCenaPulo();
         
     }

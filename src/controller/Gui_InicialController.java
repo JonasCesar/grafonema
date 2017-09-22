@@ -24,13 +24,11 @@ public class Gui_InicialController implements Initializable {
     
     
     private Model_Inicial modelInical = new Model_Inicial();
-    private ModelJogoPrincipal modelPrincipal = new ModelJogoPrincipal(iniciar, iniciar, iniciar, iniciar, iniciar, iniciar, null, null, null, iniciar, null, null);
-    private Model_SequenciaCenas modeSequenciaCenas = new Model_SequenciaCenas(null, null);
+    private ModelJogoPrincipal modelPrincipal = new ModelJogoPrincipal(iniciar, iniciar, iniciar, iniciar, iniciar, iniciar, null, null, null, iniciar, null, null);    
     
     @FXML
     private ImageView imagemFundo;
-    @FXML
-    private Button PularIntro;
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -41,7 +39,7 @@ public class Gui_InicialController implements Initializable {
         Image image = new Image(getClass().getResourceAsStream("play.png"));
         iniciar.setGraphic(new ImageView(image));
         imagemFundo.toBack();
-        PularIntro.toFront();
+        
     }
     /**
      * Começa o jogo

@@ -13,8 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_SequenciaCenasController">
    <children>
-      <ImageView fx:id="imgView" fitHeight="700.0" fitWidth="1262.0" layoutX="-6.0" layoutY="13.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="1108.0" layoutY="595.0" mnemonicParsing="false" onAction="#handlePular" text="pular" />
+      <ImageView fx:id="imgView" fitHeight="700.0" fitWidth="1200.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
       <StackPane layoutX="175.0" prefHeight="700.0" prefWidth="900.0">
          <children>
             <ImageView fitHeight="726.0" fitWidth="710.0" pickOnBounds="true" preserveRatio="true">
@@ -26,5 +25,6 @@
                </StackPane.margin></ImageView>
          </children>
       </StackPane>
+      <Button fx:id="skipIntro" layoutX="1108.0" layoutY="595.0" mnemonicParsing="false" onAction="#handlePular" text="pular" />
    </children>
 </AnchorPane>

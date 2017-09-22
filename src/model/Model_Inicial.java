@@ -37,7 +37,7 @@ public class Model_Inicial {
         Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
         //cria uma cena 
         Scene cena = new Scene(proximaCena, 1200, 700);
-        janela.setTitle("Grafonema");//título da cena
+        janela.setTitle("Legere");//título da cena
         janela.setScene(cena);
         janela.show();//exibe a cena
         //sequenciaCenas.executarCenaInicioJogo();

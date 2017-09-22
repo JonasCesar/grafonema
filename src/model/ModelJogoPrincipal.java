@@ -502,7 +502,7 @@ public class ModelJogoPrincipal {
             case 7:
                 matrizSilabasComplexas2.clear();
                 iniciarMatrizSilabasComplexas3();
-                i = indiceAudio.nextInt(266);
+                i = indiceAudio.nextInt(263);
                 tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
                 break;
