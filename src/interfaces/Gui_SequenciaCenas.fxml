@@ -10,9 +10,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_SequenciaCenasController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Gui_SequenciaCenasController">
+     <stylesheets>
+        <URL value="@/css/estilosGerais.css" />
+    </stylesheets>
+    <children>
       <ImageView fx:id="imgView" fitHeight="700.0" fitWidth="1200.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
       <StackPane layoutX="175.0" prefHeight="700.0" prefWidth="900.0">
          <children>
@@ -25,6 +29,6 @@
                </StackPane.margin></ImageView>
          </children>
       </StackPane>
-      <Button fx:id="skipIntro" layoutX="1108.0" layoutY="595.0" mnemonicParsing="false" onAction="#handlePular" text="pular" />
+      <Button fx:id="skipIntro" layoutX="1050.0" layoutY="608.0" mnemonicParsing="false" onAction="#handlePular" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="Pular" />
    </children>
 </AnchorPane>

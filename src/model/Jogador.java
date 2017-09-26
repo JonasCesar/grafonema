@@ -23,7 +23,7 @@ public class Jogador {
         this.faseAtual = 1;
         this.qntPulos = 0;
         this.pontuacaoTotal = 0;
-        this.acertosTotal = 14;
+        this.acertosTotal = 0;
         this.qntErros = 0;
         this.estaComBonus = false;
         this.acertosPorFase = new ArrayList();

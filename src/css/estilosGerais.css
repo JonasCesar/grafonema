@@ -199,7 +199,7 @@ and open the template in the editor.
     -fx-pref-height: 70px;
 }
 
-#pular{
+#pular, skipIntro{
     -fx-cursor: hand;
 }
 
@@ -240,4 +240,17 @@ and open the template in the editor.
 
 #iniciar, #imgReiniciar, #imgSair{
     -fx-cursor: hand;
+}
+
+#lifeBar{
+    -fx-accent: green;
+}
+
+#lifeBarOrange {
+    -fx-accent: orange; 
+}
+
+#lifeBarRed
+{
+    -fx-accent: red;
 }

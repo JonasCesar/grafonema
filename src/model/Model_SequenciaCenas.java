@@ -1,5 +1,6 @@
 package model;
 
+import controller.Gui_FimJogoController;
 import controller.Gui_JogoPrincipalController;
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class Model_SequenciaCenas {
     @FXML
     private ImageView imgView;
     private File arquivoImagem;
-    private EventHandler<ActionEvent> c0, c1, c2, c3, c4, c5,c6;
+    private EventHandler<ActionEvent> c0, c1, c2, c3, c4, c5, c6;
     private TextArea textoAudio;
     private String caminhoAudio;
     private File arquivo;
@@ -48,6 +49,7 @@ public class Model_SequenciaCenas {
     int faseTempAtual = 0;
 
     Gui_JogoPrincipalController jogoPrincipalController = null;
+    Gui_FimJogoController fimJogoController = null;
     private File soundFile;
     private Clip clip;
     private ImageView imagemFundo;
@@ -56,6 +58,7 @@ public class Model_SequenciaCenas {
     private boolean pularIntro;
     @FXML
     private Button skipIntro;
+    private Parent cenaPrincipal = null;
 
     public Model_SequenciaCenas(ImageView imagem, ImageView imagemFundo, Button skipIntro) {
         imgView = imagem;
@@ -71,9 +74,9 @@ public class Model_SequenciaCenas {
      */
     public void iniciarCenas() {
         caminho1 = caminho2 = caminho3 = caminho4 = caminho5 = faseEfeito = "";
-       if(pularIntro==false){
-           skipIntro.setVisible(false);
-       }
+        if (pularIntro == false) {
+            skipIntro.setVisible(false);
+        }
         switch (getFaseAtual()) {
             case 1:
                 System.out.println("Unidade 1");
@@ -280,7 +283,7 @@ public class Model_SequenciaCenas {
                 Scene scene = new Scene(cenaPrincipal, 1200, 700);
                 janela.setTitle("Grafonema");
                 janela.setScene(scene);
-                janela.show();                
+                janela.show();
             }
         };
 
@@ -300,10 +303,10 @@ public class Model_SequenciaCenas {
                 tocarAudio(caminhoAudio);
             }
         };
-        
+
         c6 = (ActionEvent event) -> {
             pularIntro = false;
-            
+
         };
         //OS TEMPOS SERÃO MODIFICADOS DEPOIS QUE OS AUDIOS FINAIS FOREM ADICIONADOS
 //        new Timeline(
@@ -321,7 +324,7 @@ public class Model_SequenciaCenas {
                 //new KeyFrame(Duration.seconds(tempoAudio + 30), c2),
                 new KeyFrame(Duration.seconds(tempoAudio + 30), c3),
                 new KeyFrame(Duration.seconds(tempoAudio + 31), c4),
-                new KeyFrame(Duration.seconds(tempoAudio + 31), c6)).play();       
+                new KeyFrame(Duration.seconds(tempoAudio + 31), c6)).play();
 
     }
 
@@ -478,7 +481,7 @@ public class Model_SequenciaCenas {
      */
     public void executarCenaIntermediaria() {
         System.out.println("Entrou cena intermediária");
-        
+
         caminho1 = caminho2 = caminho3 = "";
         Double tempoAudio = 0.0;
         skipIntro.setVisible(false);
@@ -499,7 +502,6 @@ public class Model_SequenciaCenas {
                 tempoAudio = 10.0;
                 break;
             case 3:
-                System.out.println("Entrou case 3 cena intermediaria    ");
                 caminho1 = "Imagens/fase3/inicioFase";
                 caminho2 = "Imagens/fase3/fase3_inicio";
                 caminho3 = "audios_silabas_simplesB/fase3_deserto";
@@ -632,37 +634,32 @@ public class Model_SequenciaCenas {
                 valor = 10.0;
                 break;
             case 2:
-                valor = 33.0;
+                valor = 23.0;
                 break;
             case 3:
-                valor = 33.0;
+                valor = 23.0;
                 break;
             case 4:
-                valor = 33.0;
+                valor = 18.0;
                 break;
             case 5:
-                valor = 33.0;
+                valor = 18.0;
                 break;
             case 6:
-                valor = 33.0;
+                valor = 17.0;
                 break;
             case 7:
-                valor = 33.0;
+                valor = 23.0;
                 break;
         }
-
         return valor;
     }
 
     public void chamarCenaPulo() {
         pularIntro = true;
         mediaPlayer.stop();
-        System.out.println("Pular");
         skipIntro.setVisible(false);
-
         janela = (Stage) imgView.getScene().getWindow();
-        Parent cenaPrincipal = null;
-
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
         try {
             cenaPrincipal = (Parent) fxmloader.load();
@@ -673,11 +670,88 @@ public class Model_SequenciaCenas {
         jogoPrincipalController.definirImagemFundo();
 
         Scene scene = new Scene(cenaPrincipal, 1200, 700);
-        janela.setTitle("Grafonema");
+        janela.setTitle("Legere");
         janela.setScene(scene);
         janela.show();
         jogoPrincipalController.iniciarJogo();
-        
     }
 
+    public void executarCenaFinal(int pontuacaoFinal) {
+        skipIntro.setVisible(false);
+        //evento responsável por exibir as cenas de progresso na história
+        c0 = (ActionEvent event) -> {
+            caminho1 = caminho3 = "";
+            caminho1 = "Imagens/Gerais/fim1";
+            caminho3 = "audios_silabas_complexas3/final";
+            URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
+            imgView.setImage(new Image(arquivoImg.toString()));
+            caminhoAudio = caminho3 + ".mp3";
+            tocarAudio(caminhoAudio);
+        };
+
+        c1 = (ActionEvent event) -> {
+            caminho1 = caminho3 = "";
+            caminho1 = "Imagens/Gerais/fim2";
+            URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
+            imgView.setImage(new Image(arquivoImg.toString()));
+        };
+
+        c2 = (ActionEvent event) -> {
+            caminho1 = caminho3 = "";
+            caminho1 = "Imagens/Gerais/fim3";
+            URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
+            imgView.setImage(new Image(arquivoImg.toString()));
+        };
+
+        c3 = (ActionEvent event) -> {
+            caminho1 = caminho3 = "";
+            caminho1 = "Imagens/Gerais/fim4";
+            URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
+            imgView.setImage(new Image(arquivoImg.toString()));
+        };
+
+        c4 = (ActionEvent event) -> {
+            caminho1 = caminho3 = "";
+            caminho1 = "Imagens/Gerais/fim5";
+            URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
+            imgView.setImage(new Image(arquivoImg.toString()));
+        };
+
+        c5 = (ActionEvent event) -> {
+            caminho1 = caminho3 = "";
+            caminho1 = "Imagens/Gerais/fim6";
+            URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
+            imgView.setImage(new Image(arquivoImg.toString()));
+        };
+
+        c6 = (ActionEvent event) -> {
+            //armazena a cena em que o botão imgView se encontra atualmente
+            janela = (Stage) imgView.getScene().getWindow();
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_FimJogo.fxml"));
+            try {
+                //armeza a cena do botão 'btn_1' em uma variável temporária
+                cenaPrincipal = (Parent) fxmloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            fimJogoController = fxmloader.<Gui_FimJogoController>getController();
+
+            //cria uma cena
+            Scene cena = new Scene(cenaPrincipal, 1200, 700);
+            janela.setTitle("Legere");//título da cena
+            janela.setScene(cena);
+            janela.setResizable(false);
+            janela.show();//exibe a cena
+            fimJogoController.definirPontuacaoFinal(pontuacaoFinal);
+        };
+
+        new Timeline(
+                new KeyFrame(Duration.seconds(0), c0),
+                new KeyFrame(Duration.seconds(10), c1),
+                new KeyFrame(Duration.seconds(15), c2),
+                new KeyFrame(Duration.seconds(20), c3),
+                new KeyFrame(Duration.seconds(25), c4),
+                new KeyFrame(Duration.seconds(30), c5),
+                new KeyFrame(Duration.seconds(35), c6)).play();
+    }
 }

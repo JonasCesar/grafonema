@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -101,6 +103,21 @@ public class Gui_SequenciaCenasController implements Initializable {
     private void handlePular(ActionEvent event) {        
         modelSequenciaCenas.chamarCenaPulo();
         
+    }
+    
+    public void executarCenaFinal(int pontuacaoFinal){
+        modelSequenciaCenas.executarCenaFinal(pontuacaoFinal);
+    }
+
+    @FXML
+    private void removerSombraBotao(MouseEvent event) {
+        DropShadow sombras = new DropShadow();
+        ((Button) event.getSource()).setEffect(sombras);
+    }
+
+    @FXML
+    private void sombrearBotao(MouseEvent event) {
+        ((Button) event.getSource()).setEffect(null);
     }
 
 }

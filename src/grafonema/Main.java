@@ -26,7 +26,7 @@ public class Main extends Application {
         this.janela = janela;
         Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Inicial.fxml"));        
         Scene cena = new Scene(cenaInicial, 1200, 700);        
-        janela.setTitle("Grafonema");
+        janela.setTitle("Legere");
         janela.setScene(cena);
         janela.setResizable(false);
         janela.show();

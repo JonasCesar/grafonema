@@ -152,6 +152,11 @@ public class Gui_JogoPrincipalController implements Initializable {
                 modelJogoPrincipal.reduzirLifeBar();
                 modelJogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
                 Button temp = modelJogoPrincipal.opcaoCorreta(event);
+                if (modelJogoPrincipal.jogador.getQntErros() == 3) {
+                    lifeBar.setId("lifeBarOrange");
+                } else if (modelJogoPrincipal.jogador.getQntErros() == 5) {
+                    lifeBar.setId("lifeBarRed");
+                }
 
                 //mostrar a animaçao de erro
                 //animação da opção correta            
