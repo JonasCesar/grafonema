@@ -1,13 +1,10 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
     Created on : 24/02/2017, 16:01:06
     Author     : jonas
 */
-
+#iniciar{
+    -fx-background-color: #33ff33;
+}
 .button{
     -fx-background-radius: 30;
     -fx-background-insets: 0,1,2,3,0;
@@ -254,3 +251,4 @@ and open the template in the editor.
 {
     -fx-accent: red;
 }
+

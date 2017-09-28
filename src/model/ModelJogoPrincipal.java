@@ -1533,13 +1533,10 @@ public class ModelJogoPrincipal {
     public void incrementarPontuacao() {
 
         //valor que será acrescentado à pontuação do jogador
-        int valorAcrescentar = 10;
+        int valorAcrescentar = 5;
         //pega a pontuação no label da pontuação
         int pontuacaoAnterior = Integer.parseInt(pontuacao.getText());
 
-        if (jogador.getBonus()) {
-            valorAcrescentar = 20;
-        }
         //gera a nova pontuação somando o valor que deve ser acrescentado à
         //pontuação anterior
         int novaPontuacao = pontuacaoAnterior + valorAcrescentar;
