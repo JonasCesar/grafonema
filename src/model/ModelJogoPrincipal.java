@@ -253,7 +253,7 @@ public class ModelJogoPrincipal {
         "menina", "menino", "mesa", "moeda", "musica", "novela", "parede", "pato",
         "pelado", "pé", "pena", "pera", "peteca", "piano", "pipa", "pipoca",
         "pirulito", "porta", "rato", "rei", "rico", "robo", "rosa", "rua",
-        "sábado", "sapato", "sapo", "sino", "tapete", "tatu", "telefone", "teto",
+        "sabado", "sapato", "sapo", "sino", "tapete", "tatu", "telefone", "teto",
         "tijolo", "tomate", "urro", "uva", "vaca", "vela", "xicara"
     };
 
@@ -368,14 +368,18 @@ public class ModelJogoPrincipal {
      * @throws java.io.IOException
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
-        System.out.println("Nova opção aleatória");
+        int rodadas = 15;
+        System.out.println("Nova opção aleatória fase " + getFaseAtual());
         System.out.println("qnt erros  " + jogador.getQntErros());
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
         }
-
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
+        //apartir da fase 1 o número de rodadas aumenta para 20
+        if (jogador.getFaseAtual() > 1) {
+            rodadas = 20;
+        }
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
             if (pular.isDisable()) {
                 pular.setDisable(false);
             }
@@ -1475,7 +1479,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas3.put("tron", "TRON");
         matrizSilabasComplexas3.put("tros", "TROS");
         matrizSilabasComplexas3.put("trum", "TRUM");
-        matrizSilabasComplexas3.put("trun", "TRUM");
+        matrizSilabasComplexas3.put("trun", "TRUN");
         matrizSilabasComplexas3.put("trus", "TRUS");
         matrizSilabasComplexas3.put("vlas", "VLAS");
         matrizSilabasComplexas3.put("vlem", "VLEM");
@@ -1616,6 +1620,7 @@ public class ModelJogoPrincipal {
     public void incrementarErro() {
         //incrementa a quantidade de erros do jogador
         jogador.setQntErros(jogador.getQntErros() + 1);
+        jogador.setBarraVida(jogador.getBarraVida() + 1);
     }
 
     /**
@@ -1802,8 +1807,8 @@ public class ModelJogoPrincipal {
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
-            jogador.setFaseAtual(jogador.getFaseAtual() + 1);           
-            setMostrandoCena(true);            
+            jogador.setFaseAtual(jogador.getFaseAtual() + 1);
+            setMostrandoCena(true);
             janela.setResizable(false);
             numFase.setText("Fase: " + jogador.getFaseAtual() + "/7");
         };
@@ -2411,22 +2416,22 @@ public class ModelJogoPrincipal {
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
-            Parent cenaPrincipal = null;
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
-            try {
-                cenaPrincipal = (Parent) fxmloader.load();
-            } catch (IOException ex) {
-                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
-            jogoPrincipal.setFaseAtual(getFaseAtual());
-            jogoPrincipal.definirImagemFundo();
-            janela.setTitle("Legere");
-            janela.setScene(cenaTemporaria);
-            setMostrandoCena(false);
-            janela.setResizable(false);
-            definirImagemFundo();
-            janela.show();
+                Parent cenaPrincipal = null;
+                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+                try {
+                    cenaPrincipal = (Parent) fxmloader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
+                jogoPrincipal.setFaseAtual(getFaseAtual());
+                jogoPrincipal.definirImagemFundo();
+                janela.setTitle("Legere");
+                janela.setScene(cenaTemporaria);
+                setMostrandoCena(false);
+                janela.setResizable(false);
+                definirImagemFundo();
+                janela.show();
         };
         eventoFimAcerto = (ActionEvent event) -> {
             try {
@@ -2436,7 +2441,7 @@ public class ModelJogoPrincipal {
                         .getName()).log(Level.SEVERE, null, ex);
             }
         };
-        System.out.println("Tempo Fase " + tempoFase);
+
         //se for add alguma coisa antes do inicio do jogo é só aumentar o tamanho do tempo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
@@ -2717,9 +2722,9 @@ public class ModelJogoPrincipal {
     }
 
     public void mostrarCenaFinal(int pontuacaoTotal) throws IOException {
-        janela = (Stage) btn_1.getScene().getWindow();       
+        janela = (Stage) btn_1.getScene().getWindow();
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
-        Parent proximaCena = (Parent) fxmloader.load();        
+        Parent proximaCena = (Parent) fxmloader.load();
         Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
         //cria uma cena 
         Scene cena = new Scene(proximaCena, 1200, 700);
@@ -2731,4 +2736,24 @@ public class ModelJogoPrincipal {
         timer.cancel();
         sequenciaCenas.executarCenaFinal(pontuacaoTotal);
     }
-} 
+
+    public void voltarCenaJogo(Stage janela) {
+        Parent cenaPrincipal = null;
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+        try {
+            cenaPrincipal = (Parent) fxmloader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
+        System.out.println("Evento voltar fasetual: " + getFaseAtual());
+        jogoPrincipal.setFaseAtual(getFaseAtual());
+        jogoPrincipal.definirImagemFundo();
+        janela.setTitle("Legere");
+        janela.setScene(cenaTemporaria);
+        setMostrandoCena(false);
+        janela.setResizable(false);
+        definirImagemFundo();
+        janela.show();
+    }
+}

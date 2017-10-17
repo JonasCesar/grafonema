@@ -90,7 +90,7 @@ public class Gui_SequenciaCenasController implements Initializable {
     public void definirImagemFundo() {
         modelSequenciaCenas.definirImagemFundo();
     }
-    
+
     public void executarCenaInicial(){
         modelSequenciaCenas.executarCenaInicial();
     }
@@ -100,11 +100,11 @@ public class Gui_SequenciaCenasController implements Initializable {
     }
 
     @FXML
-    private void handlePular(ActionEvent event) {        
+    private void handlePular(ActionEvent event) {
         modelSequenciaCenas.chamarCenaPulo();
-        
+
     }
-    
+
     public void executarCenaFinal(int pontuacaoFinal){
         modelSequenciaCenas.executarCenaFinal(pontuacaoFinal);
     }

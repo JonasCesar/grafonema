@@ -17,6 +17,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.FuncaoBotao;
 
 /**
@@ -152,9 +153,9 @@ public class Gui_JogoPrincipalController implements Initializable {
                 modelJogoPrincipal.reduzirLifeBar();
                 modelJogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
                 Button temp = modelJogoPrincipal.opcaoCorreta(event);
-                if (modelJogoPrincipal.jogador.getQntErros() == 3) {
+                if (modelJogoPrincipal.jogador.getBarraVida() == 3) {
                     lifeBar.setId("lifeBarOrange");
-                } else if (modelJogoPrincipal.jogador.getQntErros() == 5) {
+                } else if (modelJogoPrincipal.jogador.getBarraVida() == 5) {
                     lifeBar.setId("lifeBarRed");
                 }
 
@@ -169,8 +170,6 @@ public class Gui_JogoPrincipalController implements Initializable {
                     modelJogoPrincipal.mostrarOpcaoCorreta(temp);
                 }
             }
-        } else {
-
         }
 
     }
