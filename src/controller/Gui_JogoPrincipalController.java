@@ -61,6 +61,16 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Label numFase;
     @FXML
     private ImageView imgReiniciar;
+    @FXML
+    private Button DicaBotao1;
+    @FXML
+    private Button DicaBotao2;
+    @FXML
+    private Button DicaBotao3;
+    @FXML
+    private Button DicaBotao4;
+    @FXML
+    private Button DicaBotao5;
 
     public Gui_JogoPrincipalController() {
 
@@ -222,6 +232,14 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private void reiniciarJogo(MouseEvent event) throws IOException {
         modelJogoPrincipal.reiniciarJogo(imgReiniciar);
+    }
+
+    public void mostrarBotoesDicas() {
+        DicaBotao1.setVisible(true);
+        DicaBotao2.setVisible(true);
+        DicaBotao3.setVisible(true);
+        DicaBotao4.setVisible(true);
+        DicaBotao5.setVisible(true);
     }
 
 }
