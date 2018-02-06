@@ -527,7 +527,9 @@ public class ModelJogoPrincipal {
         boolean resultado = false;
         switch (jogador.getFaseAtual()) {
             case 1:
+
                 resultado = ((getKeyByValue(matrizVogais, opcaoEscolhida)).equals(getAudioAtual()));
+                System.out.println("Resultado " + resultado);
                 break;
             case 2:
                 resultado = ((getKeyByValue(matrizSilabasSimples, opcaoEscolhida)).equals(getAudioAtual()));
