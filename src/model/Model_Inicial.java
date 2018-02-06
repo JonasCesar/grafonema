@@ -43,8 +43,6 @@ public class Model_Inicial {
         //sequenciaCenas.executarCenaInicioJogo();
         sequenciaCenas.definirImagemFundo();
         sequenciaCenas.executarCenaInicialFase();
-        
-
     }
     
     //Abre a janela "Sobre o jogo"

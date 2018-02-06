@@ -17,6 +17,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.FuncaoBotao;
 
 /**
@@ -60,6 +61,16 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Label numFase;
     @FXML
     private ImageView imgReiniciar;
+    @FXML
+    private Button DicaBotao1;
+    @FXML
+    private Button DicaBotao2;
+    @FXML
+    private Button DicaBotao3;
+    @FXML
+    private Button DicaBotao4;
+    @FXML
+    private Button DicaBotao5;
 
     public Gui_JogoPrincipalController() {
 
@@ -152,9 +163,9 @@ public class Gui_JogoPrincipalController implements Initializable {
                 modelJogoPrincipal.reduzirLifeBar();
                 modelJogoPrincipal.incrementarErro();//incrementa a quantidade de erro do jogador
                 Button temp = modelJogoPrincipal.opcaoCorreta(event);
-                if (modelJogoPrincipal.jogador.getQntErros() == 3) {
+                if (modelJogoPrincipal.jogador.getBarraVida() == 3) {
                     lifeBar.setId("lifeBarOrange");
-                } else if (modelJogoPrincipal.jogador.getQntErros() == 5) {
+                } else if (modelJogoPrincipal.jogador.getBarraVida() == 5) {
                     lifeBar.setId("lifeBarRed");
                 }
 
@@ -169,8 +180,6 @@ public class Gui_JogoPrincipalController implements Initializable {
                     modelJogoPrincipal.mostrarOpcaoCorreta(temp);
                 }
             }
-        } else {
-
         }
 
     }
@@ -223,6 +232,14 @@ public class Gui_JogoPrincipalController implements Initializable {
     @FXML
     private void reiniciarJogo(MouseEvent event) throws IOException {
         modelJogoPrincipal.reiniciarJogo(imgReiniciar);
+    }
+
+    public void mostrarBotoesDicas() {
+        DicaBotao1.setVisible(true);
+        DicaBotao2.setVisible(true);
+        DicaBotao3.setVisible(true);
+        DicaBotao4.setVisible(true);
+        DicaBotao5.setVisible(true);
     }
 
 }

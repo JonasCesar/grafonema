@@ -74,18 +74,18 @@ public class ModelJogoPrincipal {
     @FXML
     private ProgressBar lifeBar;
     private final String vogais[] = {"A", "E", "I", "O", "U"};
-    private final String silabasSimples[] = {
-        "AD", "AL", "AM", "AN", "AR", "AS", "AZ", "ÇÃO", "ÇÕES", "EL", "EM",
-        "EN", "ER", "ES", "IL", "IM", "IN", "IR", "IS", "OL", "OM", "ON", "OR",
-        "OS", "UL", "UM", "UN", "UR", "US"};
-    private final String silabasSimplesB[] = {
-        "BA", "BE", "BI", "BO", "BU", "CA", "CE", "CI", "CO", "CU", "DA", "DE",
-        "DI", "DO", "DU", "FA", "FE", "FI", "FO", "FU", "GA", "GE", "GI", "GO",
-        "GU", "JA", "JE", "JI", "JO", "JU", "LA", "LE", "LI", "LO", "LU", "MA",
-        "ME", "MI", "MO", "MU", "NA", "NE", "NI", "NO", "NU", "PA", "PE", "PI",
-        "PO", "PU", "RA", "RE", "RI", "RO", "RU", "SA", "SE", "SI", "SO", "SU",
-        "TA", "TE", "TI", "TO", "TU", "VA", "VE", "VI", "VO", "VU", "XA", "XE",
-        "XI", "XO", "XU", "ZA", "ZE", "ZI", "ZO", "ZU"};
+    private final String silabasSimples[] = {        
+        "AL", "AM", "AN", "AR", "AS", "BA", "BE", "BI", "BO", "BU", "CA",
+        "ÇÃO", "CE", "CI", "ÇÕES", "CU", "DA", "DE", "DI", "DO",
+        "EM", "EN", "ER", "ES", "FA", "FE", "FI",
+        "FO", "FU", "GA", "GE", "GI", "GO", "GU", "JAN", "JE", "JI", "JO", "JU",
+        "LA", "LE", "LI", "LO","MA", "ME", "MI", "MO", "MU", "NA", "NE",
+        "NI", "NO", "NU", "OM", "ON", "OR", "OS",
+        "PA", "PE", "PI", "PO", "PU", "RA", "RE", "RI", "RO",
+        "RU", "SA", "SE", "SI", "SO", "SU", "TA", "TE", "TI", "TO", "TU", "UM", "UN", "UR",
+        "VA", "VE", "VI", "VO", "VU", "XA", "XE", "XI", "XO",
+        "ZA", "ZE", "ZI", "ZO"};
+   
     private final String silabasComplexas2[] = {
         "BLA", "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU",
         "CLA", "CLE", "CLI", "CLO", "CLU", "CRA", "CRE", "CRI", "CRO", "CRU",
@@ -182,19 +182,17 @@ public class ModelJogoPrincipal {
     private final String audioVogais[] = {"vogal-A", "vogal-E", "vogal-I", "vogal-O", "vogal-U"};
 
     private final String audioSilabasSimples[] = {
-        "ad", "al", "am", "an", "ar", "as", "az", "ção", "ções", "el", "em",
-        "en", "er", "es", "il", "im", "in", "ir", "is", "ol", "om", "on", "or",
-        "os", "ul", "um", "un", "ur", "us"};
+        "al", "am", "an", "ar", "as", "ba", "be", "bi", "bo", "bu", "ca",
+        "ção", "ce", "ci", "ções", "cu", "da", "de", "di", "do",
+        "em", "en", "er", "es", "fa", "fe", "fi",
+        "fo", "fu", "ga", "ge", "gi", "go", "gu", "jan", "je", "ji", "jo", "ju",
+        "la", "le", "li", "lo","ma", "me", "mi", "mo", "mu", "na", "ne",
+        "ni", "no", "nu", "om", "on", "or", "os",
+        "pa", "pe", "pi", "po", "pu", "ra", "re", "ri", "ro",
+        "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu", "um", "un", "ur",
+        "va", "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo",
+        "za", "ze", "zi", "zo"};
 
-    private final String audioSilabasSimplesB[] = {
-        "ba", "be", "bi", "bo", "bu", "ca",
-        "ce", "ci", "co", "cu", "da", "de", "di", "do", "du", "fa", "fe", "fi",
-        "fo", "fu", "ga", "ge", "gi", "go", "gu", "ja", "je", "ji", "jo", "ju",
-        "la", "le", "li", "lo", "lu", "ma", "me", "mi", "mo", "mu", "na", "ne",
-        "ni", "no", "nu", "pa", "pe", "pi", "po", "pu", "ra", "re", "ri", "ro",
-        "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu", "va",
-        "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo", "xu", "za", "ze", "zi",
-        "zo", "zu"};
 
     private final String audiosSilabasComplexas[] = {
         "bal", "bam", "ban", "bão", "bar", "bas", "baz", "bel", "bem", "ben",
@@ -253,7 +251,7 @@ public class ModelJogoPrincipal {
         "menina", "menino", "mesa", "moeda", "musica", "novela", "parede", "pato",
         "pelado", "pé", "pena", "pera", "peteca", "piano", "pipa", "pipoca",
         "pirulito", "porta", "rato", "rei", "rico", "robo", "rosa", "rua",
-        "sábado", "sapato", "sapo", "sino", "tapete", "tatu", "telefone", "teto",
+        "sabado", "sapato", "sapo", "sino", "tapete", "tatu", "telefone", "teto",
         "tijolo", "tomate", "urro", "uva", "vaca", "vela", "xicara"
     };
 
@@ -288,8 +286,7 @@ public class ModelJogoPrincipal {
 
     public Jogador jogador = new Jogador();
 
-    private final Map<String, String> matrizVogais, matrizSilabasSimples,
-            matrizSilabasSimplesB, matrizSilabasComplexas2, matrizPalavrasSimples,
+    private final Map<String, String> matrizVogais, matrizSilabasSimples, matrizSilabasComplexas2, matrizPalavrasSimples,
             matrizSilabasComplexas, matrizSilabasComplexas3;
 
     private Random indiceAudio;
@@ -338,7 +335,7 @@ public class ModelJogoPrincipal {
         this.indiceAudio = new Random();
         this.matrizVogais = new HashMap<>();
         this.matrizSilabasSimples = new HashMap<>();
-        this.matrizSilabasSimplesB = new HashMap<>();
+        //this.matrizSilabasSimplesB = new HashMap<>();
         this.matrizSilabasComplexas2 = new HashMap<>();
         this.matrizSilabasComplexas3 = new HashMap<>();
         this.matrizSilabasComplexas = new HashMap<>();
@@ -368,7 +365,8 @@ public class ModelJogoPrincipal {
      * @throws java.io.IOException
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
-        System.out.println("Nova opção aleatória");
+        int rodadas = 15;
+        System.out.println("Nova opção aleatória fase " + getFaseAtual());
         System.out.println("qnt erros  " + jogador.getQntErros());
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
@@ -376,6 +374,12 @@ public class ModelJogoPrincipal {
         }
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
+        //apartir da fase 1 o número de rodadas aumenta para 20
+        if (jogador.getFaseAtual() > 1) {
+            rodadas = 20;
+            jogoPrincipal.mostrarBotoesDicas();
+        }
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
             if (pular.isDisable()) {
                 pular.setDisable(false);
             }
@@ -473,13 +477,13 @@ public class ModelJogoPrincipal {
                 break;
             case 3:
                 matrizSilabasSimples.clear();
-                iniciarMatrizSilabasSimplesB();
+                //iniciarMatrizSilabasSimplesB();
                 i = indiceAudio.nextInt(80);
-                tocarAudio(audioSilabasSimplesB[i]);
+                //tocarAudio(audioSilabasSimplesB[i]);
                 y = i;
                 break;
             case 4:
-                matrizSilabasSimplesB.clear();
+               // matrizSilabasSimplesB.clear();
                 iniciarMatrizPalavrasSimples();
                 i = indiceAudio.nextInt(93);
                 tocarAudio(audiosPalavrasSimples[i]);
@@ -529,7 +533,7 @@ public class ModelJogoPrincipal {
                 resultado = ((getKeyByValue(matrizSilabasSimples, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 3:
-                resultado = ((getKeyByValue(matrizSilabasSimplesB, opcaoEscolhida)).equals(getAudioAtual()));
+                //resultado = ((getKeyByValue(matrizSilabasSimplesB, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 4:
                 resultado = ((getKeyByValue(matrizPalavrasSimples, opcaoEscolhida)).equals(getAudioAtual()));
@@ -585,122 +589,119 @@ public class ModelJogoPrincipal {
      */
     public void iniciarMatrizAudioSilabas() {
 
-        matrizSilabasSimples.put("ad", "AD");
         matrizSilabasSimples.put("al", "AL");
         matrizSilabasSimples.put("am", "AM");
         matrizSilabasSimples.put("an", "AN");
         matrizSilabasSimples.put("ar", "AR");
         matrizSilabasSimples.put("as", "AS");
-        matrizSilabasSimples.put("az", "AZ");
-        matrizSilabasSimples.put("ção", "ÇÃO");
+        matrizSilabasSimples.put("ba", "BA");
+        matrizSilabasSimples.put("be", "BE");
+        matrizSilabasSimples.put("bi", "BI");
+        matrizSilabasSimples.put("bo", "BO");
+        matrizSilabasSimples.put("bu", "BU");
+        matrizSilabasSimples.put("ca", "CA");
+        matrizSilabasSimples.put("ção", "ÇÃO"); 
+        matrizSilabasSimples.put("ce", "CE");
+        matrizSilabasSimples.put("ci", "CI");                
         matrizSilabasSimples.put("ções", "ÇÕES");
-        matrizSilabasSimples.put("el", "EL");
+        matrizSilabasSimples.put("cu", "CU");
+        matrizSilabasSimples.put("da", "DA");        
+        matrizSilabasSimples.put("di", "DI");
+        matrizSilabasSimples.put("do", "DO");
+        
+        
         matrizSilabasSimples.put("em", "EM");
         matrizSilabasSimples.put("en", "EN");
         matrizSilabasSimples.put("er", "ER");
         matrizSilabasSimples.put("es", "ES");
-        matrizSilabasSimples.put("il", "IL");
+        
+        matrizSilabasSimples.put("fa", "FA");
+        matrizSilabasSimples.put("fe", "FE");
+        matrizSilabasSimples.put("fi", "FI");
+        matrizSilabasSimples.put("fo", "FO");
+        matrizSilabasSimples.put("fu", "FU");
+        
+        matrizSilabasSimples.put("ga", "GA");
+        matrizSilabasSimples.put("ge", "GE");
+        matrizSilabasSimples.put("gi", "GI");
+        matrizSilabasSimples.put("go", "GO");
+        matrizSilabasSimples.put("gu", "GU");
+        
+       
         matrizSilabasSimples.put("im", "IM");
         matrizSilabasSimples.put("in", "IN");
         matrizSilabasSimples.put("ir", "IR");
         matrizSilabasSimples.put("is", "IS");
-        matrizSilabasSimples.put("ol", "OL");
+        
+        matrizSilabasSimples.put("jan", "JAN");
+        matrizSilabasSimples.put("je", "JE");
+        matrizSilabasSimples.put("ji", "JI");
+        matrizSilabasSimples.put("jo", "JO");
+        matrizSilabasSimples.put("ju", "JU");
+        matrizSilabasSimples.put("la", "LA");
+        matrizSilabasSimples.put("le", "LE");
+        matrizSilabasSimples.put("li", "LI");
+        matrizSilabasSimples.put("lo", "LO");
+        
+        
+        matrizSilabasSimples.put("ma", "MA");
+        matrizSilabasSimples.put("me", "ME");
+        matrizSilabasSimples.put("mi", "MI");
+        matrizSilabasSimples.put("mo", "MO");
+        matrizSilabasSimples.put("mu", "MU");
+        matrizSilabasSimples.put("na", "NA");
+        matrizSilabasSimples.put("ne", "NE");
+        matrizSilabasSimples.put("ni", "NI");
+        matrizSilabasSimples.put("no", "NO");
+        matrizSilabasSimples.put("nu", "NU");
+        
+        
         matrizSilabasSimples.put("om", "OM");
         matrizSilabasSimples.put("on", "ON");
         matrizSilabasSimples.put("or", "OR");
         matrizSilabasSimples.put("os", "OS");
-        matrizSilabasSimples.put("ul", "UL");
+        
+        matrizSilabasSimples.put("pa", "PA");
+        matrizSilabasSimples.put("pe", "PE");
+        matrizSilabasSimples.put("pi", "PI");
+        matrizSilabasSimples.put("po", "PO");
+        matrizSilabasSimples.put("pu", "PU");
+        matrizSilabasSimples.put("ra", "RA");
+        matrizSilabasSimples.put("re", "RE");
+        matrizSilabasSimples.put("ri", "RI");
+        matrizSilabasSimples.put("ro", "RO");
+        matrizSilabasSimples.put("ru", "RU");
+        matrizSilabasSimples.put("sa", "SA");
+        matrizSilabasSimples.put("se", "SE");
+        matrizSilabasSimples.put("si", "SI");
+        matrizSilabasSimples.put("so", "SO");
+        matrizSilabasSimples.put("su", "SU");
+        matrizSilabasSimples.put("ta", "TA");
+        matrizSilabasSimples.put("te", "TE");
+        matrizSilabasSimples.put("ti", "TI");
+        matrizSilabasSimples.put("to", "TO");
+        matrizSilabasSimples.put("tu", "TU");        
+        
         matrizSilabasSimples.put("um", "UM");
-        matrizSilabasSimples.put("un", "UN");
         matrizSilabasSimples.put("ur", "UR");
-        matrizSilabasSimples.put("us", "US");
+        
+        
+        matrizSilabasSimples.put("va", "VA");
+        matrizSilabasSimples.put("ve", "VE");
+        matrizSilabasSimples.put("vi", "VI");
+        matrizSilabasSimples.put("vo", "VO");
+        matrizSilabasSimples.put("vu", "VU");
+        
+        matrizSilabasSimples.put("xa", "XA");
+        matrizSilabasSimples.put("xe", "XE");
+        matrizSilabasSimples.put("xi", "XI");
+        matrizSilabasSimples.put("xo", "XO");
+        matrizSilabasSimples.put("za", "ZA");
+        matrizSilabasSimples.put("ze", "ZE");
+        matrizSilabasSimples.put("zi", "ZI");
+        matrizSilabasSimples.put("zo", "ZO");
+        
 
-    }
-
-    /**
-     * Inicia a matriz de silabas simples b
-     */
-    public void iniciarMatrizSilabasSimplesB() {
-        matrizSilabasSimplesB.put("ba", "BA");
-        matrizSilabasSimplesB.put("be", "BE");
-        matrizSilabasSimplesB.put("bi", "BI");
-        matrizSilabasSimplesB.put("bo", "BO");
-        matrizSilabasSimplesB.put("bu", "BU");
-        matrizSilabasSimplesB.put("ca", "CA");
-        matrizSilabasSimplesB.put("ce", "CE");
-        matrizSilabasSimplesB.put("ci", "CI");
-        matrizSilabasSimplesB.put("co", "CO");
-        matrizSilabasSimplesB.put("cu", "CU");
-        matrizSilabasSimplesB.put("da", "DA");
-        matrizSilabasSimplesB.put("de", "DE");
-        matrizSilabasSimplesB.put("di", "DI");
-        matrizSilabasSimplesB.put("do", "DO");
-        matrizSilabasSimplesB.put("du", "DU");
-        matrizSilabasSimplesB.put("fa", "FA");
-        matrizSilabasSimplesB.put("fe", "FE");
-        matrizSilabasSimplesB.put("fi", "FI");
-        matrizSilabasSimplesB.put("fo", "FO");
-        matrizSilabasSimplesB.put("fu", "FU");
-        matrizSilabasSimplesB.put("ga", "GA");
-        matrizSilabasSimplesB.put("ge", "GE");
-        matrizSilabasSimplesB.put("gi", "GI");
-        matrizSilabasSimplesB.put("go", "GO");
-        matrizSilabasSimplesB.put("gu", "GU");
-        matrizSilabasSimplesB.put("ja", "JA");
-        matrizSilabasSimplesB.put("je", "JE");
-        matrizSilabasSimplesB.put("ji", "JI");
-        matrizSilabasSimplesB.put("jo", "JO");
-        matrizSilabasSimplesB.put("ju", "JU");
-        matrizSilabasSimplesB.put("la", "LA");
-        matrizSilabasSimplesB.put("le", "LE");
-        matrizSilabasSimplesB.put("li", "LI");
-        matrizSilabasSimplesB.put("lo", "LO");
-        matrizSilabasSimplesB.put("lu", "LU");
-        matrizSilabasSimplesB.put("ma", "MA");
-        matrizSilabasSimplesB.put("me", "ME");
-        matrizSilabasSimplesB.put("mi", "MI");
-        matrizSilabasSimplesB.put("mo", "MO");
-        matrizSilabasSimplesB.put("mu", "MU");
-        matrizSilabasSimplesB.put("na", "NA");
-        matrizSilabasSimplesB.put("ne", "NE");
-        matrizSilabasSimplesB.put("ni", "NI");
-        matrizSilabasSimplesB.put("no", "NO");
-        matrizSilabasSimplesB.put("nu", "NU");
-        matrizSilabasSimplesB.put("pa", "PA");
-        matrizSilabasSimplesB.put("pe", "PE");
-        matrizSilabasSimplesB.put("pi", "PI");
-        matrizSilabasSimplesB.put("po", "PO");
-        matrizSilabasSimplesB.put("pu", "PU");
-        matrizSilabasSimplesB.put("ra", "RA");
-        matrizSilabasSimplesB.put("re", "RE");
-        matrizSilabasSimplesB.put("ri", "RI");
-        matrizSilabasSimplesB.put("ro", "RO");
-        matrizSilabasSimplesB.put("ru", "RU");
-        matrizSilabasSimplesB.put("sa", "SA");
-        matrizSilabasSimplesB.put("se", "SE");
-        matrizSilabasSimplesB.put("si", "SI");
-        matrizSilabasSimplesB.put("so", "SO");
-        matrizSilabasSimplesB.put("su", "SU");
-        matrizSilabasSimplesB.put("ta", "TA");
-        matrizSilabasSimplesB.put("te", "TE");
-        matrizSilabasSimplesB.put("ti", "TI");
-        matrizSilabasSimplesB.put("to", "TO");
-        matrizSilabasSimplesB.put("tu", "TU");
-        matrizSilabasSimplesB.put("va", "VA");
-        matrizSilabasSimplesB.put("ve", "VE");
-        matrizSilabasSimplesB.put("vi", "VI");
-        matrizSilabasSimplesB.put("vo", "VO");
-        matrizSilabasSimplesB.put("vu", "VU");
-        matrizSilabasSimplesB.put("xa", "XA");
-        matrizSilabasSimplesB.put("xe", "XE");
-        matrizSilabasSimplesB.put("xi", "XI");
-        matrizSilabasSimplesB.put("xo", "XO");
-        matrizSilabasSimplesB.put("xu", "XU");
-        matrizSilabasSimplesB.put("za", "ZA");
-        matrizSilabasSimplesB.put("ze", "ZE");
-        matrizSilabasSimplesB.put("zi", "ZI");
-        matrizSilabasSimplesB.put("zo", "ZO");
-        matrizSilabasSimplesB.put("zu", "ZU");
     }
 
     /**
@@ -1475,7 +1476,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas3.put("tron", "TRON");
         matrizSilabasComplexas3.put("tros", "TROS");
         matrizSilabasComplexas3.put("trum", "TRUM");
-        matrizSilabasComplexas3.put("trun", "TRUM");
+        matrizSilabasComplexas3.put("trun", "TRUN");
         matrizSilabasComplexas3.put("trus", "TRUS");
         matrizSilabasComplexas3.put("vlas", "VLAS");
         matrizSilabasComplexas3.put("vlem", "VLEM");
@@ -1574,7 +1575,7 @@ public class ModelJogoPrincipal {
                 opcaoCorreta = matrizSilabasSimples.get(nomeAudioAtual);
                 break;
             case 3:
-                opcaoCorreta = matrizSilabasSimplesB.get(nomeAudioAtual);
+                //opcaoCorreta = matrizSilabasSimplesB.get(nomeAudioAtual);
                 break;
             case 4:
                 opcaoCorreta = matrizPalavrasSimples.get(nomeAudioAtual);
@@ -1616,6 +1617,7 @@ public class ModelJogoPrincipal {
     public void incrementarErro() {
         //incrementa a quantidade de erros do jogador
         jogador.setQntErros(jogador.getQntErros() + 1);
+        jogador.setBarraVida(jogador.getBarraVida() + 1);
     }
 
     /**
@@ -1802,8 +1804,8 @@ public class ModelJogoPrincipal {
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
-            jogador.setFaseAtual(jogador.getFaseAtual() + 1);           
-            setMostrandoCena(true);            
+            jogador.setFaseAtual(jogador.getFaseAtual() + 1);
+            setMostrandoCena(true);
             janela.setResizable(false);
             numFase.setText("Fase: " + jogador.getFaseAtual() + "/7");
         };
@@ -2411,22 +2413,22 @@ public class ModelJogoPrincipal {
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
-            Parent cenaPrincipal = null;
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
-            try {
-                cenaPrincipal = (Parent) fxmloader.load();
-            } catch (IOException ex) {
-                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
-            jogoPrincipal.setFaseAtual(getFaseAtual());
-            jogoPrincipal.definirImagemFundo();
-            janela.setTitle("Legere");
-            janela.setScene(cenaTemporaria);
-            setMostrandoCena(false);
-            janela.setResizable(false);
-            definirImagemFundo();
-            janela.show();
+                Parent cenaPrincipal = null;
+                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+                try {
+                    cenaPrincipal = (Parent) fxmloader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
+                jogoPrincipal.setFaseAtual(getFaseAtual());
+                jogoPrincipal.definirImagemFundo();
+                janela.setTitle("Legere");
+                janela.setScene(cenaTemporaria);
+                setMostrandoCena(false);
+                janela.setResizable(false);
+                definirImagemFundo();
+                janela.show();
         };
         eventoFimAcerto = (ActionEvent event) -> {
             try {
@@ -2436,7 +2438,7 @@ public class ModelJogoPrincipal {
                         .getName()).log(Level.SEVERE, null, ex);
             }
         };
-        System.out.println("Tempo Fase " + tempoFase);
+
         //se for add alguma coisa antes do inicio do jogo é só aumentar o tamanho do tempo
         new Timeline(
                 new KeyFrame(Duration.seconds(0), eventoCenas),
@@ -2538,7 +2540,7 @@ public class ModelJogoPrincipal {
                     }
                 }
 
-                preencherOpcoes(silabasSimplesB, som, novasOpcoes);
+                //preencherOpcoes(silabasSimplesB, som, novasOpcoes);
                 break;
 
             case 4:
@@ -2717,9 +2719,9 @@ public class ModelJogoPrincipal {
     }
 
     public void mostrarCenaFinal(int pontuacaoTotal) throws IOException {
-        janela = (Stage) btn_1.getScene().getWindow();       
+        janela = (Stage) btn_1.getScene().getWindow();
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_SequenciaCenas.fxml"));
-        Parent proximaCena = (Parent) fxmloader.load();        
+        Parent proximaCena = (Parent) fxmloader.load();
         Gui_SequenciaCenasController sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
         //cria uma cena 
         Scene cena = new Scene(proximaCena, 1200, 700);
@@ -2731,4 +2733,24 @@ public class ModelJogoPrincipal {
         timer.cancel();
         sequenciaCenas.executarCenaFinal(pontuacaoTotal);
     }
-} 
+
+    public void voltarCenaJogo(Stage janela) {
+        Parent cenaPrincipal = null;
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+        try {
+            cenaPrincipal = (Parent) fxmloader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
+        System.out.println("Evento voltar fasetual: " + getFaseAtual());
+        jogoPrincipal.setFaseAtual(getFaseAtual());
+        jogoPrincipal.definirImagemFundo();
+        janela.setTitle("Legere");
+        janela.setScene(cenaTemporaria);
+        setMostrandoCena(false);
+        janela.setResizable(false);
+        definirImagemFundo();
+        janela.show();
+    }
+}

@@ -539,6 +539,7 @@ public class Model_SequenciaCenas {
         }
 
         c1 = (ActionEvent event) -> {
+            System.out.println(pularIntro);
             URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
             imgView.setImage(new Image(arquivoImg.toString()));
             caminhoAudio = caminho3 + ".mp3";
@@ -556,6 +557,7 @@ public class Model_SequenciaCenas {
                 Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
             }
             jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
+            System.out.println("Fase atual " + getFaseAtual());
             jogoPrincipalController.setFaseAtual(getFaseAtual());
         };
 
@@ -568,8 +570,6 @@ public class Model_SequenciaCenas {
 
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c1),
-                //new KeyFrame(Duration.seconds(tempoAudio + 15), c2),
-                //new KeyFrame(Duration.seconds(tempoAudio + 5), c4),
                 new KeyFrame(Duration.seconds(tempoAudio + 5), c3)).play();
     }
 

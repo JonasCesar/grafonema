@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.ModelJogoPrincipal;
-import model.Model_SequenciaCenas;
 
 /**
  * FXML Controller class
@@ -48,8 +47,7 @@ public class Gui_InicialController implements Initializable {
      */
     @FXML
     private void handleComecar(ActionEvent event) throws IOException {       
-        modelInical.iniciar(event);
-        
+        modelInical.iniciar(event);        
     }
 
     @FXML
