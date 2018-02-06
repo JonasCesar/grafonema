@@ -74,18 +74,18 @@ public class ModelJogoPrincipal {
     @FXML
     private ProgressBar lifeBar;
     private final String vogais[] = {"A", "E", "I", "O", "U"};
-    private final String silabasSimples[] = {        
+    private final String silabasSimples[] = {
         "AL", "AM", "AN", "AR", "AS", "BA", "BE", "BI", "BO", "BU", "CA",
         "ÇÃO", "CE", "CI", "ÇÕES", "CU", "DA", "DE", "DI", "DO",
         "EM", "EN", "ER", "ES", "FA", "FE", "FI",
         "FO", "FU", "GA", "GE", "GI", "GO", "GU", "JAN", "JE", "JI", "JO", "JU",
-        "LA", "LE", "LI", "LO","MA", "ME", "MI", "MO", "MU", "NA", "NE",
+        "LA", "LE", "LI", "LO", "MA", "ME", "MI", "MO", "MU", "NA", "NE",
         "NI", "NO", "NU", "OM", "ON", "OR", "OS",
         "PA", "PE", "PI", "PO", "PU", "RA", "RE", "RI", "RO",
         "RU", "SA", "SE", "SI", "SO", "SU", "TA", "TE", "TI", "TO", "TU", "UM", "UN", "UR",
         "VA", "VE", "VI", "VO", "VU", "XA", "XE", "XI", "XO",
         "ZA", "ZE", "ZI", "ZO"};
-   
+
     private final String silabasComplexas2[] = {
         "BLA", "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU",
         "CLA", "CLE", "CLI", "CLO", "CLU", "CRA", "CRE", "CRI", "CRO", "CRU",
@@ -186,13 +186,12 @@ public class ModelJogoPrincipal {
         "ção", "ce", "ci", "ções", "cu", "da", "de", "di", "do",
         "em", "en", "er", "es", "fa", "fe", "fi",
         "fo", "fu", "ga", "ge", "gi", "go", "gu", "jan", "je", "ji", "jo", "ju",
-        "la", "le", "li", "lo","ma", "me", "mi", "mo", "mu", "na", "ne",
+        "la", "le", "li", "lo", "ma", "me", "mi", "mo", "mu", "na", "ne",
         "ni", "no", "nu", "om", "on", "or", "os",
         "pa", "pe", "pi", "po", "pu", "ra", "re", "ri", "ro",
         "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu", "um", "un", "ur",
         "va", "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo",
         "za", "ze", "zi", "zo"};
-
 
     private final String audiosSilabasComplexas[] = {
         "bal", "bam", "ban", "bão", "bar", "bas", "baz", "bel", "bem", "ben",
@@ -374,36 +373,37 @@ public class ModelJogoPrincipal {
         }
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
-        //apartir da fase 1 o número de rodadas aumenta para 20
-        if (jogador.getFaseAtual() > 1) {
-            rodadas = 20;
-            jogoPrincipal.mostrarBotoesDicas();
-        }
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
-            if (pular.isDisable()) {
-                pular.setDisable(false);
+            //apartir da fase 1 o número de rodadas aumenta para 20
+            if (jogador.getFaseAtual() > 1) {
+                rodadas = 20;
+                jogoPrincipal.mostrarBotoesDicas();
             }
-            jogador.setQntErros(0);//restaura a quantidade de erros do jogador
-            jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
-            jogador.setBonus(false);//retira o bônus do jogador
-            if (getFaseAtual() != 7) {
-                mostrarCenas();
-                jogador.setAcertosTotal(0);
-            } else {
-                mostrarCenaFinal(jogador.getPontuacaoTotal());
-            }
+            if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
+                if (pular.isDisable()) {
+                    pular.setDisable(false);
+                }
+                jogador.setQntErros(0);//restaura a quantidade de erros do jogador
+                jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
+                jogador.setBonus(false);//retira o bônus do jogador
+                if (getFaseAtual() != 7) {
+                    mostrarCenas();
+                    jogador.setAcertosTotal(0);
+                } else {
+                    mostrarCenaFinal(jogador.getPontuacaoTotal());
+                }
 
-            /**
-             * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
-             */
-        } else {
-            gerarOpcaoAudio();
+                /**
+                 * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
+                 */
+            } else {
+                gerarOpcaoAudio();
+            }
         }
     }
-
     /*função para preencher as opções na tela inserindo 
      em um local aleatório a opção correspondente ao áudio
      */
+
     public void preencherOpcoes(String categoria[], int s, ArrayList no) {
 
         Random ind = new Random();
@@ -483,7 +483,7 @@ public class ModelJogoPrincipal {
                 y = i;
                 break;
             case 4:
-               // matrizSilabasSimplesB.clear();
+                // matrizSilabasSimplesB.clear();
                 iniciarMatrizPalavrasSimples();
                 i = indiceAudio.nextInt(93);
                 tocarAudio(audiosPalavrasSimples[i]);
@@ -600,39 +600,37 @@ public class ModelJogoPrincipal {
         matrizSilabasSimples.put("bo", "BO");
         matrizSilabasSimples.put("bu", "BU");
         matrizSilabasSimples.put("ca", "CA");
-        matrizSilabasSimples.put("ção", "ÇÃO"); 
+        matrizSilabasSimples.put("ção", "ÇÃO");
         matrizSilabasSimples.put("ce", "CE");
-        matrizSilabasSimples.put("ci", "CI");                
+        matrizSilabasSimples.put("ci", "CI");
         matrizSilabasSimples.put("ções", "ÇÕES");
         matrizSilabasSimples.put("cu", "CU");
-        matrizSilabasSimples.put("da", "DA");        
+        matrizSilabasSimples.put("da", "DA");
         matrizSilabasSimples.put("di", "DI");
         matrizSilabasSimples.put("do", "DO");
-        
-        
+
         matrizSilabasSimples.put("em", "EM");
         matrizSilabasSimples.put("en", "EN");
         matrizSilabasSimples.put("er", "ER");
         matrizSilabasSimples.put("es", "ES");
-        
+
         matrizSilabasSimples.put("fa", "FA");
         matrizSilabasSimples.put("fe", "FE");
         matrizSilabasSimples.put("fi", "FI");
         matrizSilabasSimples.put("fo", "FO");
         matrizSilabasSimples.put("fu", "FU");
-        
+
         matrizSilabasSimples.put("ga", "GA");
         matrizSilabasSimples.put("ge", "GE");
         matrizSilabasSimples.put("gi", "GI");
         matrizSilabasSimples.put("go", "GO");
         matrizSilabasSimples.put("gu", "GU");
-        
-       
+
         matrizSilabasSimples.put("im", "IM");
         matrizSilabasSimples.put("in", "IN");
         matrizSilabasSimples.put("ir", "IR");
         matrizSilabasSimples.put("is", "IS");
-        
+
         matrizSilabasSimples.put("jan", "JAN");
         matrizSilabasSimples.put("je", "JE");
         matrizSilabasSimples.put("ji", "JI");
@@ -642,8 +640,7 @@ public class ModelJogoPrincipal {
         matrizSilabasSimples.put("le", "LE");
         matrizSilabasSimples.put("li", "LI");
         matrizSilabasSimples.put("lo", "LO");
-        
-        
+
         matrizSilabasSimples.put("ma", "MA");
         matrizSilabasSimples.put("me", "ME");
         matrizSilabasSimples.put("mi", "MI");
@@ -654,13 +651,12 @@ public class ModelJogoPrincipal {
         matrizSilabasSimples.put("ni", "NI");
         matrizSilabasSimples.put("no", "NO");
         matrizSilabasSimples.put("nu", "NU");
-        
-        
+
         matrizSilabasSimples.put("om", "OM");
         matrizSilabasSimples.put("on", "ON");
         matrizSilabasSimples.put("or", "OR");
         matrizSilabasSimples.put("os", "OS");
-        
+
         matrizSilabasSimples.put("pa", "PA");
         matrizSilabasSimples.put("pe", "PE");
         matrizSilabasSimples.put("pi", "PI");
@@ -680,18 +676,17 @@ public class ModelJogoPrincipal {
         matrizSilabasSimples.put("te", "TE");
         matrizSilabasSimples.put("ti", "TI");
         matrizSilabasSimples.put("to", "TO");
-        matrizSilabasSimples.put("tu", "TU");        
-        
+        matrizSilabasSimples.put("tu", "TU");
+
         matrizSilabasSimples.put("um", "UM");
         matrizSilabasSimples.put("ur", "UR");
-        
-        
+
         matrizSilabasSimples.put("va", "VA");
         matrizSilabasSimples.put("ve", "VE");
         matrizSilabasSimples.put("vi", "VI");
         matrizSilabasSimples.put("vo", "VO");
         matrizSilabasSimples.put("vu", "VU");
-        
+
         matrizSilabasSimples.put("xa", "XA");
         matrizSilabasSimples.put("xe", "XE");
         matrizSilabasSimples.put("xi", "XI");
@@ -700,7 +695,6 @@ public class ModelJogoPrincipal {
         matrizSilabasSimples.put("ze", "ZE");
         matrizSilabasSimples.put("zi", "ZI");
         matrizSilabasSimples.put("zo", "ZO");
-        
 
     }
 
@@ -2413,22 +2407,22 @@ public class ModelJogoPrincipal {
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
-                Parent cenaPrincipal = null;
-                FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
-                try {
-                    cenaPrincipal = (Parent) fxmloader.load();
-                } catch (IOException ex) {
-                    Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
-                jogoPrincipal.setFaseAtual(getFaseAtual());
-                jogoPrincipal.definirImagemFundo();
-                janela.setTitle("Legere");
-                janela.setScene(cenaTemporaria);
-                setMostrandoCena(false);
-                janela.setResizable(false);
-                definirImagemFundo();
-                janela.show();
+            Parent cenaPrincipal = null;
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+            try {
+                cenaPrincipal = (Parent) fxmloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
+            jogoPrincipal.setFaseAtual(getFaseAtual());
+            jogoPrincipal.definirImagemFundo();
+            janela.setTitle("Legere");
+            janela.setScene(cenaTemporaria);
+            setMostrandoCena(false);
+            janela.setResizable(false);
+            definirImagemFundo();
+            janela.show();
         };
         eventoFimAcerto = (ActionEvent event) -> {
             try {
