@@ -10,7 +10,7 @@ public class Jogador {
     private int pontuacaoTotal, tempoJogoTotal, avatarEscolhido, qntVida,
             faseAtual, qntPulos, qntErros, acertosTotal,
             tempoParaResponderUmaRodada, mediaDeTempoParaResposta,
-            pontuacaoJogoMemoriaTotal;
+            pontuacaoJogoMemoriaTotal, barraVida;
     
     private ArrayList pontuacaoPorFase, acertosPorFase, pontuacaoJogoMemoriaFase, 
             acertosJogosMemoriaTotal;
@@ -27,6 +27,7 @@ public class Jogador {
         this.qntErros = 0;
         this.estaComBonus = false;
         this.acertosPorFase = new ArrayList();
+        this.barraVida = 0;
         
     }
     /**
@@ -262,4 +263,14 @@ public class Jogador {
     public boolean getBonus(){
         return estaComBonus;
     }
+
+    public int getBarraVida() {
+        return barraVida;
+    }
+
+    public void setBarraVida(int barraVida) {
+        this.barraVida = barraVida;
+    }
+    
+    
 }
