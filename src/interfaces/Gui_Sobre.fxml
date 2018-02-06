@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="128.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogo destinado a estudantes com atraso na aquisição e no&#10;aprendizado inicial da leitura&#10;e da escrita em Língua Portuguesa" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Text>
+      <Text layoutX="272.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cordenação Geral:&#10;Ronei Guaresi" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="259.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Revsisão de Interface:&#10;Alzira Ferreira" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="235.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Implementação do Software:&#10;Iran Ribeiro e Jonas César" textAlignment="CENTER" wrappingWidth="194.68212890625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="202.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arte Gráfica:&#10;Cássio Brito Bonfim(Ká Pinguim)" textAlignment="CENTER" wrappingWidth="261.30859375">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="214.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Material sonoro linguístico do jogo:&#10;Denise Viana" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="291.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Narração:&#10;Jonas César" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="264.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imagens de Apoio:&#10;PixaBay&#10;https://pixabay.com/" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="278.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEGERE">
+         <font>
+            <Font name="System Italic" size="34.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

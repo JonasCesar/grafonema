@@ -52,4 +52,9 @@ public class Gui_InicialController implements Initializable {
         
     }
 
+    @FXML
+    private void sobreAction(ActionEvent event) throws IOException {
+        modelInical.sobre(event);
+    }
+
 }

@@ -375,7 +375,7 @@ public class ModelJogoPrincipal {
             jogador.setBonus(true);
         }
 
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 1) {
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
             if (pular.isDisable()) {
                 pular.setDisable(false);
             }

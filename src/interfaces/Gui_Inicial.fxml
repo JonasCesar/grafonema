@@ -19,5 +19,6 @@
             <Image url="@../model/Imagens/Gerais/inicio1.jpg" />
          </image></ImageView>
       <Button fx:id="iniciar" layoutX="512.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleComecar" />
+      <Button layoutX="398.0" layoutY="43.0" mnemonicParsing="false" onAction="#sobreAction" text="Sobre" />
    </children>
 </AnchorPane>

@@ -46,6 +46,24 @@ public class Model_Inicial {
         
 
     }
+    
+    //Abre a janela "Sobre o jogo"
+    public void sobre(ActionEvent event) throws IOException {
+        
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Sobre.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Sobre o Jogo");
+            } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+
+    }
 
     /**
      * Método utilizado para iniciar o jogo na interface de Game Over
