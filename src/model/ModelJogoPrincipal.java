@@ -373,12 +373,12 @@ public class ModelJogoPrincipal {
         }
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
-            //apartir da fase 1 o número de rodadas aumenta para 20
-            if (jogador.getFaseAtual() > 1) {
-                rodadas = 20;
-                jogoPrincipal.mostrarBotoesDicas();
-            }
-            if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
+        //apartir da fase 1 o número de rodadas aumenta para 20
+        if (jogador.getFaseAtual() > 1) {
+            rodadas = 20;
+            jogoPrincipal.mostrarBotoesDicas();
+        }
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
                 //if (pular.isDisable()) {
                 //  pular.setDisable(false);
                 //}
