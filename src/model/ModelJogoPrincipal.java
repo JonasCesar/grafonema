@@ -368,20 +368,25 @@ public class ModelJogoPrincipal {
         System.out.println("Nova opção aleatória fase " + getFaseAtual());
         System.out.println("qnt erros  " + jogador.getQntErros());
         //se o jogador acertar pelo menos 10 vezes
+
+
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
         }
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
             //apartir da fase 1 o número de rodadas aumenta para 20
+            if (getFaseAtual() != 7) {
+                mostrarCenas();
+            }
             if (jogador.getFaseAtual() > 1) {
                 rodadas = 20;
                 jogoPrincipal.mostrarBotoesDicas();
             }
             if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
-                if (pular.isDisable()) {
-                    pular.setDisable(false);
-                }
+                //if (pular.isDisable()) {
+                //  pular.setDisable(false);
+                //}
                 jogador.setQntErros(0);//restaura a quantidade de erros do jogador
                 jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
                 jogador.setBonus(false);//retira o bônus do jogador
@@ -395,15 +400,18 @@ public class ModelJogoPrincipal {
                 /**
                  * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
                  */
-            } else {
-                gerarOpcaoAudio();
             }
         }
+    else {
+            System.out.println("entrou aqui asdfasdd");
+            gerarOpcaoAudio();
+        }
     }
-    /*função para preencher as opções na tela inserindo 
-     em um local aleatório a opção correspondente ao áudio
-     */
 
+    /**
+     * função para preencher as opções na tela inserindo em um local aleatório a
+     * opção correspondente ao áudio
+     */
     public void preencherOpcoes(String categoria[], int s, ArrayList no) {
 
         Random ind = new Random();
