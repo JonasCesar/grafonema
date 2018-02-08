@@ -318,6 +318,7 @@ public class ModelJogoPrincipal {
 
     private Model_Inicial modelInicial;
     Double tempoFase;
+    private ArrayList novasOpcoes;
 
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo, Button ouvirAudio,
@@ -363,23 +364,23 @@ public class ModelJogoPrincipal {
      * @throws java.lang.InterruptedException
      * @throws java.io.IOException
      */
-public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
+    public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
         int rodadas = 15;
+        if (jogador.getFaseAtual() > 1) {
+            rodadas = 20;
+            jogoPrincipal.mostrarBotoesDicas(false);
+        }
+        
         System.out.println("Nova opção aleatória fase " + getFaseAtual());
         System.out.println("qnt erros  " + jogador.getQntErros());
         //se o jogador acertar pelo menos 10 vezes
         if (jogador.getAcertosTotal() == 10) {
             jogador.setBonus(true);
         }
-
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
             //apartir da fase 1 o número de rodadas aumenta para 20
-            if (jogador.getFaseAtual() > 1) {
-                rodadas = 20;
-                jogoPrincipal.mostrarBotoesDicas();
-            }
 
-                //if (pular.isDisable()) {
+            //if (pular.isDisable()) {
             //  pular.setDisable(false);
             //}
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
@@ -395,18 +396,17 @@ public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
             /**
              * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
              */
-        }  
-        else {
+        } else {
             System.out.println("entrou aqui asdfasdd");
-        gerarOpcaoAudio();
+            gerarOpcaoAudio();
+        }
     }
-}
 
-/**
- * função para preencher as opções na tela inserindo em um local aleatório a
- * opção correspondente ao áudio
- */
-public void preencherOpcoes(String categoria[], int s, ArrayList no) {
+    /**
+     * função para preencher as opções na tela inserindo em um local aleatório a
+     * opção correspondente ao áudio
+     */
+    public void preencherOpcoes(String categoria[], int s, ArrayList no) {
 
         Random ind = new Random();
         int valor = ind.nextInt(5);
@@ -1642,12 +1642,10 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
         gerarProximaRodada = (ActionEvent arg0) -> {
             try {
                 gerarOpcaoAleatoria();
-            
 
-} catch (InterruptedException | IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException | IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         };
         //evento que reinicia seta o valor boleano que indica que o relógio deve ser reiniciado
@@ -1679,12 +1677,10 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
             try {
                 cenaPrincipal = (Parent) fxmloader.load();
-            
 
-} catch (IOException ex) {
-                Logger.getLogger(Model_SequenciaCenas.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
             Gui_GameOverController gameOver = fxmloader.<Gui_GameOverController>getController();
             gameOver.definirPontuacaoFinal(jogador.getPontuacaoTotal());
@@ -1707,6 +1703,7 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
      * @param n nome do arquivo sem a extensão
      */
     public void tocarAudio(String n) {
+        System.out.println("Nome "+n);
         setNomeAudioAtual(n);//define o nome atual do áudio que está sendo utilizado
         switch (jogador.getFaseAtual()) {//pega a fase atual do jogador
             case 1:
@@ -1791,12 +1788,10 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
             Parent proximaCena = null;
             try {
                 proximaCena = (Parent) fxmloader.load();
-            
 
-} catch (IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
             sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
@@ -1876,7 +1871,7 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
             int i = 30;
 
             @Override
-        public void run() {
+            public void run() {
 
                 //Platform.runLater para alterar elementos da interface do javaFX
                 Platform.runLater(() -> {
@@ -1887,7 +1882,7 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
                     timer2.scheduleAtFixedRate(new TimerTask() {
 
                         @Override
-        public void run() {
+                        public void run() {
                             if (getMostrandoCena()) {
                                 i = 30;
                                 //System.out.println("setou o i como 30");
@@ -2186,12 +2181,9 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
             try {
                 gerarOpcaoAleatoria();
 
-            
-
-} catch (InterruptedException | IOException ex) {
-                Logger.getLogger(Gui_JogoPrincipalController.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException | IOException ex) {
+                Logger.getLogger(Gui_JogoPrincipalController.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         };
 
@@ -2343,12 +2335,9 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
             try {
                 proximaCena = (Parent) fxmloader.load();
 
-            
-
-} catch (IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
             sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
@@ -2379,12 +2368,10 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
             try {
                 gerarOpcaoAudio();
-            
 
-} catch (IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         };
 
@@ -2414,12 +2401,9 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
             try {
                 proximaCena = (Parent) fxmloader.load();
 
-            
-
-} catch (IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
             sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
@@ -2439,12 +2423,10 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
             try {
                 cenaPrincipal = (Parent) fxmloader.load();
-            
 
-} catch (IOException ex) {
-                Logger.getLogger(Model_SequenciaCenas.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
             jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
             jogoPrincipal.setFaseAtual(getFaseAtual());
@@ -2459,12 +2441,10 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
         eventoFimAcerto = (ActionEvent event) -> {
             try {
                 gerarOpcaoAleatoria();
-            
 
-} catch (InterruptedException | IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException | IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         };
 
@@ -2484,7 +2464,7 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
     private void gerarOpcaoAudio() throws IOException {
         int i = 0;
         int proxValor = 0;
-        ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
+        novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
         ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados ????
         Random indice = new Random();//gerador de índices aleatorios
         switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
@@ -2768,12 +2748,10 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
         try {
             cenaPrincipal = (Parent) fxmloader.load();
-        
 
-} catch (IOException ex) {
-            Logger.getLogger(Model_SequenciaCenas.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Model_SequenciaCenas.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
         System.out.println("Evento voltar fasetual: " + getFaseAtual());
@@ -2785,5 +2763,24 @@ public void preencherOpcoes(String categoria[], int s, ArrayList no) {
         janela.setResizable(false);
         definirImagemFundo();
         janela.show();
+    }
+
+    public void tocarDica(ActionEvent botao) {
+        String caminhoAudioDica = "";
+        char charNumeroBotao = (((Button) botao.getSource()).getId()).charAt(9);
+        System.out.println(charNumeroBotao);
+        int numeroBotao = Integer.parseInt("" + charNumeroBotao);
+        System.out.println("Numero botao " + numeroBotao);
+        //System.out.println(numeroBotao);
+        switch (getFaseAtual()) {
+            case 2:
+                System.out.println("Novas opcoes: "+ (int)novasOpcoes.get(numeroBotao));
+                System.out.println("Novas opcoes: "+ audioSilabasSimples[(int) novasOpcoes.get(numeroBotao)]);
+                caminhoAudioDica = "a_dicas/" + audioSilabasSimples[(int) novasOpcoes.get(numeroBotao)];
+                break;
+            case 3:
+                break;
+        }
+        tocarAudio(caminhoAudioDica);
     }
 }

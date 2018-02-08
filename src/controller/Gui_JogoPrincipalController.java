@@ -69,8 +69,9 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Button DicaBotao3;
     @FXML
     private Button DicaBotao4;
+    
     @FXML
-    private Button DicaBotao5;
+    private Button DicaBotao0;
 
     public Gui_JogoPrincipalController() {
 
@@ -234,12 +235,19 @@ public class Gui_JogoPrincipalController implements Initializable {
         modelJogoPrincipal.reiniciarJogo(imgReiniciar);
     }
 
-    public void mostrarBotoesDicas() {
-        DicaBotao1.setVisible(true);
-        DicaBotao2.setVisible(true);
-        DicaBotao3.setVisible(true);
-        DicaBotao4.setVisible(true);
-        DicaBotao5.setVisible(true);
+    public void mostrarBotoesDicas(boolean valor) {
+        System.out.println("Entrou aqui mostrarBotoesDicas");
+
+        DicaBotao0.setVisible(valor);
+        DicaBotao1.setVisible(valor);
+        DicaBotao2.setVisible(valor);
+        DicaBotao3.setVisible(valor);
+        DicaBotao4.setVisible(valor);
+    }
+
+    @FXML
+    private void tocarDica(ActionEvent event) {
+        modelJogoPrincipal.tocarDica(event);
     }
 
 }
