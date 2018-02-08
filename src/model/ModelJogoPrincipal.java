@@ -376,6 +376,17 @@ public class ModelJogoPrincipal {
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 15) {
             //apartir da fase 1 o número de rodadas aumenta para 20
+            if (jogador.getFaseAtual() > 1) {
+                rodadas = 20;
+                jogoPrincipal.mostrarBotoesDicas();
+            }
+
+                //if (pular.isDisable()) {
+            //  pular.setDisable(false);
+            //}
+            jogador.setQntErros(0);//restaura a quantidade de erros do jogador
+            jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
+            jogador.setBonus(false);//retira o bônus do jogador
             if (getFaseAtual() != 7) {
                 mostrarCenas();
             }
@@ -397,22 +408,21 @@ public class ModelJogoPrincipal {
                     mostrarCenaFinal(jogador.getPontuacaoTotal());
                 }
 
-                /**
-                 * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
-                 */
-            }
-        }
-    else {
+            /**
+             * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
+             */
+        }  
+        else {
             System.out.println("entrou aqui asdfasdd");
-            gerarOpcaoAudio();
-        }
+        gerarOpcaoAudio();
     }
+}
 
-    /**
-     * função para preencher as opções na tela inserindo em um local aleatório a
-     * opção correspondente ao áudio
-     */
-    public void preencherOpcoes(String categoria[], int s, ArrayList no) {
+/**
+ * função para preencher as opções na tela inserindo em um local aleatório a
+ * opção correspondente ao áudio
+ */
+public void preencherOpcoes(String categoria[], int s, ArrayList no) {
 
         Random ind = new Random();
         int valor = ind.nextInt(5);
@@ -1648,8 +1658,12 @@ public class ModelJogoPrincipal {
         gerarProximaRodada = (ActionEvent arg0) -> {
             try {
                 gerarOpcaoAleatoria();
-            } catch (InterruptedException | IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            
+
+} catch (InterruptedException | IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class  
+
+.getName()).log(Level.SEVERE, null, ex);
             }
         };
         //evento que reinicia seta o valor boleano que indica que o relógio deve ser reiniciado
@@ -1681,8 +1695,12 @@ public class ModelJogoPrincipal {
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_GameOver.fxml"));
             try {
                 cenaPrincipal = (Parent) fxmloader.load();
-            } catch (IOException ex) {
-                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+            
+
+} catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class  
+
+.getName()).log(Level.SEVERE, null, ex);
             }
             Gui_GameOverController gameOver = fxmloader.<Gui_GameOverController>getController();
             gameOver.definirPontuacaoFinal(jogador.getPontuacaoTotal());
@@ -1789,9 +1807,12 @@ public class ModelJogoPrincipal {
             Parent proximaCena = null;
             try {
                 proximaCena = (Parent) fxmloader.load();
-            } catch (IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class
-                        .getName()).log(Level.SEVERE, null, ex);
+            
+
+} catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class  
+
+.getName()).log(Level.SEVERE, null, ex);
             }
             sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
@@ -1871,7 +1892,7 @@ public class ModelJogoPrincipal {
             int i = 30;
 
             @Override
-            public void run() {
+        public void run() {
 
                 //Platform.runLater para alterar elementos da interface do javaFX
                 Platform.runLater(() -> {
@@ -1882,7 +1903,7 @@ public class ModelJogoPrincipal {
                     timer2.scheduleAtFixedRate(new TimerTask() {
 
                         @Override
-                        public void run() {
+        public void run() {
                             if (getMostrandoCena()) {
                                 i = 30;
                                 //System.out.println("setou o i como 30");
@@ -2181,9 +2202,12 @@ public class ModelJogoPrincipal {
             try {
                 gerarOpcaoAleatoria();
 
-            } catch (InterruptedException | IOException ex) {
-                Logger.getLogger(Gui_JogoPrincipalController.class
-                        .getName()).log(Level.SEVERE, null, ex);
+            
+
+} catch (InterruptedException | IOException ex) {
+                Logger.getLogger(Gui_JogoPrincipalController.class  
+
+.getName()).log(Level.SEVERE, null, ex);
             }
         };
 
@@ -2335,9 +2359,12 @@ public class ModelJogoPrincipal {
             try {
                 proximaCena = (Parent) fxmloader.load();
 
-            } catch (IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class
-                        .getName()).log(Level.SEVERE, null, ex);
+            
+
+} catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class  
+
+.getName()).log(Level.SEVERE, null, ex);
             }
             sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
@@ -2368,8 +2395,12 @@ public class ModelJogoPrincipal {
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
             try {
                 gerarOpcaoAudio();
-            } catch (IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            
+
+} catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class  
+
+.getName()).log(Level.SEVERE, null, ex);
             }
         };
 
@@ -2399,9 +2430,12 @@ public class ModelJogoPrincipal {
             try {
                 proximaCena = (Parent) fxmloader.load();
 
-            } catch (IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class
-                        .getName()).log(Level.SEVERE, null, ex);
+            
+
+} catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class  
+
+.getName()).log(Level.SEVERE, null, ex);
             }
             sequenciaCenas = fxmloader.<Gui_SequenciaCenasController>getController();
             //cria uma cena
@@ -2421,8 +2455,12 @@ public class ModelJogoPrincipal {
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
             try {
                 cenaPrincipal = (Parent) fxmloader.load();
-            } catch (IOException ex) {
-                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+            
+
+} catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class  
+
+.getName()).log(Level.SEVERE, null, ex);
             }
             jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
             jogoPrincipal.setFaseAtual(getFaseAtual());
@@ -2437,9 +2475,12 @@ public class ModelJogoPrincipal {
         eventoFimAcerto = (ActionEvent event) -> {
             try {
                 gerarOpcaoAleatoria();
-            } catch (InterruptedException | IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class
-                        .getName()).log(Level.SEVERE, null, ex);
+            
+
+} catch (InterruptedException | IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class  
+
+.getName()).log(Level.SEVERE, null, ex);
             }
         };
 
@@ -2743,8 +2784,12 @@ public class ModelJogoPrincipal {
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
         try {
             cenaPrincipal = (Parent) fxmloader.load();
-        } catch (IOException ex) {
-            Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+        
+
+} catch (IOException ex) {
+            Logger.getLogger(Model_SequenciaCenas.class  
+
+.getName()).log(Level.SEVERE, null, ex);
         }
         jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
         System.out.println("Evento voltar fasetual: " + getFaseAtual());
