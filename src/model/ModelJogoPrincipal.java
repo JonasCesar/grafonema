@@ -319,10 +319,23 @@ public class ModelJogoPrincipal {
     private Model_Inicial modelInicial;
     Double tempoFase;
     private ArrayList novasOpcoes;
+    
+    @FXML
+    private Button DicaBotao1;
+    @FXML
+    private Button DicaBotao2;
+    @FXML
+    private Button DicaBotao3;
+    @FXML
+    private Button DicaBotao4;
+
+    @FXML
+    private Button DicaBotao0;
 
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo, Button ouvirAudio,
-            ImageView imagemFundo, Label numFase) {
+            ImageView imagemFundo, Label numFase,Button DicaBotao0, Button DicaBotao1, Button DicaBotao2,
+            Button DicaBotao3, Button DicaBotao4) {
 
         this.btn_1 = b1;
         this.btn_2 = b2;
@@ -352,6 +365,12 @@ public class ModelJogoPrincipal {
         this.numFase = numFase;
         modelInicial = new Model_Inicial();
         tempoFase = 0.0;
+        this.DicaBotao0 = DicaBotao0;
+        this.DicaBotao1 = DicaBotao1;
+        this.DicaBotao2 = DicaBotao2;
+        this.DicaBotao3 = DicaBotao3;
+        this.DicaBotao4 = DicaBotao4;
+        
 
     }
 
@@ -368,7 +387,7 @@ public class ModelJogoPrincipal {
         int rodadas = 15;
         if (jogador.getFaseAtual() > 1) {
             rodadas = 20;
-            jogoPrincipal.mostrarBotoesDicas(false);
+            mostrarBotoesDicas();
         }
         
         System.out.println("Nova opção aleatória fase " + getFaseAtual());
@@ -1739,7 +1758,7 @@ public class ModelJogoPrincipal {
      *
      * @param n nome do áudio
      */
-    private void setNomeAudioAtual(String n) {
+    public void setNomeAudioAtual(String n) {
         this.nomeAudioAtual = n;
     }
 
@@ -2767,20 +2786,28 @@ public class ModelJogoPrincipal {
 
     public void tocarDica(ActionEvent botao) {
         String caminhoAudioDica = "";
-        char charNumeroBotao = (((Button) botao.getSource()).getId()).charAt(9);
-        System.out.println(charNumeroBotao);
+        String somAtual = getAudioAtual(); //string para armazenar o último fonema que foi tocado
+        char charNumeroBotao = (((Button) botao.getSource()).getId()).charAt(9);        
         int numeroBotao = Integer.parseInt("" + charNumeroBotao);
-        System.out.println("Numero botao " + numeroBotao);
+        
         //System.out.println(numeroBotao);
         switch (getFaseAtual()) {
             case 2:
-                System.out.println("Novas opcoes: "+ (int)novasOpcoes.get(numeroBotao));
-                System.out.println("Novas opcoes: "+ audioSilabasSimples[(int) novasOpcoes.get(numeroBotao)]);
                 caminhoAudioDica = "a_dicas/" + audioSilabasSimples[(int) novasOpcoes.get(numeroBotao)];
                 break;
             case 3:
                 break;
         }
         tocarAudio(caminhoAudioDica);
+        setNomeAudioAtual(somAtual);
+        
+    }
+
+    private void mostrarBotoesDicas() {
+        DicaBotao0.setVisible(true);
+        DicaBotao1.setVisible(true);
+        DicaBotao2.setVisible(true);
+        DicaBotao3.setVisible(true);
+        DicaBotao4.setVisible(true);
     }
 }

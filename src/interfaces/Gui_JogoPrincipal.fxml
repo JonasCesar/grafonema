@@ -73,10 +73,10 @@
             <Image url="@../model/Imagens/Icones/reiniciar.png" />
          </image>
       </ImageView>
-      <Button fx:id="DicaBotao0" layoutX="133.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" text="Dica" />
-      <Button fx:id="DicaBotao1" layoutX="326.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" text="Dica" />
-      <Button fx:id="DicaBotao2" layoutX="517.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" text="Dica" />
-      <Button fx:id="DicaBotao3" layoutX="706.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" text="Dica" />
-      <Button fx:id="DicaBotao4" layoutX="910.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" text="Dica" />
+      <Button fx:id="DicaBotao0" layoutX="133.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" visible="false" />
+      <Button fx:id="DicaBotao1" layoutX="326.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" visible="false" />
+      <Button fx:id="DicaBotao2" layoutX="517.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" visible="false" />
+      <Button fx:id="DicaBotao3" layoutX="706.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" visible="false" />
+      <Button fx:id="DicaBotao4" layoutX="910.0" layoutY="560.0" mnemonicParsing="false" onAction="#tocarDica" visible="false" />
    </children>
 </AnchorPane>
