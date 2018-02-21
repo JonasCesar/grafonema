@@ -24,7 +24,7 @@ public class Main extends Application {
     @Override
     public void start(Stage janela) throws IOException {
         this.janela = janela;
-        Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Inicial.fxml"));        
+        Parent cenaInicial = FXMLLoader.load(getClass().getResource("/interfaces/Gui_Inicial.fxml"));
         Scene cena = new Scene(cenaInicial, 1200, 700);        
         janela.setTitle("Legere");
         janela.setScene(cena);
