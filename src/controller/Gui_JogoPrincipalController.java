@@ -14,10 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import model.FuncaoBotao;
 
 /**
@@ -69,8 +69,9 @@ public class Gui_JogoPrincipalController implements Initializable {
     private Button DicaBotao3;
     @FXML
     private Button DicaBotao4;
+
     @FXML
-    private Button DicaBotao5;
+    private Button DicaBotao0;
 
     public Gui_JogoPrincipalController() {
 
@@ -89,16 +90,23 @@ public class Gui_JogoPrincipalController implements Initializable {
         Random indiceVogal = new Random();
         modelJogoPrincipal = new ModelJogoPrincipal(btn_1, btn_2, btn_3, btn_4, btn_5, pular,
                 pontuacao, lifeBar, tempo, ouvirAudio,
-                imagemFundo, numFase);
+                imagemFundo, numFase, DicaBotao0,DicaBotao1,DicaBotao2,DicaBotao3,DicaBotao4);
         modelJogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
         Tooltip.install(imgReiniciar, new Tooltip("Clique para reiniciar o jogo"));
+        Image image = new Image(getClass().getResourceAsStream("som32.png"));
+        DicaBotao0.setGraphic(new ImageView(image));
+        DicaBotao1.setGraphic(new ImageView(image));
+        DicaBotao2.setGraphic(new ImageView(image));
+        DicaBotao3.setGraphic(new ImageView(image));
+        DicaBotao4.setGraphic(new ImageView(image));        
+        
     }
 
     FuncaoBotao funcao = new FuncaoBotao();
 
     public void iniciarJogo() {
-        System.out.println("INICIOU JOGO");
-
+        
+        
         modelJogoPrincipal.gerarSomAleatorio();//gerar um som aleatorio
         modelJogoPrincipal.iniciarTimer();//inicia o relógio
 
@@ -234,12 +242,9 @@ public class Gui_JogoPrincipalController implements Initializable {
         modelJogoPrincipal.reiniciarJogo(imgReiniciar);
     }
 
-    public void mostrarBotoesDicas() {
-        DicaBotao1.setVisible(true);
-        DicaBotao2.setVisible(true);
-        DicaBotao3.setVisible(true);
-        DicaBotao4.setVisible(true);
-        DicaBotao5.setVisible(true);
+    @FXML
+    private void tocarDica(ActionEvent event) throws InterruptedException {
+        modelJogoPrincipal.tocarDica(event);
     }
 
 }

@@ -23,7 +23,9 @@ public class Gui_InicialController implements Initializable {
     
     
     private Model_Inicial modelInical = new Model_Inicial();
-    private ModelJogoPrincipal modelPrincipal = new ModelJogoPrincipal(iniciar, iniciar, iniciar, iniciar, iniciar, iniciar, null, null, null, iniciar, null, null);    
+    private ModelJogoPrincipal modelPrincipal = new ModelJogoPrincipal(iniciar, 
+            iniciar, iniciar, iniciar, iniciar, iniciar, null, null, null, iniciar,
+            null, null,iniciar, iniciar, iniciar, iniciar, iniciar);    
     
     @FXML
     private ImageView imagemFundo;

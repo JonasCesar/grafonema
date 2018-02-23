@@ -35,6 +35,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -265,7 +266,7 @@ public class ModelJogoPrincipal {
     private MediaPlayer mediaPlayer;
     private MediaView mediaView = new MediaView();
 
-    private boolean mostrandoCena, indicacaoPular, pularErro;
+    private boolean mostrandoCena, indicacaoPular, pularErro, mostrandoDica;
 
     private Scene cenaTemporaria;
 
@@ -286,10 +287,24 @@ public class ModelJogoPrincipal {
 
     private Model_Inicial modelInicial;
     Double tempoFase;
+    private ArrayList novasOpcoes;
+
+    @FXML
+    private Button DicaBotao1;
+    @FXML
+    private Button DicaBotao2;
+    @FXML
+    private Button DicaBotao3;
+    @FXML
+    private Button DicaBotao4;
+
+    @FXML
+    private Button DicaBotao0;
 
     public ModelJogoPrincipal(Button b1, Button b2, Button b3, Button b4, Button b5,
             Button pular, Label pontuacao, ProgressBar lifeBar, Label tempo, Button ouvirAudio,
-            ImageView imagemFundo, Label numFase) {
+            ImageView imagemFundo, Label numFase, Button DicaBotao0, Button DicaBotao1, Button DicaBotao2,
+            Button DicaBotao3, Button DicaBotao4) {
 
         this.btn_1 = b1;
         this.btn_2 = b2;
@@ -320,6 +335,12 @@ public class ModelJogoPrincipal {
         this.numFase = numFase;
         modelInicial = new Model_Inicial();
         tempoFase = 0.0;
+        this.DicaBotao0 = DicaBotao0;
+        this.DicaBotao1 = DicaBotao1;
+        this.DicaBotao2 = DicaBotao2;
+        this.DicaBotao3 = DicaBotao3;
+        this.DicaBotao4 = DicaBotao4;
+        this.mostrandoDica = false;
 
     }
 
@@ -334,6 +355,11 @@ public class ModelJogoPrincipal {
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
         int rodadas = 15;
+        if (jogador.getFaseAtual() > 1) {
+            rodadas = 20;
+            mostrarBotoesDicas();
+        }
+
         System.out.println("Nova opção aleatória fase " + getFaseAtual());
         System.out.println("qnt erros  " + jogador.getQntErros());
         //se o jogador acertar pelo menos 10 vezes
@@ -342,11 +368,9 @@ public class ModelJogoPrincipal {
         }
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
+
+           
             //apartir da fase 1 o número de rodadas aumenta para 20
-            if (jogador.getFaseAtual() > 1) {
-                rodadas = 20;
-                jogoPrincipal.mostrarBotoesDicas();
-            }
 
             //if (pular.isDisable()) {
             //  pular.setDisable(false);
@@ -441,7 +465,7 @@ public class ModelJogoPrincipal {
             case 2:
 
                 iniciarMatrizAudioSilabas();
-                i = indiceAudio.nextInt(29);
+                i = indiceAudio.nextInt(93);
                 tocarAudio(audioSilabasSimples[i]);
                 y = i;
                 break;
@@ -580,7 +604,6 @@ public class ModelJogoPrincipal {
         matrizSilabasSimples.put("da", "DA");
         matrizSilabasSimples.put("di", "DI");
         matrizSilabasSimples.put("do", "DO");
-
         matrizSilabasSimples.put("em", "EM");
         matrizSilabasSimples.put("en", "EN");
         matrizSilabasSimples.put("er", "ER");
@@ -1496,6 +1519,7 @@ public class ModelJogoPrincipal {
      * @param n nome do arquivo sem a extensão
      */
     public void tocarAudio(String n) {
+        System.out.println("Nome " + n);
         setNomeAudioAtual(n);//define o nome atual do áudio que está sendo utilizado
         switch (jogador.getFaseAtual()) {//pega a fase atual do jogador
             case 1:
@@ -1524,6 +1548,9 @@ public class ModelJogoPrincipal {
         media = new Media(file.toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
+        System.out.println("status tocar " + mediaPlayer.getStatus() + "  " + mediaPlayer.getStatus().equals(Status.PLAYING));
+        System.out.println((long) mediaPlayer.getTotalDuration().toMillis());
+
     }
 
     /**
@@ -1531,7 +1558,7 @@ public class ModelJogoPrincipal {
      *
      * @param n nome do áudio
      */
-    private void setNomeAudioAtual(String n) {
+    public void setNomeAudioAtual(String n) {
         this.nomeAudioAtual = n;
     }
 
@@ -1677,8 +1704,8 @@ public class ModelJogoPrincipal {
                         public void run() {
                             if (getMostrandoCena()) {
                                 i = 30;
-                                //System.out.println("setou o i como 30");
                             }
+
                             if (getIndicacaoPular()) {
                                 i = i + 0;
                             }
@@ -1690,6 +1717,10 @@ public class ModelJogoPrincipal {
                         tempo.setText(i + "s");
                     } else {
                         tempo.setText(" " + i + "s");
+                    }
+
+                    if (getMostrandoDica()) {
+                        i = i + 1;
                     }
 
                     i--;
@@ -2295,7 +2326,7 @@ public class ModelJogoPrincipal {
     private void gerarOpcaoAudio() throws IOException {
         int i = 0;
         int proxValor = 0;
-        ArrayList novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
+        novasOpcoes = new ArrayList(); //recebe os índices para as novas opções do array correspondente à fase
         ArrayList indiceUtilizados = new ArrayList();//array que receberá os índices que já foram utilizados ????
         Random indice = new Random();//gerador de índices aleatorios
         switch (jogador.getFaseAtual()) {//verifica qual a fase em que o jogador se encontra
@@ -2602,5 +2633,86 @@ public class ModelJogoPrincipal {
         janela.setResizable(false);
         definirImagemFundo();
         janela.show();
+    }
+
+    public void tocarDica(ActionEvent botao) throws InterruptedException {
+        String caminhoAudioDica = "";
+        String somAtual = getAudioAtual(); //string para armazenar o último fonema que foi tocado
+        char charNumeroBotao = (((Button) botao.getSource()).getId()).charAt(9);
+        int numeroBotao = Integer.parseInt("" + charNumeroBotao);
+
+        //System.out.println(numeroBotao);
+        switch (getFaseAtual()) {
+            case 2:
+                caminhoAudioDica = "a_dicas/" + audioSilabasSimples[(int) novasOpcoes.get(numeroBotao)];
+                break;
+            case 3:
+                break;
+        }
+        tocarAudioDica(caminhoAudioDica);
+        //setNomeAudioAtual(somAtual);       
+
+    }
+
+    private void mostrarBotoesDicas() {
+        DicaBotao0.setVisible(true);
+        DicaBotao1.setVisible(true);
+        DicaBotao2.setVisible(true);
+        DicaBotao3.setVisible(true);
+        DicaBotao4.setVisible(true);
+    }
+
+    public void tocarAudioDica(String n) {
+        System.out.println("Nome " + n);
+        switch (jogador.getFaseAtual()) {//pega a fase atual do jogador
+            case 1:
+                caminhoAudio = "audios_vogais/" + n + ".mp3";
+                break;
+            case 2:
+                caminhoAudio = "audios_silabas_simples/" + n + ".mp3";
+                break;
+            case 3:
+                caminhoAudio = "audios_silabas_simplesB/" + n + ".mp3";
+                break;
+            case 4:
+                caminhoAudio = "audios_palavras_simples/" + n + ".mp3";
+                break;
+            case 5:
+                caminhoAudio = "audios_silabas_complexas/" + n + ".mp3";
+                break;
+            case 6:
+                caminhoAudio = "audios_silabas_complexas2/" + n + ".mp3";
+                break;
+            case 7:
+                caminhoAudio = "audios_silabas_complexas3/" + n + ".mp3";
+                break;
+        }
+        URL file = getClass().getResource(caminhoAudio);
+        media = new Media(file.toString());
+        mediaPlayer = new MediaPlayer(media);
+
+        mediaPlayer.setOnReady(new Runnable() {
+            @Override
+            public void run() {
+                mediaPlayer.play();
+                setMostrandoDica(true);
+            }
+
+        });
+
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                setMostrandoDica(false);
+            }
+        });
+    }
+
+    public void setMostrandoDica(boolean valor) {
+        this.mostrandoDica = valor;
+    }
+
+    public boolean getMostrandoDica() {
+        return this.mostrandoDica;
     }
 }

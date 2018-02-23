@@ -38,11 +38,32 @@
          <font>
             <Font size="60.0" />
          </font></Label>
-      <Button fx:id="btn_1" alignment="CENTER" contentDisplay="CENTER" layoutX="143.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="A" />
-      <Button fx:id="btn_2" alignment="CENTER" contentDisplay="CENTER" layoutX="337.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="E" />
-      <Button fx:id="btn_3" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="I" />
-      <Button fx:id="btn_5" alignment="CENTER" contentDisplay="CENTER" layoutX="920.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="U" />
-      <Button fx:id="btn_4" alignment="CENTER" contentDisplay="CENTER" layoutX="716.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="O" />
+      <Group>
+         <children>
+            <Button fx:id="btn_1" alignment="CENTER" contentDisplay="CENTER" layoutX="143.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="A" />
+            <Button fx:id="DicaBotao0" layoutX="180.0" layoutY="565.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" onAction="#tocarDica" prefHeight="16.0" prefWidth="16.0" visible="false" />
+         </children>
+      </Group>
+      <Group>
+         <children>
+            <Button fx:id="btn_2" alignment="CENTER" contentDisplay="CENTER" layoutX="337.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="E" />
+            <Button fx:id="DicaBotao1" layoutX="374.0" layoutY="560.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" onAction="#tocarDica" prefHeight="16.0" prefWidth="16.0" visible="false" />
+         </children>
+      </Group>
+      <Group>
+         <children>
+            <Button fx:id="DicaBotao2" layoutX="567.0" layoutY="560.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" onAction="#tocarDica" prefHeight="16.0" prefWidth="16.0" visible="false" />
+            <Button fx:id="btn_3" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="I" />
+         </children>
+      </Group>
+      <Button fx:id="btn_5" alignment="CENTER" contentDisplay="CENTER" layoutX="902.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="U" />
+      <Button fx:id="DicaBotao4" layoutX="939.0" layoutY="561.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" onAction="#tocarDica" prefHeight="16.0" prefWidth="16.0" visible="false" />
+      <Group>
+         <children>
+            <Button fx:id="btn_4" alignment="CENTER" contentDisplay="CENTER" layoutX="716.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleBotoes" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="O" />
+            <Button fx:id="DicaBotao3" layoutX="753.0" layoutY="560.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" onAction="#tocarDica" prefHeight="16.0" prefWidth="16.0" visible="false" />
+         </children>
+      </Group>
       <Button fx:id="pular" layoutX="1050.0" layoutY="608.0" mnemonicParsing="false" onAction="#handlePular" onMouseEntered="#sombrearBotao" onMouseExited="#removerSombraBotao" text="Pular" />
       <ImageView fitHeight="150.0" fitWidth="119.0" layoutX="50.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -73,10 +94,5 @@
             <Image url="@../model/Imagens/Icones/reiniciar.png" />
          </image>
       </ImageView>
-      <Button fx:id="DicaBotao1" layoutX="133.0" layoutY="560.0" mnemonicParsing="false" text="Dica" />
-      <Button fx:id="DicaBotao2" layoutX="326.0" layoutY="560.0" mnemonicParsing="false" text="Dica" />
-      <Button fx:id="DicaBotao3" layoutX="517.0" layoutY="560.0" mnemonicParsing="false" text="Dica" />
-      <Button fx:id="DicaBotao4" layoutX="706.0" layoutY="560.0" mnemonicParsing="false" text="Dica" />
-      <Button fx:id="DicaBotao5" layoutX="910.0" layoutY="560.0" mnemonicParsing="false" text="Dica" />
    </children>
 </AnchorPane>
