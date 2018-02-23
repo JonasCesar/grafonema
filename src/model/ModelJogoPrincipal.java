@@ -1149,7 +1149,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("zão", "ZÃO");
         matrizSilabasComplexas.put("zar", "ZAR");
         matrizSilabasComplexas.put("zer", "ZER");
-        matrizSilabasComplexas.put("zin", "ZES");
+        matrizSilabasComplexas.put("zes", "ZES");
         matrizSilabasComplexas.put("zin", "ZIN");
         matrizSilabasComplexas.put("zol", "ZOL");
         matrizSilabasComplexas.put("zom", "ZOM");
