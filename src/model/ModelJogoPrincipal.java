@@ -389,7 +389,6 @@ public class ModelJogoPrincipal {
              * OBS: VAI SER DIFERENTE SE FOR NA ÚLTIMA FASE
              */
         } else {
-            System.out.println("entrou aqui asdfasdd");
             gerarOpcaoAudio();
         }
     }
@@ -2637,18 +2636,30 @@ public class ModelJogoPrincipal {
 
     public void tocarDica(ActionEvent botao) throws InterruptedException {
         String caminhoAudioDica = "";
+        String dica = "";
         String somAtual = getAudioAtual(); //string para armazenar o último fonema que foi tocado
         char charNumeroBotao = (((Button) botao.getSource()).getId()).charAt(9);
-        int numeroBotao = Integer.parseInt("" + charNumeroBotao);
-
+        int numeroBotao = Integer.parseInt("" + charNumeroBotao);        
         //System.out.println(numeroBotao);
-        switch (getFaseAtual()) {
+        switch(numeroBotao){
+            case 0:
+                dica = btn_1.getText().toLowerCase();
+                System.out.println("Dica "+dica);
+                break;
+            case 1:
+                dica = btn_2.getText().toLowerCase();
+                break;
             case 2:
-                caminhoAudioDica = "a_dicas/" + audioSilabasSimples[(int) novasOpcoes.get(numeroBotao)];
+                dica = btn_3.getText().toLowerCase();
                 break;
             case 3:
+                dica = btn_4.getText().toLowerCase();
                 break;
-        }
+            case 4:
+                dica = btn_5.getText().toLowerCase();
+                break;               
+        }        
+        caminhoAudioDica = "a_dicas/" + dica;
         tocarAudioDica(caminhoAudioDica);
         //setNomeAudioAtual(somAtual);       
 
