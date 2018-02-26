@@ -355,9 +355,16 @@ public class ModelJogoPrincipal {
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
         int rodadas = 15;
+
+        if (jogador.getFaseAtual() != 1 && jogador.getFaseAtual() != 3
+                && jogador.getFaseAtual() != 7) {
+            mostrarBotoesDicas();
+        } else {
+            ocultarBotoesDicas();
+        }
+
         if (jogador.getFaseAtual() > 1) {
             rodadas = 20;
-            mostrarBotoesDicas();
         }
 
         System.out.println("Nova opção aleatória fase " + getFaseAtual());
@@ -369,9 +376,7 @@ public class ModelJogoPrincipal {
 
         if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
 
-           
             //apartir da fase 1 o número de rodadas aumenta para 20
-
             //if (pular.isDisable()) {
             //  pular.setDisable(false);
             //}
@@ -732,7 +737,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("flu", "FLU");
         matrizSilabasComplexas2.put("fra", "FRA");
         matrizSilabasComplexas2.put("fre", "FRE");
-        matrizSilabasComplexas2.put("fri", "FRE");
+        matrizSilabasComplexas2.put("fri", "FRI");
         matrizSilabasComplexas2.put("fro", "FRO");
         matrizSilabasComplexas2.put("fru", "FRU");
         matrizSilabasComplexas2.put("gla", "GLA");
@@ -1894,7 +1899,7 @@ public class ModelJogoPrincipal {
                             + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
                             + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
                             + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 158px;\n"
+                            + "    -fx-pref-width: 108px;\n"
                             + "    -fx-pref-height: 78px;\n");
                 };
 
@@ -1913,7 +1918,7 @@ public class ModelJogoPrincipal {
                             + "    -fx-font-weight: bold;\n"
                             + "    -fx-padding: 10 20 10 20;"
                             + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 150px;\n"
+                            + "    -fx-pref-width: 100px;\n"
                             + "    -fx-pref-height: 70px;\n"
                     );
                     //ao terminar a animação desbloquear os botões
@@ -2007,7 +2012,7 @@ public class ModelJogoPrincipal {
                             + "    linear-gradient(#57ff6a 0%, #02f80e 50%, #12ee0a 100%),\n"
                             + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
                             + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 158px;\n"
+                            + "    -fx-pref-width: 175px;\n"
                             + "    -fx-pref-height: 78px;\n");
                 };
 
@@ -2415,11 +2420,11 @@ public class ModelJogoPrincipal {
 
             case 4:
 
-                btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px;  \n -fx-pref-height: 70px;");
-                btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
-                btn_3.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
-                btn_4.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
-                btn_5.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
+                btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
+                btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
+                btn_3.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
+                btn_4.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
+                btn_5.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
 
                 i = 0;
                 som = 0;
@@ -2486,12 +2491,12 @@ public class ModelJogoPrincipal {
                 break;
 
             case 7:
-                
-                btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px;  \n -fx-pref-height: 70px;");
-                btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
-                btn_3.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
-                btn_4.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
-                btn_5.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
+
+                btn_1.setStyle("-fx-font-size: 15px; \n -fx-pref-width: 170px;  \n -fx-pref-height: 70px;");
+                btn_2.setStyle("-fx-font-size: 15px; \n -fx-pref-width: 170px; \n -fx-pref-height: 70px;");
+                btn_3.setStyle("-fx-font-size: 15px; \n -fx-pref-width: 170px; \n -fx-pref-height: 70px;");
+                btn_4.setStyle("-fx-font-size: 15px; \n -fx-pref-width: 170px; \n -fx-pref-height: 70px;");
+                btn_5.setStyle("-fx-font-size: 15px; \n -fx-pref-width: 170px; \n -fx-pref-height: 70px;");
 
                 i = 0;
                 som = 0;
@@ -2639,12 +2644,12 @@ public class ModelJogoPrincipal {
         String dica = "";
         String somAtual = getAudioAtual(); //string para armazenar o último fonema que foi tocado
         char charNumeroBotao = (((Button) botao.getSource()).getId()).charAt(9);
-        int numeroBotao = Integer.parseInt("" + charNumeroBotao);        
+        int numeroBotao = Integer.parseInt("" + charNumeroBotao);
         //System.out.println(numeroBotao);
-        switch(numeroBotao){
+        switch (numeroBotao) {
             case 0:
                 dica = btn_1.getText().toLowerCase();
-                System.out.println("Dica "+dica);
+                System.out.println("Dica " + dica);
                 break;
             case 1:
                 dica = btn_2.getText().toLowerCase();
@@ -2657,8 +2662,8 @@ public class ModelJogoPrincipal {
                 break;
             case 4:
                 dica = btn_5.getText().toLowerCase();
-                break;               
-        }        
+                break;
+        }
         caminhoAudioDica = "a_dicas/" + dica;
         tocarAudioDica(caminhoAudioDica);
         //setNomeAudioAtual(somAtual);       
@@ -2671,6 +2676,14 @@ public class ModelJogoPrincipal {
         DicaBotao2.setVisible(true);
         DicaBotao3.setVisible(true);
         DicaBotao4.setVisible(true);
+    }
+
+    private void ocultarBotoesDicas() {
+        DicaBotao0.setVisible(false);
+        DicaBotao1.setVisible(false);
+        DicaBotao2.setVisible(false);
+        DicaBotao3.setVisible(false);
+        DicaBotao4.setVisible(false);
     }
 
     public void tocarAudioDica(String n) {
