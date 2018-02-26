@@ -2683,19 +2683,19 @@ public class ModelJogoPrincipal {
                 caminhoAudio = "audios_silabas_simples/" + n + ".mp3";
                 break;
             case 3:
-                caminhoAudio = "audios_silabas_simplesB/" + n + ".mp3";
-                break;
-            case 4:
                 caminhoAudio = "audios_palavras_simples/" + n + ".mp3";
                 break;
-            case 5:
+            case 4:
                 caminhoAudio = "audios_silabas_complexas/" + n + ".mp3";
                 break;
-            case 6:
+            case 5:
                 caminhoAudio = "audios_silabas_complexas2/" + n + ".mp3";
                 break;
-            case 7:
+            case 6:
                 caminhoAudio = "audios_silabas_complexas3/" + n + ".mp3";
+                break;
+            case 7:
+                caminhoAudio = "audios_palavras_complexas/" + n + ".mp3";
                 break;
         }
         URL file = getClass().getResource(caminhoAudio);
