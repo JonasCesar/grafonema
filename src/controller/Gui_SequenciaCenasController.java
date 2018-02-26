@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import model.Model_SequenciaCenas;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -25,9 +27,12 @@ public class Gui_SequenciaCenasController implements Initializable {
     private ImageView imagemFundo;
     @FXML
     private Button skipIntro;
+    
+    @FXML
+    private Stage janela;
 
     public Gui_SequenciaCenasController() {
-        unidadeAtual = 0;
+        unidadeAtual = 0;        
     }
 
     /**
@@ -100,9 +105,8 @@ public class Gui_SequenciaCenasController implements Initializable {
     }
 
     @FXML
-    private void handlePular(ActionEvent event) {
+    private void handlePular(ActionEvent event) throws InterruptedException, IOException {
         modelSequenciaCenas.chamarCenaPulo();
-
     }
 
     public void executarCenaFinal(int pontuacaoFinal){
@@ -120,4 +124,11 @@ public class Gui_SequenciaCenasController implements Initializable {
         ((Button) event.getSource()).setEffect(null);
     }
 
+    public boolean getPulandoIntro() throws InterruptedException, IOException {
+        return modelSequenciaCenas.getPulandoIntro();
+    }
+
+    public void setPontuacao(int pontuacaoTotal) {
+        modelSequenciaCenas.setPontuacao(pontuacaoTotal);
+    }
 }

@@ -1350,7 +1350,6 @@ public class ModelJogoPrincipal {
      * Incrementa, em valores de 10, a quantidade de pontos do jagador
      */
     public void incrementarPontuacao() {
-
         //valor que será acrescentado à pontuação do jogador
         int valorAcrescentar = 5;
         //pega a pontuação no label da pontuação
@@ -1624,6 +1623,8 @@ public class ModelJogoPrincipal {
             janela.setResizable(false);
             janela.show();//exibe a cena
             sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+            System.out.println("PONTUACAO " + jogador.getPontuacaoTotal());
+            sequenciaCenas.setPontuacao(jogador.getPontuacaoTotal());
             sequenciaCenas.definirImagemFundo();
             sequenciaCenas.iniciarCena();
 
@@ -1631,6 +1632,13 @@ public class ModelJogoPrincipal {
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
+            try {
+                System.out.println("Pulaintro " + sequenciaCenas.getPulandoIntro());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
             jogador.setFaseAtual(jogador.getFaseAtual() + 1);
             setMostrandoCena(true);
             janela.setResizable(false);
@@ -2279,39 +2287,53 @@ public class ModelJogoPrincipal {
             janela.setResizable(false);
             janela.show();//exibe a cena
             sequenciaCenas.setFaseAtual(jogador.getFaseAtual());
+            sequenciaCenas.setPontuacao(jogador.getPontuacaoTotal());
             sequenciaCenas.definirImagemFundo();
             sequenciaCenas.executarCenaIntermediariaFase();
         };
 
         //evento para voltar para o jogo pós exibição da cena
         eventoVoltar = (ActionEvent event) -> {
-            Parent cenaPrincipal = null;
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
             try {
-                cenaPrincipal = (Parent) fxmloader.load();
+                if (!sequenciaCenas.getPulandoIntro()) {
+                    Parent cenaPrincipal = null;
+                    FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+                    try {
+                        cenaPrincipal = (Parent) fxmloader.load();
 
+                    } catch (IOException ex) {
+                        Logger.getLogger(Model_SequenciaCenas.class
+                                .getName()).log(Level.SEVERE, null, ex);
+                    }
+                    jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
+                    jogoPrincipal.setFaseAtual(getFaseAtual());
+                    jogoPrincipal.definirImagemFundo();
+                    janela.setTitle("Legere");
+                    janela.setScene(cenaTemporaria);
+                    setMostrandoCena(false);
+                    janela.setResizable(false);
+                    definirImagemFundo();
+                    janela.show();
+                } else {
+
+                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                Logger.getLogger(Model_SequenciaCenas.class
-                        .getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            jogoPrincipal = fxmloader.<Gui_JogoPrincipalController>getController();
-            jogoPrincipal.setFaseAtual(getFaseAtual());
-            jogoPrincipal.definirImagemFundo();
-            janela.setTitle("Legere");
-            janela.setScene(cenaTemporaria);
-            setMostrandoCena(false);
-            janela.setResizable(false);
-            definirImagemFundo();
-            janela.show();
+
         };
         eventoFimAcerto = (ActionEvent event) -> {
             try {
-                gerarOpcaoAleatoria();
+                if (!sequenciaCenas.getPulandoIntro()) {
+                    gerarOpcaoAleatoria();
+                }
 
             } catch (InterruptedException | IOException ex) {
-                Logger.getLogger(ModelJogoPrincipal.class
-                        .getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModelJogoPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         };
 
         //se for add alguma coisa antes do inicio do jogo é só aumentar o tamanho do tempo
@@ -2738,5 +2760,22 @@ public class ModelJogoPrincipal {
 
     public boolean getMostrandoDica() {
         return this.mostrandoDica;
+    }
+
+    public void pararRelogio() {
+        timer.cancel();
+    }
+
+    public void setLabelFase(String string) {
+        numFase.setText(string);
+    }
+
+    public void setPontuacao(int pontos) {
+        jogador.setPontuacaoTotal(pontos);
+        pontuacao.setText("" + pontos);
+    }
+
+    public int getPontuacao() {
+        return jogador.getPontuacaoTotal();
     }
 }
