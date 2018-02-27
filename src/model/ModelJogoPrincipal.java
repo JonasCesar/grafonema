@@ -1549,7 +1549,7 @@ public class ModelJogoPrincipal {
         }
         URL file = getClass().getResource(caminhoAudio);
         media = new Media(file.toString());
-        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media);        
         mediaPlayer.play();
         System.out.println("status tocar " + mediaPlayer.getStatus() + "  " + mediaPlayer.getStatus().equals(Status.PLAYING));
         System.out.println((long) mediaPlayer.getTotalDuration().toMillis());
