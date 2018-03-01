@@ -7,7 +7,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="128.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogo destinado a estudantes com atraso na aquisição e no&#10;aprendizado inicial da leitura&#10;e da escrita em Língua Portuguesa" textAlignment="CENTER">
@@ -28,7 +27,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="259.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Revsisão de Interface:&#10;Alzira Ferreira" textAlignment="CENTER">
+      <Text layoutX="259.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Revisão de Interface:&#10;Alzira Ferreira" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>

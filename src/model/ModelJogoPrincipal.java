@@ -1285,7 +1285,7 @@ public class ModelJogoPrincipal {
         matrizPalavrasComplexas.put("laranja", "LARANJA");
         matrizPalavrasComplexas.put("leão", "LEÃO");
         matrizPalavrasComplexas.put("limão", "LIMÃO");
-        matrizPalavrasComplexas.put("língua", "LIMÃO");
+        matrizPalavrasComplexas.put("língua", "LÍNGUA");
         matrizPalavrasComplexas.put("linha", "LINHA");
         matrizPalavrasComplexas.put("livro", "LIVRO");
         matrizPalavrasComplexas.put("malvado", "MALVADO");

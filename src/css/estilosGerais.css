@@ -4,6 +4,16 @@
 */
 #iniciar{
     -fx-background-color: #33ff33;
+    -fx-background-radius: 70;
+    -fx-background-color: 
+        linear-gradient(#006400, #00FF00),
+        linear-gradient(#008000, #7CFC00),
+        linear-gradient(#228B22, #7FFF00),
+        linear-gradient(#00FF7F 0%, #2E8B57 50%, #006400 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    //    -fx-pref-width: 100px;
+//    -fx-pref-height: 70px;
+    
 }
 .button{
     -fx-background-radius: 30;
