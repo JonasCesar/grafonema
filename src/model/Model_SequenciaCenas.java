@@ -59,7 +59,7 @@ public class Model_SequenciaCenas {
     @FXML
     private Button skipIntro;
     private Parent cenaPrincipal = null;
-
+    private int pontuacaoJogador;
     public Model_SequenciaCenas(ImageView imagem, ImageView imagemFundo, Button skipIntro) {
         imgView = imagem;
         faseAtual = 1;
@@ -67,6 +67,8 @@ public class Model_SequenciaCenas {
         this.imagemFundo = imagemFundo;
         pularIntro = false;
         this.skipIntro = skipIntro;
+        this.janela = janela;
+        pontuacaoJogador = 0;
     }
 
     /**
@@ -254,6 +256,7 @@ public class Model_SequenciaCenas {
             imgView.setImage(new Image(arquivoImg.toString()));
             caminhoAudio = caminho4 + ".mp3";
             if (!pularIntro) {
+                System.out.println("Entrou aqui pular intro");
                 tocarAudio(caminhoAudio);
             }
 
@@ -268,6 +271,7 @@ public class Model_SequenciaCenas {
         c3 = (ActionEvent event) -> {
 
             if (!pularIntro) {
+                System.out.println("ENtrou aqui tbm pular intro c3");
                 janela = (Stage) imgView.getScene().getWindow();
                 Parent cenaPrincipal = null;
 
@@ -484,7 +488,7 @@ public class Model_SequenciaCenas {
 
         caminho1 = caminho2 = caminho3 = "";
         Double tempoAudio = 0.0;
-        skipIntro.setVisible(false);
+        skipIntro.setVisible(true);
 
         switch (getFaseAtual()) {
             case 1:
@@ -559,6 +563,7 @@ public class Model_SequenciaCenas {
             jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
             System.out.println("Fase atual " + getFaseAtual());
             jogoPrincipalController.setFaseAtual(getFaseAtual());
+            
         };
 
         c4 = (ActionEvent event) -> {
@@ -655,25 +660,55 @@ public class Model_SequenciaCenas {
         return valor;
     }
 
-    public void chamarCenaPulo() {
+    public void chamarCenaPulo() throws InterruptedException, IOException {
         pularIntro = true;
         mediaPlayer.stop();
-        skipIntro.setVisible(false);
-        janela = (Stage) imgView.getScene().getWindow();
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
-        try {
-            cenaPrincipal = (Parent) fxmloader.load();
-        } catch (IOException ex) {
-            Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
-        jogoPrincipalController.definirImagemFundo();
+        skipIntro.setVisible(true);
+        
+        if(getFaseAtual()> 1){
+            pularIntro = true;
+            mediaPlayer.stop();
+            //skipIntro.setVisible(false);
+            janela = (Stage) imgView.getScene().getWindow();
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+            try {
+                cenaPrincipal = (Parent) fxmloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
+            jogoPrincipalController.definirImagemFundo();
 
-        Scene scene = new Scene(cenaPrincipal, 1200, 700);
-        janela.setTitle("Legere");
-        janela.setScene(scene);
-        janela.show();
-        jogoPrincipalController.iniciarJogo();
+            Scene scene = new Scene(cenaPrincipal, 1200, 700);
+            janela.setTitle("Legere");
+            janela.setScene(scene);
+            janela.show();
+            jogoPrincipalController.setFaseAtual(faseAtual);
+            jogoPrincipalController.definirImagemFundo();            
+            jogoPrincipalController.setPontuacao(getPontuacao());
+            jogoPrincipalController.setLabelFase("Fase: "+getFaseAtual()+"/7");
+            jogoPrincipalController.gerarOpcaoAleatoria();
+            jogoPrincipalController.setMostrandoCena(false);
+            jogoPrincipalController.iniciarRelogio();
+                   
+        } else {
+
+            janela = (Stage) imgView.getScene().getWindow();
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/interfaces/Gui_JogoPrincipal.fxml"));
+            try {
+                cenaPrincipal = (Parent) fxmloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(Model_SequenciaCenas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jogoPrincipalController = fxmloader.<Gui_JogoPrincipalController>getController();
+            jogoPrincipalController.definirImagemFundo();
+
+            Scene scene = new Scene(cenaPrincipal, 1200, 700);
+            janela.setTitle("Legere");
+            janela.setScene(scene);
+            janela.show();
+            jogoPrincipalController.iniciarJogo();
+        }
     }
 
     public void executarCenaFinal(int pontuacaoFinal) {
@@ -753,5 +788,17 @@ public class Model_SequenciaCenas {
                 new KeyFrame(Duration.seconds(25), c4),
                 new KeyFrame(Duration.seconds(30), c5),
                 new KeyFrame(Duration.seconds(35), c6)).play();
+    }
+
+    public boolean getPulandoIntro() throws InterruptedException, IOException {
+        return pularIntro;
+    }
+
+    public void setPontuacao(int pontuacaoTotal) {
+        this.pontuacaoJogador = pontuacaoTotal;
+    }
+
+    private int getPontuacao() {
+        return pontuacaoJogador;
     }
 }

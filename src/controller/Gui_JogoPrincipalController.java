@@ -247,4 +247,32 @@ public class Gui_JogoPrincipalController implements Initializable {
         modelJogoPrincipal.tocarDica(event);
     }
 
+    public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
+        modelJogoPrincipal.gerarOpcaoAleatoria();                
+    }
+
+    public void pararRelogio() {
+        modelJogoPrincipal.pararRelogio();
+    }
+    
+    public void iniciarRelogio(){
+        modelJogoPrincipal.iniciarTimer();
+    }
+
+    public void setMostrandoCena(boolean b) {
+       modelJogoPrincipal.setMostrandoCena(b);
+    }
+    
+    public int getPontuacao(){
+        return modelJogoPrincipal.getPontuacao();
+    }
+
+    public void setPontuacao(int pontuacao) {
+        modelJogoPrincipal.setPontuacao(pontuacao);
+    }
+
+    public void setLabelFase(String string) {
+        modelJogoPrincipal.setLabelFase(string);
+    }
+
 }
