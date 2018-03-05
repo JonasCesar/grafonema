@@ -663,8 +663,7 @@ public class Model_SequenciaCenas {
     public void chamarCenaPulo() throws InterruptedException, IOException {
         pularIntro = true;
         mediaPlayer.stop();
-        skipIntro.setVisible(true);
-        
+        skipIntro.setVisible(true);        
         if(getFaseAtual()> 1){
             pularIntro = true;
             mediaPlayer.stop();
