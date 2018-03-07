@@ -374,7 +374,7 @@ public class ModelJogoPrincipal {
             jogador.setBonus(true);
         }
 
-        if (jogador.getQntErros() + jogador.getAcertosTotal() == 2) {
+        if (jogador.getQntErros() + jogador.getAcertosTotal() == rodadas) {
 
             //apartir da fase 1 o número de rodadas aumenta para 20
             //if (pular.isDisable()) {
