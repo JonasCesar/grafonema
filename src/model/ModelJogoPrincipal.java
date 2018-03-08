@@ -355,6 +355,7 @@ public class ModelJogoPrincipal {
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
         int rodadas = 15;
+        //int rodadas = 2;
 
         if (jogador.getFaseAtual() != 1 && jogador.getFaseAtual() != 3
                 && jogador.getFaseAtual() != 7) {
