@@ -382,6 +382,8 @@ public class ModelJogoPrincipal {
             //  pular.setDisable(false);
             //}
             jogador.setQntErros(0);//restaura a quantidade de erros do jogador
+            lifeBar.setProgress(1.0);
+            lifeBar.setId("lifeBar");
             jogador.setQntPulos(-1); //restaura a quantidade de pulos disponível
             jogador.setBonus(false);//retira o bônus do jogador
             if (getFaseAtual() != 7) {
@@ -564,6 +566,8 @@ public class ModelJogoPrincipal {
         //atualiza a barra de vida
         lifeBar.setProgress(valorAtualizado);
     }
+    
+   
 
     /**
      * Desabilita a função pular
