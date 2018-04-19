@@ -93,7 +93,7 @@ public class Gui_JogoPrincipalController implements Initializable {
                 imagemFundo, numFase, DicaBotao0,DicaBotao1,DicaBotao2,DicaBotao3,DicaBotao4);
         modelJogoPrincipal.iniciarMatrizAudiosVogal();//inicia a matriz de audios de vogais
         Tooltip.install(imgReiniciar, new Tooltip("Clique para reiniciar o jogo"));
-        Image image = new Image(getClass().getResourceAsStream("som32.png"));
+        Image image = new Image(getClass().getResourceAsStream("BotaoDica.png"));
         DicaBotao0.setGraphic(new ImageView(image));
         DicaBotao1.setGraphic(new ImageView(image));
         DicaBotao2.setGraphic(new ImageView(image));
