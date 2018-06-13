@@ -43,6 +43,11 @@ import javafx.util.Duration;
 /**
  *
  * @author jonas
+ * 
+ * Fase 1 - vogais
+ * Fase 2 - sílabas simples
+ * Fase 3 - Palavras simples
+ * 
  */
 public class ModelJogoPrincipal {
 
@@ -90,16 +95,16 @@ public class ModelJogoPrincipal {
     private final String silabasComplexas2[] = {
         "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU",
         "CLA", "CLE", "CLI", "CLO", "CLU", "CRA", "CRE", "CRI", "CRO",
-        "CRU", "DRA", "DRE", "DRI", "DRO", "DRU", "FLA", "FLE", "FLO",
-        "FLU", "FRA", "FRE", "FRI", "FRO", "FRU", "GLA", "GLO", "GRA",
-        "GRE", "GRI", "GRO", "GRU", "PLA", "PLO", "PLU", "PRA", "PRE",
-        "PRI", "PRO", "PRU", "TLE", "TLO", "TRA", "TRE", "TRI", "TRO",
-        "TRU", "VRE", "VRO",};
+        "CRU", "DRA", "DRE", "DRI", "DRU", "FLA", "FLE", "FLO",
+        "FLU", "FRA", "FRE", "FRI", "FRO", "FRU", "GLA", "GLO", "GRE", 
+        "GRI", "GRO", "GRU", "PLA", "PLO", "PLU", "PRA", "PRE","PRI", 
+        "PRO", "PRU", "TLE", "TLO", "TRA", "TRE", "TRI", "TRO","TRU",
+        "VRE", "VRO",};
 
     private final String silabasComplexas[] = {
         "BAL", "BAM", "BAN", "BÃO", "BAR", "BAS", "BEL", "BEM", "BER", "BES",
         "BIL", "BIN", "BIR", "BIS", "BOL", "BOM", "BOR", "BOS", "BUM", "BUR",
-        "BUS", "CÃES", "CAL", "CAM", "CAN", "CÃO", "CAS", "CEL", "CEN", "CER",
+        "BUS", "CÃES", "CAL", "CAM", "CAN", "CAR", "CAS", "CEL", "CEN", "CER",
         "CES", "CHE", "CIN", "CIR", "CIS", "ÇÕES", "COL", "COM", "CON", "COR",
         "COS", "CUL", "CUM", "CUR", "CUS", "CUZ", "DAN", "DÃO", "DAR", "DAS",
         "DEN", "DER", "DES", "DIM", "DIS", "DON", "DOR", "DOS", "DUM", "FAL",
@@ -125,8 +130,8 @@ public class ModelJogoPrincipal {
     };
 
     private final String[] silabasComplexas3 = {
-        "BRA", "BRAS", "BRES", "BRIN", "BRON", "BROS", "BRUS", "CHÃO",
-        "CLAS", "CLOS", "CRES", "CRIS", "CROS", "CRUS", "GUAM", "GUAR",
+        "BRAS", "BRES", "BRIN", "BRON", "BROS", "BRUS", "CHÃO",
+        "CLAS", "CLOS", "CRES", "CRIS", "CROS", "CRUS", "DRON", "GRAM", "GUAM", "GUAR",
         "LHEU", "PLAS", "PLES", "PRAN", "PRAS", "PREN", "PRES", "PRIN",
         "PRON", "TLAS", "TRAS", "TRES", "TRIS", "TROS"
     };
@@ -180,7 +185,7 @@ public class ModelJogoPrincipal {
     private final String audiosSilabasComplexas[] = {
         "bal", "bam", "ban", "bão", "bar", "bas", "bel", "bem", "ber", "bes",
         "bil", "bin", "bir", "bis", "bol", "bom", "bor", "bos", "bum", "bur",
-        "bus", "cães", "cal", "cam", "can", "cão", "cas", "cel", "cen", "cer",
+        "bus", "cães", "cal", "cam", "can", "car", "cas", "cel", "cen", "cer",
         "ces", "che", "cin", "cir", "cis", "ções", "col", "com", "con", "cor",
         "cos", "cul", "cum", "cur", "cus", "cuz", "dan", "dão", "dar", "das",
         "den", "der", "des", "dim", "dis", "don", "dor", "dos", "dum", "fal",
@@ -208,11 +213,11 @@ public class ModelJogoPrincipal {
     private final String audiosSilabasComplexas2[] = {
         "ble", "bli", "blo", "blu", "bra", "bre", "bri", "bro", "bru",
         "cla", "cle", "cli", "clo", "clu", "cra", "cre", "cri", "cro",
-        "cru", "dra", "dre", "dri", "dro", "dru", "fla", "fle", "flo",
-        "flu", "fra", "fre", "fri", "fro", "fru", "gla", "glo", "gra",
-        "gre", "gri", "gro", "gru", "pla", "plo", "plu", "pra", "pre",
-        "pri", "pro", "pru", "tle", "tlo", "tra", "tre", "tri", "tro",
-        "tru", "vre", "vro"};
+        "cru", "dra", "dre", "dri", "dru", "fla", "fle", "flo",
+        "flu", "fra", "fre", "fri", "fro", "fru", "gla", "glo","gre", 
+        "gri", "gro", "gru", "pla", "plo", "plu", "pra", "pre","pri",
+        "pro", "pru", "tle", "tlo", "tra", "tre", "tri", "tro","tru",
+        "vre", "vro"};
 
     private final String audiosPalavrasSimples[] = {
         "amarelo", "apito", "árvore", "bala", "banana", "batata",
@@ -230,8 +235,8 @@ public class ModelJogoPrincipal {
     };
 
     private final String audiosSilabasComplexas3[] = {
-        "bra", "bras", "bres", "brin", "bron", "bros", "brus", "chão",
-        "clas", "clos", "cres", "cris", "cros", "crus", "guam", "guar",
+        "bras", "bres", "brin", "bron", "bros", "brus", "chão",
+        "clas", "clos", "cres", "cris", "cros", "crus", "dron", "gram", "guam", "guar",
         "lheu", "plas", "ples", "pran", "pras", "pren", "pres", "prin",
         "pron", "tlas", "tras", "tres", "tris", "tros"};
 
@@ -552,7 +557,9 @@ public class ModelJogoPrincipal {
                 break;
         }
 
+        System.out.println("clique = " + resultado);
         return resultado;
+        
     }
 
     /**
@@ -733,7 +740,6 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("dra", "DRA");
         matrizSilabasComplexas2.put("dre", "DRE");
         matrizSilabasComplexas2.put("dri", "DRI");
-        matrizSilabasComplexas2.put("dro", "DRO");
         matrizSilabasComplexas2.put("dru", "DRU");
         matrizSilabasComplexas2.put("fla", "FLA");
         matrizSilabasComplexas2.put("fle", "FLE");
@@ -748,7 +754,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("gla", "GLA");
         matrizSilabasComplexas2.put("glo", "GLO");
 
-        matrizSilabasComplexas2.put("gra", "GRA");
+        
         matrizSilabasComplexas2.put("gre", "GRE");
         matrizSilabasComplexas2.put("gri", "GRI");
         matrizSilabasComplexas2.put("gro", "GRO");
@@ -929,7 +935,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("cal", "CAL");
         matrizSilabasComplexas.put("cam", "CAM");
         matrizSilabasComplexas.put("can", "CAN");
-        matrizSilabasComplexas.put("cão", "CÃO");
+        matrizSilabasComplexas.put("car", "CAR");
         matrizSilabasComplexas.put("cas", "CAS");
         matrizSilabasComplexas.put("cel", "CEL");
         matrizSilabasComplexas.put("cen", "CEN");
@@ -1110,7 +1116,8 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("ras", "RAS");
 
         matrizSilabasComplexas.put("rel", "REL");
-        matrizSilabasComplexas.put("ren", "RES");
+        matrizSilabasComplexas.put("ren", "REN");
+        matrizSilabasComplexas.put("res", "RES");
         matrizSilabasComplexas.put("rio", "RIO");
         matrizSilabasComplexas.put("rir", "RIR");
         matrizSilabasComplexas.put("ris", "RIS");
@@ -1194,7 +1201,6 @@ public class ModelJogoPrincipal {
      * Inicia a matriz de silabas complexas 3
      */
     public void iniciarMatrizSilabasComplexas3() {
-        matrizSilabasComplexas3.put("bra", "BRA");
         matrizSilabasComplexas3.put("bras", "BRAS");
         matrizSilabasComplexas3.put("bres", "BRES");
         matrizSilabasComplexas3.put("brin", "BRIN");
@@ -1208,8 +1214,10 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas3.put("cris", "CRIS");
         matrizSilabasComplexas3.put("cros", "CROS");
         matrizSilabasComplexas3.put("crus", "CRUS");
+        matrizSilabasComplexas3.put("dron", "DRON");
+        matrizSilabasComplexas3.put("gram", "GRAM");
         matrizSilabasComplexas3.put("guam", "GUAM");
-        matrizSilabasComplexas3.put("guar", "GUAR");
+        matrizSilabasComplexas3.put("guar", "GUAR");      
         matrizSilabasComplexas3.put("lheu", "LHEU");
         matrizSilabasComplexas3.put("plas", "PLAS");
         matrizSilabasComplexas3.put("ples", "PLES");
