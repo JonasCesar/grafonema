@@ -43,6 +43,11 @@ import javafx.util.Duration;
 /**
  *
  * @author jonas
+ * 
+ * Fase 1 - vogais
+ * Fase 2 - sílabas simples
+ * Fase 3 - Palavras simples
+ * 
  */
 public class ModelJogoPrincipal {
 
@@ -75,6 +80,7 @@ public class ModelJogoPrincipal {
     @FXML
     private ProgressBar lifeBar;
     private final String vogais[] = {"A", "E", "I", "O", "U"};
+    //tamanho 94
     private final String silabasSimples[] = {
         "AL", "AM", "AN", "AR", "AS", "BA", "BE", "BI", "BO", "BU", "CA",
         "ÇÃO", "CE", "CI", "ÇÕES", "CU", "DA", "DI", "DO",
@@ -90,16 +96,16 @@ public class ModelJogoPrincipal {
     private final String silabasComplexas2[] = {
         "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU",
         "CLA", "CLE", "CLI", "CLO", "CLU", "CRA", "CRE", "CRI", "CRO",
-        "CRU", "DRA", "DRE", "DRI", "DRO", "DRU", "FLA", "FLE", "FLO",
-        "FLU", "FRA", "FRE", "FRI", "FRO", "FRU", "GLA", "GLO", "GRA",
-        "GRE", "GRI", "GRO", "GRU", "PLA", "PLO", "PLU", "PRA", "PRE",
-        "PRI", "PRO", "PRU", "TLE", "TLO", "TRA", "TRE", "TRI", "TRO",
-        "TRU", "VRE", "VRO",};
+        "CRU", "DRA", "DRE", "DRI", "DRU", "FLA", "FLE", "FLO",
+        "FLU", "FRA", "FRE", "FRI", "FRO", "FRU", "GLA", "GLO", "GRE", 
+        "GRI", "GRO", "GRU", "PLA", "PLO", "PLU", "PRA", "PRE","PRI", 
+        "PRO", "PRU", "TLE", "TLO", "TRA", "TRE", "TRI", "TRO","TRU",
+        "VRE", "VRO",};
 
     private final String silabasComplexas[] = {
         "BAL", "BAM", "BAN", "BÃO", "BAR", "BAS", "BEL", "BEM", "BER", "BES",
         "BIL", "BIN", "BIR", "BIS", "BOL", "BOM", "BOR", "BOS", "BUM", "BUR",
-        "BUS", "CÃES", "CAL", "CAM", "CAN", "CÃO", "CAS", "CEL", "CEN", "CER",
+        "BUS", "CÃES", "CAL", "CAM", "CAN", "CAR", "CAS", "CEL", "CEN", "CER",
         "CES", "CHE", "CIN", "CIR", "CIS", "ÇÕES", "COL", "COM", "CON", "COR",
         "COS", "CUL", "CUM", "CUR", "CUS", "CUZ", "DAN", "DÃO", "DAR", "DAS",
         "DEN", "DER", "DES", "DIM", "DIS", "DON", "DOR", "DOS", "DUM", "FAL",
@@ -125,12 +131,12 @@ public class ModelJogoPrincipal {
     };
 
     private final String[] silabasComplexas3 = {
-        "BRA", "BRAS", "BRES", "BRIN", "BRON", "BROS", "BRUS", "CHÃO",
-        "CLAS", "CLOS", "CRES", "CRIS", "CROS", "CRUS", "GUAM", "GUAR",
+        "BRAS", "BRES", "BRIN", "BRON", "BROS", "BRUS", "CHÃO",
+        "CLAS", "CLOS", "CRES", "CRIS", "CROS", "CRUS", "DRON", "GRAM", "GUAM", "GUAR",
         "LHEU", "PLAS", "PLES", "PRAN", "PRAS", "PREN", "PRES", "PRIN",
         "PRON", "TLAS", "TRAS", "TRES", "TRIS", "TROS"
     };
-
+    //tamanho 99
     private String palavrasSimples[] = {
         "AMARELO", "APITO", "ÁRVORE", "BALA", "BANANA", "BATATA",
         "BIRUTA", "BOCA", "BOLA", "BOLITA", "BOLO", "BONÉ", "BONECA",
@@ -180,7 +186,7 @@ public class ModelJogoPrincipal {
     private final String audiosSilabasComplexas[] = {
         "bal", "bam", "ban", "bão", "bar", "bas", "bel", "bem", "ber", "bes",
         "bil", "bin", "bir", "bis", "bol", "bom", "bor", "bos", "bum", "bur",
-        "bus", "cães", "cal", "cam", "can", "cão", "cas", "cel", "cen", "cer",
+        "bus", "cães", "cal", "cam", "can", "car", "cas", "cel", "cen", "cer",
         "ces", "che", "cin", "cir", "cis", "ções", "col", "com", "con", "cor",
         "cos", "cul", "cum", "cur", "cus", "cuz", "dan", "dão", "dar", "das",
         "den", "der", "des", "dim", "dis", "don", "dor", "dos", "dum", "fal",
@@ -208,11 +214,11 @@ public class ModelJogoPrincipal {
     private final String audiosSilabasComplexas2[] = {
         "ble", "bli", "blo", "blu", "bra", "bre", "bri", "bro", "bru",
         "cla", "cle", "cli", "clo", "clu", "cra", "cre", "cri", "cro",
-        "cru", "dra", "dre", "dri", "dro", "dru", "fla", "fle", "flo",
-        "flu", "fra", "fre", "fri", "fro", "fru", "gla", "glo", "gra",
-        "gre", "gri", "gro", "gru", "pla", "plo", "plu", "pra", "pre",
-        "pri", "pro", "pru", "tle", "tlo", "tra", "tre", "tri", "tro",
-        "tru", "vre", "vro"};
+        "cru", "dra", "dre", "dri", "dru", "fla", "fle", "flo",
+        "flu", "fra", "fre", "fri", "fro", "fru", "gla", "glo","gre", 
+        "gri", "gro", "gru", "pla", "plo", "plu", "pra", "pre","pri",
+        "pro", "pru", "tle", "tlo", "tra", "tre", "tri", "tro","tru",
+        "vre", "vro"};
 
     private final String audiosPalavrasSimples[] = {
         "amarelo", "apito", "árvore", "bala", "banana", "batata",
@@ -230,8 +236,8 @@ public class ModelJogoPrincipal {
     };
 
     private final String audiosSilabasComplexas3[] = {
-        "bra", "bras", "bres", "brin", "bron", "bros", "brus", "chão",
-        "clas", "clos", "cres", "cris", "cros", "crus", "guam", "guar",
+        "bras", "bres", "brin", "bron", "bros", "brus", "chão",
+        "clas", "clos", "cres", "cris", "cros", "crus", "dron", "gram", "guam", "guar",
         "lheu", "plas", "ples", "pran", "pras", "pren", "pres", "prin",
         "pron", "tlas", "tras", "tres", "tris", "tros"};
 
@@ -472,28 +478,28 @@ public class ModelJogoPrincipal {
             case 2:
 
                 iniciarMatrizAudioSilabas();
-                i = indiceAudio.nextInt(93);
+                i = indiceAudio.nextInt(94);
                 tocarAudio(audioSilabasSimples[i]);
                 y = i;
                 break;
             case 3:
                 matrizSilabasSimples.clear();
                 iniciarMatrizPalavrasSimples();
-                i = indiceAudio.nextInt(99);
+                i = indiceAudio.nextInt(98);
                 tocarAudio(audiosPalavrasSimples[i]);
                 y = i;
                 break;
             case 4:
                 matrizPalavrasSimples.clear();
                 iniciarMatrizSilabasComplexas();
-                i = indiceAudio.nextInt(245);
+                i = indiceAudio.nextInt(242);
                 tocarAudio(audiosSilabasComplexas[i]);
                 y = i;
                 break;
             case 5:
                 matrizSilabasComplexas.clear();
                 iniciarMatrizSilabasComplexas2();
-                i = indiceAudio.nextInt(57);
+                i = indiceAudio.nextInt(54);
                 tocarAudio(audiosSilabasComplexas2[i]);
                 y = i;
                 break;
@@ -507,7 +513,7 @@ public class ModelJogoPrincipal {
             case 7:
                 matrizSilabasComplexas2.clear();
                 iniciarMatrizPalavrasComplexas();
-                i = indiceAudio.nextInt(100);
+                i = indiceAudio.nextInt(99);
                 tocarAudio(audiosPalavrasComplexas[i]);
                 y = i;
                 break;
@@ -552,7 +558,9 @@ public class ModelJogoPrincipal {
                 break;
         }
 
+        System.out.println("clique = " + resultado);
         return resultado;
+        
     }
 
     /**
@@ -733,7 +741,6 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("dra", "DRA");
         matrizSilabasComplexas2.put("dre", "DRE");
         matrizSilabasComplexas2.put("dri", "DRI");
-        matrizSilabasComplexas2.put("dro", "DRO");
         matrizSilabasComplexas2.put("dru", "DRU");
         matrizSilabasComplexas2.put("fla", "FLA");
         matrizSilabasComplexas2.put("fle", "FLE");
@@ -748,7 +755,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("gla", "GLA");
         matrizSilabasComplexas2.put("glo", "GLO");
 
-        matrizSilabasComplexas2.put("gra", "GRA");
+        
         matrizSilabasComplexas2.put("gre", "GRE");
         matrizSilabasComplexas2.put("gri", "GRI");
         matrizSilabasComplexas2.put("gro", "GRO");
@@ -929,7 +936,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("cal", "CAL");
         matrizSilabasComplexas.put("cam", "CAM");
         matrizSilabasComplexas.put("can", "CAN");
-        matrizSilabasComplexas.put("cão", "CÃO");
+        matrizSilabasComplexas.put("car", "CAR");
         matrizSilabasComplexas.put("cas", "CAS");
         matrizSilabasComplexas.put("cel", "CEL");
         matrizSilabasComplexas.put("cen", "CEN");
@@ -1110,7 +1117,8 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("ras", "RAS");
 
         matrizSilabasComplexas.put("rel", "REL");
-        matrizSilabasComplexas.put("ren", "RES");
+        matrizSilabasComplexas.put("ren", "REN");
+        matrizSilabasComplexas.put("res", "RES");
         matrizSilabasComplexas.put("rio", "RIO");
         matrizSilabasComplexas.put("rir", "RIR");
         matrizSilabasComplexas.put("ris", "RIS");
@@ -1194,7 +1202,6 @@ public class ModelJogoPrincipal {
      * Inicia a matriz de silabas complexas 3
      */
     public void iniciarMatrizSilabasComplexas3() {
-        matrizSilabasComplexas3.put("bra", "BRA");
         matrizSilabasComplexas3.put("bras", "BRAS");
         matrizSilabasComplexas3.put("bres", "BRES");
         matrizSilabasComplexas3.put("brin", "BRIN");
@@ -1208,8 +1215,10 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas3.put("cris", "CRIS");
         matrizSilabasComplexas3.put("cros", "CROS");
         matrizSilabasComplexas3.put("crus", "CRUS");
+        matrizSilabasComplexas3.put("dron", "DRON");
+        matrizSilabasComplexas3.put("gram", "GRAM");
         matrizSilabasComplexas3.put("guam", "GUAM");
-        matrizSilabasComplexas3.put("guar", "GUAR");
+        matrizSilabasComplexas3.put("guar", "GUAR");      
         matrizSilabasComplexas3.put("lheu", "LHEU");
         matrizSilabasComplexas3.put("plas", "PLAS");
         matrizSilabasComplexas3.put("ples", "PLES");
@@ -1278,7 +1287,7 @@ public class ModelJogoPrincipal {
         matrizPalavrasComplexas.put("fralda", "FRALDA");
         matrizPalavrasComplexas.put("fruta", "FRUTA");
         matrizPalavrasComplexas.put("galinha", "GALINHA");
-        matrizPalavrasComplexas.put("girassol", "GIRASSOL.");
+        matrizPalavrasComplexas.put("girassol", "GIRASSOL");
         matrizPalavrasComplexas.put("gravata", "GRAVATA");
         matrizPalavrasComplexas.put("graveto", "GRAVETO");
         matrizPalavrasComplexas.put("guitarra", "GUITARRA");
@@ -2389,7 +2398,8 @@ public class ModelJogoPrincipal {
 
                 break;
 
-            case 2://FASE DOIS
+            case 2://FASE DOIS - SÍLABAS SIMPLES
+                
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
                 btn_3.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
@@ -2404,7 +2414,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(29);
+                    proxValor = indice.nextInt(94);
 
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
@@ -2417,7 +2427,7 @@ public class ModelJogoPrincipal {
 
                 break;
 
-            case 3:
+            case 3://FASE 3 - PALAVRAS SIMPLES
 
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
@@ -2433,7 +2443,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(80);
+                    proxValor = indice.nextInt(98);
 
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
@@ -2445,7 +2455,7 @@ public class ModelJogoPrincipal {
                 preencherOpcoes(palavrasSimples, som, novasOpcoes);
                 break;
 
-            case 4:
+            case 4://FASE 4
 
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
@@ -2461,7 +2471,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(93);
+                    proxValor = indice.nextInt(242);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -2471,7 +2481,8 @@ public class ModelJogoPrincipal {
                 preencherOpcoes(silabasComplexas, som, novasOpcoes);
 
                 break;
-            case 5:
+            
+            case 5://FASE 5
 
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
@@ -2487,7 +2498,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(57);
+                    proxValor = indice.nextInt(54);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -2498,7 +2509,7 @@ public class ModelJogoPrincipal {
                 preencherOpcoes(silabasComplexas2, som, novasOpcoes);
                 break;
 
-            case 6:
+            case 6://FASE 6
                 
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
@@ -2521,10 +2532,11 @@ public class ModelJogoPrincipal {
                         i++;
                     }
                 }
+                System.out.println("arrya novas opçoes: " + novasOpcoes);
                 preencherOpcoes(silabasComplexas3, som, novasOpcoes);
                 break;
 
-            case 7:
+            case 7://FASE 7
 
                 btn_1.setStyle("-fx-font-size: 15px; \n -fx-pref-width: 170px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 15px; \n -fx-pref-width: 170px; \n -fx-pref-height: 70px;");
@@ -2540,7 +2552,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(100);
+                    proxValor = indice.nextInt(99);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
