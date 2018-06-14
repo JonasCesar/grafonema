@@ -477,28 +477,28 @@ public class ModelJogoPrincipal {
             case 2:
 
                 iniciarMatrizAudioSilabas();
-                i = indiceAudio.nextInt(93);
+                i = indiceAudio.nextInt(94);
                 tocarAudio(audioSilabasSimples[i]);
                 y = i;
                 break;
             case 3:
                 matrizSilabasSimples.clear();
                 iniciarMatrizPalavrasSimples();
-                i = indiceAudio.nextInt(99);
+                i = indiceAudio.nextInt(98);
                 tocarAudio(audiosPalavrasSimples[i]);
                 y = i;
                 break;
             case 4:
                 matrizPalavrasSimples.clear();
                 iniciarMatrizSilabasComplexas();
-                i = indiceAudio.nextInt(245);
+                i = indiceAudio.nextInt(242);
                 tocarAudio(audiosSilabasComplexas[i]);
                 y = i;
                 break;
             case 5:
                 matrizSilabasComplexas.clear();
                 iniciarMatrizSilabasComplexas2();
-                i = indiceAudio.nextInt(57);
+                i = indiceAudio.nextInt(54);
                 tocarAudio(audiosSilabasComplexas2[i]);
                 y = i;
                 break;
@@ -512,7 +512,7 @@ public class ModelJogoPrincipal {
             case 7:
                 matrizSilabasComplexas2.clear();
                 iniciarMatrizPalavrasComplexas();
-                i = indiceAudio.nextInt(100);
+                i = indiceAudio.nextInt(99);
                 tocarAudio(audiosPalavrasComplexas[i]);
                 y = i;
                 break;
@@ -2397,7 +2397,8 @@ public class ModelJogoPrincipal {
 
                 break;
 
-            case 2://FASE DOIS
+            case 2://FASE DOIS - SÍLABAS SIMPLES
+                
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
                 btn_3.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
@@ -2412,7 +2413,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(29);
+                    proxValor = indice.nextInt(94);
 
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
@@ -2425,7 +2426,7 @@ public class ModelJogoPrincipal {
 
                 break;
 
-            case 3:
+            case 3://FASE 3 - PALAVRAS SIMPLES
 
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 150px; \n -fx-pref-height: 70px;");
@@ -2441,7 +2442,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(80);
+                    proxValor = indice.nextInt(98);
 
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
@@ -2453,7 +2454,7 @@ public class ModelJogoPrincipal {
                 preencherOpcoes(palavrasSimples, som, novasOpcoes);
                 break;
 
-            case 4:
+            case 4://FASE 4
 
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
@@ -2469,7 +2470,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(93);
+                    proxValor = indice.nextInt(242);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -2479,7 +2480,8 @@ public class ModelJogoPrincipal {
                 preencherOpcoes(silabasComplexas, som, novasOpcoes);
 
                 break;
-            case 5:
+            
+            case 5://FASE 5
 
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
@@ -2495,7 +2497,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(57);
+                    proxValor = indice.nextInt(54);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -2506,7 +2508,7 @@ public class ModelJogoPrincipal {
                 preencherOpcoes(silabasComplexas2, som, novasOpcoes);
                 break;
 
-            case 6:
+            case 6://FASE 6
                 
                 btn_1.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 17px; \n -fx-pref-width: 100px; \n -fx-pref-height: 70px;");
@@ -2529,10 +2531,11 @@ public class ModelJogoPrincipal {
                         i++;
                     }
                 }
+                System.out.println("arrya novas opçoes: " + novasOpcoes);
                 preencherOpcoes(silabasComplexas3, som, novasOpcoes);
                 break;
 
-            case 7:
+            case 7://FASE 7
 
                 btn_1.setStyle("-fx-font-size: 15px; \n -fx-pref-width: 170px;  \n -fx-pref-height: 70px;");
                 btn_2.setStyle("-fx-font-size: 15px; \n -fx-pref-width: 170px; \n -fx-pref-height: 70px;");
@@ -2548,7 +2551,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(100);
+                    proxValor = indice.nextInt(99);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados

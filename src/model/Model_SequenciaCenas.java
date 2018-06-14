@@ -682,13 +682,14 @@ public class Model_SequenciaCenas {
             janela.setTitle("Legere");
             janela.setScene(scene);
             janela.show();
-            jogoPrincipalController.setFaseAtual(faseAtual);
+            jogoPrincipalController.setFaseAtual(faseAtual);//pode ser isso
             jogoPrincipalController.definirImagemFundo();            
             jogoPrincipalController.setPontuacao(getPontuacao());
             jogoPrincipalController.setLabelFase("Fase: "+getFaseAtual()+"/7");
             jogoPrincipalController.gerarOpcaoAleatoria();
             jogoPrincipalController.setMostrandoCena(false);
             jogoPrincipalController.iniciarRelogio();
+            System.out.println("PQP #fase atual: " + faseAtual + " PQP");
                    
         } else {
 
