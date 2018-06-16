@@ -146,7 +146,7 @@ public class ModelJogoPrincipal {
         "LATA", "LEITE", "LIXO", "LUA", "LUTA", "LUVA", "MACACO", "MALA",
         "MENINO", "MESA", "MOEDA", "MÚSICA", "NEVE", "NOVELA", "OVO", "PAREDE", "PATO",
         "PÉ", "PELADO", "PENA", "PERA", "PETECA", "PIANO", "PIPA", "PIPOCA", "PIRULITO",
-        "PULO", "RATO", "REI", "RICO", "ROBÔ", "RODA", "ROSA", "RUA", "SÁBADO", "SAPATO",
+        "RATO", "REI", "RICO", "ROBÔ", "RODA", "ROSA", "RUA", "SÁBADO", "SAPATO",
         "SAPO", "SINO", "SOFÁ", "SUCO", "TAPETE", "TATU", "TELEFONE", "TETO", "TIJOLO", "TOMATE",
         "URSO", "UVA", "VACA", "VAGALUME", "VELA", "XÍCARA", "XIXI"
     };
@@ -229,7 +229,7 @@ public class ModelJogoPrincipal {
         "lata", "leite", "lixo", "lua", "luta", "luva", "macaco", "mala",
         "menino", "mesa", "moeda", "música", "neve", "novela", "ovo", "parede", "pato",
         "pé", "pelado", "pena", "pera", "peteca", "piano", "pipa", "pipoca", "pirulito",
-        "pulo", "rato", "rei", "rico", "robô", "roda", "rosa", "rua", "sábado", "sapato",
+        "rato", "rei", "rico", "robô", "roda", "rosa", "rua", "sábado", "sapato",
         "sapo", "sino", "sofá", "suco", "tapete", "tatu", "telefone", "teto", "tijolo", "tomate",
         "urso", "uva", "vaca", "vagalume", "vela", "xícara", "xixi"
     };
@@ -484,7 +484,7 @@ public class ModelJogoPrincipal {
             case 3:
                 matrizSilabasSimples.clear();
                 iniciarMatrizPalavrasSimples();
-                i = indiceAudio.nextInt(98);
+                i = indiceAudio.nextInt(97);
                 tocarAudio(audiosPalavrasSimples[i]);
                 y = i;
                 break;
@@ -870,7 +870,6 @@ public class ModelJogoPrincipal {
         matrizPalavrasSimples.put("pipa", "PIPA");
         matrizPalavrasSimples.put("pipoca", "PIPOCA");
         matrizPalavrasSimples.put("pirulito", "PIRULITO");
-        matrizPalavrasSimples.put("pulo", "PULO");
 
         matrizPalavrasSimples.put("rato", "RATO");
         matrizPalavrasSimples.put("rei", "REI");
@@ -2052,7 +2051,7 @@ public class ModelJogoPrincipal {
                             + "    -fx-font-weight: bold;\n"
                             + "    -fx-padding: 10 20 10 20;"
                             + "    -fx-font-size: 17px;\n"
-                            + "    -fx-pref-width: 150px;\n"
+                            + "    -fx-pref-width: 170px;\n"
                             + "    -fx-pref-height: 70px;\n"
                     );
                     //ao terminar a animação desbloquear os botões
@@ -2442,7 +2441,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(98);
+                    proxValor = indice.nextInt(97);
 
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
