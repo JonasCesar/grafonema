@@ -80,6 +80,7 @@ public class ModelJogoPrincipal {
     @FXML
     private ProgressBar lifeBar;
     private final String vogais[] = {"A", "E", "I", "O", "U"};
+    //tamanho 94
     private final String silabasSimples[] = {
         "AL", "AM", "AN", "AR", "AS", "BA", "BE", "BI", "BO", "BU", "CA",
         "ÇÃO", "CE", "CI", "ÇÕES", "CU", "DA", "DI", "DO",
@@ -135,7 +136,7 @@ public class ModelJogoPrincipal {
         "LHEU", "PLAS", "PLES", "PRAN", "PRAS", "PREN", "PRES", "PRIN",
         "PRON", "TLAS", "TRAS", "TRES", "TRIS", "TROS"
     };
-
+    //tamanho 99
     private String palavrasSimples[] = {
         "AMARELO", "APITO", "ÁRVORE", "BALA", "BANANA", "BATATA",
         "BIRUTA", "BOCA", "BOLA", "BOLITA", "BOLO", "BONÉ", "BONECA",
@@ -1285,7 +1286,7 @@ public class ModelJogoPrincipal {
         matrizPalavrasComplexas.put("fralda", "FRALDA");
         matrizPalavrasComplexas.put("fruta", "FRUTA");
         matrizPalavrasComplexas.put("galinha", "GALINHA");
-        matrizPalavrasComplexas.put("girassol", "GIRASSOL.");
+        matrizPalavrasComplexas.put("girassol", "GIRASSOL");
         matrizPalavrasComplexas.put("gravata", "GRAVATA");
         matrizPalavrasComplexas.put("graveto", "GRAVETO");
         matrizPalavrasComplexas.put("guitarra", "GUITARRA");
