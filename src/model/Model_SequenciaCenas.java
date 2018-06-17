@@ -202,9 +202,9 @@ public class Model_SequenciaCenas {
                 caminho0 = "Imagens/fase1/inicio";
                 caminho1 = "Imagens/fase1/fe";
                 caminho2 = "Imagens/fase1/fase1_inicio";
-                caminho3 = "audios_vogais/introducao";
-                caminho4 = "audios_vogais/fase1_floresta";
-                caminho5 = "audios_vogais/ouca_o_som";
+                caminho3 = "audiosNarracao/introducao";
+                caminho4 = "audiosNarracao/fase1_floresta";
+                caminho5 = "audiosNarracao/ouca_o_som";
                 tempoAudio = 30;
                 tempoC5 = 15;
                 break;
@@ -212,8 +212,8 @@ public class Model_SequenciaCenas {
                 System.out.println("Entrou aqui");
                 caminho1 = "Imagens/fase2/inicioFase2";
                 caminho2 = "Imagens/fase2/inicioFase2pb";
-                caminho3 = "audios_silabas_simples/fase2_jacares";
-                caminho5 = "audios_vogais/ouca_o_som";
+                caminho3 = "audiosNarracao/fase2_jacares";
+                caminho5 = "audiosNarracao/ouca_o_som";
                 tempoAudio = 32;
                 tempoC5 = 15;
                 break;
@@ -501,43 +501,43 @@ public class Model_SequenciaCenas {
                 System.out.println("Entrou aqui");
                 caminho1 = "Imagens/fase2/inicioFase";
                 caminho2 = "Imagens/fase2/fase2_inicio";
-                caminho3 = "audios_silabas_simples/fase2_jacares";
-                caminho4 = "audios_vogais/ouca_o_som";
+                caminho3 = "audiosNarracao/fase2_jacares";
+                caminho4 = "audiosNarracao/ouca_o_som";
                 tempoAudio = 10.0;
                 break;
             case 3:
                 caminho1 = "Imagens/fase3/inicioFase";
                 caminho2 = "Imagens/fase3/fase3_inicio";
-                caminho3 = "audios_silabas_simplesB/fase3_deserto";
-                caminho4 = "audios_vogais/ouca_o_som";
+                caminho3 = "audiosNarracao/fase3_deserto";
+                caminho4 = "audiosNarracao/ouca_o_som";
                 tempoAudio = 10.0;
                 break;
             case 4:
                 caminho1 = "Imagens/fase4/inicioFase";
                 caminho2 = "Imagens/fase4/inicioFasepb";
-                caminho3 = "audios_palavras_simples/fase4_montanhas";
-                caminho4 = "audios_vogais/ouca_o_som";
+                caminho3 = "audiosNarracao/fase4_montanhas";
+                caminho4 = "audiosNarracao/ouca_o_som";
                 tempoAudio = 10.0;
                 break;
             case 5:
                 caminho1 = "Imagens/fase5/inicioFase";
                 caminho2 = "Imagens/fase5/inicioFasepb";
-                caminho3 = "audios_silabas_complexas/fase5_ponte";
-                caminho4 = "audios_vogais/ouca_o_som";
+                caminho3 = "audiosNarracao/fase5_ponte";
+                caminho4 = "audiosNarracao/ouca_o_som";
                 tempoAudio = 10.0;
                 break;
             case 6:
                 caminho1 = "Imagens/fase6/inicioFase";
                 caminho2 = "Imagens/fase6/inicioFasepb";
-                caminho3 = "audios_silabas_complexas2/fase6_caverna";
-                caminho4 = "audios_vogais/ouca_o_som";
+                caminho3 = "audiosNarracao/fase6_caverna";
+                caminho4 = "audiosNarracao/ouca_o_som";
                 tempoAudio = 10.0;
                 break;
             case 7:
                 caminho1 = "Imagens/fase7/inicioFase";
                 caminho2 = "Imagens/fase7/inicioFasepb";
-                caminho3 = "audios_silabas_complexas3/fase7_vale";
-                caminho4 = "audios_vogais/ouca_o_som";
+                caminho3 = "audiosNarracao/fase7_vale";
+                caminho4 = "audiosNarracao/ouca_o_som";
                 tempoAudio = 10.0;
                 break;
         }
@@ -717,7 +717,7 @@ public class Model_SequenciaCenas {
         c0 = (ActionEvent event) -> {
             caminho1 = caminho3 = "";
             caminho1 = "Imagens/Gerais/fim1";
-            caminho3 = "audios_silabas_complexas3/final";
+            caminho3 = "audiosNarracao/final";
             URL arquivoImg = getClass().getResource(caminho1 + ".jpg");
             imgView.setImage(new Image(arquivoImg.toString()));
             caminhoAudio = caminho3 + ".mp3";

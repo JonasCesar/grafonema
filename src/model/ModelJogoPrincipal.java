@@ -91,7 +91,7 @@ public class ModelJogoPrincipal {
         "PA", "PE", "PI", "PO", "PU", "RA", "RE", "RI", "RO",
         "RU", "SA", "SE", "SI", "SO", "SU", "TA", "TE", "TI", "TO", "TU", "UM", "UR",
         "VA", "VE", "VI", "VO", "VU", "XA", "XE", "XI", "XO", "ZA", "ZE",
-        "ZI"};
+        "ZO"};
 
     private final String silabasComplexas2[] = {
         "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU",
@@ -181,7 +181,7 @@ public class ModelJogoPrincipal {
         "ni", "no", "nu", "om", "on", "or", "os",
         "pa", "pe", "pi", "po", "pu", "ra", "re", "ri", "ro",
         "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu",
-        "um", "ur", "va", "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo", "za", "ze", "zi"};
+        "um", "ur", "va", "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo", "za", "ze", "zo"};
 
     private final String audiosSilabasComplexas[] = {
         "bal", "bam", "ban", "bão", "bar", "bas", "bel", "bem", "ber", "bes",
@@ -709,7 +709,6 @@ public class ModelJogoPrincipal {
 
         matrizSilabasSimples.put("za", "ZA");
         matrizSilabasSimples.put("ze", "ZE");
-        matrizSilabasSimples.put("zi", "ZI");
         matrizSilabasSimples.put("zo", "ZO");
 
     }
