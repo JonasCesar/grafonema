@@ -83,21 +83,22 @@ public class ModelJogoPrincipal {
     //tamanho 94
     private final String silabasSimples[] = {
         "AL", "AM", "AN", "AR", "AS", "BA", "BE", "BI", "BO", "BU", "CA",
-        "ÇÃO", "CE", "CI", "ÇÕES", "CU", "DA", "DI", "DO",
+        "ÇÃO", "CE", "CI", "CU", "DA", "DI", "DO",
         "EM", "EN", "ER", "ES", "FA", "FE", "FI",
-        "FO", "FU", "GA", "GE", "GI", "GO", "GU", "IM", "IN", "IR", "IS", "JAN", "JE", "JI", "JO", "JU",
+        "FO", "FU", "GA", "GE", "GI", "GO", "GU", "IM", "IN", "IR", "IS", "JAN",
+        "JE", "JI", "JO", "JU",
         "LA", "LE", "LI", "LO", "MA", "ME", "MI", "MO", "MU", "NA", "NE",
-        "NI", "NO", "NU", "OM", "ON", "OR", "OS",
+        "NO", "NU", "OM", "ON", "OR", "OS",
         "PA", "PE", "PI", "PO", "PU", "RA", "RE", "RI", "RO",
         "RU", "SA", "SE", "SI", "SO", "SU", "TA", "TE", "TI", "TO", "TU", "UM", "UR",
         "VA", "VE", "VI", "VO", "VU", "XA", "XE", "XI", "XO", "ZA", "ZE",
         "ZO"};
 
     private final String silabasComplexas2[] = {
-        "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU",
+        "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU", "CHE",
         "CLA", "CLE", "CLI", "CLO", "CLU", "CRA", "CRE", "CRI", "CRO",
-        "CRU", "DRA", "DRE", "DRI", "DRU", "FLA", "FLE", "FLO",
-        "FLU", "FRA", "FRE", "FRI", "FRO", "FRU", "GLA", "GLO", "GRE", 
+        "CRU", "DRE", "DRI", "DRU", "FLA", "FLE", "FLO",
+        "FLU", "FRA", "FRE", "FRI", "FRU", "GLA", "GLO", "GRE", 
         "GRI", "GRO", "GRU", "PLA", "PLO", "PLU", "PRA", "PRE","PRI", 
         "PRO", "PRU", "TLE", "TLO", "TRA", "TRE", "TRI", "TRO","TRU",
         "VRE", "VRO",};
@@ -106,7 +107,7 @@ public class ModelJogoPrincipal {
         "BAL", "BAM", "BAN", "BÃO", "BAR", "BAS", "BEL", "BEM", "BER", "BES",
         "BIL", "BIN", "BIR", "BIS", "BOL", "BOM", "BOR", "BOS", "BUM", "BUR",
         "BUS", "CÃES", "CAL", "CAM", "CAN", "CAR", "CAS", "CEL", "CEN", "CER",
-        "CES", "CHE", "CIN", "CIR", "CIS", "ÇÕES", "COL", "COM", "CON", "COR",
+        "CES", "CIN", "CIR", "CIS", "ÇÕES", "COL", "COM", "CON", "COR",
         "COS", "CUL", "CUM", "CUR", "CUS", "CUZ", "DAN", "DÃO", "DAR", "DAS",
         "DEN", "DER", "DES", "DIM", "DIS", "DON", "DOR", "DOS", "DUM", "FAL",
         "FAN", "FAR", "FEL", "FEN", "FER", "FES", "FIL", "FIM", "FIR", "FOL",
@@ -116,11 +117,11 @@ public class ModelJogoPrincipal {
         "LÃO", "LAR", "LAS", "LEM", "LEN", "LER", "LIM", "LIN", "LOM", "LON",
         "LOS", "LUS", "LUZ", "MAL", "MAN", "MÃO", "MÃOS", "MAR", "MEL", "MEM",
         "MEN", "MER", "MÊS", "MIN", "MIR", "MIS", "MOL", "MON", "MOR", "MOS",
-        "MUL", "MUN", "MUS", "NAL", "NÃO", "NAS", "NEL", "NER", "NIL", "NIR",
+        "MUL", "MUN", "MUS", "NAL", "NÃO", "NAS", "NEL", "NER", "NIL", "NIN", "NIR",
         "NOZ", "PÃES", "PAL", "PAN", "PÃO", "PAR", "PAS", "PAZ", "PEL", "PEN",
         "PER", "PES", "PIM", "PIN", "PIS", "POL", "POM", "PON", "POR", "POS",
-        "PUL", "PUM", "RAM", "RAN", "RAS", "REL", "REN", "RES", "RIO", "RIR",
-        "RIS", "ROM", "RON", "ROS", "ROU", "SAL", "SAM", "SAN", "SÃO", "SAR",
+        "PUL", "PUM", "RAM", "RAN", "RAS", "REL", "REN", "RER", "RES", "RIL", "RIM",
+        "RIN", "RIO", "RIR", "ROM", "RON", "ROS", "ROU", "SAL", "SAM", "SAN", "SÃO", "SAR",
         "SEL", "SEM", "SEN", "SER", "SIM", "SIS", "SOL", "SOM", "SON", "SOR",
         "SUN", "SUR", "SUS", "TAL", "TAM", "TAN", "TÃO", "TAR", "TAS", "TEL",
         "TEM", "TEN", "TER", "TES", "TIL", "TIM", "TIN", "TIR", "TOL", "TOM",
@@ -131,8 +132,9 @@ public class ModelJogoPrincipal {
     };
 
     private final String[] silabasComplexas3 = {
-        "BRAS", "BRES", "BRIN", "BRON", "BROS", "BRUS", "CHÃO",
-        "CLAS", "CLOS", "CRES", "CRIS", "CROS", "CRUS", "DRON", "GRAM", "GUAM", "GUAR",
+        "BRAN", "BRAS", "BRES", "BRIN", "BRON", "BROS", "BRUS", "CHÃO",
+        "CLAS", "CLOS", "CRES", "CRIS", "CROS", "CRUS", "DRAM", "DRON", "FRON",
+        "GRAM", "GUAM", "GUAR",
         "LHEU", "PLAS", "PLES", "PRAN", "PRAS", "PREN", "PRES", "PRIN",
         "PRON", "TLAS", "TRAS", "TRES", "TRIS", "TROS"
     };
@@ -140,15 +142,21 @@ public class ModelJogoPrincipal {
     private String palavrasSimples[] = {
         "AMARELO", "APITO", "ÁRVORE", "BALA", "BANANA", "BATATA",
         "BIRUTA", "BOCA", "BOLA", "BOLITA", "BOLO", "BONÉ", "BONECA",
-        "BONITO", "BOTO", "BULA", "BULE", "CABELO", "CAFÉ", "CAMA", "CAMELO", "CAMISA", "CAPACETE",
+        "BONITO", "BOTO", "BULA", "BULE", "CABELO",
+        "CAFÉ", "CAMA", "CAMELO", "CAMISA", "CAPACETE",
         "CASA", "CASACO", "CAVALO", "CEREJA", "COLA", "COPO",
-        "CORUJA", "DADO", "DEDO", "DURO", "ESCOLA", "ESCOVA", "FACA", "FADA", "FOCA",
+        "CORUJA", "DADO", "DEDO", "DURO",
+        "ESCOLA", "ESCOVA", "FACA", "FADA", "FOCA",
         "FOGO", "GALO", "GATO", "GELADO", "GELO", "JACA", "JACARÉ", "JANELA",
         "LATA", "LEITE", "LIXO", "LUA", "LUTA", "LUVA", "MACACO", "MALA",
-        "MENINO", "MESA", "MOEDA", "MÚSICA", "NEVE", "NOVELA", "OVO", "PAREDE", "PATO",
-        "PÉ", "PELADO", "PENA", "PERA", "PETECA", "PIANO", "PIPA", "PIPOCA", "PIRULITO",
-        "RATO", "REI", "RICO", "ROBÔ", "RODA", "ROSA", "RUA", "SÁBADO", "SAPATO",
-        "SAPO", "SINO", "SOFÁ", "SUCO", "TAPETE", "TATU", "TELEFONE", "TETO", "TIJOLO", "TOMATE",
+        "MENINO", "MESA", "MOEDA", "MÚSICA", "NEVE",
+        "NOVELA", "OVO", "PAREDE", "PATO",
+        "PÉ", "PELADO", "PENA", "PÊRA", "PETECA", 
+        "PIANO", "PIPA", "PIPOCA", "PIRULITO",
+        "RATO", "REI", "RICO", "ROBÔ", "RODA", 
+        "ROSA", "RUA", "SÁBADO", "SAPATO",
+        "SAPO", "SINO", "SOFÁ", "SUCO", "TAPETE", "TATU",
+        "TELEFONE", "TETO", "TIJOLO", "TOMATE",
         "URSO", "UVA", "VACA", "VAGALUME", "VELA", "XÍCARA", "XIXI"
     };
 
@@ -174,20 +182,22 @@ public class ModelJogoPrincipal {
 
     private final String audioSilabasSimples[] = {
         "al", "am", "an", "ar", "as", "ba", "be", "bi", "bo", "bu", "ca",
-        "ção", "ce", "ci", "ções", "cu", "da", "di", "do",
-        "em", "en", "er", "es", "fa", "fe", "fi", "fo", "fu", "ga", "ge", "gi",
-        "go", "gu", "im", "in", "ir", "is", "jan", "je", "ji", "jo", "ju",
+        "ção", "ce", "ci", "cu", "da", "di", "do",
+        "em", "en", "er", "es", "fa", "fe", "fi",
+        "fo", "fu", "ga", "ge", "gi", "go", "gu", "im", "in", "ir", "is", "jan",
+        "je", "ji", "jo", "ju",
         "la", "le", "li", "lo", "ma", "me", "mi", "mo", "mu", "na", "ne",
-        "ni", "no", "nu", "om", "on", "or", "os",
+        "no", "nu", "om", "on", "or", "os",
         "pa", "pe", "pi", "po", "pu", "ra", "re", "ri", "ro",
-        "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu",
-        "um", "ur", "va", "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo", "za", "ze", "zo"};
+        "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu", "um", "ur",
+        "va", "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo", "za", "ze",
+        "zo"};
 
     private final String audiosSilabasComplexas[] = {
         "bal", "bam", "ban", "bão", "bar", "bas", "bel", "bem", "ber", "bes",
         "bil", "bin", "bir", "bis", "bol", "bom", "bor", "bos", "bum", "bur",
         "bus", "cães", "cal", "cam", "can", "car", "cas", "cel", "cen", "cer",
-        "ces", "che", "cin", "cir", "cis", "ções", "col", "com", "con", "cor",
+        "ces", "cin", "cir", "cis", "ções", "col", "com", "con", "cor",
         "cos", "cul", "cum", "cur", "cus", "cuz", "dan", "dão", "dar", "das",
         "den", "der", "des", "dim", "dis", "don", "dor", "dos", "dum", "fal",
         "fan", "far", "fel", "fen", "fer", "fes", "fil", "fim", "fir", "fol",
@@ -197,11 +207,11 @@ public class ModelJogoPrincipal {
         "lão", "lar", "las", "lem", "len", "ler", "lim", "lin", "lom", "lon",
         "los", "lus", "luz", "mal", "man", "mão", "mãos", "mar", "mel", "mem",
         "men", "mer", "mês", "min", "mir", "mis", "mol", "mon", "mor", "mos",
-        "mul", "mun", "mus", "nal", "não", "nas", "nel", "ner", "nil", "nir",
+        "mul", "mun", "mus", "nal", "não", "nas", "nel", "ner", "nil", "nin", "nir",
         "noz", "pães", "pal", "pan", "pão", "par", "pas", "paz", "pel", "pen",
         "per", "pes", "pim", "pin", "pis", "pol", "pom", "pon", "por", "pos",
-        "pul", "pum", "ram", "ran", "ras", "rel", "ren", "res", "rio", "rir",
-        "ris", "rom", "ron", "ros", "rou", "sal", "sam", "san", "são", "sar",
+        "pul", "pum", "ram", "ran", "ras", "rel", "ren", "rer", "res", "ril", "rim",
+        "rin", "rio", "rir", "rom", "ron", "ros", "rou", "sal", "sam", "san", "são", "sar",
         "sel", "sem", "sen", "ser", "sim", "sis", "sol", "som", "son", "sor",
         "sun", "sur", "sus", "tal", "tam", "tan", "tão", "tar", "tas", "tel",
         "tem", "ten", "ter", "tes", "til", "tim", "tin", "tir", "tol", "tom",
@@ -212,10 +222,10 @@ public class ModelJogoPrincipal {
     };
 
     private final String audiosSilabasComplexas2[] = {
-        "ble", "bli", "blo", "blu", "bra", "bre", "bri", "bro", "bru",
+        "ble", "bli", "blo", "blu", "bra", "bre", "bri", "bro", "bru", "che",
         "cla", "cle", "cli", "clo", "clu", "cra", "cre", "cri", "cro",
-        "cru", "dra", "dre", "dri", "dru", "fla", "fle", "flo",
-        "flu", "fra", "fre", "fri", "fro", "fru", "gla", "glo","gre", 
+        "cru", "dre", "dri", "dru", "fla", "fle", "flo",
+        "flu", "fra", "fre", "fri", "fru", "gla", "glo","gre", 
         "gri", "gro", "gru", "pla", "plo", "plu", "pra", "pre","pri",
         "pro", "pru", "tle", "tlo", "tra", "tre", "tri", "tro","tru",
         "vre", "vro"};
@@ -229,15 +239,16 @@ public class ModelJogoPrincipal {
         "fogo", "galo", "gato", "gelado", "gelo", "jaca", "jacaré", "janela",
         "lata", "leite", "lixo", "lua", "luta", "luva", "macaco", "mala",
         "menino", "mesa", "moeda", "música", "neve", "novela", "ovo", "parede", "pato",
-        "pé", "pelado", "pena", "pera", "peteca", "piano", "pipa", "pipoca", "pirulito",
+        "pé", "pelado", "pena", "pêra", "peteca", "piano", "pipa", "pipoca", "pirulito",
         "rato", "rei", "rico", "robô", "roda", "rosa", "rua", "sábado", "sapato",
         "sapo", "sino", "sofá", "suco", "tapete", "tatu", "telefone", "teto", "tijolo", "tomate",
         "urso", "uva", "vaca", "vagalume", "vela", "xícara", "xixi"
     };
 
     private final String audiosSilabasComplexas3[] = {
-        "bras", "bres", "brin", "bron", "bros", "brus", "chão",
-        "clas", "clos", "cres", "cris", "cros", "crus", "dron", "gram", "guam", "guar",
+         "bran", "bras", "bres", "brin", "bron", "bros", "brus", "chão",
+        "clas", "clos", "cres", "cris", "cros", "crus", "dram", "dron", "fron",
+        "gram", "guam", "guar",
         "lheu", "plas", "ples", "pran", "pras", "pren", "pres", "prin",
         "pron", "tlas", "tras", "tres", "tris", "tros"};
 
@@ -478,7 +489,7 @@ public class ModelJogoPrincipal {
             case 2:
 
                 iniciarMatrizAudioSilabas();
-                i = indiceAudio.nextInt(94);
+                i = indiceAudio.nextInt(91);
                 tocarAudio(audioSilabasSimples[i]);
                 y = i;
                 break;
@@ -492,21 +503,21 @@ public class ModelJogoPrincipal {
             case 4:
                 matrizPalavrasSimples.clear();
                 iniciarMatrizSilabasComplexas();
-                i = indiceAudio.nextInt(242);
+                i = indiceAudio.nextInt(248);
                 tocarAudio(audiosSilabasComplexas[i]);
                 y = i;
                 break;
             case 5:
                 matrizSilabasComplexas.clear();
                 iniciarMatrizSilabasComplexas2();
-                i = indiceAudio.nextInt(54);
+                i = indiceAudio.nextInt(53);
                 tocarAudio(audiosSilabasComplexas2[i]);
                 y = i;
                 break;
             case 6:
                 matrizSilabasComplexas2.clear();
                 iniciarMatrizSilabasComplexas3();
-                i = indiceAudio.nextInt(30);
+                i = indiceAudio.nextInt(33);
                 tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
                 break;
@@ -532,6 +543,7 @@ public class ModelJogoPrincipal {
         String opcaoEscolhida = (((Button) event.getSource()).getText());//pega a opção escolhida pelo usuário
         //compara o valor que o usuário escolheu com o valor correspondente ao áudio
         boolean resultado = false;
+        System.out.println("Botão clicado: " + opcaoEscolhida);
         switch (jogador.getFaseAtual()) {
             case 1:
 
@@ -545,6 +557,7 @@ public class ModelJogoPrincipal {
                 resultado = ((getKeyByValue(matrizPalavrasSimples, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 4:
+                System.out.println("audio atual = " + getAudioAtual());
                 resultado = ((getKeyByValue(matrizSilabasComplexas, opcaoEscolhida)).equals(getAudioAtual()));
                 break;
             case 5:
@@ -726,6 +739,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("bri", "BRI");
         matrizSilabasComplexas2.put("bro", "BRO");
         matrizSilabasComplexas2.put("bru", "BRU");
+        matrizSilabasComplexas2.put("che", "CHE");
         matrizSilabasComplexas2.put("cla", "CLA");
         matrizSilabasComplexas2.put("cle", "CLE");
         matrizSilabasComplexas2.put("cli", "CLI");
@@ -737,7 +751,6 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("cro", "CRO");
         matrizSilabasComplexas2.put("cru", "CRU");
 
-        matrizSilabasComplexas2.put("dra", "DRA");
         matrizSilabasComplexas2.put("dre", "DRE");
         matrizSilabasComplexas2.put("dri", "DRI");
         matrizSilabasComplexas2.put("dru", "DRU");
@@ -749,7 +762,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("fra", "FRA");
         matrizSilabasComplexas2.put("fre", "FRE");
         matrizSilabasComplexas2.put("fri", "FRI");
-        matrizSilabasComplexas2.put("fro", "FRO");
+        
         matrizSilabasComplexas2.put("fru", "FRU");
         matrizSilabasComplexas2.put("gla", "GLA");
         matrizSilabasComplexas2.put("glo", "GLO");
@@ -779,7 +792,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("vre", "VRE");
 
         matrizSilabasComplexas2.put("vro", "VRO");
-        matrizSilabasComplexas2.put("vru", "VRU");
+        
     }
 
     /**
@@ -864,7 +877,7 @@ public class ModelJogoPrincipal {
         matrizPalavrasSimples.put("pé", "PÉ");
         matrizPalavrasSimples.put("pelado", "PELADO");
         matrizPalavrasSimples.put("pena", "PENA");
-        matrizPalavrasSimples.put("pera", "PERA");
+        matrizPalavrasSimples.put("pêra", "PÊRA");
         matrizPalavrasSimples.put("peteca", "PETECA");
         matrizPalavrasSimples.put("piano", "PIANO");
         matrizPalavrasSimples.put("pipa", "PIPA");
@@ -940,7 +953,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("cen", "CEN");
         matrizSilabasComplexas.put("cer", "CER");
         matrizSilabasComplexas.put("ces", "CES");
-        matrizSilabasComplexas.put("che", "CHE");
+        
         matrizSilabasComplexas.put("cin", "CIN");
         matrizSilabasComplexas.put("cir", "CIR");
         matrizSilabasComplexas.put("cis", "CIS");
@@ -1000,12 +1013,10 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("ger", "GER");
 
         matrizSilabasComplexas.put("gil", "GIL");
-        matrizSilabasComplexas.put("gim", "GIM");
         matrizSilabasComplexas.put("gin", "GIN");
         matrizSilabasComplexas.put("gir", "GIR");
 
         matrizSilabasComplexas.put("gol", "GOL");
-        matrizSilabasComplexas.put("gom", "GOM");
         matrizSilabasComplexas.put("gon", "GON");
         matrizSilabasComplexas.put("gor", "GOR");
         matrizSilabasComplexas.put("gua", "GUA");
@@ -1046,7 +1057,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("mão", "MÃO");
         matrizSilabasComplexas.put("mãos", "MÃOS");
         matrizSilabasComplexas.put("mar", "MAR");
-
+        matrizSilabasComplexas.put("mas", "MAS");
         matrizSilabasComplexas.put("mel", "MEL");
         matrizSilabasComplexas.put("mem", "MEM");
         matrizSilabasComplexas.put("men", "MEN");
@@ -1066,7 +1077,6 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("mul", "MUL");
 
         matrizSilabasComplexas.put("mun", "MUN");
-        matrizSilabasComplexas.put("mur", "MUR");
         matrizSilabasComplexas.put("mus", "MUS");
 
         matrizSilabasComplexas.put("nal", "NAL");
@@ -1079,6 +1089,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("ner", "NER");
 
         matrizSilabasComplexas.put("nil", "NIL");
+        matrizSilabasComplexas.put("nin", "NIN");
         matrizSilabasComplexas.put("nir", "NIR");
 
         matrizSilabasComplexas.put("noz", "NOZ");
@@ -1098,7 +1109,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("per", "PER");
         matrizSilabasComplexas.put("pes", "PES");
         matrizSilabasComplexas.put("pim", "PIM");
-
+        matrizSilabasComplexas.put("pin", "PIN");
         matrizSilabasComplexas.put("pis", "PIS");
 
         matrizSilabasComplexas.put("pol", "POL");
@@ -1116,10 +1127,14 @@ public class ModelJogoPrincipal {
 
         matrizSilabasComplexas.put("rel", "REL");
         matrizSilabasComplexas.put("ren", "REN");
+        matrizSilabasComplexas.put("rer", "RER");
         matrizSilabasComplexas.put("res", "RES");
+        matrizSilabasComplexas.put("ril", "RIL");
+        matrizSilabasComplexas.put("rim", "RIM");
+        matrizSilabasComplexas.put("rin", "RIN");
         matrizSilabasComplexas.put("rio", "RIO");
         matrizSilabasComplexas.put("rir", "RIR");
-        matrizSilabasComplexas.put("ris", "RIS");
+        
         matrizSilabasComplexas.put("rom", "ROM");
         matrizSilabasComplexas.put("ron", "RON");
         matrizSilabasComplexas.put("ros", "ROS");
@@ -1165,6 +1180,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas.put("tur", "TUR");
         matrizSilabasComplexas.put("val", "VAL");
         matrizSilabasComplexas.put("vam", "VAM");
+        matrizSilabasComplexas.put("van", "VAN");
         matrizSilabasComplexas.put("vão", "VÃO");
         matrizSilabasComplexas.put("var", "VAR");
         matrizSilabasComplexas.put("vas", "VAS");
@@ -1200,6 +1216,7 @@ public class ModelJogoPrincipal {
      * Inicia a matriz de silabas complexas 3
      */
     public void iniciarMatrizSilabasComplexas3() {
+        matrizSilabasComplexas3.put("bran", "BRAN");
         matrizSilabasComplexas3.put("bras", "BRAS");
         matrizSilabasComplexas3.put("bres", "BRES");
         matrizSilabasComplexas3.put("brin", "BRIN");
@@ -1213,7 +1230,9 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas3.put("cris", "CRIS");
         matrizSilabasComplexas3.put("cros", "CROS");
         matrizSilabasComplexas3.put("crus", "CRUS");
+        matrizSilabasComplexas3.put("dram", "DRAM");
         matrizSilabasComplexas3.put("dron", "DRON");
+        matrizSilabasComplexas3.put("fron", "FRON");
         matrizSilabasComplexas3.put("gram", "GRAM");
         matrizSilabasComplexas3.put("guam", "GUAM");
         matrizSilabasComplexas3.put("guar", "GUAR");      
@@ -1805,7 +1824,8 @@ public class ModelJogoPrincipal {
                             + "    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
                             + "    -fx-font-size: 35px;\n"
                             + "    -fx-pref-height: 88px;\n"
-                            + "    -fx-pref-width: 96px;\n");
+                            + "    -fx-pref-width: 96px;\n"
+                    );
 
                 };
                 eventoCorOriginal = (ActionEvent event) -> {
@@ -2412,7 +2432,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(94);
+                    proxValor = indice.nextInt(91);
 
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
@@ -2469,7 +2489,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(242);
+                    proxValor = indice.nextInt(248);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -2496,7 +2516,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(54);
+                    proxValor = indice.nextInt(53);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -2523,7 +2543,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(30);
+                    proxValor = indice.nextInt(33);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados

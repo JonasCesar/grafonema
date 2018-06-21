@@ -18,7 +18,10 @@
          <image>
             <Image url="@../model/Imagens/Gerais/desenho_inicial.png" />
          </image></ImageView>
-      <Button fx:id="iniciar" layoutX="497.0" layoutY="491.0" mnemonicParsing="false" onAction="#handleComecar" />
+      <Button fx:id="iniciar" layoutX="497.0" layoutY="491.0" mnemonicParsing="false" onAction="#handleComecar" style="-fx-cursor: hand;">
+         <effect>
+            <Reflection />
+         </effect></Button>
       <Button layoutX="30.0" layoutY="25.0" mnemonicParsing="false" onAction="#sobreAction" text="Sobre" />
    </children>
 </AnchorPane>

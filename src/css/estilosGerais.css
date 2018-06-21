@@ -2,6 +2,13 @@
     Created on : 24/02/2017, 16:01:06
     Author     : jonas
 */
+
+#iniciar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
+}
+
 #iniciar{
     -fx-background-color: #33ff33;
     -fx-background-radius: 70;
@@ -11,6 +18,7 @@
         linear-gradient(#228B22, #7FFF00),
         linear-gradient(#00FF7F 0%, #2E8B57 50%, #006400 100%),
         linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-cursor: hand;
     //    -fx-pref-width: 100px;
 //    -fx-pref-height: 70px;
     
@@ -24,6 +32,12 @@
     -fx-padding: 10 20 10 20;
     -fx-cursor: hand;
 }
+
+/*#btn_1:hover, #btn_2:hover, #btn_3:hover, #btn_4:hover, #btn_5:hover{
+    -fx-scale-x: 1.4;
+    -fx-scale-y: 1.4;
+    -fx-scale-z: 1.4;
+}*/
 
 #btn_1, #btn_2, #btn_3, #btn_4, #btn_5{
 

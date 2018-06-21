@@ -285,7 +285,7 @@ public class Model_SequenciaCenas {
                 jogoPrincipalController.definirImagemFundo();
 
                 Scene scene = new Scene(cenaPrincipal, 1200, 700);
-                janela.setTitle("Grafonema");
+                janela.setTitle("Legere");
                 janela.setScene(scene);
                 janela.show();
             }
@@ -324,7 +324,7 @@ public class Model_SequenciaCenas {
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c0),
                 new KeyFrame(Duration.seconds(tempoAudio), c1),
-                new KeyFrame(Duration.seconds(tempoAudio + 23), c5),
+                new KeyFrame(Duration.seconds(tempoAudio + 19), c5),
                 //new KeyFrame(Duration.seconds(tempoAudio + 30), c2),
                 new KeyFrame(Duration.seconds(tempoAudio + 30), c3),
                 new KeyFrame(Duration.seconds(tempoAudio + 31), c4),
@@ -782,12 +782,12 @@ public class Model_SequenciaCenas {
 
         new Timeline(
                 new KeyFrame(Duration.seconds(0), c0),
-                new KeyFrame(Duration.seconds(10), c1),
-                new KeyFrame(Duration.seconds(15), c2),
-                new KeyFrame(Duration.seconds(20), c3),
-                new KeyFrame(Duration.seconds(25), c4),
-                new KeyFrame(Duration.seconds(30), c5),
-                new KeyFrame(Duration.seconds(35), c6)).play();
+                new KeyFrame(Duration.seconds(7), c1),
+                new KeyFrame(Duration.seconds(11), c2),
+                new KeyFrame(Duration.seconds(17), c3),
+                new KeyFrame(Duration.seconds(20), c4),
+                new KeyFrame(Duration.seconds(25), c5),
+                new KeyFrame(Duration.seconds(28), c6)).play();
     }
 
     public boolean getPulandoIntro() throws InterruptedException, IOException {
