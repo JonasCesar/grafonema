@@ -94,15 +94,28 @@ public class ModelJogoPrincipal {
         "VA", "VE", "VI", "VO", "VU", "XA", "XE", "XI", "XO", "ZA", "ZE",
         "ZO"};
 
-    private final String silabasComplexas2[] = {
-        "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU", "CHE",
-        "CLA", "CLE", "CLI", "CLO", "CLU", "CRA", "CRE", "CRI", "CRO",
-        "CRU", "DRE", "DRI", "DRU", "FLA", "FLE", "FLO",
-        "FLU", "FRA", "FRE", "FRI", "FRU", "GLA", "GLO", "GRE", 
-        "GRI", "GRO", "GRU", "PLA", "PLO", "PLU", "PRA", "PRE","PRI", 
-        "PRO", "PRU", "TLE", "TLO", "TRA", "TRE", "TRI", "TRO","TRU",
-        "VRE", "VRO",};
-
+    //tamanho 99
+    private String palavrasSimples[] = {
+        "AMARELO", "APITO", "ÁRVORE", "BALA", "BANANA", "BATATA",
+        "BIRUTA", "BOCA", "BOLA", "BOLITA", "BOLO", "BONÉ", "BONECA",
+        "BONITO", "BOTO", "BULA", "BULE", "CABELO",
+        "CAFÉ", "CAMA", "CAMELO", "CAMISA", "CAPACETE",
+        "CASA", "CASACO", "CAVALO", "CEREJA", "COLA", "COPO",
+        "CORUJA", "DADO", "DEDO", "DURO",
+        "ESCOLA", "ESCOVA", "FACA", "FADA", "FOCA",
+        "FOGO", "GALO", "GATO", "GELADO", "GELO", "JACA", "JACARÉ", "JANELA",
+        "LATA", "LEITE", "LIXO", "LUA", "LUTA", "LUVA", "MACACO", "MALA",
+        "MENINO", "MESA", "MOEDA", "MÚSICA", "NEVE",
+        "NOVELA", "OVO", "PAREDE", "PATO",
+        "PÉ", "PELADO", "PENA", "PÊRA", "PETECA", 
+        "PIANO", "PIPA", "PIPOCA", "PIRULITO",
+        "RATO", "REI", "RICO", "ROBÔ", "RODA", 
+        "ROSA", "RUA", "SÁBADO", "SAPATO",
+        "SAPO", "SINO", "SOFÁ", "SUCO", "TAPETE", "TATU",
+        "TELEFONE", "TETO", "TIJOLO", "TOMATE",
+        "URSO", "UVA", "VACA", "VAGALUME", "VELA", "XÍCARA", "XIXI"
+    };
+    
     private final String silabasComplexas[] = {
         "BAL", "BAM", "BAN", "BÃO", "BAR", "BAS", "BEL", "BEM", "BER", "BES",
         "BIL", "BIN", "BIR", "BIS", "BOL", "BOM", "BOR", "BOS", "BUM", "BUR",
@@ -130,35 +143,26 @@ public class ModelJogoPrincipal {
         "XÃO", "XAR", "XER", "XIS", "ZAL", "ZÃO", "ZAR", "ZER", "ZES", "ZIN",
         "ZOL", "ZOM", "ZUL", "ZUM"
     };
+    
+    private final String silabasComplexas2[] = {
+        "BLE", "BLI", "BLO", "BLU", "BRA", "BRE", "BRI", "BRO", "BRU", "CHE",
+        "CLA", "CLE", "CLI", "CLO", "CLU", "CRA", "CRE", "CRI", "CRO",
+        "CRU", "DRE", "DRI", "DRU", "FLA", "FLE", "FLO",
+        "FLU", "FRA", "FRE", "FRI", "FRU", "GLA", "GLO", "GRE", 
+        "GRI", "GRO", "GRU", "PLA", "PLO", "PLU", "PRA", "PRE",
+        "PRO", "PRU", "TLE", "TLO", "TRA", "TRE", "TRI", "TRO","TRU",
+        "VRE", "VRO",};
+
+    
 
     private final String[] silabasComplexas3 = {
         "BRAN", "BRAS", "BRES", "BRIN", "BRON", "BROS", "BRUS", "CHÃO",
         "CLAS", "CLOS", "CRES", "CRIS", "CROS", "CRUS", "DRAM", "DRON", "FRON",
         "GRAM", "GUAM", "GUAR",
-        "LHEU", "PLAS", "PLES", "PRAN", "PRAS", "PREN", "PRES", "PRIN",
+        "LHEU", "PLAS", "PLES", "PRAN", "PRAS", "PREN", "PRES", "PRIM", "PRIN",
         "PRON", "TLAS", "TRAS", "TRES", "TRIS", "TROS"
     };
-    //tamanho 99
-    private String palavrasSimples[] = {
-        "AMARELO", "APITO", "ÁRVORE", "BALA", "BANANA", "BATATA",
-        "BIRUTA", "BOCA", "BOLA", "BOLITA", "BOLO", "BONÉ", "BONECA",
-        "BONITO", "BOTO", "BULA", "BULE", "CABELO",
-        "CAFÉ", "CAMA", "CAMELO", "CAMISA", "CAPACETE",
-        "CASA", "CASACO", "CAVALO", "CEREJA", "COLA", "COPO",
-        "CORUJA", "DADO", "DEDO", "DURO",
-        "ESCOLA", "ESCOVA", "FACA", "FADA", "FOCA",
-        "FOGO", "GALO", "GATO", "GELADO", "GELO", "JACA", "JACARÉ", "JANELA",
-        "LATA", "LEITE", "LIXO", "LUA", "LUTA", "LUVA", "MACACO", "MALA",
-        "MENINO", "MESA", "MOEDA", "MÚSICA", "NEVE",
-        "NOVELA", "OVO", "PAREDE", "PATO",
-        "PÉ", "PELADO", "PENA", "PÊRA", "PETECA", 
-        "PIANO", "PIPA", "PIPOCA", "PIRULITO",
-        "RATO", "REI", "RICO", "ROBÔ", "RODA", 
-        "ROSA", "RUA", "SÁBADO", "SAPATO",
-        "SAPO", "SINO", "SOFÁ", "SUCO", "TAPETE", "TATU",
-        "TELEFONE", "TETO", "TIJOLO", "TOMATE",
-        "URSO", "UVA", "VACA", "VAGALUME", "VELA", "XÍCARA", "XIXI"
-    };
+    
 
     private String palavrasComplexas[] = {
         "ABELHA", "ABERTO", "ALEGRIA", "ANIMAL", "ANTENA", "APONTADOR",
@@ -193,6 +197,21 @@ public class ModelJogoPrincipal {
         "va", "ve", "vi", "vo", "vu", "xa", "xe", "xi", "xo", "za", "ze",
         "zo"};
 
+    private final String audiosPalavrasSimples[] = {
+        "amarelo", "apito", "árvore", "bala", "banana", "batata",
+        "biruta", "boca", "bola", "bolita", "bolo", "boné", "boneca",
+        "bonito", "boto", "bula", "bule", "cabelo", "café", "cama", "camelo", "camisa", "capacete",
+        "casa", "casaco", "cavalo", "cereja", "cola", "copo",
+        "coruja", "dado", "dedo", "duro", "escola", "escova", "faca", "fada", "foca",
+        "fogo", "galo", "gato", "gelado", "gelo", "jaca", "jacaré", "janela",
+        "lata", "leite", "lixo", "lua", "luta", "luva", "macaco", "mala",
+        "menino", "mesa", "moeda", "música", "neve", "novela", "ovo", "parede", "pato",
+        "pé", "pelado", "pena", "pêra", "peteca", "piano", "pipa", "pipoca", "pirulito",
+        "rato", "rei", "rico", "robô", "roda", "rosa", "rua", "sábado", "sapato",
+        "sapo", "sino", "sofá", "suco", "tapete", "tatu", "telefone", "teto", "tijolo", "tomate",
+        "urso", "uva", "vaca", "vagalume", "vela", "xícara", "xixi"
+    };
+    
     private final String audiosSilabasComplexas[] = {
         "bal", "bam", "ban", "bão", "bar", "bas", "bel", "bem", "ber", "bes",
         "bil", "bin", "bir", "bis", "bol", "bom", "bor", "bos", "bum", "bur",
@@ -226,30 +245,17 @@ public class ModelJogoPrincipal {
         "cla", "cle", "cli", "clo", "clu", "cra", "cre", "cri", "cro",
         "cru", "dre", "dri", "dru", "fla", "fle", "flo",
         "flu", "fra", "fre", "fri", "fru", "gla", "glo","gre", 
-        "gri", "gro", "gru", "pla", "plo", "plu", "pra", "pre","pri",
+        "gri", "gro", "gru", "pla", "plo", "plu", "pra", "pre",
         "pro", "pru", "tle", "tlo", "tra", "tre", "tri", "tro","tru",
         "vre", "vro"};
 
-    private final String audiosPalavrasSimples[] = {
-        "amarelo", "apito", "árvore", "bala", "banana", "batata",
-        "biruta", "boca", "bola", "bolita", "bolo", "boné", "boneca",
-        "bonito", "boto", "bula", "bule", "cabelo", "café", "cama", "camelo", "camisa", "capacete",
-        "casa", "casaco", "cavalo", "cereja", "cola", "copo",
-        "coruja", "dado", "dedo", "duro", "escola", "escova", "faca", "fada", "foca",
-        "fogo", "galo", "gato", "gelado", "gelo", "jaca", "jacaré", "janela",
-        "lata", "leite", "lixo", "lua", "luta", "luva", "macaco", "mala",
-        "menino", "mesa", "moeda", "música", "neve", "novela", "ovo", "parede", "pato",
-        "pé", "pelado", "pena", "pêra", "peteca", "piano", "pipa", "pipoca", "pirulito",
-        "rato", "rei", "rico", "robô", "roda", "rosa", "rua", "sábado", "sapato",
-        "sapo", "sino", "sofá", "suco", "tapete", "tatu", "telefone", "teto", "tijolo", "tomate",
-        "urso", "uva", "vaca", "vagalume", "vela", "xícara", "xixi"
-    };
+    
 
     private final String audiosSilabasComplexas3[] = {
          "bran", "bras", "bres", "brin", "bron", "bros", "brus", "chão",
         "clas", "clos", "cres", "cris", "cros", "crus", "dram", "dron", "fron",
         "gram", "guam", "guar",
-        "lheu", "plas", "ples", "pran", "pras", "pren", "pres", "prin",
+        "lheu", "plas", "ples", "pran", "pras", "pren", "pres", "prim", "prin",
         "pron", "tlas", "tras", "tres", "tris", "tros"};
 
     private final String audiosPalavrasComplexas[] = {
@@ -510,14 +516,14 @@ public class ModelJogoPrincipal {
             case 5:
                 matrizSilabasComplexas.clear();
                 iniciarMatrizSilabasComplexas2();
-                i = indiceAudio.nextInt(53);
+                i = indiceAudio.nextInt(52);
                 tocarAudio(audiosSilabasComplexas2[i]);
                 y = i;
                 break;
             case 6:
                 matrizSilabasComplexas2.clear();
                 iniciarMatrizSilabasComplexas3();
-                i = indiceAudio.nextInt(33);
+                i = indiceAudio.nextInt(34);
                 tocarAudio(audiosSilabasComplexas3[i]);
                 y = i;
                 break;
@@ -777,7 +783,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas2.put("plu", "PLU");
         matrizSilabasComplexas2.put("pra", "PRA");
         matrizSilabasComplexas2.put("pre", "PRE");
-        matrizSilabasComplexas2.put("pri", "PRI");
+        
         matrizSilabasComplexas2.put("pro", "PRO");
         matrizSilabasComplexas2.put("pru", "PRU");
         matrizSilabasComplexas2.put("tle", "TLE");
@@ -1243,6 +1249,7 @@ public class ModelJogoPrincipal {
         matrizSilabasComplexas3.put("pras", "PRAS");
         matrizSilabasComplexas3.put("pren", "PREN");
         matrizSilabasComplexas3.put("pres", "PRES");
+        matrizSilabasComplexas3.put("prim", "PRIM");
         matrizSilabasComplexas3.put("prin", "PRIN");
         matrizSilabasComplexas3.put("pron", "PRON");
         matrizSilabasComplexas3.put("tlas", "TLAS");
@@ -2516,7 +2523,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(53);
+                    proxValor = indice.nextInt(52);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
@@ -2543,7 +2550,7 @@ public class ModelJogoPrincipal {
                 indiceUtilizados.add(som);
                 while (indiceUtilizados.size() <= 5) {
 
-                    proxValor = indice.nextInt(33);
+                    proxValor = indice.nextInt(34);
                     if (!indiceUtilizados.contains(proxValor) && (!possuiSemelhante(indiceUtilizados, proxValor))) {//se o índice ainda não foi utilizado
                         novasOpcoes.add(proxValor);//adiciona o indice no array
                         indiceUtilizados.add(proxValor);//adiciona o indice utilizado vetor de utilizados
