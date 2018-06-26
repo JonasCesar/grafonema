@@ -31,6 +31,8 @@
     -fx-font-size: 28px;
     -fx-padding: 10 20 10 20;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 0, 0);
+    
 }
 
 /*#btn_1:hover, #btn_2:hover, #btn_3:hover, #btn_4:hover, #btn_5:hover{
