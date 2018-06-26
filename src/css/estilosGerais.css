@@ -31,7 +31,6 @@
     -fx-font-size: 28px;
     -fx-padding: 10 20 10 20;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 0, 0);
     
 }
 
@@ -54,6 +53,7 @@
     -fx-text-fill: #654b00;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
     /*-fx-padding: 10 20 10 20;*/
 
 }
@@ -67,6 +67,7 @@
     -fx-font-size: 35px;
     -fx-pref-height: 88px;
     -fx-pref-width: 96px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
 #btemp_fa11{
@@ -84,6 +85,7 @@
     -fx-font-size: 35px;
     -fx-pref-height: 80px;
     -fx-pref-width: 88px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
 #btemp_fa2{
@@ -96,6 +98,7 @@
     -fx-font-size: 17px;
     -fx-pref-height: 108px;
     -fx-pref-width: 78px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
 #btemp_fa21{
@@ -113,6 +116,7 @@
     -fx-font-size: 17px;
     -fx-pref-height: 100px;
     -fx-pref-width: 70px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 ;;
 #btemp_fa4{
@@ -125,6 +129,7 @@
     -fx-font-size: 17px;
     -fx-pref-height: 158px;
     -fx-pref-width: 78px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
 #btemp_fa41{
@@ -142,6 +147,7 @@
     -fx-font-size: 17px;
     -fx-pref-height: 150px;
     -fx-pref-width: 70px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
 
@@ -154,6 +160,7 @@
     -fx-font-size: 35px;
     -fx-pref-width: 88px;
     -fx-pref-height: 80px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
 #btemp_fe11{
@@ -169,6 +176,7 @@
     -fx-font-size: 35px;
     -fx-pref-width: 88px;
     -fx-pref-height: 80px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
 #btemp_fe2{
@@ -180,6 +188,7 @@
     -fx-font-size: 17px;
     -fx-pref-width: 100px;
     -fx-pref-height: 70px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
 #btemp_fe21{
@@ -195,6 +204,7 @@
     -fx-font-size: 17px;
     -fx-pref-width: 100px;
     -fx-pref-height: 70px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 #btemp_fe4{
     -fx-background-color: 
@@ -205,6 +215,7 @@
     -fx-font-size: 17px;
     -fx-pref-width: 150px;
     -fx-pref-height: 70px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
 #btemp_fe41{
@@ -220,18 +231,22 @@
     -fx-font-size: 17px;
     -fx-pref-width: 150px;
     -fx-pref-height: 70px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 3, 3);
 }
 
-#pular, skipIntro{
+#pular, #skipIntro{
     -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 0, 0);
 }
 
 #ouvirAudio{
     -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 0, 0);
 }
 
 #imgReiniciar{    
     -fx-cursor: hand;    
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 0, 0);
 }
 
 #acertoFase1{
@@ -261,8 +276,14 @@
     -fx-pref-width: 88px;
 }
 
-#iniciar, #imgReiniciar, #imgSair{
+#iniciar{
+    
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 10, 10);
+}
+
+#imgReiniciar, #imgSair{
     -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 0, 0);
 }
 
 #lifeBar{

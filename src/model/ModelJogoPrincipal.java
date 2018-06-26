@@ -85,7 +85,7 @@ public class ModelJogoPrincipal {
         "AL", "AM", "AN", "AR", "AS", "BA", "BE", "BI", "BO", "BU", "CA",
         "ÇÃO", "CE", "CI", "CU", "DA", "DI", "DO",
         "EM", "EN", "ER", "ES", "FA", "FE", "FI",
-        "FO", "FU", "GA", "GE", "GI", "GO", "GU", "IM", "IN", "IR", "IS", "JAN",
+        "FO", "FU", "GA", "GE", "GI", "GO", "GU", "IM", "IN", "IR", "IS", "JA",
         "JE", "JI", "JO", "JU",
         "LA", "LE", "LI", "LO", "MA", "ME", "MI", "MO", "MU", "NA", "NE",
         "NO", "NU", "OM", "ON", "OR", "OS",
@@ -128,7 +128,7 @@ public class ModelJogoPrincipal {
         "GEL", "GEM", "GEN", "GER", "GIL", "GIN", "GIR", "GOL", "GON", "GOR",
         "GUA", "JAN", "JÃO", "JAR", "JAS", "JOR", "JUN", "JUS", "LAM", "LAN",
         "LÃO", "LAR", "LAS", "LEM", "LEN", "LER", "LIM", "LIN", "LOM", "LON",
-        "LOS", "LUS", "LUZ", "MAL", "MAN", "MÃO", "MÃOS", "MAR", "MEL", "MEM",
+        "LOS", "LUS", "LUZ", "MAL", "MAN", "MÃO", "MÃOS", "MAR", "MAS", "MEL", "MEM",
         "MEN", "MER", "MÊS", "MIN", "MIR", "MIS", "MOL", "MON", "MOR", "MOS",
         "MUL", "MUN", "MUS", "NAL", "NÃO", "NAS", "NEL", "NER", "NIL", "NIN", "NIR",
         "NOZ", "PÃES", "PAL", "PAN", "PÃO", "PAR", "PAS", "PAZ", "PEL", "PEN",
@@ -138,7 +138,7 @@ public class ModelJogoPrincipal {
         "SEL", "SEM", "SEN", "SER", "SIM", "SIS", "SOL", "SOM", "SON", "SOR",
         "SUN", "SUR", "SUS", "TAL", "TAM", "TAN", "TÃO", "TAR", "TAS", "TEL",
         "TEM", "TEN", "TER", "TES", "TIL", "TIM", "TIN", "TIR", "TOL", "TOM",
-        "TON", "TOR", "TUM", "TUR", "VAL", "VAM", "VÃO", "VAR", "VAS", "VEL",
+        "TON", "TOR", "TUM", "TUR", "VAL", "VAM", "VAN", "VÃO", "VAR", "VAS", "VEL",
         "VEM", "VEN", "VER", "VES", "VIN", "VIR", "VIS", "VON", "VUL", "XAM",
         "XÃO", "XAR", "XER", "XIS", "ZAL", "ZÃO", "ZAR", "ZER", "ZES", "ZIN",
         "ZOL", "ZOM", "ZUL", "ZUM"
@@ -188,7 +188,7 @@ public class ModelJogoPrincipal {
         "al", "am", "an", "ar", "as", "ba", "be", "bi", "bo", "bu", "ca",
         "ção", "ce", "ci", "cu", "da", "di", "do",
         "em", "en", "er", "es", "fa", "fe", "fi",
-        "fo", "fu", "ga", "ge", "gi", "go", "gu", "im", "in", "ir", "is", "jan",
+        "fo", "fu", "ga", "ge", "gi", "go", "gu", "im", "in", "ir", "is", "ja",
         "je", "ji", "jo", "ju",
         "la", "le", "li", "lo", "ma", "me", "mi", "mo", "mu", "na", "ne",
         "no", "nu", "om", "on", "or", "os",
@@ -224,7 +224,7 @@ public class ModelJogoPrincipal {
         "gel", "gem", "gen", "ger", "gil", "gin", "gir", "gol", "gon", "gor",
         "gua", "jan", "jão", "jar", "jas", "jor", "jun", "jus", "lam", "lan",
         "lão", "lar", "las", "lem", "len", "ler", "lim", "lin", "lom", "lon",
-        "los", "lus", "luz", "mal", "man", "mão", "mãos", "mar", "mel", "mem",
+        "los", "lus", "luz", "mal", "man", "mão", "mãos", "mar", "mas", "mel", "mem",
         "men", "mer", "mês", "min", "mir", "mis", "mol", "mon", "mor", "mos",
         "mul", "mun", "mus", "nal", "não", "nas", "nel", "ner", "nil", "nin", "nir",
         "noz", "pães", "pal", "pan", "pão", "par", "pas", "paz", "pel", "pen",
@@ -234,7 +234,7 @@ public class ModelJogoPrincipal {
         "sel", "sem", "sen", "ser", "sim", "sis", "sol", "som", "son", "sor",
         "sun", "sur", "sus", "tal", "tam", "tan", "tão", "tar", "tas", "tel",
         "tem", "ten", "ter", "tes", "til", "tim", "tin", "tir", "tol", "tom",
-        "ton", "tor", "tum", "tur", "val", "vam", "vão", "var", "vas", "vel",
+        "ton", "tor", "tum", "tur", "val", "vam", "van", "vão", "var", "vas", "vel",
         "vem", "ven", "ver", "ves", "vin", "vir", "vis", "von", "vul", "xam",
         "xão", "xar", "xer", "xis", "zal", "zão", "zar", "zer", "zes", "zin",
         "zol", "zom", "zul", "zum"
@@ -662,7 +662,7 @@ public class ModelJogoPrincipal {
         matrizSilabasSimples.put("ir", "IR");
         matrizSilabasSimples.put("is", "IS");
 
-        matrizSilabasSimples.put("jan", "JAN");
+        matrizSilabasSimples.put("ja", "JA");
         matrizSilabasSimples.put("je", "JE");
         matrizSilabasSimples.put("ji", "JI");
         matrizSilabasSimples.put("jo", "JO");
@@ -2503,6 +2503,7 @@ public class ModelJogoPrincipal {
                         i++;
                     }
                 }
+                System.out.println("arrya novas opçoes: " + novasOpcoes);
                 preencherOpcoes(silabasComplexas, som, novasOpcoes);
 
                 break;
