@@ -19,7 +19,12 @@
                 <Image url="@../model/Imagens/Gerais/fundopb.jpg" />
             </image>
         </ImageView>
-        <Label layoutX="552.0" layoutY="102.0" prefHeight="44.0" prefWidth="218.0" text="Parabens!!!">
+      <ImageView fitHeight="314.0" fitWidth="447.0" layoutX="441.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/Imagens/Gerais/fundopontuacao.png" />
+         </image>
+      </ImageView>
+        <Label layoutX="545.0" layoutY="212.0" prefHeight="62.0" prefWidth="247.0" style="-fx-font-family: &quot;Diavlo Black&quot;; -fx-font-weight: 200;" text="PARABÉNS!!!">
             <font>
                 <Font size="36.0" />
             </font>
@@ -44,7 +49,7 @@
                 <Font size="53.0" />
             </font>
         </Label>
-        <Label layoutX="539.0" layoutY="254.0" text="Pontuaçao Total">
+        <Label layoutX="539.0" layoutY="269.0" prefHeight="38.0" prefWidth="256.0" style="-fx-font-family: &quot;Diavlo Black&quot;; -fx-font-size: 30;" text="Pontuação Total:">
             <font>
                 <Font size="30.0" />
             </font>
