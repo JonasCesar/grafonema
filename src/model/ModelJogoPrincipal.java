@@ -151,7 +151,7 @@ public class ModelJogoPrincipal {
         "FLU", "FRA", "FRE", "FRI", "FRU", "GLA", "GLO", "GRE", 
         "GRI", "GRO", "GRU", "PLA", "PLO", "PLU", "PRA", "PRE",
         "PRO", "PRU", "TLE", "TLO", "TRA", "TRE", "TRI", "TRO","TRU",
-        "VRE", "VRO",};
+        "VRE", "VRO"};
 
     
 
@@ -377,8 +377,8 @@ public class ModelJogoPrincipal {
      * @throws java.io.IOException
      */
     public void gerarOpcaoAleatoria() throws InterruptedException, IOException {
-        int rodadas = 15;
-        //int rodadas = 2;
+        //int rodadas = 15;
+        int rodadas = 7;
 
         if (jogador.getFaseAtual() != 1 && jogador.getFaseAtual() != 3
                 && jogador.getFaseAtual() != 7) {
@@ -387,9 +387,9 @@ public class ModelJogoPrincipal {
             ocultarBotoesDicas();
         }
 
-        if (jogador.getFaseAtual() > 1) {
+        /*if (jogador.getFaseAtual() > 1) {
             rodadas = 20;
-        }
+        }*/
 
         System.out.println("Nova opção aleatória fase " + getFaseAtual());
         System.out.println("qnt erros  " + jogador.getQntErros());

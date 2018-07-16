@@ -19,12 +19,12 @@
                 <Image url="@../model/Imagens/Gerais/fundopb.jpg" />
             </image>
         </ImageView>
-      <ImageView fitHeight="314.0" fitWidth="447.0" layoutX="441.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="314.0" fitWidth="447.0" layoutX="444.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../model/Imagens/Gerais/fundopontuacao.png" />
+            <Image url="@../model/Imagens/Gerais/placa.png" />
          </image>
       </ImageView>
-        <Label layoutX="545.0" layoutY="212.0" prefHeight="62.0" prefWidth="247.0" style="-fx-font-family: &quot;Diavlo Black&quot;; -fx-font-weight: 200;" text="PARABÉNS!!!">
+        <Label layoutX="545.0" layoutY="140.0" prefHeight="62.0" prefWidth="247.0" style="-fx-font-family: &quot;Diavlo Black&quot;; -fx-font-weight: 30;" text="PARABÉNS!!!" textFill="#11e011">
             <font>
                 <Font size="36.0" />
             </font>
@@ -49,7 +49,7 @@
                 <Font size="53.0" />
             </font>
         </Label>
-        <Label layoutX="539.0" layoutY="269.0" prefHeight="38.0" prefWidth="256.0" style="-fx-font-family: &quot;Diavlo Black&quot;; -fx-font-size: 30;" text="Pontuação Total:">
+        <Label layoutX="540.0" layoutY="251.0" prefHeight="38.0" prefWidth="256.0" style="-fx-font-family: &quot;Diavlo Black&quot;; -fx-font-size: 30;" text="Pontuação Total:" textFill="#11e011">
             <font>
                 <Font size="30.0" />
             </font>

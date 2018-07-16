@@ -19,9 +19,19 @@
                 <Image url="@../model/Imagens/Gerais/fundopb.jpg" />
             </image>
         </ImageView>
-        <Label layoutX="552.0" layoutY="102.0" prefHeight="44.0" prefWidth="218.0" text="Fim do jogo">
+      <ImageView fitHeight="319.0" fitWidth="463.0" layoutX="423.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../model/Imagens/Gerais/placa.png" />
+         </image>
+      </ImageView>
+        <Label layoutX="500.0" layoutY="106.0" prefHeight="88.0" prefWidth="329.0" style="-fx-font-family: &quot;Diavlo Black&quot;; -fx-font-size: 32;" text="Não foi dessa vez.&#10;Tente novamente!" textAlignment="CENTER" textFill="#11e011">
             <font>
                 <Font size="36.0" />
+            </font>
+        </Label>
+        <Label layoutX="506.0" layoutY="229.0" style="-fx-font-family: &quot;Diavlo Black&quot;; -fx-font-size: 35;" text="Pontuação Total:" textFill="#11e011">
+            <font>
+                <Font size="30.0" />
             </font>
         </Label>
         <ImageView fx:id="imgReiniciar" fitHeight="119.0" fitWidth="150.0" layoutX="443.0" layoutY="508.0" onMouseClicked="#reiniciarJogo" onMouseEntered="#sombrearImagem" onMouseExited="#removerSombraImagem" pickOnBounds="true" preserveRatio="true">
@@ -42,11 +52,6 @@
         <Label fx:id="pontuacao" layoutX="603.0" layoutY="352.0" text="0">
             <font>
                 <Font size="53.0" />
-            </font>
-        </Label>
-        <Label layoutX="539.0" layoutY="254.0" text="Pontuaçao Total">
-            <font>
-                <Font size="30.0" />
             </font>
         </Label>
     </children>
